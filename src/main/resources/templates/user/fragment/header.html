@@ -3,7 +3,7 @@
 <div class="skipnaiv">
     <a href="#contents" id="skipHeader">메인 컨텐츠 바로가기</a>
 </div>
-<div id="cgvwrap">
+<div id="cgvwrap" th:fragment="header">
     <!-- S Header
               Description
               - class 'nav' 에 class 'active' 추가시 서브메뉴노출
@@ -15,7 +15,7 @@
         <div class="header_content">
             <div class="contents">
                 <h1>
-                    <a href="main.jsp"><img src="../../../static/img/logoRed.png" alt="CGV" /></a
+                    <a href="main.html"><img src="../../../static/img/logoRed.png" alt="CGV" /></a
                     ><span>CULTUREPLEX</span>
                 </h1>
                 <ul class="memberInfo_wrap">
@@ -28,27 +28,27 @@
                     </div>
                     <!-- /Advertisement -->
                     <li>
-                        <a href="./login.jsp?">
+                        <a href="./login.html?">
                             <img src="../../../static/img/loginPassword.png" alt="로그인" />
                             <span>로그인</span></a
                         >
                     </li>
                     <li>
-                        <a href="./join.jsp">
+                        <a href="./join.html">
                             <img src="../../../static/img/loginJoin.png" alt="회원가입" />
                             <span>회원가입</span>
                         </a>
                     </li>
 
                     <li>
-                        <a href="./mycgv.jsp">
+                        <a href="./mycgv.html">
                             <img src="../../../static/img/loginMember.png" alt="MY CGV" />
                             <span>MY CGV</span></a
                         >
                     </li>
 
                     <li>
-                        <a href="./support.jsp">
+                        <a href="./support.html">
                             <img src="../../../static/img/loginCustomer.png" alt="고객센터" />
                             <span>고객센터</span></a
                         >
@@ -192,129 +192,129 @@
             <div class="contents">
                 <h1>
                     <a href="/" tabindex="-1"
-                    ><img src="./css/logoWhite.png" alt="CGV"
+                    ><img src="../../../static/img/logoWhite.png" alt="CGV"
                     /></a>
                 </h1>
                 <ul class="nav_menu">
                     <li>
-                        <h2><a href="./movies.jsp">영화</a></h2>
+                        <h2><a href="./movies.html">영화</a></h2>
                         <dl class="nav_overMenu">
                             <dt>
-                                <h2><a href="./movies.jsp" tabindex="-1">영화</a></h2>
+                                <h2><a href="./movies.html" tabindex="-1">영화</a></h2>
                             </dt>
                             <dd>
-                                <h3><a href="./movies.jsp">무비차트</a></h3>
+                                <h3><a href="./movies.html">무비차트</a></h3>
                             </dd>
                         </dl>
                     </li>
                     <li>
-                        <h2><a href="./theaters.jsp">극장</a></h2>
+                        <h2><a href="./theaters.html">극장</a></h2>
                         <dl class="nav_overMenu">
                             <dt>
-                                <h2><a href="./theaters.jsp" tabindex="-1">극장</a></h2>
+                                <h2><a href="./theaters.html" tabindex="-1">극장</a></h2>
                             </dt>
                             <dd>
-                                <h3><a href="./theaters.jsp">CGV 극장</a></h3>
+                                <h3><a href="./theaters.html">CGV 극장</a></h3>
                             </dd>
                         </dl>
                     </li>
                     <li>
                         <h2>
-                            <a href="./ticket.jsp"><strong>예매</strong></a>
+                            <a href="./ticket.html"><strong>예매</strong></a>
                         </h2>
                         <dl class="nav_overMenu">
                             <dt>
-                                <h2><a href="./ticket.jsp" tabindex="-1">예매</a></h2>
+                                <h2><a href="./ticket.html" tabindex="-1">예매</a></h2>
                             </dt>
                             <dd>
-                                <h3><a href="./ticket.jsp">빠른예매</a></h3>
+                                <h3><a href="./ticket.html">빠른예매</a></h3>
                             </dd>
                         </dl>
                     </li>
                     <li>
-                        <h2><a href="./popcorn-store.jsp">스토어</a></h2>
+                        <h2><a href="./popcorn-store.html">스토어</a></h2>
                         <dl class="nav_overMenu">
                             <dt>
-                                <h2><a href="./popcorn-store.jsp" tabindex="-1">스토어</a></h2>
+                                <h2><a href="./popcorn-store.html" tabindex="-1">스토어</a></h2>
                             </dt>
 
                             <dd>
                                 <h3>
-                                    <a href="./store-category.jsp?CategoryIdx=2">영화관람권</a>
+                                    <a href="./store-category.html?CategoryIdx=2">영화관람권</a>
                                 </h3>
                             </dd>
 
                             <dd>
                                 <h3>
-                                    <a href="./store-category.jsp?CategoryIdx=3">기프트카드</a>
+                                    <a href="./store-category.html?CategoryIdx=3">기프트카드</a>
                                 </h3>
                             </dd>
 
                             <dd>
-                                <h3><a href="./store-category.jsp?CategoryIdx=4">콤보</a></h3>
+                                <h3><a href="./store-category.html?CategoryIdx=4">콤보</a></h3>
                             </dd>
 
                             <dd>
-                                <h3><a href="./store-category.jsp?CategoryIdx=5">팝콘</a></h3>
+                                <h3><a href="./store-category.html?CategoryIdx=5">팝콘</a></h3>
                             </dd>
 
                             <dd>
-                                <h3><a href="./store-category.jsp?CategoryIdx=6">음료</a></h3>
+                                <h3><a href="./store-category.html?CategoryIdx=6">음료</a></h3>
                             </dd>
 
                             <dd>
-                                <h3><a href="./store-category.jsp?CategoryIdx=7">스낵</a></h3>
+                                <h3><a href="./store-category.html?CategoryIdx=7">스낵</a></h3>
                             </dd>
 
                             <dd>
                                 <h3>
-                                    <a href="./store-category.jsp?CategoryIdx=8">플레이존</a>
+                                    <a href="./store-category.html?CategoryIdx=8">플레이존</a>
                                 </h3>
                             </dd>
                         </dl>
                     </li>
                     <li>
-                        <h2><a href="./defaultNew.jsp?mCode=001">이벤트</a></h2>
+                        <h2><a href="./defaultNew.html?mCode=001">이벤트</a></h2>
                         <dl class="nav_overMenu">
                             <dt>
                                 <h2>
-                                    <a href="./defaultNew.jsp?mCode=001" tabindex="-1">이벤트</a>
+                                    <a href="./defaultNew.html?mCode=001" tabindex="-1">이벤트</a>
                                 </h2>
                             </dt>
                             <dd>
-                                <h3><a href="./defaultNew.jsp?mCode=001">SPECIAL</a></h3>
+                                <h3><a href="./defaultNew.html?mCode=001">SPECIAL</a></h3>
                             </dd>
                             <dd>
-                                <h3><a href="./defaultNew.jsp?mCode=004">영화/예매</a></h3>
+                                <h3><a href="./defaultNew.html?mCode=004">영화/예매</a></h3>
                             </dd>
                             <dd>
-                                <h3><a href="./defaultNew.jsp?mCode=008">멤버십/CLUB</a></h3>
+                                <h3><a href="./defaultNew.html?mCode=008">멤버십/CLUB</a></h3>
                             </dd>
                             <dd>
-                                <h3><a href="./defaultNew.jsp?mCode=005">CGV 극장별</a></h3>
+                                <h3><a href="./defaultNew.html?mCode=005">CGV 극장별</a></h3>
                             </dd>
                             <dd>
-                                <h3><a href="./defaultNew.jsp?mCode=006">제휴할인</a></h3>
+                                <h3><a href="./defaultNew.html?mCode=006">제휴할인</a></h3>
                             </dd>
                             <dd>
-                                <h3><a href="./result_list.jsp">당첨자 발표</a></h3>
+                                <h3><a href="./result_list.html">당첨자 발표</a></h3>
                             </dd>
                             <dd>
-                                <h3><a href="./end-list.jsp">종료된 이벤트</a></h3>
+                                <h3><a href="./end-list.html">종료된 이벤트</a></h3>
                             </dd>
                         </dl>
                     </li>
                     <li>
-                        <h2><a href="./discount.jsp">혜택</a></h2>
+                        <h2><a href="./discount.html">혜택</a></h2>
                         <dl class="nav_overMenu">
                             <dt>
-                                <h2><a href="./discount.jsp" tabindex="-1">혜택</a></h2>
+                                <h2><a href="./discount.html" tabindex="-1">혜택</a></h2>
                             </dt>
                             <dd>
-                                <h3><a href="./discount.jsp">CGV 할인정보</a></h3>
+                                <h3><a href="./discount.html">CGV 할인정보</a></h3>
                             </dd>
                             <dd>
-                                <h3><a href="./ClubService.jsp">CLUB 서비스</a></h3>
+                                <h3><a href="./ClubService.html">CLUB 서비스</a></h3>
                             </dd>
                         </dl>
                     </li>
