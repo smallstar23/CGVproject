@@ -1,7 +1,10 @@
 
 <!DOCTYPE html >
-<html lang="ko">
-<body class="sb-nav-fixed" >
+<html lang="ko"
+      xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org/">
+
+<body th:fragment="fragment-header" class="sb-nav-fixed" >
 <div id="layoutSidenav">
     <div id="layoutSidenav_nav">
         <nav class="sb-sidenav accordion sb-sidenav-dark" id="sidenavAccordion">
@@ -20,7 +23,7 @@
                     </a>
                     <div class="collapse" id="member" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordion">
                         <nav class="sb-sidenav-menu-nested nav">
-                            <a class="nav-link" href="./member-lookup.jsp" style="font-size:15px; padding-left:30px;">회원정보조회</a>
+                            <a class="nav-link" style="font-size:15px; padding-left:30px;">회원정보조회</a>
                             <a class="nav-link" href="./member-ticket.jsp" style="font-size:15px; padding-left:30px;">예매내역조회</a>
                             <a class="nav-link" href="./member-paymentlist.jsp" style="font-size:15px; padding-left:30px;">결제내역조회</a>
                             <a class="nav-link" href="./member-pointlist.jsp" style="font-size:15px; padding-left:30px;">포인트내역조회</a>
@@ -128,3 +131,7 @@
                 강남CGV
             </div>
         </nav>
+    </div>
+</div>
+</body>
+</html>
