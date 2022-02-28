@@ -45,7 +45,7 @@
 .member_join .step_join ul li.step1_1 .haze,
 .member_join .step_join ul li.step2 .haze,
 .member_join .step_join ul li.step3 .haze,
-.member_join .step_join ul li.step4 .haze {background:url('./bg_member.png') no-repeat left top;}
+.member_join .step_join ul li.step4 .haze {background:url('../img/bg_member.png') no-repeat left top;}
 .member_join .step_join ul li.step1 .haze {background-position:0 0;}
 .member_join .step_join ul li.step1_1 .haze {background-position:-100px 0;}
 .member_join .step_join ul li.step2 .haze {background-position:-200px 0;}
@@ -102,7 +102,7 @@
 .join_success .certi_txt.check .s_txt {margin-top:20px; font-size:14px;}
 .join_success .btn_sec {margin-top:30px;}
 .join_success .btn_sec .btn {font-size:14px;}
-.join_success .certi_txt span.ico {display:block; position:absolute; width:460px; height:89px; margin-left:-230px; background:url('./bg_member.png') no-repeat 0 -250px; top:0; left:50%;}
+.join_success .certi_txt span.ico {display:block; position:absolute; width:460px; height:89px; margin-left:-230px; background:url('../img/bg_member.png') no-repeat 0 -250px; top:0; left:50%;}
 .join_success .uesr_data {width:700px; margin:30px auto 0; padding:25px 0; background:#fff;}
 .join_success .uesr_data dl {padding:5px 40px; overflow:hidden;}
 .join_success .uesr_data dl dt {width:210px;}
