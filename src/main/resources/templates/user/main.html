@@ -1,6 +1,8 @@
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="ko" lang="ko">
+<html lang="ko"
+      xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org/">
 <head>
 
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
@@ -265,8 +267,9 @@
         });
     </script>
 </head>
+<div th:replace="user/fragment/header :: header-user"></div>
 <body class="">
-<div th:replace="fragment/header :: header"></div>
+
     <!-- Contaniner -->
     <div id="contaniner"  class=""><!-- 벽돌 배경이미지 사용 시 class="bg-bricks" 적용 / 배경이미지가 없을 경우 class 삭제  -->
 
@@ -1551,7 +1554,7 @@
     <!-- E 예매하기 및 TOP Fixed 버튼 -->
 
     <!-- S Footer -->
-<div th:replace="fragment/footer :: footer"></div>
+<div th:replace="user/fragment/footer.html :: footer-user"></div>
 </div>
 <script type="text/javascript" src="https://img.cgv.co.kr/R2014//js/system/crypto.js"></script>
 <script type="text/javascript">
