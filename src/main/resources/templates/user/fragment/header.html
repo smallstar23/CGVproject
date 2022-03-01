@@ -1,9 +1,12 @@
 <!DOCTYPE html>
-<html lang="ko">
-<div class="skipnaiv">
+<html lang="ko"
+      xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org/">
+<th:block th:fragment="header-user">
+<div class="skipnaiv" >
     <a href="#contents" id="skipHeader">메인 컨텐츠 바로가기</a>
 </div>
-<div id="cgvwrap" th:fragment="header">
+<div id="cgvwrap">
     <!-- S Header
               Description
               - class 'nav' 에 class 'active' 추가시 서브메뉴노출
@@ -192,7 +195,7 @@
             <div class="contents">
                 <h1>
                     <a href="/" tabindex="-1"
-                    ><img src="../../../static/img/logoWhite.png" alt="CGV"
+                    ><img src="/img/logoWhite.png" alt="CGV"
                     /></a>
                 </h1>
                 <ul class="nav_menu">
@@ -353,3 +356,4 @@
     </div>
     <!-- E Header -->
 </div>
+</th:block>
