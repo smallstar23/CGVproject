@@ -2,7 +2,8 @@
 <html lang="ko"
       xmlns="http://www.w3.org/1999/xhtml"
       xmlns:th="http://www.thymeleaf.org/">
-<div class="skipnaiv" th:fragment="header-user">
+<th:block th:fragment="header-user">
+<div class="skipnaiv" >
     <a href="#contents" id="skipHeader">메인 컨텐츠 바로가기</a>
 </div>
 <div id="cgvwrap">
@@ -355,3 +356,4 @@
     </div>
     <!-- E Header -->
 </div>
+</th:block>
