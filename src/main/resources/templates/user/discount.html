@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html lang="ko"  xmlns:th="http://www.thymeleaf.org/">
 <head>
     <title>discount</title>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
@@ -173,7 +173,7 @@
 </head>
 <body class="">
 
-<%@include file="./header.jsp" %>
+<div th:replace="user/fragment/header :: header"></div>
 
 <!-- Contaniner -->
 <div id="contaniner"  class=""><!-- 벽돌 배경이미지 사용 시 class="bg-bricks" 적용 / 배경이미지가 없을 경우 class 삭제  -->
@@ -275,17 +275,6 @@
         <div class="cgvSaleTab_wrap">
             <ul class="cgvSaleTab_titleWrap" style="width: 97%;">
 
-                <%--  <%
-                request.setCharacterEncoding("UTF-8");
-                String Page = request.getParameter("page");
-                String m1 = "", m2="",m3="",m4="",m5="";
-                if(Page.equals("001")) m1 = "active";
-                if(Page.equals("002")) m2 = "active";
-                if(Page.equals("003")) m3 = "active";
-                if(Page.equals("004")) m4 = "active";
-                if(Page.equals("005")) m5 = "active";
-
-                %> --%>
                 <li class="active"><a href="discount.jsp">hot</a></li>
                 <li class=""><a href="discount.jsp">통신사</a></li>
                 <li class=""><a href="discount.jsp">신용카드</a></li>
@@ -392,7 +381,7 @@
 </div>
 <!-- E Contaniner -->
 
-<%@include file="./footer.jsp" %>
+<div th:replace="user/fragment/footer :: footer"></div>
 
 </div>
 
