@@ -12,15 +12,12 @@ public class UserController {
         return new ModelAndView("/user/main");
     }
 
-    @GetMapping("discount")
-    public String discount(){
-        return "user/discount";
+    @GetMapping("movies")
+    public ModelAndView movies(){
+        return new ModelAndView("/user/movies/movies");
     }
-
-    @GetMapping("ClubService")
-    public String clubservice(){
-        return "user/ClubService";
+    @GetMapping("movies/detail-view")
+    public ModelAndView detailview(){
+        return new ModelAndView("/user/movies/detail-view");
     }
-
-
 }

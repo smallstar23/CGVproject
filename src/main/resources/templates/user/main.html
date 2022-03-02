@@ -268,10 +268,9 @@
     </script>
 </head>
 
-<div th:replace="user/fragment/header :: header-user"></div>
 
 <body class="">
-
+    <div th:replace="user/fragment/header :: header-user"></div>
     <!-- Contaniner -->
     <div id="contaniner"  class=""><!-- 벽돌 배경이미지 사용 시 class="bg-bricks" 적용 / 배경이미지가 없을 경우 class 삭제  -->
 
@@ -319,7 +318,7 @@
                         <h3><a href="#none" class="active" id="btnMovie">무비차트</a></h3>
                         <h3><a href="#none" id="btnReserMovie">상영예정작</a></h3>
                     </div>
-                    <a href="/movies/?lt=1&ft=0" id="btn_allView_Movie" class="btn_allView">전체보기</a>
+                    <a th:href="@{movies}" id="btn_allView_Movie" class="btn_allView">전체보기</a>
                 </div>
 
                 <div class="swiper movieChart_list" id="movieChart_list">
@@ -1556,7 +1555,7 @@
     <!-- E 예매하기 및 TOP Fixed 버튼 -->
 
     <!-- S Footer -->
-<div th:replace="user/fragment/footer.html :: footer-user"></div>
+<div th:replace="user/fragment/footer:: footer-user"></div>
 </div>
 <script type="text/javascript" src="https://img.cgv.co.kr/R2014//js/system/crypto.js"></script>
 <script type="text/javascript">

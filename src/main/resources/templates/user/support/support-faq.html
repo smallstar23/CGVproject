@@ -1,5 +1,7 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="ko" lang="ko">
+<!DOCTYPE html>
+<html lang="ko"
+      xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org/">
 <head>
     <title>support-faq</title>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
@@ -72,7 +74,7 @@
 <body class="">
 
 
-<div th:replace="fragment/header :: header"></div>
+<div th:replace="user/fragment/header :: header-user"></div>
 
 <div id="contaniner"  class=""><!-- 벽돌 배경이미지 사용 시 class="bg-bricks" 적용 / 배경이미지가 없을 경우 class 삭제  -->
 
@@ -88,12 +90,12 @@
                     고객센터 메뉴</h2>
                 <div class="snb">
                     <ul>
-                        <li class=''><a href="support.html">고객센터 메인<i></i></a></li>
+                        <li class=''><a href="./support.jsp">고객센터 메인<i></i></a></li>
                         <li class='on'><a href="./support-faq.jsp" title="현재선택">자주찾는 질문<i></i></a></li>
-                        <li class=''><a href="support-news.html">공지/뉴스<i></i></a></li>
-                        <li class=''><a href="support-qna.html">이메일 문의<i></i></a></li>
-                        <li class=''><a href="support-lost.html">분실물 문의<i></i></a></li>
-                        <li class=''><a href="support-lease.html">단체/ 대관 문의<i></i></a></li>
+                        <li class=''><a href="./support-news.jsp">공지/뉴스<i></i></a></li>
+                        <li class=''><a href="./support-qna.jsp">이메일 문의<i></i></a></li>
+                        <li class=''><a href="./support-lost.jsp">분실물 문의<i></i></a></li>
+                        <li class=''><a href="./support-lease.jsp">단체/ 대관 문의<i></i></a></li>
 
 
                     </ul>
@@ -170,7 +172,7 @@
                             <!--순번 오름차순으로 변경-->
                             <td>1</td>
                             <td>[홈페이지/모바일]</td>
-                            <td id="title0" class="txt"><a href="support-fap-detail-view.html">인터넷 예매 후 CGV 현장에서 환불&#40;예매 취소&#41;이 가능한가요?</a></td>
+                            <td id="title0" class="txt"><a href="support-fap-detail-view.jsp">인터넷 예매 후 CGV 현장에서 환불&#40;예매 취소&#41;이 가능한가요?</a></td>
                             <td class="num">6836</td>
                         </tr>
 
@@ -178,7 +180,7 @@
                             <!--순번 오름차순으로 변경-->
                             <td>2</td>
                             <td>[VIP관련]</td>
-                            <td id="title1" class="txt"><a href="support-fap-detail-view.html">VIP 등급별 유지, 선정 포인트를 알고 싶어요</a></td>
+                            <td id="title1" class="txt"><a href="support-fap-detail-view.jsp">VIP 등급별 유지, 선정 포인트를 알고 싶어요</a></td>
                             <td class="num">4644</td>
                         </tr>
 
@@ -186,7 +188,7 @@
                             <!--순번 오름차순으로 변경-->
                             <td>3</td>
                             <td>[멤버쉽/클럽서비스]</td>
-                            <td id="title2" class="txt"><a href="support-fap-detail-view.html">아이핀&#40;I-PIN&#41; 이 무엇인가요?</a></td>
+                            <td id="title2" class="txt"><a href="support-fap-detail-view.jsp">아이핀&#40;I-PIN&#41; 이 무엇인가요?</a></td>
                             <td class="num">4621</td>
                         </tr>
 
@@ -194,7 +196,7 @@
                             <!--순번 오름차순으로 변경-->
                             <td>4</td>
                             <td>[VIP관련]</td>
-                            <td id="title3" class="txt"><a href="support-fap-detail-view.html">VIP 선정 기준은 어떻게 되나요?</a></td>
+                            <td id="title3" class="txt"><a href="support-fap-detail-view.jsp">VIP 선정 기준은 어떻게 되나요?</a></td>
                             <td class="num">4351</td>
                         </tr>
 
@@ -202,7 +204,7 @@
                             <!--순번 오름차순으로 변경-->
                             <td>5</td>
                             <td>[멤버쉽/클럽서비스]</td>
-                            <td id="title4" class="txt"><a href="support-fap-detail-view.html">생일콤보 받는 방법을 알려주세요. &#40;2020.04.01~&#41;</a></td>
+                            <td id="title4" class="txt"><a href="support-fap-detail-view.jsp">생일콤보 받는 방법을 알려주세요. &#40;2020.04.01~&#41;</a></td>
                             <td class="num">4074</td>
                         </tr>
 
@@ -210,7 +212,7 @@
                             <!--순번 오름차순으로 변경-->
                             <td>6</td>
                             <td>[관람권/결제수단]</td>
-                            <td id="title5" class="txt"><a href="support-fap-detail-view.html">관람권 사용해서 예매했는데 현금영수증 발행을 못했어요!</a></td>
+                            <td id="title5" class="txt"><a href="support-fap-detail-view.jsp">관람권 사용해서 예매했는데 현금영수증 발행을 못했어요!</a></td>
                             <td class="num">4021</td>
                         </tr>
 
@@ -218,7 +220,7 @@
                             <!--순번 오름차순으로 변경-->
                             <td>7</td>
                             <td>[홈페이지/모바일]</td>
-                            <td id="title6" class="txt"><a href="support-fap-detail-view.html">인터넷 예매 후 예매 내용 확인은 어떻게 하나요?</a></td>
+                            <td id="title6" class="txt"><a href="support-fap-detail-view.jsp">인터넷 예매 후 예매 내용 확인은 어떻게 하나요?</a></td>
                             <td class="num">3506</td>
                         </tr>
 
@@ -226,7 +228,7 @@
                             <!--순번 오름차순으로 변경-->
                             <td>8</td>
                             <td>[홈페이지/모바일]</td>
-                            <td id="title7" class="txt"><a href="support-fap-detail-view.html">이미 예매한 내역의 결제수단을 변경하고 싶어요.</a></td>
+                            <td id="title7" class="txt"><a href="support-fap-detail-view.jsp">이미 예매한 내역의 결제수단을 변경하고 싶어요.</a></td>
                             <td class="num">3383</td>
                         </tr>
 
@@ -234,7 +236,7 @@
                             <!--순번 오름차순으로 변경-->
                             <td>9</td>
                             <td>[관람권/결제수단]</td>
-                            <td id="title8" class="txt"><a href="support-fap-detail-view.html">CGV영화관람권&#40;무비머니&#41;은 어떻게 구매하나요?</a></td>
+                            <td id="title8" class="txt"><a href="support-fap-detail-view.jsp">CGV영화관람권&#40;무비머니&#41;은 어떻게 구매하나요?</a></td>
                             <td class="num">2817</td>
                         </tr>
 
@@ -242,7 +244,7 @@
                             <!--순번 오름차순으로 변경-->
                             <td>10</td>
                             <td>[홈페이지/모바일]</td>
-                            <td id="title9" class="txt"><a href="support-fap-detail-view.html">내가 본 영화를 실수로 삭제했어요. 복구 가능한가요?</a></td>
+                            <td id="title9" class="txt"><a href="support-fap-detail-view.jsp">내가 본 영화를 실수로 삭제했어요. 복구 가능한가요?</a></td>
                             <td class="num">2202</td>
                         </tr>
 
@@ -250,7 +252,7 @@
                             <!--순번 오름차순으로 변경-->
                             <td>11</td>
                             <td>[특별관]</td>
-                            <td id="title10" class="txt"><a href="support-fap-detail-view.html">CINE&LIVING ROOM&#40;씨네앤리빙룸&#41; 상영관은 어떤 곳인가요?</a></td>
+                            <td id="title10" class="txt"><a href="support-fap-detail-view.jsp">CINE&LIVING ROOM&#40;씨네앤리빙룸&#41; 상영관은 어떤 곳인가요?</a></td>
                             <td class="num">1976</td>
                         </tr>
 
@@ -258,7 +260,7 @@
                             <!--순번 오름차순으로 변경-->
                             <td>12</td>
                             <td>[영화관이용]</td>
-                            <td id="title11" class="txt"><a href="support-fap-detail-view.html">LOLOL&#40;롤롤&#41; 운영시간은 어떻게되나요?</a></td>
+                            <td id="title11" class="txt"><a href="support-fap-detail-view.jsp">LOLOL&#40;롤롤&#41; 운영시간은 어떻게되나요?</a></td>
                             <td class="num">1894</td>
                         </tr>
 
@@ -266,7 +268,7 @@
                             <!--순번 오름차순으로 변경-->
                             <td>13</td>
                             <td>[영화관이용]</td>
-                            <td id="title12" class="txt"><a href="support-fap-detail-view.html">V버스터즈가 뭔가요?</a></td>
+                            <td id="title12" class="txt"><a href="support-fap-detail-view.jsp">V버스터즈가 뭔가요?</a></td>
                             <td class="num">935</td>
                         </tr>
 
@@ -274,7 +276,7 @@
                             <!--순번 오름차순으로 변경-->
                             <td>14</td>
                             <td>[특별관]</td>
-                            <td id="title13" class="txt"><a href="support-fap-detail-view.html">SKY BOX 상영관은 어떤 곳인가요?</a></td>
+                            <td id="title13" class="txt"><a href="support-fap-detail-view.jsp">SKY BOX 상영관은 어떤 곳인가요?</a></td>
                             <td class="num">847</td>
                         </tr>
 
@@ -282,7 +284,7 @@
                             <!--순번 오름차순으로 변경-->
                             <td>15</td>
                             <td>[홈페이지/모바일]</td>
-                            <td id="title14" class="txt"><a href="support-fap-detail-view.html">통신사&#40;SKT, KT, LGU+&#41; 예매 시 적립/내가 본 영화 등록/포토플레이 제작은 어떻게 하나요?</a></td>
+                            <td id="title14" class="txt"><a href="support-fap-detail-view.jsp">통신사&#40;SKT, KT, LGU+&#41; 예매 시 적립/내가 본 영화 등록/포토플레이 제작은 어떻게 하나요?</a></td>
                             <td class="num">814</td>
                         </tr>
 
@@ -290,7 +292,7 @@
                             <!--순번 오름차순으로 변경-->
                             <td>16</td>
                             <td>[홈페이지/모바일]</td>
-                            <td id="title15" class="txt"><a href="support-fap-detail-view.html">포토플레이 출력 가능 극장은 어떻게 되나요?</a></td>
+                            <td id="title15" class="txt"><a href="support-fap-detail-view.jsp">포토플레이 출력 가능 극장은 어떻게 되나요?</a></td>
                             <td class="num">580</td>
                         </tr>
 
@@ -298,7 +300,7 @@
                             <!--순번 오름차순으로 변경-->
                             <td>17</td>
                             <td>[홈페이지/모바일]</td>
-                            <td id="title16" class="txt"><a href="support-fap-detail-view.html">포토플레이 출력은 어떻게 하나요?</a></td>
+                            <td id="title16" class="txt"><a href="support-fap-detail-view.jsp">포토플레이 출력은 어떻게 하나요?</a></td>
                             <td class="num">568</td>
                         </tr>
 
@@ -306,7 +308,7 @@
                             <!--순번 오름차순으로 변경-->
                             <td>18</td>
                             <td>[홈페이지/모바일]</td>
-                            <td id="title17" class="txt"><a href="support-fap-detail-view.html">포토플레이 제작 기준은 어떻게 되나요?</a></td>
+                            <td id="title17" class="txt"><a href="support-fap-detail-view.jsp">포토플레이 제작 기준은 어떻게 되나요?</a></td>
                             <td class="num">528</td>
                         </tr>
 
@@ -314,7 +316,7 @@
                             <!--순번 오름차순으로 변경-->
                             <td>19</td>
                             <td>[홈페이지/모바일]</td>
-                            <td id="title18" class="txt"><a href="support-fap-detail-view.html">예매대행업체&#40;맥스무비, 인터파크, YES24&#41; 예매 시 적립/내가 본 영화 등록/포토플레이 제작은 어떻게 하나요?</a></td>
+                            <td id="title18" class="txt"><a href="support-fap-detail-view.jsp">예매대행업체&#40;맥스무비, 인터파크, YES24&#41; 예매 시 적립/내가 본 영화 등록/포토플레이 제작은 어떻게 하나요?</a></td>
                             <td class="num">464</td>
                         </tr>
 
@@ -322,7 +324,7 @@
                             <!--순번 오름차순으로 변경-->
                             <td>20</td>
                             <td>[홈페이지/모바일]</td>
-                            <td id="title19" class="txt"><a href="support-fap-detail-view.html">포토플레이 취소 및 환불 규정은 어떻게 되나요?</a></td>
+                            <td id="title19" class="txt"><a href="support-fap-detail-view.jsp">포토플레이 취소 및 환불 규정은 어떻게 되나요?</a></td>
                             <td class="num">434</td>
                         </tr>
 
@@ -366,7 +368,7 @@
                 <div class="search_order">
                     <ol>
                         <li><span class="ico_oder find_q">01 자주찾는 질문 검색</span></li>
-                        <li><span class="ico_oder email_i">02 이메일 문의</span><a href="support-qna.html"><img src="http://img.cgv.co.kr/support/faq/btn_inquiry.png" alt="문의" /></a></li>
+                        <li><span class="ico_oder email_i">02 이메일 문의</span><a href="./support-qna.jsp"><img src="http://img.cgv.co.kr/support/faq/btn_inquiry.png" alt="문의" /></a></li>
                         <li style="text-align: left;"><span class="ico_oder tel_i">03 고객센터 전화문의</span><span class="num">1544-1122<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(상담가능 시간, 월~금 09:00~18:00)</span></li>
                     </ol>
                 </div>
@@ -378,12 +380,9 @@
 
     <script type="text/javascript">
         //<![CDATA[
-
         (function ($) {
             $(function () {
-
                 $('#btn_search').on('click', function () {
-
 //                if ($('#searchtext').val() == "") {
 //                    alert("검색어를 입력해 주세요.");
 //                    $('#searchtext').focus();
@@ -391,10 +390,8 @@
 //                } else {
 //
                     //                }
-
                     Search();
                 });
-
                 $('#searchtext').keypress(function(event){
                     if (event.which == 13) {
                         if ($('#searchtext').val() == "") {
@@ -402,35 +399,26 @@
                             $('#searchtext').focus();
                             return false;
                         } else {
-
                             Search();
                         }
                     }
-
-
-
                 });
-
                 function Search() {
                     location.href = "support-faq.jsp?searchtext=" + escape($("#searchtext").val());
                     return false;
                 }
-
                 $('.c_tab_wrap').children('.c_tab').children('li').on('click', function () {
                     //$('.c_tab_wrap').children('.c_tab').children('li').removeClass("on");
                     //$(this).addClass("on");
-
                     location.href = $(this).children('a').attr("href") + escape("");
                     return false;
                 });
-
                 $('.qu_txt').children('span').children('a').on("click", function () {
                     location.href = "support-faq.jsp?searchtext=" + escape($(this).html());
                     return false;
                 });
                 //SR 4020337 검색어 검색 시 검색결과에서 해당 검색어 붉은색으로 변경
                 var idx = 0;
-
                 if ($('#searchtext').val()) {
                     for (idx = 0; idx < 20; idx++) {
                         var search = $('#searchtext').val();
@@ -441,10 +429,8 @@
                         });
                     }
                 }
-
             });
         })(jQuery);
-
         //]]>
     </script>
 
@@ -465,7 +451,7 @@
 
 <!-- E 예매하기 및 TOP Fixed 버튼 -->
 
-<div th:replace="fragment/footer :: footer"></div>
+<div th:replace="fragment/header :: header"></div>
 </div>
 </body>
 </html>
