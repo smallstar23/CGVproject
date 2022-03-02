@@ -12,5 +12,12 @@ public class UserController {
         return new ModelAndView("/user/main");
     }
 
-
+    @GetMapping("movies")
+    public ModelAndView movies(){
+        return new ModelAndView("/user/movies/movies");
+    }
+    @GetMapping("movies/detail-view")
+    public ModelAndView detailview(){
+        return new ModelAndView("/user/movies/detail-view");
+    }
 }
