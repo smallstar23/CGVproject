@@ -373,7 +373,7 @@
                     <div class="box-round-wgray">
                         <div class="box-round-inner">
                             <div class="inner-contents-log">
-                                <a href="mycgv-movielog-watched.html">
+                                <a href="/user/mycgv-movielog-watched">
                                     <em>6</em>
                                     <strong>내가 본 영화</strong>
                                 </a>
@@ -383,7 +383,7 @@
                     <div class="box-round-wgray">
                         <div class="box-round-inner">
                             <div class="inner-contents-log">
-                                <a href="mycgv-movielog-mylist.html">
+                                <a href="/user/mycgv-movielog-mylist">
                                     <em>0</em>
                                     <strong>내가 쓴 평점</strong>
                                 </a>
@@ -398,7 +398,7 @@
                             $(function () {
 
                                 $('#go_edit_page').on('click', function () {
-                                    var win = window.open("./mycgv-popupedit-profile.jsp", "profile", "left=0,top=o,width=445,height=440,toolbar=no,scrollbars=no");
+                                    var win = window.open("/user/mycgv-popupedit-profile", "profile", "left=0,top=o,width=445,height=440,toolbar=no,scrollbars=no");
                                     win.focus();
                                     return false;
                                 });
@@ -417,7 +417,7 @@
                             <h3>기대되는 영화</h3>
                             <p><em>0건</em></p>
                             <div class="sect-sorting">
-                                <label for="order_type" class="hidden" for="sort_field">정렬</label>
+                                <label for="order_type" class="hidden">정렬</label>
                                 <select id="order_type" name="sort_field">
                                     <option value="1" title="현재 선택됨" selected>등록일 순</option>
                                     <option value="2">개봉일 순</option>
@@ -429,7 +429,7 @@
 
                         <div class="sect-wishlist-lst none">
                             <p>기대되는 영화가 없습니다.<br />영화 상세 프리에그에서 '기대돼요!'를 선택하여 영화를 추가해보세요.</p>
-                            <a href="./movies.jsp" class="round black" style="height: 25px"><span>무비차트</span></a>
+                            <a href="/user/movies" class="round black" style="height: 25px"><span>무비차트</span></a>
                         </div>
 
                     </div>
@@ -577,18 +577,6 @@
             </div>
         </div>
     </div>
-
-    <!-- E Popup -->
-
-    <!-- S 예매하기 및 TOP Fixed 버튼 -->
-    <div class="fixedBtn_wrap">
-
-        <a href="/ticket/" class="btn_fixedTicketing">예매하기</a>
-
-        <a href="#none" class="btn_gotoTop"><img src="https://img.cgv.co.kr/R2014/images/common/btn/gotoTop.png" alt="최상단으로 이동" /></a>
-    </div>
-
-    <!-- E 예매하기 및 TOP Fixed 버튼 -->
 
     <div th:replace="user/fragment/footer:: footer-user"></div>
 
