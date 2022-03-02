@@ -1,12 +1,16 @@
 package com.koreait.cgvproject.dto;
 
 import com.koreait.cgvproject.entity.MemberinfoEntity;
+import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.ToString;
 
 
 import javax.persistence.SequenceGenerator;
 import java.time.LocalDateTime;
 
+@AllArgsConstructor // 모든 생성자를 자동으로 만들게 해주는 롬복
+@ToString // toString 쓸수있게해줌
 @Data
 public class Member_info_DTO {
 
@@ -23,41 +27,6 @@ public class Member_info_DTO {
     private LocalDateTime regdate;
     private LocalDateTime updateDate;
     private Long valpoint;
-
-    public Member_info_DTO(String userid, String username, String userpw, String ssn1, String ssn2, String hp, String email, String address1, String address2, String address3, LocalDateTime regdate, LocalDateTime updateDate, Long valpoint) {
-        this.userid = userid;
-        this.username = username;
-        this.userpw = userpw;
-        this.ssn1 = ssn1;
-        this.ssn2 = ssn2;
-        this.hp = hp;
-        this.email = email;
-        this.address1 = address1;
-        this.address2 = address2;
-        this.address3 = address3;
-        this.regdate = regdate;
-        this.updateDate = updateDate;
-        this.valpoint = valpoint;
-    }
-
-    @Override
-    public String toString() {
-        return "Member_info_DTO{" +
-                "userid='" + userid + '\'' +
-                ", username='" + username + '\'' +
-                ", userpw='" + userpw + '\'' +
-                ", ssn1='" + ssn1 + '\'' +
-                ", ssn2='" + ssn2 + '\'' +
-                ", hp='" + hp + '\'' +
-                ", email='" + email + '\'' +
-                ", address1='" + address1 + '\'' +
-                ", address2='" + address2 + '\'' +
-                ", address3='" + address3 + '\'' +
-                ", regdate=" + regdate +
-                ", updateDate=" + updateDate +
-                ", valpoint=" + valpoint +
-                '}';
-    }
 
 
     public MemberinfoEntity toEntity(){
