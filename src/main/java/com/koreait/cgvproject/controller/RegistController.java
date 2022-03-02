@@ -11,17 +11,31 @@ import org.springframework.web.bind.annotation.PostMapping;
 
 @Controller
 @Slf4j // 로깅을 위한 어노테이션
-public class Member_info_Controller {
+public class RegistController {
 
     @Autowired // 스프링 부트가 미리 생성해놓은 객체를 가져다가 자동으로 연결
     private MemberinfoRepository memberinfoRepository;
 
-    @GetMapping("/user/member_info")
-    public String newMemberinfoForm(){
-        return "user/member_info";
+    @GetMapping("/user/agreement")
+    public String agreement(){
+        return "user/regist/agreement";
     }
 
-    @PostMapping("/member_info/create")
+    @GetMapping("/user/finish_do")
+    public String finish_do(){
+        return "user/regist/finish_do";
+    }
+
+    @GetMapping("/user/join")
+    public String join(){
+        return "user/regist/join";
+    }
+    @GetMapping("/user/member_info")
+    public String member_info(){
+        return "user/regist/member_info";
+    }
+
+    @PostMapping("/user/finish_do")
     public String createMemberinfo(Member_info_DTO memberinfoDTO){
 //        System.out.println(memberinfoDTO.toString()); -> 로깅으로 변환(로깅은 자동차의 블랙박스와 비슷한 역할)
         log.info(memberinfoDTO.toString());
@@ -36,6 +50,7 @@ public class Member_info_Controller {
 //        System.out.println(saved.toString());
         log.info(saved.toString());
 
-        return "";
+        return "user/regist/finish_do";
     }
+
 }

@@ -115,7 +115,7 @@
 	- class 'nav' 에 class 'active' 추가시 서브메뉴노출
 	- class 'nav' 에 class 'fixed' 추가시 상단고정되며 스타일 변경됨
  */
-.nav{position:absolute; left:0; top:113px; width:100%; padding:5px 0; background-color:#fff}
+.nav{position:absolute; left:0; top:113px; width:100%; padding:3.5px 0; background-color:#fff}
 .nav:after{content:''; display:block; position:absolute; left:0; top:49px; width:100%; height:1px; background-color:#fb4357}
 .nav:before{content:''; display:block; position:absolute; left:0; bottom:0; width:100%; height:1px; background-color:#a58e8e}
 .nav .contents{position:relative}
@@ -168,7 +168,7 @@
 
 .nav.active .nav_overMenu{display:block}
 
-.nav.fixed{position:fixed; top:0px; min-width:1040px; padding:10px 0}
+.nav.fixed{position:fixed; top:0px; min-width:1040px; padding:9px 0}
 .nav.fixed:after{top:0; bottom:auto; height:60px; background-image:linear-gradient(to right, rgb(215, 67, 87), rgb(241,79,58) 59%, rgb(239, 100, 47)); z-index:1}
 .nav.fixed .contents{z-index:2}
 .nav.fixed .contents h1{display:block; position:absolute; left:0; top:1px; width:70px; height:32px; z-index:3}
