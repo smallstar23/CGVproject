@@ -23,4 +23,9 @@ public class UserEventController {
     public String detail(){
         return "user/culture-event/popcorn-store/product-detail";
     }
+
+    @GetMapping("/popcorn-store/user-cart")
+    public String userCart(){
+        return "user/culture-event/popcorn-store/user-cart";
+    }
 }

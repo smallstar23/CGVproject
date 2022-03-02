@@ -139,58 +139,12 @@
         <link rel="stylesheet" media="all" type="text/css"
               href="https://img.cgv.co.kr/R2014/css/giftstore/giftstore.css"/>
 
-        <script language="javascript" type="text/javascript">
-            var cname = "영화관람권";
-
-            history.navigationMode = 'compatible';
-            $(document).ready(
-                function () {
-                    $.giftstore_fixObj(this,
-                        $('.category_contents_wrap'),
-                        $('.category_content'),
-                        $('.giftstore_logo'));
-
-                    //영역 문제로 gift_store 클래스 추가
-                    $("#contents").addClass("gift_store");
-
-                    if (cname != "") {
-                        $(".sect-linemap .sect-bcrumb .last").html(
-                            "영화관람권");
-                    }
-
-                });
-
-        </script>
 
 
-        <div class='category_wrap'>
-            <div class='category_contents_wrap'>
-                <ul class='category_content'>
-                    <li id='cm2' name='categorymenu' class='active'><a href='#'
-                                                                       onclick="fnCategoryData('2');">영화관람권</a>
-                    </li>
-                    <li id='cm3' name='categorymenu' class=''><a href='#'
-                                                                 onclick="fnCategoryData('3');">기프트카드</a>
-                    </li>
-                    <li id='cm4' name='categorymenu' class=''><a href='#'
-                                                                 onclick="fnCategoryData('4');">콤보</a></li>
-                    <li id='cm5' name='categorymenu' class=''><a href='#'
-                                                                 onclick="fnCategoryData('5');">팝콘</a></li>
-                    <li id='cm6' name='categorymenu' class=''><a href='#'
-                                                                 onclick="fnCategoryData('6');">음료</a></li>
-                    <li id='cm7' name='categorymenu' class=''><a href='#'
-                                                                 onclick="fnCategoryData('7');">스낵</a></li>
-                </ul>
-                <ul class='cart_content'>
-                    <li><a href='#'
-                           onclick='javascript:app.goLogin();return false;'>내 기프트콘</a><span
-                            id='giftconcnt'>0</span></li>
-                    <li><a href='#'
-                           onclick='javascript:app.goLogin();return false;'>장바구니</a><span
-                            id='cartviewcnt'>0</span></li>
-                </ul>
-            </div>
-        </div>
+        <!-- 카테고리 메뉴 -->
+        <div th:replace="user/culture-event/fragment/category_wrap :: category_wrap"></div>
+        <!-- 카테고리 메뉴 끝 -->
+
 
         <script></script>
         <!-- E 카테고리 메뉴 & 받은선물/장바구니 -->
@@ -211,12 +165,12 @@
 							</span>
 						</span>
                 </a> <a href="#none"
-                        onclick="javascript:fnMoveLink('1', '100253', '0', ''); return false;"
+                        onclick="fnMoveLink('1', '100253', '0', ''); return false;"
                         class="btn_category_product_cart">1</a> <a href="#none"
-                                                                   onclick="javascript:fnMoveLink('2', '100253', 0, '1'); return false;"
+                                                                   onclick="fnMoveLink('2', '100253', 0, '1'); return false;"
                                                                    class="btn_category_product_gift">2</a> <a
                         href="#none"
-                        onclick="javascript:fnMoveLink('3', '100253', 0, '1'); return false;"
+                        onclick="fnMoveLink('3', '100253', 0, '1'); return false;"
                         class="btn_category_product_buy">3</a></li>
                 <li class=""><a
                         href="product-detail.jsp?GG_NO=100026"
@@ -230,12 +184,12 @@
 							</span>
 						</span>
                 </a> <a href="#none"
-                        onclick="javascript:fnMoveLink('1', '100026', '0', ''); return false;"
+                        onclick="fnMoveLink('1', '100026', '0', ''); return false;"
                         class="btn_category_product_cart">1</a> <a href="#none"
-                                                                   onclick="javascript:fnMoveLink('2', '100026', 0, '1'); return false;"
+                                                                   onclick="fnMoveLink('2', '100026', 0, '1'); return false;"
                                                                    class="btn_category_product_gift">2</a> <a
                         href="#none"
-                        onclick="javascript:fnMoveLink('3', '100026', 0, '1'); return false;"
+                        onclick="fnMoveLink('3', '100026', 0, '1'); return false;"
                         class="btn_category_product_buy">3</a></li>
                 <li class=""><a
                         href="product-detail.jsp?GG_NO=100025"
@@ -249,12 +203,12 @@
 							</span>
 						</span>
                 </a> <a href="#none"
-                        onclick="javascript:fnMoveLink('1', '100025', '0', ''); return false;"
+                        onclick="fnMoveLink('1', '100025', '0', ''); return false;"
                         class="btn_category_product_cart">1</a> <a href="#none"
-                                                                   onclick="javascript:fnMoveLink('2', '100025', 0, '1'); return false;"
+                                                                   onclick="fnMoveLink('2', '100025', 0, '1'); return false;"
                                                                    class="btn_category_product_gift">2</a> <a
                         href="#none"
-                        onclick="javascript:fnMoveLink('3', '100025', 0, '1'); return false;"
+                        onclick="fnMoveLink('3', '100025', 0, '1'); return false;"
                         class="btn_category_product_buy">3</a></li>
                 <li class=""><a
                         href="product-detail.jsp?GG_NO=100255"
@@ -268,12 +222,12 @@
 							</span>
 						</span>
                 </a> <a href="#none"
-                        onclick="javascript:fnMoveLink('1', '100255', '0', ''); return false;"
+                        onclick="fnMoveLink('1', '100255', '0', ''); return false;"
                         class="btn_category_product_cart">1</a> <a href="#none"
-                                                                   onclick="javascript:fnMoveLink('2', '100255', 0, '1'); return false;"
+                                                                   onclick="fnMoveLink('2', '100255', 0, '1'); return false;"
                                                                    class="btn_category_product_gift">2</a> <a
                         href="#none"
-                        onclick="javascript:fnMoveLink('3', '100255', 0, '1'); return false;"
+                        onclick="fnMoveLink('3', '100255', 0, '1'); return false;"
                         class="btn_category_product_buy">3</a></li>
                 <li class=""><a
                         href="product-detail.jsp?GG_NO=100254"
@@ -287,12 +241,12 @@
 							</span>
 						</span>
                 </a> <a href="#none"
-                        onclick="javascript:fnMoveLink('1', '100254', '0', ''); return false;"
+                        onclick="fnMoveLink('1', '100254', '0', ''); return false;"
                         class="btn_category_product_cart">1</a> <a href="#none"
-                                                                   onclick="javascript:fnMoveLink('2', '100254', 0, '1'); return false;"
+                                                                   onclick="fnMoveLink('2', '100254', 0, '1'); return false;"
                                                                    class="btn_category_product_gift">2</a> <a
                         href="#none"
-                        onclick="javascript:fnMoveLink('3', '100254', 0, '1'); return false;"
+                        onclick="fnMoveLink('3', '100254', 0, '1'); return false;"
                         class="btn_category_product_buy">3</a></li>
             </ul>
         </div>
@@ -324,4 +278,12 @@
 <div th:replace="user/fragment/footer :: footer-user"></div>
 
 </body>
+
+<script>
+    const currentURL = String(location.href);
+    const urlParams = new URL(currentURL).searchParams;
+    console.log(urlParams.get("cno"));
+    alert(urlParams.get("cno"));
+</script>
+
 </html>
