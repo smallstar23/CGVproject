@@ -1,5 +1,6 @@
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="ko" lang="ko">
+<html xmlns="http://www.w3.org/1999/xhtml"  lang="ko"
+      xmlns:th="http://www.thymeleaf.org/">
 <head>
 
 
@@ -178,7 +179,7 @@
 </head>
 <body class="">
 
-<div th:replace="fragment/header :: header"></div>
+<div th:replace="user/fragment/header :: header"></div>
 
 
 
@@ -3976,7 +3977,8 @@
 </div>
 <!-- E Contaniner -->
 </div>
-<div th:replace="fragment/footer :: footer"></div>
+
+<div th:replace="user/fragment/footer :: footer"></div>
 
 
 </div>

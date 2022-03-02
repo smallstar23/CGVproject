@@ -1,17 +1,16 @@
 <!DOCTYPE html>
-<html>
+<html lang="ko"
+      xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org/">
 <head>
     <title>mycgv-myinfo-leavecgv</title>
     <script type="text/javascript">
-
         function goBack(){
-            window.location.href="mycgv.html";
+            window.location.href="./mycgv.jsp";
         }
-
         function goMain(){
             window.location.href="./main.jsp";
         }
-
         var leaveMsg = confirm("CGV 회원 탈퇴를 하시겠습니까?");
         document.write(leaveMsg);
         if(leaveMsg == true){

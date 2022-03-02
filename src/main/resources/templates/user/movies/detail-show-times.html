@@ -1,0 +1,700 @@
+
+<!DOCTYPE html>
+<html lang="ko"
+      xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org/">
+<head>
+
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta http-equiv="Expires" content="-1" />
+    <meta http-equiv="Pragma" content="no-cache" />
+    <meta http-equiv="Cache-Control" content="No-Cache" />
+    <meta http-equiv="imagetoolbar" content="no" />
+    <meta name="viewport" content="width=1024" />
+    <meta name="keywords" content="CGV, 시지브이, 영화관, 극장, 영화, 티켓, 박스오피스, 극장, Movie, Theater, Cinema, Cgv, cgv, 예매, 상영작" />
+    <meta name="description" content="CGV는 선진화된 관람문화와 최고의 서비스로 고객에게 잊을 수 없는 감동을 선사합니다. CGV홈페이지를 통해 영화 예매뿐만 아니라 그 이상의 서비스와 감동을 전달하고, 다양한 즐거움과 특별한 경험을 제공하고자 합니다." />
+    <meta property="og:site_name" content="영화 그 이상의 감동. CGV"/>
+    <meta id="ctl00_og_title" property="og:title" content="영화 그 이상의 감동. CGV"></meta>
+
+
+    <meta id="ctl00_og_image" property="og:image" content="https://img.cgv.co.kr/WebApp/images/common/logo_new_kakao_prevw.png"></meta>
+    <link rel="alternate" href="http://m.cgv.co.kr" />
+    <link rel="shortcut icon" href="https://img.cgv.co.kr/theater_img/favicon.ico" type="image/x-icon" />
+    <title id="ctl00_headerTitle">영화 그 이상의 감동. CGV</title>
+    <link rel="shortcut icon" type="image/x-icon" href="https://img.cgv.co.kr/R2014/images/favicon.ico" />
+    <link rel="stylesheet" media="all" type="text/css" href="https://img.cgv.co.kr/R2014/css/webfont.css" />
+    <link rel="stylesheet" media="all" type="text/css" href="https://img.cgv.co.kr/R2014/css/reset.css" />
+    <link rel="stylesheet" media="all" type="text/css" href="https://img.cgv.co.kr/R2014/css/layout.css" />
+    <link rel="stylesheet" media="all" type="text/css" href="https://img.cgv.co.kr/R2014/css/module.css?20211209" />
+    <link rel="stylesheet" media="all" type="text/css" href="https://img.cgv.co.kr/R2014/css/content.css" />
+    <link rel="stylesheet" media="all" type="text/css" href="https://img.cgv.co.kr/R2014/css/common.css" />
+
+    <link rel="stylesheet" media="all" type="text/css" href="https://img.cgv.co.kr/R2014/css/eggupdate.css" />
+    <link rel="stylesheet" media="print" type="text/css" href="https://img.cgv.co.kr/R2014/css/print.css" />
+    <link rel="stylesheet" type="text/css" href="https://img.cgv.co.kr/R2014/js/jquery.ui/smoothness/jquery-ui-1.10.4.custom.min.css" />
+
+    <script type="text/javascript" src="/common/js/extraTheaters.js"></script>
+    <script type="text/javascript" src="https://img.cgv.co.kr/R2014/js/app.config.js"></script>
+    <script type="text/javascript" src="https://img.cgv.co.kr/R2014/js/jquery-1.10.2.min.js"></script>
+    <script type="text/javascript" src="https://img.cgv.co.kr/R2014/js/jquery.plugin/jquery.tmpl.min.js"></script>
+    <script type="text/javascript" src="https://img.cgv.co.kr/R2014/js/jquery.plugin/jquery.validate.js"></script>
+    <script type="text/javascript" src="https://img.cgv.co.kr/R2014/js/jquery.plugin/jquery.paging.min.js"></script>
+    <script type="text/javascript" src="https://img.cgv.co.kr/R2014/js/jquery.ui/jquery-ui-1.10.4.custom.min.js"></script>
+    <script type="text/javascript" src="https://img.cgv.co.kr/R2014/js/jquery.utils.js"></script>
+    <script type="text/javascript" src="https://img.cgv.co.kr/R2014/js/app.utils.js"></script>
+    <script type="text/javascript" src="https://img.cgv.co.kr/R2014/js/jquery.utils.pageing.js"></script>
+    <script type="text/javascript" src="https://img.cgv.co.kr/R2014/js/app.init.js"></script>
+
+    <!--[if lte IE 9]><script type="text/javascript" src="https://img.cgv.co.kr/R2014/js/jquery.plugin/jquery.placeholder.js"></script><![endif]-->
+    <script type="text/javascript" src="https://img.cgv.co.kr/R2014/js/jquery.plugin/jquery.dotdotdot.min.js"></script>
+    <script type="text/javascript" src="https://img.cgv.co.kr/R2014/js/silverlight_link.js"></script>
+    <script src="https://img.cgv.co.kr/R2014/js/slick/slick.js" type="text/javascript" charset="utf-8"></script>
+
+    <link rel="stylesheet" media="all" type="text/css" href="https://img.cgv.co.kr/R2014/css/phototicket/phototicket.css" />
+    <link rel="stylesheet" media="all" type="text/css" href="https://img.cgv.co.kr/R2014/css/slick.css" />
+    <link rel="stylesheet" media="all" type="text/css" href="https://img.cgv.co.kr/R2014/css/slick-theme-custom.css" />
+
+    <script type="text/javascript" src="https://img.cgv.co.kr/R2014/js/icheck/login.timer.js"></script>
+    <script src="https://img.cgv.co.kr/R2014/js/icheck/icheck.min.js" type="text/javascript" charset="utf-8"></script>
+    <link rel="stylesheet" type="text/css" href="https://img.cgv.co.kr/R2014/js/icheck/iCheck.css" />
+
+    <!-- 2020.05.07 감정지수/프리에그 프로젝트 추가 -->
+    <link rel="stylesheet" media="all" type="text/css" href="https://img.cgv.co.kr/R2014/css/preegg.css" />
+
+    <!-- 각페이지 Header Start-->
+
+    <!--<meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">https, http  혼합사용시-->
+    <script type="text/javascript" src="https://img.cgv.co.kr/R2014/js/swiper.min.js" ></script>
+    <link rel="stylesheet" media="all" type="text/css" href="https://img.cgv.co.kr/R2014/css/swiper-bundle.min.css" />
+    <![endif]-->
+    <script src="/js/detail-view.js"></script>
+
+
+
+
+</head>
+<body class="">
+
+<div th:replace="user/fragment/header :: header-user"></div>
+<!-- Contaniner -->
+<div id="contaniner"  class=""><!-- 벽돌 배경이미지 사용 시 class="bg-bricks" 적용 / 배경이미지가 없을 경우 class 삭제  -->
+
+
+    <!-- Contents Area -->
+    <div id="contents" class="">
+
+        <!-- Contents Start -->
+
+        <div id="divAction"></div>
+
+        <!-- 실컨텐츠 시작 -->
+        <div class="wrap-movie-detail" id="select_main">
+
+            <div class="sect-base-movie">
+                <h3><strong>극장판 주술회전 0</strong>기본정보</h3>
+                <div class="box-image">
+                    <a href="https://img.cgv.co.kr/Movie/Thumbnail/Poster/000085/85603/85603_1000.jpg" title="포스터 크게 보기 새창" target="_blank">
+            <span class="thumb-image">
+                <img src="https://img.cgv.co.kr/Movie/Thumbnail/Poster/000085/85603/85603_320.jpg" alt="극장판 주술회전 0 포스터 새창" onerror="errorImage(this)">
+                <span class="ico-posterdetail">포스터 크게 보기</span>
+                <span class="ico-grade grade-15"> 15세 이상</span>
+            </span>
+                    </a>
+                </div>
+                <div class="box-contents">
+                    <!-- 해당 영화 정보 시작-->
+                    <div class="title">
+                        <strong>영화한글명</strong>
+
+                        <em class="round brown"><span>예매중</span></em>
+                        <em class="round red"><span>D-7</span></em>
+                        <p>영문 영화명</p>
+                    </div>
+
+                    <!-- 영화 예매율 -->
+                    <div class="score">
+                        <strong class="percent">예매율&nbsp;<span>24.2%</span></strong>
+                    </div>
+                    <!-- 떨어지는 얘 이전 요소에 class=on을 넣는다 -->
+                    <div class="spec">
+                        <dl>
+                            <dt>감독 :&nbsp;</dt>
+                            <dd>
+
+
+                                <a href="#">박성후</a>
+
+                            </dd>
+
+                            <dd>
+
+                            </dd>
+
+                            <dt>&nbsp;/ 배우 :&nbsp;</dt>
+                            <dd class="on">
+
+
+                                <a href="#">오가타 메구미</a>
+
+                                <a href="#">하나자와 카나</a>
+
+                                <a href="#">코마츠 미카코</a>
+                                <a href="#">우치야마 코우키</a>
+
+                                <a href="#">세키 토모카즈</a>
+
+                                <a href="#">나카무라 유이치</a>
+
+                                <a href="#">사쿠라이 타카히로</a>
+
+                            </dd>
+
+                            <dt>장르 :&nbsp;애니메이션</dt>
+                            <dd></dd>
+                            <dt>&nbsp;/ 기본 :&nbsp;</dt>
+                            <dd class="on">15세 이상,&nbsp;105분,&nbsp;일본</dd>
+                            <dt>개봉 :&nbsp;</dt>
+                            <dd class="on">2022.02.17</dd>
+
+
+
+                        </dl>
+                    </div>
+
+
+                    <span class="like">
+        <!-- 2020.05.07 영화찜하기 -> 프리에그 선택 변경(조회하여 노출) -->
+		<a class="link-count" href="javascript:void (0);"><i class="sprite_preegg btn_md default"></i>프리에그</a>
+        <a class="link-reservation" href="ticket.jsp">예매</a>
+    </span>
+                    </span>
+
+                </div>
+            </div><!-- .sect-base -->
+
+            <!-- 위시리스트 팝업 -->
+            <div class="layer-wrap wishlist" id="movie-pre-select" style="top:100px; display:none">
+                <div class="popwrap" style="width:516px;margin-top:0px;margin-left:-268px">
+                    <h1>위시리스트</h1>
+                    <div class="pop-contents">
+                        <!-- Contents Addon -->
+                        <div class="movie-pre-select">
+                            <div class="header">
+                                <p class="main"></p>
+                            </div>
+                            <div class="box">
+                                <div class="desc">
+                                    <div class="main">이 영화가 기대되시나요?</div>
+                                    <div class="sub"><em>'기대돼요!'</em>를 선택하시면 <em>'기대되는 영화'에 추가</em>됩니다.</div>
+                                </div>
+                                <div class="wrap_btn">
+                                    <a href="javascript:void(0);" class="btn good">
+                                        <span class="sprite_preegg big favor"></span>
+                                        <span>기대돼요!</span>
+                                    </a>
+                                    <a href="javascript:void(0);" class="btn bad redborder">
+                                        <span class="sprite_preegg big hate"></span>
+                                        <span>글쎄요..</span>
+                                    </a>
+                                    <input type="hidden" id="preegg_useyn" value="">
+                                </div>
+                            </div>
+                        </div>
+                        <!-- //Contents Addon -->
+                        <div class="set-btn fix-width">
+                            <button type="submit" id="btnSave" class="round inred"><span>확인</span></button>
+                        </div>
+                    </div>
+                    <button type="button" class="btn-close" id="wishlistClose">프리에그 팝업 닫기</button>
+                </div>
+            </div>
+            <!-- //위시리스트 팝업 -->
+
+            <div class="cols-content">
+                <div class="col-detail" id="menu">
+                    <!-- 메뉴가 선택되면 a 에 title="선택" 이라고 넣는다 -->
+                    <ul class="tab-menu">
+                        <li><a th:href="@{./}">주요정보 </a></li>
+                        <li><a th:href="@{cast}">감독/출연</a></li>
+                        <li><a th:href="@{trailer}">트레일러</a></li>
+                        <li><a th:href="@{still-cut}">스틸컷</a></li>
+                        <li><a th:href="@{./}">평점/리뷰</a></li> <!-- 이부분 아직 cgv에서도 구현 전인것같음. -->
+                        <li class="last on"><a title="현재 선택됨" href="#">상영시간표</a></li>
+                    </ul>
+
+                    <div class="descri-info movie-detail">
+                        <ul>
+                            <li><a href="#" id="viewgrade" class="viewgrade">관람등급 안내</a></li>
+                        </ul>
+                    </div>
+                    <div class="viewgradePop"  style="display:none; position: absolute; top:200px;">
+                        <div class="layer-wrap"><div class="layer-contents" style="width: 650px;">
+                            <div class="popwrap">
+                                <h5>CGV 관람 등급 안내</h5>
+                                <div class="pop-contents">
+                                    <div class="tbl-list">
+                                        <table summary="CGV 등급별 관람 안내">
+                                            <caption>CGV 관람 등급 안내</caption>
+                                            <colgroup>
+                                                <col width="136">
+                                                <col width="*">
+                                            </colgroup>
+                                            <thead>
+                                            <tr>
+                                                <th scope="col">구분</th>
+                                                <th scope="col">성명</th>
+                                            </tr>
+                                            </thead>
+                                            <tbody>
+                                            <tr>
+                                                <th scope="row"><span class="ico-grade grade-all">전체 관람가</span>전체 관람가</th>
+                                                <td>모든 연령의 고객님께서 관람하실 수 있습니다.</td>
+                                            </tr>
+                                            <tr>
+                                                <th scope="row"><span class="ico-grade grade-12">12세 관람가</span>12세 관람가</th>
+                                                <td>만 12세 미만의 고객님은 보호자를 동반하셔야 관람하실 수 있습니다.</td>
+                                            </tr>
+                                            <tr>
+                                                <th scope="row"><span class="ico-grade grade-15">15세 관람가</span>15세 관람가</th>
+                                                <td>만 15세 미만의 고객님은 보호자를 동반하셔야 관람하실 수 있습니다.</td>
+                                            </tr>
+                                            <tr>
+                                                <th scope="row"><span class="ico-grade grade-19">청소년관람불가</span>청소년관람불가</th>
+                                                <td> 만 18세 미만의 고객님은 보호자를 동반하셔도 관람하실 수 없습니다.<br>
+                                                    - 입장시 신분증을 꼭 지참하시기 바랍니다.<br>
+                                                    - 만 18세 이상이더라도 고등학교 재학중인 경우 관람이 불가합니다. </td>
+                                            </tr>
+                                            <tr>
+                                                <th scope="row"><span class="ico-grade grade-none">미정</span>미정</th>
+                                                <td>등급 미정 영화입니다.</td>
+                                            </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <button type="button" class="btn-close">관람 등급 안내 닫기</button>
+                        </div></div>
+                    </div>
+
+
+                    <div class="showtimes-wrap">
+
+                        <div class="sect-city">
+                            <ul>
+
+                                <li class="<%=m1%>">
+                                    <a href="./showtime.jsp?areacode=01" title="현재 선택">서울</a>
+                                </li>
+
+                                <li class="<%=m2%>">
+                                    <a href="./showtime.jsp?areacode=02">경기</a>
+                                </li>
+
+                                <li class="<%=m3%>">
+                                    <a href="./showtime.jsp?areacode=03">인천</a>
+                                </li>
+
+                                <li class="<%=m4%>">
+                                    <a href="./showtime.jsp?areacode=04">강원</a>
+                                </li>
+
+                                <li class="<%=m5%>">
+                                    <a href="./showtime.jsp?areacode=05">대전/충청</a>
+                                </li>
+
+                                <li class="<%=m6%>">
+                                    <a href="./showtime.jsp?areacode=06">대구</a>
+                                </li>
+
+                                <li class="<%=m7%>">
+                                    <a href="./showtime.jsp?areacode=07">부산/울산</a>
+                                </li>
+
+                                <li class="<%=m8%>">
+                                    <a href="./showtime.jsp?areacode=08">경상</a>
+                                </li>
+
+                                <li class="<%=m9%>">
+                                    <a href="./showtime.jsp?areacode=09">광주/전라/제주</a>
+                                </li>
+
+                            </ul>
+                        </div>
+
+                        <div class="sect-schedule">
+                            <div id="slider" class="slider">
+
+                                <div class="item-wrap"><ul class="item" style="width: 800px; height: 156.003px;">
+                                    <li class="on">
+                                        <div class="day">
+                                            <a href="#">
+                                                <span> 02월</span>
+                                                <em>수</em>
+                                                <strong>16</strong>
+                                            </a>
+                                        </div>
+                                    </li>
+
+
+
+                                    <li>
+                                        <div class="day">
+                                            <a href="#">
+                                                <span> 02월</span>
+                                                <em>목</em>
+                                                <strong>17</strong>
+                                            </a>
+                                        </div>
+                                    </li>
+
+
+
+                                    <li>
+                                        <div class="day">
+                                            <a href="#">
+                                                <span> 02월</span>
+                                                <em>금</em>
+                                                <strong>18</strong>
+                                            </a>
+                                        </div>
+                                    </li>
+
+
+
+                                    <li>
+                                        <div class="day">
+                                            <a href="#">
+                                                <span> 02월</span>
+                                                <em>토</em>
+                                                <strong>19</strong>
+                                            </a>
+                                        </div>
+                                    </li>
+
+
+
+                                    <li>
+                                        <div class="day">
+                                            <a href="#">
+                                                <span> 02월</span>
+                                                <em>일</em>
+                                                <strong>20</strong>
+                                            </a>
+                                        </div>
+                                    </li>
+
+
+
+                                    <li>
+                                        <div class="day">
+                                            <a href="#">
+                                                <span> 02월</span>
+                                                <em>월</em>
+                                                <strong>21</strong>
+                                            </a>
+                                        </div>
+                                    </li>
+
+
+
+                                    <li>
+                                        <div class="day">
+                                            <a href="#">
+                                                <span> 02월</span>
+                                                <em>화</em>
+                                                <strong>22</strong>
+                                            </a>
+                                        </div>
+                                    </li>
+
+
+
+                                    <li>
+                                        <div class="day">
+                                            <a href="#">
+                                                <span> 02월</span>
+                                                <em>수</em>
+                                                <strong>23</strong>
+                                            </a>
+                                        </div>
+                                    </li>
+                                </ul></div>
+
+
+                                <button type="button" class="btn-prev">이전 날자보기</button>
+                                <button type="button" class="btn-next">다음 날자보기</button>
+                            </div>
+                        </div>
+
+                        <div class="sect-guide">
+                            <div class="descri-timezone">
+                                <ul>
+                                    <li><span class="early">조조</span></li>
+                                    <li><span class="midnight">심야</span></li>
+                                </ul>
+                                <p>* 시간을 클릭하시면 빠른 예매를 하실 수 있습니다.</p>
+                            </div>
+
+                        </div>
+                        <div class="sect-showtimes">
+                            <ul>
+
+
+
+                                <li>
+                                    <div class="col-theater"><a href="theaters.jsp" target="_top">CGV<br>중계</a></div>
+                                    <div class="col-times">
+
+                                        <div class="type-hall">
+                                            <div class="info-hall">
+                                                <ul>
+                                                    <li>2D</li>
+                                                    <!--<li>4관</li>//-->
+                                                    <li>4관</li>
+                                                    <li>총 188석</li>
+                                                </ul>
+                                            </div>
+                                            <div class="info-timetable">
+                                                <ul>
+
+                                                    <li>
+                                                        <a class="location" onmouseover="minimap()" href="ticket.jsp" target="_top" data-theatercode="0131" data-playymd="20220216" data-screencode="004" data-playnum="5" data-playstarttime="2035" data-playendtime="2241" data-theatername="CGV 중계" data-seatremaincnt="175" data-screenkorname="4관"><em>20:35</em><span class="txt-lightblue"><span class="hidden">잔여좌석</span>175석</span></a></li>
+
+                                                </ul>
+                                            </div>
+                                        </div>
+
+                                        <div class="type-hall">
+                                            <div class="info-hall">
+                                                <ul>
+                                                    <li>2D</li>
+                                                    <!--<li>5관</li>//-->
+                                                    <li>5관</li>
+                                                    <li>총 148석</li>
+                                                </ul>
+                                            </div>
+                                            <div class="info-timetable">
+                                                <ul>
+
+                                                    <li><em>16:55</em><span>마감</span></li>
+
+                                                    <li><a href="ticket.jsp" target="_top" data-theatercode="0131" data-playymd="20220216" data-screencode="005" data-playnum="5" data-playstarttime="1920" data-playendtime="2126" data-theatername="CGV 중계" data-seatremaincnt="115" data-screenkorname="5관"><em>19:20</em><span class="txt-lightblue"><span class="hidden">잔여좌석</span>115석</span></a></li>
+
+                                                </ul>
+                                            </div>
+                                        </div>
+
+                                        <div class="type-hall">
+                                            <div class="info-hall">
+                                                <ul>
+                                                    <li>2D</li>
+                                                    <!--<li>7관</li>//-->
+                                                    <li>7관</li>
+                                                    <li>총 199석</li>
+                                                </ul>
+                                            </div>
+                                            <div class="info-timetable">
+                                                <ul>
+
+                                                    <li><em>16:10</em><span>마감</span></li>
+
+                                                    <li><a href="ticket.jsp" target="_top" data-theatercode="0131" data-playymd="20220216" data-screencode="007" data-playnum="4" data-playstarttime="1835" data-playendtime="2041" data-theatername="CGV 중계" data-seatremaincnt="153" data-screenkorname="7관"><em>18:35</em><span class="txt-lightblue"><span class="hidden">잔여좌석</span>153석</span></a></li>
+
+                                                    <li><a href="ticket.jsp" target="_top" data-theatercode="0131" data-playymd="20220216" data-screencode="007" data-playnum="5" data-playstarttime="2100" data-playendtime="2306" data-theatername="CGV 중계" data-seatremaincnt="182" data-screenkorname="7관"><em>21:00</em><span class="txt-lightblue"><span class="hidden">잔여좌석</span>182석</span></a></li>
+
+                                                </ul>
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                </li>
+
+                                <li>
+                                    <div class="col-theater"><a href="theaters.jsp" target="_top">CGV<br>천호</a></div>
+                                    <div class="col-times">
+
+                                        <div class="type-hall">
+                                            <div class="info-hall">
+                                                <ul>
+                                                    <li>2D</li>
+                                                    <!--<li><span class='screentype'><span class='sphereX'>SphereX</span></span></li>//-->
+                                                    <li><span class="screentype"><span class="sphereX">SphereX</span></span></li>
+                                                    <li>총 213석</li>
+                                                </ul>
+                                            </div>
+                                            <div class="info-timetable">
+                                                <ul>
+
+                                                    <li><a href="ticket.jsp" target="_top" data-theatercode="0199" data-playymd="20220216" data-screencode="005" data-playnum="4" data-playstarttime="1715" data-playendtime="1921" data-theatername="CGV 천호" data-seatremaincnt="205" data-screenkorname="5관[SphereX관]"><em>17:15</em><span class="txt-lightblue"><span class="hidden">잔여좌석</span>205석</span></a></li>
+
+                                                    <li><a href="ticket.jsp" target="_top" data-theatercode="0199" data-playymd="20220216" data-screencode="005" data-playnum="5" data-playstarttime="1940" data-playendtime="2146" data-theatername="CGV 천호" data-seatremaincnt="193" data-screenkorname="5관[SphereX관]"><em>19:40</em><span class="txt-lightblue"><span class="hidden">잔여좌석</span>193석</span></a></li>
+
+                                                </ul>
+                                            </div>
+                                        </div>
+
+                                        <div class="type-hall">
+                                            <div class="info-hall">
+                                                <ul>
+                                                    <li>2D</li>
+                                                    <!--<li>1관</li>//-->
+                                                    <li>1관</li>
+                                                    <li>총 170석</li>
+                                                </ul>
+                                            </div>
+                                            <div class="info-timetable">
+                                                <ul>
+
+                                                    <li><a href="ticket.jsp" target="_top" data-theatercode="0199" data-playymd="20220216" data-screencode="001" data-playnum="4" data-playstarttime="1800" data-playendtime="2006" data-theatername="CGV 천호" data-seatremaincnt="155" data-screenkorname="1관"><em>18:00</em><span class="txt-lightblue"><span class="hidden">잔여좌석</span>155석</span></a></li>
+
+                                                    <li><a href="ticket.jsp" target="_top" data-theatercode="0199" data-playymd="20220216" data-screencode="001" data-playnum="5" data-playstarttime="2030" data-playendtime="2236" data-theatername="CGV 천호" data-seatremaincnt="142" data-screenkorname="1관"><em>20:30</em><span class="txt-lightblue"><span class="hidden">잔여좌석</span>142석</span></a></li>
+
+                                                </ul>
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                </li>
+
+                                <li>
+                                    <div class="col-theater"><a href="theaters.jsp" target="_top">CGV<br>청담씨네시티</a></div>
+                                    <div class="col-times">
+
+                                        <div class="type-hall">
+                                            <div class="info-hall">
+                                                <ul>
+                                                    <li>2D</li>
+                                                    <!--<li>5층 CINEMA PREMIUM</li>//-->
+                                                    <li>5층 CINEMA PREMIUM</li>
+                                                    <li>총 112석</li>
+                                                </ul>
+                                            </div>
+                                            <div class="info-timetable">
+                                                <ul>
+
+                                                    <li><a href="ticket.jsp" target="_top" data-theatercode="0107" data-playymd="20220216" data-screencode="001" data-playnum="5" data-playstarttime="2100" data-playendtime="2306" data-theatername="CGV 청담씨네시티" data-seatremaincnt="112" data-screenkorname="5층 CINEMA PREMIUM"><em>21:00</em><span class="txt-lightblue"><span class="hidden">잔여좌석</span>112석</span></a></li>
+
+                                                </ul>
+                                            </div>
+                                        </div>
+
+                                        <div class="type-hall">
+                                            <div class="info-hall">
+                                                <ul>
+                                                    <li>2D</li>
+                                                    <!--<li>6층 SWEETBOX PREMIUM</li>//-->
+                                                    <li>6층 SWEETBOX PREMIUM</li>
+                                                    <li>총 20석</li>
+                                                </ul>
+                                            </div>
+                                            <div class="info-timetable">
+                                                <ul>
+
+                                                    <li><a href="ticket.jsp" target="_top" data-theatercode="0107" data-playymd="20220216" data-screencode="002" data-playnum="5" data-playstarttime="2100" data-playendtime="2306" data-theatername="CGV 청담씨네시티" data-seatremaincnt="16" data-screenkorname="6층 SWEETBOX PREMIUM"><em>21:00</em><span class="txt-lightblue"><span class="hidden">잔여좌석</span>16석</span></a></li>
+
+                                                </ul>
+                                            </div>
+                                        </div>
+
+                                        <div class="type-hall">
+                                            <div class="info-hall">
+                                                <ul>
+                                                    <li>2D</li>
+                                                    <!--<li>9층 3관 [COMFORT SEAT]</li>//-->
+                                                    <li>9층 3관 [COMFORT SEAT]</li>
+                                                    <li>총 186석</li>
+                                                </ul>
+                                            </div>
+                                            <div class="info-timetable">
+                                                <ul>
+
+                                                    <li><a href="ticket.jsp" target="_top" data-theatercode="0107" data-playymd="20220216" data-screencode="005" data-playnum="4" data-playstarttime="1715" data-playendtime="1921" data-theatername="CGV 청담씨네시티" data-seatremaincnt="183" data-screenkorname="9층 3관 [COMFORT SEAT]"><em>17:15</em><span class="txt-lightblue"><span class="hidden">잔여좌석</span>183석</span></a></li>
+
+                                                    <li><a href="ticket.jsp" target="_top" data-theatercode="0107" data-playymd="20220216" data-screencode="005" data-playnum="5" data-playstarttime="1940" data-playendtime="2146" data-theatername="CGV 청담씨네시티" data-seatremaincnt="176" data-screenkorname="9층 3관 [COMFORT SEAT]"><em>19:40</em><span class="txt-lightblue"><span class="hidden">잔여좌석</span>176석</span></a></li>
+
+                                                </ul>
+                                            </div>
+                                        </div>
+
+                                        <div class="type-hall">
+                                            <div class="info-hall">
+                                                <ul>
+                                                    <li>2D</li>
+                                                    <!--<li>10층 SWEETBOX PREMIUM</li>//-->
+                                                    <li>10층 SWEETBOX PREMIUM</li>
+                                                    <li>총 20석</li>
+                                                </ul>
+                                            </div>
+                                            <div class="info-timetable">
+                                                <ul>
+
+                                                    <li><a href="ticket.jsp" target="_top" data-theatercode="0107" data-playymd="20220216" data-screencode="006" data-playnum="4" data-playstarttime="1715" data-playendtime="1921" data-theatername="CGV 청담씨네시티" data-seatremaincnt="12" data-screenkorname="10층 SWEETBOX PREMIUM"><em>17:15</em><span class="txt-lightblue"><span class="hidden">잔여좌석</span>12석</span></a></li>
+
+                                                    <li><a href="ticket.jsp" target="_top" data-theatercode="0107" data-playymd="20220216" data-screencode="006" data-playnum="5" data-playstarttime="1940" data-playendtime="2146" data-theatername="CGV 청담씨네시티" data-seatremaincnt="8" data-screenkorname="10층 SWEETBOX PREMIUM"><em>19:40</em><span class="txt-lightblue"><span class="hidden">잔여좌석</span>8석</span></a></li>
+
+                                                </ul>
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                </li>
+
+                            </ul>
+                        </div>
+                        <p class="info-noti">* 입장 지연에 따른 관람불편을 최소화하고자 영화는 약 10분 후에 시작됩니다. 관람 에티켓을 위한 사전 입장 부탁드립니다.</p>
+                    </div>
+
+
+                </div><!-- .col-detail -->
+
+                <div class="col-aside" style="padding-top:80px">
+                    <div class="ad-partner01">
+                        <iframe src="http://ad.cgv.co.kr/NetInsight/html/CGV/CGV_201401/sub@M_Rectangle" width="160" height="300" title="영화광고-나이트메어앨리" frameborder="0" scrolling="no" marginwidth="0" marginheight="0" name="M_Rectangle" id="M_Rectangle"></iframe>
+                    </div>
+                    <div class="ad-external01">
+                        <iframe src="http://ad.cgv.co.kr/NetInsight/html/CGV/CGV_201401/sub@C_Rectangle" width="160" height="300" title="" frameborder="0" scrolling="no" marginwidth="0" marginheight="0" name="C_Rectangle" id="C_Rectangle"></iframe>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+
+    </div>
+
+
+
+
+
+    <!--/ Contents End -->
+</div>
+
+
+
+
+
+<!-- S Popup -->
+<div class="com_pop_wrap">
+    <div class="com_pop_fog"></div>
+</div>
+
+<!-- E Popup -->
+
+<!-- S 예매하기 및 TOP Fixed 버튼 -->
+<div class="fixedBtn_wrap">
+
+    <a href="#none" class="btn_gotoTop"><img src="https://img.cgv.co.kr/R2014/images/common/btn/gotoTop.png" alt="최상단으로 이동" /></a>
+</div>
+
+<!-- E 예매하기 및 TOP Fixed 버튼 -->
+<!-- E 예매하기 및 TOP Fixed 버튼 -->
+
+<div th:replace="user/fragment/footer:: footer-user"></div>
+</div>
+
+
+</body>
+</html>

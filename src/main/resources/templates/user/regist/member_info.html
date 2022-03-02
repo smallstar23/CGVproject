@@ -265,7 +265,9 @@
                         </p> -->
 
                         <div class="member_info">
+
                             <form th:object="${form}" method="post" th:action="/user/finish_do">
+
                                 <input type="hidden" id="coopco_cd"     name="coopco_cd"     value="7010">
                                 <input type="hidden" id="brnd_cd"       name="brnd_cd"       value="1000">
                                 <input type="hidden" id="mcht_no"       name="mcht_no"       value="1000">
@@ -338,6 +340,7 @@
                                             </th>
                                             <td style="text-align:left">
                                                 <div class="input_group">
+
                                                     <span class="input_txt w250"><input type="text" th:field="${userid}" class="text" title="사용 할 영문 아이디 명 입력" placeholder="아이디를 입력해주세요." name="userid" id="mbr_id" maxlength="12" value=""><!-- 에러시 .error 클래스 추가 --></span>
 
                                                     <button type="button" class="btn btn_search" onclick="javascript:idCheck();">중복확인</button>

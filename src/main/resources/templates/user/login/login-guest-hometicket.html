@@ -1,5 +1,7 @@
 <!DOCTYPE html>
-<html>
+<html lang="ko"
+      xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org/">
 <head id="Head1">
     <meta charset="utf-8" />
     <title>CGV HOME TICKET</title>
@@ -85,8 +87,6 @@
         reservation_seat_no 		= 'F08',
         reservation_pay_amt 		= '7,000',
         reservation_pay_mtd 		= '신용카드 : 7,000원, ';
-
-
     function ticketPrint() {
         window.print();
         var btn = document.getElementById("PrintButton");
