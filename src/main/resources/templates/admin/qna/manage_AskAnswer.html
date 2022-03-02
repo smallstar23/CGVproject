@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="en" style="overflow-x: hidden;" xmlns:th="http://www.thymeleaf.org/">
+
+<head>
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport"
+        content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+  <meta name="description" content="" />
+  <meta name="author" content="" />
+  <title>Dashboard - SB Admin</title>
+  <link
+          href="https://cdn.jsdelivr.net/npm/simple-datatables@latest/dist/style.css"
+          rel="stylesheet" />
+  <link href="css/styles.css" rel="stylesheet" />
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"
+          integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4="
+          crossorigin="anonymous"></script>
+  <script
+          src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/js/all.min.js"
+          crossorigin="anonymous"></script>
+  <script src="//code.jquery.com/jquery-1.11.0.min.js"></script>
+
+  <script type="text/javascript">
+
+    $(function() {
+
+      $("#headers").load("header.jsp");
+      window.scrollTo(top);
+    });
+    window.onbeforeunload = function() {
+      window.scrollTo(top);
+    }
+  </script>
+</head>
+
+<body class="sb-nav-fixed">
+<nav class="sb-topnav navbar navbar-expand navbar-dark bg-dark">
+  <!-- Navbar Brand-->
+  <a class="navbar-brand ps-3"
+     href="../../../../../../Downloads/cgv_admin/index.html">CGV
+    Administrator</a>
+  <!-- Sidebar Toggle-->
+  <button class="btn btn-link btn-sm order-1 order-lg-0 me-4 me-lg-0"
+          id="sidebarToggle" href="#!">
+    <i class="fas fa-bars"></i>
+  </button>
+  <!-- Navbar Search-->
+  <form
+          class="d-none d-md-inline-block form-inline ms-auto me-0 me-md-3 my-2 my-md-0">
+    <div class="input-group">
+      <input class="form-control" type="text" placeholder="Search for..."
+             aria-label="Search for..." aria-describedby="btnNavbarSearch" />
+      <button class="btn btn-primary" id="btnNavbarSearch" type="button">
+        <i class="fas fa-search"></i>
+      </button>
+    </div>
+  </form>
+  <!-- Navbar-->
+  <ul class="navbar-nav ms-auto ms-md-0 me-3 me-lg-4">
+    <li class="nav-item dropdown"><a
+            class="nav-link dropdown-toggle" id="navbarDropdown" href="#"
+            role="button" data-bs-toggle="dropdown" aria-expanded="false"><i
+            class="fas fa-user fa-fw"></i></a>
+      <ul class="dropdown-menu dropdown-menu-end"
+          aria-labelledby="navbarDropdown">
+        <li><a class="dropdown-item" href="#!">Settings</a></li>
+        <li><a class="dropdown-item" href="#!">Activity Log</a></li>
+        <li>
+          <hr class="dropdown-divider" />
+        </li>
+        <li><a class="dropdown-item" href="#!">Logout</a></li>
+      </ul></li>
+  </ul>
+</nav>
+
+
+<div id="headers"></div>
+
+<div id="layoutSidenav_content">
+  <main style="height: 100vh !important">
+    <div class="container-fluid px-4"
+         STYLE="margin-left: 240px; margin-top: 75px !important">
+      <h1 id="ask-category">이메일 문의</h1>
+      <!-- 임시용 버튼 -->
+      <button onclick="goEmail()">이메일</button>
+      <button onclick="goLent()">대관</button>
+      <button onclick="goLost()">분실물</button>
+      <div class="w-75">
+        <table class="table table-striped table-bordered table-hover"
+               id="ask-table">
+          <tr>
+            <td style="width: 25%">작성자</td>
+            <td style="width: 75%">Customer</td>
+          </tr>
+          <tr>
+            <td>분실CGV</td>
+            <td>강남CGV</td>
+          </tr>
+          <tr>
+            <td>제목</td>
+            <td>title</td>
+          </tr>
+          <tr>
+            <td>내용</td>
+            <td>지갑을 분실했습니다 파란색이구요</td>
+          </tr>
+          <tr>
+            <td>접수일</td>
+            <td>2022-02-22 16:20</td>
+          </tr>
+          <tr>
+            <td>첨부파일</td>
+            <td>없음</td>
+          </tr>
+          <tr>
+            <td>답변 내용</td>
+            <td>상담 접수중 or 관리자가 작성한 내용</td>
+          </tr>
+          <!-- 분실물 문의 파트 -->
+        </table>
+        <form>
+          <div class="form-group">
+            <label for="re-title">제목</label> <input type="email"
+                                                    class="form-control mt-2" id="re-title"
+                                                    placeholder="작성자 CGV매니저님의 문의사항에 대한 내용">
+          </div>
+          <div class="form-group mt-4">
+            <label for="re-content">답변</label>
+            <textarea class="form-control mt-2 md-2" rows="5"></textarea>
+          </div>
+          <div
+                  class="d-grid gap-2 d-md-flex justify-content-md-end mt-3 md-3">
+            <button class="btn btn-primary me-md-2" type="button">상담
+              접수</button>
+            <button class="btn btn-primary" type="button">답변</button>
+          </div>
+        </form>
+      </div>
+      <br>
+
+
+
+    </div>
+
+
+  </main>
+</div>
+
+<script
+        src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
+        crossorigin="anonymous"></script>
+<script src="js/scripts.js"></script>
+<script
+        src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.min.js"
+        crossorigin="anonymous"></script>
+<script src="assets/demo/chart-area-demo.js"></script>
+<script src="assets/demo/chart-bar-demo.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/simple-datatables@latest"
+        crossorigin="anonymous"></script>
+<script src="js/datatables-simple-demo.js"></script>
+<script type="text/javascript">
+  function goEmail() {
+    $("#ask-category").html("이메일 문의");
+    $("#ask-table").html(`<tr>
+  <td style="width: 25%">작성자</td>
+  <td style="width: 75%">CGV매니저</td>
+</tr>
+<tr>
+  <td>영화관</td>
+  <td>강남CGV</td>
+</tr>
+<tr>
+  <td>문의유형</td>
+  <td>불만 or 문의</td>
+</tr>
+<tr>
+  <td>제목</td>
+  <td>title</td>
+</tr>
+<tr>
+  <td>내용</td>
+  <td>
+      이메일로 문의 드립니다 이게 뭔가요?
+  </td>
+</tr>
+<tr>
+  <td>첨부파일</td>
+  <td>없음</td>
+</tr>
+<tr>
+  <td>답변 내용</td>
+  <td>상담 접수중 or 관리자가 작성한 내용</td>
+</tr>`);
+  }
+  function goLent() {
+    $("#ask-category").html("대관 문의");
+    $("#ask-table").html(`<tr>
+  <td style="width: 25%">작성자</td>
+  <td style="width: 75%">Customer</td>
+</tr>
+<tr>
+  <td>희망 대관</td>
+  <td>강남CGV</td>
+</tr>
+<tr>
+  <td>제목</td>
+  <td>title</td>
+</tr>
+<tr>
+  <td>내용</td>
+  <td>
+      대관에 관해서 여쭤봅니다.
+      2022년 2월 22일 클론코딩으로 인한 프로젝트의 자료 확인으로 대관신청을 했습니다. 취소가 가능할까요?
+  </td>
+</tr>
+<tr>
+  <td>첨부파일</td>
+  <td>없음</td>
+</tr>
+<tr>
+  <td>답변 내용</td>
+  <td>상담 접수중 or 관리자가 작성한 내용</td>
+</tr>`);
+  }
+  function goLost() {
+    $("#ask-category").html("분실물 문의");
+    $("#ask-table").html(`<tr>
+  <td style="width: 25%">작성자</td>
+  <td style="width: 75%">Customer</td>
+</tr>
+<tr>
+  <td>분실CGV</td>
+  <td>강남CGV</td>
+</tr>
+<tr>
+  <td>제목</td>
+  <td>title</td>
+</tr>
+<tr>
+  <td>내용</td>
+  <td>
+      지갑을 분실했습니다 파란색이구요
+  </td>
+</tr>
+<tr>
+  <td>접수일</td>
+  <td>2022-02-22 16:20</td>
+</tr>
+<tr>
+  <td>첨부파일</td>
+  <td>없음</td>
+</tr>
+<tr>
+  <td>답변 내용</td>
+  <td>상담 접수중 or 관리자가 작성한 내용</td>
+</tr>`);
+  }
+</script>
+</body>
+
+</html>

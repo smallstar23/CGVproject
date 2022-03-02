@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org/">
+<head>
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+  <meta name="description" content="" />
+  <meta name="author" content="" />
+  <title>이벤트관리</title>
+  <link href="https://cdn.jsdelivr.net/npm/simple-datatables@latest/dist/style.css" rel="stylesheet" />
+  <link href="css/styles.css" rel="stylesheet" />
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/js/all.min.js" crossorigin="anonymous"></script>
+  <script src="//code.jquery.com/jquery-1.11.0.min.js"></script>
+  <script type="text/javascript">
+    $(document).ready( function() {
+
+      $("#headers").load("header.jsp");
+    });
+  </script>
+</head>
+<body class="sb-nav-fixed" >
+<nav class="sb-topnav navbar navbar-expand navbar-dark bg-dark">
+  <!-- Navbar Brand-->
+  <a class="navbar-brand ps-3" href="../../../../../../Downloads/cgv_admin/index.html">CGV Administrator</a>
+  <!-- Sidebar Toggle-->
+  <button class="btn btn-link btn-sm order-1 order-lg-0 me-4 me-lg-0" id="sidebarToggle" href="#!"><i class="fas fa-bars"></i></button>
+  <!-- Navbar Search-->
+  <form class="d-none d-md-inline-block form-inline ms-auto me-0 me-md-3 my-2 my-md-0">
+    <div class="input-group">
+      <input class="form-control" type="text" placeholder="Search for..." aria-label="Search for..." aria-describedby="btnNavbarSearch" />
+      <button class="btn btn-primary" id="btnNavbarSearch" type="button"><i class="fas fa-search"></i></button>
+    </div>
+  </form>
+  <!-- Navbar-->
+  <ul class="navbar-nav ms-auto ms-md-0 me-3 me-lg-4">
+    <li class="nav-item dropdown">
+      <a class="nav-link dropdown-toggle" id="navbarDropdown" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false"><i class="fas fa-user fa-fw"></i></a>
+      <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
+        <li><a class="dropdown-item" href="#!">Settings</a></li>
+        <li><a class="dropdown-item" href="#!">Activity Log</a></li>
+        <li><hr class="dropdown-divider" /></li>
+        <li><a class="dropdown-item" href="#!">Logout</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+
+
+<!-- header -->
+<div th:replace="admin/fragment/header :: header"></div>
+<!-- header 끝 -->
+
+<div id="layoutSidenav_content" style="margin-top:100px; margin-left: 240px">
+  <main>
+    <div class="container-fluid px-4" >
+      <div class="card mb-4">
+        <div class="card-header">
+          <i class="fas fa-table me-1"></i>
+          <input type="button" value="SPECIAL" onclick="location.href='./event-list-special.jsp'"/>
+          <input type="button" value="영화/예매" onclick="location.href='./event-list-movie.jsp'"/>
+          <input type="button" value="멤버십/CLUB" onclick="location.href='./event-list-CLUB.jsp'"/>
+          <input type="button" value="CGV 극장별" onclick="location.href='./event-list-CGV.jsp'" style="background-color: #F08080"/>
+          <input type="button" value="제휴/할인" onclick="location.href='./event-list-discount.jsp'"/>
+        </div>
+        <div class="card-body">
+          <table id="datatablesSimple">
+            <thead>
+            <tr>
+              <th>영화</th>
+              <th>극장</th>
+              <th>내용</th>
+              <th>기간</th>
+            </tr>
+            </thead>
+            <tfoot>
+            <tr>
+              <th>영화</th>
+              <th>극장</th>
+              <th>내용</th>
+              <th>기간</th>
+            </tr>
+            </tfoot>
+            <tbody>
+            <tr>
+              <td style="width:150px"><img src="https://img.cgv.co.kr/WebApp/contents/eventV4/34037/16450663312190.jpg" width="150px"></td>
+              <td>[CGV 용산아이파크몰]</td>
+              <td>[웰니스&다이닝] 우주에서 만나는 힐링 테라피 콘서트</td>
+              <td>2022.02.27~2022.02.27</td>
+            </tr>
+            <tr>
+              <td><img src="https://img.cgv.co.kr/WebApp/contents/eventV4/34036/16450624183990.jpg" width="150px"></td>
+              <td>[CGV 평택소사]</td>
+              <td>카카오톡 채널 추가하고 영화 할인 받자!</td>
+              <td>2022.02.17~2022.03.31</td>
+            </tr>
+            <tr>
+              <td><img src="https://img.cgv.co.kr/WebApp/contents/eventV4/34034/16449933667730.jpg" width="150px"></td>
+              <td>[CGV 용산아이파크몰]</td>
+              <td>[라라랜드] 리미티드 티켓</td>
+              <td>2022.02.16~2022.03.19</td>
+            </tr>
+            <tr>
+              <td><img src="https://img.cgv.co.kr/WebApp/contents/eventV4/34033/16449883640730.jpg" width="150px"></td>
+              <td>[CGV 용산아이파크몰]</td>
+              <td>씨네드쉐프X오픈갤러리 아트 스타일링 강연</td>
+              <td>2022.02.26~2022.02.26</td>
+            </tr>
+            <tr>
+              <td><img src="https://img.cgv.co.kr/WebApp/contents/eventV4/33985/16443004327070.jpg" width="150px"></td>
+              <td>[CGV 피카디리1958]</td>
+              <td>CGV피카디리1958 & PEAKERS 스탬프 이벤트</td>
+              <td>2022.02.08~2022.03.31</td>
+            </tr>
+            <tr>
+              <td><img src="https://img.cgv.co.kr/WebApp/contents/eventV4/33965/16438662069200.jpg" width="150px"></td>
+              <td>[CGV 압구정]</td>
+              <td>[아트&다이닝]나폴리, 예술과 정열을 말하다</td>
+              <td>2022.02.03~2022.02.27</td>
+            </tr>
+            <tr>
+              <td><img src="https://img.cgv.co.kr/WebApp/contents/eventV4/33953/16433301778280.jpg" width="150px"></td>
+              <td>[CGV 목동]</td>
+              <td>올리브영과 함께하는 CGV목동 이벤트</td>
+              <td>2022.01.28~2022.02.28</td>
+            </tr>
+            <tr>
+              <td><img src="https://img.cgv.co.kr/WebApp/contents/eventV4/33941/16432625310280.jpg" width="150px"></td>
+              <td>[CGV 연남]</td>
+              <td>CGV연남 BBQ 후라이드 추가 증정!</td>
+              <td>2022.01.28~2022.03.15</td>
+            </tr>
+            <tr>
+              <td><img src="https://img.cgv.co.kr/WebApp/contents/eventV4/33919/16427527803200.jpg" width="150px"></td>
+              <td>[CGV 강변]</td>
+              <td>딜리버리 주문하고 경품 받자!</td>
+              <td>2022.01.21~2022.03.31</td>
+            </tr>
+            </tbody>
+          </table>
+          <input type="button" value="이벤트 작성" style="background-color: #F08080" onclick = "location.href = './event-regist.jsp'"/>
+        </div>
+      </div>
+
+
+  </main>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
+<script src="js/scripts.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.min.js" crossorigin="anonymous"></script>
+<script src="assets/demo/chart-area-demo.js"></script>
+<script src="assets/demo/chart-bar-demo.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/simple-datatables@latest" crossorigin="anonymous"></script>
+<script src="js/datatables-simple-demo.js"></script>
+</body>
+</html>
