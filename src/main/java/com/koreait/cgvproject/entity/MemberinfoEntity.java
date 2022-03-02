@@ -1,5 +1,9 @@
 package com.koreait.cgvproject.entity;
 
+import lombok.AllArgsConstructor;
+import lombok.NoArgsConstructor;
+import lombok.ToString;
+
 import javax.persistence.*;
 import java.time.LocalDateTime;
 
@@ -11,6 +15,9 @@ import java.time.LocalDateTime;
         allocationSize = 1
 )
 
+@AllArgsConstructor
+@NoArgsConstructor
+@ToString
 @Table(name="cgv_member_info")
 public class MemberinfoEntity {
 
@@ -33,44 +40,4 @@ public class MemberinfoEntity {
     private Long valpoint;
 
 
-    public MemberinfoEntity(Long idx, String userid, String username, String userpw, String ssn1, String ssn2, String hp, String email, String address1, String address2, String address3, LocalDateTime regdate, LocalDateTime updateDate, Long valpoint) {
-        this.idx = idx;
-        this.userid = userid;
-        this.username = username;
-        this.userpw = userpw;
-        this.ssn1 = ssn1;
-        this.ssn2 = ssn2;
-        this.hp = hp;
-        this.email = email;
-        this.address1 = address1;
-        this.address2 = address2;
-        this.address3 = address3;
-        this.regdate = regdate;
-        this.updateDate = updateDate;
-        this.valpoint = valpoint;
-    }
-
-    @Override
-    public String toString() {
-        return "MemberinfoEntity{" +
-                "idx=" + idx +
-                ", userid='" + userid + '\'' +
-                ", username='" + username + '\'' +
-                ", userpw='" + userpw + '\'' +
-                ", ssn1='" + ssn1 + '\'' +
-                ", ssn2='" + ssn2 + '\'' +
-                ", hp='" + hp + '\'' +
-                ", email='" + email + '\'' +
-                ", address1='" + address1 + '\'' +
-                ", address2='" + address2 + '\'' +
-                ", address3='" + address3 + '\'' +
-                ", regdate=" + regdate +
-                ", updateDate=" + updateDate +
-                ", valpoint=" + valpoint +
-                '}';
-    }
-
-    public MemberinfoEntity() {
-
-    }
 }
