@@ -100,19 +100,7 @@
 
     <!-- 각페이지 Header Start-->
 
-    <script type="text/javascript">
-        var cidx = [[${cno}]];
-
-        $(document).ready(function () {
-            $.giftstore_fixObj(this, $('.category_contents_wrap'),
-                $('.category_content'), $('.giftstore_logo'));
-            $.fn.focusSet1($('.category_product_list_wrap li'),
-                'active');
-            $("#contents").addClass("gift_store");
-
-        });
-
-
+    <script>
         function fnCategoryData(cno) {
             location.href = "/culture-event/popcorn-store/store-category?cno=" + cno;
         }
@@ -328,11 +316,7 @@
 
 <!-- S 예매하기 및 TOP Fixed 버튼 -->
 <div class="fixedBtn_wrap">
-
-    <a href="/ticket/" class="btn_fixedTicketing">예매하기</a> <a href="#none"
-                                                              class="btn_gotoTop"><img
-        src="https://img.cgv.co.kr/R2014/images/common/btn/gotoTop.png"
-        alt="최상단으로 이동"/></a>
+    <a href="#none"class="btn_gotoTop"><img src="https://img.cgv.co.kr/R2014/images/common/btn/gotoTop.png" alt="최상단으로 이동"/></a>
 </div>
 
 <!-- E 예매하기 및 TOP Fixed 버튼 -->

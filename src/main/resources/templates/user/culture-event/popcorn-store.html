@@ -1,4 +1,4 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<!DOCTYPE html>
 <html lang="ko"
       xmlns="http://www.w3.org/1999/xhtml"
       xmlns:th="http://www.thymeleaf.org/">
@@ -78,59 +78,9 @@
         $(document).ready(function () {
             $.giftstore_bigBanner('big_banner_wrap', []);
             $.giftstore_fixObj(this, $('.category_contents_wrap'), $('.category_content'), $('.giftstore_logo'));
-            $.giftstore_targetBanner('targerbanner_wrap', { 'bgColor': [], 'titleColor': [], 'contentsColor': [] });
-            $.giftstore_hotdeal('hotdeal_wrap', [
-
-            ]);
-
-            $.fn.focusSet1($('.best_product_list li'), 'active');
-            $.fn.focusSet1($('.gift_recommend_list_wrap li'), 'active');
-            $.fn.focusSet1($('.category_product_inner_list li'), 'active');
-
-            $.giftstore_giftRecommend('gift_recommend_wrap');
-
-            //영역 문제로 gift_store 클래스 추가 (2018-11-05)
-            $("#contents").addClass("gift_store");
-
-            $(".linemap-wrap .last").prev("li").hide();
-
-            $(window).bind("pageshow", function (event) {
-                if (!!window.performance && window.performance.navigation.type == 2) {
-                    fnGetRefreshInfo();
-                }
-            });
 
         });
 
-        $(window).load(function () {
-            $('.sect-aside-banner').asideRePosition();
-        });
-
-        //뒤로가기 새로고침
-        function fnGetRefreshInfo() {
-
-            $.ajax({
-                type: "POST",
-                url: "/culture-event/popcorn-store/default.aspx/GetCategoryInfo",
-                contentType: "application/json; charset=utf-8",
-                dataType: "json",
-                async: false,
-                success: function (data) {
-
-                    var tmpval = data.d.split('|');
-
-                    $("#cartviewcnt").text(tmpval[0]);
-                    $("#giftconcnt").text(tmpval[1]);
-
-                },
-
-                error: function (xhr, status, err) {
-                    var err = eval("(" + xhr.responseText + ")");
-                    alert(err.Message);
-                }
-            });
-
-        }
 
         function fnReloadDealList() {
             var jsonData = "";
@@ -362,7 +312,7 @@
             });
 
             function fnCategoryData(cno) {
-                location.href="./store-category.jsp?CategoryIdx=" + cno;
+                location.href="/culture-event/popcorn-store/store-category?cno=" + cno;
             }
 
         </script>
