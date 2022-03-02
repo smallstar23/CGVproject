@@ -12,5 +12,15 @@ public class UserController {
         return new ModelAndView("/user/main");
     }
 
+    @GetMapping("discount")
+    public String discount(){
+        return "user/discount";
+    }
+
+    @GetMapping("ClubService")
+    public String clubservice(){
+        return "user/ClubService";
+    }
+
 
 }

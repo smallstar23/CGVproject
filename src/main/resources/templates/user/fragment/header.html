@@ -2,10 +2,11 @@
 <html lang="ko"
       xmlns="http://www.w3.org/1999/xhtml"
       xmlns:th="http://www.thymeleaf.org/">
-<div class="skipnaiv" th:fragment="header-user">
+
+<div class="skipnaiv">
     <a href="#contents" id="skipHeader">메인 컨텐츠 바로가기</a>
 </div>
-<div id="cgvwrap">
+<div id="cgvwrap" th:fragment="header">
     <!-- S Header
               Description
               - class 'nav' 에 class 'active' 추가시 서브메뉴노출
