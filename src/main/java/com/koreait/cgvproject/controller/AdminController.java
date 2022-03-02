@@ -10,9 +10,21 @@ import org.springframework.web.servlet.ModelAndView;
 public class AdminController {
 
 
-    @RequestMapping("/main")// http://localhost:8080/main
+
+//    @GetMapping("text-basic")
+//    public String textBasic(Model model){
+//        model.addAttribute("data","Hello spring 타임리프");
+//        return  "admin/basic/text-basic";
+//    }
+
+    @GetMapping("main")
     public ModelAndView main(){
         return new ModelAndView("/admin/main");
     }
+
+
+
+
+
 
 }
