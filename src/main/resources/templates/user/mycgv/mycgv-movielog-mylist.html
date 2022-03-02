@@ -1,5 +1,7 @@
 <!DOCTYPE html>
-<html>
+<html lang="ko"
+      xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org/">
 <head>
     <title>mycgv-movielog-mylist</title>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
@@ -173,7 +175,7 @@
 </head>
 <body class="">
 
-<div th:replace="fragment/header :: header"></div>
+<div th:replace="user/fragment/header :: header-user"></div>
 
     <!-- Contaniner -->
     <div id="contaniner"  class=""><!-- 벽돌 배경이미지 사용 시 class="bg-bricks" 적용 / 배경이미지가 없을 경우 class 삭제  -->
@@ -308,7 +310,7 @@
 
             <!-- E 예매하기 및 TOP Fixed 버튼 -->
 
-            <div th:replace="fragment/footer :: footer"></div>
+            <div th:replace="user/fragment/footer :: footer-user"></div>
         </div>
 
         <script type="text/javascript" src="https://img.cgv.co.kr/R2014//js/system/crypto.js"></script>

@@ -1,5 +1,7 @@
 <!DOCTYPE html>
-<html>
+<html lang="ko"
+      xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org/">
 <head>
     <title>login-guest-reserve</title>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
@@ -66,12 +68,9 @@
     <script type="text/javascript">
         //<![CDATA[
         _TRK_CP = "/홈";
-
         app.config('staticDomain', 'https://img.cgv.co.kr/R2014/')
             .config('imageDomain', 'https://img.cgv.co.kr')
             .config('isLogin', 'False');
-
-
         // AD FLOAT
         // 암호화 할 문자열과 키값(상수값)을 매개변수로 받는다.
         function EncryptAD(str, key) {
@@ -94,10 +93,8 @@
                 // 암호화시 사용한 연산과 같아야 한다.
                 output += String.fromCharCode(str.charCodeAt(i) - (parseInt(key) + 123 + i));
             }
-
             return output;
         }
-
         function getCookieVal(offset) {
             var endstr = document.cookie.indexOf(";", offset);
             if (endstr == -1) endstr = document.cookie.length;
@@ -125,11 +122,9 @@
         function CloseAD() {
             var AdUrl = window.location.href;
             var ArrAdUrl = AdUrl.split("/");
-
             var CurCookieName = 'CgvPopAd-' + ArrAdUrl[3];
             var CurCookieUrl = GetCookieAd(CurCookieName);
             var CookieUrl = ArrAdUrl[3];
-
             CookieUrl = EncryptAD(CookieUrl, "15442280");
             setCookieAD(CurCookieName, CookieUrl, '1');
             $(document).find('#ad_float1').hide();
@@ -140,18 +135,15 @@
             var CookieUrl = ArrAdUrl[3];
             var CurCookieName = 'CgvPopAd-' + ArrAdUrl[3];
             var CurCookieUrl = GetCookieAd(CurCookieName);
-
             if (CurCookieUrl == null) {
                 CurCookieUrl = "";
             }
             else {
                 CurCookieUrl = DecryptAD(CurCookieUrl, "15442280");
             }
-
             if (CurCookieUrl.indexOf(CookieUrl) != -1) {
                 $(document).find('#ad_float1').hide();
             }
-
             //section.cgv.co.kr 매거진 체크
             var magazineckurl = GetCookieAd("CgvPopAd-magazine");
             if (magazineckurl != null) {
@@ -162,9 +154,6 @@
                 }
             }
         }
-
-
-
         //]]>
     </script>
 
@@ -173,7 +162,7 @@
 </head>
 <body class="">
 
-<div th:replace="fragment/header :: header"></div>
+<div th:replace="user/fragment/header :: header-user"></div>
 
 <!-- Contaniner -->
 <div id="contaniner"  class=""><!-- 벽돌 배경이미지 사용 시 class="bg-bricks" 적용 / 배경이미지가 없을 경우 class 삭제  -->
@@ -201,18 +190,18 @@
                     <h3>예매확인/취소</h3>
                 </div>
                 <!--애매한 부분 제거-->
-                    <div class="sect-mycgv-reserve">
-                        <div class="box-polaroid">
-                            <div class="box-inner issuing">
-                                <p><strong>예매번호로 현장발권</strong> <a href="/culture-event/event/detail-view.aspx?idx=9277" class="round gray on" target="_blank" title="새창"><span style="height: 17px">바로가기</span></a></p>
-                                <span>현장 발권시 예매번호로만 티켓을 찾을 수 있습니다.</span>
-                                </div>
-                            <div class="box-inner perform">
-                                <p><strong>공연예매안내</strong>  <a href="http://ticket.interest.me/?path=cgv&type=3" class="round gray on" target="_blank" title="새창"><span style="height: 17px">바로가기</span></a></p>
-                                <span>공연예매 확인은 CJ E&amp;M Ticket에서 확인하세요</span>
-                                </div>
-                            </div>
-                        </div>
+                <%--                        <div class="sect-mycgv-reserve">--%>
+                <%--                            <div class="box-polaroid">--%>
+                    <%--                                <div class="box-inner issuing">--%>
+                        <%--                                    <p><strong>예매번호로 현장발권</strong> <a href="/culture-event/event/detail-view.aspx?idx=9277" class="round gray on" target="_blank" title="새창"><span style="height: 17px">바로가기</span></a></p>--%>
+                        <%--                                    <span>현장 발권시 예매번호로만 티켓을 찾을 수 있습니다.</span>--%>
+                        <%--                                </div>--%>
+                    <%--                                <div class="box-inner perform">--%>
+                        <%--                                    <p><strong>공연예매안내</strong>  <a href="http://ticket.interest.me/?path=cgv&type=3" class="round gray on" target="_blank" title="새창"><span style="height: 17px">바로가기</span></a></p>--%>
+                        <%--                                    <span>공연예매 확인은 CJ E&amp;M Ticket에서 확인하세요</span>--%>
+                        <%--                                </div>--%>
+                    <%--                            </div>--%>
+                <%--                        </div>--%>
                 <!-- MY 예매내역 -->
                 <div class="cols-mycgv-booking">
                     <div class="tit-mycgv">
@@ -444,37 +433,28 @@
         </div>
         <script type="text/javascript">
             //<![CDATA[
-
             (function ($) {
                 $(function () {
-
                     //visualMotion.
                     var sliderOptions = { 'effect': 'none', 'auto': true };
                     $('#slider').visualMotion(sliderOptions);
-
                     $('.receipt').on('click', function () {
                         var url = 'https://cjpay.cjsystems.co.kr/cjs/pg/adj/receipt.fo?SHOP_SYS_NO=&SHOP_ID=051024100000&PAY_GRP_ID=0001&PG_CTRL_CD_P=' + $(this).attr("data");
                         var win = window.open(url, "receipt", "left=0,top=o,width=440,height=800,toolbar=no,scrollbars=no");
                         win.focus();
                     });
-
                     $('.hometicket').on('click', function () {
                         var url = './login-guest-hometicket.jsp';
                         var win = window.open(url, "hometicket", "left=0,top=o,width=640,height=897,toolbar=no,scrollbars=no");
                         win.focus();
                     });
-
                     $('.cancel').on('click', function () {
-
                         if (!confirm('예매를 취소하시겠습니까?\n\n※ 인터넷 예매 취소는 상영시간 20분 전까지 가능하며, \n예매 가능은 상영시간 30분 전까지 가능합니다.'))
                             return false;
-
                         CancelReserve($(this));
                     });
-
                     function CancelReserve(obj) {
                         var reserveNo = obj.parents('.set-btn').find('.reserve-no').val();
-
                         var url = '/common/ajax/user.aspx/CancelReserveByGuest';
                         var data = { 'reserveNo': reserveNo };
                         var callback = function (result) {
@@ -482,11 +462,8 @@
                             $('.loading').remove();
                             if (result == null || result["resultCode"] == null)
                                 return;
-
                             var resultCode = result["resultCode"];
                             var resultMessage = result["resultData"];
-
-
                             switch (resultCode) {
                                 case "-9":
                                     alert('로그인 되어 있지 않습니다.\n확인 후 다시 진행해 주세요.');
@@ -512,23 +489,17 @@
                                     else {
                                         obj.parents('.lst-item').remove();
                                     }
-
                                     var options = { '$target': null, 'type': 'center', 'position': 'position', 'mask': true };
                                     app.htmlLoad2(options, app.config('html').reservation_cancel);
-
                                     break;
                             }
                         };
-
                         app.loading().show({ 'target': obj.parents('.lst-item'), 'circleType': 'large' });
                         obj.attr('disabled', true);
-
                         app.ajax().set({ dataType: 'json', url: url, data: JSON.stringify(data), contentType: "application/json; charset=utf-8", successHandler: callback });
                     }
-
                 });
             })(jQuery);
-
             //]]>
         </script>
 
@@ -550,7 +521,7 @@
 <!-- E 예매하기 및 TOP Fixed 버튼 -->
 
 
-<div th:replace="fragment/footer :: footer"></div>
+<div th:replace="user/fragment/footer :: footer-user"></div>
 
 </div>
 </body>

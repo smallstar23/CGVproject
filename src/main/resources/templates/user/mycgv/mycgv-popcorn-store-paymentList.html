@@ -1,5 +1,7 @@
 <!DOCTYPE html>
-<html>
+<html lang="ko"
+      xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org/">
 <head>
     <title>mycgv-popcorn-store</title>
 
@@ -175,7 +177,7 @@
 </head>
 <body class="">
 
-<div th:replace="fragment/header :: header"></div>
+<div th:replace="user/fragment/header :: header-user"></div>
 
 <!-- Contaniner -->
 <div id="contaniner"  class=""><!-- 벽돌 배경이미지 사용 시 class="bg-bricks" 적용 / 배경이미지가 없을 경우 class 삭제  -->
@@ -271,7 +273,7 @@
 
                             <li>
                                 <strong>CGV VIP에 도전하세요!</strong>
-                                <span style="height: 15px"><a href="./vip-lounge.jsp" class="round black1" ><i>CGV VIP 혜택보기</i></a></span>
+                                <span style="height: 15px"><a href="./vip-lounge.jsp" class="round black1" style="line-height: 15px;"><i>CGV VIP 혜택보기</i></a></span>
                             </li>
 
                             <li>
