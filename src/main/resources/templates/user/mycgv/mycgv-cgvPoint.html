@@ -1,5 +1,7 @@
 <!DOCTYPE html>
-<html>
+<html lang="ko"
+      xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org/">
 <head>
     <title>mycgv-cgvPoint</title>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
@@ -69,12 +71,9 @@
     <script type="text/javascript">
         //<![CDATA[
         _TRK_CP = "/홈";
-
         app.config('staticDomain', 'https://img.cgv.co.kr/R2014/')
             .config('imageDomain', 'https://img.cgv.co.kr')
             .config('isLogin', 'True');
-
-
         // AD FLOAT
         // 암호화 할 문자열과 키값(상수값)을 매개변수로 받는다.
         function EncryptAD(str, key) {
@@ -97,10 +96,8 @@
                 // 암호화시 사용한 연산과 같아야 한다.
                 output += String.fromCharCode(str.charCodeAt(i) - (parseInt(key) + 123 + i));
             }
-
             return output;
         }
-
         function getCookieVal(offset) {
             var endstr = document.cookie.indexOf(";", offset);
             if (endstr == -1) endstr = document.cookie.length;
@@ -128,11 +125,9 @@
         function CloseAD() {
             var AdUrl = window.location.href;
             var ArrAdUrl = AdUrl.split("/");
-
             var CurCookieName = 'CgvPopAd-' + ArrAdUrl[3];
             var CurCookieUrl = GetCookieAd(CurCookieName);
             var CookieUrl = ArrAdUrl[3];
-
             CookieUrl = EncryptAD(CookieUrl, "15442280");
             setCookieAD(CurCookieName, CookieUrl, '1');
             $(document).find('#ad_float1').hide();
@@ -143,18 +138,15 @@
             var CookieUrl = ArrAdUrl[3];
             var CurCookieName = 'CgvPopAd-' + ArrAdUrl[3];
             var CurCookieUrl = GetCookieAd(CurCookieName);
-
             if (CurCookieUrl == null) {
                 CurCookieUrl = "";
             }
             else {
                 CurCookieUrl = DecryptAD(CurCookieUrl, "15442280");
             }
-
             if (CurCookieUrl.indexOf(CookieUrl) != -1) {
                 $(document).find('#ad_float1').hide();
             }
-
             //section.cgv.co.kr 매거진 체크
             var magazineckurl = GetCookieAd("CgvPopAd-magazine");
             if (magazineckurl != null) {
@@ -170,7 +162,7 @@
 </head>
 <body class="">
 
-<div th:replace="fragment/header :: header"></div>
+<div th:replace="user/fragment/header :: header-user"></div>
 
 <!-- Contaniner -->
 <div id="contaniner"  class=""><!-- 벽돌 배경이미지 사용 시 class="bg-bricks" 적용 / 배경이미지가 없을 경우 class 삭제  -->
@@ -266,7 +258,7 @@
 
                             <li>
                                 <strong>CGV VIP에 도전하세요!</strong>
-                                <span style="height: 15px"><a href="./vip-lounge.jsp" class="round black1" ><i>CGV VIP 혜택보기</i></a></span>
+                                <span style="height: 15px"><a href="./vip-lounge.jsp" class="round black1" style="line-height: 15px;"><i>CGV VIP 혜택보기</i></a></span>
                             </li>
 
                             <li>
@@ -283,7 +275,7 @@
 
                     <div class="col-one-point">
                         <h3 style="background: url(/img/cgvpoint.png) center;">CGV POINT</h3>
-                        <a href="mycgv-cgvPoint-pointList.html">CGV POINT 더보기</a>
+                        <a href="./mycgv-cgvPoint-pointList.jsp">CGV POINT 더보기</a>
                         <ul>
                             <li>
                                 <strong>CGV 사용가능 포인트</strong>
@@ -337,243 +329,224 @@
                 <div class="snb">
                     <ul>
                         <li>
-                            <a href="mycgv.html" title="현재 선택">MY CGV HOME <i></i></a>
+                            <a href="./mycgv.jsp" title="현재 선택">MY CGV HOME <i></i></a>
                         </li>
 
                         <li >
-                            <a href="mycgv-reserve.html" >나의 예매내역 <i></i></a>
+                            <a href="./mycgv-reserve.jsp" >나의 예매내역 <i></i></a>
                         </li>
 
                         <li class="on">
-                            <a href="mycgv-cgvPoint.html" >CGV 포인트 <i></i></a>
+                            <a href="./mycgv-cgvPoint.jsp" >CGV 포인트 <i></i></a>
                             <ul>
                                 <li >
-                                    <a href="mycgv-cgvPoint-pointInfo.html" >포인트 적립/사용안내</a>
+                                    <a href="./mycgv-cgvPoint-pointInfo.jsp" >포인트 적립/사용안내</a>
                                 </li>
                                 <li >
-                                    <a href="mycgv-cgvPoint-pointList.html" >포인트 적립/사용내역</a>
+                                    <a href="./mycgv-cgvPoint-pointList.jsp" >포인트 적립/사용내역</a>
                                 </li>
                             </ul>
                         </li>
 
                         <li >
-                            <a href="mycgv-event.html" title="현재선택">이벤트 참여내역 <i></i></a>
+                            <a href="./mycgv-event.jsp" title="현재선택">이벤트 참여내역 <i></i></a>
                         </li>
 
                         <li >
-                            <a href="mycgv-popcorn-store.html" >기프트샵<i></i></a>
+                            <a href="./mycgv-popcorn-store.jsp" >기프트샵<i></i></a>
                             <ul>
                                 <li >
-                                    <a href="mycgv-popcorn-store.html" title="현재 선택">내 기프트콘</a>
+                                    <a href="./mycgv-popcorn-store.jsp" title="현재 선택">내 기프트콘</a>
                                 </li>
                                 <li>
-                                    <a href="mycgv-popcorn-store-paymentList.html" >결제내역</a>
+                                    <a href="./mycgv-popcorn-store-paymentList.jsp" >결제내역</a>
                                 </li>
                             </ul>
                         </li>
 
                         <li >
-                            <a href="mycgv-myinfo.html" >회원정보<i></i></a>
+                            <a href="./mycgv-myinfo.jsp" >회원정보<i></i></a>
                             <ul>
 
                                 <li >
-                                    <a href="mycgv-myinfo-edit-myinfo.html" >개인정보 변경</a>
+                                    <a href="./mycgv-myinfo-edit-myinfo.jsp" >개인정보 변경</a>
                                 </li>
 
                                 <li >
-                                    <a href="mycgv-myinfo-leavecgv.html" >회원탈퇴</a>
+                                    <a href="./mycgv-myinfo-leavecgv.jsp" >회원탈퇴</a>
                                 </li>
                             </ul>
                         </li>
 
                         <li >
-                            <a href="mycgv-myinfo-edit-myinfo-myprofile.html" >프로필 관리<i></i></a>
+                            <a href="./mycgv-myinfo-edit-myinfo-myprofile.jsp" >프로필 관리<i></i></a>
                         </li>
 
                         <li >
-                            <a href="mycgv-qna-list.html" >나의 문의내역 <i></i></a>
+                            <a href="./mycgv-qna-list.jsp" >나의 문의내역 <i></i></a>
                             <ul>
                                 <li >
-                                    <a href="mycgv-qna-list.html" >1:1 문의</a>
+                                    <a href="./mycgv-qna-list.jsp" >1:1 문의</a>
                                 </li>
                                 <li >
-                                    <a href="mycgv-lost-list.html" >분실물 문의</a>
+                                    <a href="./mycgv-lost-list.jsp" >분실물 문의</a>
                                 </li>
                             </ul>
                         </li>
 
-                        <li class="my-event"><a href="mycgv-movielog-watched.html">내가 본 영화</a></li>
+                        <li class="my-event"><a href="./mycgv-movielog-watched.jsp">내가 본 영화</a></li>
                     </ul>
 
                 </div>
             </div>
 
-                <div class="col-detail" id="mycgv_contents">
+            <div class="col-detail" id="mycgv_contents">
 
-                    <input type="hidden" id="isUSER" name="isUSER" value="N" />
-                    <div class="tit-mycgv">
-                        <h3>CJ ONE 포인트</h3>
-                    </div>
-                    <div class="tit-mycgv">
-                        <h4>매점이용 포인트 적립</h4>
-                    </div>
+                <input type="hidden" id="isUSER" name="isUSER" value="N" />
+                <div class="tit-mycgv">
+                    <h3>CJ ONE 포인트</h3>
+                </div>
+                <div class="tit-mycgv">
+                    <h4>매점이용 포인트 적립</h4>
+                </div>
 
-                    <div class="sect-register onepoint">
-                        <p>
-                            <strong>매점이용 포인트 적립</strong>
-                            <span>영수증에 표기되어있는 적립번호와 인증번호를 입력해 주세요.</span><br />
+                <div class="sect-register onepoint">
+                    <p>
+                        <strong>매점이용 포인트 적립</strong>
+                        <span>영수증에 표기되어있는 적립번호와 인증번호를 입력해 주세요.</span><br />
 
-                        </p>
-                        <form id="form1" method="post" novalidate="novalidate">
-                            <div class="box-polaroid">
-                                <div class="box-inner">
-                                    <label for="code1"><strong>적립번호</strong></label>
-                                    <input type="text" class="num only-number" id="code1" name="code1" maxlength="4" length="4" required="required" title="첫번째 4자리" data-title="적립번호 첫번째자리를 " data-message="정상적으로 입력해 주세요."/>
-                                    <input type="text" class="num only-number" id="code2" name="code2" maxlength="4" length="4" required="required" title="두번째 4자리" data-title="적립번호 두번째자리를 " data-message="정상적으로 입력해 주세요."/>
-                                    <input type="text" class="num only-number" id="code3" name="code3" maxlength="4" length="4" required="required" title="세번째 4자리" data-title="적립번호 세번째자리를 " data-message="정상적으로 입력해 주세요."/>
-                                    <input type="text" class="num only-number" id="code4" name="code4" maxlength="4" length="4" required="required" title="네번째 4자리" data-title="적립번호 네번째자리를 " data-message="정상적으로 입력해 주세요."/>
-                                    <label for="password"><strong>인증번호</strong></label>
-                                    <input type="password" id="password" name="password" maxlength="3" length="3" required="required" data-title="인증번호를 " data-message="정상적으로 입력해 주세요."/>
-                                    <button type="submit" class="round inred"><span>적립하기</span></button>
-                                </div>
-                            </div>
-                        </form>
-                    </div>
-
-                    <!-- CGV 예매 관련 정책 안내 Box Type -->
-                    <div class="sect-box-descri">
-                        <h4>CGV 예매 관련 정책 안내</h4>
-                        <!-- Box Moudle -->
+                    </p>
+                    <form id="form1" method="post" novalidate="novalidate">
                         <div class="box-polaroid">
                             <div class="box-inner">
-                                <ul>
-                                    <li>
-                                        <dl>
-                                            <dt>이용안내</dt>
-                                            <dd>
-                                                <ul>
-                                                    <li>매점 상품 구매금액의 0.5%가 CJ ONE포인트로 적립됩니다.</li>
-                                                    <li>적립일 기준으로 익일 포인트가 가용됩니다.</li>
-                                                    <li>상품 구매 후 48시간 이내 적립에 한해 유효합니다.</li>
-                                                    <li>1일 최대 6회 적립 가능합니다.</li>
-                                                    <li>씨네드쉐프 레스토랑(식음료)은 결제 금액의 0.1%가 적립됩니다.</li>
-                                                </ul>
-                                            </dd>
-                                        </dl>
-                                    </li>
-                                </ul>
+                                <label for="code1"><strong>적립번호</strong></label>
+                                <input type="text" class="num only-number" id="code1" name="code1" maxlength="4" length="4" required="required" title="첫번째 4자리" data-title="적립번호 첫번째자리를 " data-message="정상적으로 입력해 주세요."/>
+                                <input type="text" class="num only-number" id="code2" name="code2" maxlength="4" length="4" required="required" title="두번째 4자리" data-title="적립번호 두번째자리를 " data-message="정상적으로 입력해 주세요."/>
+                                <input type="text" class="num only-number" id="code3" name="code3" maxlength="4" length="4" required="required" title="세번째 4자리" data-title="적립번호 세번째자리를 " data-message="정상적으로 입력해 주세요."/>
+                                <input type="text" class="num only-number" id="code4" name="code4" maxlength="4" length="4" required="required" title="네번째 4자리" data-title="적립번호 네번째자리를 " data-message="정상적으로 입력해 주세요."/>
+                                <label for="password"><strong>인증번호</strong></label>
+                                <input type="password" id="password" name="password" maxlength="3" length="3" required="required" data-title="인증번호를 " data-message="정상적으로 입력해 주세요."/>
+                                <button type="submit" class="round inred"><span>적립하기</span></button>
                             </div>
                         </div>
-                        <!-- //Box Moudle -->
-                    </div>
-                    <!-- //CGV 예매 관련 정책 안내 Box Type -->
-                    <form name="targetform" id="targetform" method="post" action="https://www.cgv.co.kr/user/mycgv/cjone-point/cafeteria-proc.aspx" novalidate="novalidate">
-                        <input type="hidden" name="coupon1No" id="coupon1No" />
-                        <input type="hidden" name="coupon2No" id="coupon2No" />
-                        <input type="hidden" name="coupon3No" id="coupon3No" />
-                        <input type="hidden" name="coupon4No" id="coupon4No" />
-
-                        <input type="hidden" name="passwordNo" id="passwordNo" />
                     </form>
-                    <script type="text/javascript" src="https://img.cgv.co.kr/R2014//js/system/crypto.js"></script>
-                    <script type="text/javascript">
-                        //<![CDATA[
-                        (function ($) {
-                            $(function () {
-
-                                var $frm = $('#form1');
-                                $frm.validate({
-                                    submitHandler: function (form) {
-                                        var $targetFrm = $('#targetform');
-
-                                        $targetFrm.find('#coupon1No').val(app.crypto.AESEncryptToBase64($frm.find('#code1').val()));
-                                        $targetFrm.find('#coupon2No').val(app.crypto.AESEncryptToBase64($frm.find('#code2').val()));
-                                        $targetFrm.find('#coupon3No').val(app.crypto.AESEncryptToBase64($frm.find('#code3').val()));
-                                        $targetFrm.find('#coupon4No').val(app.crypto.AESEncryptToBase64($frm.find('#code4').val()));
-
-                                        $targetFrm.find('#passwordNo').val(app.crypto.AESEncryptToBase64($frm.find('#password').val()));
-
-                                        $targetFrm.submit();
-                                        return false;
-                                    }
-                                });
-
-                                $('#btn_search').on('click', function () {
-                                    location.href = "./cafeteria.aspx?startdate=" + $("#startdate").val() + "&enddate=" + $("#enddate").val();
-                                });
-
-                                $('#period_wrap').datePeriod({
-                                    'start': $('#startdate'),
-                                    'end': $('#enddate'),
-                                    'data': [
-                                        { 'title': '2주일', 'data-period': 2, 'data-type': 'w' },
-                                        { 'title': '1개월', 'data-period': 1, 'data-type': 'm' },
-                                        { 'title': '3개월', 'data-period': 3, 'data-type': 'm' },
-                                        { 'title': '6개월', 'data-period': 6, 'data-type': 'm' },
-                                        { 'title': '12개월', 'data-period': 12, 'data-type': 'm' },
-                                        { 'title': '24개월', 'data-period': 24, 'data-type': 'm' },
-                                    ]
-                                });
-
-                                var usercode = $("#isUSER").val();
-
-                                if (usercode == "Y") {
-                                    if (confirm("CJ ONE 회원이 아닙니다.  \n지금 CJ ONE 통합회원 가입하고 쿠폰/포인트 등 다양한 혜택을 누리세요.")) {
-                                        location.href = "http://www.cgv.co.kr/user/mycgv/";
-                                        window.open("https://www.cjone.com/cjmweb/join.do?coopco_cd=7010&brnd_cd=1000", "_newtab");
-                                        return false;
-                                        return false;
-                                    }
-                                    else
-                                    {
-                                        location.href = "http://www.cgv.co.kr/user/mycgv/";
-                                        return false;
-                                    }
-
-                                }
-
-                            });
-                        })(jQuery);
-
-                        //]]>
-                    </script>
-
-
                 </div>
+
+                <!-- CGV 예매 관련 정책 안내 Box Type -->
+                <div class="sect-box-descri">
+                    <h4>CGV 예매 관련 정책 안내</h4>
+                    <!-- Box Moudle -->
+                    <div class="box-polaroid">
+                        <div class="box-inner">
+                            <ul>
+                                <li>
+                                    <dl>
+                                        <dt>이용안내</dt>
+                                        <dd>
+                                            <ul>
+                                                <li>매점 상품 구매금액의 0.5%가 CJ ONE포인트로 적립됩니다.</li>
+                                                <li>적립일 기준으로 익일 포인트가 가용됩니다.</li>
+                                                <li>상품 구매 후 48시간 이내 적립에 한해 유효합니다.</li>
+                                                <li>1일 최대 6회 적립 가능합니다.</li>
+                                                <li>씨네드쉐프 레스토랑(식음료)은 결제 금액의 0.1%가 적립됩니다.</li>
+                                            </ul>
+                                        </dd>
+                                    </dl>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                    <!-- //Box Moudle -->
+                </div>
+                <!-- //CGV 예매 관련 정책 안내 Box Type -->
+                <form name="targetform" id="targetform" method="post" action="https://www.cgv.co.kr/user/mycgv/cjone-point/cafeteria-proc.aspx" novalidate="novalidate">
+                    <input type="hidden" name="coupon1No" id="coupon1No" />
+                    <input type="hidden" name="coupon2No" id="coupon2No" />
+                    <input type="hidden" name="coupon3No" id="coupon3No" />
+                    <input type="hidden" name="coupon4No" id="coupon4No" />
+
+                    <input type="hidden" name="passwordNo" id="passwordNo" />
+                </form>
+                <script type="text/javascript" src="https://img.cgv.co.kr/R2014//js/system/crypto.js"></script>
+                <script type="text/javascript">
+                    //<![CDATA[
+                    (function ($) {
+                        $(function () {
+                            var $frm = $('#form1');
+                            $frm.validate({
+                                submitHandler: function (form) {
+                                    var $targetFrm = $('#targetform');
+                                    $targetFrm.find('#coupon1No').val(app.crypto.AESEncryptToBase64($frm.find('#code1').val()));
+                                    $targetFrm.find('#coupon2No').val(app.crypto.AESEncryptToBase64($frm.find('#code2').val()));
+                                    $targetFrm.find('#coupon3No').val(app.crypto.AESEncryptToBase64($frm.find('#code3').val()));
+                                    $targetFrm.find('#coupon4No').val(app.crypto.AESEncryptToBase64($frm.find('#code4').val()));
+                                    $targetFrm.find('#passwordNo').val(app.crypto.AESEncryptToBase64($frm.find('#password').val()));
+                                    $targetFrm.submit();
+                                    return false;
+                                }
+                            });
+                            $('#btn_search').on('click', function () {
+                                location.href = "./cafeteria.aspx?startdate=" + $("#startdate").val() + "&enddate=" + $("#enddate").val();
+                            });
+                            $('#period_wrap').datePeriod({
+                                'start': $('#startdate'),
+                                'end': $('#enddate'),
+                                'data': [
+                                    { 'title': '2주일', 'data-period': 2, 'data-type': 'w' },
+                                    { 'title': '1개월', 'data-period': 1, 'data-type': 'm' },
+                                    { 'title': '3개월', 'data-period': 3, 'data-type': 'm' },
+                                    { 'title': '6개월', 'data-period': 6, 'data-type': 'm' },
+                                    { 'title': '12개월', 'data-period': 12, 'data-type': 'm' },
+                                    { 'title': '24개월', 'data-period': 24, 'data-type': 'm' },
+                                ]
+                            });
+                            var usercode = $("#isUSER").val();
+                            if (usercode == "Y") {
+                                if (confirm("CJ ONE 회원이 아닙니다.  \n지금 CJ ONE 통합회원 가입하고 쿠폰/포인트 등 다양한 혜택을 누리세요.")) {
+                                    location.href = "http://www.cgv.co.kr/user/mycgv/";
+                                    window.open("https://www.cjone.com/cjmweb/join.do?coopco_cd=7010&brnd_cd=1000", "_newtab");
+                                    return false;
+                                    return false;
+                                }
+                                else
+                                {
+                                    location.href = "http://www.cgv.co.kr/user/mycgv/";
+                                    return false;
+                                }
+                            }
+                        });
+                    })(jQuery);
+                    //]]>
+                </script>
+
+
             </div>
+        </div>
 
         <script type="text/javascript">
             //<![CDATA[
             (function ($) {
                 $(function () {
-
                     $('#go_edit_page').on('click', function () {
                         var win = window.open("./mycgv-popupedit-profile.jsp", "profile", "left=0,top=o,width=445,height=440,toolbar=no,scrollbars=no");
                         win.focus();
                     });
-
                     $('#btn_set_my_favorite').on('click', function () {
                         var win = window.open("./mycgv-favoriteTheaters.jsp", "url", "left=0,top=o,width=645,height=370,toolbar=no,scrollbars=no");
                         win.focus();
                     });
-
                     <!--MY 지난등급 이력보기 스크립트-->
-
                     $('#view_usergrade').on('click', function () {
                         var usergrade = document.getElementById("user_grade");
-
                         if(usergrade.style.display=='none'){
                             usergrade.style.display = '';
                         }else(usergrade.style.display=='')
                         {
                             usergrade.style.display = '';
                         }
-
                     });
-
                     $('#close_usergrade').on('click', function () {
                         var usergrade = document.getElementById("user_grade");
-
                         if(usergrade.style.display==''){
                             usergrade.style.display = 'none';
                         }else (usergrade.style.display=='')
@@ -581,7 +554,6 @@
                             usergrade.style.display = 'none';
                         }
                     });
-
                     $('#skipPersoninfo').on('click', function () {
                         var $ctn = $('#menu');
                         $ctn.attr({
@@ -597,13 +569,11 @@
                         }).focus();
                         return false;
                     });
-
                     //my cgv 상단영역 skip처리
                     var isGoContainer = "True";
                     if (isGoContainer == "True") {
                         location.href = location.href + "#contaniner";
                     }
-
                 });
             })(jQuery);
             //]]>
@@ -629,7 +599,7 @@
 
 <!-- E 예매하기 및 TOP Fixed 버튼 -->
 
-<div th:replace="fragment/footer :: footer"></div>
+<div th:replace="user/fragment/footer :: footer-user"></div>
 </div>
 </body>
 </html>

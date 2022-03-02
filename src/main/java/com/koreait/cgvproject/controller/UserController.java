@@ -12,6 +12,4 @@ public class UserController {
     public String main(Model model){
         return "/user/main";
     }
-
-
 }

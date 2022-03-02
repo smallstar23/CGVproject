@@ -1,5 +1,7 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="ko" lang="ko">
+<!DOCTYPE html>
+<html lang="ko"
+      xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org/">
 <head>
     <title>support-faq</title>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
@@ -72,7 +74,7 @@
 <body class="">
 
 
-<div th:replace="fragment/header :: header"></div>
+<div th:replace="user/fragment/header :: header-user"></div>
 
 <div id="contaniner"  class=""><!-- 벽돌 배경이미지 사용 시 class="bg-bricks" 적용 / 배경이미지가 없을 경우 class 삭제  -->
 
@@ -88,12 +90,12 @@
                     고객센터 메뉴</h2>
                 <div class="snb">
                     <ul>
-                        <li class=''><a href="support.html">고객센터 메인<i></i></a></li>
+                        <li class=''><a href="./support.jsp">고객센터 메인<i></i></a></li>
                         <li class='on'><a href="./support-faq.jsp" title="현재선택">자주찾는 질문<i></i></a></li>
-                        <li class=''><a href="support-news.html">공지/뉴스<i></i></a></li>
-                        <li class=''><a href="support-qna.html">이메일 문의<i></i></a></li>
-                        <li class=''><a href="support-lost.html">분실물 문의<i></i></a></li>
-                        <li class=''><a href="support-lease.html">단체/ 대관 문의<i></i></a></li>
+                        <li class=''><a href="./support-news.jsp">공지/뉴스<i></i></a></li>
+                        <li class=''><a href="./support-qna.jsp">이메일 문의<i></i></a></li>
+                        <li class=''><a href="./support-lost.jsp">분실물 문의<i></i></a></li>
+                        <li class=''><a href="./support-lease.jsp">단체/ 대관 문의<i></i></a></li>
 
 
                     </ul>
@@ -128,12 +130,12 @@
                     <div class="btm_sup_list">
                         <ul class="line_sup_next">
                             <li class="stit">이전글</li>
-                            <li class="name"><a href="support-fap-detail-view.html" class="txt">포토플레이 취소 및 환불 규정은 어떻게 되나요?</a></li>
+                            <li class="name"><a href="./support-fap-detail-view.jsp" class="txt">포토플레이 취소 및 환불 규정은 어떻게 되나요?</a></li>
                             <li class="check_writ_area">등록일<span class="check_num">2021.03.09</span></li>
                         </ul>
                         <ul class="line_sup_prev">
                             <li class="stit">다음글</li>
-                            <li class="name"><a href="support-fap-detail-view.html" class="txt">인터넷 예매 후 예매 내용 확인은 어떻게 하나요?</a></li>
+                            <li class="name"><a href="./support-fap-detail-view.jsp" class="txt">인터넷 예매 후 예매 내용 확인은 어떻게 하나요?</a></li>
                             <li class="check_writ_area">등록일<span class="check_num">2018.11.09</span></li>
                         </ul>
                     </div>
@@ -150,12 +152,9 @@
 
     <script type="text/javascript">
         //<![CDATA[
-
         (function ($) {
             $(function () {
-
                 $('#btn_search').on('click', function () {
-
 //                if ($('#searchtext').val() == "") {
 //                    alert("검색어를 입력해 주세요.");
 //                    $('#searchtext').focus();
@@ -163,10 +162,8 @@
 //                } else {
 //
                     //                }
-
                     Search();
                 });
-
                 $('#searchtext').keypress(function(event){
                     if (event.which == 13) {
                         if ($('#searchtext').val() == "") {
@@ -174,35 +171,26 @@
                             $('#searchtext').focus();
                             return false;
                         } else {
-
                             Search();
                         }
                     }
-
-
-
                 });
-
                 function Search() {
                     location.href = "support-faq.jsp?searchtext=" + escape($("#searchtext").val());
                     return false;
                 }
-
                 $('.c_tab_wrap').children('.c_tab').children('li').on('click', function () {
                     //$('.c_tab_wrap').children('.c_tab').children('li').removeClass("on");
                     //$(this).addClass("on");
-
                     location.href = $(this).children('a').attr("href") + escape("");
                     return false;
                 });
-
                 $('.qu_txt').children('span').children('a').on("click", function () {
                     location.href = "support-faq.jsp?searchtext=" + escape($(this).html());
                     return false;
                 });
                 //SR 4020337 검색어 검색 시 검색결과에서 해당 검색어 붉은색으로 변경
                 var idx = 0;
-
                 if ($('#searchtext').val()) {
                     for (idx = 0; idx < 20; idx++) {
                         var search = $('#searchtext').val();
@@ -213,10 +201,8 @@
                         });
                     }
                 }
-
             });
         })(jQuery);
-
         //]]>
     </script>
 
@@ -237,7 +223,7 @@
 
 <!-- E 예매하기 및 TOP Fixed 버튼 -->
 
-<div th:replace="fragment/footer :: footer"></div>
+<div th:replace="fragment/header :: header"></div>
 </div>
 </body>
 </html>

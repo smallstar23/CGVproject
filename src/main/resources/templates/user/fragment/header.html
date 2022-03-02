@@ -3,357 +3,372 @@
       xmlns="http://www.w3.org/1999/xhtml"
       xmlns:th="http://www.thymeleaf.org/">
 <th:block th:fragment="header-user">
-<div class="skipnaiv" >
-    <a href="#contents" id="skipHeader">메인 컨텐츠 바로가기</a>
-</div>
-<div id="cgvwrap">
-    <!-- S Header
-              Description
-              - class 'nav' 에 class 'active' 추가시 서브메뉴노출
-              - class 'nav' 에 class 'fixed' 추가시 상단고정되며 스타일 변경됨
-           -->
-    <div class="header">
-        <!-- 서비스 메뉴 -->
+    <div class="skipnaiv">
+        <a href="#contents" id="skipHeader">메인 컨텐츠 바로가기</a>
+    </div>
 
-        <div class="header_content">
-            <div class="contents">
-                <h1>
-                    <a href="main.html"><img src="/img/logoRed.png" alt="CGV" /></a
-                    ><span>CULTUREPLEX</span>
-                </h1>
-                <ul class="memberInfo_wrap">
-                    <!-- Advertisement -->
+<!--
+    작성자 : 김영신
+    목적 : HTML5로 변환할시 헤더파일간 1mm 유격발생 문제 해소
+    방법 : 자바스크립트로 기존에 Rest방식으로 가지고 오던 css를 로컬파일로 경로변경
+-->
+    <script>
+        window.onload = function() {
+            const layoutCss = document.querySelector('[href="https://img.cgv.co.kr/R2014/css/layout.css"]');
+            layoutCss.href = '/css/layout.css';
+        }
+    </script>
+<!--    끝-->
 
-                    <div class="ad-partner">
-                        <a href="#none">
-                            <img src="/img/16417749747880.png" alt="현대M포인트" />
-                        </a>
-                    </div>
-                    <!-- /Advertisement -->
-                    <li>
-                        <a href="./login.html?">
-                            <img src="/img/loginPassword.png" alt="로그인" />
-                            <span>로그인</span></a
-                        >
-                    </li>
-                    <li>
-                        <a href="./join.html">
-                            <img src="/img/loginJoin.png" alt="회원가입" />
-                            <span>회원가입</span>
-                        </a>
-                    </li>
+    <div id="cgvwrap">
+        <!-- S Header
+                  Description
+                  - class 'nav' 에 class 'active' 추가시 서브메뉴노출
+                  - class 'nav' 에 class 'fixed' 추가시 상단고정되며 스타일 변경됨
+               -->
+        <div class="header">
+            <!-- 서비스 메뉴 -->
 
-                    <li>
-                        <a href="./mycgv.html">
-                            <img src="/img/loginMember.png" alt="MY CGV" />
-                            <span>MY CGV</span></a
-                        >
-                    </li>
+            <div class="header_content">
+                <div class="contents">
+                    <h1>
+                        <a href="main.html"><img src="/img/logoRed.png" alt="CGV"/></a
+                        ><span>CULTUREPLEX</span>
+                    </h1>
+                    <ul class="memberInfo_wrap">
+                        <!-- Advertisement -->
 
-                    <li>
-                        <a href="./support.html">
-                            <img src="/img/loginCustomer.png" alt="고객센터" />
-                            <span>고객센터</span></a
-                        >
-                    </li>
-                </ul>
-            </div>
-        </div>
-        <!-- 서비스 메뉴 -->
+                        <div class="ad-partner">
+                            <a href="#none">
+                                <img src="/img/16417749747880.png" alt="현대M포인트"/>
+                            </a>
+                        </div>
+                        <!-- /Advertisement -->
+                        <li>
+                            <a href="./login.html?">
+                                <img src="/img/loginPassword.png" alt="로그인"/>
+                                <span>로그인</span></a
+                            >
+                        </li>
+                        <li>
+                            <a href="./join.html">
+                                <img src="/img/loginJoin.png" alt="회원가입"/>
+                                <span>회원가입</span>
+                            </a>
+                        </li>
 
-        <!-- 서브 메뉴 -->
-        <script>
-            $(document).ready(function () {
-                $(".nav_menu > li > h2 > a").on({
-                    mouseenter: function (e) {
-                        var target = e.target;
-                        $(target)
-                            .parents(".nav_menu")
-                            .find(".nav_overMenu")
-                            .slideDown(function () {
-                                $(".nav").addClass("active");
-                            });
-                    },
-                    click: function (e) {
-                        var target = e.target;
-                        if (!$(".nav").hasClass("active")) {
-                            $(this).trigger("mouseenter");
-                        } else {
-                            $(".nav").trigger("mouseleave");
-                        }
-                    },
-                });
+                        <li>
+                            <a href="./mycgv.html">
+                                <img src="/img/loginMember.png" alt="MY CGV"/>
+                                <span>MY CGV</span></a
+                            >
+                        </li>
 
-                $(".nav").on({
-                    mouseleave: function (e) {
-                        $(this)
-                            .find(".nav_overMenu")
-                            .slideUp(200, function () {
-                                $(".nav").removeClass("active");
-                            });
-                    },
-                });
-
-                $(".totalSearch_wrap input[type=text]").on({
-                    focusin: function () {
-                        $(".totalSearch_wrap").addClass("active");
-                    },
-                });
-
-                $(".btn_totalSearchAutocomplete_close").on({
-                    click: function () {
-                        $(".totalSearch_wrap").removeClass("active");
-                    },
-                    focusout: function (e) {
-                        //     $('.totalSearch_wrap').removeClass("active");
-                    },
-                });
-
-                $(this).on({
-                    scroll: function (e) {
-                        /* S GNB fixed */
-                        var headerOffsetT = $(".header").offset().top;
-                        var headerOuterH = $(".header").outerHeight(true);
-                        var fixedHeaderPosY = headerOffsetT + headerOuterH;
-                        var scrollT = $(this).scrollTop();
-                        var scrollL = $(this).scrollLeft();
-
-                        if (scrollT >= fixedHeaderPosY) {
-                            $(".nav").addClass("fixed");
-                            $(".fixedBtn_wrap").addClass("topBtn");
-                            $("#footer-btn").show();
-                        } else {
-                            $(".nav").removeClass("fixed");
-                            $(".fixedBtn_wrap").removeClass("topBtn");
-                            $("#footer-btn").hide();
-                        }
-                        if (
-                            Math.round(scrollT) >=
-                            $(document).height() - $(window).height()
-                        ) {
-                            $("#footer-btn").hide();
-                        }
-
-                        /* S > GNB fixed 좌우 스크롤
-                                            Description
-                                            - GNB가 fixed 되었을때 좌우 스크롤 되게 처리
-                                            */
-                        if ($(".nav").hasClass("fixed")) {
-                            $(".nav").css({ left: -1 * scrollL });
-                        } else {
-                            $(".nav").css({ left: 0 });
-                        }
-                        /* E > GNB fixed 좌우 스크롤 */
-                        /* S GNB fixed */
-                    },
-                });
-
-                $(".btn_gotoTop").on({
-                    click: function () {
-                        $("html, body").stop().animate(
-                            {
-                                scrollTop: "0",
-                            },
-                            400
-                        );
-                    },
-                });
-
-                //통합검색 상단 검색 버튼
-                $("#btn_header_search").on("click", function () {
-                    if ($("#header_ad_keyword").val() != "")
-                        goSearch($("#header_ad_keyword"));
-                    //광고
-                    else goSearch($("#header_keyword"));
-
-                    return false;
-                });
-
-                //통합검색 검색어 입력창
-                $("#header_keyword").keyup(function (e) {
-                    if (e.keyCode == 13) goSearch($("#header_keyword"));
-                });
-            });
-
-            //통합검색
-            function goSearch($objKeyword) {
-                if ($objKeyword.val() == "") {
-                    alert("검색어를 입력해 주세요");
-                    $objKeyword.focus();
-                    return false;
-                }
-
-                location = "/search/?query=" + escape($objKeyword.val());
-            }
-            //비즈스프링 클릭로그
-            function setClickLog(title) {
-                // eval("try{trk_clickTrace('EVT', '" + title + "')}catch(_e){}");
-            }
-        </script>
-
-        <div class="nav" style="padding: 4px 0;">
-            <div class="contents">
-                <h1>
-                    <a href="/" tabindex="-1"
-                    ><img src="/img/logoWhite.png" alt="CGV"
-                    /></a>
-                </h1>
-                <ul class="nav_menu">
-                    <li>
-                        <h2><a href="./movies.html">영화</a></h2>
-                        <dl class="nav_overMenu">
-                            <dt>
-                                <h2><a href="./movies.html" tabindex="-1">영화</a></h2>
-                            </dt>
-                            <dd>
-                                <h3><a href="./movies.html">무비차트</a></h3>
-                            </dd>
-                        </dl>
-                    </li>
-                    <li>
-                        <h2><a href="./theaters.html">극장</a></h2>
-                        <dl class="nav_overMenu">
-                            <dt>
-                                <h2><a href="./theaters.html" tabindex="-1">극장</a></h2>
-                            </dt>
-                            <dd>
-                                <h3><a href="./theaters.html">CGV 극장</a></h3>
-                            </dd>
-                        </dl>
-                    </li>
-                    <li>
-                        <h2>
-                            <a href="./ticket.html"><strong>예매</strong></a>
-                        </h2>
-                        <dl class="nav_overMenu">
-                            <dt>
-                                <h2><a href="./ticket.html" tabindex="-1">예매</a></h2>
-                            </dt>
-                            <dd>
-                                <h3><a href="./ticket.html">빠른예매</a></h3>
-                            </dd>
-                        </dl>
-                    </li>
-                    <li>
-                        <h2><a href="./popcorn-store.html">스토어</a></h2>
-                        <dl class="nav_overMenu">
-                            <dt>
-                                <h2><a href="./popcorn-store.html" tabindex="-1">스토어</a></h2>
-                            </dt>
-
-                            <dd>
-                                <h3>
-                                    <a href="./store-category.html?CategoryIdx=2">영화관람권</a>
-                                </h3>
-                            </dd>
-
-                            <dd>
-                                <h3>
-                                    <a href="./store-category.html?CategoryIdx=3">기프트카드</a>
-                                </h3>
-                            </dd>
-
-                            <dd>
-                                <h3><a href="./store-category.html?CategoryIdx=4">콤보</a></h3>
-                            </dd>
-
-                            <dd>
-                                <h3><a href="./store-category.html?CategoryIdx=5">팝콘</a></h3>
-                            </dd>
-
-                            <dd>
-                                <h3><a href="./store-category.html?CategoryIdx=6">음료</a></h3>
-                            </dd>
-
-                            <dd>
-                                <h3><a href="./store-category.html?CategoryIdx=7">스낵</a></h3>
-                            </dd>
-
-                            <dd>
-                                <h3>
-                                    <a href="./store-category.html?CategoryIdx=8">플레이존</a>
-                                </h3>
-                            </dd>
-                        </dl>
-                    </li>
-                    <li>
-                        <h2><a href="./defaultNew.html?mCode=001">이벤트</a></h2>
-                        <dl class="nav_overMenu">
-                            <dt>
-                                <h2>
-                                    <a href="./defaultNew.html?mCode=001" tabindex="-1">이벤트</a>
-                                </h2>
-                            </dt>
-                            <dd>
-                                <h3><a href="./defaultNew.html?mCode=001">SPECIAL</a></h3>
-                            </dd>
-                            <dd>
-                                <h3><a href="./defaultNew.html?mCode=004">영화/예매</a></h3>
-                            </dd>
-                            <dd>
-                                <h3><a href="./defaultNew.html?mCode=008">멤버십/CLUB</a></h3>
-                            </dd>
-                            <dd>
-                                <h3><a href="./defaultNew.html?mCode=005">CGV 극장별</a></h3>
-                            </dd>
-                            <dd>
-                                <h3><a href="./defaultNew.html?mCode=006">제휴할인</a></h3>
-                            </dd>
-                            <dd>
-                                <h3><a href="./result_list.html">당첨자 발표</a></h3>
-                            </dd>
-                            <dd>
-                                <h3><a href="./end-list.html">종료된 이벤트</a></h3>
-                            </dd>
-                        </dl>
-                    </li>
-                    <li>
-                        <h2><a href="./discount.html">혜택</a></h2>
-                        <dl class="nav_overMenu">
-                            <dt>
-                                <h2><a href="./discount.html" tabindex="-1">혜택</a></h2>
-                            </dt>
-                            <dd>
-                                <h3><a href="./discount.html">CGV 할인정보</a></h3>
-                            </dd>
-                            <dd>
-                                <h3><a href="./ClubService.html">CLUB 서비스</a></h3>
-                            </dd>
-                        </dl>
-                    </li>
-                </ul>
-                <div class="totalSearch_wrap">
-                    <label for="totalSearch">
-                        <input type="text" id="header_keyword" value="" />
-                        <input
-                                type="hidden"
-                                id="header_ad_keyword"
-                                name="header_ad_keyword"
-                        />
-                    </label>
-                    <button type="button" class="btn_totalSearch" id="btn_header_search">
-                        검색
-                    </button>
-                    <iframe
-                            src="//ad.cgv.co.kr/NetInsight/html/CGV/CGV_201401/main@Search_txt"
-                            width="0"
-                            height="0"
-                            title=""
-                            frameborder="0"
-                            scrolling="no"
-                            marginwidth="0"
-                            marginheight="0"
-                            allowfullscreen="allowfullscreen"
-                            mozallowfullscreen="mozallowfullscreen"
-                            msallowfullscreen="msallowfullscreen"
-                            oallowfullscreen="oallowfullscreen"
-                            webkitallowfullscreen="webkitallowfullscreen"
-                    ></iframe>
+                        <li>
+                            <a href="./support.html">
+                                <img src="/img/loginCustomer.png" alt="고객센터"/>
+                                <span>고객센터</span></a
+                            >
+                        </li>
+                    </ul>
                 </div>
             </div>
+            <!-- 서비스 메뉴 -->
+
+            <!-- 서브 메뉴 -->
+            <script>
+                $(document).ready(function () {
+                    $(".nav_menu > li > h2 > a").on({
+                        mouseenter: function (e) {
+                            var target = e.target;
+                            $(target)
+                                .parents(".nav_menu")
+                                .find(".nav_overMenu")
+                                .slideDown(function () {
+                                    $(".nav").addClass("active");
+                                });
+                        },
+                        click: function (e) {
+                            var target = e.target;
+                            if (!$(".nav").hasClass("active")) {
+                                $(this).trigger("mouseenter");
+                            } else {
+                                $(".nav").trigger("mouseleave");
+                            }
+                        },
+                    });
+
+                    $(".nav").on({
+                        mouseleave: function (e) {
+                            $(this)
+                                .find(".nav_overMenu")
+                                .slideUp(200, function () {
+                                    $(".nav").removeClass("active");
+                                });
+                        },
+                    });
+
+                    $(".totalSearch_wrap input[type=text]").on({
+                        focusin: function () {
+                            $(".totalSearch_wrap").addClass("active");
+                        },
+                    });
+
+                    $(".btn_totalSearchAutocomplete_close").on({
+                        click: function () {
+                            $(".totalSearch_wrap").removeClass("active");
+                        },
+                        focusout: function (e) {
+                            //     $('.totalSearch_wrap').removeClass("active");
+                        },
+                    });
+
+                    $(this).on({
+                        scroll: function (e) {
+                            /* S GNB fixed */
+                            var headerOffsetT = $(".header").offset().top;
+                            var headerOuterH = $(".header").outerHeight(true);
+                            var fixedHeaderPosY = headerOffsetT + headerOuterH;
+                            var scrollT = $(this).scrollTop();
+                            var scrollL = $(this).scrollLeft();
+
+                            if (scrollT >= fixedHeaderPosY) {
+                                $(".nav").addClass("fixed");
+                                $(".fixedBtn_wrap").addClass("topBtn");
+                                $("#footer-btn").show();
+                            } else {
+                                $(".nav").removeClass("fixed");
+                                $(".fixedBtn_wrap").removeClass("topBtn");
+                                $("#footer-btn").hide();
+                            }
+                            if (
+                                Math.round(scrollT) >=
+                                $(document).height() - $(window).height()
+                            ) {
+                                $("#footer-btn").hide();
+                            }
+
+                            /* S > GNB fixed 좌우 스크롤
+                                                Description
+                                                - GNB가 fixed 되었을때 좌우 스크롤 되게 처리
+                                                */
+                            if ($(".nav").hasClass("fixed")) {
+                                $(".nav").css({left: -1 * scrollL});
+                            } else {
+                                $(".nav").css({left: 0});
+                            }
+                            /* E > GNB fixed 좌우 스크롤 */
+                            /* S GNB fixed */
+                        },
+                    });
+
+                    $(".btn_gotoTop").on({
+                        click: function () {
+                            $("html, body").stop().animate(
+                                {
+                                    scrollTop: "0",
+                                },
+                                400
+                            );
+                        },
+                    });
+
+                    //통합검색 상단 검색 버튼
+                    $("#btn_header_search").on("click", function () {
+                        if ($("#header_ad_keyword").val() != "")
+                            goSearch($("#header_ad_keyword"));
+                        //광고
+                        else goSearch($("#header_keyword"));
+
+                        return false;
+                    });
+
+                    //통합검색 검색어 입력창
+                    $("#header_keyword").keyup(function (e) {
+                        if (e.keyCode == 13) goSearch($("#header_keyword"));
+                    });
+                });
+
+                //통합검색
+                function goSearch($objKeyword) {
+                    if ($objKeyword.val() == "") {
+                        alert("검색어를 입력해 주세요");
+                        $objKeyword.focus();
+                        return false;
+                    }
+
+                    location = "/search/?query=" + escape($objKeyword.val());
+                }
+
+                //비즈스프링 클릭로그
+                function setClickLog(title) {
+                    // eval("try{trk_clickTrace('EVT', '" + title + "')}catch(_e){}");
+                }
+            </script>
+
+            <div class="nav">
+                <div class="contents">
+                    <h1>
+                        <a href="/" tabindex="-1"
+                        ><img src="/img/logoWhite.png" alt="CGV"
+                        /></a>
+                    </h1>
+                    <ul class="nav_menu">
+                        <li>
+                            <h2><a href="./movies.html">영화</a></h2>
+                            <dl class="nav_overMenu">
+                                <dt>
+                                    <h2><a href="./movies.html" tabindex="-1">영화</a></h2>
+                                </dt>
+                                <dd>
+                                    <h3><a href="./movies.html">무비차트</a></h3>
+                                </dd>
+                            </dl>
+                        </li>
+                        <li>
+                            <h2><a href="./theaters.html">극장</a></h2>
+                            <dl class="nav_overMenu">
+                                <dt>
+                                    <h2><a href="./theaters.html" tabindex="-1">극장</a></h2>
+                                </dt>
+                                <dd>
+                                    <h3><a href="./theaters.html">CGV 극장</a></h3>
+                                </dd>
+                            </dl>
+                        </li>
+                        <li>
+                            <h2>
+                                <a href="./ticket.html"><strong>예매</strong></a>
+                            </h2>
+                            <dl class="nav_overMenu">
+                                <dt>
+                                    <h2><a href="./ticket.html" tabindex="-1">예매</a></h2>
+                                </dt>
+                                <dd>
+                                    <h3><a href="./ticket.html">빠른예매</a></h3>
+                                </dd>
+                            </dl>
+                        </li>
+                        <li>
+                            <h2><a href="./popcorn-store.html">스토어</a></h2>
+                            <dl class="nav_overMenu">
+                                <dt>
+                                    <h2><a href="./popcorn-store.html" tabindex="-1">스토어</a></h2>
+                                </dt>
+
+                                <dd>
+                                    <h3>
+                                        <a href="./store-category.html?CategoryIdx=2">영화관람권</a>
+                                    </h3>
+                                </dd>
+
+                                <dd>
+                                    <h3>
+                                        <a href="./store-category.html?CategoryIdx=3">기프트카드</a>
+                                    </h3>
+                                </dd>
+
+                                <dd>
+                                    <h3><a href="./store-category.html?CategoryIdx=4">콤보</a></h3>
+                                </dd>
+
+                                <dd>
+                                    <h3><a href="./store-category.html?CategoryIdx=5">팝콘</a></h3>
+                                </dd>
+
+                                <dd>
+                                    <h3><a href="./store-category.html?CategoryIdx=6">음료</a></h3>
+                                </dd>
+
+                                <dd>
+                                    <h3><a href="./store-category.html?CategoryIdx=7">스낵</a></h3>
+                                </dd>
+
+                                <dd>
+                                    <h3>
+                                        <a href="./store-category.html?CategoryIdx=8">플레이존</a>
+                                    </h3>
+                                </dd>
+                            </dl>
+                        </li>
+                        <li>
+                            <h2><a href="./defaultNew.html?mCode=001">이벤트</a></h2>
+                            <dl class="nav_overMenu">
+                                <dt>
+                                    <h2>
+                                        <a href="./defaultNew.html?mCode=001" tabindex="-1">이벤트</a>
+                                    </h2>
+                                </dt>
+                                <dd>
+                                    <h3><a href="./defaultNew.html?mCode=001">SPECIAL</a></h3>
+                                </dd>
+                                <dd>
+                                    <h3><a href="./defaultNew.html?mCode=004">영화/예매</a></h3>
+                                </dd>
+                                <dd>
+                                    <h3><a href="./defaultNew.html?mCode=008">멤버십/CLUB</a></h3>
+                                </dd>
+                                <dd>
+                                    <h3><a href="./defaultNew.html?mCode=005">CGV 극장별</a></h3>
+                                </dd>
+                                <dd>
+                                    <h3><a href="./defaultNew.html?mCode=006">제휴할인</a></h3>
+                                </dd>
+                                <dd>
+                                    <h3><a href="./result_list.html">당첨자 발표</a></h3>
+                                </dd>
+                                <dd>
+                                    <h3><a href="./end-list.html">종료된 이벤트</a></h3>
+                                </dd>
+                            </dl>
+                        </li>
+                        <li>
+                            <h2><a href="./discount.html">혜택</a></h2>
+                            <dl class="nav_overMenu">
+                                <dt>
+                                    <h2><a href="./discount.html" tabindex="-1">혜택</a></h2>
+                                </dt>
+                                <dd>
+                                    <h3><a href="./discount.html">CGV 할인정보</a></h3>
+                                </dd>
+                                <dd>
+                                    <h3><a href="./ClubService.html">CLUB 서비스</a></h3>
+                                </dd>
+                            </dl>
+                        </li>
+                    </ul>
+                    <div class="totalSearch_wrap">
+                        <label for="totalSearch">
+                            <input type="text" id="header_keyword" value=""/>
+                            <input
+                                    type="hidden"
+                                    id="header_ad_keyword"
+                                    name="header_ad_keyword"
+                            />
+                        </label>
+                        <button type="button" class="btn_totalSearch" id="btn_header_search">
+                            검색
+                        </button>
+                        <iframe
+                                src="//ad.cgv.co.kr/NetInsight/html/CGV/CGV_201401/main@Search_txt"
+                                width="0"
+                                height="0"
+                                title=""
+                                frameborder="0"
+                                scrolling="no"
+                                marginwidth="0"
+                                marginheight="0"
+                                allowfullscreen="allowfullscreen"
+                                mozallowfullscreen="mozallowfullscreen"
+                                msallowfullscreen="msallowfullscreen"
+                                oallowfullscreen="oallowfullscreen"
+                                webkitallowfullscreen="webkitallowfullscreen"
+                        ></iframe>
+                    </div>
+                </div>
+            </div>
+            <!-- 서브 메뉴 -->
         </div>
-        <!-- 서브 메뉴 -->
+        <!-- E Header -->
     </div>
-    <!-- E Header -->
-</div>
 </th:block>
