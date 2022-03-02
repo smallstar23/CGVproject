@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html lang="ko"  xmlns:th="http://www.thymeleaf.org/">
 <head>
     <title>discount</title>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
@@ -173,7 +173,7 @@
 </head>
 <body class="">
 
-<div th:replace="fragment/header :: header"></div>
+<div th:replace="user/fragment/header :: header"></div>
 
 <!-- Contaniner -->
 <div id="contaniner"  class=""><!-- 벽돌 배경이미지 사용 시 class="bg-bricks" 적용 / 배경이미지가 없을 경우 class 삭제  -->
@@ -206,7 +206,7 @@
         </div>
         <div class="cgvSaleInfo">
             <div class="cgvSaleInfo_topArea">
-                <a href="#"><img src="/img/event_topbanner.png"  width="980" height="100"  alt="페이머니카드 집사혜택" ></a>
+                <a href="#"><img src="./css/event_topbanner.png"  width="980" height="100"  alt="페이머니카드 집사혜택" ></a>
             </div>
             <div class="eventGalleryBox">
                 <div class="slidesTop">
@@ -264,7 +264,7 @@
                     <div class="eventAdbox">
                         <ul>
                             <li class="img_ad">
-                                <a href="#"><img src="/img/event_sidebanner.png"  width="215" height="310"  alt="페이머니카드 집사혜택"></a>
+                                <a href="#"><img src="./css/event_sidebanner.png"  width="215" height="310"  alt="페이머니카드 집사혜택"></a>
                             </li>
                         </ul>
                     </div>
@@ -275,17 +275,6 @@
         <div class="cgvSaleTab_wrap">
             <ul class="cgvSaleTab_titleWrap" style="width: 97%;">
 
-                <%--  <%
-                request.setCharacterEncoding("UTF-8");
-                String Page = request.getParameter("page");
-                String m1 = "", m2="",m3="",m4="",m5="";
-                if(Page.equals("001")) m1 = "active";
-                if(Page.equals("002")) m2 = "active";
-                if(Page.equals("003")) m3 = "active";
-                if(Page.equals("004")) m4 = "active";
-                if(Page.equals("005")) m5 = "active";
-
-                %> --%>
                 <li class="active"><a href="discount.jsp">hot</a></li>
                 <li class=""><a href="discount.jsp">통신사</a></li>
                 <li class=""><a href="discount.jsp">신용카드</a></li>
@@ -296,39 +285,39 @@
 
                 <ul class="cgvSaleTab_Contents" >
 
-                    <li style="width: 31%"><a id="tile_0" href="./event01.jsp"><div class="evt-thumb"><img src="/img/event_botbanner1.png" alt="CGV X 우리카드 PLCC 출시!" width="314" height="196">
+                    <li style="width: 31%"><a id="tile_0" href="./event01.jsp"><div class="evt-thumb"><img src="./css/event_botbanner1.png" alt="CGV X 우리카드 PLCC 출시!" width="314" height="196">
                     </div><strong class="cgvSaleTxt">CGV X 우리카드 PLCC 출시!</strong><span class="cgvSalePeriod">2022.01.01~2022.12.31</span></a>
                     </li>
 
-                    <li style="width: 31%"><a id="tile_1" href="./event02.jsp"><div class="evt-thumb"><img src="/img/event_botbanner2.png" alt="2022년 KT 멤버쉽 혜택!" width="314" height="196">
+                    <li style="width: 31%"><a id="tile_1" href="./event02.jsp"><div class="evt-thumb"><img src="./css/event_botbanner2.png" alt="2022년 KT 멤버쉽 혜택!" width="314" height="196">
                     </div><strong class="cgvSaleTxt">2022년 KT 멤버쉽 혜택!</strong><span class="cgvSalePeriod">2022.01.01~2022.12.31</span></a>
                     </li>
 
-                    <li style="width: 31%"><a id="tile_2" href="./event03.jsp"><div class="evt-thumb"><img src="/img/event_botbanner3.png" alt="LGU+ '영화콕'" width="314" height="196">
+                    <li style="width: 31%"><a id="tile_2" href="./event03.jsp"><div class="evt-thumb"><img src="./css/event_botbanner3.png" alt="LGU+ '영화콕'" width="314" height="196">
                     </div><strong class="cgvSaleTxt">LGU+ '영화콕'</strong><span class="cgvSalePeriod">2022.01.01~2022.12.31</span></a>
                     </li>
 
-                    <li style="width: 31%"><a id="tile_3" href="./event03.jsp"><div class="evt-thumb"><img src="/img/event_botbanner3.png" alt="LGU+ '영화콕'" width="314" height="196">
+                    <li style="width: 31%"><a id="tile_3" href="./event03.jsp"><div class="evt-thumb"><img src="./css/event_botbanner3.png" alt="LGU+ '영화콕'" width="314" height="196">
                     </div><strong class="cgvSaleTxt">LGU+ '영화콕'</strong><span class="cgvSalePeriod">2022.01.01~2022.12.31</span></a>
                     </li>
 
-                    <li style="width: 31%"><a id="tile_4" href="./event03.jsp"><div class="evt-thumb"><img src="/img/event_botbanner3.png" alt="LGU+ '영화콕'" width="314" height="196">
+                    <li style="width: 31%"><a id="tile_4" href="./event03.jsp"><div class="evt-thumb"><img src="./css/event_botbanner3.png" alt="LGU+ '영화콕'" width="314" height="196">
                     </div><strong class="cgvSaleTxt">LGU+ '영화콕'</strong><span class="cgvSalePeriod">2022.01.01~2022.12.31</span></a>
                     </li>
 
-                    <li style="width: 31%"><a id="tile_5" href="./event03.jsp"><div class="evt-thumb"><img src="/img/event_botbanner3.png" alt="LGU+ '영화콕'" width="314" height="196">
+                    <li style="width: 31%"><a id="tile_5" href="./event03.jsp"><div class="evt-thumb"><img src="./css/event_botbanner3.png" alt="LGU+ '영화콕'" width="314" height="196">
                     </div><strong class="cgvSaleTxt">LGU+ '영화콕'</strong><span class="cgvSalePeriod">2022.01.01~2022.12.31</span></a>
                     </li>
 
-                    <li style="width: 31%"><a id="tile_6" href="./event03.jsp"><div class="evt-thumb"><img src="/img/event_botbanner3.png" alt="LGU+ '영화콕'" width="314" height="196">
+                    <li style="width: 31%"><a id="tile_6" href="./event03.jsp"><div class="evt-thumb"><img src="./css/event_botbanner3.png" alt="LGU+ '영화콕'" width="314" height="196">
                     </div><strong class="cgvSaleTxt">LGU+ '영화콕'</strong><span class="cgvSalePeriod">2022.01.01~2022.12.31</span></a>
                     </li>
 
-                    <li style="width: 31%"><a id="tile_7" href="./event03.jsp"><div class="evt-thumb"><img src="/img/event_botbanner3.png" alt="LGU+ '영화콕'" width="314" height="196">
+                    <li style="width: 31%"><a id="tile_7" href="./event03.jsp"><div class="evt-thumb"><img src="./css/event_botbanner3.png" alt="LGU+ '영화콕'" width="314" height="196">
                     </div><strong class="cgvSaleTxt">LGU+ '영화콕'</strong><span class="cgvSalePeriod">2022.01.01~2022.12.31</span></a>
                     </li>
 
-                    <li style="width: 31%"><a id="tile_8" href="./event03.jsp"><div class="evt-thumb"><img src="/img/event_botbanner3.png" alt="LGU+ '영화콕'" width="314" height="196">
+                    <li style="width: 31%"><a id="tile_8" href="./event03.jsp"><div class="evt-thumb"><img src="./css/event_botbanner3.png" alt="LGU+ '영화콕'" width="314" height="196">
                     </div><strong class="cgvSaleTxt">LGU+ '영화콕'</strong><span class="cgvSalePeriod">2022.01.01~2022.12.31</span></a>
                     </li>
 
@@ -392,7 +381,7 @@
 </div>
 <!-- E Contaniner -->
 
-<div th:replace="fragment/footer :: footer"></div>
+<div th:replace="user/fragment/footer :: footer"></div>
 
 </div>
 
