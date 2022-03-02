@@ -69,6 +69,18 @@ console.log("open!")
     })
 
 
+    // still-cut 부분 열고닫기, 팝업창 슬라이드
 
+    let stillCutImgNum=$($(".imgclick")).length;
+    for(let i=0; i<=stillCutImgNum-1; i++){
+    $($(".imgclick")[i]).click(function(){
+        $("#stillcutPhoto").css("display","block")
+        $($(".item")[i]).css("display","block")
+
+    })
+}
+    $("#stillcutSlideClose").click(function(){
+        $("#stillcutPhoto").css("display","none")
+    })
 
 });

@@ -67,113 +67,8 @@
     <script type="text/javascript" src="https://img.cgv.co.kr/R2014/js/swiper.min.js" ></script>
     <link rel="stylesheet" media="all" type="text/css" href="https://img.cgv.co.kr/R2014/css/swiper-bundle.min.css" />
     <![endif]-->
+    <script src="/js/detail-view.js"></script>
 
-
-    <!--/각페이지 Header End-->
-    <script type="text/javascript">
-        //<![CDATA[
-        _TRK_CP = "/홈";
-
-        app.config('staticDomain', 'https://img.cgv.co.kr/R2014/')
-            .config('imageDomain', 'https://img.cgv.co.kr')
-            .config('isLogin', 'True');
-
-
-        // AD FLOAT
-        // 암호화 할 문자열과 키값(상수값)을 매개변수로 받는다.
-        function EncryptAD(str, key) {
-            output = new String;
-            Temp = new Array();
-            TextSize = str.length;
-            for (i = 0; i < TextSize; i++) {
-                // key 값을 원하는 대로 연산을 한다
-                output += String.fromCharCode(str.charCodeAt(i) + parseInt(key) + 123 + i);
-            }
-            return output;
-        }
-        // 복호화
-        // 암호화 된 문자열과 키값(상수값)을 매개변수로 받는다.
-        function DecryptAD(str, key) {
-            output = new String;
-            Temp = new Array();
-            TextSize = str.length;
-            for (i = 0; i < TextSize; i++) {
-                // 암호화시 사용한 연산과 같아야 한다.
-                output += String.fromCharCode(str.charCodeAt(i) - (parseInt(key) + 123 + i));
-            }
-
-            return output;
-        }
-
-        function getCookieVal(offset) {
-            var endstr = document.cookie.indexOf(";", offset);
-            if (endstr == -1) endstr = document.cookie.length;
-            return unescape(document.cookie.substring(offset, endstr));
-        }
-        function GetCookieAd(name) {
-            var arg = name + "=";
-            var alen = arg.length;
-            var clen = document.cookie.length;
-            var i = 0;
-            while (i < clen) { //while open
-                var j = i + alen;
-                if (document.cookie.substring(i, j) == arg)
-                    return getCookieVal(j);
-                i = document.cookie.indexOf(" ", i) + 1;
-                if (i == 0) break;
-            } //while close
-            return null;
-        }
-        function setCookieAD(name, value, expiredays) {
-            var todayDate = new Date();
-            todayDate.setTime(todayDate.getTime() + (expiredays * 24 * 60 * 60 * 1000));
-            document.cookie = name + "=" + escape(value) + "; expires=" + todayDate.toGMTString() + "; path=/; domain=cgv.co.kr";
-        }
-        function CloseAD() {
-            var AdUrl = window.location.href;
-            var ArrAdUrl = AdUrl.split("/");
-
-            var CurCookieName = 'CgvPopAd-' + ArrAdUrl[3];
-            var CurCookieUrl = GetCookieAd(CurCookieName);
-            var CookieUrl = ArrAdUrl[3];
-
-            CookieUrl = EncryptAD(CookieUrl, "15442280");
-            setCookieAD(CurCookieName, CookieUrl, '1');
-            $(document).find('#ad_float1').hide();
-        }
-        function OpenAD() {
-            var AdUrl = window.location.href;
-            var ArrAdUrl = AdUrl.split("/");
-            var CookieUrl = ArrAdUrl[3];
-            var CurCookieName = 'CgvPopAd-' + ArrAdUrl[3];
-            var CurCookieUrl = GetCookieAd(CurCookieName);
-
-            if (CurCookieUrl == null) {
-                CurCookieUrl = "";
-            }
-            else {
-                CurCookieUrl = DecryptAD(CurCookieUrl, "15442280");
-            }
-
-            if (CurCookieUrl.indexOf(CookieUrl) != -1) {
-                $(document).find('#ad_float1').hide();
-            }
-
-            //section.cgv.co.kr 매거진 체크
-            var magazineckurl = GetCookieAd("CgvPopAd-magazine");
-            if (magazineckurl != null) {
-                var magazineck = DecryptAD(magazineckurl, "15442280");
-                if (magazineck != null && magazineck == "magazine") {
-                    //값이있는경우 표시하지않음
-                    $(document).find('#ad_float1').hide();
-                }
-            }
-        }
-
-
-
-        //]]>
-    </script>
 
 
 
@@ -272,79 +167,6 @@
                         </dl>
                     </div>
 
-
-
-                    <script>
-
-
-                        window.onload=function(){
-                            let btnClose=document.getElementsByClassName('btn-close');
-                            let count=document.getElementsByClassName('link-count');
-                            let wishlist=document.getElementsByClassName('wishlist');
-
-                            count[0].addEventListener('click', fnwishlist);
-                            function fnwishlist(){
-                                wishlist[0].style.display='block';
-
-                            };
-                            btnClose[0].addEventListener('click', wlclose);
-                            function wlclose(){
-                                wishlist[0].style.display='none';
-                            };
-
-
-                            let stillcutPhoto= document.getElementById('stillcutPhoto');
-                            let imgclick=document.getElementsByClassName('imgclick');
-                            let item=document.getElementsByClassName('item');
-                            let btn=document.getElementById('btn-next');
-                            let btnprev=document.getElementById('btn-prev');
-                            for(let i=0; i&lt;=imgclick.length-1;i++) {
-                                imgclick[i].addEventListener('click', function(){
-
-                                    btnClose[1].addEventListener('click', function () {
-                                        stillcutPhoto.style.display = 'none';
-                                        item[i].style.display = 'none';
-                                    })
-                                    console.log('사진 클릭!');
-                                    console.log(i);
-                                    stillcutPhoto.style.display = 'block';
-                                    item[i].style.display = 'block';
-
-                                    btnprev.addEventListener('click', prev);
-                                    btn.addEventListener('click', next);
-
-                                    function next() {
-                                        console.log('next() 실행입니다.');
-                                        console.log(i);
-                                        if (i >= imgclick.length - 1) {
-                                            item[imgclick.length - 1].style.display = 'none';
-                                            item[0].style.display = 'block';
-                                            i = 1;
-                                        }
-                                        item[i].style.display = 'none';
-                                        item[i + 1].style.display = 'block';
-                                        i++;
-                                    }
-
-                                    function prev() {
-                                        console.log('prev() 실행입니다.');
-                                        console.log(i);
-                                        item[i].style.display = 'none';
-                                        item[i - 1].style.display = 'block';
-                                        i--;
-
-
-                                    }
-                                })
-
-                            }
-
-
-
-                        }
-
-
-                    </script>
                     <span class="like">
         <!-- 2020.05.07 영화찜하기 -> 프리에그 선택 변경(조회하여 노출) -->
 		<a class="link-count" href="javascript:void (0);"><i class="sprite_preegg btn_md default"></i>프리에그</a>
@@ -388,7 +210,7 @@
                             <button type="submit" id="btnSave" class="round inred"><span>확인</span></button>
                         </div>
                     </div>
-                    <button type="button" class="btn-close">프리에그 팝업 닫기</button>
+                    <button type="button" class="btn-close" id="wishlistClose">프리에그 팝업 닫기</button>
                 </div>
             </div>
             <!-- //위시리스트 팝업 -->
@@ -494,7 +316,7 @@
                     <button type="button" class="btn-prev" id="btn-prev">이전 페이지 이동</button>
                     <button type="button" class="btn-next" id="btn-next">다음 페이지 이동</button>
                 </div>
-                <button class="btn-close">[팝업제목] 닫기</button>
+                <button class="btn-close" id="stillcutSlideClose">[팝업제목] 닫기</button>
             </div>
         </div>
 
@@ -515,8 +337,6 @@
 
 <!-- S 예매하기 및 TOP Fixed 버튼 -->
 <div class="fixedBtn_wrap">
-
-    <a href="ticket.jsp" class="btn_fixedTicketing">예매하기</a>
 
     <a href="#none" class="btn_gotoTop"><img src="https://img.cgv.co.kr/R2014/images/common/btn/gotoTop.png" alt="최상단으로 이동" /></a>
 </div>
