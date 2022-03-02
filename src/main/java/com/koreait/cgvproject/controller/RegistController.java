@@ -3,6 +3,7 @@ package com.koreait.cgvproject.controller;
 import com.koreait.cgvproject.dto.Member_info_DTO;
 import com.koreait.cgvproject.entity.MemberinfoEntity;
 import com.koreait.cgvproject.repository.MemberinfoRepository;
+
 import com.koreait.cgvproject.service.MemberinfoService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,6 +20,7 @@ public class RegistController {
 
     @Autowired // 스프링 부트가 미리 생성해놓은 객체를 가져다가 자동으로 연결
     private MemberinfoRepository memberinfoRepository;
+
     @Autowired
     private MemberinfoService memberinfoService;
 
@@ -26,6 +28,7 @@ public class RegistController {
     public String agreement(){
         return "user/regist/agreement";
     }
+
 
 //    @GetMapping("/user/finish_do")
 //    public String finish_do(Model model, Long id){
@@ -37,6 +40,7 @@ public class RegistController {
 
     @GetMapping("/user/finish_do")
     public String finish_do(){
+
 
         return "user/regist/finish_do";
     }
@@ -54,6 +58,7 @@ public class RegistController {
     public String createMemberinfo(Member_info_DTO memberinfoDTO){
 
         memberinfoService.regist(memberinfoDTO);
+
 
         return "user/regist/finish_do";
     }

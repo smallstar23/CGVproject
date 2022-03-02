@@ -1,5 +1,7 @@
 <!DOCTYPE html>
-<html lang="ko">
+<html lang="ko"
+      xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org/">
 <head>
     <meta charset="utf-8"/>
     <title>회원가입 완료│CGV</title>
@@ -154,7 +156,7 @@
     <!--//contens-->
 
     <!-- footer -->
-    <%@include file = "./footer.jsp"%>
+    <div th:replace="user/fragment/footer :: footer-user"></div>
     <!-- //footer -->
 </div>
 <!--script 영역-->
