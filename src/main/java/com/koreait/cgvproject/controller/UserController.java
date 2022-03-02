@@ -20,6 +20,4 @@ public class UserController {
     public ModelAndView detailview(){
         return new ModelAndView("/user/movies/detail-view");
     }
-
-
 }
