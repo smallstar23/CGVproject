@@ -361,7 +361,7 @@
                     <div class="box-round-wgray">
                         <div class="box-round-inner">
                             <div class="inner-contents-log">
-                                <a href="mycgv-movielog-expected.html">
+                                <a href="/user/mycgv-movielog-expected">
                                     <em>0</em>
                                     <strong>기대되는 영화</strong>
                                 </a>
@@ -371,7 +371,7 @@
                     <div class="box-round-on">
                         <div class="box-round-inner">
                             <div class="inner-contents-log">
-                                <a href="mycgv-movielog-watched.html">
+                                <a href="/user/mycgv-movielog-watched">
                                     <em>6</em>
                                     <strong>내가 본 영화</strong>
                                 </a>
@@ -381,7 +381,7 @@
                     <div class="box-round-wgray">
                         <div class="box-round-inner">
                             <div class="inner-contents-log">
-                                <a href="mycgv-movielog-mylist.html">
+                                <a href="/user/mycgv-movielog-mylist">
                                     <em>0</em>
                                     <strong>내가 쓴 평점</strong>
                                 </a>
@@ -396,7 +396,7 @@
                             $(function () {
 
                                 $('#go_edit_page').on('click', function () {
-                                    var win = window.open("./mycgv-popupedit-profile.jsp", "profile", "left=0,top=o,width=445,height=440,toolbar=no,scrollbars=no");
+                                    var win = window.open("/user/mycgv-popupedit-profile", "profile", "left=0,top=o,width=445,height=440,toolbar=no,scrollbars=no");
                                     win.focus();
                                     return false;
                                 });
@@ -2218,18 +2218,6 @@
     </div>
     <!-- /Contents Area -->
 </div>
-<!-- E Contaniner -->
-
-<!-- S 예매하기 및 TOP Fixed 버튼 -->
-<div class="fixedBtn_wrap">
-
-    <a href="/ticket/" class="btn_fixedTicketing">예매하기</a>
-
-    <a href="#none" class="btn_gotoTop"><img src="https://img.cgv.co.kr/R2014/images/common/btn/gotoTop.png" alt="최상단으로 이동" /></a>
-</div>
-
-<!-- E 예매하기 및 TOP Fixed 버튼 -->
-
 <div th:replace="user/fragment/footer :: footer-user"></div>
 </div>
 
