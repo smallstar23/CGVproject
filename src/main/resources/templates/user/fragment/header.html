@@ -6,19 +6,18 @@
     <div class="skipnaiv">
         <a href="#contents" id="skipHeader">메인 컨텐츠 바로가기</a>
     </div>
-
-    <!--
-        작성자 : 김영신
-        목적 : HTML5로 변환할시 헤더파일간 1mm 유격발생 문제 해소
-        방법 : 자바스크립트로 기존에 Rest방식으로 가지고 오던 css를 로컬파일로 경로변경
-    -->
+<!--
+    작성자 : 김영신
+    목적 : HTML5로 변환할시 헤더파일간 1mm 유격발생 문제 해소
+    방법 : 자바스크립트로 기존에 Rest방식으로 가지고 오던 css를 로컬파일로 경로변경
+-->
     <script>
         window.onload = function() {
             const layoutCss = document.querySelector('[href="https://img.cgv.co.kr/R2014/css/layout.css"]');
             layoutCss.href = '/css/layout.css';
         }
     </script>
-    <!--    끝-->
+<!--    끝-->
 
     <div id="cgvwrap">
         <!-- S Header
@@ -250,40 +249,45 @@
                             </dl>
                         </li>
                         <li>
-                            <h2><a href="/culture-event/popcorn-store">스토어</a></h2>
+                            <h2><a href="./popcorn-store.html">스토어</a></h2>
                             <dl class="nav_overMenu">
                                 <dt>
-                                    <h2><a href="/culture-event/popcorn-store">스토어</a></h2>
+                                    <h2><a href="./popcorn-store.html" tabindex="-1">스토어</a></h2>
                                 </dt>
 
                                 <dd>
                                     <h3>
-                                        <a href="/culture-event/popcorn-store/store-category?cno=2">영화관람권</a>
+                                        <a href="./store-category.html?CategoryIdx=2">영화관람권</a>
                                     </h3>
                                 </dd>
 
                                 <dd>
                                     <h3>
-                                        <a href="/culture-event/popcorn-store/store-category?cno=3">기프트카드</a>
+                                        <a href="./store-category.html?CategoryIdx=3">기프트카드</a>
                                     </h3>
                                 </dd>
 
                                 <dd>
-                                    <h3><a href="/culture-event/popcorn-store/store-category?cno=4">콤보</a></h3>
+                                    <h3><a href="./store-category.html?CategoryIdx=4">콤보</a></h3>
                                 </dd>
 
                                 <dd>
-                                    <h3><a href="/culture-event/popcorn-store/store-category?cno=5">팝콘</a></h3>
+                                    <h3><a href="./store-category.html?CategoryIdx=5">팝콘</a></h3>
                                 </dd>
 
                                 <dd>
-                                    <h3><a href="/culture-event/popcorn-store/store-category?cno=6">음료</a></h3>
+                                    <h3><a href="./store-category.html?CategoryIdx=6">음료</a></h3>
                                 </dd>
 
                                 <dd>
-                                    <h3><a href="/culture-event/popcorn-store/store-category?cno=7">스낵</a></h3>
+                                    <h3><a href="./store-category.html?CategoryIdx=7">스낵</a></h3>
                                 </dd>
 
+                                <dd>
+                                    <h3>
+                                        <a href="./store-category.html?CategoryIdx=8">플레이존</a>
+                                    </h3>
+                                </dd>
                             </dl>
                         </li>
                         <li>
