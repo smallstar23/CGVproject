@@ -1,4 +1,7 @@
 <!DOCTYPE html>
+<html lang="ko"
+      xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org/">
 <html lang="ko">
 <meta charset="utf-8"/>
 <title>회원정보 입력 | CGV</title>
@@ -21,10 +24,10 @@
 <script src="/cjmweb/js/form.validate.js"></script>
 
 
-<link rel="stylesheet" href="./css/base.css" >
-<link rel='stylesheet' href='./css/participate.css' >
-<link rel='stylesheet' href='./css/reset.css' >
-<link rel='stylesheet' href='./css/layout.css' >
+<link rel="stylesheet" href="/css/base.css" >
+<link rel='stylesheet' href='/css/participate.css' >
+<link rel='stylesheet' href='/css/reset.css' >
+<link rel='stylesheet' href='/css/layout.css' >
 
 <script>
     // google analytics 사용안함 처리했을 때 ga function이 없어서 에러나던 부분 처리.
@@ -88,6 +91,13 @@
 <div id="bodyWrap">
 
     <!--header-->
+
+
+
+
+
+
+
 
     <form method="post" id="getCoopForm" name="getCoopForm">
         <input type="hidden" name="get_coopco_cd" id="get_coopco_cd" value="7010">
@@ -165,41 +175,38 @@
 
     <!--header-->
     <!--header-->
-    <div class="skipnaiv">
-        <a href="#contents" id="skipHeader">메인 컨텐츠 바로가기</a>
-    </div>
     <div id="cgvwrap">
         <div class="header_content">
             <div class="contents" style="width:980px; margin:0 auto;">
-                <h1><a href="./main.jsp"><img src="./css/logoRed.png"
+                <h1><a href="./main.jsp"><img src="/img/logoRed.png"
                                               alt="CGV" /></a><span>CULTUREPLEX</span></h1>
                 <ul class="memberInfo_wrap">
                     <div class="ad-partner">
                         <a href="#none">
-                            <img src="./css/16417749747880.png"
+                            <img src="/img/16417749747880.png"
                                  alt="현대M포인트" />
                         </a>
                     </div>
                     <li>
                         <a href="./login.jsp?">
-                            <img src="./css/loginPassword.png" alt="로그인" />
+                            <img src="/img/loginPassword.png" alt="로그인" />
                             <span>로그인</span></a>
                     </li>
                     <li>
                         <a href="./join.jsp">
-                            <img src="./css/loginJoin.png" alt="회원가입" />
+                            <img src="/img/loginJoin.png" alt="회원가입" />
                             <span>회원가입</span>
                         </a>
                     </li>
                     <li>
                         <a href="./mycgv.jsp">
-                            <img src="./css/loginMember.png" alt="MY CGV" />
+                            <img src="/img/loginMember.png" alt="MY CGV" />
                             <span>MY CGV</span></a>
                     </li>
 
                     <li>
-                        <a href="./support.jsp">
-                            <img src="./css/loginCustomer.png" alt="고객센터" />
+                        <a href="../support/support.html">
+                            <img src="/img/loginCustomer.png" alt="고객센터" />
                             <span>고객센터</span></a>
                     </li>
                 </ul>
@@ -258,7 +265,7 @@
                         </p> -->
 
                         <div class="member_info">
-                            <form id="form1" method="post" action="/member_info/create">
+                            <form id="form1" method="post" action="/user/finish_do">
                                 <input type="hidden" id="coopco_cd"     name="coopco_cd"     value="7010">
                                 <input type="hidden" id="brnd_cd"       name="brnd_cd"       value="1000">
                                 <input type="hidden" id="mcht_no"       name="mcht_no"       value="1000">
@@ -460,7 +467,7 @@
                                 </div>
                                 <div class="btn_sec">
                                     <button type="button" class="btn" onclick="javascript:goCancel();">취소</button>
-                                    <button type="submit" style="height: 50px; width: 50px"></button>
+                                    <button type="submit" style="height: 50px; width: 50px">서브밋</button>
                                     <button type="button" class="btn btn_em" onclick="location.href='./finish_do.jsp'">등록</button>
                                 </div>
                             </form>
