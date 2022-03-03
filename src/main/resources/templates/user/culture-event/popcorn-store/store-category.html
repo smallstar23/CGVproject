@@ -149,9 +149,7 @@
         <script></script>
         <!-- E 카테고리 메뉴 & 받은선물/장바구니 -->
         <div class="category_product_list_wrap">
-            <strong class="category_product_list_title">"영화관람권"<span>영화,
-						모두에게 즐거운 경험</span>
-            </strong>
+            <strong class="category_product_list_title"></strong>
             <ul class="com_list_style">
                 <li class=""><a
                         href="./product-detail.jsp?GG_NO=100253"
@@ -279,11 +277,37 @@
 
 </body>
 
+<!--
+    작성자 : 김영신
+    카테고리 메뉴 active 설정
+    cno에 따른 타이틀 변경 설정
+-->
 <script>
-    const currentURL = String(location.href);
-    const urlParams = new URL(currentURL).searchParams;
-    console.log(urlParams.get("cno"));
-    alert(urlParams.get("cno"));
+    const cno = new URL(String(location.href)).searchParams.get("cno");
+    const categoryList = document.getElementsByName('categorymenu');
+    categoryList.forEach(item =>{
+
+        if(item.classList.contains('active'))   item.classList.remove('active');
+        if(item.id === 'cm'+ cno)                      item.classList.add('active');
+    });
+    if(cno==='1') categoryList[0].classList.add('active');
+
+    const cnameList = ['영화관람권','영화관람권','기프트카드','콤보','팝콘','음료','스낵'];
+    const ctitleList = [
+        '영화, 모두에게 즐거운 경험',
+        '영화, 모두에게 즐거운 경험',
+        '센스있는 선물의 정석',
+        '맛있으면 0칼로리, 아는 맛이 제일 맛있어요',
+        '고소, 달콤부터 고메팝콘까지, 안먹으면 서운해요' ,
+        '탄산음료부터 에이드까지, 마시는 즐거움',
+        '출출할땐 다양한 스낵이 정답이죠']
+
+    const cname = cnameList[cno-1];
+    const titleSpan = ctitleList[cno-1];
+
+    //타이틀 변경
+    document.getElementsByClassName('category_product_list_title')[0].innerHTML = `"${cname}"<span>${titleSpan}</span>`;
+
 </script>
 
 </html>
