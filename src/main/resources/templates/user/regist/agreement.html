@@ -178,7 +178,7 @@
     <div id="cgvwrap">
         <div class="header_content">
             <div class="contents" style="width:980px; margin:0 auto;">
-                <h1><a href="./main.jsp"><img src="/img/logoRed.png"
+                <h1><a th:href="@{user-main}"><img src="/img/logoRed.png"
                                               alt="CGV" /></a><span>CULTUREPLEX</span></h1>
                 <ul class="memberInfo_wrap">
                     <div class="ad-partner">
@@ -188,24 +188,24 @@
                         </a>
                     </div>
                     <li>
-                        <a href="./login.jsp?">
+                        <a th:href="@{login}">
                             <img src="/img/loginPassword.png" alt="로그인" />
                             <span>로그인</span></a>
                     </li>
                     <li>
-                        <a href="./join.jsp">
+                        <a th:href="@{join}">
                             <img src="/img/loginJoin.png" alt="회원가입" />
                             <span>회원가입</span>
                         </a>
                     </li>
                     <li>
-                        <a href="./mycgv.jsp">
+                        <a th:href="@{mycgv}">
                             <img src="/img/loginMember.png" alt="MY CGV" />
                             <span>MY CGV</span></a>
                     </li>
 
                     <li>
-                        <a href="./support.jsp">
+                        <a th:href="@{support}">
                             <img src="/img/loginCustomer.png" alt="고객센터" />
                             <span>고객센터</span></a>
                     </li>
@@ -270,22 +270,8 @@
             <div id="contents">
                 <!--title-->
 
-                <div class="location_wrap">
-
-
-
-                    <div class="location"><a href="https://www.cjone.com/cjmweb/main.do" class="home"><span class="haze">홈</span></a><a href="https://www.cjone.com/cjmweb/join.do" class="now"><span>회원가입</span></a></div>
-
-
-                </div>
-
                 <div class="cont_header">
-
-
-
                     <h1 class="h1_tit">회원가입</h1>
-
-
                     <p class="h_desc">라이프스타일 멤버십 CGV! 외식, 쇼핑, 엔터테인먼트 서비스를 한 장의 카드로 즐기세요~</p>
                 </div>
                 <!--title-->
@@ -482,8 +468,8 @@
                                 <!-- //약관 -->
                             </div>
                             <div class="btn_sec col2">
-                                <button type="button" class="btn" id="btn_prev">취소</button>
-                                <button type="button" class="btn btn_em" id="btn_agree" onclick="location.href='./member_info.jsp'">확인</button>
+                                <button type="button" class="btn" id="btn_prev" onclick="location.href='login'">취소</button>
+                                <button type="button" class="btn btn_em" id="btn_agree" onclick="location.href='./member_info'">확인</button>
                             </div>
                         </div>
                     </div>

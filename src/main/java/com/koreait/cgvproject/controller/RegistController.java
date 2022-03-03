@@ -41,7 +41,6 @@ public class RegistController {
     @GetMapping("/user/finish_do")
     public String finish_do(){
 
-
         return "user/regist/finish_do";
     }
 
@@ -49,6 +48,7 @@ public class RegistController {
     public String join(){
         return "user/regist/join";
     }
+
     @GetMapping("/user/member_info")
     public String member_info(){
         return "user/regist/member_info";
@@ -58,7 +58,6 @@ public class RegistController {
     public String createMemberinfo(Member_info_DTO memberinfoDTO){
 
         memberinfoService.regist(memberinfoDTO);
-
 
         return "user/regist/finish_do";
     }

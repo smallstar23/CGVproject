@@ -188,24 +188,24 @@
                         </a>
                     </div>
                     <li>
-                        <a href="./login.jsp?">
+                        <a th:href="@{login}">
                             <img src="/img/loginPassword.png" alt="로그인" />
                             <span>로그인</span></a>
                     </li>
                     <li>
-                        <a href="./join.jsp">
+                        <a th:href="@{join}">
                             <img src="/img/loginJoin.png" alt="회원가입" />
                             <span>회원가입</span>
                         </a>
                     </li>
                     <li>
-                        <a href="./mycgv.jsp">
+                        <a th:href="@{mycgv}">
                             <img src="/img/loginMember.png" alt="MY CGV" />
                             <span>MY CGV</span></a>
                     </li>
 
                     <li>
-                        <a href="../support/support.html">
+                        <a th:href="@{support}">
                             <img src="/img/loginCustomer.png" alt="고객센터" />
                             <span>고객센터</span></a>
                     </li>
@@ -265,8 +265,8 @@
                         </p> -->
 
                         <div class="member_info">
-
-                            <form th:object="${form}" method="post" th:action="/user/finish_do">
+                            <form method="post" action="/user/finish_do">
+<!--                            <form th:object="${form}" method="post" th:action="/user/finish_do">-->
 
                                 <input type="hidden" id="coopco_cd"     name="coopco_cd"     value="7010">
                                 <input type="hidden" id="brnd_cd"       name="brnd_cd"       value="1000">
@@ -341,8 +341,8 @@
                                             <td style="text-align:left">
                                                 <div class="input_group">
 
-                                                    <span class="input_txt w250"><input type="text" th:field="${userid}" class="text" title="사용 할 영문 아이디 명 입력" placeholder="아이디를 입력해주세요." name="userid" id="mbr_id" maxlength="12" value=""><!-- 에러시 .error 클래스 추가 --></span>
-
+                                                    <span class="input_txt w250"><input type="text" class="text" title="사용 할 영문 아이디 명 입력" placeholder="아이디를 입력해주세요." name="userid" id="mbr_id" maxlength="12" value=""><!-- 에러시 .error 클래스 추가 --></span>
+<!--                                                    <span class="input_txt w250"><input type="text" th:field="${userid}" class="text" title="사용 할 영문 아이디 명 입력" placeholder="아이디를 입력해주세요." name="userid" id="mbr_id" maxlength="12" value="">&lt;!&ndash; 에러시 .error 클래스 추가 &ndash;&gt;</span>-->
                                                     <button type="button" class="btn btn_search" onclick="javascript:idCheck();">중복확인</button>
                                                     <p class="msg_info em hide" id="alert_mbr_id"></p>
                                                 </div>

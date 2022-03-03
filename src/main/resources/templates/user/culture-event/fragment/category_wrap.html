@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org/">
+
+<div th:fragment="category_wrap" class='category_wrap'>
+    <div class='category_contents_wrap'>
+        <ul class='category_content'>
+            <li id='cm2' name='categorymenu' class=''><a href='#' onclick="fnCategoryData('2');">영화관람권</a>
+            </li>
+            <li id='cm3' name='categorymenu' class=''><a href='#' onclick="fnCategoryData('3');">기프트카드</a>
+            </li>
+            <li id='cm4' name='categorymenu' class=''><a href='#'
+                                                         onclick="fnCategoryData('4');">콤보</a></li>
+            <li id='cm5' name='categorymenu' class=''><a href='#'
+                                                         onclick="fnCategoryData('5');">팝콘</a></li>
+            <li id='cm6' name='categorymenu' class=''><a href='#'
+                                                         onclick="fnCategoryData('6');">음료</a></li>
+            <li id='cm7' name='categorymenu' class=''><a href='#'
+                                                         onclick="fnCategoryData('7');">스낵</a></li>
+        </ul>
+        <ul class='cart_content'>
+            <li><a href='/user/mycgv-popcorn-store' onclick='app.goLogin();return false;'>내
+                기프트콘</a><span id='giftconcnt'>0</span></li>
+            <li><a href='/culture-event/popcorn-store/user-cart' onclick='app.goLogin();return false;'>장바구니</a><span
+                    id='cartviewcnt'>0</span></li>
+        </ul>
+    </div>
+</div>
