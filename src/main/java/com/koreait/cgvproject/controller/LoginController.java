@@ -16,14 +16,14 @@ public class LoginController {
         return "user/login/login-agreement";
     }
 
-    @GetMapping("/user/login-guset-hometicket")
+    @GetMapping("/user/login-guest-hometicket")
     public String login_guest_hometicket(){
         return "user/login/login-guest-hometicket";
     }
 
     @GetMapping("/user/login-guest-login")
     public String login_guest_login(){
-        return "user/login/login-quest-login";
+        return "user/login/login-guest-login";
     }
 
     @GetMapping("/user/login-guest-reserve")
