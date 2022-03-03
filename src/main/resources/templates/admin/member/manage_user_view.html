@@ -11,13 +11,7 @@
   <link href="css/styles.css" rel="stylesheet" />
   <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/js/all.min.js" crossorigin="anonymous"></script>
   <script src="//code.jquery.com/jquery-1.11.0.min.js"></script>
-  <script type="text/javascript">
-    $(document).ready( function() {
 
-      $("#headers").load("header.jsp");
-
-    });
-  </script>
 </head>
 <body class="sb-nav-fixed" >
 <nav class="sb-topnav navbar navbar-expand navbar-dark bg-dark">
@@ -47,7 +41,9 @@
 </nav>
 
 
-<div id="headers"></div>
+<!-- header -->
+<div th:replace="admin/fragment/header :: header"></div>
+<!-- header 끝 -->
 
 <div id="layoutSidenav_content" style="margin-top:70px; margin-left: 240px">
   <main>
@@ -149,7 +145,7 @@
 
         </div>
         <div style="width:50%;height:auto; text-align: center; margin:0 auto; " >
-          <input onclick="location.href='./member-lookup.jsp'" class="btn btn-default" type="button" value="목록">
+          <input th:onclick="|location.href='@{/member-lookup}'|" class="btn btn-default" type="button" value="목록">
           <input class="btn btn-default" type="submit" value="수정">
         </div>
         <div style="width:50%;height:auto; text-align: center; margin:0 auto; " >
