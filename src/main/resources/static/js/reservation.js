@@ -2,13 +2,7 @@
 
 $(document).ready(function() {
 
-$(".btn_ticket_print").on({
-    click: function(){
-        window.open("/user/ticket/home_ticket","ticket print","width=200,height:500,top:100,left=100");
-    }
-})
-
-    // 예매가이드 팝업
+    // step 1. 예매가이드 팝업
     let guide=document.getElementsByClassName('button-guide');
     let guideClose=document.getElementsByClassName('guideClose');
     let popup =document.getElementsByClassName('popup_guide');
@@ -16,7 +10,6 @@ $(".btn_ticket_print").on({
 
 
     guide[0].addEventListener('click', function(){
-        console.log("가이드!");
         popup[0].style.display='block';
         blackscreen[0].style.display='block';
 
@@ -37,6 +30,13 @@ $(".btn_ticket_print").on({
 
     for(let i=0;i<=movie_click.length-1;i++){
         movie_click[i].addEventListener('click',function(){
+            for(let j=0; j<=movie_click.length-1; j++){
+            //영화 클릭시 블랙 변경
+            this.classList.add("selected");
+            movie_click[j].classList.remove("selected");
+            }
+
+            // 영화명 전달
             let movieName=document.getElementsByClassName('movieName')[i].getAttribute('title');
             console.log("영화 선택!");
             console.log(movieName);
@@ -44,6 +44,8 @@ $(".btn_ticket_print").on({
             placeholder[1].style.display='none';
             let movieSel=document.getElementById("movie_sel");
             movieSel.innerText=movieName;
+
+            // 포스터넣기
             if(movieName=="극장판주술회전0"){
                 let moviePoster=document.getElementById("movie_poster");
                 moviePoster.style.display='block';
@@ -87,6 +89,7 @@ $(".btn_ticket_print").on({
             placeholder[3].style.display='none';
             layerPopup[3].style.display='block';
             layerPopup[4].style.display='block';
+            blackscreen[0].style.display="block";
         }
 
     });
@@ -94,9 +97,11 @@ $(".btn_ticket_print").on({
     // 레이어팝업 닫기
     btn_ok[3].addEventListener('click',function(){
         layerPopup[3].style.display='none';
+        blackscreen[0].style.display="none";
     })
     btn_ok[4].addEventListener('click',function(){
         layerPopup[4].style.display='none';
+
     })
 
     btnLeft.addEventListener('click',function(){
@@ -109,19 +114,34 @@ $(".btn_ticket_print").on({
 
     });
 
-    // 인원 선택시 활성화 (어른)
+
+// 영화 스크롤 내려가기
+    $(".movieScroll").scroll(function(){
+        console.log("스크롤!")
+        let topY=$(this).scrollTop();
+        $(".Movieslider-y").css("top",topY/2);
+
+    })
+// 날짜 스크롤 내려가기
+    $(".dateScroll").scroll(function(){
+        let topY=$(this).scrollTop();
+        $(".dateScroller-y").css("top",topY/2);
+
+    })
+
+    // step2 인원 선택시 활성화 (어른)
     let adultNum=0;
     let adult_click=document.getElementsByClassName("adult_click");
+
     for(let i=0; i<=adult_click.length-1;i++){
         adult_click[i].addEventListener("click",function(){
             for(let j=0; j<=adult_click.length-1;j++){
                 adult_click[j].className="adult_click";
                 let dimmed=document.getElementById("dimmed");
-                dimmed.className="section section-seat";
-                this.className="selected adult_click";
-                adultNum=i;
+                dimmed.classList.remove("dimmed");
+                this.classList.add("selected");
                 if(i==0){
-                    dimmed.className='section section-seat dimmed';
+                    dimmed.classList.add("dimmed");
                     if(youthNum!=0){
                         dimmed.className='section section-seat';
                     }
@@ -139,13 +159,12 @@ $(".btn_ticket_print").on({
     for(let i=0; i<=youth_click.length-1;i++){
         youth_click[i].addEventListener("click",function(){
             for(let j=0; j<=youth_click.length-1;j++){
-                youth_click[j].className="adult_click";
+                youth_click[j].className="youth_click";
                 let dimmed=document.getElementById("dimmed");
-                dimmed.className="section section-seat";
-                this.className="selected youth_click";
-                youthNum=i;
+                dimmed.classList.remove("dimmed");
+                this.classList.add("selected");
                 if(i==0){
-                    dimmed.className='section section-seat dimmed';
+                    dimmed.classList.add("dimmed");
                     if(adultNum!=0){
                         dimmed.className='section section-seat';
                     }
@@ -157,12 +176,40 @@ $(".btn_ticket_print").on({
 
 
 
-    //일단 모든 좌석 거리두기, 예약 삭제
-    let seat=document.getElementsByClassName("seat");
-    for(let i=0; i<=seat.length-1;i++){
-        console.log(i);
-        seat[i].className="seat";
-    }
+    //step 3 간편결제 -> 카카오페이 설정시 활성화
 
+    $("#last_pay_radio3").on({
+        click: function (){
+            console.log("카카오페이!!");
+            $("#payCredit").css("display","none");
+            $("#smartPayCon").css("display","block").on({
+                click:function(){
+
+                    $(".kakaopayDiv").css("display","block");
+
+                }
+            })
+
+
+        }
+    })
+    // 포인트 사용(닫기 아직안됨!!!)
+    $(".clickPoint").on({
+        click: function(){
+            if($(".payPoint").show()){
+                $(".payPoint").hide();
+            }
+            console.log("포인트!!");
+            $(".payPoint").show();
+            }
+    })
+
+
+    // step 4 마지막 출력 버튼 클릭시 활성화됨
+    $(".btn_ticket_print").on({
+        click: function(){
+            window.open("/user/ticket/home_ticket","ticket print","width=200,height:500,top:100,left=100");
+        }
+    })
 
 })
