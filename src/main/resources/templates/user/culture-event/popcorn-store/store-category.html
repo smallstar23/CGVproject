@@ -114,6 +114,18 @@
 
 <div th:replace="user/fragment/header :: header-user"></div>
 
+<script>
+    // 헤더 크기 조절
+    $(document).ready(function () {
+        $.giftstore_fixObj(this, $('.category_contents_wrap'), $('.category_content'), $('.giftstore_logo'));
+        //영역 문제로 gift_store 클래스 추가
+        $("#contents").addClass("gift_store");
+        if (cname != "") {
+            $(".sect-linemap .sect-bcrumb .last").html("");
+        }
+    });
+    // 헤더 크기 조절 끝
+</script>
 <!-- Contaniner -->
 <div id="contaniner" class="">
     <!-- 벽돌 배경이미지 사용 시 class="bg-bricks" 적용 / 배경이미지가 없을 경우 class 삭제  -->
