@@ -179,15 +179,12 @@
                     고객센터 메뉴</h2>
                 <div class="snb">
                     <ul>
-                        <li class=''><a href="./support.jsp">고객센터 메인<i></i></a></li>
-                        <li class=''><a href="./support-faq.jsp" title="현재선택">자주찾는 질문<i></i></a></li>
-                        <li class=''><a href="./support-news.jsp">공지/뉴스<i></i></a></li>
-                        <li class=''><a href="./support-qna.jsp">이메일 문의<i></i></a></li>
-                        <li class='on'><a href="./support-lost.jsp">분실물 문의<i></i></a></li>
-                        <li class=''><a href="./support-lease.jsp">단체/ 대관 문의<i></i></a></li>
-
-
-
+                        <li class='on'><a href="/user/support">고객센터 메인<i></i></a></li>
+                        <li class=''><a href="/user/support-faq" title="현재선택">자주찾는 질문<i></i></a></li>
+                        <li class=''><a href="/user/support-news">공지/뉴스<i></i></a></li>
+                        <li class=''><a href="/user/support-qna">이메일 문의<i></i></a></li>
+                        <li class=''><a href="/user/support-lost">분실물 문의<i></i></a></li>
+                        <li class=''><a href="/user/support-lease">단체/ 대관 문의<i></i></a></li>
                     </ul>
                 </div>
                 <div class="ad-area">
@@ -233,7 +230,7 @@
                                     <tr class="check_info">
                                         <td colspan="4">
                                             <strong>※  문의에 대한 빠른 답변을 위해 회원 가입 시 입력하신 연락처를 확인해주세요.</strong>
-                                            <a href="./mycgv-myinfo-edit-myinfo.jsp" class="round gray on" title="수정" target="_blank"><span>수정</span></a>
+                                            <a href="/user/mycgv-myinfo-edit-myinfo" class="round gray on" title="수정" target="_blank"><span>수정</span></a>
                                         </td>
                                     </tr>
                                     <tr>
@@ -307,7 +304,7 @@
                                 <label for="inp_check" class="inp_checkbox"><input type="checkbox" id="inp_check" name="inp_check" /> 동의합니다.</label>
                             </div>
                             <div class="box-btn">
-                                <a style="margin-left:5px" href="./support.jsp" class="round gray"><span style="padding:0 14px; height: 22px">취소</span></a>
+                                <a style="margin-left:5px" href="/user/support" class="round gray"><span style="padding:0 14px; height: 22px">취소</span></a>
                                 <button style="width:80px" class="round inred" type="submit" id="lostsubmit" ><span>등록하기</span></button>
 
                             </div>
@@ -568,19 +565,6 @@
 </div>
 <!-- /Contents Area -->
 </div>
-<!-- E Contaniner -->
-
-<!-- S 예매하기 및 TOP Fixed 버튼 -->
-<div class="fixedBtn_wrap">
-
-    <a href="/ticket/" class="btn_fixedTicketing">예매하기</a>
-
-    <a href="#none" class="btn_gotoTop"><img src="https://img.cgv.co.kr/R2014/images/common/btn/gotoTop.png" alt="최상단으로 이동" /></a>
-</div>
-
-<!-- E 예매하기 및 TOP Fixed 버튼 -->
-
-
 <div th:replace="user/fragment/footer :: footer-user"></div>
 </div>
 </body>

@@ -33,7 +33,7 @@ public class SupportController {
 
     @GetMapping("/user/support-news")
     public String support_news(){
-        return "/user/support/news";
+        return "/user/support/support-news";
     }
 
     @GetMapping("/user/support-news-detail-view")
