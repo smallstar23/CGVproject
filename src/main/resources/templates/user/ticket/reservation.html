@@ -76,7 +76,7 @@
 
 
     <!--/각페이지 Header End-->
-<script src="/js/reservation.js"></script>
+
 </head>
 <body class="">
 
@@ -171,7 +171,7 @@
 
                                     </div>
                                     <div class="movie-list nano has-scrollbar has-scrollbar-y" id="movie_list" style="top:30px">
-                                        <ul class="content scroll-y" onscroll="movieSectionScrollEvent();" tabindex="-1" style="right: -15px;"><div class="selectbox-movie-type checkedBD" style="width: auto; top: 0px; display: none;">
+                                        <ul class="content scroll-y movieScroll" tabindex="-1" style="right: -15px;"><div class="selectbox-movie-type checkedBD" style="width: auto; top: 0px; display: none;">
                                             <a href="#" onclick="closeSelectboxMovieType();return false;" class="btn-close">영화속성 레이어 닫기</a>
                                             <ul>
                                                 <li id="sbmt_all" class="GROUP1 ALL selected"><a data-type="ALL" href="#" onclick="SelectboxMovieTypeClickListener(event);return false;">전체</a></li>
@@ -211,7 +211,7 @@
                                             <li class="rating-15 movieClick" data-index="18" movie_cd_group="20028870" movie_idx="85634"><a class="movieName" href="#" onclick="return false;" title="시크릿카운터" alt="시크릿카운터"><span class="icon">&nbsp;</span><span class="text">시크릿카운터</span><span class="sreader"></span></a></li>
                                             <li class="rating-15 movieClick" data-index="19" movie_cd_group="20028736" movie_idx="85581"><a class="movieName" href="#" onclick="return false;" title="안테벨룸" alt="안테벨룸"><span class="icon">&nbsp;</span><span class="text">안테벨룸</span><span class="sreader"></span></a></li>
                                             <li class="rating-15 movieClick" data-index="20" movie_cd_group="20028469" movie_idx="85469"><a class="movieName" href="#" onclick="return false;" title="드라이브마이카" alt="드라이브마이카"><span class="icon">&nbsp;</span><span class="text">드라이브마이카</span><span class="sreader"></span></a></li><li class="rating-12" data-index="21" movie_cd_group="20028685" movie_idx="85560"><a href="#" onclick="return false;" title="만년이지나도변하지않는게있어" alt="만년이지나도변하지않는게있어"><span class="icon">&nbsp;</span><span class="text">만년이지나도변하지않는게있어</span><span class="sreader"></span></a></li><li class="rating-all" data-index="22" movie_cd_group="20028861" movie_idx="85628"><a href="#" onclick="return false;" title="극장판안녕자두야:제주도의비밀" alt="극장판안녕자두야:제주도의비밀"><span class="icon">&nbsp;</span><span class="text">극장판안녕자두야:제주도의비밀</span><span class="sreader"></span></a></li><li class="rating-15" data-index="23" movie_cd_group="20028464" movie_idx="85464"><a href="#" onclick="return false;" title="어나더라운드" alt="어나더라운드"><span class="icon">&nbsp;</span><span class="text">어나더라운드</span><span class="sreader"></span></a></li><li class="rating-12" data-index="24" movie_cd_group="20028925" movie_idx="85648"><a href="#" onclick="return false;" title="전투왕" alt="전투왕"><span class="icon">&nbsp;</span><span class="text">전투왕</span><span class="sreader"></span></a></li><li class="rating-15" data-index="25" movie_cd_group="20028889" movie_idx="85640"><a href="#" onclick="return false;" title="뮤지컬이퀄(LIVE)" alt="뮤지컬이퀄(LIVE)"><span class="icon">&nbsp;</span><span class="text">뮤지컬이퀄(LIVE)</span><span class="sreader"></span></a></li><li class="rating-15" data-index="26" movie_cd_group="20028694" movie_idx="85567"><a href="#" onclick="return false;" title="하우스오브구찌" alt="하우스오브구찌"><span class="icon">&nbsp;</span><span class="text">하우스오브구찌</span><span class="sreader"></span></a></li><li class="rating-all" data-index="27" movie_cd_group="20028748" movie_idx="85588"><a href="#" onclick="return false;" title="미싱타는여자들" alt="미싱타는여자들"><span class="icon">&nbsp;</span><span class="text">미싱타는여자들</span><span class="sreader"></span></a></li><li class="rating-all" data-index="28" movie_cd_group="20028733" movie_idx="85579"><a href="#" onclick="return false;" title="밀라노두오모콘서트" alt="밀라노두오모콘서트"><span class="icon">&nbsp;</span><span class="text">밀라노두오모콘서트</span><span class="sreader"></span></a></li><li class="rating-15" data-index="29" movie_cd_group="20022183" movie_idx="82987"><a href="#" onclick="return false;" title="타오르는여인의초상" alt="타오르는여인의초상"><span class="icon">&nbsp;</span><span class="text">타오르는여인의초상</span><span class="sreader"></span></a></li><li class="rating-15" data-index="30" movie_cd_group="20028811" movie_idx="85607"><a href="#" onclick="return false;" title="더마더" alt="더마더"><span class="icon">&nbsp;</span><span class="text">더마더</span><span class="sreader"></span></a></li><li class="rating-all" data-index="31" movie_cd_group="20028923" movie_idx="85646"><a href="#" onclick="return false;" title="[아트&amp;다이닝]나폴리,예술과정열을말하다" alt="[아트&amp;다이닝]나폴리,예술과정열을말하다"><span class="icon">&nbsp;</span><span class="text">[아트&amp;다이닝]나폴리,예술과정열을말하다</span><span class="sreader"></span></a></li><li class="rating-18" data-index="32" movie_cd_group="20009174" movie_idx="78723"><a href="#" onclick="return false;" title="캐롤" alt="캐롤"><span class="icon">&nbsp;</span><span class="text">캐롤</span><span class="sreader"></span></a></li><li class="rating-15" data-index="33" movie_cd_group="20028787" movie_idx="85600"><a href="#" onclick="return false;" title="임신한나무와도깨비" alt="임신한나무와도깨비"><span class="icon">&nbsp;</span><span class="text">임신한나무와도깨비</span><span class="sreader"></span></a></li><li class="rating-all" data-index="34" movie_cd_group="20028907" movie_idx="85643"><a href="#" onclick="return false;" title="대한민국대통령" alt="대한민국대통령"><span class="icon">&nbsp;</span><span class="text">대한민국대통령</span><span class="sreader"></span></a></li><li class="rating-12" data-index="35" movie_cd_group="20028689" movie_idx="85562"><a href="#" onclick="return false;" title="프랑스" alt="프랑스"><span class="icon">&nbsp;</span><span class="text">프랑스</span><span class="sreader"></span></a></li><li class="rating-15" data-index="36" movie_cd_group="20028865" movie_idx="85631"><a href="#" onclick="return false;" title="온세상이하얗다" alt="온세상이하얗다"><span class="icon">&nbsp;</span><span class="text">온세상이하얗다</span><span class="sreader"></span></a></li><li class="rating-all" data-index="37" movie_cd_group="20028975" movie_idx="85665"><a href="#" onclick="return false;" title="[인사이터XCGV]기어코살아남는전투형셀프브랜딩" alt="[인사이터XCGV]기어코살아남는전투형셀프브랜딩"><span class="icon">&nbsp;</span><span class="text">[인사이터XCGV]기어코살아남는전투형셀프브랜딩</span><span class="sreader"></span></a></li><li class="rating-12" data-index="38" movie_cd_group="20028947" movie_idx="85656"><a href="#" onclick="return false;" title="밴드스탠드" alt="밴드스탠드"><span class="icon">&nbsp;</span><span class="text">밴드스탠드</span><span class="sreader"></span></a></li><li class="rating-all" data-index="39" movie_cd_group="20028814" movie_idx="85610"><a href="#" onclick="return false;" title="[사이다경제_사계강의(겨울)]알아두면돈이되는설득언어의비밀" alt="[사이다경제_사계강의(겨울)]알아두면돈이되는설득언어의비밀"><span class="icon">&nbsp;</span><span class="text">[사이다경제_사계강의(겨울)]알아두면돈이되는설득언어의비밀</span><span class="sreader"></span></a></li><li class="rating-12" data-index="40" movie_cd_group="20028884" movie_idx="85637"><a href="#" onclick="return false;" title="리프레쉬" alt="리프레쉬"><span class="icon">&nbsp;</span><span class="text">리프레쉬</span><span class="sreader"></span></a></li><li class="rating-all" data-index="41" movie_cd_group="20028978" movie_idx="85668"><a href="#" onclick="return false;" title="[갤러리&amp;다이닝]우리집,작은미술관ArtStyling" alt="[갤러리&amp;다이닝]우리집,작은미술관ArtStyling"><span class="icon">&nbsp;</span><span class="text">[갤러리&amp;다이닝]우리집,작은미술관ArtStyling</span><span class="sreader"></span></a></li><li class="rating-12" data-index="42" movie_cd_group="20028977" movie_idx="85667"><a href="#" onclick="return false;" title="[LIVECLASS씨네블라썸withIsaac]언차티드" alt="[LIVECLASS씨네블라썸withIsaac]언차티드"><span class="icon">&nbsp;</span><span class="text">[LIVECLASS씨네블라썸withIsaac]언차티드</span><span class="sreader"></span></a></li><li class="rating-15" data-index="43" movie_cd_group="20028656" movie_idx="85549"><a href="#" onclick="return false;" title="특송" alt="특송"><span class="icon">&nbsp;</span><span class="text">특송</span><span class="sreader"></span></a></li><li class="rating-15" data-index="44" movie_cd_group="20028420" movie_idx="85451"><a href="#" onclick="return false;" title="경관의피" alt="경관의피"><span class="icon">&nbsp;</span><span class="text">경관의피</span><span class="sreader"></span></a></li><li class="rating-15" data-index="45" movie_cd_group="20028931" movie_idx="85652"><a href="#" onclick="return false;" title="나이트메어앨리" alt="나이트메어앨리"><span class="icon">&nbsp;</span><span class="text">나이트메어앨리</span><span class="sreader"></span></a></li><li class="rating-15" data-index="46" movie_cd_group="20028851" movie_idx="85623"><a href="#" onclick="return false;" title="세라비-다섯번의기적" alt="세라비-다섯번의기적"><span class="icon">&nbsp;</span><span class="text">세라비-다섯번의기적</span><span class="sreader"></span></a></li><li class="rating-12" data-index="47" movie_cd_group="20028976" movie_idx="85666"><a href="#" onclick="return false;" title="이상한나라의수학자" alt="이상한나라의수학자"><span class="icon">&nbsp;</span><span class="text">이상한나라의수학자</span><span class="sreader"></span></a></li><li class="rating-15" data-index="48" movie_cd_group="20029006" movie_idx="85677"><a href="#" onclick="return false;" title="카르멘" alt="카르멘"><span class="icon">&nbsp;</span><span class="text">카르멘</span><span class="sreader"></span></a></li><li class="rating-all" data-index="49" movie_cd_group="20029030" movie_idx="85683"><a href="#" onclick="return false;" title="CGVx전이수북콘서트“Check-in(冊:人)" alt="CGVx전이수북콘서트“Check-in(冊:人)"><span class="icon">&nbsp;</span><span class="text">CGVx전이수북콘서트“Check-in(冊:人)</span><span class="sreader"></span></a></li><li class="rating-all" data-index="50" movie_cd_group="20029014" movie_idx="85681"><a href="#" onclick="return false;" title="[웰니스&amp;다이닝]우주에서만나는힐링테라피콘서트" alt="[웰니스&amp;다이닝]우주에서만나는힐링테라피콘서트"><span class="icon">&nbsp;</span><span class="text">[웰니스&amp;다이닝]우주에서만나는힐링테라피콘서트</span><span class="sreader"></span></a></li><li class="rating-all" data-index="51" movie_cd_group="20028507" movie_idx=""><a href="#" onclick="return false;" title="EBS댄스파티,2021" alt="EBS댄스파티,2021"><span class="icon">&nbsp;</span><span class="text">EBS댄스파티,2021</span><span class="sreader"></span></a></li></ul>
-                                        <div class="pane pane-y" style="display: block; opacity: 1; visibility: visible;"><div class="slider slider-y" style="height: 50px; top: 0px;"></div></div>
+                                        <div class="pane pane-y" style="display: block; opacity: 1; visibility: visible;"><div class="slider Movieslider-y" style="height: 50px; top: 0px;"></div></div>
                                         <div class="pane pane-x" style="display: none; opacity: 1; visibility: visible;"><div class="slider slider-x" style="width: 50px;"></div>
                                         </div>
                                     </div>
@@ -277,10 +277,10 @@
                             <div class="col-body" style="height: 560px;">
                                 <!-- 날짜선택 -->
                                 <div class="date-list nano has-scrollbar has-scrollbar-y" id="date_list">
-                                    <ul class="content scroll-y" tabindex="-1" style="right: -15px;"><div><li class="month dimmed"><div><span class="year">2022</span><span class="month">2</span><div></div></div></li><li data-index="0" date="20220218" class="day"><a href="#" onclick="return false;"><span class="dayweek">금</span><span class="day">18</span><span class="sreader"></span></a></li><li data-index="1" date="20220219" class="day day-sat"><a href="#" onclick="return false;"><span class="dayweek">토</span><span class="day">19</span><span class="sreader"></span></a></li><li data-index="2" date="20220220" class="day day-sun"><a href="#" onclick="return false;"><span class="dayweek">일</span><span class="day">20</span><span class="sreader"></span></a></li><li data-index="3" date="20220221" class="day"><a href="#" onclick="return false;"><span class="dayweek">월</span><span class="day">21</span><span class="sreader"></span></a></li><li data-index="4" date="20220222" class="day"><a href="#" onclick="return false;"><span class="dayweek">화</span><span class="day">22</span><span class="sreader"></span></a></li><li data-index="5" date="20220223" class="day"><a href="#" onclick="return false;"><span class="dayweek">수</span><span class="day">23</span><span class="sreader"></span></a></li><li data-index="6" date="20220224" class="day"><a href="#" onclick="return false;"><span class="dayweek">목</span><span class="day">24</span><span class="sreader"></span></a></li><li data-index="7" date="20220225" class="day"><a href="#" onclick="return false;"><span class="dayweek">금</span><span class="day">25</span><span class="sreader"></span></a></li><li data-index="8" date="20220226" class="day day-sat"><a href="#" onclick="return false;"><span class="dayweek">토</span><span class="day">26</span><span class="sreader"></span></a></li><li data-index="9" date="20220227" class="day day-sun"><a href="#" onclick="return false;"><span class="dayweek">일</span><span class="day">27</span><span class="sreader"></span></a></li><li data-index="10" date="20220228" class="day"><a href="#" onclick="return false;"><span class="dayweek">월</span><span class="day">28</span><span class="sreader"></span></a></li><li class="month dimmed"><div><span class="year">2022</span><span class="month">3</span><div></div></div></li><li data-index="11" date="20220301" class="day"><a href="#" onclick="return false;"><span class="dayweek">화</span><span class="day">1</span><span class="sreader"></span></a></li><li data-index="12" date="20220302" class="day"><a href="#" onclick="return false;"><span class="dayweek">수</span><span class="day">2</span><span class="sreader"></span></a></li><li data-index="13" date="20220303" class="day"><a href="#" onclick="return false;"><span class="dayweek">목</span><span class="day">3</span><span class="sreader"></span></a></li><li data-index="14" date="20220304" class="day"><a href="#" onclick="return false;"><span class="dayweek">금</span><span class="day">4</span><span class="sreader"></span></a></li><li data-index="15" date="20220305" class="day day-sat"><a href="#" onclick="return false;"><span class="dayweek">토</span><span class="day">5</span><span class="sreader"></span></a></li><li data-index="16" date="20220306" class="day day-sun"><a href="#" onclick="return false;"><span class="dayweek">일</span><span class="day">6</span><span class="sreader"></span></a></li><li data-index="17" date="20220308" class="day"><a href="#" onclick="return false;"><span class="dayweek">화</span><span class="day">8</span><span class="sreader"></span></a></li><li data-index="18" date="20220312" class="day day-sat"><a href="#" onclick="return false;"><span class="dayweek">토</span><span class="day">12</span><span class="sreader"></span></a></li><li data-index="19" date="20220322" class="day"><a href="#" onclick="return false;"><span class="dayweek">화</span><span class="day">22</span><span class="sreader"></span></a></li><li data-index="20" date="20220326" class="day day-sat"><a href="#" onclick="return false;"><span class="dayweek">토</span><span class="day">26</span><span class="sreader"></span></a></li></div>
+                                    <ul class="content scroll-y dateScroll" tabindex="-1" style="right: -15px;"><div><li class="month dimmed"><div><span class="year">2022</span><span class="month">2</span><div></div></div></li><li data-index="0" date="20220218" class="day"><a href="#" onclick="return false;"><span class="dayweek">금</span><span class="day">18</span><span class="sreader"></span></a></li><li data-index="1" date="20220219" class="day day-sat"><a href="#" onclick="return false;"><span class="dayweek">토</span><span class="day">19</span><span class="sreader"></span></a></li><li data-index="2" date="20220220" class="day day-sun"><a href="#" onclick="return false;"><span class="dayweek">일</span><span class="day">20</span><span class="sreader"></span></a></li><li data-index="3" date="20220221" class="day"><a href="#" onclick="return false;"><span class="dayweek">월</span><span class="day">21</span><span class="sreader"></span></a></li><li data-index="4" date="20220222" class="day"><a href="#" onclick="return false;"><span class="dayweek">화</span><span class="day">22</span><span class="sreader"></span></a></li><li data-index="5" date="20220223" class="day"><a href="#" onclick="return false;"><span class="dayweek">수</span><span class="day">23</span><span class="sreader"></span></a></li><li data-index="6" date="20220224" class="day"><a href="#" onclick="return false;"><span class="dayweek">목</span><span class="day">24</span><span class="sreader"></span></a></li><li data-index="7" date="20220225" class="day"><a href="#" onclick="return false;"><span class="dayweek">금</span><span class="day">25</span><span class="sreader"></span></a></li><li data-index="8" date="20220226" class="day day-sat"><a href="#" onclick="return false;"><span class="dayweek">토</span><span class="day">26</span><span class="sreader"></span></a></li><li data-index="9" date="20220227" class="day day-sun"><a href="#" onclick="return false;"><span class="dayweek">일</span><span class="day">27</span><span class="sreader"></span></a></li><li data-index="10" date="20220228" class="day"><a href="#" onclick="return false;"><span class="dayweek">월</span><span class="day">28</span><span class="sreader"></span></a></li><li class="month dimmed"><div><span class="year">2022</span><span class="month">3</span><div></div></div></li><li data-index="11" date="20220301" class="day"><a href="#" onclick="return false;"><span class="dayweek">화</span><span class="day">1</span><span class="sreader"></span></a></li><li data-index="12" date="20220302" class="day"><a href="#" onclick="return false;"><span class="dayweek">수</span><span class="day">2</span><span class="sreader"></span></a></li><li data-index="13" date="20220303" class="day"><a href="#" onclick="return false;"><span class="dayweek">목</span><span class="day">3</span><span class="sreader"></span></a></li><li data-index="14" date="20220304" class="day"><a href="#" onclick="return false;"><span class="dayweek">금</span><span class="day">4</span><span class="sreader"></span></a></li><li data-index="15" date="20220305" class="day day-sat"><a href="#" onclick="return false;"><span class="dayweek">토</span><span class="day">5</span><span class="sreader"></span></a></li><li data-index="16" date="20220306" class="day day-sun"><a href="#" onclick="return false;"><span class="dayweek">일</span><span class="day">6</span><span class="sreader"></span></a></li><li data-index="17" date="20220308" class="day"><a href="#" onclick="return false;"><span class="dayweek">화</span><span class="day">8</span><span class="sreader"></span></a></li><li data-index="18" date="20220312" class="day day-sat"><a href="#" onclick="return false;"><span class="dayweek">토</span><span class="day">12</span><span class="sreader"></span></a></li><li data-index="19" date="20220322" class="day"><a href="#" onclick="return false;"><span class="dayweek">화</span><span class="day">22</span><span class="sreader"></span></a></li><li data-index="20" date="20220326" class="day day-sat"><a href="#" onclick="return false;"><span class="dayweek">토</span><span class="day">26</span><span class="sreader"></span></a></li></div>
                                         <div><li class="month dimmed"><div><span class="year">2022</span><span class="month">2</span><div></div></div></li><li data-index="0" date="20220218" class="day"><a href="#" onclick="return false;"><span class="dayweek">금</span><span class="day">18</span><span class="sreader"></span></a></li><li data-index="1" date="20220219" class="day day-sat"><a href="#" onclick="return false;"><span class="dayweek">토</span><span class="day">19</span><span class="sreader"></span></a></li><li data-index="2" date="20220220" class="day day-sun"><a href="#" onclick="return false;"><span class="dayweek">일</span><span class="day">20</span><span class="sreader"></span></a></li><li data-index="3" date="20220221" class="day"><a href="#" onclick="return false;"><span class="dayweek">월</span><span class="day">21</span><span class="sreader"></span></a></li><li data-index="4" date="20220222" class="day"><a href="#" onclick="return false;"><span class="dayweek">화</span><span class="day">22</span><span class="sreader"></span></a></li><li data-index="5" date="20220223" class="day"><a href="#" onclick="return false;"><span class="dayweek">수</span><span class="day">23</span><span class="sreader"></span></a></li><li data-index="6" date="20220224" class="day"><a href="#" onclick="return false;"><span class="dayweek">목</span><span class="day">24</span><span class="sreader"></span></a></li><li data-index="7" date="20220225" class="day"><a href="#" onclick="return false;"><span class="dayweek">금</span><span class="day">25</span><span class="sreader"></span></a></li><li data-index="8" date="20220226" class="day day-sat"><a href="#" onclick="return false;"><span class="dayweek">토</span><span class="day">26</span><span class="sreader"></span></a></li><li data-index="9" date="20220227" class="day day-sun"><a href="#" onclick="return false;"><span class="dayweek">일</span><span class="day">27</span><span class="sreader"></span></a></li><li data-index="10" date="20220228" class="day"><a href="#" onclick="return false;"><span class="dayweek">월</span><span class="day">28</span><span class="sreader"></span></a></li><li class="month dimmed"><div><span class="year">2022</span><span class="month">3</span><div></div></div></li><li data-index="11" date="20220301" class="day"><a href="#" onclick="return false;"><span class="dayweek">화</span><span class="day">1</span><span class="sreader"></span></a></li><li data-index="12" date="20220302" class="day"><a href="#" onclick="return false;"><span class="dayweek">수</span><span class="day">2</span><span class="sreader"></span></a></li><li data-index="13" date="20220303" class="day"><a href="#" onclick="return false;"><span class="dayweek">목</span><span class="day">3</span><span class="sreader"></span></a></li><li data-index="14" date="20220304" class="day"><a href="#" onclick="return false;"><span class="dayweek">금</span><span class="day">4</span><span class="sreader"></span></a></li><li data-index="15" date="20220305" class="day day-sat"><a href="#" onclick="return false;"><span class="dayweek">토</span><span class="day">5</span><span class="sreader"></span></a></li><li data-index="16" date="20220306" class="day day-sun"><a href="#" onclick="return false;"><span class="dayweek">일</span><span class="day">6</span><span class="sreader"></span></a></li><li data-index="17" date="20220308" class="day"><a href="#" onclick="return false;"><span class="dayweek">화</span><span class="day">8</span><span class="sreader"></span></a></li><li data-index="18" date="20220312" class="day day-sat"><a href="#" onclick="return false;"><span class="dayweek">토</span><span class="day">12</span><span class="sreader"></span></a></li><li data-index="19" date="20220322" class="day"><a href="#" onclick="return false;"><span class="dayweek">화</span><span class="day">22</span><span class="sreader"></span></a></li><li data-index="20" date="20220326" class="day day-sat"><a href="#" onclick="return false;"><span class="dayweek">토</span><span class="day">26</span><span class="sreader"></span></a></li></div>
                                     </ul>
-                                    <div class="pane pane-y active" style="display: block; opacity: 1; visibility: visible;"><div class="slider slider-y" style="height: 50px; top: 0px;"></div></div>
+                                    <div class="pane pane-y active" style="display: block; opacity: 1; visibility: visible;"><div class="slider slider-y dateScroller-y" style="height: 50px; top: 0px;"></div></div>
                                     <div class="pane pane-x" style="display: none; opacity: 1; visibility: visible;"><div class="slider slider-x" style="width: 50px;"></div></div>
                                 </div>
                             </div>
@@ -350,16 +350,16 @@
                                                     <span class="title">일반</span>
                                                     <ul>
                                                         <li cldata-count="0" class="selected adult_click" type="adult">
-                                                            <a href="#" onclick="adultClick()"><span class="sreader mod">일반</span>0<span class="sreader">명</span></a>
+                                                            <a href="#"><span class="sreader mod">일반</span>0<span class="sreader">명</span></a>
                                                         </li>
                                                         <li data-count="1" type="adult" class="adult_click">
-                                                            <a href="#" onclick="adultClick()"><span class="sreader mod">일반</span>1<span class="sreader">명</span></a>
+                                                            <a href="#" onclick="count(1)"><span class="sreader mod">일반</span>1<span class="sreader">명</span></a>
                                                         </li>
-                                                        <li data-count="2" type="adult" class="adult_click"><a href="#" onclick="adultClick()"><span class="sreader mod">일반</span>2<span class="sreader">명</span></a></li>
-                                                        <li data-count="3" type="adult" class="adult_click"><a href="#" onclick="adultClick()"><span class="sreader mod">일반</span>3<span class="sreader">명</span></a></li>
-                                                        <li data-count="4" type="adult" class="adult_click"><a href="#" onclick="adultClick()"><span class="sreader mod">일반</span>4<span class="sreader">명</span></a></li>
-                                                        <li data-count="5" type="adult" class="adult_click"><a href="#" onclick="adultClick()"><span class="sreader mod">일반</span>5<span class="sreader">명</span></a></li>
-                                                        <li data-count="6" type="adult" class="adult_click"><a href="#" onclick="adultClick()"><span class="sreader mod">일반</span>6<span class="sreader">명</span></a></li>
+                                                        <li data-count="2" type="adult" class="adult_click"><a href="#"><span class="sreader mod">일반</span>2<span class="sreader">명</span></a></li>
+                                                        <li data-count="3" type="adult" class="adult_click"><a href="#"><span class="sreader mod">일반</span>3<span class="sreader">명</span></a></li>
+                                                        <li data-count="4" type="adult" class="adult_click"><a href="#"><span class="sreader mod">일반</span>4<span class="sreader">명</span></a></li>
+                                                        <li data-count="5" type="adult" class="adult_click"><a href="#"><span class="sreader mod">일반</span>5<span class="sreader">명</span></a></li>
+                                                        <li data-count="6" type="adult" class="adult_click"><a href="#"><span class="sreader mod">일반</span>6<span class="sreader">명</span></a></li>
                                                         <li data-count="7" type="adult" class="dimmed"><a href="#" onclick="return false;"><span class="sreader mod">일반</span>7<span class="sreader">명</span></a></li>
                                                         <li data-count="8" type="adult" class="dimmed"><a href="#" onclick="return false;"><span class="sreader mod">일반</span>8<span class="sreader">명</span></a></li>
                                                     </ul>
@@ -367,32 +367,19 @@
                                                 <div class="group youth" id="nop_group_youth" style="display: block;">
                                                     <span class="title">청소년</span>
                                                     <ul>
-                                                        <li data-count="0" class="selected" type="youth"><a href="#" onclick="return false;"><span class="sreader mod">청소년</span>0<span class="sreader">명</span></a></li>
-                                                        <li data-count="1" type="youth" class="youth_click"><a href="#" onclick="return false;"><span class="sreader mod">청소년</span>1<span class="sreader">명</span></a></li>
-                                                        <li data-count="2" type="youth" class="youth_click"><a href="#" onclick="return false;"><span class="sreader mod">청소년</span>2<span class="sreader">명</span></a></li>
-                                                        <li data-count="3" type="youth" class="youth_click"><a href="#" onclick="return false;"><span class="sreader mod">청소년</span>3<span class="sreader">명</span></a></li>
-                                                        <li data-count="4" type="youth" class="youth_click"><a href="#" onclick="return false;"><span class="sreader mod">청소년</span>4<span class="sreader">명</span></a></li>
-                                                        <li data-count="5" type="youth" class="youth_click"><a href="#" onclick="return false;"><span class="sreader mod">청소년</span>5<span class="sreader">명</span></a></li>
-                                                        <li data-count="6" type="youth" class="youth_click"><a href="#" onclick="return false;"><span class="sreader mod">청소년</span>6<span class="sreader">명</span></a></li>
+                                                        <li data-count="0" class="youth_click selected" type="youth"><a href="#"><span class="sreader mod">청소년</span>0<span class="sreader">명</span></a></li>
+                                                        <li data-count="1" type="youth" class="youth_click"><a href="#"><span class="sreader mod">청소년</span>1<span class="sreader">명</span></a></li>
+                                                        <li data-count="2" type="youth" class="youth_click"><a href="#"><span class="sreader mod">청소년</span>2<span class="sreader">명</span></a></li>
+                                                        <li data-count="3" type="youth" class="youth_click"><a href="#"><span class="sreader mod">청소년</span>3<span class="sreader">명</span></a></li>
+                                                        <li data-count="4" type="youth" class="youth_click"><a href="#"><span class="sreader mod">청소년</span>4<span class="sreader">명</span></a></li>
+                                                        <li data-count="5" type="youth" class="youth_click"><a href="#"><span class="sreader mod">청소년</span>5<span class="sreader">명</span></a></li>
+                                                        <li data-count="6" type="youth" class="youth_click"><a href="#"><span class="sreader mod">청소년</span>6<span class="sreader">명</span></a></li>
                                                         <li data-count="7" type="youth" class="dimmed"><a href="#" onclick="return false;"><span class="sreader mod">청소년</span>7<span class="sreader">명</span></a></li>
                                                         <li data-count="8" type="youth" class="dimmed"><a href="#" onclick="return false;"><span class="sreader mod">청소년</span>8<span class="sreader">명</span></a></li>
                                                     </ul>
                                                 </div>
-                                                <div class="group child" id="nop_group_child" style="display: none;">
-                                                    <span class="title">어린이</span>
-                                                    <ul>
-                                                        <li data-count="0" class="selected" type="child"><a href="#" onclick="return false;"><span class="sreader mod">어린이</span>0<span class="sreader">명</span></a></li>
-                                                        <li data-count="1" type="child" class=""><a href="#" onclick="return false;"><span class="sreader mod">어린이</span>1<span class="sreader">명</span></a></li>
-                                                        <li data-count="2" type="child" class=""><a href="#" onclick="return false;"><span class="sreader mod">어린이</span>2<span class="sreader">명</span></a></li>
-                                                        <li data-count="3" type="child" class=""><a href="#" onclick="return false;"><span class="sreader mod">어린이</span>3<span class="sreader">명</span></a></li>
-                                                        <li data-count="4" type="child" class=""><a href="#" onclick="return false;"><span class="sreader mod">어린이</span>4<span class="sreader">명</span></a></li>
-                                                        <li data-count="5" type="child" class=""><a href="#" onclick="return false;"><span class="sreader mod">어린이</span>5<span class="sreader">명</span></a></li>
-                                                        <li data-count="6" type="child" class=""><a href="#" onclick="return false;"><span class="sreader mod">어린이</span>6<span class="sreader">명</span></a></li>
-                                                        <li data-count="7" type="child" class="dimmed"><a href="#" onclick="return false;"><span class="sreader mod">어린이</span>7<span class="sreader">명</span></a></li>
-                                                        <li data-count="8" type="child" class="dimmed"><a href="#" onclick="return false;"><span class="sreader mod">어린이</span>8<span class="sreader">명</span></a></li>
-                                                    </ul>
-                                                </div>
-                                                <div class="group senior" id="nop_group_senior" style="display: block;">
+
+                                                <div class="group senior" id="nop_group_senior" style="display: none">
                                                     <span class="title">경로</span>
                                                     <ul>
                                                         <li data-count="0" class="selected" type="senior"><a href="#" onclick="return false;"><span class="sreader mod">경로</span>0<span class="sreader">명</span></a></li>
@@ -406,7 +393,7 @@
                                                         <li data-count="8" type="senior" class="dimmed"><a href="#" onclick="return false;"><span class="sreader mod">경로</span>8<span class="sreader">명</span></a></li>
                                                     </ul>
                                                 </div>
-                                                <div class="group special hide" id="nop_group_special" style="display: block;">
+                                                <div class="group special hide" id="nop_group_special" style="display: none;">
                                                     <span class="title">우대</span>
                                                     <ul>
                                                         <li data-count="0" class="selected" type="special"><a href="#" onclick="return false;"><span class="sreader mod">우대</span>0<span class="sreader">명</span></a></li>
@@ -1216,11 +1203,11 @@
                             <!-- 포인트/상품권 -->
                             <div class="tpm_wrap" id="payPoints">
                                 <h4 class="ts3_titlebar ts3_t1"> <span class="header">STEP 3. </span> <a href="#"><span>다시하기</span> </a> </h4>
-                                <div class="tpm_header">
+                                <div class="tpm_header clickPoint">
                                     <h4>포인트 및 기타결제 수단</h4>
                                     <a class="tpmh_btn"><span>펼치기</span></a>
                                 </div>
-                                <div class="tpm_body" style="display: none;">
+                                <div class="tpm_body payPoint" style="display: none;">
                                     <div class="guide_wrap">
                                         <div class="guide">
                                             <div class="guide_text">선택 불가능한 기타 포인트 항목은 비활성화 처리됩니다.</div>
@@ -1230,1269 +1217,36 @@
                                     <div class="tpm_discount">
                                         <div class="background"></div>
                                         <div class="discount_list"><ul><li id="cjOnePoint_li"><div class="dimmCon" style="display: none;">&nbsp;</div><a href="#" onclick="return false;">CJ ONE 포인트</a></li><li id="cjGiftPrePay_li"><div class="dimmCon" style="display: none;">&nbsp;</div><a href="#" onclick="return false;">CJ 기프트카드</a></li><li id="cgvGiftPrePay_li"><div class="dimmCon" style="display: none;">&nbsp;</div><a href="#" onclick="return false;">CGV 기프트카드</a></li><li id="paysVouc_li"><div class="dimmCon" style="display: none;">&nbsp;</div><a href="#" onclick="return false;">모바일 페이즈상품권</a></li><li id="hdCardPoint_li"><div class="dimmCon" style="display: none;">&nbsp;</div><a href="#" onclick="return false;">현대카드 M포인트</a></li><li id="samsungUPoint_li"><div class="dimmCon" style="display: none;">&nbsp;</div><a href="#" onclick="return false;">삼성 U-Point</a></li><li id="wibeePoint_li"><div class="dimmCon" style="display: none;">&nbsp;</div><a href="#" onclick="return false;">우리WON꿀머니</a></li><li id="hanaMPoint_li"><div class="dimmCon" style="display: none;">&nbsp;</div><a href="#" onclick="return false;">하나머니</a></li><li id="asianaMile_li"><div class="dimmCon" style="display: none;">&nbsp;</div><a href="#" onclick="return false;">아시아나 마일리지</a></li><li id="okCashBagPoint_li"><div class="dimmCon" style="display: none;">&nbsp;</div><a href="#" onclick="return false;">OK캐쉬백</a></li><li id="hdBluePoint_li"><div class="dimmCon" style="display: none;">&nbsp;</div><a href="#" onclick="return false;">블루멤버스 포인트</a></li><li id="kiaRedMemPoint_li"><div class="dimmCon" style="display: none;">&nbsp;</div><a href="#" onclick="return false;">기아멤버스 포인트</a></li><li id="gsNpoint_li"><div class="dimmCon" style="display: none;">&nbsp;</div><a href="#" onclick="return false;">GS&amp;POINT</a></li><li id="sOilPoint_li"><div class="dimmCon" style="display: none;">&nbsp;</div><a href="#" onclick="return false;">S-OIL포인트</a></li><li id="hdOilBankPoint_li"><div class="dimmCon" style="display: none;">&nbsp;</div><a href="#" onclick="return false;">현대오일뱅크 보너스포인트</a></li><li id="eOnePoint_li"><div class="dimmCon" style="display: none;">&nbsp;</div><a href="#" onclick="return false;">E1 오렌지 멤버십 포인트</a></li><li id="ctCashPoint_li"><div class="dimmCon" style="display: none;">&nbsp;</div><a href="#" onclick="return false;">문화상품권 컬쳐캐쉬</a></li><li id="hpCashPoint_li"><div class="dimmCon" style="display: none;">&nbsp;</div><a href="#" onclick="return false;">해피머니상품권 해피캐시</a></li><li id="bnlCashPoint_li"><div class="dimmCon" style="display: none;">&nbsp;</div><a href="#" onclick="return false;">도서상품권 북앤라이프캐시</a></li><li id="culturePIN_li"><div class="dimmCon" style="display: none;">&nbsp;</div><a href="#" onclick="return false;">도서문화상품권</a></li><li id="cultureCon_li"><div class="dimmCon" style="display: none;">&nbsp;</div><a href="#" onclick="return false;">컬쳐모바일문화상품권</a></li><li id="cjProdCon_li"><div class="dimmCon" style="display: none;">&nbsp;</div><a href="#" onclick="return false;">CJ상품권</a></li><li id="cjCardResv_li"><div class="dimmCon" style="display: none;">&nbsp;</div><a href="#" onclick="return false;">CJ카드 적립금</a></li><li id="SKbenepia_li" style="display: none;"><div class="dimmCon" style="display: none;">&nbsp;</div><a href="#" onclick="return false;">SK 베네피아 포인트</a></li><li id="homePlusCoupon_li" style="display: none;"><div class="dimmCon" style="display: none;">&nbsp;</div><a href="#" onclick="return false;">홈플러스 디지털상품권</a></li></ul></div>
-                                        <div class="discount_form"><div id="cjOnePoint" class="form">
-                                            <h5>CJ ONE 포인트</h5>
-                                            <div class="tpm_coupon_button">
+
+                                        <!--포인트 활성화 부분-->
+                                        <div class="discount_form">
+                                            <div id="cjOnePoint" class="form" style="display: block;">
+                                                <h5>CJ ONE 포인트</h5>
+                                                <div class="tpm_coupon_button">
 
 
-                                            </div>
-                                            <div class="form_con">
-                                                <div class="inner_con2">
-                                                    <dt><label class="noneInput">보유 포인트</label></dt>
-                                                    <dd class="amtValue"><span class="hasPoint">0</span>원</dd>
-
-                                                    <dt class="secondTit"><label for="cjOnePointipt">사용할 포인트</label></dt>
-                                                    <dd><input class="textBox2 type-n nohan" type="text" id="cjOnePointipt">원</dd>
-
-                                                    <dt class="secondTit"><input type="checkbox" id="cjOnePointchk"></dt>
-                                                    <dd><label for="cjOnePointchk">모두사용</label></dd>
                                                 </div>
-                                            </div>
-                                            <div class="form_guide"><dl><dt>이용안내</dt><dd class="split">CJ ONE 포인트는 <em>1,000P</em> 이상부터 <em>10P</em> 단위로 사용 가능합니다.</dd></dl></div>
-                                        </div><div id="cjGiftPrePay" class="form">
-                                            <h5>CJ 기프트카드</h5>
-                                            <div class="tpm_coupon_button">
+                                                <div class="form_con">
+                                                    <div class="inner_con2">
+                                                        <dt><label class="noneInput">보유 포인트</label></dt>
+                                                        <dd class="amtValue"><span class="hasPoint">2,189</span>원</dd>
 
+                                                        <dt class="secondTit"><label for="cjOnePointipt">사용할 포인트</label></dt>
+                                                        <dd><input class="textBox2 type-n nohan" type="text" id="cjOnePointipt">원</dd>
 
-                                            </div>
-                                            <div class="form_con">
-                                                <div class="inner_con2">
-                                                    <dt><label class="noneInput">카드 보유 금액</label></dt>
-                                                    <dd class="amtValue"><span class="hasPoint">0</span>원</dd>
-
-                                                    <dt class="secondTit"><label for="cjGiftPrePayipt">적용금액</label></dt>
-                                                    <dd><input class="textBox2 type-n nohan" type="text" id="cjGiftPrePayipt">원</dd>
-
-                                                    <dt class="secondTit"><input type="checkbox" id="cjGiftPrePaychk"></dt>
-                                                    <dd><label for="cjGiftPrePaychk">모두사용</label></dd>
+                                                        <dt class="secondTit"><input type="checkbox" id="cjOnePointchk"></dt>
+                                                        <dd><label for="cjOnePointchk">모두사용</label></dd>
+                                                    </div>
                                                 </div>
+                                                <div class="form_guide"><dl><dt>이용안내</dt><dd class="split">CJ ONE 포인트는 <em>1,000P</em> 이상부터 <em>10P</em> 단위로 사용 가능합니다.</dd></dl></div>
                                             </div>
 
-                                        </div><div id="cgvGiftPrePay" class="form">
-                                            <h5>CGV 기프트카드</h5>
-                                            <div class="tpm_coupon_button">
-                                                <a class="brown" href="javascript:void(0);"><span>등록하기</span></a>
 
-                                            </div>
-                                            <div class="form_con">
-                                                <div class="inner_con2">
-                                                    <dt><label class="noneInput">카드 보유 금액</label></dt>
-                                                    <dd class="amtValue"><span class="hasPoint">0</span>원</dd>
 
-                                                    <dt class="secondTit"><label for="cgvGiftPrePayipt">적용금액</label></dt>
-                                                    <dd><input class="textBox2 type-n nohan" type="text" id="cgvGiftPrePayipt">원</dd>
+                                        </div>
+                                        <!-- 포인트 종료-->
 
-                                                    <dt class="secondTit"><input type="checkbox" id="cgvGiftPrePaychk"></dt>
-                                                    <dd><label for="cgvGiftPrePaychk">모두사용</label></dd>
-                                                </div>
-                                            </div>
 
-                                        </div><div id="paysVouc" class="form" style="display: block;">
-                                            <h5>모바일 페이즈상품권</h5>
-                                            <table class="form_table">
-                                                <caption>Card No., Password</caption>
-                                                <thead class="blind"></thead>
-                                                <tbody>
-                                                <tr><!-- 카드번호 -->
-                                                    <th scope="row">상품권 번호</th>
-                                                    <td><div class="form_wrap text card_no">
-                                                        <label for="paysVouc_cardNo0">카드 번호 첫번째 숫자 입력</label>
-                                                        <input type="text" name="cardNo" maxlength="4" class="type-n nohan" id="paysVouc_cardNo0">
-                                                    </div><span class="divider">-</span>
-
-                                                        <div class="form_wrap text card_no">
-                                                            <label for="paysVouc_cardNo1">카드 번호 두번째 숫자 입력</label>
-                                                            <input type="password" name="cardNo" maxlength="4" class="type-n nohan" id="paysVouc_cardNo1">
-                                                        </div><span class="divider">-</span>
-
-                                                        <div class="form_wrap text card_no">
-                                                            <label for="paysVouc_cardNo2">카드 번호 세번째 숫자 입력</label>
-                                                            <input type="password" name="cardNo" maxlength="4" class="type-n nohan" id="paysVouc_cardNo2">
-                                                        </div><span class="divider">-</span>
-
-                                                        <div class="form_wrap text card_no">
-                                                            <label for="paysVouc_cardNo3">카드 번호 네번째 숫자 입력</label>
-                                                            <input type="text" name="cardNo" maxlength="4" class="type-n nohan" id="paysVouc_cardNo3">
-                                                        </div>
-                                                    </td>
-                                                </tr>
-                                                <tr><!-- 비밀번호 -->
-                                                    <th scope="row">인증번호</th>
-                                                    <td><div class="form_wrap text user_pw">
-                                                        <label for="paysVouc_cardPw">비밀번호 입력</label>
-                                                        <input type="password" name="cardPw" maxlength="50" id="paysVouc_cardPw">
-                                                    </div>
-                                                        <a class="btn_toggle brown" href="javascript:void(0);">
-                                                            <span class="default">		조회</span>
-
-                                                            <span class="cancel">취소</span>
-                                                        </a>
-                                                    </td>
-                                                </tr>
-                                                <tr class="hasPointTr"><!-- 사용가능한 포인트 -->
-                                                    <th scope="row">사용가능한 포인트</th>
-                                                    <td>
-                                                        <span class="price wide align-right pdr7">0</span>
-                                                        <span class="won">원</span>
-
-
-                                                    </td>
-                                                </tr>
-                                                <tr class="usePointTr"><!-- 사용할 포인트 -->
-                                                    <th scope="row">사용할 포인트</th>
-                                                    <td><div class="form_wrap text">
-                                                        <label for="paysVouc_usePoint">사용할 포인트 입력</label>
-                                                        <input type="text" maxlength="50" disabled="disabled" class="type-n nohan align-right" id="paysVouc_usePoint">
-                                                    </div><span class="won black">원</span>
-                                                    </td>
-                                                </tr>
-                                                </tbody>
-                                            </table>
-
-                                            <div class="form_guide"><dl><dt>이용안내</dt><dd class="split">- 특별관 예매 시, 포인트 사용 가능합니다.<br>- 10P 단위 사용 가능합니다</dd></dl></div>
-                                        </div><div id="hdCardPoint" class="form" style="display: block;">
-                                            <h5>현대카드 M포인트</h5>
-                                            <table class="form_table">
-                                                <caption>Card No., Password</caption>
-                                                <thead class="blind"></thead>
-                                                <tbody>
-                                                <tr><!-- 카드번호 -->
-                                                    <th scope="row">카드번호</th>
-                                                    <td><div class="form_wrap text card_no">
-                                                        <label for="hdCardPoint_cardNo0">카드 번호 첫번째 숫자 입력</label>
-                                                        <input type="text" name="cardNo" maxlength="4" class="type-n nohan" id="hdCardPoint_cardNo0">
-                                                    </div><span class="divider">-</span>
-
-                                                        <div class="form_wrap text card_no">
-                                                            <label for="hdCardPoint_cardNo1">카드 번호 두번째 숫자 입력</label>
-                                                            <input type="password" name="cardNo" maxlength="4" class="type-n nohan" id="hdCardPoint_cardNo1">
-                                                        </div><span class="divider">-</span>
-
-                                                        <div class="form_wrap text card_no">
-                                                            <label for="hdCardPoint_cardNo2">카드 번호 세번째 숫자 입력</label>
-                                                            <input type="password" name="cardNo" maxlength="4" class="type-n nohan" id="hdCardPoint_cardNo2">
-                                                        </div><span class="divider">-</span>
-
-                                                        <div class="form_wrap text card_no">
-                                                            <label for="hdCardPoint_cardNo3">카드 번호 네번째 숫자 입력</label>
-                                                            <input type="text" name="cardNo" maxlength="4" class="type-n nohan" id="hdCardPoint_cardNo3">
-                                                        </div>
-                                                    </td>
-                                                </tr>
-                                                <tr><!-- 유효기간 -->
-                                                    <th scope="row">유효기간</th>
-                                                    <td><div class="form_wrap card_date">
-                                                        <label>카드 유효기간 월 숫자 입력</label>
-                                                        <input type="text" name="cardExpd" maxlength="2" class="type-n nohan">
-                                                    </div><span class="string">월</span>
-                                                        <div class="form_wrap card_date">
-                                                            <label>카드 유효기간 년 숫자 입력</label>
-                                                            <input type="text" name="cardExpd" maxlength="2" class="type-n nohan">
-                                                        </div><span class="string">년</span>
-                                                    </td>
-                                                </tr>
-                                                <tr><!-- 비밀번호 -->
-                                                    <th scope="row">비밀번호</th>
-                                                    <td><div class="form_wrap text card_pw">
-                                                        <label for="hdCardPoint_cardPw">비밀번호 입력</label>
-                                                        <input type="password" name="cardPw" maxlength="2" class="type-n nohan" id="hdCardPoint_cardPw">
-                                                    </div><span class="password">**</span>
-                                                    </td>
-                                                </tr>
-                                                <tr><!-- 주민등록번호 -->
-                                                    <th scope="row">법정생년월일<br>(6자리)</th>
-                                                    <td><div class="form_wrap card_ssn">
-                                                        <label>카드 유효기간 년 숫자 입력</label>
-                                                        <input name="ssn" type="password" maxlength="6" class="type-n nohan">
-                                                    </div>
-                                                        <span class="divider">-</span><span class="password">*******</span>
-                                                        <a class="btn_toggle brown" href="javascript:void(0);">
-                                                            <span class="default">조회</span>
-                                                            <span class="cancel">취소</span>
-                                                        </a>
-                                                    </td>
-                                                </tr>
-                                                <tr class="hasPointTr"><!-- 사용가능한 포인트 -->
-                                                    <th scope="row">사용가능한 포인트</th>
-                                                    <td>
-                                                        <span class="price wide align-right pdr7">0</span>
-                                                        <span class="won">점</span>
-                                                        <span class="apply_count selectCon">적용매수</span>
-                                                        <span class="apply_count_control selectCon">
-						<div class="control_select">
-							<select title="적용 매수를 선택해주세요">
-								<option class="default" value="0">0</option>
-							</select>
-						</div>
-					</span>
-                                                    </td>
-                                                </tr>
-                                                </tbody>
-                                            </table>
-                                            <div class="form_result">
-                                                <span class="title">할인금액</span>
-                                                <span class="price">0</span>
-                                                <span class="won">원</span>
-                                            </div>
-                                            <div class="form_guide"><dl><dt>이용안내</dt><dd class="split">현대 M포인트는 금/토요일에 5,000포인트, 그 외 요일은 2,000포인트씩 사용 가능합니다.<br>M포인트 사용 후 잔여금액은 해당 현대카드로 자동결제 됩니다.<br>M포인트 사용과 관련한 안내사항은 'CGV할인정보 &gt; 신용카드 &gt; 현대카드 M포인트'를 확인해 주세요.</dd></dl></div>
-                                        </div><div id="samsungUPoint" class="form" style="display: block;">
-                                            <h5>삼성 U-Point</h5>
-                                            <table class="form_table">
-                                                <caption>Card No., Password</caption>
-                                                <thead class="blind"></thead>
-                                                <tbody>
-                                                <tr><!-- 카드번호 -->
-                                                    <th scope="row">카드번호</th>
-                                                    <td><div class="form_wrap text card_no">
-                                                        <label for="samsungUPoint_cardNo0">카드 번호 첫번째 숫자 입력</label>
-                                                        <input type="text" name="cardNo" maxlength="4" class="type-n nohan" id="samsungUPoint_cardNo0">
-                                                    </div><span class="divider">-</span>
-
-                                                        <div class="form_wrap text card_no">
-                                                            <label for="samsungUPoint_cardNo1">카드 번호 두번째 숫자 입력</label>
-                                                            <input type="password" name="cardNo" maxlength="4" class="type-n nohan" id="samsungUPoint_cardNo1">
-                                                        </div><span class="divider">-</span>
-
-                                                        <div class="form_wrap text card_no">
-                                                            <label for="samsungUPoint_cardNo2">카드 번호 세번째 숫자 입력</label>
-                                                            <input type="password" name="cardNo" maxlength="4" class="type-n nohan" id="samsungUPoint_cardNo2">
-                                                        </div><span class="divider">-</span>
-
-                                                        <div class="form_wrap text card_no">
-                                                            <label for="samsungUPoint_cardNo3">카드 번호 네번째 숫자 입력</label>
-                                                            <input type="text" name="cardNo" maxlength="4" class="type-n nohan" id="samsungUPoint_cardNo3">
-                                                        </div>
-                                                    </td>
-                                                </tr>
-                                                <tr><!-- 유효기간 -->
-                                                    <th scope="row">유효기간</th>
-                                                    <td><div class="form_wrap card_date">
-                                                        <label>카드 유효기간 월 숫자 입력</label>
-                                                        <input type="text" name="cardExpd" maxlength="2" class="type-n nohan">
-                                                    </div><span class="string">월</span>
-                                                        <div class="form_wrap card_date">
-                                                            <label>카드 유효기간 년 숫자 입력</label>
-                                                            <input type="text" name="cardExpd" maxlength="2" class="type-n nohan">
-                                                        </div><span class="string">년</span>
-                                                    </td>
-                                                </tr>
-
-                                                <tr><!-- 주민등록번호 -->
-                                                    <th scope="row">법정생년월일<br>(6자리)</th>
-                                                    <td><div class="form_wrap card_ssn">
-                                                        <label>카드 유효기간 년 숫자 입력</label>
-                                                        <input name="ssn" type="password" maxlength="6" class="type-n nohan">
-                                                    </div>
-                                                        <span class="divider">-</span><span class="password">*******</span>
-                                                        <a class="btn_toggle brown" href="javascript:void(0);">
-                                                            <span class="default">조회</span>
-                                                            <span class="cancel">취소</span>
-                                                        </a>
-                                                    </td>
-                                                </tr>
-                                                <tr class="hasPointTr"><!-- 사용가능한 포인트 -->
-                                                    <th scope="row">사용가능한 포인트</th>
-                                                    <td>
-                                                        <span class="price wide align-right pdr7">0</span>
-                                                        <span class="won">점</span>
-                                                    </td>
-                                                </tr>
-                                                <tr class="usePointTr"><!-- 사용할 포인트 -->
-                                                    <th scope="row">사용할 포인트</th>
-                                                    <td><div class="form_wrap text">
-                                                        <label for="samsungUPoint_usePoint">사용할 포인트 입력</label>
-                                                        <input type="text" maxlength="50" disabled="disabled" class="type-n nohan align-right" id="samsungUPoint_usePoint">
-                                                    </div>
-                                                        <span class="won black">점</span>
-                                                    </td>
-                                                </tr>
-                                                </tbody>
-                                            </table>
-                                            <div class="form_result">
-                                                <span class="title">할인금액</span>
-                                                <span class="price">0</span>
-                                                <span class="won">원</span>
-                                            </div>
-                                            <div class="form_guide"><dl><dt>이용안내</dt><dd class="split">1,000포인트 이상부터 사용가능(횟수제한 없음)<br>CJ ONE 포인트 및 기타 제휴포인트 적립불가</dd></dl></div>
-                                        </div><div id="wibeePoint" class="form" style="display: block;">
-                                            <h5>우리WON꿀머니</h5>
-                                            <table class="form_table">
-                                                <caption>Card No., Password</caption>
-                                                <thead class="blind"></thead>
-                                                <tbody>
-
-                                                <tr><!-- 비밀번호 -->
-                                                    <th scope="row">비밀번호</th>
-                                                    <td><div class="form_wrap text user_pw">
-                                                        <label for="wibeePoint_cardPw">비밀번호 입력</label>
-                                                        <input type="password" name="cardPw" maxlength="50" id="wibeePoint_cardPw">
-                                                    </div>
-                                                        <a class="btn_toggle brown" href="javascript:void(0);">
-                                                            <span class="default">조회</span>
-                                                            <span class="cancel">취소</span>
-                                                        </a>
-                                                    </td>
-                                                </tr>
-                                                <tr class="hasPointTr"><!-- 사용가능한 포인트 -->
-                                                    <th scope="row">사용가능한 포인트</th>
-                                                    <td>
-                                                        <span class="price wide align-right pdr7">0</span>
-                                                        <span class="won">점</span>
-                                                    </td>
-                                                </tr>
-                                                <tr class="usePointTr"><!-- 사용할 포인트 -->
-                                                    <th scope="row">사용할 포인트</th>
-                                                    <td><div class="form_wrap text">
-                                                        <label for="wibeePoint_usePoint">사용할 포인트 입력</label>
-                                                        <input type="text" maxlength="50" disabled="disabled" class="type-n nohan align-right" id="wibeePoint_usePoint">
-                                                    </div>
-                                                        <span class="won black">점</span>
-                                                        <span class="useAll">
-						<input type="checkbox" id="wibeePoint_chk">
-						<label for="wibeePoint_chk">모두사용</label>
-					</span>
-                                                    </td>
-                                                </tr>
-                                                </tbody>
-                                            </table>
-                                            <div class="form_result">
-                                                <span class="title">할인금액</span>
-                                                <span class="price">0</span>
-                                                <span class="won">원</span>
-                                            </div>
-                                            <div class="form_guide"><dl><dt>이용안내</dt><dd class="split">- 조회 후 보유 포인트 내에서 10포인트 단위로 사용 가능<br>- 비밀번호는 우리WON멤버스 app 로그인 핀번호 6자리 입력<br>- 우리WON멤버스 점검시간동안 우리WON꿀머니 사용불가합니다.<br>(매일 23:30~00:50) / 우리WON멤버스 고객센터(080-899-5000)</dd></dl></div>
-                                        </div><div id="hanaMPoint" class="form" style="display: block;">
-                                            <h5>하나머니</h5>
-                                            <table class="form_table">
-                                                <caption>OTP, Password</caption>
-                                                <thead class="blind"></thead>
-                                                <tbody>
-                                                <tr class="hasPointTr"><!-- 사용가능한 포인트 -->
-                                                    <th scope="row">사용가능한 포인트</th>
-                                                    <td>
-                                                        <span class="price wide align-right pdr7">0</span>
-                                                        <span class="won">점</span>
-                                                    </td>
-                                                </tr>
-                                                <tr class="usePointTr"><!-- 사용할 포인트 -->
-                                                    <th scope="row">사용할 포인트</th>
-                                                    <td><div class="form_wrap text">
-                                                        <label for="hanaMPoint_usePoint">사용할 포인트 입력</label>
-                                                        <input type="text" maxlength="50" disabled="disabled" class="type-n nohan align-right" id="hanaMPoint_usePoint">
-                                                    </div>
-                                                        <span class="won black">점</span>
-                                                    </td>
-                                                </tr>
-                                                <tr><!-- 비밀번호 -->
-                                                    <th scope="row">비밀번호</th>
-                                                    <td><div class="form_wrap text user_pw">
-                                                        <label for="hanaMPoint_cardPw">비밀번호 입력</label>
-                                                        <input type="password" name="cardPw" maxlength="50" id="hanaMPoint_cardPw">
-                                                    </div>
-                                                        <a class="btn_toggle brown" href="javascript:void(0);">
-                                                            <span class="default">조회</span>
-                                                            <span class="cancel">취소</span>
-                                                        </a>
-                                                    </td>
-                                                </tr>
-                                                </tbody>
-                                            </table>
-                                            <div class="form_result">
-                                                <span class="title">할인금액</span>
-                                                <span class="price">0</span>
-                                                <span class="won">원</span>
-                                            </div>
-                                            <div class="form_guide"><dl><dt>이용안내</dt><dd class="split">- 하나머니 포인트는 500머니 단위로 사용 가능합니다. <br>- 하나멤버스 가입시 등록한 핸드폰번호로 인증번호가 발송됩니다.</dd></dl></div>
-                                        </div><div id="asianaMile" class="form" style="display: block;">
-                                            <h5>아시아나 마일리지</h5>
-                                            <table class="form_table">
-                                                <caption>Card No., Password</caption>
-                                                <thead class="blind"></thead>
-                                                <tbody>
-                                                <tr><!-- 카드번호 -->
-                                                    <th scope="row">아시아나클럽 회원번호</th>
-                                                    <td><div class="form_wrap text user_id">
-                                                        <label></label>
-                                                        <input type="text" name="userID" maxlength="50" class="nohan">
-                                                    </div>
-                                                    </td>
-                                                </tr>
-                                                <tr><!-- 비밀번호 -->
-                                                    <th scope="row">홈페이지 비밀번호</th>
-                                                    <td><div class="form_wrap text user_pw">
-                                                        <label for="asianaMile_cardPw">비밀번호 입력</label>
-                                                        <input type="password" name="cardPw" maxlength="50" id="asianaMile_cardPw">
-                                                    </div>
-                                                    </td>
-                                                </tr>
-                                                <tr><!-- 마일리지 비밀번호 -->
-                                                    <th scope="row">마일리지 사용 비밀번호</th>
-                                                    <td><div class="form_wrap text user_pw">
-                                                        <label>비밀번호 입력</label>
-                                                        <input type="password" name="cardPw2" maxlength="50">
-                                                    </div>
-                                                        <a class="btn_toggle brown" href="javascript:void(0);">
-                                                            <span class="default check">조회/적용</span>
-                                                            <span class="cancel">취소</span>
-                                                        </a>
-                                                    </td>
-                                                </tr>
-                                                <tr class="hasPointTr"><!-- 사용가능한 포인트 -->
-                                                    <th scope="row">사용가능한 포인트</th>
-                                                    <td>
-                                                        <span class="price wide align-right pdr7">0</span>
-                                                        <span class="won">점</span>
-                                                    </td>
-                                                </tr>
-                                                </tbody>
-                                            </table>
-                                            <div class="form_result">
-                                                <span class="title">사용할 포인트</span>
-                                                <span class="price">0</span>
-                                                <span class="won">점</span>
-                                            </div>
-                                            <div class="form_guide"><dl><dt>이용안내</dt><dd class="split"><table><colgroup><col width="30%"><col width="35%"><col width="35%"></colgroup>	<thead><tr><th>구분</th>	<th>주중 (월~목)</th><th>주말 (금~일, 공휴일)</th></tr></thead>	<tbody>		<tr><th>2D 영화</th>		<td>1,300</td><td>1,400</td></tr>		<tr><th>4DX(2D) 영화</th>	<td>1,800</td><td>2,000</td></tr>		<tr><th>4DX(3D) 영화</th>	<td>2,200</td><td>2,400</td></tr>		<tr><th>IMAX(2D) 영화</th>	<td>2,200</td><td>2,400</td></tr>		<tr><th>IMAX(3D) 영화</th>	<td>2,800</td><td>3,100</td></tr>	</tbody></table>- 마일리지 비밀번호 등록/변경은 아시아나항공 홈페이지<br>“홈 &gt; 마이아시아나 &gt; 회원정보 &gt; 마일리지 비밀번호 등록/변경”에서 등록 가능합니다.<br><small>※ 마일리지 비밀번호를 찾으시려면&nbsp;&nbsp;<a href="https://flyasiana.com/I/KR/KO/ManageMileagePassword.do" target="_blank" style="text-decoration: underline;">이곳</a>&nbsp;을 클릭하세요.</small></dd></dl></div>
-                                        </div><div id="okCashBagPoint" class="form" style="display: block;">
-                                            <h5>OK캐쉬백</h5>
-                                            <table class="form_table">
-                                                <caption>Card No., Password</caption>
-                                                <thead class="blind"></thead>
-                                                <tbody>
-                                                <tr><!-- 카드번호 -->
-                                                    <th scope="row">카드번호</th>
-                                                    <td><div class="form_wrap text card_no">
-                                                        <label for="okCashBagPoint_cardNo0">카드 번호 첫번째 숫자 입력</label>
-                                                        <input type="text" name="cardNo" maxlength="4" class="type-n nohan" id="okCashBagPoint_cardNo0">
-                                                    </div><span class="divider">-</span>
-
-                                                        <div class="form_wrap text card_no">
-                                                            <label for="okCashBagPoint_cardNo1">카드 번호 두번째 숫자 입력</label>
-                                                            <input type="password" name="cardNo" maxlength="4" class="type-n nohan" id="okCashBagPoint_cardNo1">
-                                                        </div><span class="divider">-</span>
-
-                                                        <div class="form_wrap text card_no">
-                                                            <label for="okCashBagPoint_cardNo2">카드 번호 세번째 숫자 입력</label>
-                                                            <input type="password" name="cardNo" maxlength="4" class="type-n nohan" id="okCashBagPoint_cardNo2">
-                                                        </div><span class="divider">-</span>
-
-                                                        <div class="form_wrap text card_no">
-                                                            <label for="okCashBagPoint_cardNo3">카드 번호 네번째 숫자 입력</label>
-                                                            <input type="text" name="cardNo" maxlength="4" class="type-n nohan" id="okCashBagPoint_cardNo3">
-                                                        </div>
-                                                    </td>
-                                                </tr>
-                                                <tr><!-- 비밀번호 -->
-                                                    <th scope="row">비밀번호</th>
-                                                    <td><div class="form_wrap text user_pw">
-                                                        <label for="okCashBagPoint_cardPw">비밀번호 입력</label>
-                                                        <input type="password" name="cardPw" maxlength="50" id="okCashBagPoint_cardPw">
-                                                    </div>
-                                                        <a class="btn_toggle brown" href="javascript:void(0);">
-                                                            <span class="default">		조회</span>
-
-                                                            <span class="cancel">취소</span>
-                                                        </a>
-                                                    </td>
-                                                </tr>
-                                                <tr class="hasPointTr"><!-- 사용가능한 포인트 -->
-                                                    <th scope="row">사용가능한 포인트</th>
-                                                    <td>
-                                                        <span class="price wide align-right pdr7">0</span>
-                                                        <span class="won">점</span>
-
-
-                                                    </td>
-                                                </tr>
-                                                <tr class="usePointTr"><!-- 사용할 포인트 -->
-                                                    <th scope="row">사용할 포인트</th>
-                                                    <td><div class="form_wrap text">
-                                                        <label for="okCashBagPoint_usePoint">사용할 포인트 입력</label>
-                                                        <input type="text" maxlength="50" disabled="disabled" class="type-n nohan align-right" id="okCashBagPoint_usePoint">
-                                                    </div><span class="won black">점</span>
-                                                    </td>
-                                                </tr>
-                                                </tbody>
-                                            </table>
-
-                                            <div class="form_guide"><dl><dt>이용안내</dt><dd class="split"><p>OK캐쉬백 포인트는 10P부터 티켓 전액 결제 가능합니다.<br>비밀번호 변경 및 확인을 원하시면 아래 링크를 이용해주세요.<a class="okcashbag_changepw" href="#" onclick="window.open(&quot;https://member.okcashbag.com/ocb/modifyCardPass/popupSearchPass/CGV&quot;, &quot;okcashbag_change_password&quot;, &quot;520&quot;, &quot;500&quot;); return false;">비밀번호 변경</a></p></dd></dl></div>
-                                        </div><div id="hdBluePoint" class="form" style="display: block;">
-                                            <h5>블루멤버스 포인트</h5>
-                                            <table class="form_table">
-                                                <caption>Card No., Password</caption>
-                                                <thead class="blind"></thead>
-                                                <tbody>
-                                                <tr><!-- 카드번호 -->
-                                                    <th scope="row">카드번호</th>
-                                                    <td><div class="form_wrap text card_no">
-                                                        <label for="hdBluePoint_cardNo0">카드 번호 첫번째 숫자 입력</label>
-                                                        <input type="text" name="cardNo" maxlength="4" class="type-n nohan" id="hdBluePoint_cardNo0">
-                                                    </div><span class="divider">-</span>
-
-                                                        <div class="form_wrap text card_no">
-                                                            <label for="hdBluePoint_cardNo1">카드 번호 두번째 숫자 입력</label>
-                                                            <input type="password" name="cardNo" maxlength="4" class="type-n nohan" id="hdBluePoint_cardNo1">
-                                                        </div><span class="divider">-</span>
-
-                                                        <div class="form_wrap text card_no">
-                                                            <label for="hdBluePoint_cardNo2">카드 번호 세번째 숫자 입력</label>
-                                                            <input type="password" name="cardNo" maxlength="4" class="type-n nohan" id="hdBluePoint_cardNo2">
-                                                        </div><span class="divider">-</span>
-
-                                                        <div class="form_wrap text card_no">
-                                                            <label for="hdBluePoint_cardNo3">카드 번호 네번째 숫자 입력</label>
-                                                            <input type="text" name="cardNo" maxlength="4" class="type-n nohan" id="hdBluePoint_cardNo3">
-                                                        </div>
-                                                    </td>
-                                                </tr>
-                                                <tr><!-- 비밀번호 -->
-                                                    <th scope="row">비밀번호</th>
-                                                    <td><div class="form_wrap text user_pw">
-                                                        <label for="hdBluePoint_cardPw">비밀번호 입력</label>
-                                                        <input type="password" name="cardPw" maxlength="50" id="hdBluePoint_cardPw">
-                                                    </div>
-                                                        <a class="btn_toggle brown" href="javascript:void(0);">
-                                                            <span class="default">		조회</span>
-
-                                                            <span class="cancel">취소</span>
-                                                        </a>
-                                                    </td>
-                                                </tr>
-                                                <tr class="hasPointTr"><!-- 사용가능한 포인트 -->
-                                                    <th scope="row">사용가능한 포인트</th>
-                                                    <td>
-                                                        <span class="price wide align-right pdr7">0</span>
-                                                        <span class="won">점</span>
-                                                        <span class="apply_count selectCon">적용매수</span>
-                                                        <span class="apply_count_control selectCon">
-						<div class="control_select">
-							<select title="적용 매수를 선택해주세요">
-								<option class="default" value="0">0</option>
-							</select>
-						</div>
-					</span>
-                                                    </td>
-                                                </tr>
-
-                                                </tbody>
-                                            </table>
-                                            <div class="form_result">
-                                                <span class="title">할인금액</span>
-                                                <span class="price">0</span>
-                                                <span class="won">원</span>
-                                            </div>
-                                            <div class="form_guide"><dl><dt>이용안내</dt><dd class="split">- 4,000 포인트 이상 보유 시 사용 가능합니다.<br>- 1매당 4,000 포인트 사용 가능합니다.</dd></dl></div>
-                                        </div><div id="kiaRedMemPoint" class="form" style="display: block;">
-                                            <h5>기아멤버스 포인트</h5>
-                                            <table class="form_table">
-                                                <caption>Card No., Password</caption>
-                                                <thead class="blind"></thead>
-                                                <tbody>
-                                                <tr><!-- 카드번호 -->
-                                                    <th scope="row">카드번호</th>
-                                                    <td><div class="form_wrap text card_no">
-                                                        <label for="kiaRedMemPoint_cardNo0">카드 번호 첫번째 숫자 입력</label>
-                                                        <input type="text" name="cardNo" maxlength="4" class="type-n nohan" id="kiaRedMemPoint_cardNo0">
-                                                    </div><span class="divider">-</span>
-
-                                                        <div class="form_wrap text card_no">
-                                                            <label for="kiaRedMemPoint_cardNo1">카드 번호 두번째 숫자 입력</label>
-                                                            <input type="password" name="cardNo" maxlength="4" class="type-n nohan" id="kiaRedMemPoint_cardNo1">
-                                                        </div><span class="divider">-</span>
-
-                                                        <div class="form_wrap text card_no">
-                                                            <label for="kiaRedMemPoint_cardNo2">카드 번호 세번째 숫자 입력</label>
-                                                            <input type="password" name="cardNo" maxlength="4" class="type-n nohan" id="kiaRedMemPoint_cardNo2">
-                                                        </div><span class="divider">-</span>
-
-                                                        <div class="form_wrap text card_no">
-                                                            <label for="kiaRedMemPoint_cardNo3">카드 번호 네번째 숫자 입력</label>
-                                                            <input type="text" name="cardNo" maxlength="4" class="type-n nohan" id="kiaRedMemPoint_cardNo3">
-                                                        </div>
-                                                    </td>
-                                                </tr>
-                                                <tr><!-- 비밀번호 -->
-                                                    <th scope="row">비밀번호</th>
-                                                    <td><div class="form_wrap text user_pw">
-                                                        <label for="kiaRedMemPoint_cardPw">비밀번호 입력</label>
-                                                        <input type="password" name="cardPw" maxlength="50" id="kiaRedMemPoint_cardPw">
-                                                    </div>
-                                                        <a class="btn_toggle brown" href="javascript:void(0);">
-                                                            <span class="default">		조회</span>
-
-                                                            <span class="cancel">취소</span>
-                                                        </a>
-                                                    </td>
-                                                </tr>
-                                                <tr class="hasPointTr"><!-- 사용가능한 포인트 -->
-                                                    <th scope="row">사용가능한 포인트</th>
-                                                    <td>
-                                                        <span class="price wide align-right pdr7">0</span>
-                                                        <span class="won">점</span>
-
-
-                                                    </td>
-                                                </tr>
-                                                <tr class="usePointTr"><!-- 사용할 포인트 -->
-                                                    <th scope="row">사용할 포인트</th>
-                                                    <td><div class="form_wrap text">
-                                                        <label for="kiaRedMemPoint_usePoint">사용할 포인트 입력</label>
-                                                        <input type="text" maxlength="50" disabled="disabled" class="type-n nohan align-right" id="kiaRedMemPoint_usePoint">
-                                                    </div><span class="won black">점</span>
-                                                    </td>
-                                                </tr>
-                                                </tbody>
-                                            </table>
-
-                                            <div class="form_guide"><dl><dt>이용안내</dt><dd class="split">- 1,000 포인트 이상 보유 시 사용 가능합니다.<br>- 500포인트 단위, <b style="color:red">최대 1만 포인트</b> 사용 가능합니다.<br>- <b style="color:red">일1회, 월2회, 연 최대 24만 포인트</b> 내 사용 가능합니다.</dd></dl></div>
-                                        </div><div id="gsNpoint" class="form" style="display: block;">
-                                            <h5>GS&amp;POINT</h5>
-                                            <table class="form_table">
-                                                <caption>Card No., Password</caption>
-                                                <thead class="blind"></thead>
-                                                <tbody>
-                                                <tr><!-- 카드번호 -->
-                                                    <th scope="row">카드번호</th>
-                                                    <td><div class="form_wrap text card_no">
-                                                        <label for="gsNpoint_cardNo0">카드 번호 첫번째 숫자 입력</label>
-                                                        <input type="text" name="cardNo" maxlength="4" class="type-n nohan" id="gsNpoint_cardNo0">
-                                                    </div><span class="divider">-</span>
-
-                                                        <div class="form_wrap text card_no">
-                                                            <label for="gsNpoint_cardNo1">카드 번호 두번째 숫자 입력</label>
-                                                            <input type="password" name="cardNo" maxlength="4" class="type-n nohan" id="gsNpoint_cardNo1">
-                                                        </div><span class="divider">-</span>
-
-                                                        <div class="form_wrap text card_no">
-                                                            <label for="gsNpoint_cardNo2">카드 번호 세번째 숫자 입력</label>
-                                                            <input type="password" name="cardNo" maxlength="4" class="type-n nohan" id="gsNpoint_cardNo2">
-                                                        </div><span class="divider">-</span>
-
-                                                        <div class="form_wrap text card_no">
-                                                            <label for="gsNpoint_cardNo3">카드 번호 네번째 숫자 입력</label>
-                                                            <input type="text" name="cardNo" maxlength="4" class="type-n nohan" id="gsNpoint_cardNo3">
-                                                        </div>
-                                                    </td>
-                                                </tr>
-                                                <tr><!-- 비밀번호 -->
-                                                    <th scope="row">비밀번호</th>
-                                                    <td><div class="form_wrap text user_pw">
-                                                        <label for="gsNpoint_cardPw">비밀번호 입력</label>
-                                                        <input type="password" name="cardPw" maxlength="50" id="gsNpoint_cardPw">
-                                                    </div>
-                                                        <a class="btn_toggle brown" href="javascript:void(0);">
-
-                                                            <span class="default check">조회/적용</span>
-                                                            <span class="cancel">취소</span>
-                                                        </a>
-                                                    </td>
-                                                </tr>
-                                                <tr class="hasPointTr"><!-- 사용가능한 포인트 -->
-                                                    <th scope="row">사용가능한 포인트</th>
-                                                    <td>
-                                                        <span class="price wide align-right pdr7">0</span>
-                                                        <span class="won">점</span>
-
-
-                                                    </td>
-                                                </tr>
-
-                                                </tbody>
-                                            </table>
-                                            <div class="form_result">
-                                                <span class="title">할인금액</span>
-                                                <span class="price">0</span>
-                                                <span class="won">원</span>
-                                            </div>
-                                            <div class="form_guide"><dl><dt>이용안내</dt><dd class="split">- 티켓 : 장당 3,000포인트 차감할인 (1일 최대 10매)<br>- 매점 : 키오스크(POS)에서 전 제품 구매 시 500원 단위로 사용가능합니다.<br>- 씨네샵 : POS에서 씨네샵 제품 구매 시 500원 단위로 사용 가능합니다.<br>(도서 등 일부 면세 품목 제외) </dd></dl></div>
-                                        </div><div id="sOilPoint" class="form" style="display: block;">
-                                            <h5>S-OIL포인트</h5>
-                                            <table class="form_table">
-                                                <caption>Card No., Password</caption>
-                                                <thead class="blind"></thead>
-                                                <tbody>
-                                                <tr><!-- 카드번호 -->
-                                                    <th scope="row">카드번호</th>
-                                                    <td><div class="form_wrap text card_no">
-                                                        <label for="sOilPoint_cardNo0">카드 번호 첫번째 숫자 입력</label>
-                                                        <input type="text" name="cardNo" maxlength="4" class="type-n nohan" id="sOilPoint_cardNo0">
-                                                    </div><span class="divider">-</span>
-
-                                                        <div class="form_wrap text card_no">
-                                                            <label for="sOilPoint_cardNo1">카드 번호 두번째 숫자 입력</label>
-                                                            <input type="password" name="cardNo" maxlength="4" class="type-n nohan" id="sOilPoint_cardNo1">
-                                                        </div><span class="divider">-</span>
-
-                                                        <div class="form_wrap text card_no">
-                                                            <label for="sOilPoint_cardNo2">카드 번호 세번째 숫자 입력</label>
-                                                            <input type="password" name="cardNo" maxlength="4" class="type-n nohan" id="sOilPoint_cardNo2">
-                                                        </div><span class="divider">-</span>
-
-                                                        <div class="form_wrap text card_no">
-                                                            <label for="sOilPoint_cardNo3">카드 번호 네번째 숫자 입력</label>
-                                                            <input type="text" name="cardNo" maxlength="4" class="type-n nohan" id="sOilPoint_cardNo3">
-                                                        </div>
-                                                    </td>
-                                                </tr>
-                                                <tr><!-- 비밀번호 -->
-                                                    <th scope="row">비밀번호</th>
-                                                    <td><div class="form_wrap text user_pw">
-                                                        <label for="sOilPoint_cardPw">비밀번호 입력</label>
-                                                        <input type="password" name="cardPw" maxlength="50" id="sOilPoint_cardPw">
-                                                    </div>
-                                                        <a class="btn_toggle brown" href="javascript:void(0);">
-                                                            <span class="default">		조회</span>
-
-                                                            <span class="cancel">취소</span>
-                                                        </a>
-                                                    </td>
-                                                </tr>
-                                                <tr class="hasPointTr"><!-- 사용가능한 포인트 -->
-                                                    <th scope="row">사용가능한 포인트</th>
-                                                    <td>
-                                                        <span class="price wide align-right pdr7">0</span>
-                                                        <span class="won">점</span>
-
-
-                                                    </td>
-                                                </tr>
-                                                <tr class="usePointTr"><!-- 사용할 포인트 -->
-                                                    <th scope="row">사용할 포인트</th>
-                                                    <td><div class="form_wrap text">
-                                                        <label for="sOilPoint_usePoint">사용할 포인트 입력</label>
-                                                        <input type="text" maxlength="50" disabled="disabled" class="type-n nohan align-right" id="sOilPoint_usePoint">
-                                                    </div><span class="won black">점</span>
-                                                    </td>
-                                                </tr>
-                                                </tbody>
-                                            </table>
-
-                                            <div class="form_guide"><dl><dt>이용안내</dt><dd class="split">보유포인트 한도 내 10포인트 단위로 전액 사용 가능합니다.<br>비밀번호는 <a style="font-size: .9em;" href="http://www.s-oilbonus.com" target="_blank">www.s-oilbonus.com</a>에서 확인 가능합니다.</dd></dl></div>
-                                        </div><div id="hdOilBankPoint" class="form" style="display: block;">
-                                            <h5>현대오일뱅크 보너스포인트</h5>
-                                            <table class="form_table">
-                                                <caption>Card No., Password</caption>
-                                                <thead class="blind"></thead>
-                                                <tbody>
-                                                <tr><!-- 카드번호 -->
-                                                    <th scope="row">카드번호</th>
-                                                    <td><div class="form_wrap text card_no">
-                                                        <label for="hdOilBankPoint_cardNo0">카드 번호 첫번째 숫자 입력</label>
-                                                        <input type="text" name="cardNo" maxlength="4" class="type-n nohan" id="hdOilBankPoint_cardNo0">
-                                                    </div><span class="divider">-</span>
-
-                                                        <div class="form_wrap text card_no">
-                                                            <label for="hdOilBankPoint_cardNo1">카드 번호 두번째 숫자 입력</label>
-                                                            <input type="password" name="cardNo" maxlength="4" class="type-n nohan" id="hdOilBankPoint_cardNo1">
-                                                        </div><span class="divider">-</span>
-
-                                                        <div class="form_wrap text card_no">
-                                                            <label for="hdOilBankPoint_cardNo2">카드 번호 세번째 숫자 입력</label>
-                                                            <input type="password" name="cardNo" maxlength="4" class="type-n nohan" id="hdOilBankPoint_cardNo2">
-                                                        </div><span class="divider">-</span>
-
-                                                        <div class="form_wrap text card_no">
-                                                            <label for="hdOilBankPoint_cardNo3">카드 번호 네번째 숫자 입력</label>
-                                                            <input type="text" name="cardNo" maxlength="4" class="type-n nohan" id="hdOilBankPoint_cardNo3">
-                                                        </div>
-                                                    </td>
-                                                </tr>
-                                                <tr><!-- 비밀번호 -->
-                                                    <th scope="row">비밀번호</th>
-                                                    <td><div class="form_wrap text user_pw">
-                                                        <label for="hdOilBankPoint_cardPw">비밀번호 입력</label>
-                                                        <input type="password" name="cardPw" maxlength="50" id="hdOilBankPoint_cardPw">
-                                                    </div>
-                                                        <a class="btn_toggle brown" href="javascript:void(0);">
-                                                            <span class="default">		조회</span>
-
-                                                            <span class="cancel">취소</span>
-                                                        </a>
-                                                    </td>
-                                                </tr>
-                                                <tr class="hasPointTr"><!-- 사용가능한 포인트 -->
-                                                    <th scope="row">사용가능한 포인트</th>
-                                                    <td>
-                                                        <span class="price wide align-right pdr7">0</span>
-                                                        <span class="won">점</span>
-
-
-                                                    </td>
-                                                </tr>
-                                                <tr class="usePointTr"><!-- 사용할 포인트 -->
-                                                    <th scope="row">사용할 포인트</th>
-                                                    <td><div class="form_wrap text">
-                                                        <label for="hdOilBankPoint_usePoint">사용할 포인트 입력</label>
-                                                        <input type="text" maxlength="50" disabled="disabled" class="type-n nohan align-right" id="hdOilBankPoint_usePoint">
-                                                    </div><span class="won black">점</span>
-                                                    </td>
-                                                </tr>
-                                                </tbody>
-                                            </table>
-
-                                            <div class="form_guide"><dl><dt>이용안내</dt><dd class="split">- 1회 사용한도는 <b style="color:red">최소 1,000포인트에서 최대 20,000포인트</b>까지<br>&nbsp;&nbsp;가능합니다.<br>- 1,000 포인트 단위로 사용 가능합니다.<br>- 비밀번호는 홈페이지 <a style="font-size: .9em;" href="http://www.oilbankcard.com" target="_blank">www.oilbankcard.com</a> 에서 확인 가능합니다.</dd></dl></div>
-                                        </div><div id="eOnePoint" class="form" style="display: block;">
-                                            <h5>E1 오렌지 멤버십 포인트</h5>
-                                            <table class="form_table">
-                                                <caption>Card No., Password</caption>
-                                                <thead class="blind"></thead>
-                                                <tbody>
-                                                <tr><!-- 카드번호 -->
-                                                    <th scope="row">카드번호</th>
-                                                    <td><div class="form_wrap text card_no">
-                                                        <label for="eOnePoint_cardNo0">카드 번호 첫번째 숫자 입력</label>
-                                                        <input type="text" name="cardNo" maxlength="4" class="type-n nohan" id="eOnePoint_cardNo0">
-                                                    </div><span class="divider">-</span>
-
-                                                        <div class="form_wrap text card_no">
-                                                            <label for="eOnePoint_cardNo1">카드 번호 두번째 숫자 입력</label>
-                                                            <input type="password" name="cardNo" maxlength="4" class="type-n nohan" id="eOnePoint_cardNo1">
-                                                        </div><span class="divider">-</span>
-
-                                                        <div class="form_wrap text card_no">
-                                                            <label for="eOnePoint_cardNo2">카드 번호 세번째 숫자 입력</label>
-                                                            <input type="password" name="cardNo" maxlength="4" class="type-n nohan" id="eOnePoint_cardNo2">
-                                                        </div><span class="divider">-</span>
-
-                                                        <div class="form_wrap text card_no">
-                                                            <label for="eOnePoint_cardNo3">카드 번호 네번째 숫자 입력</label>
-                                                            <input type="text" name="cardNo" maxlength="4" class="type-n nohan" id="eOnePoint_cardNo3">
-                                                        </div>
-                                                    </td>
-                                                </tr>
-                                                <tr><!-- 비밀번호 -->
-                                                    <th scope="row">비밀번호</th>
-                                                    <td><div class="form_wrap text user_pw">
-                                                        <label for="eOnePoint_cardPw">비밀번호 입력</label>
-                                                        <input type="password" name="cardPw" maxlength="50" id="eOnePoint_cardPw">
-                                                    </div>
-                                                        <a class="btn_toggle brown" href="javascript:void(0);">
-                                                            <span class="default">		조회</span>
-
-                                                            <span class="cancel">취소</span>
-                                                        </a>
-                                                    </td>
-                                                </tr>
-                                                <tr class="hasPointTr"><!-- 사용가능한 포인트 -->
-                                                    <th scope="row">사용가능한 포인트</th>
-                                                    <td>
-                                                        <span class="price wide align-right pdr7">0</span>
-                                                        <span class="won">점</span>
-
-
-                                                    </td>
-                                                </tr>
-                                                <tr class="usePointTr"><!-- 사용할 포인트 -->
-                                                    <th scope="row">사용할 포인트</th>
-                                                    <td><div class="form_wrap text">
-                                                        <label for="eOnePoint_usePoint">사용할 포인트 입력</label>
-                                                        <input type="text" maxlength="50" disabled="disabled" class="type-n nohan align-right" id="eOnePoint_usePoint">
-                                                    </div><span class="won black">점</span>
-                                                    </td>
-                                                </tr>
-                                                </tbody>
-                                            </table>
-
-                                            <div class="form_guide"><dl><dt>이용안내</dt><dd class="split">- 보유포인트 500포인트 이상 시 사용<br>- 500포인트 단위, 최대 4만 포인트 사용가능<br>- 일 1회 포인트 내 사용</dd></dl></div>
-                                        </div><div id="ctCashPoint" class="form" style="display: block;">
-                                            <h5>문화상품권 컬쳐캐쉬</h5>
-                                            <table class="form_table">
-                                                <caption>Card No., Password</caption>
-                                                <thead class="blind"></thead>
-                                                <tbody>
-                                                <tr><!-- 카드번호 -->
-                                                    <th scope="row">컬쳐랜드 회원 ID</th>
-                                                    <td><div class="form_wrap text user_id">
-                                                        <label></label>
-                                                        <input type="text" name="userID" maxlength="50" class="nohan">
-                                                    </div>
-                                                    </td>
-                                                </tr>
-                                                <tr><!-- 비밀번호 -->
-                                                    <th scope="row">비밀번호</th>
-                                                    <td><div class="form_wrap text user_pw">
-                                                        <label for="ctCashPoint_cardPw">비밀번호 입력</label>
-                                                        <input type="password" name="cardPw" maxlength="50" id="ctCashPoint_cardPw">
-                                                    </div>
-                                                        <a class="btn_toggle brown" href="javascript:void(0);">
-                                                            <span class="default">조회</span>
-                                                            <span class="cancel">취소</span>
-                                                        </a>
-                                                    </td>
-                                                </tr>
-                                                <tr class="hasPointTr"><!-- 사용가능한 포인트 -->
-                                                    <th scope="row">사용가능한 포인트</th>
-                                                    <td>
-                                                        <span class="price wide align-right pdr7">0</span>
-                                                        <span class="won">점</span>
-                                                    </td>
-                                                </tr>
-                                                <tr class="usePointTr"><!-- 사용할 포인트 -->
-                                                    <th scope="row">사용할 포인트</th>
-                                                    <td><div class="form_wrap text">
-                                                        <label for="ctCashPoint_usePoint">사용할 포인트 입력</label>
-                                                        <input type="text" maxlength="50" disabled="disabled" class="type-n nohan align-right" id="ctCashPoint_usePoint">
-                                                    </div>
-                                                        <span class="won black">점</span>
-                                                        <span class="useAll">
-						<input type="checkbox" id="ctCashPoint_chk">
-						<label for="ctCashPoint_chk">모두사용</label>
-					</span>
-                                                    </td>
-                                                </tr>
-                                                </tbody>
-                                            </table>
-                                            <div class="form_result">
-                                                <span class="title">할인금액</span>
-                                                <span class="price">0</span>
-                                                <span class="won">원</span>
-                                            </div>
-                                            <div class="form_guide"><dl><dt>이용안내</dt><dd class="split">2D, 3D, 특별관 등 상영관에서 사용 가능<br>컬쳐캐쉬 포인트가 부족하다면?<br>☞  <a href="http://www.cultureland.co.kr" target="_blank">http://www.cultureland.co.kr</a></dd></dl></div>
-                                        </div><div id="hpCashPoint" class="form" style="display: block;">
-                                            <h5>해피머니상품권 해피캐시</h5>
-                                            <table class="form_table">
-                                                <caption>Card No., Password</caption>
-                                                <thead class="blind"></thead>
-                                                <tbody>
-                                                <tr><!-- 카드번호 -->
-                                                    <th scope="row">해피캐시 회원 ID</th>
-                                                    <td><div class="form_wrap text user_id">
-                                                        <label></label>
-                                                        <input type="text" name="userID" maxlength="50" class="nohan">
-                                                    </div>
-                                                    </td>
-                                                </tr>
-                                                <tr><!-- 비밀번호 -->
-                                                    <th scope="row">비밀번호</th>
-                                                    <td><div class="form_wrap text user_pw">
-                                                        <label for="hpCashPoint_cardPw">비밀번호 입력</label>
-                                                        <input type="password" name="cardPw" maxlength="50" id="hpCashPoint_cardPw">
-                                                    </div>
-                                                        <a class="btn_toggle brown" href="javascript:void(0);">
-                                                            <span class="default">조회</span>
-                                                            <span class="cancel">취소</span>
-                                                        </a>
-                                                    </td>
-                                                </tr>
-                                                <tr class="hasPointTr"><!-- 사용가능한 포인트 -->
-                                                    <th scope="row">사용가능한 포인트</th>
-                                                    <td>
-                                                        <span class="price wide align-right pdr7">0</span>
-                                                        <span class="won">점</span>
-                                                    </td>
-                                                </tr>
-                                                <tr class="usePointTr"><!-- 사용할 포인트 -->
-                                                    <th scope="row">사용할 포인트</th>
-                                                    <td><div class="form_wrap text">
-                                                        <label for="hpCashPoint_usePoint">사용할 포인트 입력</label>
-                                                        <input type="text" maxlength="50" disabled="disabled" class="type-n nohan align-right" id="hpCashPoint_usePoint">
-                                                    </div>
-                                                        <span class="won black">점</span>
-                                                        <span class="useAll">
-						<input type="checkbox" id="hpCashPoint_chk">
-						<label for="hpCashPoint_chk">모두사용</label>
-					</span>
-                                                    </td>
-                                                </tr>
-                                                </tbody>
-                                            </table>
-                                            <div class="form_result">
-                                                <span class="title">할인금액</span>
-                                                <span class="price">0</span>
-                                                <span class="won">원</span>
-                                            </div>
-                                            <div class="form_guide"><dl><dt>이용안내</dt><dd class="split"><p><small>- 10포인트 이상부터 사용이 가능합니다.<br>- 해피캐시가 부족하다면 <a href="http://www.happymoney.co.kr" target="_blank" style="text-decoration: underline;">http://www.happymoney.co.kr/</a> 바로 충전 가능합니다.<br>- 결제 비밀번호 이용고객은 비밀번호 입력란에 결제 비밀번호를 입력해 주세요.<br>* 결제 비밀번호 서비스신청은 해피머니 홈페이지/APP을 이용하여 신청 가능합니다.</small></p></dd></dl></div>
-                                        </div><div id="bnlCashPoint" class="form" style="display: block;">
-                                            <h5>도서상품권 북앤라이프캐시</h5>
-                                            <table class="form_table">
-                                                <caption>Card No., Password</caption>
-                                                <thead class="blind"></thead>
-                                                <tbody>
-                                                <tr><!-- 카드번호 -->
-                                                    <th scope="row">북앤라이프 ID</th>
-                                                    <td><div class="form_wrap text user_id">
-                                                        <label></label>
-                                                        <input type="text" name="userID" maxlength="50" class="nohan">
-                                                    </div>
-                                                    </td>
-                                                </tr>
-                                                <tr><!-- 비밀번호 -->
-                                                    <th scope="row">비밀번호</th>
-                                                    <td><div class="form_wrap text user_pw">
-                                                        <label for="bnlCashPoint_cardPw">비밀번호 입력</label>
-                                                        <input type="password" name="cardPw" maxlength="50" id="bnlCashPoint_cardPw">
-                                                    </div>
-                                                        <a class="btn_toggle brown" href="javascript:void(0);">
-                                                            <span class="default">조회</span>
-                                                            <span class="cancel">취소</span>
-                                                        </a>
-                                                    </td>
-                                                </tr>
-                                                <tr class="hasPointTr"><!-- 사용가능한 포인트 -->
-                                                    <th scope="row">사용가능한 포인트</th>
-                                                    <td>
-                                                        <span class="price wide align-right pdr7">0</span>
-                                                        <span class="won">점</span>
-                                                    </td>
-                                                </tr>
-                                                <tr class="usePointTr"><!-- 사용할 포인트 -->
-                                                    <th scope="row">사용할 포인트</th>
-                                                    <td><div class="form_wrap text">
-                                                        <label for="bnlCashPoint_usePoint">사용할 포인트 입력</label>
-                                                        <input type="text" maxlength="50" disabled="disabled" class="type-n nohan align-right" id="bnlCashPoint_usePoint">
-                                                    </div>
-                                                        <span class="won black">점</span>
-                                                        <span class="useAll">
-						<input type="checkbox" id="bnlCashPoint_chk">
-						<label for="bnlCashPoint_chk">모두사용</label>
-					</span>
-                                                    </td>
-                                                </tr>
-                                                </tbody>
-                                            </table>
-                                            <div class="form_result">
-                                                <span class="title">할인금액</span>
-                                                <span class="price">0</span>
-                                                <span class="won">원</span>
-                                            </div>
-                                            <div class="form_guide"><dl><dt>이용안내</dt><dd class="split"><p><small>* 10포인트 이상부터 사용이 가능합니다.<br>* 예매 취소 및 환불 후 북앤라이프 탈퇴 부탁드립니다.<br>* 북앤라이프 탈퇴 후, 취소 환불 시 북앤라이프캐시 환급 불가 합니다.<br>* 북앤라이프캐시 계정 및 환불 관련 문의 ☎ 1544-5111 (한국페이즈서비스)</small></p></dd></dl></div>
-                                        </div><div id="culturePIN" class="form" style="display: block;">
-                                            <h5>도서문화상품권</h5><div class="formImgCon"><img src="http://img.cgv.co.kr/CGV_RIA/Ticket/image/reservation/step3/culturePIN_ko.jpg"></div>
-                                            <table class="form_table">
-                                                <caption>Voucher No., Password</caption>
-                                                <thead class="blind"></thead>
-                                                <tbody>
-                                                <tr><!-- 카드번호 -->
-                                                    <th scope="row">PIN 번호</th>
-                                                    <td><div class="form_wrap text card_no">
-                                                        <label>상품권 번호 첫번째 숫자 입력</label>
-                                                        <input type="text" name="cardNo" maxlength="4" class="type-n nohan">
-                                                    </div><span class="divider">-</span>
-
-                                                        <div class="form_wrap text card_no">
-                                                            <label>상품권 번호 두번째 숫자 입력</label>
-                                                            <input type="password" name="cardNo" maxlength="4" class="type-n nohan">
-                                                        </div><span class="divider">-</span>
-
-                                                        <div class="form_wrap text card_no">
-                                                            <label>상품권 번호 세번째 숫자 입력</label>
-                                                            <input type="password" name="cardNo" maxlength="4" class="type-n nohan">
-                                                        </div><span class="divider">-</span>
-
-                                                        <div class="form_wrap text card_no">
-                                                            <label>상품권 번호 네번째 숫자 입력</label>
-                                                            <input type="text" name="cardNo" maxlength="4" class="type-n nohan">
-                                                        </div>
-                                                    </td>
-                                                </tr>
-                                                <tr><!-- 비밀번호 -->
-                                                    <th scope="row">인증번호</th>
-                                                    <td><div class="form_wrap text user_pw">
-                                                        <label>비밀번호 입력</label>
-                                                        <input type="password" name="cardPw" maxlength="50">
-                                                    </div>
-                                                        <a class="btn_toggle brown" href="javascript:void(0);">
-                                                            <span class="default check">조회/적용</span>
-                                                            <span class="cancel">취소</span>
-                                                        </a>
-                                                    </td>
-                                                </tr>
-                                                </tbody>
-                                            </table>
-                                            <div class="form_list">
-                                                <div class="list_header">
-                                                    <span class="col col1">상품권번호</span>
-                                                    <span class="col col2">금액</span>
-                                                </div>
-                                                <div class="list_body nano has-scrollbar"><ul class="content" tabindex="-1" style="right: -21px; bottom: -21px;"></ul><div class="pane pane-y" style="display: none; opacity: 1; visibility: visible;"><div class="slider slider-y" style="height: 50px;"></div></div><div class="pane pane-x" style="display: none; opacity: 1; visibility: visible;"><div class="slider slider-x" style="width: 50px;"></div></div></div>
-                                            </div>
-                                            <div class="form_result">
-                                                <span class="title">할인금액:</span>
-                                                <span class="price">0</span>
-                                                <span class="won">원</span>
-                                            </div>
-                                            <div class="form_guide"><dl><dt>이용안내</dt><dd class="split">- 보유하고 계신 도서문화상품권(지류/모바일)의 PIN번호(16자리) 및 인증번호 (4자리)를 입력하여 사용하실 수 있습니다.<br>- 예매 취소 시 PIN번호 재확인이 불가하므로 사용하신 상품권은 관람 완료 시까지 소지해주시기 바랍니다.<br>- 사용 후 상품권 잔액은 추후 CGV홈페이지 및 APP에서 예매 시 사용 가능합니다.</dd></dl></div>
-                                        </div><div id="cultureCon" class="form" style="display: block;">
-                                            <h5>컬쳐모바일문화상품권</h5>
-                                            <div class="form_input">
-                                                <div class="wrap_input_text"><label class="sreader" for="id"></label><input type="text" maxlength="16" value="" class="type-n-a nohan" id="cultureConipt" placeholder="쿠폰번호 16자리를 입력해 주세요."></div>
-                                                <a class="brown" href="javascript:void(0);"><span>조회/적용</span></a>
-                                            </div>
-                                            <div class="form_list">
-                                                <div class="list_header">
-                                                    <span class="col col1">상품권번호</span>
-                                                    <span class="col col2">금액</span>
-                                                </div>
-                                                <div class="list_body nano has-scrollbar"><ul class="content" tabindex="-1" style="right: -21px; bottom: -21px;"></ul><div class="pane pane-y" style="display: none; opacity: 1; visibility: visible;"><div class="slider slider-y" style="height: 50px;"></div></div><div class="pane pane-x" style="display: none; opacity: 1; visibility: visible;"><div class="slider slider-x" style="width: 50px;"></div></div></div>
-                                            </div>
-                                            <div class="form_result">
-                                                <span class="title">할인금액:</span>
-                                                <span class="price">0</span>
-                                                <span class="won">원</span>
-                                            </div>
-                                            <div class="form_guide"><dl><dt>이용안내</dt><dd class="split">지류 문화상품권 사용을 윈하시는 경우 컬쳐랜드 홈페이지/APP을 이용하여 컬쳐캐쉬로 전환 후 바로 사용가능합니다.<br><a href="https://www.cultureland.co.kr" target="_blank">☞ https:// www.cultureland.co.kr</a></dd></dl></div>
-                                        </div><div id="cjProdCon" class="form" style="display: block;">
-                                            <h5>CJ상품권</h5>
-                                            <div class="form_input">
-                                                <div class="wrap_input_text"><label class="sreader" for="id"></label><input type="text" maxlength="15" value="" class="type-n-a nohan" id="cjProdConipt" placeholder="쿠폰번호 15자리를 입력해 주세요."></div>
-                                                <a class="brown" href="javascript:void(0);"><span>조회/적용</span></a>
-                                            </div>
-                                            <div class="form_list">
-                                                <div class="list_header">
-                                                    <span class="col col1">상품권번호</span>
-                                                    <span class="col col2">금액</span>
-                                                </div>
-                                                <div class="list_body nano has-scrollbar"><ul class="content" tabindex="-1" style="right: -21px; bottom: -21px;"></ul><div class="pane pane-y" style="display: none; opacity: 1; visibility: visible;"><div class="slider slider-y" style="height: 50px;"></div></div><div class="pane pane-x" style="display: none; opacity: 1; visibility: visible;"><div class="slider slider-x" style="width: 50px;"></div></div></div>
-                                            </div>
-                                            <div class="form_result">
-                                                <span class="title">할인금액:</span>
-                                                <span class="price">0</span>
-                                                <span class="won">원</span>
-                                            </div>
-
-                                        </div><div id="cjCardResv" class="form" style="display: block;">
-                                            <h5>CJ카드 적립금</h5>
-                                            <table class="form_table">
-                                                <caption>적립금 사용할 포인트 입력</caption>
-                                                <thead class="blind"></thead>
-                                                <tbody>
-                                                <tr><td colspan="2"><strong>The CJ Card 적립금</strong> 사용 시, 고객님의 개인정보를 가지고 CJ 오쇼핑의 인증을 거쳐야 합니다. 동의하시겠습니까?</td></tr>
-                                                <tr>
-                                                    <td colspan="2">
-                                                        <a class="btn_toggle brown" href="javascript:void(0);">
-                                                            <span class="default check">예</span>
-                                                            <span class="cancel">취소</span>
-                                                        </a>
-                                                    </td>
-                                                </tr>
-                                                <tr class="hasPointTr"><!-- 사용가능한 포인트 -->
-                                                    <th scope="row">사용가능한 포인트</th>
-                                                    <td>
-                                                        <span class="price wide align-right pdr7">0</span>
-                                                        <span class="won">점</span>
-                                                    </td>
-                                                </tr>
-                                                <tr class="usePointTr"><!-- 사용할 포인트 -->
-                                                    <th scope="row">사용할 포인트</th>
-                                                    <td><div class="form_wrap text">
-                                                        <label for="#cjCardResv_usePoint">사용할 포인트 입력</label>
-                                                        <input type="text" maxlength="50" disabled="disabled" class="type-n nohan align-right" id="#cjCardResv_usePoint">
-                                                    </div>
-                                                        <span class="won black">점</span>
-                                                    </td>
-                                                </tr>
-                                                </tbody>
-                                            </table>
-                                            <div class="form_result">
-                                                <span class="title">사용할 포인트</span>
-                                                <span class="price">0</span>
-                                                <span class="won">점</span>
-                                            </div>
-                                        </div><div id="SKbenepia" class="form" style="display: none;">
-                                            <h5>SK 베네피아 포인트</h5>
-                                            <table class="form_table">
-                                                <caption>Card No., Password</caption>
-                                                <thead class="blind"></thead>
-                                                <tbody>
-                                                <tr><!-- 카드번호 -->
-                                                    <th scope="row">베네피아 회원 ID</th>
-                                                    <td><div class="form_wrap text user_id">
-                                                        <label></label>
-                                                        <input type="text" name="userID" maxlength="50" class="nohan">
-                                                    </div>
-                                                    </td>
-                                                </tr>
-
-                                                <tr><!-- 마일리지 비밀번호 -->
-                                                    <th scope="row">비밀번호</th>
-                                                    <td><div class="form_wrap text user_pw">
-                                                        <label>비밀번호 입력</label>
-                                                        <input type="password" name="cardPw2" maxlength="50">
-                                                    </div>
-                                                        <a class="btn_toggle brown" href="javascript:void(0);">
-                                                            <span class="default check">조회/적용</span>
-                                                            <span class="cancel">취소</span>
-                                                        </a>
-                                                    </td>
-                                                </tr>
-                                                <tr class="hasPointTr"><!-- 사용가능한 포인트 -->
-                                                    <th scope="row">사용가능한 포인트</th>
-                                                    <td>
-                                                        <span class="price wide align-right pdr7">0</span>
-                                                        <span class="won">점</span>
-                                                    </td>
-                                                </tr>
-                                                </tbody>
-                                            </table>
-                                            <div class="form_result">
-                                                <span class="title">사용할 포인트</span>
-                                                <span class="price">0</span>
-                                                <span class="won">점</span>
-                                            </div>
-                                            <div class="form_guide"><dl><dt>이용안내</dt><dd class="split">전액결제만 가능하며, 최종결제금액 보다 보유 포인트가 부족한 경우 사용이 불가합니다.</dd></dl></div>
-                                        </div><div id="homePlusCoupon" class="form" style="display: none;">
-                                            <h5>홈플러스 디지털상품권</h5>
-                                            <table class="form_table">
-                                                <caption>Card No., Password</caption>
-                                                <thead class="blind"></thead>
-                                                <tbody>
-                                                <tr><!-- 카드번호 -->
-                                                    <th scope="row">카드번호</th>
-                                                    <td><div class="form_wrap text card_no">
-                                                        <label for="homePlusCoupon_cardNo0">카드 번호 첫번째 숫자 입력</label>
-                                                        <input type="text" name="cardNo" maxlength="4" class="type-n nohan" id="homePlusCoupon_cardNo0">
-                                                    </div><span class="divider">-</span>
-
-                                                        <div class="form_wrap text card_no">
-                                                            <label for="homePlusCoupon_cardNo1">카드 번호 두번째 숫자 입력</label>
-                                                            <input type="password" name="cardNo" maxlength="4" class="type-n nohan" id="homePlusCoupon_cardNo1">
-                                                        </div><span class="divider">-</span>
-
-                                                        <div class="form_wrap text card_no">
-                                                            <label for="homePlusCoupon_cardNo2">카드 번호 세번째 숫자 입력</label>
-                                                            <input type="password" name="cardNo" maxlength="4" class="type-n nohan" id="homePlusCoupon_cardNo2">
-                                                        </div><span class="divider">-</span>
-
-                                                        <div class="form_wrap text card_no">
-                                                            <label for="homePlusCoupon_cardNo3">카드 번호 네번째 숫자 입력</label>
-                                                            <input type="text" name="cardNo" maxlength="4" class="type-n nohan" id="homePlusCoupon_cardNo3">
-                                                        </div>
-                                                    </td>
-                                                </tr>
-                                                <tr><!-- 비밀번호 -->
-                                                    <th scope="row">PIN번호</th>
-                                                    <td><div class="form_wrap text user_pw">
-                                                        <label for="homePlusCoupon_cardPw">비밀번호 입력</label>
-                                                        <input type="password" name="cardPw" maxlength="50" id="homePlusCoupon_cardPw">
-                                                    </div>
-                                                        <a class="btn_toggle brown" href="javascript:void(0);">
-                                                            <span class="default">		조회</span>
-
-                                                            <span class="cancel">취소</span>
-                                                        </a>
-                                                    </td>
-                                                </tr>
-                                                <tr class="hasPointTr"><!-- 사용가능한 포인트 -->
-                                                    <th scope="row">사용가능한 포인트</th>
-                                                    <td>
-                                                        <span class="price wide align-right pdr7">0</span>
-                                                        <span class="won">점</span>
-
-
-                                                    </td>
-                                                </tr>
-                                                <tr class="usePointTr"><!-- 사용할 포인트 -->
-                                                    <th scope="row">사용할 포인트</th>
-                                                    <td><div class="form_wrap text">
-                                                        <label for="homePlusCoupon_usePoint">사용할 포인트 입력</label>
-                                                        <input type="text" maxlength="50" disabled="disabled" class="type-n nohan align-right" id="homePlusCoupon_usePoint">
-                                                    </div><span class="won black">점</span>
-                                                    </td>
-                                                </tr>
-                                                </tbody>
-                                            </table>
-
-
-                                        </div></div>
                                     </div>
                                 </div><!-- tpm_body -->
                             </div>
@@ -2838,7 +1592,10 @@
 
                                                 </div>
                                                 <!-- 계좌이체 -->
-                                                <div class="payment_input" style="display: none;"><div class="table_wrap transfer_wrap"><h6>네이버페이 결제 순서</h6><div style="width: 490px;">1. 우측 하단에 있는 "결제하기"버튼을 클릭해주세요.<br>2. 예매내역 확인 후 결제하기 버튼 클릭 시 '네이버페이' 결제 인증창이 뜹니다.<br>3. '네이버페이'결제 인증창에서 정보를 입력하신 후 결제해주세요.</div></div><div class="payment_input_exp"><span class="alert">'네이버페이'는 결제시, 기본 1% 네이버페이 포인트가 적립됩니다<br>'네이버페이'는 신용카드 선할인과 카드사 포인트는 이용이 불가능하며,<br>신용카드별 청구할인은 이용이 가능합니다.</span></div></div><div class="payment_input" style="display: none;"><div class="table_wrap transfer_wrap"><h6>스마일페이 결제 순서</h6><div style="width: 490px;">1. 아래 결제하기 버튼 클릭 후 다음 단계로 이동<br>2. 결제내역 확인 후 결제하기 버튼 클릭 시, 팝업창이 뜸<br>3. 해당 '스마일페이' 팝업에서 원하는 카드를 선택 후 정보를 입력하시면 됩니다.</div></div><div class="payment_input_exp"><span class="alert"><b style="display: inline-block; width: auto; text-align: left;">'스마일페이' 결제 시, 기본 0.5% 스마일캐시가 적립되며,<br>스마일카드로 결제 시, 기본 0.5% + 추가 2.0% 적립되어 최대 2.5% 적립됩니다.<br><br>'스마일페이' 는 즉시할인 신용카드, 카드사 포인트는 이용이 불가능하며,<br>신용카드별 청구할인은 이용이 가능합니다.</b></span></div></div><div class="payment_input" style="display: none;"><div class="table_wrap transfer_wrap"><h6>SSGPAY 결제 순서</h6><div style="width: 490px;">1. 우측 하단에 있는 '결제하기' 버튼을 클릭해주세요.<br>2. 예매내역 확인 후 결제하기 버튼 클릭 시 'SSGPAY' 결제 인증창이 뜹니다.<br>3. 'SSGPAY' 결제 인증창에서 정보를 입력하신 후 결제해주세요.</div></div><div class="payment_input_exp"><span class="alert">'SSGPAY' 는 결제 시 신용카드 선할인과 카드사 포인트는<br>이용이 불가능하며, 신용카드 별 청구할인은 이용이 가능합니다.</span></div></div><div class="payment_input" style="display: none;"><div class="table_wrap transfer_wrap"><h6>차이 결제 순서</h6><div style="width: 490px;">1. 우측 하단에 있는 “결제하기＂버튼을 클릭해주세요.<br>2. 예매내역 확인 후 결제하기 버튼 클릭 시 ＂차이” 결제 인증창이 뜹니다.<br>3. 차이 인증창에서 정보를 입력하신 후 결제해주세요.</div></div><div class="payment_input_exp"><span class="alert"><b style="display: inline-block; width: 480px; text-align: left;">- '차이'는 복합결제 시 신용카드 선할인과 카드사 포인트는 이용이 불가능하며, 신용카드별 청구할인은 이용이 가능합니다.<br>- 결제취소 시 환불금액은 차이머니로 환불됩니다.<br>- 결제 부분 취소 시 취소금액에 대해 적립 된 차이머니는 회수됩니다.<br>- 할인금액에 대해서는 차이머니 적립이 불가합니다.<br>- 차이머니 적립과 쿠폰 사용 중복은 불가합니다.</b></span></div></div><div class="payment_input" style="display: none;"><div class="table_wrap transfer_wrap"><h6>카카오페이 결제 순서</h6><div style="width: 490px;">1. 우측 하단에 있는 '결제하기' 버튼을 클릭해주세요.<br>2. 예매내역 확인 후 결제하기 버튼 클릭 시 '카카오페이' 결제 인증창이 뜹니다.<br>3. '카카오페이' 결제 인증창에서 정보를 입력하신 후 결제해주세요.</div></div><div class="payment_input_exp"><span class="alert">* '카카오페이' 는 신용카드 선할인과 카드사 포인트는 이용이 불가능하며,<br>신용카드별 청구할인은 이용이 가능합니다.</span></div></div><div class="payment_input" style="display: none;"><div class="table_wrap transfer_wrap"><h6>PAYCO 결제 순서</h6><div style="width: 490px;">1. 우측 하단에 있는 '결제하기' 버튼을 클릭해주세요.<br>2. 예매내역 확인 후 결제하기 버튼 클릭 시 'PAYCO' 결제 인증창이 뜹니다.<br>3. 'PAYCO' 결제 인증창에서 정보를 입력하신 후 결제해주세요.</div></div><div class="payment_input_exp"><span class="alert">'PAYCO' 는 씨티카드와 즉시할인 신용카드, 카드사 포인트는 이용이 불가능하며,<br>신용카드 별 청구할인은 이용이 가능합니다.<br>'PAYCO' 포인트 및 할인쿠폰 사용 금액에 대해서는 CJ ONE 포인트 적립이 불가합니다.</span></div></div><div class="payment_input" style="display: none;"><div class="table_wrap transfer_wrap"><h6>페이코인 결제 순서</h6><div style="width: 490px;">1. 아래 결제하기 버튼 클릭 후 다음 단계로 이동<br>2. 페이코인 QR 코드 인증 시 페이코인 결제 팝업창 발생<br>3. 페이코인 팝업에서 결제금액 확인 후 결제하기</div></div><div class="payment_input_exp"><span class="alert"></span></div></div><div class="payment_input" style="display: none;"><div class="table_wrap transfer_wrap"><h6>내통장결제 결제 순서</h6><div>1. 아래 결제하기 버튼 클릭 후 다음 단계로 이동<br>2. 결제내역 확인 후 결제하기 버튼 클릭 시, 팝업창 노출<br>3. 해당 팝업창을 통해 본인명의의 계좌 1회 등록<br>4. 계좌등록 시, 비밀번호만으로 현금 간편결제 서비스 이용</div></div><div class="payment_input_exp"><span class="alert">'내통장결제'는 CGV 내 본인명의 계좌 등록 후 비밀번호만으로 결제할 수 있는 간편 결제 서비스입니다.<br>은행 점검시간인 경우 내통장결제 서비스 이용이 불가합니다.</span></div></div><div class="payment_input" style="display: none;"><div class="table_wrap transfer_wrap"><h6>토스 결제 순서</h6><div>1. 우측 하단에 있는 "결제하기"버튼을 클릭해주세요.<br>2. 예매내역 확인 후 결제하기 버튼 클릭 시 '토스' 결제 인증창이 뜹니다.<br>3. '토스'결제 인증창에서 정보를 입력하신 후 결제해주세요.</div></div><div class="payment_input_exp"><span class="alert">'토스'는 신용카드 선할인과 카드사 포인트는 이용이 불가능하며,<br>신용카드별 청구할인은 이용이 가능합니다.</span></div></div></div>
+                                                <div class="payment_input" style="display: none;"><div class="table_wrap transfer_wrap"><h6>네이버페이 결제 순서</h6><div style="width: 490px;">1. 우측 하단에 있는 "결제하기"버튼을 클릭해주세요.<br>2. 예매내역 확인 후 결제하기 버튼 클릭 시 '네이버페이' 결제 인증창이 뜹니다.<br>3. '네이버페이'결제 인증창에서 정보를 입력하신 후 결제해주세요.</div></div><div class="payment_input_exp"><span class="alert">'네이버페이'는 결제시, 기본 1% 네이버페이 포인트가 적립됩니다<br>'네이버페이'는 신용카드 선할인과 카드사 포인트는 이용이 불가능하며,<br>신용카드별 청구할인은 이용이 가능합니다.</span></div></div><div class="payment_input" style="display: none;"><div class="table_wrap transfer_wrap"><h6>스마일페이 결제 순서</h6><div style="width: 490px;">1. 아래 결제하기 버튼 클릭 후 다음 단계로 이동<br>2. 결제내역 확인 후 결제하기 버튼 클릭 시, 팝업창이 뜸<br>3. 해당 '스마일페이' 팝업에서 원하는 카드를 선택 후 정보를 입력하시면 됩니다.</div></div><div class="payment_input_exp"><span class="alert"><b style="display: inline-block; width: auto; text-align: left;">'스마일페이' 결제 시, 기본 0.5% 스마일캐시가 적립되며,<br>스마일카드로 결제 시, 기본 0.5% + 추가 2.0% 적립되어 최대 2.5% 적립됩니다.<br><br>'스마일페이' 는 즉시할인 신용카드, 카드사 포인트는 이용이 불가능하며,<br>신용카드별 청구할인은 이용이 가능합니다.</b></span></div></div><div class="payment_input" style="display: none;"><div class="table_wrap transfer_wrap"><h6>SSGPAY 결제 순서</h6><div style="width: 490px;">1. 우측 하단에 있는 '결제하기' 버튼을 클릭해주세요.<br>2. 예매내역 확인 후 결제하기 버튼 클릭 시 'SSGPAY' 결제 인증창이 뜹니다.<br>3. 'SSGPAY' 결제 인증창에서 정보를 입력하신 후 결제해주세요.</div></div><div class="payment_input_exp"><span class="alert">'SSGPAY' 는 결제 시 신용카드 선할인과 카드사 포인트는<br>이용이 불가능하며, 신용카드 별 청구할인은 이용이 가능합니다.</span></div></div><div class="payment_input" style="display: none;"><div class="table_wrap transfer_wrap"><h6>차이 결제 순서</h6><div style="width: 490px;">1. 우측 하단에 있는 “결제하기＂버튼을 클릭해주세요.<br>2. 예매내역 확인 후 결제하기 버튼 클릭 시 ＂차이” 결제 인증창이 뜹니다.<br>3. 차이 인증창에서 정보를 입력하신 후 결제해주세요.</div></div><div class="payment_input_exp"><span class="alert"><b style="display: inline-block; width: 480px; text-align: left;">- '차이'는 복합결제 시 신용카드 선할인과 카드사 포인트는 이용이 불가능하며, 신용카드별 청구할인은 이용이 가능합니다.<br>- 결제취소 시 환불금액은 차이머니로 환불됩니다.<br>- 결제 부분 취소 시 취소금액에 대해 적립 된 차이머니는 회수됩니다.<br>- 할인금액에 대해서는 차이머니 적립이 불가합니다.<br>- 차이머니 적립과 쿠폰 사용 중복은 불가합니다.</b></span></div></div>
+
+                                                <!--카카오페이 클릭시 활성화 부분-->
+                                                <div class="payment_input kakaopayDiv" style="display: none;"><div class="table_wrap transfer_wrap"><h6>카카오페이 결제 순서</h6><div style="width: 490px;">1. 우측 하단에 있는 '결제하기' 버튼을 클릭해주세요.<br>2. 예매내역 확인 후 결제하기 버튼 클릭 시 '카카오페이' 결제 인증창이 뜹니다.<br>3. '카카오페이' 결제 인증창에서 정보를 입력하신 후 결제해주세요.</div></div><div class="payment_input_exp"><span class="alert">* '카카오페이' 는 신용카드 선할인과 카드사 포인트는 이용이 불가능하며,<br>신용카드별 청구할인은 이용이 가능합니다.</span></div></div><div class="payment_input" style="display: none;"><div class="table_wrap transfer_wrap"><h6>PAYCO 결제 순서</h6><div style="width: 490px;">1. 우측 하단에 있는 '결제하기' 버튼을 클릭해주세요.<br>2. 예매내역 확인 후 결제하기 버튼 클릭 시 'PAYCO' 결제 인증창이 뜹니다.<br>3. 'PAYCO' 결제 인증창에서 정보를 입력하신 후 결제해주세요.</div></div><div class="payment_input_exp"><span class="alert">'PAYCO' 는 씨티카드와 즉시할인 신용카드, 카드사 포인트는 이용이 불가능하며,<br>신용카드 별 청구할인은 이용이 가능합니다.<br>'PAYCO' 포인트 및 할인쿠폰 사용 금액에 대해서는 CJ ONE 포인트 적립이 불가합니다.</span></div></div><div class="payment_input" style="display: none;"><div class="table_wrap transfer_wrap"><h6>페이코인 결제 순서</h6><div style="width: 490px;">1. 아래 결제하기 버튼 클릭 후 다음 단계로 이동<br>2. 페이코인 QR 코드 인증 시 페이코인 결제 팝업창 발생<br>3. 페이코인 팝업에서 결제금액 확인 후 결제하기</div></div><div class="payment_input_exp"><span class="alert"></span></div></div><div class="payment_input" style="display: none;"><div class="table_wrap transfer_wrap"><h6>내통장결제 결제 순서</h6><div>1. 아래 결제하기 버튼 클릭 후 다음 단계로 이동<br>2. 결제내역 확인 후 결제하기 버튼 클릭 시, 팝업창 노출<br>3. 해당 팝업창을 통해 본인명의의 계좌 1회 등록<br>4. 계좌등록 시, 비밀번호만으로 현금 간편결제 서비스 이용</div></div><div class="payment_input_exp"><span class="alert">'내통장결제'는 CGV 내 본인명의 계좌 등록 후 비밀번호만으로 결제할 수 있는 간편 결제 서비스입니다.<br>은행 점검시간인 경우 내통장결제 서비스 이용이 불가합니다.</span></div></div><div class="payment_input" style="display: none;"><div class="table_wrap transfer_wrap"><h6>토스 결제 순서</h6><div>1. 우측 하단에 있는 "결제하기"버튼을 클릭해주세요.<br>2. 예매내역 확인 후 결제하기 버튼 클릭 시 '토스' 결제 인증창이 뜹니다.<br>3. '토스'결제 인증창에서 정보를 입력하신 후 결제해주세요.</div></div><div class="payment_input_exp"><span class="alert">'토스'는 신용카드 선할인과 카드사 포인트는 이용이 불가능하며,<br>신용카드별 청구할인은 이용이 가능합니다.</span></div></div></div>
                                         </div>
 
                                         <div class="payment_input_exp">
@@ -2877,7 +1634,7 @@
                                     </div>
                                     <div class="summary_box payment_box" id="tps_payment_box">
                                         <div class="payment_header">결제내역</div>
-                                        <div class="payment_body" id="summary_payment_list"><dl><dt>신용카드</dt><dd><span class="num">26,000</span><span class="won">원</span></dd></dl></div>
+                                        <div class="payment_body" id="summary_payment_list"><dl><dt></dt><dd><span class="num">26,000</span><span class="won">원</span></dd></dl></div>
                                         <div class="payment_footer">
                                             <div class="label">
                                                 <span>남은 결제금액</span>
@@ -3473,7 +2230,7 @@
 </div>
 
 <script type="text/javascript" src="https://img.cgv.co.kr/R2014//js/system/crypto.js"></script>
-
+<script src="/js/reservation.js"></script>
 
 
 <!-- Google Tag Manager -->
