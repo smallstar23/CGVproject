@@ -57,24 +57,24 @@
                         </a>
                     </div>
                     <li>
-                        <a href="./login.jsp?">
+                        <a th:href="@{login}">
                             <img src="/img/loginPassword.png" alt="로그인" />
                             <span>로그인</span></a>
                     </li>
                     <li>
-                        <a href="./join.jsp">
+                        <a th:href="@{join}">
                             <img src="/img/loginJoin.png" alt="회원가입" />
                             <span>회원가입</span>
                         </a>
                     </li>
                     <li>
-                        <a href="./mycgv.jsp">
+                        <a th:href="@{mycgv}">
                             <img src="/img/loginMember.png" alt="MY CGV" />
                             <span>MY CGV</span></a>
                     </li>
 
                     <li>
-                        <a href="../support/support.html">
+                        <a th:href="@{support}">
                             <img src="/img/loginCustomer.png" alt="고객센터" />
                             <span>고객센터</span></a>
                     </li>
@@ -123,7 +123,8 @@
                                 <h3 class="haze">내 정보</h3>
                                 <dl>
                                     <dt>CGV  아이디</dt>
-                                    <dd class="em" th:text="${form.getUserid()}">hej9205</dd>
+                                    <dd class="em">hej9205</dd>
+<!--                                    <dd class="em" th:text="${form.getUserid()}">hej9205</dd>-->
                                 </dl>
 
                                 <dl class="marketing_data">

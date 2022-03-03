@@ -179,13 +179,13 @@
       <div class="sect-login">
         <ul class="tab-menu-round">
           <li class="on">
-            <a href="./login.jsp">로그인</a>
+            <a th:href="@{login}">로그인</a>
           </li>
           <li>
-            <a href="./login-agreement.jsp">비회원 예매</a>
+            <a th:href="@{login-agreement}">비회원 예매</a>
           </li>
           <li>
-            <a href="login-guest-login.jsp">비회원 예매확인</a>
+            <a th:href="@{login-guest-login}">비회원 예매확인</a>
           </li>
         </ul>
         <div class="box-login">
@@ -198,13 +198,13 @@
                 <input type="text" title="아이디" id="txtUserId" name="txtUserId" data-title="아이디를 " data-message="입력하세요." required="required" style="width: 264px" />
                 <input type="password" title="패스워드" id="txtPassword" name="txtPassword" data-title="패스워드를 " data-message="입력하세요." required="required" style="width: 264px"/>
               </div>
-              <div class="save-id"> <input type="checkbox" id="loginSet"  /><label for="save_id">아이디 저장</label></div>
+              <div class="save-id"> <input type="checkbox" id="loginSet"  /><label>아이디 저장</label></div>
 
 
               <button type="submit" id="submit" title="로그인"><span>로그인</span></button>
               <div class="login-option">
-                <a href="/user/login/find-account.aspx">아이디 찾기</a>
-                <a href="/user/login/find-pw.aspx?act=pw">비밀번호 찾기</a>
+                <a th:href="@{login}">아이디 찾기</a>
+                <a th:href="@{login}">비밀번호 찾기</a>
               </div>
             </fieldset>
           </form>
@@ -218,13 +218,13 @@
           <strong>CGV 회원이 아니신가요?</strong>
           <span>회원가입하시고 다양한 혜택을 누리세요!</span>
           <strong>
-            <a title="새창" target="_blank" href="https://www.cjone.com/cjmweb/join.do?coopco_cd=7010&brnd_cd=1000" class="round red"><span style="height: 22px;">CGV 회원가입하기</span></a>
+            <a title="새창" target="_blank" th:href="@{join}" class="round red"><span style="height: 22px;">CGV 회원가입하기</span></a>
           </strong>
           <em>
 
           </em>
           <em>
-            <a href="http://www.cjone.com/cjmweb/about-cjone.do" class="round black" target="_blank"><span style="height: 22px;">CGV 멤버십이란?</span></a>
+            <a th:href="@{../culture-event/popcorn-store/popcorn-store}" target="_blank"><span style="height: 22px;">CGV 멤버십이란?</span></a>
           </em>
         </div>
       </div>

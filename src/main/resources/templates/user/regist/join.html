@@ -1,4 +1,4 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<!DOCTYPE html>
 <html lang="ko"
       xmlns="http://www.w3.org/1999/xhtml"
       xmlns:th="http://www.thymeleaf.org/">
@@ -89,7 +89,7 @@
             <div class="join-hd">
                 <h3><img src="http://img.cgv.co.kr/R2014/images/common/img_join_hd.jpg" alt="CGV에 오신걸 환영합니다." /></h3>
                 <p>CGV 회원이 되시면 하나의 통합된 회원 ID와 비밀번호로<br />CGV의 다양한 서비스를 이용하실 수 있습니다.</p>
-                <a href="./agreement.jsp" target="_blank" title="새창" class="link-join"><span>CGV 회원가입</span></a>
+                <a th:href="@{agreement}"  title="새창" class="link-join"><span>CGV 회원가입</span></a>
             </div>
 
             <div class="join-benefit" style="padding:0">

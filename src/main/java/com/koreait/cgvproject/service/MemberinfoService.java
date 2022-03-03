@@ -30,9 +30,9 @@ public class MemberinfoService {
 //        System.out.println(saved.toString());
         log.info(saved.toString());
     }
-
     public MemberinfoEntity viewuserid(Long id){
 
         return memberinfoRepository.findById(id).get();
     }
+
 }
