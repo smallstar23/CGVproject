@@ -189,19 +189,19 @@
                 <div class="tit-mycgv">
                     <h3>예매확인/취소</h3>
                 </div>
-                <!--애매한 부분 제거-->
-                <%--                        <div class="sect-mycgv-reserve">--%>
-                <%--                            <div class="box-polaroid">--%>
-                    <%--                                <div class="box-inner issuing">--%>
-                        <%--                                    <p><strong>예매번호로 현장발권</strong> <a href="/culture-event/event/detail-view.aspx?idx=9277" class="round gray on" target="_blank" title="새창"><span style="height: 17px">바로가기</span></a></p>--%>
-                        <%--                                    <span>현장 발권시 예매번호로만 티켓을 찾을 수 있습니다.</span>--%>
-                        <%--                                </div>--%>
-                    <%--                                <div class="box-inner perform">--%>
-                        <%--                                    <p><strong>공연예매안내</strong>  <a href="http://ticket.interest.me/?path=cgv&type=3" class="round gray on" target="_blank" title="새창"><span style="height: 17px">바로가기</span></a></p>--%>
-                        <%--                                    <span>공연예매 확인은 CJ E&amp;M Ticket에서 확인하세요</span>--%>
-                        <%--                                </div>--%>
-                    <%--                            </div>--%>
-                <%--                        </div>--%>
+<!--                애매한 부분 제거-->
+<!--                       <div class="sect-mycgv-reserve">-->
+<!--                          <div class="box-polaroid">-->
+<!--                               <div class="box-inner issuing">-->
+<!--                                          <p><strong>예매번호로 현장발권</strong> <a href="/culture-event/event/detail-view.aspx?idx=9277" class="round gray on" target="_blank" title="새창"><span style="height: 17px">바로가기</span></a></p>-->
+<!--                                         <span>현장 발권시 예매번호로만 티켓을 찾을 수 있습니다.</span>-->
+<!--                               </div>-->
+<!--                               <div class="box-inner perform">-->
+<!--                                           <p><strong>공연예매안내</strong>  <a href="http://ticket.interest.me/?path=cgv&type=3" class="round gray on" target="_blank" title="새창"><span style="height: 17px">바로가기</span></a></p>-->
+<!--                                         <span>공연예매 확인은 CJ E&amp;M Ticket에서 확인하세요</span>-->
+<!--                               </div>-->
+<!--                          </div>-->
+<!--                       </div>-->
                 <!-- MY 예매내역 -->
                 <div class="cols-mycgv-booking">
                     <div class="tit-mycgv">
@@ -280,7 +280,7 @@
                             </div>
                             <div class="set-btn">
                                 <input type="hidden" class="reserve-no" name="reserve-no" value="EGoeNCy7j9Z9qfwfeHpfrKGEIIdqJRS9lJKceYsq/uo=" />
-                                <div class="col-print">    <button type="button" title="새창" data="EGoeNCy7j9Z9qfwfeHpfrKGEIIdqJRS9lJKceYsq%2fuo%3d" class="round inblack hometicket"><span>홈티켓출력</span></button> <button type="type" class="round black cancel"><span>예매취소</span></button></div>
+                                <div class="col-print"><button type="button" title="새창" data="EGoeNCy7j9Z9qfwfeHpfrKGEIIdqJRS9lJKceYsq%2fuo%3d" class="round inblack hometicket"><span>홈티켓출력</span></button> <button type="type" class="round black cancel"><span>예매취소</span></button></div>
                                 <!-- 홈티켓 부분 function 쪽 url은 나중에 기능 넣을 때 참고해야해서 안건드림-->
                             </div>
                         </div>
@@ -433,28 +433,37 @@
         </div>
         <script type="text/javascript">
             //<![CDATA[
+
             (function ($) {
                 $(function () {
+
                     //visualMotion.
                     var sliderOptions = { 'effect': 'none', 'auto': true };
                     $('#slider').visualMotion(sliderOptions);
+
                     $('.receipt').on('click', function () {
                         var url = 'https://cjpay.cjsystems.co.kr/cjs/pg/adj/receipt.fo?SHOP_SYS_NO=&SHOP_ID=051024100000&PAY_GRP_ID=0001&PG_CTRL_CD_P=' + $(this).attr("data");
                         var win = window.open(url, "receipt", "left=0,top=o,width=440,height=800,toolbar=no,scrollbars=no");
                         win.focus();
                     });
+
                     $('.hometicket').on('click', function () {
-                        var url = './login-guest-hometicket.jsp';
-                        var win = window.open(url, "hometicket", "left=0,top=o,width=640,height=897,toolbar=no,scrollbars=no");
+                        var url = './login-guest-hometicket';
+                        var win = window.open(url, "hometicket", "left=0,top=o,width=620,height=897,toolbar=no,scrollbars=no");
                         win.focus();
                     });
+
                     $('.cancel').on('click', function () {
+
                         if (!confirm('예매를 취소하시겠습니까?\n\n※ 인터넷 예매 취소는 상영시간 20분 전까지 가능하며, \n예매 가능은 상영시간 30분 전까지 가능합니다.'))
                             return false;
+
                         CancelReserve($(this));
                     });
+
                     function CancelReserve(obj) {
                         var reserveNo = obj.parents('.set-btn').find('.reserve-no').val();
+
                         var url = '/common/ajax/user.aspx/CancelReserveByGuest';
                         var data = { 'reserveNo': reserveNo };
                         var callback = function (result) {
@@ -462,8 +471,11 @@
                             $('.loading').remove();
                             if (result == null || result["resultCode"] == null)
                                 return;
+
                             var resultCode = result["resultCode"];
                             var resultMessage = result["resultData"];
+
+
                             switch (resultCode) {
                                 case "-9":
                                     alert('로그인 되어 있지 않습니다.\n확인 후 다시 진행해 주세요.');
@@ -489,17 +501,23 @@
                                     else {
                                         obj.parents('.lst-item').remove();
                                     }
+
                                     var options = { '$target': null, 'type': 'center', 'position': 'position', 'mask': true };
                                     app.htmlLoad2(options, app.config('html').reservation_cancel);
+
                                     break;
                             }
                         };
+
                         app.loading().show({ 'target': obj.parents('.lst-item'), 'circleType': 'large' });
                         obj.attr('disabled', true);
+
                         app.ajax().set({ dataType: 'json', url: url, data: JSON.stringify(data), contentType: "application/json; charset=utf-8", successHandler: callback });
                     }
+
                 });
             })(jQuery);
+
             //]]>
         </script>
 
@@ -510,16 +528,7 @@
 </div>
 <!-- E Contaniner -->
 
-<!-- S 예매하기 및 TOP Fixed 버튼 -->
-<div class="fixedBtn_wrap">
-
-    <a href="/ticket/" class="btn_fixedTicketing">예매하기</a>
-
-    <a href="#none" class="btn_gotoTop"><img src="https://img.cgv.co.kr/R2014/images/common/btn/gotoTop.png" alt="최상단으로 이동" /></a>
-</div>
-
-<!-- E 예매하기 및 TOP Fixed 버튼 -->
-
+<!-- E Contaniner -->
 
 <div th:replace="user/fragment/footer :: footer-user"></div>
 
