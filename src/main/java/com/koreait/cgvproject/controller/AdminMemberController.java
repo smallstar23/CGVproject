@@ -13,6 +13,11 @@ public class AdminMemberController {
     public String member_lookup(){
         return "/admin/member/member-lookup";
     }
+    @GetMapping("manage_user_view")//manage_user_view 페이지
+    public String manage_user_view(){
+        return "/admin/member/manage_user_view";
+    }
+
     @GetMapping("member-ticket")//member-ticket 페이지
     public String member_ticket(){
         return "/admin/member/member-ticket";
