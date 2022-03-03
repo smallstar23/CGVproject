@@ -21,9 +21,9 @@ public class MycgvController {
         return "user/mycgv/mycgv-cgvPoint-pointInfo";
     }
 
-    @GetMapping("/user/mycgv-cgvPoint_pointList")
+    @GetMapping("/user/mycgv-cgvPoint-pointList")
     public String mycgv_cgvPoint_pointList(){
-        return "user/mycgv/mycgv-cgvPoint_pointList";
+        return "user/mycgv/mycgv-cgvPoint-pointList";
     }
 
     @GetMapping("/user/mycgv-event")

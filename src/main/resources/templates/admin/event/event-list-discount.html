@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="ko" style="overflow-x:hidden;" xmlns:th="http://www.thymeleaf.org/">
+<head>
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+  <meta name="description" content="" />
+  <meta name="author" content="" />
+  <title>이벤트관리</title>
+  <link href="https://cdn.jsdelivr.net/npm/simple-datatables@latest/dist/style.css" rel="stylesheet" />
+  <link href="css/styles.css" rel="stylesheet" />
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/js/all.min.js" crossorigin="anonymous"></script>
+  <script src="//code.jquery.com/jquery-1.11.0.min.js"></script>
+  <script type="text/javascript">
+    $(document).ready( function() {
+
+      $("#headers").load("header.jsp");
+    });
+  </script>
+</head>
+<body class="sb-nav-fixed" >
+<nav class="sb-topnav navbar navbar-expand navbar-dark bg-dark">
+  <!-- Navbar Brand-->
+  <a class="navbar-brand ps-3" href="../../../../../../Downloads/cgv_admin/index.html">CGV Administrator</a>
+  <!-- Sidebar Toggle-->
+  <button class="btn btn-link btn-sm order-1 order-lg-0 me-4 me-lg-0" id="sidebarToggle" href="#!"><i class="fas fa-bars"></i></button>
+  <!-- Navbar Search-->
+  <form class="d-none d-md-inline-block form-inline ms-auto me-0 me-md-3 my-2 my-md-0">
+    <div class="input-group">
+      <input class="form-control" type="text" placeholder="Search for..." aria-label="Search for..." aria-describedby="btnNavbarSearch" />
+      <button class="btn btn-primary" id="btnNavbarSearch" type="button"><i class="fas fa-search"></i></button>
+    </div>
+  </form>
+  <!-- Navbar-->
+  <ul class="navbar-nav ms-auto ms-md-0 me-3 me-lg-4">
+    <li class="nav-item dropdown">
+      <a class="nav-link dropdown-toggle" id="navbarDropdown" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false"><i class="fas fa-user fa-fw"></i></a>
+      <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
+        <li><a class="dropdown-item" href="#!">Settings</a></li>
+        <li><a class="dropdown-item" href="#!">Activity Log</a></li>
+        <li><hr class="dropdown-divider" /></li>
+        <li><a class="dropdown-item" href="#!">Logout</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+
+
+<!-- header -->
+<div th:replace="admin/fragment/header :: header"></div>
+<!-- header 끝 -->
+
+<div id="layoutSidenav_content" style="margin-top:100px; margin-left: 240px">
+  <main>
+    <div class="container-fluid px-4" >
+      <div class="card mb-4">
+        <div class="card-header">
+          <i class="fas fa-table me-1"></i>
+          <input type="button" value="SPECIAL" onclick="location.href='./event-list-special.jsp'"/>
+          <input type="button" value="영화/예매" onclick="location.href='./event-list-movie.jsp'"/>
+          <input type="button" value="멤버십/CLUB" onclick="location.href='./event-list-CLUB.jsp'"/>
+          <input type="button" value="CGV 극장별" onclick="location.href='./event-list-CGV.jsp'"/>
+          <input type="button" value="제휴/할인" onclick="location.href='./event-list-discount.jsp'" style="background-color: #F08080"/>
+        </div>
+        <div class="card-body">
+          <table id="datatablesSimple">
+            <thead>
+            <tr>
+              <th>영화</th>
+              <th>극장</th>
+              <th>내용</th>
+              <th>기간</th>
+            </tr>
+            </thead>
+            <tfoot>
+            <tr>
+              <th>영화</th>
+              <th>극장</th>
+              <th>내용</th>
+              <th>기간</th>
+            </tr>
+            </tfoot>
+            <tbody>
+            <tr>
+              <td style="width:150px"><img src="https://img.cgv.co.kr/WebApp/contents/eventV4/33682/16420334331800.jpg" width="150px"></td>
+              <td>[전체]</td>
+              <td>CGV X 우리카드 PLCC 출시!</td>
+              <td>2021.12.21~2022.12.31</td>
+            </tr>
+            <tr>
+              <td><img src="https://img.cgv.co.kr/WebApp/contents/eventV4/33936/16432506298760.jpg" width="150px"></td>
+              <td>[전체]</td>
+              <td>스마일페이로 예매하고 3천원 할인받기!</td>
+              <td>2022.02.01~2022.02.28</td>
+            </tr>
+            <tr>
+              <td><img src="https://img.cgv.co.kr/WebApp/contents/eventV4/32445/16433283752470.jpg" width="150px"></td>
+              <td>[전체]</td>
+              <td>TOSS로 예매하고 2천원 할인받기!</td>
+              <td>2022.01.28~2022.02.28</td>
+            </tr>
+            <tr>
+              <td><img src="https://img.cgv.co.kr/WebApp/contents/eventV4/33911/16427315202090.png" width="150px"></td>
+              <td>[전체]</td>
+              <td>PASS (모바일 운전면허증) 성인 인증 서비스 도입</td>
+              <td>2022.01.21~2022.04.30</td>
+            </tr>
+            <tr>
+              <td><img src="https://img.cgv.co.kr/WebApp/contents/eventV4/30038/16417846014230.jpg" width="150px"></td>
+              <td>[전체]</td>
+              <td>2022년 KT멤버십 혜택!</td>
+              <td>2022.01.01~2022.12.31</td>
+            </tr>
+            <tr>
+              <td><img src="https://img.cgv.co.kr/WebApp/contents/eventV4/30050/16118218363520.jpg" width="150px"></td>
+              <td>[전체]</td>
+              <td>LGU+ '영화콕'</td>
+              <td>2022.01.01~2022.12.31</td>
+            </tr>
+            <tr>
+              <td><img src="https://img.cgv.co.kr/WebApp/contents/eventV4/30013/15928181474500.jpg" width="150px"></td>
+              <td>[전체]</td>
+              <td>모바일문화상품권 CGV에서 사용하는 방법!</td>
+              <td>2021.07.02~2031.07.02</td>
+            </tr>
+            <tr>
+              <td><img src="https://img.cgv.co.kr/WebApp/contents/eventV4/30011/16245005357340.jpg" width="150px"></td>
+              <td>[전체]</td>
+              <td>아시아나 마일리지로 IMAX 예매도 된다!!</td>
+              <td>2021.10.01~2022.09.30</td>
+            </tr>
+            <tr>
+              <td><img src="https://img.cgv.co.kr/WebApp/contents/eventV4/32606/16249595781520.jpg" width="150px"></td>
+              <td>[전체]</td>
+              <td>영화즉시할인은 바로 NH농협카드</td>
+              <td>2021.06.16~2023.05.31</td>
+            </tr>
+            </tbody>
+          </table>
+          <input type="button" value="이벤트 작성" style="background-color: #F08080" onclick = "location.href = './event-regist.jsp'"/>
+        </div>
+      </div>
+
+
+  </main>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
+<script src="js/scripts.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.min.js" crossorigin="anonymous"></script>
+<script src="assets/demo/chart-area-demo.js"></script>
+<script src="assets/demo/chart-bar-demo.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/simple-datatables@latest" crossorigin="anonymous"></script>
+<script src="js/datatables-simple-demo.js"></script>
+</body>
+</html>
