@@ -18,7 +18,8 @@ public class UserStoreController {
 
     @GetMapping("/popcorn-store/store-category")
     public String category(@RequestParam(value = "cno", required = false, defaultValue = "1") String cno, Model model){
-        System.out.println("Get으로 들어온 카테고리 넘버 : " + cno);
+        if(cno.equals("1")) System.out.println("default 카테고리 넘버 : " + cno);
+        else System.out.println("Get으로 들어온 카테고리 넘버 : " + cno);
         return "user/culture-event/popcorn-store/store-category";
     }
 
@@ -45,5 +46,15 @@ public class UserStoreController {
     @GetMapping("/popcorn-store/purchase-confirm")
     public String directPay(){
         return "user/culture-event/popcorn-store/purchase-confirm";
+    }
+
+    @GetMapping("/popcorn-store/payment-successcomplete")
+    public String success(){
+        return "user/culture-event/popcorn-store/payment-successcomplete";
+    }
+
+    @GetMapping("/popcorn-store/payment-failcomplete")
+    public String fail(){
+        return "user/culture-event/popcorn-store/payment-failcomplete";
     }
 }
