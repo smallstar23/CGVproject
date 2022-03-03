@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org/">
+
+<div th:fragment="category_wrap" class='category_wrap'>
+    <div class='category_contents_wrap'>
+        <ul class='category_content'>
+            <li id='cm2' name='categorymenu' class=''><a href='#' onclick="fnCategoryData('2');">SPECIAL</a>
+            </li>
+            <li id='cm3' name='categorymenu' class=''><a href='#' onclick="fnCategoryData('3');">영화/예매</a>
+            </li>
+            <li id='cm4' name='categorymenu' class=''><a href='#'
+                                                         onclick="fnCategoryData('4');">멤버십/CLUB</a></li>
+            <li id='cm5' name='categorymenu' class=''><a href='#'
+                                                         onclick="fnCategoryData('5');">CGV 극장별</a></li>
+            <li id='cm6' name='categorymenu' class=''><a href='#'
+                                                         onclick="fnCategoryData('6');">제휴/할인</a></li>
+        </ul>
+        <ul class='cart_content'>
+            <li><a href='/user/mycgv-popcorn-store' onclick='app.goLogin();return false;'>당첨자 발표
+            </a><span id='giftconcnt'>0</span></li>
+            <li><a href='/culture-event/event/event-end-list' onclick='app.goLogin();return false;'>종료된 이벤트
+            </a><span id='cartviewcnt'>0</span></li>
+        </ul>
+    </div>
+</div>

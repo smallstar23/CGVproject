@@ -102,7 +102,7 @@
 
     <script>
         function fnCategoryData(cno) {
-            location.href = "/culture-event/popcorn-store/store-category?cno=" + cno;
+            location.href = "/culture-event/event/event-category?cno=" + cno;
         }
     </script>
 
@@ -152,6 +152,7 @@
               href="https://img.cgv.co.kr/R2014/css/giftstore/giftstore.css"/>
 
 
+
         <!-- 카테고리 메뉴 -->
         <div th:replace="user/culture-event/fragment/category_store_wrap :: category_wrap"></div>
         <!-- 카테고리 메뉴 끝 -->
@@ -162,99 +163,101 @@
         <div class="category_product_list_wrap">
             <strong class="category_product_list_title"></strong>
             <ul class="com_list_style">
-                <li class="">
-                    <a href="/culture-event/popcorn-store/product-detail" class="btn_category_product">
-                        <span class="com_list_img_wrap">
-                            <img src="http://img.cgv.co.kr/GiftStore/Product/Pc/List/16094706927780.jpg"
-                                 alt="CGV 영화관람권">
-                        </span>
-                        <span class="com_list_text_wrap">
-                            <span class="com_list_text_title">CGV 영화관람권</span>
-                            <span class="com_list_text_name">일반 영화관람권</span>
-                            <span class="com_list_sale_price_wrap">
-                                <span class="store_deatail_source_price">11,000</span>
+                <li class=""><a
+                        href="./product-detail.jsp?GG_NO=100253"
+                        class="btn_category_product"> <span class="com_list_img_wrap"><img
+                        src="http://img.cgv.co.kr/GiftStore/Product/Pc/List/16094706927780.jpg"
+                        alt="CGV 영화관람권"></span> <span class="com_list_text_wrap">
+								<span class="com_list_text_title">CGV 영화관람권</span> <span
+                        class="com_list_text_name">일반 영화관람권</span> <span
+                        class="com_list_sale_price_wrap"> <span
+                        class="store_deatail_source_price">11,000</span>
 							</span>
 						</span>
-                    </a>
-
-                    <a href="/culture-event/popcorn-store/user-cart" class="btn_category_product_cart">1</a>
-                    <a href="/culture-event/popcorn-store/user-gift" class="btn_category_product_gift">2</a>
-                    <a href="/culture-event/popcorn-store/purchase-confirm" class="btn_category_product_buy">3</a>
-                </li>
-                <li class="">
-                    <a href="/culture-event/popcorn-store/product-detail" class="btn_category_product">
-                        <span class="com_list_img_wrap">
-                            <img src="http://img.cgv.co.kr/GiftStore/Product/Pc/List/15458911951520.jpg"
-                                 alt="CGV 골드클래스">
-                        </span>
-                        <span class="com_list_text_wrap">
-                            <span class="com_list_text_title">CGV 골드클래스</span>
-                            <span class="com_list_text_name">골드클래스 관람권</span>
-                            <span class="com_list_sale_price_wrap">
-                                <span class="store_deatail_source_price">35,000</span>
+                </a> <a href="#none"
+                        onclick="fnMoveLink('1', '100253', '0', ''); return false;"
+                        class="btn_category_product_cart">1</a> <a href="#none"
+                                                                   onclick="fnMoveLink('2', '100253', 0, '1'); return false;"
+                                                                   class="btn_category_product_gift">2</a> <a
+                        href="#none"
+                        onclick="fnMoveLink('3', '100253', 0, '1'); return false;"
+                        class="btn_category_product_buy">3</a></li>
+                <li class=""><a
+                        href="product-detail.jsp?GG_NO=100026"
+                        class="btn_category_product"> <span class="com_list_img_wrap"><img
+                        src="http://img.cgv.co.kr/GiftStore/Product/Pc/List/15458911951520.jpg"
+                        alt="CGV 골드클래스"></span> <span class="com_list_text_wrap">
+								<span class="com_list_text_title">CGV 골드클래스</span> <span
+                        class="com_list_text_name">골드클래스 관람권</span> <span
+                        class="com_list_sale_price_wrap"> <span
+                        class="store_deatail_source_price">35,000</span>
 							</span>
 						</span>
-                    </a>
-                    <a href="/culture-event/popcorn-store/user-cart" class="btn_category_product_cart">1</a>
-                    <a href="/culture-event/popcorn-store/user-gift" class="btn_category_product_gift">2</a>
-                    <a href="/culture-event/popcorn-store/purchase-confirm" class="btn_category_product_buy">3</a>
-                </li>
-
-                <li class="">
-                    <a href="/culture-event/popcorn-store/product-detail" class="btn_category_product">
-                        <span class="com_list_img_wrap">
-                            <img src="http://img.cgv.co.kr/GiftStore/Product/Pc/List/15458907780860.jpg"
-                                 alt="CGV 씨네드쉐프 관람권">
-                        </span>
-                        <span class="com_list_text_wrap">
-                            <span class="com_list_text_title">CGV 씨네드쉐프 관람권</span>
-                            <span class="com_list_text_name">씨네드쉐프 관람권</span>
-                            <span class="com_list_sale_price_wrap">
-                                <span class="store_deatail_source_price">45,000</span>
-                            </span>
-						</span>
-                    </a>
-                    <a href="/culture-event/popcorn-store/user-cart" class="btn_category_product_cart">1</a>
-                    <a href="/culture-event/popcorn-store/user-gift" class="btn_category_product_gift">2</a>
-                    <a href="/culture-event/popcorn-store/purchase-confirm" class="btn_category_product_buy">3</a>
-                </li>
-                <li class="">
-                    <a href="/culture-event/popcorn-store/product-detail" class="btn_category_product">
-                        <span class="com_list_img_wrap">
-                            <img src="http://img.cgv.co.kr/GiftStore/Product/Pc/List/16105061088530.jpg" alt="4DX관람권">
-                        </span>
-                        <span class="com_list_text_wrap">
-                            <span class="com_list_text_title">4DX관람권</span>
-                            <span class="com_list_text_name">4DX 영화관람권</span>
-                            <span class="com_list_sale_price_wrap">
-                                <span class="store_deatail_source_price">19,000</span>
+                </a> <a href="#none"
+                        onclick="fnMoveLink('1', '100026', '0', ''); return false;"
+                        class="btn_category_product_cart">1</a> <a href="#none"
+                                                                   onclick="fnMoveLink('2', '100026', 0, '1'); return false;"
+                                                                   class="btn_category_product_gift">2</a> <a
+                        href="#none"
+                        onclick="fnMoveLink('3', '100026', 0, '1'); return false;"
+                        class="btn_category_product_buy">3</a></li>
+                <li class=""><a
+                        href="product-detail.jsp?GG_NO=100025"
+                        class="btn_category_product"> <span class="com_list_img_wrap"><img
+                        src="http://img.cgv.co.kr/GiftStore/Product/Pc/List/15458907780860.jpg"
+                        alt="CGV 씨네드쉐프 관람권"></span> <span class="com_list_text_wrap">
+								<span class="com_list_text_title">CGV 씨네드쉐프 관람권</span> <span
+                        class="com_list_text_name">씨네드쉐프 관람권</span> <span
+                        class="com_list_sale_price_wrap"> <span
+                        class="store_deatail_source_price">45,000</span>
 							</span>
 						</span>
-                    </a>
-
-                    <a href="/culture-event/popcorn-store/user-cart" class="btn_category_product_cart">1</a>
-                    <a href="/culture-event/popcorn-store/user-gift" class="btn_category_product_gift">2</a>
-                    <a href="/culture-event/popcorn-store/purchase-confirm" class="btn_category_product_buy">3</a>
-                </li>
-
-                <li class="">
-                    <a href="/culture-event/popcorn-store/product-detail" class="btn_category_product">
-                        <span class="com_list_img_wrap">
-                            <img src="http://img.cgv.co.kr/GiftStore/Product/Pc/List/16104445886810.jpg"
-                        alt="IMAX 관람권">
-                        </span>
-                        <span class="com_list_text_wrap">
-                            <span class="com_list_text_title">IMAX 관람권</span>
-                            <span class="com_list_text_name">IMAX 영화관람권</span>
-                            <span class="com_list_sale_price_wrap">
-                                <span class="store_deatail_source_price">16,000</span>
+                </a> <a href="#none"
+                        onclick="fnMoveLink('1', '100025', '0', ''); return false;"
+                        class="btn_category_product_cart">1</a> <a href="#none"
+                                                                   onclick="fnMoveLink('2', '100025', 0, '1'); return false;"
+                                                                   class="btn_category_product_gift">2</a> <a
+                        href="#none"
+                        onclick="fnMoveLink('3', '100025', 0, '1'); return false;"
+                        class="btn_category_product_buy">3</a></li>
+                <li class=""><a
+                        href="product-detail.jsp?GG_NO=100255"
+                        class="btn_category_product"> <span class="com_list_img_wrap"><img
+                        src="http://img.cgv.co.kr/GiftStore/Product/Pc/List/16105061088530.jpg"
+                        alt="4DX관람권"></span> <span class="com_list_text_wrap"> <span
+                        class="com_list_text_title">4DX관람권</span> <span
+                        class="com_list_text_name">4DX 영화관람권</span> <span
+                        class="com_list_sale_price_wrap"> <span
+                        class="store_deatail_source_price">19,000</span>
 							</span>
 						</span>
-                    </a>
-                    <a href="/culture-event/popcorn-store/user-cart" class="btn_category_product_cart">1</a>
-                    <a href="/culture-event/popcorn-store/user-gift" class="btn_category_product_gift">2</a>
-                    <a href="/culture-event/popcorn-store/purchase-confirm" class="btn_category_product_buy">3</a>
-                </li>
+                </a> <a href="#none"
+                        onclick="fnMoveLink('1', '100255', '0', ''); return false;"
+                        class="btn_category_product_cart">1</a> <a href="#none"
+                                                                   onclick="fnMoveLink('2', '100255', 0, '1'); return false;"
+                                                                   class="btn_category_product_gift">2</a> <a
+                        href="#none"
+                        onclick="fnMoveLink('3', '100255', 0, '1'); return false;"
+                        class="btn_category_product_buy">3</a></li>
+                <li class=""><a
+                        href="product-detail.jsp?GG_NO=100254"
+                        class="btn_category_product"> <span class="com_list_img_wrap"><img
+                        src="http://img.cgv.co.kr/GiftStore/Product/Pc/List/16104445886810.jpg"
+                        alt="IMAX 관람권"></span> <span class="com_list_text_wrap"> <span
+                        class="com_list_text_title">IMAX 관람권</span> <span
+                        class="com_list_text_name">IMAX 영화관람권</span> <span
+                        class="com_list_sale_price_wrap"> <span
+                        class="store_deatail_source_price">16,000</span>
+							</span>
+						</span>
+                </a> <a href="#none"
+                        onclick="fnMoveLink('1', '100254', '0', ''); return false;"
+                        class="btn_category_product_cart">1</a> <a href="#none"
+                                                                   onclick="fnMoveLink('2', '100254', 0, '1'); return false;"
+                                                                   class="btn_category_product_gift">2</a> <a
+                        href="#none"
+                        onclick="fnMoveLink('3', '100254', 0, '1'); return false;"
+                        class="btn_category_product_buy">3</a></li>
             </ul>
         </div>
 
@@ -277,8 +280,7 @@
 
 <!-- S 예매하기 및 TOP Fixed 버튼 -->
 <div class="fixedBtn_wrap">
-    <a href="#none" class="btn_gotoTop"><img src="https://img.cgv.co.kr/R2014/images/common/btn/gotoTop.png"
-                                             alt="최상단으로 이동"/></a>
+    <a href="#none"class="btn_gotoTop"><img src="https://img.cgv.co.kr/R2014/images/common/btn/gotoTop.png" alt="최상단으로 이동"/></a>
 </div>
 
 <!-- E 예매하기 및 TOP Fixed 버튼 -->
@@ -295,25 +297,25 @@
 <script>
     const cno = new URL(String(location.href)).searchParams.get("cno");
     const categoryList = document.getElementsByName('categorymenu');
-    categoryList.forEach(item => {
+    categoryList.forEach(item =>{
 
-        if (item.classList.contains('active')) item.classList.remove('active');
-        if (item.id === 'cm' + cno) item.classList.add('active');
+        if(item.classList.contains('active'))   item.classList.remove('active');
+        if(item.id === 'cm'+ cno)                      item.classList.add('active');
     });
-    if (cno === '1') categoryList[0].classList.add('active');
+    if(cno==='1') categoryList[0].classList.add('active');
 
-    const cnameList = ['영화관람권', '영화관람권', '기프트카드', '콤보', '팝콘', '음료', '스낵'];
+    const cnameList = ['영화관람권','영화관람권','기프트카드','콤보','팝콘','음료','스낵'];
     const ctitleList = [
         '영화, 모두에게 즐거운 경험',
         '영화, 모두에게 즐거운 경험',
         '센스있는 선물의 정석',
         '맛있으면 0칼로리, 아는 맛이 제일 맛있어요',
-        '고소, 달콤부터 고메팝콘까지, 안먹으면 서운해요',
+        '고소, 달콤부터 고메팝콘까지, 안먹으면 서운해요' ,
         '탄산음료부터 에이드까지, 마시는 즐거움',
         '출출할땐 다양한 스낵이 정답이죠']
 
-    const cname = cnameList[cno - 1];
-    const titleSpan = ctitleList[cno - 1];
+    const cname = cnameList[cno-1];
+    const titleSpan = ctitleList[cno-1];
 
     //타이틀 변경
     document.getElementsByClassName('category_product_list_title')[0].innerHTML = `"${cname}"<span>${titleSpan}</span>`;

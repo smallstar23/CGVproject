@@ -41,4 +41,9 @@ public class UserStoreController {
     public String giftPay(){
         return "user/culture-event/popcorn-store/store-payment";
     }
+
+    @GetMapping("/popcorn-store/purchase-confirm")
+    public String directPay(){
+        return "user/culture-event/popcorn-store/purchase-confirm";
+    }
 }
