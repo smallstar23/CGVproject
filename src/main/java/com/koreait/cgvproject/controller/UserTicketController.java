@@ -8,9 +8,15 @@ public class UserTicketController {
 
 
     @GetMapping("ticket")
-    public String thPrice(){
-        return "user/ticket/reservation";
+    public String ticket(){
+
+        return "user/ticket/ticket";
     }
 
+
+    @GetMapping("ticket/reservation")
+    public String reservation(){
+        return "user/ticket/reservation";
+    }
 
 }
