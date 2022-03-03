@@ -114,7 +114,9 @@
         <link rel="stylesheet" media="all" type="text/css"
               href="https://img.cgv.co.kr/R2014/css/giftstore/giftstore.css"/>
 
-        <script>            $(document).ready(function () {
+        <script>
+            // 사용가능한 CGV 노출
+            $(document).ready(function () {
                 $('.btn_available_viewcgv').on('click', function (e) {
                     $('.com_pop_wrap').show();
                     $('.com_pop').show();
@@ -139,8 +141,9 @@
                 });
 
             });
+            // 사용가능한 CGV 노출 끝끝
 
-            function fnCategoryData(cno) {
+           function fnCategoryData(cno) {
                 location.href = "/culture-event/popcorn-store/store-category?cno=" + cno;
             }
 
@@ -168,30 +171,10 @@
         </script>
 
 
-        <div class='category_wrap'>
-            <div class='category_contents_wrap'>
-                <ul class='category_content'>
-                    <li id='cm2' name='categorymenu' class=''><a href='#' onclick="fnCategoryData('2');">영화관람권</a>
-                    </li>
-                    <li id='cm3' name='categorymenu' class=''><a href='#' onclick="fnCategoryData('3');">기프트카드</a>
-                    </li>
-                    <li id='cm4' name='categorymenu' class=''><a href='#'
-                                                                 onclick="fnCategoryData('4');">콤보</a></li>
-                    <li id='cm5' name='categorymenu' class=''><a href='#'
-                                                                 onclick="fnCategoryData('5');">팝콘</a></li>
-                    <li id='cm6' name='categorymenu' class=''><a href='#'
-                                                                 onclick="fnCategoryData('6');">음료</a></li>
-                    <li id='cm7' name='categorymenu' class=''><a href='#'
-                                                                 onclick="fnCategoryData('7');">스낵</a></li>
-                </ul>
-                <ul class='cart_content'>
-                    <li><a href='mycgv-popcorn-store.jsp' onclick='app.goLogin();return false;'>내
-                        기프트콘</a><span id='giftconcnt'>0</span></li>
-                    <li><a href='user-cart.jsp' onclick='app.goLogin();return false;'>장바구니</a><span
-                            id='cartviewcnt'>0</span></li>
-                </ul>
-            </div>
-        </div>
+        <!-- 카테고리 메뉴 -->
+        <div th:replace="user/culture-event/fragment/category_store_wrap :: category_wrap"></div>
+        <!-- 카테고리 메뉴 끝 -->
+
 
         <!-- E 카테고리 메뉴 & 받은선물/장바구니 -->
 
@@ -227,11 +210,11 @@
                         <div class='category_product_detail_total_price'><p class='com_form_total_price'>총 구매금액<span
                                 class='com_total_price0 com_product_total_price'>11,000</span></p></div>
                     </div>
-                    <div class='category_product_detail_btn_wrap'><a href='user-cart.jsp'
+                    <div class='category_product_detail_btn_wrap'><a href='/culture-event/popcorn-store/user-cart'
                                                                      onclick='app.goLogin();return false;'
-                                                                     class='btn_cart'>장바구니</a> <a href='user-gift.jsp'
+                                                                     class='btn_cart'>장바구니</a> <a href='/culture-event/popcorn-store/user-cart'
                                                                                                   onclick='app.goLogin(); return false;'>선물하기</a><a
-                            href='purchase-confirm.jsp' onclick='app.goLogin();return false;'>구매하기</a></div>
+                            href='/culture-event/popcorn-store/purchase-confirm' onclick='app.goLogin();return false;'>구매하기</a></div>
                 </div>
             </div>
             <p class='category_product_detail_txtbox'>CGV 영화관람권으로 즐거운 영화관람하세요!</p>
@@ -288,19 +271,19 @@
         <div class='category_product_together_view_wrap'><strong class='category_product_together_view_title'>이 상품과 함께 본
             상품</strong>
             <ul class='bxslider com_list_style'>
-                <li class=''><a href='product-detail.jsp?GG_NO=100026' class='btn_category_product'> <span
+                <li class=''><a href='/culture-event/popcorn-store/product-detail' class='btn_category_product'> <span
                         class='com_list_img_wrap'><img
                         src='http://img.cgv.co.kr/GiftStore/Product/Pc/Detail/15458911955580.jpg'
                         alt='CGV 골드클래스'></span> <span class='com_list_text_wrap'>           <span
                         class='com_list_text_title'>CGV 골드클래스</span>           <span class='com_list_text_name'>골드클래스 관람권</span>           <span
                         class='com_list_sale_price_wrap'>  <span class='store_deatail_source_price'>35,000</span>        </span>   </span>
                 </a> <a href='#' onclick='app.goLogin();return false;'
-                        class='btn_category_product_cart'>장바구니</a> <a href='#'
+                        class='btn_category_product_cart'>장바구니</a> <a href='/culture-event/popcorn-store/user-cart'
                                                                       onclick='app.goLogin();return false;'
                                                                       class='btn_category_product_gift'>선물하기</a> <a
                         href='#' onclick='app.goLogin();return false;'
                         class='btn_category_product_buy'>구매하기</a></li>
-                <li class=''><a href='product-detail.jsp?GG_NO=100025' class='btn_category_product'> <span
+                <li class=''><a href='/culture-event/popcorn-store/product-detail' class='btn_category_product'> <span
                         class='com_list_img_wrap'><img
                         src='http://img.cgv.co.kr/GiftStore/Product/Pc/Detail/15458907785230.jpg'
                         alt='CGV 씨네드쉐프 관람권'></span> <span class='com_list_text_wrap'>           <span
@@ -312,7 +295,7 @@
                                                                       class='btn_category_product_gift'>선물하기</a> <a
                         href='#' onclick='app.goLogin();return false;'
                         class='btn_category_product_buy'>구매하기</a></li>
-                <li class=''><a href='product-detail.jsp?GG_NO=100254' class='btn_category_product'> <span
+                <li class=''><a href='/culture-event/popcorn-store/product-detail' class='btn_category_product'> <span
                         class='com_list_img_wrap'><img
                         src='http://img.cgv.co.kr/GiftStore/Product/Pc/Detail/16104445892120.jpg' alt='IMAX 관람권'></span>
                     <span class='com_list_text_wrap'>           <span class='com_list_text_title'>IMAX 관람권</span>           <span
@@ -324,7 +307,7 @@
                                                                       class='btn_category_product_gift'>선물하기</a> <a
                         href='#' onclick='app.goLogin();return false;'
                         class='btn_category_product_buy'>구매하기</a></li>
-                <li class=''><a href='product-detail.jsp?GG_NO=100255' class='btn_category_product'> <span
+                <li class=''><a href='/culture-event/popcorn-store/product-detail' class='btn_category_product'> <span
                         class='com_list_img_wrap'><img
                         src='http://img.cgv.co.kr/GiftStore/Product/Pc/Detail/16105061094000.jpg' alt='4DX관람권'></span>
                     <span class='com_list_text_wrap'>           <span class='com_list_text_title'>4DX관람권</span>           <span
@@ -581,64 +564,12 @@
         </div>
     </div>
 </div>
-<div class="pop_wrap">
-    <!-- S > [팝업] 지원 OS 업데이트 유도-->
-    <div id="pop_supportOS" class="popup" style="display:none">
-        <div class="pop_iexp_wrap"
-             style="position:fixed; left:50%; top:50%; width:600px; margin:-165px 0 0 -300px; z-index:1000;">
-            <div class="pi_headline">
-                <img src="https://img.cgv.co.kr/images/popup/1606_iexp/pop_iexp_headline2.jpg"
-                     alt="CGV 홈페이지는 고객님께서 사용중인 MS Windows XP에서 정상적인 서비스 이용이 어려울 수 있으며, OS업데이트를 권장합니다."/>
-            </div>
-            <div class="down_app">
-                <p><img src="https://img.cgv.co.kr/images/popup/1606_iexp/pop_iexp_downtxt.jpg"
-                        alt="OS 업데이트가 어려운 경우 모바일앱을 이용하세요!!!"/></p>
-                <a class="btn" href="https://itunes.apple.com/kr/app/id370441190?mt=8" target="_blank"><img
-                        src="https://img.cgv.co.kr/images/popup/1606_iexp/btn_down_ios.jpg" alt="Ios down"/></a>
-                <a class="btn" href="https://play.google.com/store/apps/details?id=com.cgv.android.movieapp"
-                   target="_blank"><img src="https://img.cgv.co.kr/images/popup/1606_iexp/btn_down_android.jpg"
-                                        alt="Android down"/></a>
-            </div>
-            <a class="btn_close">닫기</a>
-        </div>
-    </div>
-    <!-- S > [팝업] 지원 브라우저 다운로드 유도-->
-    <div id="pop_supportBrower" class="popup" style="display:none">
-        <div class="pop_iexp_wrap"
-             style="position:fixed; left:50%; top:50%; width:600px; margin:-265px 0 0 -300px; z-index:1000;">
-            <div class="pi_headline">
-                <img src="https://img.cgv.co.kr/images/popup/1606_iexp/pop_iexp_headline1.jpg"
-                     alt="CGV 홈페이지는 Internet Explorer 9이상에서 최적의 서비스 이용이 가능합니다. IE9 이하 브라우저에서 이용 시 정상적인 서비스 이용이 어려울 수 있으며, 브라우저 업그레이드 하시기를 권장합니다."/>
-            </div>
-            <ul class="down_browser">
-                <li><a href="https://www.microsoft.com/ko-kr/edge" target="_blank"><img
-                        src="https://img.cgv.co.kr/images/popup/1606_iexp/btn_down_ie.jpg"
-                        alt="Internet Explorer 다운받기"/></a></li>
-                <li><a href="https://www.google.com/chrome/browser/desktop/index.html" target="_blank"><img
-                        src="https://img.cgv.co.kr/images/popup/1606_iexp/btn_down_chrome.jpg" alt="Chrome 다운받기"/></a>
-                </li>
-            </ul>
-            <div class="down_app">
-                <p><img src="https://img.cgv.co.kr/images/popup/1606_iexp/pop_iexp_downtxt.jpg"
-                        alt="OS 업데이트가 어려운 경우 모바일앱을 이용하세요!"/></p>
-                <a class="btn" href="https://itunes.apple.com/kr/app/id370441190?mt=8" target="_blank"><img
-                        src="https://img.cgv.co.kr/images/popup/1606_iexp/btn_down_ios.jpg" alt="Ios down"/></a>
-                <a class="btn" href="https://play.google.com/store/apps/details?id=com.cgv.android.movieapp "
-                   target="_blank"><img src="https://img.cgv.co.kr/images/popup/1606_iexp/btn_down_android.jpg"
-                                        alt="Android down"/></a>
-            </div>
-            <a class="btn_close">닫기</a>
-        </div>
-    </div>
-</div>
+<div class="pop_wrap"></div>
 
 <!-- E Popup -->
 
 <!-- S 예매하기 및 TOP Fixed 버튼 -->
 <div class="fixedBtn_wrap">
-
-    <a href="/ticket.jsp" class="btn_fixedTicketing">예매하기</a>
-
     <a href="#none" class="btn_gotoTop"><img src="https://img.cgv.co.kr/R2014/images/common/btn/gotoTop.png"
                                              alt="최상단으로 이동"/></a>
 </div>
