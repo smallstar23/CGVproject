@@ -56,7 +56,7 @@
         <div class="card-body">
           <table id="datatablesSimple">
             <thead>
-            <tr onclick="location.href='./member_paymentlist_view.jsp'">
+            <tr th:onclick="'location.href=\''+ @{/member-paymentlist-view} + '\''">
               <th>Id</th>
               <th>결제 번호</th>
               <th>상품 종류</th>
@@ -67,7 +67,7 @@
             </tr>
             </thead>
             <tfoot>
-            <tr onclick="location.href='./member_paymentlist_view.jsp'">
+            <tr th:onclick="'location.href=\''+ @{/member-paymentlist-view} + '\''">
               <th>Id</th>
               <th>결제 번호</th>
               <th>상품 종류</th>
