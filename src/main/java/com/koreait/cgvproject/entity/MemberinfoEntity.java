@@ -30,15 +30,15 @@ public class MemberinfoEntity {
     private String username;
     private String userpw;
     private String ssn1;
-    private String ssn2;
+//    private String ssn2;
     private String hp;
     private String email;
-    private String address1;
-    private String address2;
-    private String address3;
+//    private String address1;
+//    private String address2;
+//    private String address3;
     private LocalDateTime regdate;
     private LocalDateTime updateDate;
-    private Long valpoint;
+    private String nickname;
 
     public Long getIdx() {
         return idx;
@@ -80,14 +80,6 @@ public class MemberinfoEntity {
         this.ssn1 = ssn1;
     }
 
-    public String getSsn2() {
-        return ssn2;
-    }
-
-    public void setSsn2(String ssn2) {
-        this.ssn2 = ssn2;
-    }
-
     public String getHp() {
         return hp;
     }
@@ -102,30 +94,6 @@ public class MemberinfoEntity {
 
     public void setEmail(String email) {
         this.email = email;
-    }
-
-    public String getAddress1() {
-        return address1;
-    }
-
-    public void setAddress1(String address1) {
-        this.address1 = address1;
-    }
-
-    public String getAddress2() {
-        return address2;
-    }
-
-    public void setAddress2(String address2) {
-        this.address2 = address2;
-    }
-
-    public String getAddress3() {
-        return address3;
-    }
-
-    public void setAddress3(String address3) {
-        this.address3 = address3;
     }
 
     public LocalDateTime getRegdate() {
@@ -144,11 +112,11 @@ public class MemberinfoEntity {
         this.updateDate = updateDate;
     }
 
-    public Long getValpoint() {
-        return valpoint;
+    public String getNickname() {
+        return nickname;
     }
 
-    public void setValpoint(Long valpoint) {
-        this.valpoint = valpoint;
+    public void setNickname(String nickname) {
+        this.nickname = nickname;
     }
 }
