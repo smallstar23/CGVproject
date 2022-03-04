@@ -80,7 +80,7 @@
         <div class="container-fluid px-4" >
             <h2>질문 / 답변 작성</h2>
 
-            <form method="post" name="notification" action="manage_qna_write_ok.jsp">
+            <form method="post" name="notification" action="manage_qna_write_ok">
                 <table width=900 border=1 cellspacing=5 cellpadding=10>
                     <tr>
                         <td style="padding-left: 20px;"><b>작성자</b></td>
@@ -119,12 +119,12 @@
                     <tr>
                         <td style="padding-left: 20px;"><b>내 용</b></td>
                         <td><textarea id="summernote" name="summernote"></textarea></td>
-                        <%--                    <td><textarea name="q_content" cols=40 rows=5 style="width: 400px"></textarea></td>--%>
+<!--                        <td><textarea name="q_content" cols=40 rows=5 style="width: 400px"></textarea></td>-->
                     </tr>
                 </table>
 
                 <p></p>
-                <p><input type="button" value="등록" style="margin-left: 150px" onclick="checkLogin()"> <input type="reset" value="질문&답변 작성하기"> <input type="button" value="리스트" onclick="location.href='./manage_qna.jsp'"></p>
+                <p><input type="button" value="등록" style="margin-left: 150px" onclick="checkLogin()"> <input type="reset" value="질문&답변 작성하기"> <input type="button" value="리스트" onclick="location.href='/manage_qna'"></p>
 
 
             </form>

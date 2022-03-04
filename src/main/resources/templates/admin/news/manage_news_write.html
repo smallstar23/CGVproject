@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="ko" xmlns:th="http://www.thymeleaf.org/">
+<html lang="ko">
 <head>
     <title>news_write</title>
 
@@ -48,7 +48,7 @@
 </nav>
 
 <script>
-    function checkData() {
+    function checkLogin() {
         var form = document.notification;
         // let selectOption = document.getElementById("q_list");
         // console.log(selectOption);
@@ -75,13 +75,14 @@
 <div th:replace="admin/fragment/header :: header"></div>
 <!-- header 끝 -->
 
+
 <div id="layoutSidenav_content" style="margin-top:70px; margin-left: 240px">
     <main>
         <div class="container-fluid px-4" >
             <h2>공지 작성</h2>
 
-            <form method="post" name="notification" action="manage_news_write_ok.jsp">
-                <table width=1000 border=1 cellspacing=5 cellpadding=10>
+            <form method="post" name="notification" action="manage_news_write_ok">
+                <table width=900 border=1 cellspacing=5 cellpadding=10>
                     <tr>
                         <td style="padding-left: 20px;"><b>작성자</b></td>
                         <td> 강남 CGV
@@ -112,12 +113,12 @@
                     <tr>
                         <td style="padding-left: 20px;"><b>내 용</b></td>
                         <td><textarea id="summernote" name="summernote"></textarea></td>
-                        <%--                    <td><textarea name="q_content" cols=40 rows=5 style="width: 400px"></textarea></td>--%>
+<!--                                          <td><textarea name="q_content" cols=40 rows=5 style="width: 400px"></textarea></td> -->
                     </tr>
                 </table>
 
                 <p></p>
-                <p><input type="button" value="등록" style="margin-left: 150px" onclick="checkData()"> <input type="reset" value="공지 다시 작성하기"> <input type="button" value="리스트" onclick="location.href='./manage_qna.jsp'"></p>
+                <p><input type="button" value="등록" style="margin-left: 150px" onclick="checkLogin()"> <input type="reset" value="공지 다시 작성하기"> <input type="button" value="리스트" onclick="location.href='./manage_qna.jsp'"></p>
 
 
             </form>
@@ -150,10 +151,10 @@
 <script src="https://cdn.jsdelivr.net/npm/simple-datatables@latest" crossorigin="anonymous"></script>
 <script src="js/datatables-simple-demo.js"></script>
 
-<script src="./js/summernote/summernote-lite.js"></script>
-<script src="./js/summernote/summernote-ko-KR.js"></script>
+<script src="/js/summernote/summernote-lite.js"></script>
+<script src="/js/summernote/summernote-ko-KR.js"></script>
 
-<link rel="stylesheet" href="./css/summernote/summernote-lite.css">
+<link rel="stylesheet" href="/css/summernote/summernote-lite.css">
 
 </body>
 </html>

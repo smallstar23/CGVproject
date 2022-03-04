@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <title>manage_qna_write_ok</title>
+    <script type="text/javascript">
+
+        // String q_title = request.getParameter("q_title");
+
+        function goBack(){
+            window.location.href="./managa_qna_write.jsp";
+        }
+
+        function goMain(){
+            window.location.href="./manage_qna.jsp";
+        }
+
+        var leaveMsg = confirm("질문&답변을 등록하시겠습니까?");
+        document.write(leaveMsg);
+        if(leaveMsg == true){
+            alert("질문&답변이 등록되었습니다.")
+            goMain();
+        } else {
+            // alert("질문&답변을 다시 작성합니다.")
+            goBack();
+        }
+    </script>
+</head>
+<body>
+
+</body>
+</html>
