@@ -89,6 +89,14 @@
             $(".layer-wrap").css("display",'none');
         })
 
+
+
+        $('#btn_set_my_favorite').on('click', function () {
+            var win = window.open("/user/popup/mycgv-favoriteTheaters", "url", "left=0,top=o,width=645,height=370,toolbar=no,scrollbars=no");
+            win.focus();
+        });
+
+
     })
 
 

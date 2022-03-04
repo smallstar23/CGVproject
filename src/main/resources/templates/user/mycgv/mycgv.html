@@ -77,6 +77,9 @@
             .config('isLogin', 'True');
         // AD FLOAT
         // 암호화 할 문자열과 키값(상수값)을 매개변수로 받는다.
+
+
+
         function EncryptAD(str, key) {
             output = new String;
             Temp = new Array();
@@ -717,9 +720,10 @@
                         win.focus();
                     });
                     $('#btn_set_my_favorite').on('click', function () {
-                        var win = window.open("/user/mycgv-favoriteTheaters", "url", "left=0,top=o,width=645,height=370,toolbar=no,scrollbars=no");
+                        var win = window.open("/user/popup/mycgv-favoriteTheaters", "url", "left=0,top=o,width=645,height=370,toolbar=no,scrollbars=no");
                         win.focus();
                     });
+
                     <!--MY 지난등급 이력보기 스크립트-->
                     $('#view_usergrade').on('click', function () {
                         var usergrade = document.getElementById("user_grade");
