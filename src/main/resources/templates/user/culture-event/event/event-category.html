@@ -152,13 +152,23 @@
               href="https://img.cgv.co.kr/R2014/css/giftstore/giftstore.css"/>
 
 
-
-        <!-- 카테고리 메뉴 -->
-        <div th:replace="user/culture-event/fragment/category_store_wrap :: category_wrap"></div>
-        <!-- 카테고리 메뉴 끝 -->
-
-
-        <script></script>
+        <div class="tit-heading-wrap tit-evt">
+            <h3>EVENT</h3>
+        </div>
+        <div class="evt-nav-area">
+            <ul class="evt-tab-menu">
+                <!-- 활성화 시 a 태그에 on 클래스를 넣어주세요. -->
+                <li><a href='/culture-event/popcorn-store/event-category?cno=2' title="" class="<%=m1%>">SPECIAL</a></li>
+                <li><a href='/culture-event/popcorn-store/event-category?cno=3' title="" class="<%=m2%>">영화/예매</a></li>
+                <li><a href='/culture-event/popcorn-store/event-category?cno=4' title="" class="<%=m3%>">멤버십/CLUB</a></li>
+                <li><a href='/culture-event/popcorn-store/event-category?cno=5' title="" class="<%=m4%>">CGV 극장별</a></li>
+                <li><a href='/culture-event/popcorn-store/event-category?cno=6' title="" class="<%=m5%>">제휴/할인</a></li>
+            </ul>
+            <div class="submenu">
+                <a href="mycgv-event-resultList.jsp" class="round red on"><i>당첨자 발표</i></a>
+                <a href="event-end-list.jsp" class="round red on"><i>종료된 이벤트</i></a>
+            </div>
+        </div>
         <!-- E 카테고리 메뉴 & 받은선물/장바구니 -->
         <div class="category_product_list_wrap">
             <strong class="category_product_list_title"></strong>
@@ -167,13 +177,14 @@
                         href="./product-detail.jsp?GG_NO=100253"
                         class="btn_category_product"> <span class="com_list_img_wrap"><img
                         src="http://img.cgv.co.kr/GiftStore/Product/Pc/List/16094706927780.jpg"
-                        alt="CGV 영화관람권"></span> <span class="com_list_text_wrap">
+                        alt="CGV 영화관람권"></span>
+                    <span class="com_list_text_wrap">
 								<span class="com_list_text_title">CGV 영화관람권</span> <span
-                        class="com_list_text_name">일반 영화관람권</span> <span
-                        class="com_list_sale_price_wrap"> <span
-                        class="store_deatail_source_price">11,000</span>
+                        class="com_list_text_name">일반 영화관람권</span>
+                        <span class="com_list_sale_price_wrap">
+                            <span class="store_deatail_source_price">11,000</span>
 							</span>
-						</span>
+                    </span>
                 </a> <a href="#none"
                         onclick="fnMoveLink('1', '100253', '0', ''); return false;"
                         class="btn_category_product_cart">1</a> <a href="#none"
