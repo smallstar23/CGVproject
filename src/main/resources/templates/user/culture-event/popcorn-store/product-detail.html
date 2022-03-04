@@ -141,9 +141,10 @@
                 });
 
             });
+
             // 사용가능한 CGV 노출 끝끝
 
-           function fnCategoryData(cno) {
+            function fnCategoryData(cno) {
                 location.href = "/culture-event/popcorn-store/store-category?cno=" + cno;
             }
 
@@ -162,8 +163,7 @@
                 $(".pop_product_cgv_content").each(function () {
                     if ($(this)[0].id == "divLocation" + _gCdoe) {
                         $(this).show();
-                    }
-                    else {
+                    } else {
                         $(this).hide();
                     }
                 });
@@ -211,10 +211,12 @@
                                 class='com_total_price0 com_product_total_price'>11,000</span></p></div>
                     </div>
                     <div class='category_product_detail_btn_wrap'><a href='/culture-event/popcorn-store/user-cart'
-                                                                     onclick='app.goLogin();return false;'
-                                                                     class='btn_cart'>장바구니</a> <a href='/culture-event/popcorn-store/user-cart'
-                                                                                                  onclick='app.goLogin(); return false;'>선물하기</a><a
-                            href='/culture-event/popcorn-store/purchase-confirm' onclick='app.goLogin();return false;'>구매하기</a></div>
+
+                                                                     class='btn_cart'>장바구니</a> <a
+                            href='/culture-event/popcorn-store/user-cart'
+                            onclick='app.goLogin(); return false;'>선물하기</a><a
+                            href='/culture-event/popcorn-store/purchase-confirm'>구매하기</a>
+                    </div>
                 </div>
             </div>
             <p class='category_product_detail_txtbox'>CGV 영화관람권으로 즐거운 영화관람하세요!</p>
@@ -271,54 +273,79 @@
         <div class='category_product_together_view_wrap'><strong class='category_product_together_view_title'>이 상품과 함께 본
             상품</strong>
             <ul class='bxslider com_list_style'>
-                <li class=''><a href='/culture-event/popcorn-store/product-detail' class='btn_category_product'> <span
-                        class='com_list_img_wrap'><img
-                        src='http://img.cgv.co.kr/GiftStore/Product/Pc/Detail/15458911955580.jpg'
-                        alt='CGV 골드클래스'></span> <span class='com_list_text_wrap'>           <span
-                        class='com_list_text_title'>CGV 골드클래스</span>           <span class='com_list_text_name'>골드클래스 관람권</span>           <span
-                        class='com_list_sale_price_wrap'>  <span class='store_deatail_source_price'>35,000</span>        </span>   </span>
-                </a> <a href='#' onclick='app.goLogin();return false;'
-                        class='btn_category_product_cart'>장바구니</a> <a href='/culture-event/popcorn-store/user-cart'
-                                                                      onclick='app.goLogin();return false;'
-                                                                      class='btn_category_product_gift'>선물하기</a> <a
-                        href='#' onclick='app.goLogin();return false;'
-                        class='btn_category_product_buy'>구매하기</a></li>
-                <li class=''><a href='/culture-event/popcorn-store/product-detail' class='btn_category_product'> <span
-                        class='com_list_img_wrap'><img
-                        src='http://img.cgv.co.kr/GiftStore/Product/Pc/Detail/15458907785230.jpg'
-                        alt='CGV 씨네드쉐프 관람권'></span> <span class='com_list_text_wrap'>           <span
-                        class='com_list_text_title'>CGV 씨네드쉐프 관람권</span>           <span class='com_list_text_name'>씨네드쉐프 관람권</span>           <span
-                        class='com_list_sale_price_wrap'>  <span class='store_deatail_source_price'>45,000</span>        </span>   </span>
-                </a> <a href='#' onclick='app.goLogin();return false;'
-                        class='btn_category_product_cart'>장바구니</a> <a href='#'
-                                                                      onclick='app.goLogin();return false;'
-                                                                      class='btn_category_product_gift'>선물하기</a> <a
-                        href='#' onclick='app.goLogin();return false;'
-                        class='btn_category_product_buy'>구매하기</a></li>
-                <li class=''><a href='/culture-event/popcorn-store/product-detail' class='btn_category_product'> <span
-                        class='com_list_img_wrap'><img
-                        src='http://img.cgv.co.kr/GiftStore/Product/Pc/Detail/16104445892120.jpg' alt='IMAX 관람권'></span>
-                    <span class='com_list_text_wrap'>           <span class='com_list_text_title'>IMAX 관람권</span>           <span
-                            class='com_list_text_name'>IMAX 영화관람권</span>           <span
-                            class='com_list_sale_price_wrap'>  <span class='store_deatail_source_price'>16,000</span>        </span>   </span>
-                </a> <a href='#' onclick='app.goLogin();return false;'
-                        class='btn_category_product_cart'>장바구니</a> <a href='#'
-                                                                      onclick='app.goLogin();return false;'
-                                                                      class='btn_category_product_gift'>선물하기</a> <a
-                        href='#' onclick='app.goLogin();return false;'
-                        class='btn_category_product_buy'>구매하기</a></li>
-                <li class=''><a href='/culture-event/popcorn-store/product-detail' class='btn_category_product'> <span
-                        class='com_list_img_wrap'><img
-                        src='http://img.cgv.co.kr/GiftStore/Product/Pc/Detail/16105061094000.jpg' alt='4DX관람권'></span>
-                    <span class='com_list_text_wrap'>           <span class='com_list_text_title'>4DX관람권</span>           <span
-                            class='com_list_text_name'>4DX 영화관람권</span>           <span
-                            class='com_list_sale_price_wrap'>  <span class='store_deatail_source_price'>19,000</span>        </span>   </span>
-                </a> <a href='#' onclick='app.goLogin();return false;'
-                        class='btn_category_product_cart'>장바구니</a> <a href='#'
-                                                                      onclick='app.goLogin();return false;'
-                                                                      class='btn_category_product_gift'>선물하기</a> <a
-                        href='#' onclick='app.goLogin();return false;'
-                        class='btn_category_product_buy'>구매하기</a></li>
+                <li class=''>
+                    <a href='/culture-event/popcorn-store/product-detail' class='btn_category_product'>
+                        <span class='com_list_img_wrap'>
+                            <img src='http://img.cgv.co.kr/GiftStore/Product/Pc/Detail/15458911955580.jpg'
+                                 alt='CGV 골드클래스'>
+                        </span>
+                        <span class='com_list_text_wrap'>
+                            <span class='com_list_text_title'>CGV 골드클래스</span>
+                            <span class='com_list_text_name'>골드클래스 관람권</span>
+                            <span class='com_list_sale_price_wrap'>
+                                <span class='store_deatail_source_price'>35,000</span>
+                            </span>
+                        </span>
+                    </a>
+                    <a href='/culture-event/popcorn-store/user-cart' class='btn_category_product_cart'>장바구니</a>
+                    <a href='/culture-event/popcorn-store/user-gift' class='btn_category_product_gift'>선물하기</a>
+                    <a href='/culture-event/popcorn-store/purchase-confirm' class='btn_category_product_buy'>구매하기</a>
+                </li>
+                <li class=''>
+                    <a href='/culture-event/popcorn-store/product-detail' class='btn_category_product'>
+                        <span class='com_list_img_wrap'>
+                            <img src='http://img.cgv.co.kr/GiftStore/Product/Pc/Detail/15458907785230.jpg'
+                                 alt='CGV 씨네드쉐프 관람권'>
+                        </span>
+                        <span class='com_list_text_wrap'>
+                            <span class='com_list_text_title'>CGV 씨네드쉐프 관람권</span>
+                            <span class='com_list_text_name'>씨네드쉐프 관람권</span>
+                            <span class='com_list_sale_price_wrap'>
+                                <span class='store_deatail_source_price'>45,000</span>
+                            </span>
+                        </span>
+                    </a>
+                    <a href='/culture-event/popcorn-store/user-cart' class='btn_category_product_cart'>장바구니</a>
+                    <a href='/culture-event/popcorn-store/user-gift' class='btn_category_product_gift'>선물하기</a>
+                    <a href='/culture-event/popcorn-store/purchase-confirm' class='btn_category_product_buy'>구매하기</a>
+                </li>
+
+                <li class=''>
+                    <a href='/culture-event/popcorn-store/product-detail' class='btn_category_product'>
+                        <span class='com_list_img_wrap'>
+                            <img src='http://img.cgv.co.kr/GiftStore/Product/Pc/Detail/16104445892120.jpg'
+                                 alt='IMAX 관람권'>
+                        </span>
+                        <span class='com_list_text_wrap'>
+                        <span class='com_list_text_title'>IMAX 관람권</span>
+                        <span class='com_list_text_name'>IMAX 영화관람권</span>
+                        <span class='com_list_sale_price_wrap'>
+                            <span class='store_deatail_source_price'>16,000</span>
+                        </span>
+                    </span>
+                    </a>
+                    <a href='/culture-event/popcorn-store/user-cart' class='btn_category_product_cart'>장바구니</a>
+                    <a href='/culture-event/popcorn-store/user-gift' class='btn_category_product_gift'>선물하기</a>
+                    <a href='/culture-event/popcorn-store/purchase-confirm' class='btn_category_product_buy'>구매하기</a>
+                </li>
+
+                <li class=''>
+                    <a href='/culture-event/popcorn-store/product-detail' class='btn_category_product'>
+                        <span class='com_list_img_wrap'>
+                            <img src='http://img.cgv.co.kr/GiftStore/Product/Pc/Detail/16105061094000.jpg' alt='4DX관람권'>
+                        </span>
+                        <span class='com_list_text_wrap'>
+                            <span class='com_list_text_title'>4DX관람권</span>
+                            <span class='com_list_text_name'>4DX 영화관람권</span>
+                            <span class='com_list_sale_price_wrap'>
+                                <span class='store_deatail_source_price'>19,000</span>
+                            </span>
+                        </span>
+                    </a>
+                    <a href='/culture-event/popcorn-store/user-cart' class='btn_category_product_cart'>장바구니</a>
+                    <a href='/culture-event/popcorn-store/user-gift' class='btn_category_product_gift'>선물하기</a>
+                    <a href='/culture-event/popcorn-store/purchase-confirm' class='btn_category_product_buy'>구매하기</a>
+                </li>
             </ul>
         </div>
 
@@ -341,19 +368,24 @@
                 </li>
                 <li class="" id="liTheater02"><a href="javascript:void(0);"
                                                  onclick="fnTheaterData('02');">경기</a><span>54</span></li>
-                <li class="" id="liTheater202"><a href="javascript:void(0);" onclick="fnTheaterData('202');">인천</a><span>13</span>
+                <li class="" id="liTheater202"><a href="javascript:void(0);"
+                                                  onclick="fnTheaterData('202');">인천</a><span>13</span>
                 </li>
                 <li class="" id="liTheater12"><a href="javascript:void(0);"
                                                  onclick="fnTheaterData('12');">강원</a><span>4</span></li>
-                <li class="" id="liTheater03"><a href="javascript:void(0);" onclick="fnTheaterData('03');">대전/충청</a><span>22</span>
+                <li class="" id="liTheater03"><a href="javascript:void(0);"
+                                                 onclick="fnTheaterData('03');">대전/충청</a><span>22</span>
                 </li>
                 <li class="" id="liTheater11"><a href="javascript:void(0);"
                                                  onclick="fnTheaterData('11');">대구</a><span>8</span></li>
-                <li class="" id="liTheater207"><a href="javascript:void(0);" onclick="fnTheaterData('207');">부산/울산</a><span>15</span>
+                <li class="" id="liTheater207"><a href="javascript:void(0);"
+                                                  onclick="fnTheaterData('207');">부산/울산</a><span>15</span>
                 </li>
-                <li class="" id="liTheater204"><a href="javascript:void(0);" onclick="fnTheaterData('204');">경상</a><span>19</span>
+                <li class="" id="liTheater204"><a href="javascript:void(0);"
+                                                  onclick="fnTheaterData('204');">경상</a><span>19</span>
                 </li>
-                <li class="" id="liTheater206"><a href="javascript:void(0);" onclick="fnTheaterData('206');">광주/전라/제주</a><span>24</span>
+                <li class="" id="liTheater206"><a href="javascript:void(0);"
+                                                  onclick="fnTheaterData('206');">광주/전라/제주</a><span>24</span>
                 </li>
             </ul>
             <ul class="pop_product_cgv_content" id="divLocation01">
