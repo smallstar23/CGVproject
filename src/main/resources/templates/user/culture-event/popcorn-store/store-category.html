@@ -293,7 +293,8 @@
     cno에 따른 타이틀 변경 설정
 -->
 <script>
-    const cno = new URL(String(location.href)).searchParams.get("cno");
+    let cno = new URL(String(location.href)).searchParams.get("cno");
+    if(cno == null) cno = '1'; // default 값
     const categoryList = document.getElementsByName('categorymenu');
     categoryList.forEach(item => {
 
@@ -310,7 +311,7 @@
         '맛있으면 0칼로리, 아는 맛이 제일 맛있어요',
         '고소, 달콤부터 고메팝콘까지, 안먹으면 서운해요',
         '탄산음료부터 에이드까지, 마시는 즐거움',
-        '출출할땐 다양한 스낵이 정답이죠']
+        '출출할땐 다양한 스낵이 정답이죠'];
 
     const cname = cnameList[cno - 1];
     const titleSpan = ctitleList[cno - 1];
