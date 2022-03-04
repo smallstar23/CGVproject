@@ -197,15 +197,15 @@
                             </p>
                             <p>
                                 <strong><label for="txtPassword">비밀번호</label></strong>
-                                <input type="password" id="txtPassword" name="txtPassword" title="비밀번호" data-title="비밀번호를 " data-message="정상적으로 입력해 주세요." required="required" maxlength="20" class="small" />
+                                <input type="password" id="txtPassword" name="txtPassword" data-title="비밀번호를 " data-message="정상적으로 입력해 주세요." required="required" maxlength="20" class="small" />
                             </p>
                         </div>
                     </fieldset>
                     <div class="set-btn">
                         <button type="submit" id="save" class="round inred on"><span>확인</span></button>
-                        <a href="/user/main" class="round gray" style="height: 25px"><span>CGV 첫화면으로</span></a>
+                        <a href="/user-main" class="round gray" style="height: 25px"><span>CGV 첫화면으로</span></a>
                         <br/><br/>
-                        <a href="/user/mycgv-myinfo-edit-myinfo"><button type="button" class="round inred"><span>맞는 비밀번호 입력시 어디로 가는지 확인용 버튼</span></button></a>
+                        <a href="/user/mycgv/myinfo/mycgv-myinfo-edit-myinfo"><button type="button" class="round inred"><span>맞는 비밀번호 입력시 어디로 가는지 확인용 버튼</span></button></a>
                     </div>
                 </form>
 
@@ -240,11 +240,11 @@
                 (function ($) {
                     $(function () {
                         $('#go_edit_page').on('click', function () {
-                            var win = window.open("/user/mycgv-popupedit-profile", "profile", "left=0,top=o,width=445,height=440,toolbar=no,scrollbars=no");
+                            var win = window.open("/user/popup/mycgv-popupedit-profile", "profile", "left=0,top=o,width=445,height=440,toolbar=no,scrollbars=no");
                             win.focus();
                         });
                         $('#btn_set_my_favorite').on('click', function () {
-                            var win = window.open("/user/mycgv-favoriteTheaters", "url", "left=0,top=o,width=645,height=370,toolbar=no,scrollbars=no");
+                            var win = window.open("/user/popup/mycgv-favoriteTheaters", "url", "left=0,top=o,width=645,height=370,toolbar=no,scrollbars=no");
                             win.focus();
                         });
                         <!--MY 지난등급 이력보기 스크립트-->

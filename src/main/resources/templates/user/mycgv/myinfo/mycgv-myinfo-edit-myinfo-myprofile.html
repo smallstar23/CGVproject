@@ -207,7 +207,7 @@
 
                 <!--1-->
 
-                <form name="aspnetForm" method="post" action="./edit-myinfo-myprofile.aspx" id="aspnetForm" enctype="multipart/form-data" novalidate="novalidate">
+                <form name="aspnetForm" method="post" action="/user/mycgv/myinfo/mycgv-myinfo-edit-myinfo-myprofile" id="aspnetForm" enctype="multipart/form-data" novalidate="novalidate">
                     <div>
                         <input type="hidden" name="__VIEWSTATE" id="__VIEWSTATE" value="/wEPDwULLTE5NDY1OTc2MjJkZGXGZF9rPaBjXwH1HbdmUHs5/x2S" />
                     </div>
@@ -322,12 +322,12 @@
                         $(function () {
 
                             $('#go_edit_page').on('click', function () {
-                                var win = window.open("/user/mycgv-popupedit-profile", "profile", "left=0,top=o,width=445,height=440,toolbar=no,scrollbars=no");
+                                var win = window.open("/user/popup/mycgv-popupedit-profile", "profile", "left=0,top=o,width=445,height=440,toolbar=no,scrollbars=no");
                                 win.focus();
                             });
 
                             $('#btn_set_my_favorite').on('click', function () {
-                                var win = window.open("/user/mycgv-favoriteTheaters", "url", "left=0,top=o,width=645,height=370,toolbar=no,scrollbars=no");
+                                var win = window.open("/user/popup/mycgv-favoriteTheaters", "url", "left=0,top=o,width=645,height=370,toolbar=no,scrollbars=no");
                                 win.focus();
                             });
 

@@ -107,17 +107,17 @@
                             - 신용카드 환불의 경우 익일에 승인 취소를 확인하실 수 있습니다.<br>
                             - 예매일과 취소일이 다른 경우에 취소 확인 시까지 시일이 소요될 수 있습니다.</p>
                     </div>
-                    <div class="customer_btn"><button onclick="location.href='/user/support-faq'" type="button" class="round inblack"><span>목록으로</span></button></div>
+                    <div class="customer_btn"><button onclick="location.href='/support/support-faq'" type="button" class="round inblack"><span>목록으로</span></button></div>
                     <!-- 이전글,다음글 (s) -->
                     <div class="btm_sup_list">
                         <ul class="line_sup_next">
                             <li class="stit">이전글</li>
-                            <li class="name"><a href="/user/support-fap-detail-view" class="txt">포토플레이 취소 및 환불 규정은 어떻게 되나요?</a></li>
+                            <li class="name"><a href="/support/faq/support-faq-detail-view" class="txt">포토플레이 취소 및 환불 규정은 어떻게 되나요?</a></li>
                             <li class="check_writ_area">등록일<span class="check_num">2021.03.09</span></li>
                         </ul>
                         <ul class="line_sup_prev">
                             <li class="stit">다음글</li>
-                            <li class="name"><a href="/user/support-fap-detail-view" class="txt">인터넷 예매 후 예매 내용 확인은 어떻게 하나요?</a></li>
+                            <li class="name"><a href="/support/faq/support-faq-detail-view" class="txt">인터넷 예매 후 예매 내용 확인은 어떻게 하나요?</a></li>
                             <li class="check_writ_area">등록일<span class="check_num">2018.11.09</span></li>
                         </ul>
                     </div>
@@ -158,7 +158,7 @@
                     }
                 });
                 function Search() {
-                    location.href = "/user/support-faq?searchtext=" + escape($("#searchtext").val());
+                    location.href = "/support/support-faq?searchtext=" + escape($("#searchtext").val());
                     return false;
                 }
                 $('.c_tab_wrap').children('.c_tab').children('li').on('click', function () {
@@ -168,7 +168,7 @@
                     return false;
                 });
                 $('.qu_txt').children('span').children('a').on("click", function () {
-                    location.href = "/user/support-faq?searchtext=" + escape($(this).html());
+                    location.href = "/support/support-faq?searchtext=" + escape($(this).html());
                     return false;
                 });
                 //SR 4020337 검색어 검색 시 검색결과에서 해당 검색어 붉은색으로 변경
@@ -193,7 +193,7 @@
 </div>
 <!-- /Contents Area -->
 </div>
-<div th:replace="user/fragment/footer :: footer-user"></div>
+<div th:replace="user/fragment/footer :: footer"></div>
 </div>
 </body>
 </html>
