@@ -66,6 +66,95 @@ $(document).ready(function() {
     }
 
 
+    // 영화관 선택 부분 구현
+
+    let theaterAreaClick= document.getElementsByClassName("theaterAreaClick");
+    let theaterClick= document.getElementsByClassName("theaterClick");
+    let areaSelect= document.getElementsByClassName("areaSelect");
+    let theaterSelect=document.getElementsByClassName("theaterSelect");
+    let infoTheater=document.getElementsByClassName("infoTheater");
+    let sendTheaterName=document.getElementsByClassName("sendTheaterName");
+    let area_theater_list=document.getElementsByClassName("area_theater_list");
+
+
+    for(let i=0; i<=theaterClick.length-1;i++){
+        theaterClick[i].addEventListener('click', function(){
+            let theaterName=theaterSelect[i].innerText;
+            placeholder[2].style.display='none';
+            sendTheaterName[0].setAttribute('href','/theaters');
+            sendTheaterName[0].setAttribute('title',theaterName);
+            sendTheaterName[0].innerText=theaterName+"CGV > ";
+            for(let x=0; x<=infoTheater.length-1; x++){
+                infoTheater[x].style.display='block';
+            }
+            for(let j=0; j<=theaterClick.length-1;j++){
+                theaterClick[i].classList.add("selected");
+                theaterClick[j].classList.remove("selected");
+
+            }
+        })
+    }
+
+    // 이부분 먹이면 겹치는 html 부분이 생겨서 스크립트 오류로 다음 기능들도 실행이 안됨....
+    // 지역 선택 부분
+    // for(let i=0; i<=theaterAreaClick.length; i++){
+    //     areaSelect[i].addEventListener('click', function(){
+    //         for(let j=0; j<=theaterAreaClick.length; j++){
+    //             theaterAreaClick[i].classList.add("selected");
+    //             theaterAreaClick[j].classList.remove("selected");
+    //         }
+    //     })
+    // }
+
+
+    // 날짜 부분 오늘 날짜 기준으로 howmany 값 조절하면 +howmany 만큼 날짜 뿌릴 수 있음, 아직 월 넘어가는건 못하겠음..
+    let howmany=20;
+    let today=new Date().getDate();
+    let month=new Date().getMonth();
+    month= month >= 10 ? month : '0' + month;
+    let day=new Date().getDay();
+    let dayArray=["일","월","화","수","목","금","토"];
+    let dateArray=[];
+    for(let i=0; i<=howmany;i++){
+        dateArray[i]=today+(i);
+    }
+    let newdayArray=[];
+    for(let i=0; i<=howmany; i++){
+        let newday=day+i;
+        if(newday>=7){
+            newday=newday%7;
+        }
+        newdayArray[i]=dayArray[newday];
+    }
+
+    let fordate=document.getElementById("fordate");
+    console.log(fordate);
+    for(let i=0; i<=howmany; i++){
+        dateArray[i] = dateArray[i] >= 10 ? dateArray[i] : '0' + dateArray[i];
+        fordate.innerHTML+=" <li data-index=\"1\" date=\"2022"+month+dateArray[i]+"\" class=\"day passday\"><a href=\"#\" onclick=\"return false;\"><span class=\"dayweek\">"+newdayArray[i]+"</span><span class=\"day\">"+dateArray[i]+"</span><span class=\"sreader\"></span></a></li>"
+    }
+
+
+    // 날짜 클릭시 날짜 전달하기
+    let passday= document.getElementsByClassName("passday");
+    for(let i=0;i<=passday.length-1;i++){
+        passday[i].addEventListener('click',function(){
+            for(let j=0; j<=passday.length-1;j++){
+                this.classList.add("selected");
+                let clickDate=this.getAttribute("date");
+                let sendDate=document.getElementsByClassName("sendDate")[0].innerText=clickDate;
+                passday[j].classList.remove("selected");
+                placeholder[2].style.display='none';
+                for(let x=0; x<=infoTheater.length-1; x++){
+                    infoTheater[x].style.display='block';
+                }
+
+            }
+
+        })
+    }
+
+
     // 슬라이드 부분 구현
     let pagenum=0;
     let btnLeft=document.getElementById('btn-left');
@@ -90,6 +179,9 @@ $(document).ready(function() {
             layerPopup[3].style.display='block';
             layerPopup[4].style.display='block';
             blackscreen[0].style.display="block";
+        }
+        if(pagenum==3){
+            let payment=document.getElementsByClassName("popup_reservation_check")[0].style.display="block";
         }
 
     });
@@ -196,11 +288,11 @@ $(document).ready(function() {
     // 포인트 사용(닫기 아직안됨!!!)
     $(".clickPoint").on({
         click: function(){
-            if($(".payPoint").show()){
-                $(".payPoint").hide();
+            if($(".payPoint").css("display","block")){
+                $(".payPoint").css("display","none");
             }
             console.log("포인트!!");
-            $(".payPoint").show();
+            $(".payPoint").css("display","block");
             }
     })
 

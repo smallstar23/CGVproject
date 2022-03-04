@@ -1,0 +1,582 @@
+<!DOCTYPE html>
+<html lang="ko"
+      xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org/">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta http-equiv="Expires" content="-1" />
+    <meta http-equiv="Pragma" content="no-cache" />
+    <meta http-equiv="Cache-Control" content="No-Cache" />
+    <meta http-equiv="imagetoolbar" content="no" />
+    <meta name="viewport" content="width=1024" />
+    <meta name="keywords" content="CGV, 시지브이, 영화관, 극장, 영화, 티켓, 박스오피스, 극장, Movie, Theater, Cinema, Cgv, cgv, 예매, 상영작" />
+    <meta name="description" content="CGV는 선진화된 관람문화와 최고의 서비스로 고객에게 잊을 수 없는 감동을 선사합니다. CGV홈페이지를 통해 영화 예매뿐만 아니라 그 이상의 서비스와 감동을 전달하고, 다양한 즐거움과 특별한 경험을 제공하고자 합니다." />
+    <meta property="og:site_name" content="영화 그 이상의 감동. CGV"/>
+    <meta id="ctl00_og_title" property="og:title" content="영화 그 이상의 감동. CGV"></meta>
+
+
+    <meta id="ctl00_og_image" property="og:image" content="https://img.cgv.co.kr/WebApp/images/common/logo_new_kakao_prevw.png"></meta>
+    <link rel="alternate" href="http://m.cgv.co.kr" />
+    <link rel="shortcut icon" href="https://img.cgv.co.kr/theater_img/favicon.ico" type="image/x-icon" />
+    <title id="ctl00_headerTitle">영화 그 이상의 감동. CGV</title>
+    <link rel="shortcut icon" type="image/x-icon" href="https://img.cgv.co.kr/R2014/images/favicon.ico" />
+    <link rel="stylesheet" media="all" type="text/css" href="https://img.cgv.co.kr/R2014/css/webfont.css" />
+    <link rel="stylesheet" media="all" type="text/css" href="https://img.cgv.co.kr/R2014/css/reset.css" />
+    <link rel="stylesheet" media="all" type="text/css" href="https://img.cgv.co.kr/R2014/css/layout.css" />
+    <link rel="stylesheet" media="all" type="text/css" href="https://img.cgv.co.kr/R2014/css/module.css?20211209" />
+    <link rel="stylesheet" media="all" type="text/css" href="https://img.cgv.co.kr/R2014/css/content.css" />
+    <link rel="stylesheet" media="all" type="text/css" href="https://img.cgv.co.kr/R2014/css/common.css" />
+
+    <link rel="stylesheet" media="all" type="text/css" href="https://img.cgv.co.kr/R2014/css/eggupdate.css" />
+    <link rel="stylesheet" media="print" type="text/css" href="https://img.cgv.co.kr/R2014/css/print.css" />
+    <link rel="stylesheet" type="text/css" href="https://img.cgv.co.kr/R2014/js/jquery.ui/smoothness/jquery-ui-1.10.4.custom.min.css" />
+
+    <script type="text/javascript" src="/common/js/extraTheaters.js"></script>
+    <script type="text/javascript" src="https://img.cgv.co.kr/R2014/js/app.config.js"></script>
+    <script type="text/javascript" src="https://img.cgv.co.kr/R2014/js/jquery-1.10.2.min.js"></script>
+    <script type="text/javascript" src="https://img.cgv.co.kr/R2014/js/jquery.plugin/jquery.tmpl.min.js"></script>
+    <script type="text/javascript" src="https://img.cgv.co.kr/R2014/js/jquery.plugin/jquery.validate.js"></script>
+    <script type="text/javascript" src="https://img.cgv.co.kr/R2014/js/jquery.plugin/jquery.paging.min.js"></script>
+    <script type="text/javascript" src="https://img.cgv.co.kr/R2014/js/jquery.ui/jquery-ui-1.10.4.custom.min.js"></script>
+    <script type="text/javascript" src="https://img.cgv.co.kr/R2014/js/jquery.utils.js"></script>
+    <script type="text/javascript" src="https://img.cgv.co.kr/R2014/js/app.utils.js"></script>
+    <script type="text/javascript" src="https://img.cgv.co.kr/R2014/js/jquery.utils.pageing.js"></script>
+    <script type="text/javascript" src="https://img.cgv.co.kr/R2014/js/app.init.js"></script>
+
+    <!--[if lte IE 9]><script type="text/javascript" src="https://img.cgv.co.kr/R2014/js/jquery.plugin/jquery.placeholder.js"></script><![endif]-->
+    <script type="text/javascript" src="https://img.cgv.co.kr/R2014/js/jquery.plugin/jquery.dotdotdot.min.js"></script>
+    <script type="text/javascript" src="https://img.cgv.co.kr/R2014/js/silverlight_link.js"></script>
+    <script src="https://img.cgv.co.kr/R2014/js/slick/slick.js" type="text/javascript" charset="utf-8"></script>
+    <link rel="stylesheet" media="all" type="text/css" href="https://img.cgv.co.kr/R2014/css/phototicket/phototicket.css" />
+    <link rel="stylesheet" media="all" type="text/css" href="https://img.cgv.co.kr/R2014/css/slick.css" />
+    <link rel="stylesheet" media="all" type="text/css" href="https://img.cgv.co.kr/R2014/css/slick-theme-custom.css" />
+    <script type="text/javascript" src="https://img.cgv.co.kr/R2014/js/icheck/login.timer.js"></script>
+    <script src="https://img.cgv.co.kr/R2014/js/icheck/icheck.min.js" type="text/javascript" charset="utf-8"></script>
+    <link rel="stylesheet" type="text/css" href="https://img.cgv.co.kr/R2014/js/icheck/iCheck.css" />
+    <!-- 2020.05.07 감정지수/프리에그 프로젝트 추가 -->
+    <link rel="stylesheet" media="all" type="text/css" href="https://img.cgv.co.kr/R2014/css/preegg.css" />
+
+    <!-- 각페이지 Header Start-->
+    <!--<meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">https, http  혼합사용시-->
+    <script type="text/javascript" src="https://img.cgv.co.kr/R2014/js/swiper.min.js" ></script>
+
+    <link rel="stylesheet" media="all" type="text/css" href="https://img.cgv.co.kr/R2014/css/swiper-bundle.min.css" />
+    <!-- 각페이지 Header Start-->
+
+    <link rel="stylesheet" href="http://img.cgv.co.kr/CGV_RIA/Ticket/Common/css/2021/0803/FORM_TYPE/common.css" />
+    <link rel="stylesheet" href="http://img.cgv.co.kr/CGV_RIA/Ticket/Common/css/2021/0803/FORM_TYPE/reservation.css" />
+    <link rel="stylesheet" href="http://img.cgv.co.kr/CGV_RIA/Ticket/Common/css/2021/0803/FORM_TYPE/reservation_tnb.css" />
+    <link rel="stylesheet" href="http://img.cgv.co.kr/CGV_RIA/Ticket/Common/css/2021/0803/FORM_TYPE/reservation_popup.css" />
+    <link rel="stylesheet" href="http://img.cgv.co.kr/CGV_RIA/Ticket/Common/css/2021/0803/FORM_TYPE/reservation_step3.css" />
+    <link rel="stylesheet" href="http://img.cgv.co.kr/CGV_RIA/Ticket/Common/css/2021/0803/FORM_TYPE/reservation_step3_special.css" />
+    <link rel="stylesheet" href="http://img.cgv.co.kr/CGV_RIA/Ticket/Common/css/2021/0803/FORM_TYPE/reservation_step3_step1.css" />
+    <link rel="stylesheet" href="http://img.cgv.co.kr/CGV_RIA/Ticket/Common/css/2021/0803/FORM_TYPE/reservation_step3_step2.css" />
+
+
+    <!--/각페이지 Header End-->
+
+</head>
+<body class="">
+
+<div th:replace="user/fragment/header :: header-user"></div>
+
+<!-- Contaniner -->
+<div id="contaniner"  class=""><!-- 벽돌 배경이미지 사용 시 class="bg-bricks" 적용 / 배경이미지가 없을 경우 class 삭제  -->
+
+
+    <!-- Contents Area -->
+    <div id="contents" class="">
+
+
+        <!-- Contents Start -->
+
+
+        <!--/ Contents End -->
+    </div>
+    <a name="t"></a>
+    <div id="wrap" oncontextmenu="return false" ondragstart="return false" onselectstart="return false">
+        <!-- 컨텐츠 -->
+        <div id="container">
+            <!-- 빠른예매 -->
+            <div id="ticket" class="ticket ko">
+
+                <!-- 타이틀 -->
+                <div class="navi">
+                    <div  class="newsletter">
+
+                        <p style="display :none">
+                            <a href="#">Click here</a> if you want to receive newsletter about English subtitle movies</p>
+
+                    </div>
+                    <span class="right">
+
+					<a class="button button-english" href="#" onmousedown="javascript:logClick('옵션/ENGLISH');" onclick="switchLanguage(); return false;"><span>ENGLISH</span></a>
+					<a class="button button-guide" href="#" onmousedown="javascript:logClick('옵션/예매가이드');" onclick="ticketPopupShow('popup_guide'); return false;"><span>예매가이드 - 레이어로 서비스 되기 때문에 가상커서를 해지(Ctrl+Shift+F12)한 후 사용합니다.</span></a>
+					<a class="button button-discount" href="#" onmousedown="javascript:logClick('옵션/제휴할인혜택');" onclick="ticketNewWindow('./discount.jsp');return false;" title="새창열기"><span>제휴할인혜택</span></a>
+					<a class="button button-schedule" href="#" onmousedown="javascript:logClick('옵션/상영시간표');" onclick="openSchedulePopup();return false;" title="새창열기"><span>상영시간표</span></a>
+					<a class="button button-reservation-restart" href="#" onmousedown="javascript:logClick('옵션/예매다시하기');" onclick="ticketRestart(); return false;"><span>예매 다시하기</span></a>
+
+				</span>
+                    <div class="ie7_sucks" id="ie7_sucks"><span>Internet Explorer 9 이상에서 최적화된 서비스 이용이 가능합니다.</span></div>
+                </div>
+                <!-- //타이틀 -->
+                <!-- 메인컨텐츠 -->
+                <div class="steps">
+
+
+                    <!-- step4 -->
+                    <div class="step step4" style="display: block;">
+                        <!-- complement of payment 섹션 -->
+                        <div class="section section-complement">
+                            <div class="col-head">
+                                <!--<img src="http://img.cgv.co.kr/CGV_RIA/Ticket/image/reservation/title_complement.png" alt="예매 완료" />-->
+                            </div>
+
+                            <div class="col-body">
+
+                                <div class="article result">
+
+                                    <div class="text_complement"><img src="http://img.cgv.co.kr/CGV_RIA/Ticket/image/reservation/step4/text_complement.png" alt="예매가 완료 되었습니다."> </div>
+
+                                    <div class="ticket_summary_wrap">
+                                        <div class="ticket_summary">
+                                            <div class="poster"><img src="http://img.cgv.co.kr/Movie/Thumbnail/Poster/000085/85632/85632_185.JPG" alt="" style="visibility: visible; display: inline;"></div>
+                                            <table>
+
+                                                <!--예매정보 꾸며주는 곳-->
+                                                <caption>예매정보</caption>
+                                                <thead></thead>
+                                                <tbody>
+                                                <tr class="ticket_no">
+                                                    <th scope="row">예매번호</th>
+                                                    <td><span class="red" th:text="${info}"></span></td>
+                                                </tr>
+                                                <tr class="movie_name">
+                                                    <th scope="row">영화</th>
+                                                    <td><em></em></td>
+                                                </tr>
+                                                <tr class="theater">
+                                                    <th scope="row">극장</th>
+                                                    <td><em><span class="theater_name">CGV 강남</span> / <span class="theater_loc">4관[SCREENX] 8층</span></em></td>
+                                                </tr>
+                                                <tr class="movie_date">
+                                                    <th scope="row">일시</th>
+                                                    <td><em>2022년2월28일(월)20:30 ~ 23:36</em></td>
+                                                </tr>
+                                                <tr class="people">
+                                                    <th scope="row">인원</th>
+                                                    <td><em>일반 1명</em></td>
+                                                </tr>
+                                                <tr class="seat">
+                                                    <th scope="row">좌석</th>
+                                                    <td><em>A9</em></td>
+                                                </tr>
+                                                <tr class="payment_price">
+                                                    <th scope="row">결제금액</th>
+                                                    <td><span class="price">13,000</span> 원</td>
+                                                </tr>
+                                                <tr class="payment_method">
+                                                    <th scope="row">결제수단</th>
+                                                    <td>
+                                                        <!--
+                                                    <div class="row">
+                                                        <span class="title"><em>신용카드</em></span>
+                                                        <span class="content"><span class="price">5,000</span>원 (BC카드 할인 <span class="price">3,000</span>원)</span>
+                                                    </div>
+                                                    <div class="row">
+                                                        <span class="title"><em>휴대폰</em></span>
+                                                        <span class="content"><span class="price">5,000</span>원</span>
+                                                    </div>
+                                                    -->
+                                                        <div class="row"><span class="title"><em>카카오페이</em></span><span class="content"><span class="price">13,000</span> 원</span></div></td>
+                                                </tr>
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                    </div>
+                                    <div class="ticket_exception" style="display: none;">
+
+                                        <em>CGV 청담씨네시티는 대중교통이용을 권장합니다.</em><br>
+                                        <span class="desc">발레파킹을 이용하실 수 있으나, 가능 차량수가 한정적이며 주변 교통상황에 따라 지연될 수 있습니다.</span>
+
+                                        <!--<br/><a class="btn_traffic_info" href="#" onclick="return false;"><img src="http://img.cgv.co.kr/CGV_RIA/Ticket/image/reservation/step4/btn_traffic_info.png" alt="교통안내"/></a>-->
+                                    </div>
+                                    <div class="ticket_button_group"><div>
+                                        <a class="btn_step4 btn_red btn_ticket_print" href="#" style="margin: 0px 5px;"><span>예매정보 출력</span></a>
+                                        <a class="btn_step4 btn_result_smssend" href="#" style="margin: 0px 5px;"><span>예매결과 SMS발송</span></a>
+                                        <a class="btn_step4 btn_ticket_check" href="#" style="margin: 0px 5px;"><span>예매확인/취소</span></a>
+                                        <a class="btn_step4 btn_red btn_ticket_check_red" href="#" style="margin: 0px 5px;"><span>예매확인/취소</span></a>
+                                        <a class="btn_step4 btn_ticket_message" href="#" style="margin: 0px 5px;"><span>티켓메시지 입력</span></a>
+                                        <a class="btn_step4 btn_cinedechef" href="#" style="display: none; margin: 0px 5px;"><span>CINE de CHEF 이용안내</span></a>
+                                    </div></div>
+                                    <div class="ticket_instructions">
+                                        <dl>
+                                            <dt><img src="http://img.cgv.co.kr/CGV_RIA/Ticket/image/reservation/step4/text_ticket_instructions.png" alt="예매 유의 사항"></dt>
+                                            <dd>
+
+                                                <ul>
+                                                    <li>CJ ONE 포인트는 상영일 익일 적립됩니다.<em>(영화관람권, 비회원 예매 제외)</em></li>
+                                                    <!--li>홈티켓 출력 시, 별도의 티켓 발권 없이 바로 입장 가능합니다.<br /><em>(그 외에는 신분증 소지 후, 티켓판매기 혹은 매표소에서 티켓을 발권 받으셔야 합니다)</em></li-->
+                                                    <li>영화 상영 스케줄은 영화관사정에 의해 변경될 수 있습니다.</li>
+                                                    <li>비회원 예매하신 경우는 예매내역이 이메일로  발송되지 않습니다.</li>
+                                                </ul>
+
+                                            </dd>
+                                        </dl>
+                                    </div>
+                                </div>
+                                <div class="article sub_contents">
+                                    <div class="ad_unit shop">
+                                        <div class="option">
+                                            <ul>
+                                                <li class="dvline photoTicket">
+                                                    <a href="#" class="btn_photo_ticket" onclick="editPhotoTicket();return false;" title="포토티켓 꾸미기">
+                                                        <span>포토티켓 꾸미기</span>
+                                                    </a>
+                                                </li>
+                                                <li>
+                                                    <a href="#" onclick="enterTicketMessage();return false;" class="btn_ticket_msg" title="티켓메세지 입력하기">
+                                                        <span>티켓메시지 입력하기</span>
+                                                    </a>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                        <div class="giftcon_area">
+                                            <div class="tit_area">
+                                                <h3>
+
+                                                </h3>
+                                                <p>
+
+                                                </p>
+                                            </div>
+                                            <div class="giftcon_list">
+
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="banner_area"><a target="_blank"><span>배너광고 영역</span></a></div>
+                                <div class="article ads">
+
+                                    <div class="list"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div></div>
+                <!-- //step4 -->
+
+
+
+                <!-- //빠른예매 -->
+            </div>
+            <!-- //컨텐츠 -->
+
+
+        </div>
+
+        <!-- bottom banner -->
+
+
+
+    </div>
+    <!-- 팝업 -->
+    <div class="popups">
+        <!-- Popup - 로그인 -->
+        <div class="ft_layer_popup popup_login" style="display:none;">
+            <!--<div class="hd">
+            <div class="title_area">
+
+                <h4>CGV회원 로그인</h4>
+
+                <span class="sreader">빠른예매는 레이어로 서비스 되기 때문에 가상커서를 해지(Ctrl+Shift+F12)한 후 사용합니다.</span>
+            </div>
+            <a href="#" onclick="return false;" class="layer_close">닫기</a>
+        </div>
+        <div class="bd">
+            <div class="login_form">
+                <div class="input_wrap id">
+                    <label for="txtUserId" class="blind">아이디</label>
+                    <input name="txtUserId" id="txtUserId" maxlength="25" type="text">
+                </div>
+                <div class="input_wrap password">
+                    <label for="txtPassword" class="blind">비밀번호</label>
+                    <input name="txtPassword" id="txtPassword" maxlength="25" type="password">
+                </div>
+                <button type="button" title="로그인" class="btn_login"><span>로그인</span></button>
+            </div>
+            <div class="linkbar">
+
+                <a href="#" onclick="return false;" class="join_member">회원가입</a>
+                <a href="#" onclick="return false;" class="join_guest">비회원 예매</a>
+                <a href="#" onclick="return false;" class="id_find">아이디찾기</a>
+                <a href="#" onclick="return false;" class="pw_find">비밀번호찾기</a>
+
+            </div>
+        </div>-->
+        </div>
+        <!-- //Popup -->
+
+        <!-- Popup - 얼럿 -->
+        <div class="ft_layer_popup popup_alert original" style="">
+            <div class="hd">
+                <div class="title_area">
+                    <h4 class="alert_title">얼럿타이틀</h4>
+                    <span class="sreader">빠른예매는 레이어로 서비스 되기 때문에 가상커서를 해지(Ctrl+Shift+F12)한 후 사용합니다.</span>
+                </div>
+                <a href="#" onclick="return false;" class="layer_close">닫기</a>
+            </div><!-- //hd -->
+            <div class="bd">
+                <p class="alert_msg" style="width: 475px;">얼럿메세지</p>
+            </div><!-- //bd -->
+            <div class="ft">
+                <a title="확인" href="#" onclick="return false;" class="btn btn_ok"><span>확인</span></a>
+                <a title="취소" href="#" onclick="return false;" class="btn btn_white btn_close"><span>취소</span></a>
+            </div><!-- //ft -->
+        </div>
+        <!-- //Popup -->
+
+        <!-- 2021.06.22 - 홈페이지 관람 안내 문구 팝업 창 -->
+        <div class="ft_layer_popup popup_alert w450 base" style="top: 50%; position: absolute;">
+            <div class="hd">
+                <div class="title_area">
+                    <h4 class="alert_title">얼럿타이틀</h4>
+                    <span class="sreader">빠른예매는 레이어로 서비스 되기 때문에 가상커서를 해지(Ctrl+Shift+F12)한 후 사용합니다.</span>
+                </div>
+                <a href="#" onclick="return false;" class="layer_close">닫기</a>
+            </div>
+            <div class="bd">
+                <p class="alert_msg">얼럿메세지</p>
+            </div>
+            <div class="ft">
+                <a title="확인" href="#" onclick="return false;" class="btn btn_ok">
+                    <span>확인</span>
+                </a>
+                <a title="취소" href="#" onclick="return false;" class="btn btn_white btn_close">
+                    <span>취소</span>
+                </a>
+            </div>
+        </div>
+
+
+    </div>
+    <!-- //팝업 -->
+
+    <div id="ticket_tnb" class="tnb_container ">
+        <div class="tnb step4" id="tnb" style="display:none">
+            <!-- btn-left -->
+            <a class="btn-left" id="btn-left" href="#" onclick="OnTnbLeftClick(); return false;" title="영화선택">이전단계로 이동</a>
+            <div class="info movie">
+                <span class="movie_poster"><img id="movie_poster" src="" alt="영화 포스터" style="display: none;"></span>
+                <div class="row movie_title colspan2" style="display: none;">
+                    <span class="data letter-spacing-min ellipsis-line2"><a id="movie_sel" href="#" target="_blank" onmousedown="javascript:logClick('SUMMARY/영화상세보기');">영화정보 상세보기</a></span>
+                </div>
+                <div class="row movie_type" style="display: none;">
+                    <span class="data ellipsis-line1"></span>
+                </div>
+                <div class="row movie_rating" style="display: none;">
+                    <span class="data" title=""></span>
+                </div>
+                <div class="placeholder" title="영화선택"></div>
+            </div>
+            <div class="info theater">
+                <div class="row name infoTheater" style="display: none;">
+                    <span class="header">극장</span>
+                    <span class="data letter-spacing-min ellipsis-line1"><a class="sendTheaterName" href="" target="_blank" onmousedown="javascript:logClick('SUMMARY/극장상세보기');"><span class="sreader">극장정보 상세보기</span></a></span>
+                </div>
+                <div class="row date infoTheater" style="display: none;">
+                    <span class="header">일시</span>
+                    <span class="data sendDate"></span>
+                </div>
+                <div class="row screen infoTheater" style="display: none;">
+                    <span class="header">상영관</span>
+                    <span class="data"></span>
+                </div>
+                <div class="row number infoTheater" style="display: none;">
+                    <span class="header">인원</span>
+                    <span class="data"></span>
+                </div>
+                <div class="placeholder" title="극장선택"></div>
+            </div>
+            <div class="info seat" style="display:none">
+                <div class="row seat_name">
+                    <span class="header">좌석명</span>
+                    <span class="data">일반석</span>
+                </div>
+                <div class="row seat_no colspan3">
+                    <span class="header">좌석번호</span>
+                    <span class="data ellipsis-line3"></span>
+                </div>
+                <div class="placeholder" title="좌석선택"></div>
+            </div>
+            <!-- <div class="info payment-ticket">
+            <div class="row payment-millitary">
+                <span class="header">군인</span>
+                <span class="data"><span class="price"></span>원 x <span class="quantity"></span></span>
+            </div>
+            <div class="row payment-adult">
+                <span class="header">일반</span>
+                <span class="data"><span class="price"></span>원 x <span class="quantity"></span></span>
+            </div>
+            <div class="row payment-youth">
+                <span class="header">청소년</span>
+                <span class="data"><span class="price"></span>원 x <span class="quantity"></span></span>
+            </div>
+            <div class="row payment-child">
+                <span class="header">어린이</span>
+                <span class="data"><span class="price"></span>원 x <span class="quantity"></span></span>
+            </div>
+            <div class="row payment-senior">
+                <span class="header">경로</span>
+                <span class="data"><span class="price"></span>원 x <span class="quantity"></span></span>
+            </div>
+            <div class="row payment-special">
+                <span class="header">우대</span>
+                <span class="data"><span class="price"></span>원 x <span class="quantity"></span></span>
+            </div>
+            <div class="row payment-final">
+                <span class="header">총금액</span>
+                <span class="data"><span class="price">0</span><span class="won">원</span></span>
+            </div>
+        </div> -->
+            <div class="info path">
+                <div class="row colspan4">
+                    <span class="path-step2" title="좌석선택">&nbsp;</span>
+                    <span class="path-step3" title="결제">&nbsp;</span>
+                </div>
+            </div>
+            <!-- btn-right -->
+            <div class="tnb_step_btn_right_before" id="tnb_step_btn_right_before"></div>
+            <a class="btn-right" id="tnb_step_btn_right" href="#" title="좌석선택">다음단계로 이동 - 레이어로 서비스 되기 때문에 가상커서를 해지(Ctrl+Shift+F12)한 후 사용합니다.</a>
+        </div>
+    </div>
+
+
+
+
+    <div class="blackscreen" style="display:none;" id="blackscreen"></div>
+    <!-- loading -->
+    <div class="loading" id="ticket_loading">
+        <div class="dimm"></div>
+        <p class="loadWrap"><img src="http://img.cgv.co.kr/CGV_RIA/Ticket/image/reservation/common/ajax-loader-w.gif" alt="로딩 애니메이션" /></p>
+    </div>
+    <!-- iframe -->
+    <iframe id="proxy_iframe" src="http://www.cgv.co.kr/Ticket/Proxy.html" scrolling="no" frameborder="0" width="0" height="0" style="display:none;" title="데이터 연동 숨김 프레임"></iframe>
+    <iframe src="/CGV2011/RIA/RR999.aspx" name="rsvDataframe" id="rsvDataframe" scrolling="no" frameborder="0" width="0" height="0" style="display:none;" title="데이터 연동 프레임"></iframe>
+    <!-- javascript 상위프레임에 있는 스크립트를 사용-->
+    <!--<script type="text/javascript" src="http://img.cgv.co.kr/common/js/insightIS.js"></script>-->
+
+    <!-- 결제 요청시 팝업-->
+
+    <div class="ft_layer_popup popup_reservation_check " style="display: none;">
+        <div class="hd">
+            <div class="title_area">
+
+                <h4>예매내역 확인</h4>
+
+            </div>
+
+        </div><!-- //hd -->
+        <div class="bd">
+            <div class="article reservation_info">
+
+                <h5>예매정보<span class="desc">결제하시기 전 예매내역을 다시 한번 확인해 주세요.</span></h5>
+
+                <div class="content">
+                    <div class="poster"><img src="http://img.cgv.co.kr/Movie/Thumbnail/Poster/000085/85632/85632_185.JPG" alt="" style="visibility: visible;"></div>
+                    <table>
+                        <caption>예매정보</caption>
+                        <thead></thead>
+                        <tbody>
+                        <tr class="movie_name">
+                            <th scope="row">영화명</th>
+                            <td>더 배트맨(SCREENX 2D)</td>
+                        </tr>
+                        <tr class="theater">
+                            <th scope="row">극장</th>
+                            <td>CGV 강남</td>
+                        </tr>
+                        <tr class="screen">
+                            <th scope="row">상영관</th>
+                            <td>4관[SCREENX] 8층</td>
+                        </tr>
+                        <tr class="movie_date">
+                            <th scope="row">일시</th>
+                            <td>2022년 3월 6일(일) 10:00~13:06</td>
+                        </tr>
+                        <tr class="people">
+                            <th scope="row">인원</th>
+                            <td>일반 1명</td>
+                        </tr>
+                        <tr class="seat">
+                            <th scope="row">좌석</th>
+                            <td>D8</td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            <div class="article payment_info">
+
+                <h5>결제정보<span class="desc">결제하기 버튼을 클릭하시면 결제가 완료됩니다.</span></h5>
+
+                <table>
+                    <caption>결제정보</caption>
+                    <thead></thead>
+                    <tbody>
+                    <tr class="payment_price">
+                        <th scope="row">결제금액</th>
+                        <td><span class="price">10,000</span>원</td>
+                    </tr>
+                    <tr class="payment_method">
+                        <th scope="row">결제수단</th>
+                        <td><div id="payMethods" style="overflow:auto;height:170px"><div class="row"><span class="title">카카오페이</span><span class="content"><span class="price">10,000</span><span class="won">원</span></span></div></div></td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div class="article desc" style="border-bottom: none; background: none;">
+
+                <ul>
+                    <li style="display: list-item;">인터넷 예매는 온라인상으로 영화상영 시간 20분 전 까지 취소 가능하며 20분 이후에는 현장에서 취소를 하셔야 합니다.</li>
+                    <li style="display: list-item;">현장 취소를 하는 경우 상영시간 이전까지만 가능하며 영화 상영 시작 시간 이후 취소나 환불은 되지 않습니다.</li>
+                    <li style="display: list-item;">극장 이용 시 마스크 착용은 필수입니다.
+                        (미착용 시 입장 제한)
+                        입장 지연에 따른 관람 불편을 최소화하기 위해
+                        본 영화는 10분 후 상영이 시작됩니다.</li>
+                </ul>
+
+                <a class="refundNotice" href="http://www.cgv.co.kr/support/faq/detail-view.aspx?idx=749&amp;type=239&amp;page=1&amp;searchtext=&amp;pb=Y" target="_blank">
+                    &gt; 예약취소 및 환불규정 안내
+                </a>
+            </div>
+            <div class="agreement" style="border-top: 1px solid rgb(204, 204, 204); padding-top: 15px; background: rgb(238, 238, 238); height: 80px; text-align: left; border-bottom: 1px solid rgb(204, 204, 204); padding-bottom: 15px; margin: 0px 0px 28px;"><div id="paymentAgreement" style="float: left; width: 47%; height: 100%; padding-left: 3%; border-right: 1px solid rgb(204, 204, 204);"><span class="inputModel" style="display: block; width: 410px; min-height: 15px; margin: 0px 0px 10px;"><input class="inputModel_input" type="checkbox" style="display: inline-block; vertical-align: top; margin-top: 1px;" id="agreementAll"><label class="inputModel_label" style="width: 93%; display: inline-block; margin-left: 10px; font-weight: bold;" for="agreementAll">결제대행서비스 약관에 모두 동의</label></span><span class="inputModel" style="display: block; width: 99%; min-height: 15px; margin-bottom: 5px; margin-left: 10px;" id="agreeMent0"><input class="inputModel_input agreeMentChk" type="checkbox" style="display: inline-block; vertical-align: top; margin-top: 1px;" id="agreeMent0val"><label class="inputModel_label" style="width: 325px; display: inline-block; margin-left: 10px;" for="agreeMent0val">전자금융거래 이용약관</label><button class="detailView" style="background: none; text-decoration: underline; font-size: 1em; color: rgb(32, 124, 202); padding: 0px; height: 16px; vertical-align: top;">전문확인</button></span><span class="inputModel" style="display: block; width: 99%; min-height: 15px; margin-bottom: 5px; margin-left: 10px;" id="agreeMent1"><input class="inputModel_input agreeMentChk" type="checkbox" style="display: inline-block; vertical-align: top; margin-top: 1px;" id="agreeMent1val"><label class="inputModel_label" style="width: 325px; display: inline-block; margin-left: 10px;" for="agreeMent1val">개인정보 수집 이용약관</label><button class="detailView" style="background: none; text-decoration: underline; font-size: 1em; color: rgb(32, 124, 202); padding: 0px; height: 16px; vertical-align: top;">전문확인</button></span><span class="inputModel" style="display: block; width: 99%; min-height: 15px; margin-bottom: 5px; margin-left: 10px;" id="agreeMent2"><input class="inputModel_input agreeMentChk" type="checkbox" style="display: inline-block; vertical-align: top; margin-top: 1px;" id="agreeMent2val"><label class="inputModel_label" style="width: 325px; display: inline-block; margin-left: 10px;" for="agreeMent2val">개인정보 제공 및 위탁 안내 약관</label><button class="detailView" style="background: none; text-decoration: underline; font-size: 1em; color: rgb(32, 124, 202); padding: 0px; height: 16px; vertical-align: top;">전문확인</button></span></div><div id="paymentInfoConfirm" style="float: left; width: 45%; height: 100%;"><span class="inputModel" style="display: none; width: 400px; min-height: 15px; margin: 0px 0px 7px 20px;"><input class="inputModel_input" type="checkbox" style="display: inline-block; vertical-align: top; margin-top: 1px;" id="resvNoshowfirm"><label class="inputModel_label" style="width: 93%; display: inline-block; margin-left: 10px; font-weight: bold;" for="resvNoshowfirm">취소 기한을 확인하였으며, 이에 동의합니다.</label></span><span class="inputModel" style="display: none; width: 400px; min-height: 15px; margin: 0px 0px 7px 20px;"><input class="inputModel_input" type="checkbox" style="display: inline-block; vertical-align: top; margin-top: 1px;" id="resvPKGfirm"><label class="inputModel_label" style="width: 93%; display: inline-block; margin-left: 10px; font-weight: bold;" for="resvPKGfirm">본 영화는 동시상영 영화로 부분환불이 불가한 영화입니다.</label></span><span class="inputModel" style="display: block; width: 420px; min-height: 15px; margin: 0px 0px 0px 20px; clear: both;"><input class="inputModel_input" type="checkbox" style="display: inline-block; vertical-align: top; margin-top: 1px;" id="resvConfirm"><label class="inputModel_label" style="width: 93%; display: inline-block; margin-left: 10px; font-weight: bold;" for="resvConfirm">상기 결제 내역을 모두 확인 했습니다</label></span></div></div>
+        </div><!-- //bd -->
+        <div class="ft">
+            <form method="post" action="/kakaoPay">
+                <button><a class="reservation"><span class="sreader">예매 결제하기</span></a></button>
+                <a title="예매 취소" href="#" class="cancel"><span class="sreader">예매 취소</span></a>
+            </form>
+
+        </div><!-- //ft -->
+    </div>
+
+
+
+
+    <!-- /Contents Area -->
+</div>
+<!-- E Contaniner -->
+<div th:replace="user/fragment/footer:: footer-user"></div>
+
+
+</div>
+
+<script type="text/javascript" src="https://img.cgv.co.kr/R2014//js/system/crypto.js"></script>
+<script src="/js/reservation.js"></script>
+
+
+<!-- Google Tag Manager -->
+</body>
+</html>
