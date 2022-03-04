@@ -56,7 +56,7 @@
                 <div class="card-body">
                     <table id="datatablesSimple">
                         <thead>
-                        <tr th:onclick="'location.href=\''+ @{/member-pointlist-view} + '\''">
+                        <tr >
                             <th>Id</th>
                             <th>적립 구분</th>
                             <th>상품 구매 극장</th>
@@ -67,7 +67,7 @@
                         </tr>
                         </thead>
                         <tfoot>
-                        <tr onclick="location.href='./member_pointlist_view.jsp'">
+                        <tr >
                             <th>Id</th>
                             <th>적립 구분</th>
                             <th>상품 구매 극장</th>
@@ -78,7 +78,7 @@
                         </tr>
                         </tfoot>
                         <tbody>
-                        <tr onclick="location.href='./member_pointlist_view.jsp'">
+                        <tr th:onclick="'location.href=\''+ @{/member-pointlist-view} + '\''">
                             <td style="width: 15%;">apple</td>
                             <td style="width: 15%;">팝콘</td>
                             <td style="width: 15%;">시흥 CGV</td>

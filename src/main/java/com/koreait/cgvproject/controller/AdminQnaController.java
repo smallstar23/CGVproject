@@ -23,5 +23,8 @@ public class AdminQnaController {
         return "admin/qna/lostList";
     }
 
-
+    @GetMapping("manage_AskAnswer")//lostList 페이지
+    public String manage_AskAnswer(){
+        return "admin/qna/manage_AskAnswer";
+    }
 }
