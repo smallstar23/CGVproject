@@ -180,7 +180,9 @@
         function fnCategoryData(cno) {
             location.href = "/discount/discountlist?cno=" + cno;
         }
+
     </script>
+
 
 
 </head>
@@ -358,18 +360,18 @@
             loop:true,
         });
 
-        $('.cgvSaleTab_titleWrap a').on({ // 20210107 탭 포커싱 스크립트
-            click:function(e){
-                var currentTarget = e.currentTarget;
-                var $currentTargetLi = $(currentTarget).parent('li');
-                var isActive = $currentTargetLi.hasClass('active');
-
-                if(!isActive){
-                    $currentTargetLi.addClass('active').siblings('li').removeClass('active');
-                    console.log("작동 중")
-                }
-            }
-        })
+        // $('.cgvSaleTab_titleWrap a').on({ // 20210107 탭 포커싱 스크립트
+        //     click:function(e){
+        //         var currentTarget = e.currentTarget;
+        //         var $currentTargetLi = $(currentTarget).parent('li');
+        //         var isActive = $currentTargetLi.hasClass('active');
+        //
+        //         if(!isActive){
+        //             $currentTargetLi.addClass('active').siblings('li').removeClass('active');
+        //             console.log("작동 중")
+        //         }
+        //     }
+        // })
 
     });
 
@@ -471,6 +473,19 @@
     //]]>
 </script>
 
+
 </body>
-</html>
+<script>
+
+
+        let header = document.getElementById("myDIV");
+        let btns = header.getElementsByClassName("btn");
+        for (let i = 0; i < btns.length; i++) {
+            btns[i].addEventListener("click", function () {
+                let current = document.getElementsByClassName("active");
+                current[0].className = current[0].className.replace(" active", "");
+                this.className += " active";
+            });
+        }
+</script>
 </html>
