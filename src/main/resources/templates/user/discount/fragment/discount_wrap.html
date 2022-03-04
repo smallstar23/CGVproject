@@ -1,13 +1,15 @@
 <!DOCTYPE html>
 <html lang="ko" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org/">
-<div  th:fragment="discount_wrap"   class="cgvSaleTab_wrap">
+<div  th:fragment="discount_wrap"   class="cgvSaleTab_wrap" id="myDIV">
     <ul class="cgvSaleTab_titleWrap" style="width: 97%;">
 
-        <li class="active"><a href='#' onclick="fnCategoryData('2');">hot</a></li>
-        <li class=""><a href='#' onclick="fnCategoryData('3');">통신사</a></li>
-        <li class=""><a href='#' onclick="fnCategoryData('4');">신용카드</a></li>
-        <li class=""><a href='#' onclick="fnCategoryData('5');">포인트</a></li>
-        <li class=""><a href='#' onclick="fnCategoryData('6');">극장별할인</a></li>
+        <li  class="btn active"><a href='#' onclick="fnCategoryData('2');">hot</a></li>
+        <li  class="btn"><a href='#' onclick="fnCategoryData('3');">통신사</a></li>
+        <li  class="btn"><a href='#' onclick="fnCategoryData('4');">신용카드</a></li>
+        <li  class="btn"><a href='#' onclick="fnCategoryData('5');">포인트</a></li>
+        <li  class="btn"><a href='#' onclick="fnCategoryData('6');">극장별할인</a></li>
     </ul>
 </div>
+
+
 </html>

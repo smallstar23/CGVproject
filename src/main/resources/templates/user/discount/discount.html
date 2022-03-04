@@ -173,6 +173,16 @@
             location.href = "/discount/discountlist?cno=" + cno;
         }
     </script>
+<!--    <script>-->
+<!--        $(".my").click(function(e){-->
+<!--            let el = $(e.target).closest('li')-->
+<!--            console.log("테스트");-->
+<!--            el.siblings('li').removeClass("active");-->
+<!--            el.addClass("active");-->
+<!--        });-->
+
+
+<!--    </script>-->
 
 
 </head>
@@ -277,7 +287,16 @@
             </div>
         </div>
 
-        <div th:replace="user/discount/fragment/discount_wrap :: discount_wrap"></div>
+        <div  th:fragment="discount_wrap"   class="cgvSaleTab_wrap" id="myDIV">
+            <ul class="cgvSaleTab_titleWrap" style="width: 97%;">
+
+                <li  class="btn active"><a href='#' >hot</a></li>
+                <li  class="btn"><a href='#' >통신사</a></li>
+                <li  class="btn"><a href='#'>신용카드</a></li>
+                <li  class="btn"><a href='#' >포인트</a></li>
+                <li  class="btn"><a href='#' >극장별할인</a></li>
+            </ul>
+        </div>
 
             <div class="cgvSaleTab_ContentsWrap">
 
@@ -350,18 +369,18 @@
                 loop:true,
             });
 
-            $('.cgvSaleTab_titleWrap a').on({ // 20210107 탭 포커싱 스크립트
-                click:function(e){
-                    var currentTarget = e.currentTarget;
-                    var $currentTargetLi = $(currentTarget).parent('li');
-                    var isActive = $currentTargetLi.hasClass('active');
-
-                    if(!isActive){
-                        $currentTargetLi.addClass('active').siblings('li').removeClass('active');
-                        console.log("작동 중")
-                    }
-                }
-            })
+            // $('.cgvSaleTab_titleWrap a').on({ // 20210107 탭 포커싱 스크립트
+            //     click:function(e){
+            //         var currentTarget = e.currentTarget;
+            //         var $currentTargetLi = $(currentTarget).parent('li');
+            //         var isActive = $currentTargetLi.hasClass('active');
+            //
+            //         if(!isActive){
+            //             $currentTargetLi.addClass('active').siblings('li').removeClass('active');
+            //             console.log("작동 중")
+            //         }
+            //     }
+            // })
 
         });
 
@@ -462,6 +481,37 @@
     }
     //]]>
 </script>
+<script>
 
+
+    let header = document.getElementById("myDIV");
+    let btns = header.getElementsByClassName("btn");
+    for (let i = 0; i < btns.length; i++) {
+        btns[i].addEventListener("click", function () {
+            let current = document.getElementsByClassName("active");
+            current[0].className = current[0].className.replace(" active", "");
+            this.className += " active";
+        });
+        console.log("확인");
+    }
+</script>
 </body>
+<!--<script type="text/javascript">-->
+<!--    const special = document.getElementById("1");-->
+<!--    const movie = document.getElementById("2");-->
+<!--    const club = document.getElementById("3");-->
+<!--    const theater = document.getElementById("4");-->
+<!--    const discount = document.getElementById("5");-->
+<!--    function specialClick() {special.classList.add("active"); movie.classList.remove("active"); club.classList.remove("active"); theater.classList.remove("active"); discount.classList.remove("active");}-->
+<!--    function movieClick() {special.classList.remove("active"); movie.classList.add("active"); club.classList.remove("active"); theater.classList.remove("active"); discount.classList.remove("active");}-->
+<!--    function clubClick() {special.classList.remove("active"); movie.classList.remove("active"); club.classList.add("active"); theater.classList.remove("active"); discount.classList.remove("active");}-->
+<!--    function theaterClick() {special.classList.remove("active"); movie.classList.remove("active"); club.classList.remove("active"); theater.classList.add("active"); discount.classList.remove("active");}-->
+<!--    function discountClick() {special.classList.remove("active"); movie.classList.remove("active"); club.classList.remove("active"); theater.classList.remove("active"); discount.classList.add("active");}-->
+<!--    special.addEventListener("click", specialClick);-->
+<!--    movie.addEventListener("click", movieClick);-->
+<!--    club.addEventListener("click", clubClick);-->
+<!--    theater.addEventListener("click", theaterClick);-->
+<!--    discount.addEventListener("click", discountClick);-->
+<!--    console.log("확인");-->
+<!--</script>-->
 </html>
