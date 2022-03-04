@@ -56,7 +56,7 @@
                 <div class="card-body">
                     <table id="datatablesSimple">
                         <thead>
-                        <tr onclick="location.href='./member_pointlist_view.jsp'">
+                        <tr th:onclick="'location.href=\''+ @{/member-pointlist-view} + '\''">
                             <th>Id</th>
                             <th>적립 구분</th>
                             <th>상품 구매 극장</th>
