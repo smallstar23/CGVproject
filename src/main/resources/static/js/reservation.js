@@ -208,7 +208,7 @@ $(document).ready(function() {
     // step 4 마지막 출력 버튼 클릭시 활성화됨
     $(".btn_ticket_print").on({
         click: function(){
-            window.open("/user/ticket/home_ticket","ticket print","width=200,height:500,top:100,left=100");
+            window.open("/user/ticket/home_ticket","ticket print","width=100,height:500,top:100,left=100");
         }
     })
 
