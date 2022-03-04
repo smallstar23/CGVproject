@@ -1,4 +1,4 @@
-package com.koreait.cgvproject.controller;
+package com.koreait.cgvproject.controller.user.page;
 
 import com.koreait.cgvproject.service.Kakaopay;
 import lombok.Setter;

@@ -1,4 +1,4 @@
-package com.koreait.cgvproject.controller;
+package com.koreait.cgvproject.controller.admin.page;
 
 
 import org.springframework.stereotype.Controller;
