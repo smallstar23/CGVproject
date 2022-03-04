@@ -15,6 +15,7 @@ public class UserDiscountController {
     }
     @GetMapping("discount/discountlist")
     public String category(@RequestParam(value = "cno", required = false, defaultValue = "1") String cno, Model model){
+        if(cno.equals("1")) System.out.println("default 카테고리 넘버 : " + cno);
         System.out.println("Get으로 들어온 카테고리 넘버 : " + cno);
         return "user/discount/discountlist";
     }
