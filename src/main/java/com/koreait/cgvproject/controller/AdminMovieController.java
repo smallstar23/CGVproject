@@ -23,9 +23,9 @@ public class AdminMovieController {
         return "/admin/movie/manage_pricem";
     }
 
-    @GetMapping("manage_pricem_create")//movie-pricem 페이지
+    @GetMapping("manage_pricerm_create")//movie-pricem 페이지
     public String movie_pricem_create(){
-        return "/admin/movie/manage_pricem_create";
+        return "/admin/movie/manage_pricerm_create";
     }
 
     @GetMapping("/manage_theaters")//movie-theaters 페이지
