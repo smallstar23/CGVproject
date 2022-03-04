@@ -19,18 +19,22 @@ public class Member_info_DTO {
     private String userpw;
     private String ssn1;
     private String ssn2;
-    private String hp;
-    private String email;
-    private String address1;
-    private String address2;
-    private String address3;
+    private String ssn3;
+    private String hp1;
+    private String hp2;
+    private String hp3;
+    private String email1;
+    private String email2;
+//    private String address1;
+//    private String address2;
+//    private String address3;
     private LocalDateTime regdate;
     private LocalDateTime updateDate;
-    private Long valpoint;
+    private String nickname;
 
 
     public MemberinfoEntity toEntity(){
-        return new MemberinfoEntity(null, userid,username,userpw,ssn1,ssn2,hp,email,address1,address2,address3,regdate,updateDate,valpoint);
+        return new MemberinfoEntity(null, userid,username,userpw,getSsn1().substring(3)+getSsn2().substring(1)+getSsn3(),getHp1() + "-" + getHp2() + "-" + getHp3(),getEmail1()+"@"+getEmail2(),regdate,updateDate,nickname);
     }
 
 
