@@ -1,0 +1,801 @@
+<!DOCTYPE html>
+<html lang="ko"
+      xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org/">
+<head>
+
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta http-equiv="Expires" content="-1" />
+    <meta http-equiv="Pragma" content="no-cache" />
+    <meta http-equiv="Cache-Control" content="No-Cache" />
+    <meta http-equiv="imagetoolbar" content="no" />
+    <meta name="viewport" content="width=1024" />
+    <meta name="keywords" content="CGV, 시지브이, 영화관, 극장, 영화, 티켓, 박스오피스, 극장, Movie, Theater, Cinema, Cgv, cgv, 예매, 상영작" />
+    <meta name="description" content="CGV는 선진화된 관람문화와 최고의 서비스로 고객에게 잊을 수 없는 감동을 선사합니다. CGV홈페이지를 통해 영화 예매뿐만 아니라 그 이상의 서비스와 감동을 전달하고, 다양한 즐거움과 특별한 경험을 제공하고자 합니다." />
+    <meta property="og:site_name" content="영화 그 이상의 감동. CGV"/>
+    <meta id="ctl00_ctl00_og_title" property="og:title" content="영화 그 이상의 감동. CGV"></meta>
+
+
+    <meta id="ctl00_ctl00_og_image" property="og:image" content="https://img.cgv.co.kr/WebApp/images/common/logo_new_kakao_prevw.png"></meta>
+    <link rel="alternate" href="http://m.cgv.co.kr" />
+    <link rel="shortcut icon" href="https://img.cgv.co.kr/theater_img/favicon.ico" type="image/x-icon" />
+    <title id="ctl00_ctl00_headerTitle"></title>
+    <link rel="shortcut icon" type="image/x-icon" href="https://img.cgv.co.kr/R2014/images/favicon.ico" />
+    <link rel="stylesheet" media="all" type="text/css" href="https://img.cgv.co.kr/R2014/css/webfont.css" />
+    <link rel="stylesheet" media="all" type="text/css" href="https://img.cgv.co.kr/R2014/css/reset.css" />
+    <link rel="stylesheet" media="all" type="text/css" href="https://img.cgv.co.kr/R2014/css/layout.css" />
+    <link rel="stylesheet" media="all" type="text/css" href="https://img.cgv.co.kr/R2014/css/module.css?20211209" />
+    <link rel="stylesheet" media="all" type="text/css" href="https://img.cgv.co.kr/R2014/css/content.css" />
+    <link rel="stylesheet" media="all" type="text/css" href="https://img.cgv.co.kr/R2014/css/common.css" />
+
+    <link rel="stylesheet" media="all" type="text/css" href="https://img.cgv.co.kr/R2014/css/eggupdate.css" />
+    <link rel="stylesheet" media="print" type="text/css" href="https://img.cgv.co.kr/R2014/css/print.css" />
+    <link rel="stylesheet" type="text/css" href="https://img.cgv.co.kr/R2014/js/jquery.ui/smoothness/jquery-ui-1.10.4.custom.min.css" />
+
+    <script type="text/javascript" src="/common/js/extraTheaters.js"></script>
+    <script type="text/javascript" src="https://img.cgv.co.kr/R2014/js/app.config.js"></script>
+    <script type="text/javascript" src="https://img.cgv.co.kr/R2014/js/jquery-1.10.2.min.js"></script>
+    <script type="text/javascript" src="https://img.cgv.co.kr/R2014/js/jquery.plugin/jquery.tmpl.min.js"></script>
+    <script type="text/javascript" src="https://img.cgv.co.kr/R2014/js/jquery.plugin/jquery.validate.js"></script>
+    <script type="text/javascript" src="https://img.cgv.co.kr/R2014/js/jquery.plugin/jquery.paging.min.js"></script>
+    <script type="text/javascript" src="https://img.cgv.co.kr/R2014/js/jquery.ui/jquery-ui-1.10.4.custom.min.js"></script>
+    <script type="text/javascript" src="https://img.cgv.co.kr/R2014/js/jquery.utils.js"></script>
+    <script type="text/javascript" src="https://img.cgv.co.kr/R2014/js/app.utils.js"></script>
+    <script type="text/javascript" src="https://img.cgv.co.kr/R2014/js/jquery.utils.pageing.js"></script>
+    <script type="text/javascript" src="https://img.cgv.co.kr/R2014/js/app.init.js"></script>
+
+    <!--[if lte IE 9]><script type="text/javascript" src="https://img.cgv.co.kr/R2014/js/jquery.plugin/jquery.placeholder.js"></script><![endif]-->
+    <script type="text/javascript" src="https://img.cgv.co.kr/R2014/js/jquery.plugin/jquery.dotdotdot.min.js"></script>
+    <script type="text/javascript" src="https://img.cgv.co.kr/R2014/js/silverlight_link.js"></script>
+    <script src="https://img.cgv.co.kr/R2014/js/slick/slick.js" type="text/javascript" charset="utf-8"></script>
+
+    <link rel="stylesheet" media="all" type="text/css" href="https://img.cgv.co.kr/R2014/css/phototicket/phototicket.css" />
+    <link rel="stylesheet" media="all" type="text/css" href="https://img.cgv.co.kr/R2014/css/slick.css" />
+    <link rel="stylesheet" media="all" type="text/css" href="https://img.cgv.co.kr/R2014/css/slick-theme-custom.css" />
+
+    <script type="text/javascript" src="https://img.cgv.co.kr/R2014/js/icheck/login.timer.js"></script>
+    <script src="https://img.cgv.co.kr/R2014/js/icheck/icheck.min.js" type="text/javascript" charset="utf-8"></script>
+    <link rel="stylesheet" type="text/css" href="https://img.cgv.co.kr/R2014/js/icheck/iCheck.css" />
+
+    <!-- 2020.05.07 감정지수/프리에그 프로젝트 추가 -->
+    <link rel="stylesheet" media="all" type="text/css" href="https://img.cgv.co.kr/R2014/css/preegg.css" />
+
+    <!-- 각페이지 Header Start-->
+
+    <link rel="stylesheet" media="all" type="text/css" href="https://img.cgv.co.kr/R2014/css/phototicket/phototicket.css" />
+    <!--통합결제-->
+    <link rel="stylesheet" type="text/css" href="https://img.cgv.co.kr/R2014/css/mypagenew.css" />
+
+    <!--/각페이지 Header End-->
+    <script type="text/javascript">
+        //<![CDATA[
+        _TRK_CP = "/홈";
+
+        app.config('staticDomain', 'https://img.cgv.co.kr/R2014/')
+            .config('imageDomain', 'https://img.cgv.co.kr')
+            .config('isLogin', 'True');
+
+
+        // AD FLOAT
+        // 암호화 할 문자열과 키값(상수값)을 매개변수로 받는다.
+        function EncryptAD(str, key) {
+            output = new String;
+            Temp = new Array();
+            TextSize = str.length;
+            for (i = 0; i < TextSize; i++) {
+                // key 값을 원하는 대로 연산을 한다
+                output += String.fromCharCode(str.charCodeAt(i) + parseInt(key) + 123 + i);
+            }
+            return output;
+        }
+        // 복호화
+        // 암호화 된 문자열과 키값(상수값)을 매개변수로 받는다.
+        function DecryptAD(str, key) {
+            output = new String;
+            Temp = new Array();
+            TextSize = str.length;
+            for (i = 0; i < TextSize; i++) {
+                // 암호화시 사용한 연산과 같아야 한다.
+                output += String.fromCharCode(str.charCodeAt(i) - (parseInt(key) + 123 + i));
+            }
+
+            return output;
+        }
+
+        function getCookieVal(offset) {
+            var endstr = document.cookie.indexOf(";", offset);
+            if (endstr == -1) endstr = document.cookie.length;
+            return unescape(document.cookie.substring(offset, endstr));
+        }
+        function GetCookieAd(name) {
+            var arg = name + "=";
+            var alen = arg.length;
+            var clen = document.cookie.length;
+            var i = 0;
+            while (i < clen) { //while open
+                var j = i + alen;
+                if (document.cookie.substring(i, j) == arg)
+                    return getCookieVal(j);
+                i = document.cookie.indexOf(" ", i) + 1;
+                if (i == 0) break;
+            } //while close
+            return null;
+        }
+        function setCookieAD(name, value, expiredays) {
+            var todayDate = new Date();
+            todayDate.setTime(todayDate.getTime() + (expiredays * 24 * 60 * 60 * 1000));
+            document.cookie = name + "=" + escape(value) + "; expires=" + todayDate.toGMTString() + "; path=/; domain=cgv.co.kr";
+        }
+        function CloseAD() {
+            var AdUrl = window.location.href;
+            var ArrAdUrl = AdUrl.split("/");
+
+            var CurCookieName = 'CgvPopAd-' + ArrAdUrl[3];
+            var CurCookieUrl = GetCookieAd(CurCookieName);
+            var CookieUrl = ArrAdUrl[3];
+
+            CookieUrl = EncryptAD(CookieUrl, "15442280");
+            setCookieAD(CurCookieName, CookieUrl, '1');
+            $(document).find('#ad_float1').hide();
+        }
+        function OpenAD() {
+            var AdUrl = window.location.href;
+            var ArrAdUrl = AdUrl.split("/");
+            var CookieUrl = ArrAdUrl[3];
+            var CurCookieName = 'CgvPopAd-' + ArrAdUrl[3];
+            var CurCookieUrl = GetCookieAd(CurCookieName);
+
+            if (CurCookieUrl == null) {
+                CurCookieUrl = "";
+            }
+            else {
+                CurCookieUrl = DecryptAD(CurCookieUrl, "15442280");
+            }
+
+            if (CurCookieUrl.indexOf(CookieUrl) != -1) {
+                $(document).find('#ad_float1').hide();
+            }
+
+            //section.cgv.co.kr 매거진 체크
+            var magazineckurl = GetCookieAd("CgvPopAd-magazine");
+            if (magazineckurl != null) {
+                var magazineck = DecryptAD(magazineckurl, "15442280");
+                if (magazineck != null && magazineck == "magazine") {
+                    //값이있는경우 표시하지않음
+                    $(document).find('#ad_float1').hide();
+                }
+            }
+        }
+
+
+
+        //]]>
+    </script>
+
+
+
+</head>
+<body class="">
+<div th:replace="user/fragment/header :: header-user"></div>
+
+    <!-- Contaniner -->
+    <div id="contaniner"  class=""><!-- 벽돌 배경이미지 사용 시 class="bg-bricks" 적용 / 배경이미지가 없을 경우 class 삭제  -->
+
+
+        <!-- Contents Area -->
+        <div id="contents" class="">
+
+            <div th:replace="user/mycgv/fragment/common :: common-user"></div>
+
+            <div class="cols-content" id="menu">
+                <div th:replace="user/mycgv/fragment/nav :: nav-user"></div>
+                <div class="col-detail" id="mycgv_contents">
+
+                    <link rel="stylesheet" media="all" type="text/css" href="https://img.cgv.co.kr/R2014/css/giftstore/giftstore.css" />
+                    <script type="text/javascript" src="https://img.cgv.co.kr/R2014/js/common/moment.min.js"></script>
+                    <script type="text/javascript" src="https://img.cgv.co.kr/R2014/js/giftstore/giftstore.js"></script>
+
+                    <script type="text/javascript">
+                        var loginStatus = 'True';
+                        function fnAllCancel(n) {
+                            if (confirm("전체 기프트콘을 결제 취소하시겠습니까?")) {
+                                var params = {number: n };
+                                jQuery.ajax({
+                                    type: 'POST',
+                                    url: "/user/mycgv/popcorn-store/payment-detail.aspx/SetCancelGift",
+                                    data: "{ requestData: '" + JSON.stringify(params) + "'}",
+                                    dataType: 'json',
+                                    contentType: 'application/json',
+                                    success: function (data) {
+                                        if (data.d.ResultCode == "00000") {
+                                            alert("정상적으로 처리되었습니다.");
+                                            window.location.reload();
+                                        } else {
+                                            if (data.d.ResultCode == "99997") {
+                                                app.goLogin();
+                                            }
+                                            else {
+                                                alert(data.d.ResultMessage);
+                                            }
+                                        }
+                                    },
+                                    error: function (xhr, status, error) {
+                                        alert(error + "\n" + status + "\n" + xhr.responseText);
+                                    }
+                                });
+                            }
+                        }
+
+                        function fnCardCancelProv(n) {
+                            var params = { number: n };
+                            var response = $.ajax({
+                                type: "POST",
+                                url: "/user/mycgv/popcorn-store/payment-detail.aspx/SetCancelCard",
+                                data: "{requestData: '" + JSON.stringify(params) + "'}",
+                                dataType: "JSON",
+                                contentType: "application/json"
+                            });
+                            return response;
+                        }
+
+                        function fnAllCancelCard(n) {
+                            if (confirm("전체 기프트카드를 결제 취소하시겠습니까?\r(추가 충전하거나 사용한 이력이 있을경우, 취소가 불가할 수 있습니다.)")) {
+
+                                fnCardCancelProv(n).then(function (data) {
+                                    if (data.d != null) {
+                                        if (data.d.ResultCode === "00001") {
+                                            var url = data.d.ResultHtml;
+                                            var data = { 'payId': data.d.ResultMessage };
+                                            var callback = function (result) {
+                                                if (result == null || result.resultCode == null) {
+                                                    return;
+                                                }
+                                                switch (result.resultCode) {
+                                                    case "-8":
+                                                        alert("취소가 불가합니다. 사용한 이력이 있거나 충전금액이 있는 경우 구매 취소가 불가하니 카드의 상태를 확인하시기 바랍니다. 구매취소는 구매 후 14일 이내만 가능합니다. (고객센터: 1544-1122)");
+                                                        break;
+                                                    case "-2":
+                                                        alert("구매 취소가 실패하였습니다. 관리자에게 문의바랍니다.");
+                                                        break;
+                                                    case "-9":
+                                                        alert("취소가 실패하였습니다. 관리자에게 문의바랍니다.");
+                                                        break;
+                                                    case "-5":
+                                                        alert("실패하였습니다. 관리자에게 문의바랍니다.");
+                                                        break;
+                                                    case "1":
+                                                        alert("취소가 완료되었습니다.");
+                                                        window.location.reload();
+                                                        break;
+                                                }
+                                            };
+                                            app.ajax().set({ dataType: 'json', url: url, data: JSON.stringify(data), contentType: "application/json; charset=utf-8", successHandler: callback });
+                                        }
+                                        else {
+                                            if (data.d.ResultCode == "00000") {
+                                                alert("정상적으로 처리되었습니다.");
+                                                window.location.reload();
+                                            } else {
+                                                if (data.d.ResultCode == "99999") {
+                                                    alert("취소가 불가합니다. 사용한 이력이 있거나 충전금액이 있는 경우 구매 취소가 불가하니 카드의 상태를 확인하시기 바랍니다. 구매취소는 구매 후 14일 이내만 가능합니다. (고객센터: 1544-1122)");
+                                                } else {
+                                                    if (data.d.ResultCode == "99997") {
+                                                        app.goLogin();
+                                                    }
+                                                    else {
+                                                        alert("취소가 실패하였습니다. 관리자에게 문의바랍니다.");
+                                                    }
+                                                }
+                                            }
+                                        }
+                                    }
+                                });
+                            }
+                        };
+
+
+
+                        function fnGiftCancel(p, n, g) {
+                            var m = "";
+                            if (p == "Y") {
+                                m = "해당 상품 취소 시, 패키지 상품에 포함된 기프트콘 전체가 취소됩니다.\r결제를 취소하시겠습니까?"
+                            }
+                            else {
+                                m = "취소 시 기프트콘을 더 이상 사용할 수 없습니다.\r결제 취소하시겠습니까?";
+                            }
+                            if (confirm(m)) {
+                                var params = { type: p, number: n, gnumber: g };
+                                jQuery.ajax({
+                                    type: 'POST',
+                                    url: "/user/mycgv/popcorn-store/payment-detail.aspx/SetPartCancelGift",
+                                    data: "{ requestData: '" + JSON.stringify(params) + "'}",
+                                    dataType: 'json',
+                                    contentType: 'application/json',
+                                    success: function (data) {
+                                        if (data.d.ResultCode == "00000") {
+                                            alert("정상적으로 처리되었습니다.");
+                                            window.location.reload();
+                                        } else {
+                                            if (data.d.ResultCode == "99997") {
+                                                app.goLogin();
+                                            }
+                                            else {
+                                                alert(data.d.ResultMessage);
+                                            }
+                                        }
+                                    },
+                                    error: function (xhr, status, error) {
+                                        alert(error + "\n" + status + "\n" + xhr.responseText);
+                                    }
+                                });
+                            }
+                        }
+
+
+                        function fnResendMsg(t, n, r) {
+
+                            // 재전송 횟수 확인
+                            if (Number(r) > 3) {
+                                alert("쿠폰 재전송은 3회까지 가능합니다. (" + (Number(r) - 1) + "/3)");
+                                return false;
+                            }
+                            else {
+                                alert("쿠폰 재전송은 3회까지 가능합니다. (" + r + "/3)");
+                            }
+
+
+                            var params = {type : t, number: n };
+                            jQuery.ajax({
+                                type: 'POST',
+                                url: '/user/mycgv/popcorn-store/payment-detail.aspx/SetResendMsg',
+                                data: "{ requestData: '" + JSON.stringify(params) + "'}",
+                                dataType: 'json',
+                                contentType: 'application/json',
+                                success: function (data) {
+                                    if (data.d !== "") {
+                                        if (data.d.ResultCode === "00000") {
+                                            alert("재전송 되었습니다.");
+                                            window.location.reload();
+
+                                        } else {
+                                            if (data.d.ResultCode == "99997") {
+                                                app.goLogin();
+                                            }
+                                            else {
+                                                alert(data.d.ResultMessage);
+                                            }
+                                        }
+                                    }
+                                },
+                                error: function (xhr, status, error) {
+                                    alert(error + "\n" + status + "\n" + xhr.responseText);
+                                }
+                            });
+                        }
+                    </script>
+
+
+                    <div class="col-detail" id="mycgv_contents">
+                        <div class="tit-mycgv"><h3>결제내역</h3></div>
+                        <!-- S 구매일/주문번호/전체결제취소 -->
+                        <div class="cancel_payment_tps_wrap">
+                            <dl>
+                                <dt>구매일</dt>
+                                <dd><strong>2022.02.07</strong></dd> <dt>주문번호</dt>
+                                <dd>20220207422326</dd></dl>
+
+                        </div>
+                        <!-- E 구매일/주문번호/전체결제취소 -->
+
+                        <!-- S 구매상품 정보
+                            Description :
+                                - 구매상품이 1개일경우
+                                    <p class="com_accordion_btn">구매상품 정보</p>
+                                - 구매상품이 2개이상일경우
+                                    <a href="#none" class="com_accordion_btn" onclick="javascript:$.fn.comAccrodionMenu(this, 'com_accordion_content')">구매상품 정보</a>
+                        -->
+                        <div class="com_accordion active">
+                            <p class="com_accordion_btn">구매상품 정보</p>
+                            <div class="com_accordion_content">
+                                <p class="com_accordion_list_type0_title"><span class="com_accordion_list_type0_productname">상품명</span><span class="com_accordion_list_type0_price0">판매금액</span><span class="com_accordion_list_type0_cnt">수량</span><span class="com_accordion_list_type0_price1">구매금액</span></p>
+                                <ul class="com_accordion_list_type0">
+                                    <li>
+                                        <div class="com_accordion_list_type0_productname">
+                                            <img src="http://img.cgv.co.kr/GiftStore/Product/Pc/List/16094706927780.jpg"  onerror="javascript:this.src='http://img.cgv.co.kr/WebApp/images/giftstore/common/noimg_60x60.jpg'"  alt="CGV 영화관람권">      <strong>CGV 영화관람권</strong>      <span>일반 영화관람권 (1개)</span>    </div>
+                                        <div class="com_accordion_list_type0_price0"><span>11,000</span></div>      <div class="com_accordion_list_type0_cnt"><span>1개</span></div>      <div class="com_accordion_list_type0_price1"><span>11,000</span></div></li>
+                                </ul>
+                            </div>
+
+                        </div>
+                        <!-- E 구매상품 정보 -->
+
+                        <!-- S 발송 정보 -->
+                        <div class="com_accordion active">
+                            <p class="com_accordion_btn">발송 정보</p>
+                            <ul class="com_accordion_content">
+                                <li>
+                                    <dl class="com_accordion_content_send_info">
+                                        <dt>To</dt>
+                                        <dd>나에게</dd><dt>상품명</dt>
+                                        <dd>CGV 영화관람권 (9003****1716)</dd><dt>금액</dt>
+                                        <dd>
+                                            <strong>11,000</strong></dd>
+                                        <dt>기프트콘 상태</dt>
+                                        <dd>결제취소</dd></dl>
+                                </li>
+                            </ul>
+
+                        </div>
+                        <!-- E 발송 정보 -->
+
+                        <!-- S 결제 정보 -->
+                        <div class="com_accordion active">
+                            <p class="com_accordion_btn">결제 정보</p>
+                            <div class="com_accordion_content">
+                                <dl class="com_accordion_content_totalprice">
+                                    <dt>총 상품금액</dt>
+                                    <dd><span>11,000</span></dd><dt>할인금액</dt>
+                                    <dd><span>0</span></dd><dt>총 결제금액(카카오페이)</dt> <dd><strong>11,000</strong></dd>
+                                </dl>
+                            </div>
+                        </div>
+                        <!-- E 발송 정보 -->
+
+                        <!-- S 취소 상세내역 -->
+                        <div class="com_accordion active">
+                            <a href="#none" class="com_accordion_btn" onclick="javascript:$.fn.comAccrodionMenu(this, 'com_accordion_content')">취소 상세내역</a>
+                            <div class="com_accordion_content">
+                                <ul class="com_accordion_list_type1">
+                                    <li><span class="com_accordion_list_type1_state">취소</span>
+                                        <span class="com_accordion_list_type1_period">22.02.07 14:35</span> <span class="com_accordion_list_type1_pay">카카오페이</span><span class="com_accordion_list_type1_price">-11,000</span></li></ul>
+                                <dl class="com_accordion_content_totalprice">
+                                    <dt>총 취소금액</dt>
+                                    <dd><strong>11,000</dd></strong></dl>
+                            </div>
+
+                            <!-- E 취소 상세내역 -->
+
+                            <!-- S 환불 상세내역 -->
+
+                            <!-- E 환불 상세내역 -->
+
+                            <!-- S 취소/환불안내 -->
+                            <div class="sect-box-descri">
+                                <h4>CGV 예매 관련 정책 안내</h4>
+                                <!-- Box Moudle -->
+                                <div class="box-polaroid">
+                                    <div class="box-inner">
+                                        <ul>
+                                            <li>
+                                                <dl class="box-inner_tps">
+                                                    <dt>기프트콘 취소/환불안내</dt>
+                                                    <dd>
+                                                        <ul>
+                                                            <li>구매하신 기프트콘 상품의 취소/환불을 원하실 경우에는 다음 내용을 참고해 주세요.</li>
+                                                            <li>청약 철회<br>기프트콘을 사용하기 이전에 청약 철회가 가능</li>
+                                                            <li>청약 철회를 할 수 없는 경우<br>이미 사용된 교환권에 대해서는 취소/환불 불가</li>
+                                                            <li>청약 철회 대상자<br>최초 유효기간이 만료되기 이전 : 구매자<br>최초 유효기간이 만료된 이후 : 수신자</li>
+                                                            <li>청약 철회 방법<br>MY>결제내역조회>기프트샵의 해당 주문 상세내역에서 취소 선택<br>(기프트콘은 구매일로부터 60일 이내 결제취소 가능)<br>전화로 청약 철회 : CGV고객센터 1544-1122</li>
+                                                            <li>청약 철회 비용 부담 안내<br>최초 유효기간 이내에서는 결제금액의 100%에 대해 취소/환불<br>최초 유효기간 만료 이후에는 결제금액의 90%에 대해 취소/환불</li>
+                                                            <li>이용약관(회원약관)<br>CJ CGV 이용약관 참조</li>  </ul>
+                                                    </dd>
+                                                    <dt>미성년자 권리보호 안내</dt>
+                                                    <dd>
+                                                        <ul>
+                                                            <li>미성년자인 고객께서 계약을 체결하시는 경우 법정대리인이 <br>그 계약에 동의하지 아니하면 미성년자 본인 또는 법정대리인이 그 계약을 취소할 수 있습니다.</li>
+
+                                                    </dd>
+                                                    <dt>분쟁 해결</dt>
+                                                    <dd>
+                                                        <ul>
+                                                            <li>1) 회사는 이용자가 제기하는 정당한 의견이나 불만을 반영하고 그 피해의 보상 등에 관한 처리를 위하여</br> &nbsp;&nbsp;CGV고객센터(1544-1122)를 설치 운영하고 있습니다.</li>
+                                                            <li>2) 회사는 고객센터를 통하여 이용자로부터 제출되는 불만사항 및 의견을 처리합니다. </br> &nbsp;&nbsp;다만, 신속한 처리가 곤란한 경우에는 이용자에게 그 사유와 처리일정을 즉시 통보합니다.</li>
+                                                            <li>3) 전자상거래 분쟁(청약철회등)과 관련한 이용자의 피해구제는 이용약관 및 전자상거래법 등 관련 법령에 따릅니다.</li>
+                                                    </dd>
+                                                </dl>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- E 취소/환불안내 -->
+                        </div>
+
+                    </div>
+                </div>
+                <script id="temp_view_usergrade" type="text/x-jquery-tmpl">
+
+<div class="popwrap" style="width:330px;margin-top:-500px;margin-left:-165px">
+
+						<h1>VIP 등급 이력</h1>
+						<div class="pop-contents">
+						<!-- Contents Addon -->
+							<div class="sect-my-grade">
+								<p><strong>김영신</strong> 고객님의 연도별 고객 등급 이력입니다.</p>
+								<div class="grade-lst-light scrollbox">
+									<table summary="연도별 VIP 세부 등급 이력" id="mytable">
+										<caption>VIP 등급 이력 리스트</caption>
+										<colgroup>
+											<col width="50%">
+											<col width="*">
+										</colgroup>
+										<thead>
+											<tr>
+												<th scope="col">승급 년/월별</th>
+												<th scope="col">등급</th>
+											</tr>
+										</thead>
+										<tbody>
+
+										</tbody>
+									</table>
+								</div>
+								<ul class="tb-desclist">
+									<li>- 고객님의 등급은 당해년도 VIP 규정에 따라 부여된 등급입니다</li>
+									<li>- 연속 VIP는 전년도와 등급 갱신월이 일치해야 인정됩니다<br />
+									(예. 17년 4월 RVIP의 경우, 18년 4월 RVIP 갱신 시에만 2년 연속 RVIP로 인정되며, 2017년 5월 RVIP 승급 시 17년 5월에 1년 차 RVIP로 인정)</li>
+									<li>- 등급이 하락된 경우 하락된 등급의 1년 차로 인정됩니다<br />
+									(예. 17년 4월 SVIP의 경우 18년 4월 VVIP로 등급 하락 시 VVIP 1년 차로 인정)</li>
+								</ul>
+
+
+							</div>
+						<!-- //Contents Addon -->
+						</div>
+						<button type="button" class="btn-close">MY 지난 등급 이력 팝업 닫기</button>
+					</div>
+
+</script>
+                <script type="text/javascript">
+                    //<![CDATA[
+                    (function ($) {
+                        $(function () {
+
+                            $('#go_edit_page').on('click', function () {
+                                var win = window.open("/user/popup/edit-profile.aspx", "profile", "left=0,top=o,width=445,height=440,toolbar=no,scrollbars=no");
+                                win.focus();
+                            });
+
+                            $('#btn_set_my_favorite').on('click', function () {
+                                var win = window.open("/user/popup/favoriteTheaters.aspx?ismycgv=true", "url", "left=0,top=o,width=645,height=370,toolbar=no,scrollbars=no");
+                                win.focus();
+                            });
+
+                            $('#view_usergrade').on('click', function () {
+                                GetUserGradeList(this);
+                                return false;
+                            });
+
+                            function GetUserGradeList(_this) {
+
+                                var url = '/common/ajax/user.aspx/GetUserGradeList_2017';
+                                var data = null;
+                                var callback = function (result) {
+                                    app.log(result);
+
+                                    var $std = $(_this),
+                                        options = {
+                                            '$target': $std,
+                                            'html': $('#temp_view_usergrade').html(),
+                                            'position': 'absolute',
+                                            'mask': 'none'
+                                        };
+                                    app.instWin.add(options);
+
+                                    var $tbody = $('#mytable > tbody:last'),
+                                        $tr1 = $('#tempUserGradeTbodyTr1')
+                                    //  $tr2 = $('#tempUserGradeTbodyTr2');
+                                    $.each(result, function (i, v) {
+
+                                        $tbody.append("<tr><th scope='row'>" + v.YearMonthSub + "년" + v.MonthSub + "월" + "</th><td>" + v.GradeCode + "</td></tr>");
+
+                                    });
+                                }
+                                app.ajax().get({ dataType: 'json', url: url, data: data, contentType: "application/json; charset=utf-8", successHandler: callback });
+                            }
+                            //개인화영역스킵
+                            $('#skipPersoninfo').on('click', function () {
+                                var $ctn = $('#menu');
+                                $ctn.attr({
+                                    tabIndex: -1
+                                }).focus();
+                                return false;
+                            });
+                            //mycgv 메뉴스킵
+                            $('#skipMycgvMenu').on('click', function () {
+                                var $ctn = $('#mycgv_contents');
+                                $ctn.attr({
+                                    tabIndex: -1
+                                }).focus();
+                                return false;
+                            });
+
+                            //my cgv 상단영역 skip처리
+                            var isGoContainer = "False";
+                            if (isGoContainer == "True") {
+                                location.href = location.href + "#contaniner";
+                            }
+
+                        });
+                    })(jQuery);
+                    //]]>
+                </script>
+            </div>
+
+
+            <!--/ Contents End -->
+        </div>
+        <!-- /Contents Area -->
+    </div>
+    <!-- E Contaniner -->
+
+    <!-- S Popup -->
+    <div class="com_pop_wrap">
+        <div class="com_pop_fog"></div>
+    </div>
+    <div class="pop_wrap">
+        <!-- S > [팝업] 지원 OS 업데이트 유도-->
+        <div id="pop_supportOS" class="popup" style="display:none">
+            <div class="pop_iexp_wrap" style="position:fixed; left:50%; top:50%; width:600px; margin:-165px 0 0 -300px; z-index:1000;">
+                <div class="pi_headline">
+                    <img src="https://img.cgv.co.kr/images/popup/1606_iexp/pop_iexp_headline2.jpg" alt="CGV 홈페이지는 고객님께서 사용중인 MS Windows XP에서 정상적인 서비스 이용이 어려울 수 있으며, OS업데이트를 권장합니다." />
+                </div>
+                <div class="down_app">
+                    <p><img src="https://img.cgv.co.kr/images/popup/1606_iexp/pop_iexp_downtxt.jpg" alt="OS 업데이트가 어려운 경우 모바일앱을 이용하세요!!!" /></p>
+                    <a class="btn" href="https://itunes.apple.com/kr/app/id370441190?mt=8" target="_blank"><img src="https://img.cgv.co.kr/images/popup/1606_iexp/btn_down_ios.jpg" alt="Ios down" /></a>
+                    <a class="btn" href="https://play.google.com/store/apps/details?id=com.cgv.android.movieapp" target="_blank"><img src="https://img.cgv.co.kr/images/popup/1606_iexp/btn_down_android.jpg" alt="Android down" /></a>
+                </div>
+                <a class="btn_close">닫기</a>
+            </div>
+        </div>
+        <!-- S > [팝업] 지원 브라우저 다운로드 유도-->
+        <div id="pop_supportBrower" class="popup" style="display:none">
+            <div class="pop_iexp_wrap" style="position:fixed; left:50%; top:50%; width:600px; margin:-265px 0 0 -300px; z-index:1000;">
+                <div class="pi_headline">
+                    <img src="https://img.cgv.co.kr/images/popup/1606_iexp/pop_iexp_headline1.jpg" alt="CGV 홈페이지는 Internet Explorer 9이상에서 최적의 서비스 이용이 가능합니다. IE9 이하 브라우저에서 이용 시 정상적인 서비스 이용이 어려울 수 있으며, 브라우저 업그레이드 하시기를 권장합니다." />
+                </div>
+                <ul class="down_browser">
+                    <li><a href="https://www.microsoft.com/ko-kr/edge" target="_blank"><img src="https://img.cgv.co.kr/images/popup/1606_iexp/btn_down_ie.jpg" alt="Internet Explorer 다운받기" /></a></li>
+                    <li><a href="https://www.google.com/chrome/browser/desktop/index.html" target="_blank"><img src="https://img.cgv.co.kr/images/popup/1606_iexp/btn_down_chrome.jpg" alt="Chrome 다운받기" /></a></li>
+                </ul>
+                <div class="down_app">
+                    <p><img src="https://img.cgv.co.kr/images/popup/1606_iexp/pop_iexp_downtxt.jpg" alt="OS 업데이트가 어려운 경우 모바일앱을 이용하세요!" /></p>
+                    <a class="btn" href="https://itunes.apple.com/kr/app/id370441190?mt=8" target="_blank"><img src="https://img.cgv.co.kr/images/popup/1606_iexp/btn_down_ios.jpg" alt="Ios down" /></a>
+                    <a class="btn" href="https://play.google.com/store/apps/details?id=com.cgv.android.movieapp " target="_blank"><img src="https://img.cgv.co.kr/images/popup/1606_iexp/btn_down_android.jpg" alt="Android down" /></a>
+                </div>
+                <a class="btn_close">닫기</a>
+            </div>
+        </div>
+    </div>
+    <!-- S Footer -->
+<div th:replace="user/fragment/footer :: footer-user"></div>
+    <!-- E Footer -->
+</div>
+
+<script type="text/javascript" src="https://img.cgv.co.kr/R2014//js/system/crypto.js"></script>
+<script type="text/javascript">
+    //<![CDATA[
+    function closeBanner(){
+        $('#cgv_main_ad').remove();
+        for(var i = 0; i < 2; i++) {
+            window.setTimeout(function(){
+                $(window).resize()
+            }, 30)
+        }
+    }
+    function showPlayEndEvent() {
+        $('#pop_player_relation_wrap').show();
+        $('#btn_movie_replay').focus();
+    }
+
+    (function ($) {
+        $(function () {
+
+
+            $('.movie_player_popup').moviePlayer();     //동영상플레이어
+
+            //노원타운
+            $('.special5_pop').on('click', function () {
+                openNowonTown();
+                return false;
+            });
+            // 검색 auto validate version.
+            $('.btn-go-search').on('click', function () {
+                var $frmSearch = $(this).parent().parent('form');
+                $frmSearch.submit();
+                return false;
+            });
+
+            //메인스킵네비
+            $('#skipHeader').on('click', function(){
+                var $ctn = $('#contents');
+                $ctn.attr({
+                    tabIndex : -1
+                }).focus();
+                return false;
+            });
+
+            //현재 URL 해당파라미터 교체
+            function updateQueryStringParameter(uri, key, value) {
+                var re = new RegExp("([?|&])" + key + "=.*?(&|#|$)", "i");
+                if (uri.match(re)) {
+                    return uri.replace(re, '$1' + key + "=" + value + '$2');
+                } else {
+                    var hash =  '';
+                    var separator = uri.indexOf('?') !== -1 ? "&" : "?";
+                    if( uri.indexOf('#') !== -1 ){
+                        hash = uri.replace(/.*#/, '#');
+                        uri = uri.replace(/#.*/, '');
+                    }
+                    return uri + separator + key + "=" + value + hash;
+                }
+            }
+            //모바일버전 가기
+            $('.go-mobile').on('click', function() {
+                location.replace(updateQueryStringParameter(location.href, "IsMobile", "N"));
+                return false;
+            });
+        });
+    })(jQuery);
+
+    function goFamilySite() {
+        var famulySiteURL = $(familysite).val();
+        if (famulySiteURL != "") {
+            var win = window.open(famulySiteURL, 'winFamilySite')
+            win.focus();
+        }
+    }
+    function goFtc() {
+        var ftcUrl = "http://www.ftc.go.kr/bizCommPop.do?wrkr_no=1048145690";
+        window.open(ftcUrl, "bizCommPop", "width=750, height=700, scrollbars=1;");
+    }
+    //]]>
+</script>
+
+<!-- 앱다운로드 레이어 팝업 -->
+<script type="text/javascript">
+    //appDownInfoPop();
+</script>
+
+<script language="javascript" type="text/javascript">
+
+    //GA 에널리스트 이벤트LOG 함수- 2022.01.12: MYILSAN
+    function gaEventLog(pCategroy, pAction, pLabel) {
+        ga('send', {
+            hitType: 'event', eventCategory: pCategroy, eventAction: pAction, eventLabel: pLabel
+            , hitCallback: function () {
+            }
+            , hitCallbackFail: function () {
+            }
+        });
+    }
+
+    //201402 SYH GA추가
+    (function (i, s, o, g, r, a, m) {
+        i['GoogleAnalyticsObject'] = r; i[r] = i[r] || function () {
+            (i[r].q = i[r].q || []).push(arguments)
+        }, i[r].l = 1 * new Date(); a = s.createElement(o), m = s.getElementsByTagName(o)[0]; a.async = 1; a.src = g; m.parentNode.insertBefore(a, m)
+    })(window, document, 'script', '//www.google-analytics.com/analytics.js', 'ga');
+
+    ga('create', 'UA-47126437-1', 'cgv.co.kr'); //지주사
+    ga('create', 'UA-47951671-5', 'cgv.co.kr', { 'name': 'cgvTracker' }); //디마팀
+    ga('create', 'UA-47951671-7', 'cgv.co.kr', { 'name': 'rollup' }); //추가
+
+</script>
+
+
+<!-- Google Tag Manager -->
+<noscript><iframe src="//www.googletagmanager.com/ns.html?id=GTM-NNNFR3"height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<script>    (function (w, d, s, l, i) {
+    w[l] = w[l] || []; w[l].push({ 'gtm.start':
+            new Date().getTime(), event: 'gtm.js'
+    }); var f = d.getElementsByTagName(s)[0],
+        j = d.createElement(s), dl = l != 'dataLayer' ? '&l=' + l : ''; j.async = true; j.src =
+        '//www.googletagmanager.com/gtm.js?id=' + i + dl; f.parentNode.insertBefore(j, f);
+})(window, document, 'script', 'dataLayer', 'GTM-NNNFR3');
+</script>
+<!-- End Google Tag Manager -->
+
+</body>
+</html>

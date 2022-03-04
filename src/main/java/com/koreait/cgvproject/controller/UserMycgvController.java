@@ -104,4 +104,12 @@ public class UserMycgvController {
         return ROOT + "/reserve/mycgv-reserve";
     }
 
+    @GetMapping("/user/vip-lounge")
+    public String vip_lounge(){
+        return ROOT + "/vip/vip-lounge";
+    }
+
+    @GetMapping("/user/mycgv/popcorn-store/mycgv-popcorn-store-paymentDetail")
+    public String mycgv_popcorn_store_paymentDetail(){return ROOT + "/popcorn-store/mycgv-popcorn-store-paymentDetail";}
+
 }

@@ -187,10 +187,10 @@
                 <div class="sort_event">
                     <div>
                         <ul class="cf">
-                            <li><a href="/user/mycgv-event" class="on">
+                            <li><a href="/user/mycgv/event" class="on">
                                 <button>
                                     응모내역</button></a></li>
-                            <li><a href="/user/mycgv-event-resultList">
+                            <li><a href="/user/mycgv/event/mycgv-event-resultList">
                                 <button class="on">
                                     당첨자 발표</button></a></li>
                         </ul>
@@ -394,35 +394,35 @@
                                         <a title="1 페이지 선택" href=" #pg">1</a>
                                     </li>
                                     <li>
-                                        <a href="/user/mycgv/event/result_list.aspx?page=2">2</a>
+                                        <a href="/user/mycgv/event/mycgv-event-resultList?page=2">2</a>
                                     </li>
                                     <li>
-                                        <a href="/user/mycgv/event/result_list.aspx?page=3">3</a>
+                                        <a href="/user/mycgv/event/mycgv-event-resultList?page=3">3</a>
                                     </li>
                                     <li>
-                                        <a href="/user/mycgv/event/result_list.aspx?page=4">4</a>
+                                        <a href="/user/mycgv/event/mycgv-event-resultList?page=4">4</a>
                                     </li>
                                     <li>
-                                        <a href="/user/mycgv/event/result_list.aspx?page=5">5</a>
+                                        <a href="/user/mycgv/event/mycgv-event-resultList?page=5">5</a>
                                     </li>
                                     <li>
-                                        <a href="/user/mycgv/event/result_list.aspx?page=6">6</a>
+                                        <a href="/user/mycgv/event/mycgv-event-resultList?page=6">6</a>
                                     </li>
                                     <li>
-                                        <a href="/user/mycgv/event/result_list.aspx?page=7">7</a>
+                                        <a href="/user/mycgv/event/mycgv-event-resultList?page=7">7</a>
                                     </li>
                                     <li>
-                                        <a href="/user/mycgv/event/result_list.aspx?page=8">8</a>
+                                        <a href="/user/mycgv/event/mycgv-event-resultList?page=8">8</a>
                                     </li>
                                     <li>
-                                        <a href="/user/mycgv/event/result_list.aspx?page=9">9</a>
+                                        <a href="/user/mycgv/event/mycgv-event-resultList?page=9">9</a>
                                     </li>
                                     <li>
-                                        <a href="/user/mycgv/event/result_list.aspx?page=10">10</a>
+                                        <a href="/user/mycgv/event/mycgv-event-resultList?page=10">10</a>
                                     </li>
                                 </ul>
-                                <button class="btn-paging next" type="button" onclick="location='/user/mycgv/event/result_list.aspx?page=11'">다음</button>
-                                <button class="btn-paging end" type="button" onclick="location='/user/mycgv/event/result_list.aspx?page=291'">끝</button>
+                                <button class="btn-paging next" type="button" onclick="location='/user/mycgv/event/result_list?page=11'">다음</button>
+                                <button class="btn-paging end" type="button" onclick="location='/user/mycgv/event/result_list?page=291'">끝</button>
                             </div>
                             <script type="text/javascript">
                             </script>
@@ -438,11 +438,11 @@
         (function ($) {
             $(function () {
                 $('#go_edit_page').on('click', function () {
-                    var win = window.open("/user/mycgv-popupedit-profile", "profile", "left=0,top=o,width=445,height=440,toolbar=no,scrollbars=no");
+                    var win = window.open("/user/popup/mycgv-popupedit-profile", "profile", "left=0,top=o,width=445,height=440,toolbar=no,scrollbars=no");
                     win.focus();
                 });
                 $('#btn_set_my_favorite').on('click', function () {
-                    var win = window.open("/user/mycgv-favoriteTheaters", "url", "left=0,top=o,width=645,height=370,toolbar=no,scrollbars=no");
+                    var win = window.open("/user/popup/mycgv-favoriteTheaters", "url", "left=0,top=o,width=645,height=370,toolbar=no,scrollbars=no");
                     win.focus();
                 });
                 <!--MY 지난등급 이력보기 스크립트-->

@@ -176,7 +176,7 @@
                     <div class="tit-mycgv type2">
                         <h3>나의 예매내역</h3>
                         <p>지난 <em>1개월</em>까지의 예매내역을 확인하실 수 있으며, 영수증은 <em>신용카드 결제 내역</em>만 출력 가능합니다.</p>
-                        <a href="/user/mycgv-movielog-watched" class="round inblack"><span>내가 본 영화</span></a>
+                        <a href="/user/movielog/mycgv-movielog-watched" class="round inblack"><span>내가 본 영화</span></a>
                     </div>
                     <input type="hidden" id="isIPIN" name="isIPIN" value="X8SFHrwIiO4jqLNbZjk1G51O01dZkw/3CEUATilV+Iq2ewdWF/B4UX0H9gp0Cqy/xlI7Hp1rldS6F9vGSuooaQ==" />
                     <!-- 팝업시작 -->
@@ -1473,12 +1473,12 @@
                     $(function () {
 
                         $('#go_edit_page').on('click', function () {
-                            var win = window.open("/user//mycgv-popupedit-profile", "profile", "left=0,top=o,width=445,height=440,toolbar=no,scrollbars=no");
+                            var win = window.open("/user/popup/mycgv-popupedit-profile", "profile", "left=0,top=o,width=445,height=440,toolbar=no,scrollbars=no");
                             win.focus();
                         });
 
                         $('#btn_set_my_favorite').on('click', function () {
-                            var win = window.open("/user/mycgv-favoriteTheaters", "url", "left=0,top=o,width=645,height=370,toolbar=no,scrollbars=no");
+                            var win = window.open("/user/popup/mycgv-favoriteTheaters", "url", "left=0,top=o,width=645,height=370,toolbar=no,scrollbars=no");
                             win.focus();
                         });
 
