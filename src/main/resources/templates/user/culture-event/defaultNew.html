@@ -89,11 +89,11 @@
         <div class="evt-nav-area">
             <ul class="evt-tab-menu">
                 <!-- 활성화 시 a 태그에 on 클래스를 넣어주세요. -->
-                <li><a href="/culture-event/event/defaultNew.aspx?mCode=001" title="" class="on">SPECIAL</a></li>
-                <li><a href="/culture-event/event/defaultNew.aspx?mCode=004" title="" class="">영화/예매</a></li>
-                <li><a href="/culture-event/event/defaultNew.aspx?mCode=008" title="" class="">멤버십/CLUB</a></li>
-                <li><a href="/culture-event/event/defaultNew.aspx?mCode=005" title="" class="">CGV 극장별</a></li>
-                <li><a href="/culture-event/event/defaultNew.aspx?mCode=006" title="" class="">제휴/할인</a></li>
+                <li><a href="#" title="" id="1" class="">SPECIAL</a></li>
+                <li><a href="#" title="" id="2" class="">영화/예매</a></li>
+                <li><a href="#" title="" id="3" class="">멤버십/CLUB</a></li>
+                <li><a href="#" title="" id="4" class="">CGV 극장별</a></li>
+                <li><a href="#" title="" id="5" class="">제휴/할인</a></li>
             </ul>
             <div class="submenu">
                 <a href="/user/mycgv/event/result_list.aspx" class="round red on"><i>당첨자 발표</i></a>
@@ -113,7 +113,23 @@
 
                 <ul class="sect-evt-item-list">
 
-
+                    <li><a id="tile_0" href="./detailViewUnited.jsp"><div class="evt-thumb"><img src="https://img.cgv.co.kr/WebApp/contents/eventV4/34022/16450753700990.jpg" alt="개봉작 사용설명서"></div><div class="evt-desc"><p class="txt1">개봉작 사용설명서</p><p class="txt2"></p></div></a></li><li><a id="tile_1" href="./detailViewUnited.jsp?seq=34007&amp;menu=001"><div class="evt-thumb"><img src="https://img.cgv.co.kr/WebApp/contents/eventV4/34007/16445669820970.jpg" alt="[더 배트맨]
+CGV 골든티켓"></div><div class="evt-desc"><p class="txt1">[더 배트맨]
+                    CGV 골든티켓</p><p class="txt2">2022.02.11~2022.02.17<span> . </span><em>종료임박</em></p></div></a></li><li><a id="tile_2" href="./detailViewUnited.jsp?seq=33839&amp;menu=001"><div class="evt-thumb"><img src="https://img.cgv.co.kr/WebApp/contents/eventV4/33839/16425473374760.jpg" alt="[CGV NFT 플레이 포스터]
+No.1 킹메이커"></div><div class="evt-desc"><p class="txt1">[CGV NFT 플레이 포스터]
+                    No.1 킹메이커</p><p class="txt2">2022.01.19~2022.02.27</p></div></a></li><li><a id="tile_3" href="./detailViewUnited.jsp?seq=34004&amp;menu=001"><div class="evt-thumb"><img src="https://img.cgv.co.kr/WebApp/contents/eventV4/34004/16444732784970.jpg" alt="[언차티드]
+4DX 리미티드 포스터"></div><div class="evt-desc"><p class="txt1">[언차티드]
+                    4DX 리미티드 포스터</p><p class="txt2">2022.02.10~2022.02.28</p></div></a></li><li><a id="tile_4" href="./detailViewUnited.jsp?seq=33993&amp;menu=001"><div class="evt-thumb"><img src="https://img.cgv.co.kr/WebApp/contents/eventV4/33993/16443856193110.jpg" alt="[언차티드]
+CGV 필름마크"></div><div class="evt-desc"><p class="txt1">[언차티드]
+                    CGV 필름마크</p><p class="txt2">2022.02.09~2022.03.06</p></div></a></li><li><a id="tile_5" href="./detailViewUnited.jsp?seq=33874&amp;menu=001"><div class="evt-thumb"><img src="https://img.cgv.co.kr/WebApp/contents/eventV4/33874/16425472489570.jpg" alt="[킹메이커]
+포토플레이 시크릿 컷"></div><div class="evt-desc"><p class="txt1">[킹메이커]
+                    포토플레이 시크릿 컷</p><p class="txt2">2022.01.19~2022.02.27</p></div></a></li><li><a id="tile_6" href="./detailViewUnited.jsp?seq=34000&amp;menu=001"><div class="evt-thumb"><img src="https://img.cgv.co.kr/WebApp/contents/eventV4/34000/16444585263010.jpg" alt="[나일 강의 죽음]
+오리지널 북마크"></div><div class="evt-desc"><p class="txt1">[나일 강의 죽음]
+                    오리지널 북마크</p><p class="txt2">2022.02.10~2022.02.27</p></div></a></li><li><a id="tile_7" href="./detailViewUnited.jsp?seq=33963&amp;menu=001"><div class="evt-thumb"><img src="https://img.cgv.co.kr/WebApp/contents/eventV4/33963/16438648940860.jpg" alt="[나일강의 죽음]
+CGV 필름마크"></div><div class="evt-desc"><p class="txt1">[나일강의 죽음]
+                    CGV 필름마크</p><p class="txt2">2022.02.03~2022.02.27</p></div></a></li><li><a id="tile_8" href="./detailViewUnited.jsp?seq=34038&amp;menu=001"><div class="evt-thumb"><img src="https://img.cgv.co.kr/WebApp/contents/eventV4/34038/16450783727330.jpg" alt="공주들을 위한
+프린세스전"></div><div class="evt-desc"><p class="txt1">공주들을 위한
+                    프린세스전</p><p class="txt2">2022.02.17~2022.02.21<span> . </span><em>D-4</em></p></div></a></li>
 
 
                 </ul>
@@ -343,4 +359,21 @@
 <div th:replace="user/fragment/footer :: footer-user"></div>
 
 </body>
+<script type="text/javascript">
+    const special = document.getElementById("1");
+    const movie = document.getElementById("2");
+    const club = document.getElementById("3");
+    const theater = document.getElementById("4");
+    const discount = document.getElementById("5");
+    function specialClick() {special.classList.add("on"); movie.classList.remove("on"); club.classList.remove("on"); theater.classList.remove("on"); discount.classList.remove("on");}
+    function movieClick() {special.classList.remove("on"); movie.classList.add("on"); club.classList.remove("on"); theater.classList.remove("on"); discount.classList.remove("on");}
+    function clubClick() {special.classList.remove("on"); movie.classList.remove("on"); club.classList.add("on"); theater.classList.remove("on"); discount.classList.remove("on");}
+    function theaterClick() {special.classList.remove("on"); movie.classList.remove("on"); club.classList.remove("on"); theater.classList.add("on"); discount.classList.remove("on");}
+    function discountClick() {special.classList.remove("on"); movie.classList.remove("on"); club.classList.remove("on"); theater.classList.remove("on"); discount.classList.add("on");}
+    special.addEventListener("click", specialClick);
+    movie.addEventListener("click", movieClick);
+    club.addEventListener("click", clubClick);
+    theater.addEventListener("click", theaterClick);
+    discount.addEventListener("click", discountClick);
+</script>
 </html>
