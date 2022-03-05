@@ -1,4 +1,4 @@
-package com.koreait.cgvproject.controller;
+package com.koreait.cgvproject.controller.user.page;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
