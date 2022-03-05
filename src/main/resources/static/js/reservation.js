@@ -43,7 +43,8 @@ $(document).ready(function () {
             movieTitle[0].style.display = 'block';
             placeholder[1].style.display = 'none';
             let movieSel = document.getElementById("movie_sel");
-            movieSel.innerText = movieName;
+            movieSel.innerHTML = `<input style="background-color: #1d1d1c; color:#cccccc; font-weight: bold" name="movieName" id="movieName" value="${movieName}"></input>`;
+            movieSel.setAttribute("href","/theaters");
 
             // 포스터넣기
             if (movieName == "극장판주술회전0") {
@@ -85,7 +86,7 @@ $(document).ready(function () {
             placeholder[2].style.display = 'none';
             sendTheaterName[0].setAttribute('href', '/theaters');
             sendTheaterName[0].setAttribute('title', theaterName);
-            sendTheaterName[0].innerText = theaterName + "CGV > ";
+            sendTheaterName[0].innerText = theaterName +"CGV >";
             for (let x = 0; x <= infoTheater.length - 1; x++) {
                 infoTheater[x].style.display = 'block';
             }
@@ -164,7 +165,7 @@ $(document).ready(function () {
             for (let j = 0; j <= passday.length - 1; j++) {
                 this.classList.add("selected");
                 let clickDate = this.getAttribute("date");
-                let sendDate = document.getElementsByClassName("sendDate")[0].innerText = clickDate;
+                let sendDate = document.getElementsByClassName("sendDate")[0].innerHTML = `<input style="background-color: #1d1d1c; color:#cccccc; font-weight: bold" name="selDate" id="selDate" value="${clickDate}"></input>`;
                 passday[j].classList.remove("selected");
                 placeholder[2].style.display = 'none';
                 for (let x = 0; x <= infoTheater.length - 1; x++) {
@@ -318,11 +319,5 @@ $(document).ready(function () {
     })
 
 
-    // step 4 마지막 출력 버튼 클릭시 활성화됨
-    $(".btn_ticket_print").on({
-        click: function () {
-            window.open("/user/ticket/home_ticket", "ticket print", "width=100,height:500,top:100,left=100");
-        }
-    })
 
 })

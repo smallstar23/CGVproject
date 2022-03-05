@@ -15,7 +15,6 @@ import org.springframework.web.bind.annotation.RequestParam;
 @Controller
 public class UserTicketController {
 
-
     @GetMapping("ticket")
     public String reservation(){
         return "user/ticket/reservation";
@@ -25,11 +24,6 @@ public class UserTicketController {
     public String homeTicket(){
         return "user/ticket/home_ticket";
     }
-    @GetMapping("paymentDone")
-    public String paymentDone(){
-        return "user/ticket/paymentDone";
-    }
-
 
 
     @Setter(onMethod_ = @Autowired)
@@ -42,22 +36,20 @@ public class UserTicketController {
     }
 
     @PostMapping("/kakaoPay")
-    public String kakaoPay() {
+    public String kakaoPay(@RequestParam String movieName) {
         log.info("kakaoPay post............................................");
-
-        return "redirect:" + kakaopay.kakaoPayReady();
+        return "redirect:" + kakaopay.kakaoPayReady(movieName);
 
     }
 
-    @GetMapping("/kakaoPaySuccess")
-    public void kakaoPaySuccess(@RequestParam("pg_token") String pg_token, Model model) {
+    @GetMapping("ticket/kakaoPaySuccess")
+    public String kakaoPaySuccess(@RequestParam("pg_token") String pg_token, Model model) {
         log.info("kakaoPaySuccess get............................................");
         log.info("kakaoPaySuccess pg_token : " + pg_token);
-
         model.addAttribute("info", kakaopay.kakaoPayInfo(pg_token));
+        return "user/ticket/kakaoPaySuccess";
 
     }
-
 
 
 
