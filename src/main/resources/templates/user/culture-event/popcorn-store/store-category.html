@@ -162,17 +162,17 @@
         <div class="category_product_list_wrap">
             <strong class="category_product_list_title"></strong>
             <ul class="com_list_style">
-                <li class="">
+                <!-- 반복 실행 -->
+                <li class="" th:each="giftDTO : ${giftDTOList}">
                     <a href="/culture-event/popcorn-store/product-detail" class="btn_category_product">
                         <span class="com_list_img_wrap">
-                            <img src="http://img.cgv.co.kr/GiftStore/Product/Pc/List/16094706927780.jpg"
-                                 alt="CGV 영화관람권">
+                            <img th:src="${giftDTO.gfile}" alt="CGV 영화관람권">
                         </span>
                         <span class="com_list_text_wrap">
-                            <span class="com_list_text_title">CGV 영화관람권</span>
-                            <span class="com_list_text_name">일반 영화관람권</span>
+                            <span class="com_list_text_title" th:text="${giftDTO.title}">${giftDTO.title}</span>
+                            <span class="com_list_text_name" th:text="${giftDTO.gname}"></span>
                             <span class="com_list_sale_price_wrap">
-                                <span class="store_deatail_source_price">11,000</span>
+                                <span class="store_deatail_source_price" th:text="${giftDTO.price}"></span>
 							</span>
 						</span>
                     </a>
@@ -181,80 +181,7 @@
                     <a href="/culture-event/popcorn-store/user-gift" class="btn_category_product_gift">2</a>
                     <a href="/culture-event/popcorn-store/purchase-confirm" class="btn_category_product_buy">3</a>
                 </li>
-                <li class="">
-                    <a href="/culture-event/popcorn-store/product-detail" class="btn_category_product">
-                        <span class="com_list_img_wrap">
-                            <img src="http://img.cgv.co.kr/GiftStore/Product/Pc/List/15458911951520.jpg"
-                                 alt="CGV 골드클래스">
-                        </span>
-                        <span class="com_list_text_wrap">
-                            <span class="com_list_text_title">CGV 골드클래스</span>
-                            <span class="com_list_text_name">골드클래스 관람권</span>
-                            <span class="com_list_sale_price_wrap">
-                                <span class="store_deatail_source_price">35,000</span>
-							</span>
-						</span>
-                    </a>
-                    <a href="/culture-event/popcorn-store/user-cart" class="btn_category_product_cart">1</a>
-                    <a href="/culture-event/popcorn-store/user-gift" class="btn_category_product_gift">2</a>
-                    <a href="/culture-event/popcorn-store/purchase-confirm" class="btn_category_product_buy">3</a>
-                </li>
-
-                <li class="">
-                    <a href="/culture-event/popcorn-store/product-detail" class="btn_category_product">
-                        <span class="com_list_img_wrap">
-                            <img src="http://img.cgv.co.kr/GiftStore/Product/Pc/List/15458907780860.jpg"
-                                 alt="CGV 씨네드쉐프 관람권">
-                        </span>
-                        <span class="com_list_text_wrap">
-                            <span class="com_list_text_title">CGV 씨네드쉐프 관람권</span>
-                            <span class="com_list_text_name">씨네드쉐프 관람권</span>
-                            <span class="com_list_sale_price_wrap">
-                                <span class="store_deatail_source_price">45,000</span>
-                            </span>
-						</span>
-                    </a>
-                    <a href="/culture-event/popcorn-store/user-cart" class="btn_category_product_cart">1</a>
-                    <a href="/culture-event/popcorn-store/user-gift" class="btn_category_product_gift">2</a>
-                    <a href="/culture-event/popcorn-store/purchase-confirm" class="btn_category_product_buy">3</a>
-                </li>
-                <li class="">
-                    <a href="/culture-event/popcorn-store/product-detail" class="btn_category_product">
-                        <span class="com_list_img_wrap">
-                            <img src="http://img.cgv.co.kr/GiftStore/Product/Pc/List/16105061088530.jpg" alt="4DX관람권">
-                        </span>
-                        <span class="com_list_text_wrap">
-                            <span class="com_list_text_title">4DX관람권</span>
-                            <span class="com_list_text_name">4DX 영화관람권</span>
-                            <span class="com_list_sale_price_wrap">
-                                <span class="store_deatail_source_price">19,000</span>
-							</span>
-						</span>
-                    </a>
-
-                    <a href="/culture-event/popcorn-store/user-cart" class="btn_category_product_cart">1</a>
-                    <a href="/culture-event/popcorn-store/user-gift" class="btn_category_product_gift">2</a>
-                    <a href="/culture-event/popcorn-store/purchase-confirm" class="btn_category_product_buy">3</a>
-                </li>
-
-                <li class="">
-                    <a href="/culture-event/popcorn-store/product-detail" class="btn_category_product">
-                        <span class="com_list_img_wrap">
-                            <img src="http://img.cgv.co.kr/GiftStore/Product/Pc/List/16104445886810.jpg"
-                        alt="IMAX 관람권">
-                        </span>
-                        <span class="com_list_text_wrap">
-                            <span class="com_list_text_title">IMAX 관람권</span>
-                            <span class="com_list_text_name">IMAX 영화관람권</span>
-                            <span class="com_list_sale_price_wrap">
-                                <span class="store_deatail_source_price">16,000</span>
-							</span>
-						</span>
-                    </a>
-                    <a href="/culture-event/popcorn-store/user-cart" class="btn_category_product_cart">1</a>
-                    <a href="/culture-event/popcorn-store/user-gift" class="btn_category_product_gift">2</a>
-                    <a href="/culture-event/popcorn-store/purchase-confirm" class="btn_category_product_buy">3</a>
-                </li>
+                <!-- 반복 실행 -->
             </ul>
         </div>
 

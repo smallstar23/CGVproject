@@ -1,5 +1,8 @@
 package com.koreait.cgvproject.controller.user.page;
 
+import com.koreait.cgvproject.dto.GiftDTO;
+import com.koreait.cgvproject.service.user.store.UserStoreService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -7,9 +10,15 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
+import java.util.ArrayList;
+import java.util.List;
+
 @Controller
 @RequestMapping("/culture-event")
 public class UserStoreController {
+
+    @Autowired
+    private UserStoreService userStoreService;
 
     private final String ROOT = "user/culture-event/popcorn-store";
 
@@ -20,8 +29,10 @@ public class UserStoreController {
 
     @GetMapping("/popcorn-store/store-category")
     public String category(@RequestParam(value = "cno", required = false, defaultValue = "1") String cno, Model model){
-        if(cno.equals("1")) System.out.println("default 카테고리 넘버 : " + cno);
-        else System.out.println("Get으로 들어온 카테고리 넘버 : " + cno);
+        System.out.println("Get으로 들어온 카테고리 넘버 : " + cno);
+        if(cno.equals("1")) cno = "2";
+        List<GiftDTO> giftDTOList = userStoreService.getGiftDTOList(cno);
+        model.addAttribute("giftDTOList", giftDTOList);
         return ROOT+"/store-category";
     }
 
