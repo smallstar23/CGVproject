@@ -137,7 +137,7 @@
 /* .nav_menu > li > h2 > a:hover{text-decoration:underline} */
 .nav_menu > li > h2 > a strong{font-weight:700; color:#fb4357}
 .nav_overMenu{display:none; position:relative; margin-bottom:8px; padding:25px 0 0 25px}
-.nav_overMenu:before{content:''; position:absolute; left:0; top:45px; display:block; width:1px; height:250px; background-color:#eee; opacity:0.8}
+.nav_overMenu:before{content:''; position:absolute; left:0; top:45px; display:block; width:1px; height:200px; background-color:#eee; opacity:0.8}
 .nav_overMenu h3{height:auto; margin:0; line-height:1em; text-align:left; background-image:none}
 .nav_overMenu a:hover{text-decoration:underline}
 .nav_overMenu dt{padding-top:18px}
