@@ -8,6 +8,7 @@ public class UserMovieController {
 
     @GetMapping("movies")
     public String movies(Model model){
+        model.addAttribute("thymeleaf","check Thymeleaf");
         return "/user/movies/movies";
 
     }
