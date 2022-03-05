@@ -11,7 +11,7 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @Builder
 public class GiftDTO{
-    private Integer gcode;
+    private Long gcode;
     private String category;
     private String title;
     private String gname;

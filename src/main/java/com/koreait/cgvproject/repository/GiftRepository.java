@@ -8,6 +8,7 @@ import java.util.List;
 import java.util.Optional;
 
 @Repository
-public interface GiftRepository extends JpaRepository<Gift, Integer> {
+public interface GiftRepository extends JpaRepository<Gift, Long> {
 
+    List<Gift> findByCategoryOrderByGcode(String cno);
 }
