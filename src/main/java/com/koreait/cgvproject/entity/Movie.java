@@ -8,7 +8,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.Entity;
-import javax.persistence.Id;
+import javax.persistence.*;
 import java.time.LocalDateTime;
 
 @Data
@@ -16,17 +16,24 @@ import java.time.LocalDateTime;
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
+@SequenceGenerator(
+        name = "seq_movie",
+        sequenceName="seq_movie",
+        initialValue = 1,
+        allocationSize = 1
+)
 public class Movie {
 
-    private int idx;
     @Id
+    @GeneratedValue(strategy = GenerationType.SEQUENCE,generator = "seq_movie")
+    private Long idx;
     private Long mcode;
     private String titleKo;
     private String titleEn;
     private String genre;
     private String country;
     private String movieRating;
-    private int runtime;
+    private Long runtime;
     private LocalDateTime launchDate;
     private LocalDateTime regDate;
     private String poster;
