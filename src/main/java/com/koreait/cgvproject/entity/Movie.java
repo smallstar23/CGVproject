@@ -10,6 +10,7 @@ import lombok.NoArgsConstructor;
 import javax.persistence.Entity;
 import javax.persistence.*;
 import java.time.LocalDateTime;
+import java.util.List;
 
 @Data
 @Entity
@@ -26,7 +27,6 @@ public class Movie {
 
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE,generator = "seq_movie")
-    private Long idx;
     private Long mcode;
     private String titleKo;
     private String titleEn;
@@ -37,6 +37,12 @@ public class Movie {
     private LocalDateTime launchDate;
     private LocalDateTime regDate;
     private String poster;
+
+    @OneToMany(fetch = FetchType.LAZY, mappedBy = "movie")
+    private List<Actor> actors;
+    @OneToMany(fetch = FetchType.LAZY, mappedBy = "movie")
+    private List<Director> directors;
+
 
     public MovieDTO toDTO(){
         return MovieDTO.builder().mcode(mcode).titleKo(titleKo).titleEn(titleEn).genre(genre).country(country)

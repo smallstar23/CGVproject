@@ -2,13 +2,11 @@ package com.koreait.cgvproject.controller.user.page;
 
 import com.koreait.cgvproject.dto.MovieDTO;
 import com.koreait.cgvproject.service.user.moive.UserMovieService;
-import com.koreait.cgvproject.service.user.store.UserStoreService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 
-import java.util.ArrayList;
 import java.util.List;
 
 @Controller
@@ -23,6 +21,7 @@ public class UserMovieController {
         model.addAttribute("MovieList", movieDTOList);
         return "/user/movies/movies";
     }
+
     @GetMapping("/movies/detail-view/")
     public String detailview(Model model){
         return "user/movies/detail-view";

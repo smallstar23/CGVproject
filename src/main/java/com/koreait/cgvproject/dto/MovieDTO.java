@@ -14,7 +14,6 @@ import java.time.LocalDateTime;
 @Builder
 public class MovieDTO {
 
-    private Long idx;
     private Long mcode;
     private String titleKo;
     private String titleEn;
