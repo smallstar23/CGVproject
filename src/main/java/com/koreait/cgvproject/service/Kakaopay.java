@@ -8,6 +8,7 @@ import com.koreait.cgvproject.domain.KakaoPayApprovalVO;
 import com.koreait.cgvproject.domain.KakaoPayReadyVO;
 import lombok.extern.java.Log;
 import org.springframework.stereotype.Service;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.client.RestTemplate;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpHeaders;
@@ -25,7 +26,9 @@ public class Kakaopay {
     private KakaoPayReadyVO kakaoPayReadyVO;
     private KakaoPayApprovalVO kakaoPayApprovalVO;
 
-    public String kakaoPayReady() {
+    public String kakaoPayReady(
+            @RequestParam String movieName
+            ) {
 
         RestTemplate restTemplate = new RestTemplate();
 
@@ -38,13 +41,13 @@ public class Kakaopay {
         // 서버로 요청할 Body
         MultiValueMap<String, String> params = new LinkedMultiValueMap<String, String>();
         params.add("cid", "TC0ONETIME");
-        params.add("partner_order_id", "00001");
-        params.add("partner_user_id", "sunny");
-        params.add("item_name", "CGV영화");
-        params.add("quantity", "1");
-        params.add("total_amount", "10000");
-        params.add("tax_free_amount", "1000");
-        params.add("approval_url", "http://localhost:8080/paymentDone");
+        params.add("partner_order_id", "00002");
+        params.add("partner_user_id", "TestCGV");
+        params.add("item_name", movieName);
+        params.add("quantity", "2");
+        params.add("total_amount", "13000");
+        params.add("tax_free_amount", "1300");
+        params.add("approval_url", "http://localhost:8080/ticket/kakaoPaySuccess");
         params.add("cancel_url", "http://localhost:8080/ticket");
         params.add("fail_url", "http://localhost:8080/ticket");
 
@@ -86,10 +89,10 @@ public class Kakaopay {
         MultiValueMap<String, String> params = new LinkedMultiValueMap<String, String>();
         params.add("cid", "TC0ONETIME");
         params.add("tid", kakaoPayReadyVO.getTid());
-        params.add("partner_order_id", "00001");
-        params.add("partner_user_id", "sunny");
+        params.add("partner_order_id", "00002");
+        params.add("partner_user_id", "TestCGV");
         params.add("pg_token", pg_token);
-        params.add("total_amount", "11000");
+        params.add("total_amount", "13000");
 
         HttpEntity<MultiValueMap<String, String>> body = new HttpEntity<MultiValueMap<String, String>>(params, headers);
 

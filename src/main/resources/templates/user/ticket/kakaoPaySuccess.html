@@ -150,15 +150,15 @@
                                                 <tbody>
                                                 <tr class="ticket_no">
                                                     <th scope="row">예매번호</th>
-                                                    <td><span class="red" th:text="${info}"></span></td>
+                                                    <td><span class="red" th:text="${info.partner_order_id}"></span></td>
                                                 </tr>
                                                 <tr class="movie_name">
                                                     <th scope="row">영화</th>
-                                                    <td><em></em></td>
+                                                    <td><em th:text="${info.item_name}"></em></td>
                                                 </tr>
                                                 <tr class="theater">
                                                     <th scope="row">극장</th>
-                                                    <td><em><span class="theater_name">CGV 강남</span> / <span class="theater_loc">4관[SCREENX] 8층</span></em></td>
+                                                    <td><em><span class="theater_name" th:text="${info.partner_user_id}"></span> / <span class="theater_loc">4관[SCREENX] 8층</span></em></td>
                                                 </tr>
                                                 <tr class="movie_date">
                                                     <th scope="row">일시</th>
@@ -166,7 +166,7 @@
                                                 </tr>
                                                 <tr class="people">
                                                     <th scope="row">인원</th>
-                                                    <td><em>일반 1명</em></td>
+                                                    <td><em th:text="${info.quantity}"></em></td>
                                                 </tr>
                                                 <tr class="seat">
                                                     <th scope="row">좌석</th>
@@ -174,7 +174,7 @@
                                                 </tr>
                                                 <tr class="payment_price">
                                                     <th scope="row">결제금액</th>
-                                                    <td><span class="price">13,000</span> 원</td>
+                                                    <td><span class="price" th:text="${info.amount.total}"></span> 원</td>
                                                 </tr>
                                                 <tr class="payment_method">
                                                     <th scope="row">결제수단</th>
@@ -189,7 +189,7 @@
                                                         <span class="content"><span class="price">5,000</span>원</span>
                                                     </div>
                                                     -->
-                                                        <div class="row"><span class="title"><em>카카오페이</em></span><span class="content"><span class="price">13,000</span> 원</span></div></td>
+                                                        <div class="row"><span class="title"><em>카카오페이</em></span><span class="content"><span class="price" th:text="${info.amount.total}"></span> 원</span></div></td>
                                                 </tr>
                                                 </tbody>
                                             </table>
@@ -203,7 +203,7 @@
                                         <!--<br/><a class="btn_traffic_info" href="#" onclick="return false;"><img src="http://img.cgv.co.kr/CGV_RIA/Ticket/image/reservation/step4/btn_traffic_info.png" alt="교통안내"/></a>-->
                                     </div>
                                     <div class="ticket_button_group"><div>
-                                        <a class="btn_step4 btn_red btn_ticket_print" href="#" style="margin: 0px 5px;"><span>예매정보 출력</span></a>
+                                        <a class="btn_step4 btn_red btn_ticket_print" style="margin: 0px 5px;"><span>예매정보 출력</span></a>
                                         <a class="btn_step4 btn_result_smssend" href="#" style="margin: 0px 5px;"><span>예매결과 SMS발송</span></a>
                                         <a class="btn_step4 btn_ticket_check" href="#" style="margin: 0px 5px;"><span>예매확인/취소</span></a>
                                         <a class="btn_step4 btn_red btn_ticket_check_red" href="#" style="margin: 0px 5px;"><span>예매확인/취소</span></a>
@@ -574,7 +574,18 @@
 </div>
 
 <script type="text/javascript" src="https://img.cgv.co.kr/R2014//js/system/crypto.js"></script>
-<script src="/js/reservation.js"></script>
+<script>
+
+        $(".btn_ticket_print").on({
+            click: function () {
+                console.log("예매정보 출력")
+                window.open("/user/ticket/home_ticket", "ticket print", "width=100,height:500,top:100,left=100");
+            }
+        })
+
+
+</script>
+
 
 
 <!-- Google Tag Manager -->
