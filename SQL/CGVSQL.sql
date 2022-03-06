@@ -8,7 +8,7 @@ CREATE TABLE Member (
     email varchar2(50)   not null,
     nickname varchar2(20)   not null,
     valPoint number(10) DEFAULT 0, -- 사용가능한 포인트
-    regDate date not null
+    reg_date date not null
 );
 
 CREATE TABLE Theater (
@@ -24,7 +24,7 @@ CREATE TABLE Point (
     kind varchar2(10) not null, -- 종류(use,get)에 따라 +- 결정
     tcode number(7)   not null, -- join으로 극장정보
     pointChange number(5) not null, -- 포인트 변경량
-    regDate date not null, -- 등록일
+    reg_date date not null, -- 등록일
     constraint fk_point_mem_idx foreign key(mem_idx) references Member(idx),
     constraint fk_Point_tcode foreign key(tcode) references Theater (tcode),
     constraint ck_point_kind check(kind in('use','get'))
@@ -36,11 +36,10 @@ CREATE TABLE Movie (
     title_en varchar2(100) not null, -- 제목 영문
     genre varchar2(40)   not null, -- 장르
     country varchar2(20)   not null, -- 제작국가
-    movie_rating varchar2(10) not null, -- 관람등급
-    runtime number(4) not null, -- 러닝타임
+    movie_rating varchar2(40) not null, -- 관람등급
+    runtime number(3) not null, -- 러닝타임
     launch_date date not null, -- 개봉일
-    endDate date not null, -- 종영일
-    regDate date not null, -- 등록일
+    reg_date date not null, -- 등록일
     poster varchar2(200) not null -- 포스터 이미지 경로
 );
 
@@ -88,18 +87,26 @@ CREATE TABLE Actor (
     mcode number(7)   not null,
     name_ko varchar2(100)   not null, -- 배우 이름
     name_en varchar2(100)   not null, -- 배우 영문 이름
-    photo varchar2(100) default '없음', 
+    photo varchar2(100) default 'http://img.cgv.co.kr/R2014/images/common/default_230_260.gif', 
     constraint fk_Actor_mcode foreign key(mcode) references Movie (mcode)
 );
+
+create sequence seq_actor
+	increment by 1
+    start with 1;
 
 CREATE TABLE Director (
     idx number(7) primary key,
     mcode number(7)   not null,
     name_ko varchar2(50)   not null, -- 감독 이름
     name_en varchar2(50)  not null, -- 감독 영문 이름
-    photo varchar2(100) default '없음',
+    photo varchar2(100) default 'http://img.cgv.co.kr/R2014/images/common/default_230_260.gif',
     constraint fk_Director_mcode foreign key(mcode) references Movie (mcode)
 );
+
+create sequence seq_movie
+	increment by 1
+    start with 1;
 
 CREATE TABLE Reply (
     idx number(7) primary key,
@@ -107,7 +114,7 @@ CREATE TABLE Reply (
     mem_idx number(7)   not null, -- join으로 정보획득
     content varchar2(500) not null, -- 내용
     re_like number(6)  DEFAULT 0, -- 좋아요
-    regDate date not null, -- 등록일
+    reg_date date not null, -- 등록일
     constraint fk_Reply_mcode foreign key(mcode) references Movie (mcode),
     constraint fk_Reply_mem_idx foreign key(mem_idx) references Member (idx)
 );
@@ -167,7 +174,7 @@ CREATE TABLE Notification (
     content varchar2(1000)   not null,
     category varchar2(20)   not null,
     hit number(7)  DEFAULT 0 not null,
-    regDate date not null
+    reg_date date not null
 );
 
 
@@ -218,7 +225,7 @@ CREATE TABLE Gift_payment (
     gpcode number(14) primary key,
     mem_idx number(10)   not null,
     gcode number(10)   not null,
-    regDate date not null,
+    reg_date date not null,
     status varchar2(10)   not null, -- 결제완료 사용 등등
     constraint fk_Gift_payment_mem_idx foreign key(mem_idx) references Member (idx),
     constraint fk_gift_gcode foreign key(gcode) references Gift(gcode)
