@@ -48,25 +48,42 @@
 </nav>
 
 <script>
-    function checkLogin() {
-        var form = document.notification;
-        // let selectOption = document.getElementById("q_list");
-        // console.log(selectOption);
-        //
-        // if(selectOption=="전체") {
-        //     alert("분류를 선택하세요.");
-        //     form.q_sel.focus();
-        //     return false;
-        // }
-        if(form.n_title.value=="") {
+    function checkForm() {
+
+
+        let form = document.notification;
+
+        if(form.title.value=="") {
             alert("제목을 입력해주세요");
             form.n_title.focus();
             return false;
-        } else if (form.summernote.value == "") {
+        } else if (form.content.value == "") {
             alert("내용을 입력해주세요");
-            form.summernote.focus();
+            form.content.focus();
             return false;
         }
+         alert("공지가 등록되었습니다.")
+
+        // else if ((form.n_title.value !="") && (form.summernote.value != "")){
+        // let leaveMsg = confirm("공지를 등록하시겠습니까?");
+        //     document.write(leaveMsg);
+        //     if(leaveMsg == true){
+        //         alert("공지가 등록되었습니다.")
+        //     } else if(leaveMsg == false) {
+        //         return "/manage_news";
+        //     }
+        // }
+
+
+        // document.write(leaveMsg);
+        //
+        // if(leaveMsg == true){
+        //     form.submit();
+        //     alert("공지가 등록되었습니다.")
+        // } else if(leaveMsg == false) {
+        //    return false;
+        // }
+
         form.submit();
     }
 </script>
@@ -81,7 +98,7 @@
         <div class="container-fluid px-4" >
             <h2>공지 작성</h2>
 
-            <form method="post" name="notification" action="manage_news_write_ok">
+            <form method="post" name="notification" action="manage_news_clear">
                 <table width=900 border=1 cellspacing=5 cellpadding=10>
                     <tr>
                         <td style="padding-left: 20px;"><b>작성자</b></td>
@@ -96,29 +113,32 @@
 
                         <td style="padding-left: 20px;"><b>구 분</b></td>
                         <td>
-                            <select name="n_list" id="" class="" style="width:400px;">
-                                <option selected="selected" value="0" name="n_sel">전체</option>
-                                <option value="1">시스템점검</option>
-                                <option value="1">극장</option>
-                                <option value="2">기타</option>
+                            <select name="category" id="" class="" style="width:400px;">
+                                <option selected="selected" value="전체" name="n_sel">전체</option>
+                                <option value="시스템점검">시스템점검</option>
+                                <option value="극장">극장</option>
+                                <option value="기타">기타</option>
                             </select>
                         </td>
                     </tr>
 
                     <tr>
                         <td style="padding-left: 20px;"><b>제 목</b></td>
-                        <td><input type=text name="n_title" size=50  maxlength=50 style="width: 400px"></td>
+                        <td><input type=text name="title" size=50  maxlength=50 style="width: 400px"></td>
                     </tr>
 
                     <tr>
                         <td style="padding-left: 20px;"><b>내 용</b></td>
-                        <td><textarea id="summernote" name="summernote"></textarea></td>
+                        <td><textarea id="summernote" name="content"></textarea></td>
 <!--                                          <td><textarea name="q_content" cols=40 rows=5 style="width: 400px"></textarea></td> -->
                     </tr>
                 </table>
 
                 <p></p>
-                <p><input type="button" value="등록" style="margin-left: 150px" onclick="checkLogin()"> <input type="reset" value="공지 다시 작성하기"> <input type="button" value="리스트" onclick="location.href='./manage_qna.jsp'"></p>
+                <p>
+                    <input type="button" value="등록" style="margin-left: 150px" onclick="checkForm()">
+                    <input type="reset" value="공지 다시 작성하기"> <input type="button" value="리스트" onclick="location.href='/manage_news'">
+                </p>
 
 
             </form>

@@ -1,26 +1,16 @@
 <!DOCTYPE html>
-<html lang="ko" xmlns:th="http://www.thymeleaf.org/">
+<html lang="ko"   xmlns:th="http://www.thymeleaf.org/">
 <head>
-    <title>manage_news_detail</title>
-
+    <title>manage_news</title>
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
     <meta name="description" content="" />
     <meta name="author" content="" />
     <link href="https://cdn.jsdelivr.net/npm/simple-datatables@latest/dist/style.css" rel="stylesheet" />
-    <link href="css/styles.css" rel="stylesheet" />
+    <link href="/css/styles.css" rel="stylesheet" />
     <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/js/all.min.js" crossorigin="anonymous"></script>
     <script src="//code.jquery.com/jquery-1.11.0.min.js"></script>
-    <script type="text/javascript">
-        $(document).ready( function() {
-
-            $("#headers").load("header.jsp");
-
-        });
-    </script>
-
-
 </head>
 <body class="sb-nav-fixed" >
 <nav class="sb-topnav navbar navbar-expand navbar-dark bg-dark">
@@ -61,24 +51,26 @@
             <table style="width: 900px; border: #212121 solid 1px; text-align: center" cellspacing=5 cellpadding=10>
                 <tr style="border: #212121 solid 1px;">
                     <td style="padding-left: 10px; border: #212121 solid 1px; width: 100px"><b>제 목</b></td>
-                    <td style="border: #212121 solid 1px; width: 450px">[시스템점검] 2022년 2월 시스템 점검 안내</td>
-                    <td style="border: #212121 solid 1px;"><span>등록일: </span> 2022.02.16</td>
-                    <td style="border: #212121 solid 1px;"><span>조회수: </span> 73</td>
+                    <td th:text="${managenews.getTitle()}" style="border: #212121 solid 1px; width: 450px"></td>
+                    <td style="border: #212121 solid 1px;"><span>등록일: </span> <span th:text="${#temporals.format(managenews.getRegdate(), 'yyyy-MM-dd')}"></span></td>
+                    <td style="border: #212121 solid 1px;"><span>조회수: </span> <span th:text="${managenews.getHit()}"></span></td>
                 </tr>
 
                 <tr style="border: #212121 solid 1px;">
                     <td style="padding-left: 10px; border: #212121 solid 1px;"><b>내 용</b></td>
                     <td style="border: #212121 solid 1px; text-align: left" colspan="3">
-                        <p>안녕하십니까, CGV입니다.<br/><br/>
-                            원활하고 안정된 서비스 제공을 위하여 2022년 2월 새벽 시스템 점검 작업이 예정되어 있습니다.<br/>
-                            점검 시간 중 CGV홈페이지 및 모바일의 모든 서비스가 중단될 예정이오니 이용에 불편 없으시기 바랍니다.<br/><br/>
-                            1. 일시<br/>
-                            - 2/22(화) 02시 ~ 07시 (월요일에서 화요일 넘어가는 새벽)<br/><br/>
-                            2. 내용<br/>
-                            - 정기 PM작업(시스템 성능 개선 작업)<br/>
-                            - 작업 대상 : 극장영업시스템, 온라인 서비스(홈페이지/모바일)<br/><br/><br/>
-                            더욱 안정적이고 편리한 서비스를 제공하는 CGV가 되겠습니다.<br/>
-                            감사합니다.</p>
+                        <p th:text="${managenews.getContent()}">
+<!--                            안녕하십니까, CGV입니다.<br/><br/>-->
+<!--                            원활하고 안정된 서비스 제공을 위하여 2022년 2월 새벽 시스템 점검 작업이 예정되어 있습니다.<br/>-->
+<!--                            점검 시간 중 CGV홈페이지 및 모바일의 모든 서비스가 중단될 예정이오니 이용에 불편 없으시기 바랍니다.<br/><br/>-->
+<!--                            1. 일시<br/>-->
+<!--                            - 2/22(화) 02시 ~ 07시 (월요일에서 화요일 넘어가는 새벽)<br/><br/>-->
+<!--                            2. 내용<br/>-->
+<!--                            - 정기 PM작업(시스템 성능 개선 작업)<br/>-->
+<!--                            - 작업 대상 : 극장영업시스템, 온라인 서비스(홈페이지/모바일)<br/><br/><br/>-->
+<!--                            더욱 안정적이고 편리한 서비스를 제공하는 CGV가 되겠습니다.<br/>-->
+<!--                            감사합니다.-->
+                        </p>
                     </td>
                 </tr>
             </table>
@@ -89,7 +81,7 @@
             <table style="width: 900px; border-top: #212121 solid 1px; border-bottom: #212121 solid 0.5px;text-align: center" cellspacing=5 cellpadding=10>
                 <tr style="border: #212121 solid 1px;">
                     <td style="padding-left: 10px; border: #212121 solid 1px; width: 100px"><b>▲ 이전글</b></td>
-                    <td style="border-left: #212121 solid 1px;">[극장] CGV대구아시아 영업 종료 안내</td>
+                    <td th:text="${managenews.getTitle()}" style="border-left: #212121 solid 1px;"></td>
                     <td style="border-right: #212121 solid 1px;"><span>등록일 :</span> 2021.11.29 </td>
                 </tr>
 
