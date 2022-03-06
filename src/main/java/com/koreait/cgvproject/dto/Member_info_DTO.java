@@ -29,12 +29,12 @@ public class Member_info_DTO {
 //    private String address2;
 //    private String address3;
     private LocalDateTime regdate;
-    private LocalDateTime updateDate;
     private String nickname;
 
 
     public MemberinfoEntity toEntity(){
-        return new MemberinfoEntity(null, userid,username,userpw,getSsn1().substring(3)+getSsn2().substring(1)+getSsn3(),getHp1() + "-" + getHp2() + "-" + getHp3(),getEmail1()+"@"+getEmail2(),regdate,updateDate,nickname);
+        return new MemberinfoEntity(null, userid,username,userpw,getSsn1().substring(2)+getSsn2()+getSsn3(),getHp1()
+                + "-" + getHp2() + "-" + getHp3(),getEmail1()+"@"+getEmail2(),regdate.now(),nickname,0);
     }
 
 

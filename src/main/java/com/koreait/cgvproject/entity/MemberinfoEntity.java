@@ -4,14 +4,15 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.ToString;
+import org.springframework.data.annotation.CreatedDate;
 
 import javax.persistence.*;
 import java.time.LocalDateTime;
 
 @Entity
 @SequenceGenerator(
-        name="seq_member_info_idx",
-        sequenceName = "seq_member_info_idx",
+        name="seq_Member_idx",
+        sequenceName = "seq_Member_idx",
         initialValue = 1,
         allocationSize = 1
 )
@@ -19,26 +20,27 @@ import java.time.LocalDateTime;
 @AllArgsConstructor
 @NoArgsConstructor
 @ToString
-@Table(name="cgv_member_info")
+@Table(name="Member")
 public class MemberinfoEntity {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "seq_member_info_idx")
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "seq_Member_idx")
     private Long idx;
 
     private String userid;
     private String username;
     private String userpw;
-    private String ssn1;
+    private String ssn;
 //    private String ssn2;
     private String hp;
     private String email;
 //    private String address1;
 //    private String address2;
 //    private String address3;
+    @CreatedDate
     private LocalDateTime regdate;
-    private LocalDateTime updateDate;
     private String nickname;
+    private int valpoint;
 
     public Long getIdx() {
         return idx;
@@ -72,14 +74,6 @@ public class MemberinfoEntity {
         this.userpw = userpw;
     }
 
-    public String getSsn1() {
-        return ssn1;
-    }
-
-    public void setSsn1(String ssn1) {
-        this.ssn1 = ssn1;
-    }
-
     public String getHp() {
         return hp;
     }
@@ -104,14 +98,6 @@ public class MemberinfoEntity {
         this.regdate = regdate;
     }
 
-    public LocalDateTime getUpdateDate() {
-        return updateDate;
-    }
-
-    public void setUpdateDate(LocalDateTime updateDate) {
-        this.updateDate = updateDate;
-    }
-
     public String getNickname() {
         return nickname;
     }
@@ -119,4 +105,21 @@ public class MemberinfoEntity {
     public void setNickname(String nickname) {
         this.nickname = nickname;
     }
+
+    public int getValpoint() {
+        return valpoint;
+    }
+
+    public void setValpoint(int valpoint) {
+        this.valpoint = valpoint;
+    }
+
+    public String getSsn() {
+        return ssn;
+    }
+
+    public void setSsn(String ssn) {
+        this.ssn = ssn;
+    }
 }
+

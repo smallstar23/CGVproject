@@ -11,6 +11,10 @@ CREATE TABLE Member (
     regDate date not null
 );
 
+create sequence seq_Member_idx
+    increment by 1
+    start with 1;
+
 CREATE TABLE Theater (
     tcode number(7) primary key,
     tname varchar2(10) not null, -- 극장이름 강남CGV
