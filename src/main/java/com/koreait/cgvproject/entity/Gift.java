@@ -28,12 +28,14 @@ public class Gift{
     private String price;
     private String gfile;
     private String endMonth;
+    private Integer mainon;
+
 
 //    @OneToMany(fetch = FetchType.LAZY, mappedBy = "gift")
 //    private List<giftPaymentEntity> giftPaymentList;
 
     public GiftDTO toDTO(){
         return GiftDTO.builder().gcode(gcode).category(category).title(title).gname(gname)
-                .content(content).price(price).gfile(gfile).endMonth(endMonth).build();
+                .content(content).price(price).gfile(gfile).endMonth(endMonth).mainon(mainon).build();
     }
 }

@@ -10,8 +10,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
-import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
 @Controller
 @RequestMapping("/culture-event")
@@ -23,8 +23,15 @@ public class UserStoreController {
     private final String ROOT = "user/culture-event/popcorn-store";
 
     @GetMapping("/popcorn-store")
-    public ModelAndView main(){
-        return new ModelAndView(ROOT);
+    public String main(Model model){
+        Map<String, List<GiftDTO>> MDLMap = userStoreService.getMainDTOList();
+        model.addAttribute("movieDTOList", MDLMap.get("movie"))
+                .addAttribute("comboDTOList", MDLMap.get("combo"))
+                .addAttribute("popcornDTOList", MDLMap.get("popcorn"))
+                .addAttribute("drinkDTOList", MDLMap.get("drink"))
+                .addAttribute("snackDTOList", MDLMap.get("snack"));
+
+        return ROOT;
     }
 
     @GetMapping("/popcorn-store/store-category")
@@ -37,7 +44,10 @@ public class UserStoreController {
     }
 
     @GetMapping("/popcorn-store/product-detail")
-    public String detail(){
+    public String detail(@RequestParam(value = "gcode", required = false) Long gcode, Model model){
+        if(gcode == null) return "user/culture-event/no-gift";
+        GiftDTO selectDTO = userStoreService.getGiftDTO(gcode);
+        model.addAttribute("giftDTO", selectDTO);
         return ROOT + "/product-detail";
     }
 
