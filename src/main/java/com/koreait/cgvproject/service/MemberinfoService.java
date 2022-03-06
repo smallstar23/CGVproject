@@ -4,9 +4,11 @@ import com.koreait.cgvproject.dto.Member_info_DTO;
 import com.koreait.cgvproject.entity.MemberinfoEntity;
 import com.koreait.cgvproject.repository.MemberinfoRepository;
 import lombok.extern.slf4j.Slf4j;
+import org.hibernate.NonUniqueResultException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.sql.SQLException;
 import java.util.List;
 
 @Slf4j
@@ -16,7 +18,7 @@ public class MemberinfoService {
     @Autowired
     MemberinfoRepository memberinfoRepository;
 
-    public void regist(Member_info_DTO memberinfoDTO){
+    public void regist(Member_info_DTO memberinfoDTO) {
 //        System.out.println(memberinfoDTO.toString()); -> 로깅으로 변환(로깅은 자동차의 블랙박스와 비슷한 역할)
         log.info(memberinfoDTO.toString());
 
@@ -36,12 +38,18 @@ public class MemberinfoService {
 //        return memberinfoRepository.findById(id).get();
 //    }
 
-    public int idCheck(String userid){
-        MemberinfoEntity check=memberinfoRepository.findByUserid(userid);
-        if(check!=null){
+    public int idCheck(String userid) {
+        MemberinfoEntity check = memberinfoRepository.findByUserid(userid);
+        try {
+            if (check != null) {
+                return 1;
+            }
+        } catch (NonUniqueResultException e) {
+            e.printStackTrace();
             return 1;
         }
         return 0;
     }
-
 }
+
+

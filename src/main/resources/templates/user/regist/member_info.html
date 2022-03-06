@@ -73,6 +73,16 @@
     <!--//header-->
 
     <script>
+        function goCancel() {
+            if(!confirm('회원가입을 취소하시겠습니까?')) return;
+
+            if (''==''){
+                location.href='/user-main';
+            }else{
+                location.href='';
+            }
+        }
+
         function checkFormData() {
             var form = document.member_info;
             var isidcheck = document.getElementById("isidcheck");
@@ -226,7 +236,7 @@
 
                                 <div class="table_header">
                                     <h3 class="h3_tit" style="background: none;">기본정보</h3>
-                                    <div class="info"><p class="msg_mandatory"><span class="haze">"필수"</span> 표시는 필수 입력 항목입니다.</p></div>
+                                    <div class="info"><p class="msg_mandatory"><span class="haze">"필수"</span> ✔ 표시는 필수 입력 항목입니다.</p></div>
                                 </div>
                                 <div class="table_col">
                                     <table>
@@ -238,7 +248,7 @@
                                         <tbody>
                                         <tr class="input">
                                             <th scope="row" class="mandatory">
-                                                <label for="input_member_name"><span class="haze">"필수"</span> 이름</label>
+                                                <label for="input_member_name"><span class="haze">"필수"</span>✔이름</label>
                                             </th>
                                             <td style="text-align:left">
                                                 <span class="input_txt"><input type="text"  class="text" id="input_member_name" name="username" placeholder="이름을 입력해주세요."></span><!-- 에러시 .error 클래스 추가 -->
@@ -246,7 +256,7 @@
                                         </tr>
                                         <tr class="input">
                                             <th scope="row" class="mandatory">
-                                                <label><span class="haze">"필수"</span> 아이디</label>
+                                                <label><span class="haze">"필수"</span>✔아이디</label>
 <!--                                                <label for="mbr_id"><span class="haze">"필수"</span> 아이디</label>-->
                                             </th>
                                             <td style="text-align:left">
@@ -260,13 +270,14 @@
                                                     <input type="hidden" id="isidcheck" value="n">
                                                     <div id="isid"></div>
                                                     <p style="color:lightskyblue; display: none" id="id_ok">사용할 수 있는 ID 입니다</p>
-                                                    <p style="color:lightcoral; display: none" id="id_no">사용할 수 없는 ID 입니다</p>
+                                                    <p style="color:lightcoral; display: none" id="id_no">사용할 수 없는 ID 입니다. 이미 사용되고 있는 ID 입니다.</p>
+                                                    <p style="color:lightcoral; display: none" id="id_no_low">사용할 수 없는 ID 입니다. 아이디는 4자 이상, 20자 미만으로 입력해주세요.</p>
                                                 </div>
                                             </td>
                                         </tr>
                                         <tr class="input">
                                             <th scope="row" class="mandatory">
-                                                <label for="pwd"><span class="haze">"필수"</span> 비밀번호</label>
+                                                <label for="pwd"><span class="haze">"필수"</span>✔비밀번호</label>
                                             </th>
                                             <td style="text-align:left">
                                                 <div class="input_group">
@@ -279,7 +290,7 @@
                                         </tr>
                                         <tr class="input">
                                             <th scope="row" class="mandatory">
-                                                <label for="pwd_check"><span class="haze">"필수"</span> 비밀번호 확인</label>
+                                                <label for="pwd_check"><span class="haze">"필수"</span>✔비밀번호 확인</label>
                                             </th>
                                             <td style="text-align:left">
                                                 <div class="input_group">
@@ -291,7 +302,7 @@
                                         <tr class="input">
                                             <th scope="row" class="mandatory">
                                                 <label for="birth_yy">
-                                                    <span class="haze">"필수"</span> 생년월일</label>
+                                                    <span class="haze">"필수"</span>✔생년월일</label>
                                             </th>
                                             <td style="text-align:left">
                                                 <div class="birthday_select">
@@ -319,7 +330,7 @@
                                         </tr>
                                         <tr class="input">
                                             <th scope="row" class="mandatory">
-                                                <label for="mob_no_1"><span class="haze">"필수"</span> 휴대전화</label>
+                                                <label for="mob_no_1"><span class="haze">"필수"</span>✔휴대전화</label>
                                             </th>
                                             <td style="text-align:left">
                                                 <div class="phon_write">
@@ -355,7 +366,7 @@
                                         </tr>
                                         <tr class="input">
                                             <th scope="row" class="mandatory">
-                                                <label for="email_addr1"><span class="haze">"필수"</span> 이메일</label>
+                                                <label for="email_addr1"><span class="haze">"필수"</span>✔이메일</label>
                                             </th>
                                             <td style="text-align:left">
                                                 <div class="email_write">
@@ -373,7 +384,7 @@
                                         </tr>
                                         <tr class="input">
                                             <th scope="row" class="mandatory">
-                                                <label for="input_member_name"><span class="haze">"필수"</span> 닉네임 </label>
+                                                <label for="input_member_name"><span class="haze">"필수"</span>✔닉네임 </label>
                                             </th>
                                             <td style="text-align:left">
                                                 <span class="input_txt"><input type="text" class="text" id="nickname" name="nickname"></span>
@@ -403,6 +414,7 @@
         function senduserid(){
             let userid= document.getElementById("userid").value;
             console.log(userid);
+            let form = document.member_info;
             // 받아온 userid 값을 controller에 전달함
             $.ajax({
                 url:'/idCheck', //Controller에서 인식할 주소
@@ -412,11 +424,19 @@
                     if(res==0){
                         $("#id_ok").css("display","block")
                         $("#id_no").css("display","none")
+                        $("#id_no_low").css("display","none")
                         $("#isidcheck").attr("value","y")
                     }
                     if(res==1){
                         $("#id_ok").css("display","none")
                         $("#id_no").css("display","block")
+                        $("#id_no_low").css("display","none")
+                        $("#isidcheck").attr("value","n")
+                    }
+                    if(res==2){
+                        $("#id_ok").css("display","none")
+                        $("#id_no").css("display","none")
+                        $("#id_no_low").css("display","block")
                         $("#isidcheck").attr("value","n")
                     }
                 },
@@ -426,26 +446,9 @@
             });
         }
 
-        function checkId(){
-            // const id = $('#userid').val(); //id값이 "userid"인 입력란의 값을 저장
-            // const isidcheck = document.getElementById("isidcheck");
-            // const isid = document.getElementById("isid");
-            //
-            // if(isidcheck.value == "n"){
-            //     isid.innerHTML=`<p style="color:lightcoral; id="id_no">사용할 수 없는 ID 입니다</p>`;
-            // }
-            // if(isidcheck.value == "y"){
-            //     isid.innerHTML=`<p style="color:lightskyblue; id="id_ok">사용할 수 있는 ID 입니다</p>`;
-            // }
-            // if(isidcheck.value == "n"){
-            //     isidcheck.setAttribute("value", "y");
-            // }
-
-            console.log(userid);
-
-
-        };
     </script>
+
+
 
 <!--    <script>-->
 <!--        const $postDataButton = document.querySelector("#checkId");-->
@@ -466,6 +469,26 @@
 <!--        }-->
 
 <!--        $postDataButton.addEventListener("click", postData);-->
+
+<!--    function checkId(){-->
+<!--    // const id = $('#userid').val(); //id값이 "userid"인 입력란의 값을 저장-->
+<!--    // const isidcheck = document.getElementById("isidcheck");-->
+<!--    // const isid = document.getElementById("isid");-->
+<!--    //-->
+<!--    // if(isidcheck.value == "n"){-->
+<!--    //     isid.innerHTML=`<p style="color:lightcoral; id="id_no">사용할 수 없는 ID 입니다</p>`;-->
+<!--    // }-->
+<!--    // if(isidcheck.value == "y"){-->
+<!--    //     isid.innerHTML=`<p style="color:lightskyblue; id="id_ok">사용할 수 있는 ID 입니다</p>`;-->
+<!--    // }-->
+<!--    // if(isidcheck.value == "n"){-->
+<!--    //     isidcheck.setAttribute("value", "y");-->
+<!--    // }-->
+
+<!--    console.log(userid);-->
+
+
+<!--    };-->
 <!--    </script>-->
 
 </div>
