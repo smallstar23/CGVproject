@@ -203,7 +203,15 @@ CREATE TABLE Gift (
     content varchar2(500), -- 상품설명
     price varchar2(50)   not null, -- 가격
     gfile varchar2(200)   not null,-- 이미지 경로
-    end_month varchar2(10)   not null -- 종료일
+    end_month varchar2(10)   not null, -- 종료일
+    mainon number(1) default 0,
+    constraint ck_gift_mainon check(mainon in (1,0))
+);
+create table Gift_Explain(
+    idx number(10) primary key,
+    gcode number(10) not null,
+    about varchar2(50) not null,
+    constraint fk_gift_Explain_gcode foreign key(gcode) references Gift(gcode)
 );
 
 CREATE TABLE Gift_payment (
@@ -221,7 +229,9 @@ create sequence seq_gift
     increment by 1
     maxvalue 9999999999;
     
-
+create sequence seq_gift_explain
+    start with 1
+    increment by 1;
 
 drop table gift_payment; drop table gift; drop table ticket_payment; drop table ticket; drop table notification; drop table seathtml;
 drop table seat; drop table schedule;drop table price; drop table reply; drop table director; drop table actor; drop table trailer;
@@ -263,5 +273,16 @@ insert into Gift (gcode, category, title, gname, content, price, gfile, end_mont
 insert into Gift (gcode, category, title, gname, content, price, gfile, end_month) values (seq_gift.nextval,'7','맛밤','맛밤','맛도 있고 건강에도 좋은 맛밤','3,500','http://img.cgv.co.kr/GiftStore/Product/Pc/Detail/15464178224220.jpg','6');
 insert into Gift (gcode, category, title, gname, content, price, gfile, end_month) values (seq_gift.nextval,'7','오징어(완제품)','오징어(완제품)','영화 보는 즐거움에 씹는 즐거움까지 더해보세요!','3,500','http://img.cgv.co.kr/GiftStore/Product/Pc/Detail/15459089336130.jpg','6');
 
+
+insert into Gift_explain(idx, gcode, about) values (seq_gift_explain.nextval, 1, '즐거운 경험은 CGV에서!');
+
+create table Gift_Explain(
+    idx number(10) primary key,
+    gcode number(10) not null,
+    about varchar2(50) not null,
+    constraint fk_gift_Explain_gcode foreign key(gcode) references Gift(gcode)
+);
+
 set autocommit on;
+show autocommit;
 

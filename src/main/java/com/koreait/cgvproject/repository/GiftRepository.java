@@ -11,4 +11,5 @@ import java.util.Optional;
 public interface GiftRepository extends JpaRepository<Gift, Long> {
 
     List<Gift> findByCategoryOrderByGcode(String cno);
+    List<Gift> findByMainonOrderByGcode(Integer mainon);
 }

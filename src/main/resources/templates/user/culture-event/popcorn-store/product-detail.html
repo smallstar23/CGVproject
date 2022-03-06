@@ -179,22 +179,26 @@
         <!-- E 카테고리 메뉴 & 받은선물/장바구니 -->
 
         <!-- 상품정보 -->
-        <div class='category_product_detail_wrap'><strong class='category_product_detail_title'>CGV
-            영화관람권<span>기프트콘</span></strong>
+        <input type="hidden" th:value="${giftDTO.title}" id="DTOTitle">
+        <input type="hidden" th:value="${giftDTO.category}" id="DTOCategory">
+        <div class='category_product_detail_wrap'>
+            <strong class='category_product_detail_title' th:utext='${giftDTO.title+"<span>기프트콘</span>"}'></strong>
             <div class='category_product_detail_contents'>
                 <div class='category_product_detail_contents_img_wrap'>
                     <ul class='bxslider'>
-                        <li><img src='http://img.cgv.co.kr/GiftStore/Product/Pc/Detail/16094706931690.jpg'
-                                 alt='CGV 영화관람권'></li>
+                        <li>
+                            <img th:src='${giftDTO.gfile}' th:alt='${giftDTO.title}'>
+                        </li>
                     </ul>
                 </div>
                 <div class='category_product_detail_contents_wrap'><p class='category_product_detail_sale_price_wrap'>
-                    <span class="store_deatail_sale_price" id="spnSalePrice">11,000</span></p>
+                    <span class="store_deatail_sale_price" id="spnSalePrice" th:text="${giftDTO.price}"></span></p>
                     <dl class='category_product_detail_add_info'>
                         <dt>상품구성</dt>
-                        <dd>일반 영화관람권</dd>
+                        <dd th:text="${giftDTO.gname}"></dd>
                         <dt>유효기간</dt>
-                        <dd>구매일로부터 24개월 이내</dd>
+                        <dd th:if='${giftDTO.endMonth == "6"}'>구매일로부터 6개월 이내</dd>
+                        <dd th:if='${giftDTO.endMonth == "24"}'>구매일로부터 24개월 이내</dd>
                         <dt>상품교환</dt>
                         <dd><a href='#none' class='btn_available_viewcgv'>사용가능 CGV 보기</a>
                         </dd>
@@ -206,148 +210,22 @@
                                 class='com_form_count com_form_count0'>1</span> <a href="#none"
                                                                                    onclick="$.fn.comFormNumberCnt('com_form_count0','com_total_price', 'com_total_price0', 1, 1, 10);"
                                                                                    class="com_btn_plus">+</a> <span
-                                class='com_total_price' id='spantotalprice'>11,000</span></div>
+                                class='com_total_price' id='spantotalprice' th:text="${giftDTO.price}"></span></div>
                         <div class='category_product_detail_total_price'><p class='com_form_total_price'>총 구매금액<span
-                                class='com_total_price0 com_product_total_price'>11,000</span></p></div>
+                                class='com_total_price0 com_product_total_price' th:text="${giftDTO.price}"></span></p></div>
                     </div>
-                    <div class='category_product_detail_btn_wrap'><a href='/culture-event/popcorn-store/user-cart'
-
-                                                                     class='btn_cart'>장바구니</a> <a
+                    <div class='category_product_detail_btn_wrap'> <a
                             href='/culture-event/popcorn-store/user-cart'
                             onclick='app.goLogin(); return false;'>선물하기</a><a
                             href='/culture-event/popcorn-store/purchase-confirm'>구매하기</a>
                     </div>
                 </div>
             </div>
-            <p class='category_product_detail_txtbox'>CGV 영화관람권으로 즐거운 영화관람하세요!</p>
-            <dl class='category_product_detail_dlist'>
-                <dt>이용안내</dt>
-                <dd>• 해당 기프트콘은 CGV모바일, 홈페이지, 오프라인 극장에서 영화를 예매할 수 있는 온라인 상품권입니다.<br/>
-                    • <strong>구매 후 전송받으신 기프트콘은,</strong><br/>
-                    - 사용가능한 CGV에서 지정된 상영타입의 영화만 예매 가능합니다.(ex. 3D 관람권으로는 3D 영화만 예매 가능합니다)<br/>
-                    - 금액권이 아니므로 차액 환급이 불가합니다. (ex.조조영화/청소년 관람 시 차액환급 불가)<br/>
-                    - 영화 상영 후 환불 및 반품은 불가합니다.<br/>
-                    • <strong>관람권 기프트콘을 온라인에 등록하시는 경우,</strong><br/>
-                    - 모바일 : MY > 관람권/카드 > 기프트콘에서 '기프트콘 등록' 버튼 선택하여 수신받은 쿠폰번호 입력<br/>
-                    - 홈페이지(PC) : ‘MyCGV > 스토어 > 내 기프트콘'에서 [기프트콘 등록]버튼 선택하여 수신받은 쿠폰번호 입력<br/>
-                    • <strong>유효기간 연장을 신청하는 경우,</strong><br/>
-                    유효기간은 발급일로부터 5년 이내 횟수 제한 없이 기간 연장 가능하며, 1회 연장 시 3개월(92일) 단위로 유효기간이 연장됩니다. <br/>
-                    단, 이벤트 경품 및 프로모션 상품의 경우 유효기간 연장이 불가할 수 있습니다.<br/>
-                    유효기간 만료 이후에는 결제금액의 90% 환불이 가능합니다. <br/>
-                    • 관람권 기프트콘 구매 시 CJ ONE 포인트는 적립되지 않습니다.<br/>
-                    •<strong> 오프라인에서 지류 관람권을 구매하는 경우,</strong><br/>
-                    - 전국 CGV 중 일부 극장을 제외한 CGV 극장에서 최소 10매 이상 구매하실 수 있습니다. (관람기한 2년)<br/>
-                    - 1Set 구성 : CGV 영화관람권 10매 + 보너스 1매 + 콤보 1,000원 할인권 5매 = 110,000원<br/>
-                    <span style="font-family:Verdana,Geneva,sans-serif"><span style="color:#222222"><span
-                            style="background-color:#ffffe0">- 지류관람권 미판매 극장</span></span></span><span
-                            style="font-family:Tahoma,Geneva,sans-serif"><span style="color:#222222"><span
-                            style="background-color:#ffffe0">: </span></span></span><span
-                            style="background-color:#ffffe0">CGV건대입구, 경기광주, 광교상현, 광명철산, 광양엘에프스퀘어, 광주금남로, 광주용봉, 김포풍무, 김천율곡, 김해장유, 나주, 남주안, 남포, 동대문, 대구, 대전가수원, 대학로, 명동역 씨네라이브러리, 목포, 범계, 보령, 부평, 불광, 상봉, 수유, 서산, 성신여대입구, 시흥, 스타필드시티위례, 안동, 안성, 양산물금, 연남, 연수역, 유성노은, 의정부태흥, 인제, 정관, 정읍, 천호, 청라, 청주성안길, 통영, 하계, 하단아트몰링, 화명, 화성봉담, 홍대 등 극장 운영 상황에 따라 변경될 수 있습니다.</span>
-                </dd>
-                <dt>취소/환불</dt>
-                <dd>• 구매자는 최초 유효기간 이내에 결제금액의 100%에 대해 결제취소/환불이 가능하며, 최초 유효기간 만료 후에는 수신자가 결제금액의 90%에 대해 환불 요청 가능합니다.<br/>
-                    • 단, 이미 사용된 기프트콘에 대해서는 결제취소/환불 신청이 불가합니다. <br/>
-                    <strong>• 결제취소/환불 방법</strong><br/>
-                    결제취소는 모바일App,웹 > MY > 결제내역조회 > 스토어 or 홈페이지 > My CGV > 스토어 > 결제내역의 해당 주문 상세내역에서 가능합니다.<br/>
-                    (기프트콘은 구매일로부터 60일 이내 결제취소 가능하며, 카드 결제취소 가능 기간이 경과하였을 경우, 고객센터로 연락주시면 됩니다)<br/>
-                    환불은 모바일App,웹 > MY > 기프트콘 or 홈페이지 > My CGV > 스토어 > 내 기프트콘에서 환불을 원하는 기프트콘 등록 후 진행 가능하며, 비회원의 경우 고객센터로
-                    신청 가능합니다.<br/>
-                    단 이 때, 본인 확인 및 계좌 확인 절차가 진행됩니다.<br/>
-                    • 수신자는 선물받은 기프트콘의 수신거절을 요청할 수 있으며, 이 경우 구매자에게 취소 및 환불에 대한 안내가 이루어집니다. <br/>
-                    • 결제취소 가능 기간이 경과한 후 수신자가 수신거절을 요청할 경우 구매자에게 기프트콘이 재발송됩니다.<br/>
-                    • CGV고객센터 1544-1122
-                </dd>
-                <dt>미성년자 권리보호 안내</dt>
-                <dd>미성년자인 고객께서 계약을 체결하시는 경우 법정대리인이 그 계약에 동의하지 아니하면 미성년자 본인 또는 법정대리인이 그 계약을 취소할 수 있습니다.</dd>
-                <dt>분쟁 해결</dt>
-                <dd>1) 회사는 이용자가 제기하는 정당한 의견이나 불만을 반영하고 그 피해의 보상 등에 관한 처리를 위하여</br> &nbsp;&nbsp;CGV고객센터(1544-1122)를 설치
-                    운영하고 있습니다.        </br>2) 회사는 고객센터를 통하여 이용자로부터 제출되는 불만사항 및 의견을 처리합니다. </br> &nbsp;&nbsp;다만, 신속한 처리가
-                    곤란한 경우에는 이용자에게 그 사유와 처리일정을 즉시 통보합니다.        </br>3) 전자상거래 분쟁(청약철회등)과 관련한 이용자의 피해구제는 이용약관 및 전자상거래법 등
-                    관련 법령에 따릅니다.
-                </dd>
-            </dl>
+            <p class='category_product_detail_txtbox' th:text="${giftDTO.content}"></p>
         </div>
         <!-- 추가상품 -->
 
         <!-- 같이본상품 -->
-        <div class='category_product_together_view_wrap'><strong class='category_product_together_view_title'>이 상품과 함께 본
-            상품</strong>
-            <ul class='bxslider com_list_style'>
-                <li class=''>
-                    <a href='/culture-event/popcorn-store/product-detail' class='btn_category_product'>
-                        <span class='com_list_img_wrap'>
-                            <img src='http://img.cgv.co.kr/GiftStore/Product/Pc/Detail/15458911955580.jpg'
-                                 alt='CGV 골드클래스'>
-                        </span>
-                        <span class='com_list_text_wrap'>
-                            <span class='com_list_text_title'>CGV 골드클래스</span>
-                            <span class='com_list_text_name'>골드클래스 관람권</span>
-                            <span class='com_list_sale_price_wrap'>
-                                <span class='store_deatail_source_price'>35,000</span>
-                            </span>
-                        </span>
-                    </a>
-                    <a href='/culture-event/popcorn-store/user-cart' class='btn_category_product_cart'>장바구니</a>
-                    <a href='/culture-event/popcorn-store/user-gift' class='btn_category_product_gift'>선물하기</a>
-                    <a href='/culture-event/popcorn-store/purchase-confirm' class='btn_category_product_buy'>구매하기</a>
-                </li>
-                <li class=''>
-                    <a href='/culture-event/popcorn-store/product-detail' class='btn_category_product'>
-                        <span class='com_list_img_wrap'>
-                            <img src='http://img.cgv.co.kr/GiftStore/Product/Pc/Detail/15458907785230.jpg'
-                                 alt='CGV 씨네드쉐프 관람권'>
-                        </span>
-                        <span class='com_list_text_wrap'>
-                            <span class='com_list_text_title'>CGV 씨네드쉐프 관람권</span>
-                            <span class='com_list_text_name'>씨네드쉐프 관람권</span>
-                            <span class='com_list_sale_price_wrap'>
-                                <span class='store_deatail_source_price'>45,000</span>
-                            </span>
-                        </span>
-                    </a>
-                    <a href='/culture-event/popcorn-store/user-cart' class='btn_category_product_cart'>장바구니</a>
-                    <a href='/culture-event/popcorn-store/user-gift' class='btn_category_product_gift'>선물하기</a>
-                    <a href='/culture-event/popcorn-store/purchase-confirm' class='btn_category_product_buy'>구매하기</a>
-                </li>
-
-                <li class=''>
-                    <a href='/culture-event/popcorn-store/product-detail' class='btn_category_product'>
-                        <span class='com_list_img_wrap'>
-                            <img src='http://img.cgv.co.kr/GiftStore/Product/Pc/Detail/16104445892120.jpg'
-                                 alt='IMAX 관람권'>
-                        </span>
-                        <span class='com_list_text_wrap'>
-                        <span class='com_list_text_title'>IMAX 관람권</span>
-                        <span class='com_list_text_name'>IMAX 영화관람권</span>
-                        <span class='com_list_sale_price_wrap'>
-                            <span class='store_deatail_source_price'>16,000</span>
-                        </span>
-                    </span>
-                    </a>
-                    <a href='/culture-event/popcorn-store/user-cart' class='btn_category_product_cart'>장바구니</a>
-                    <a href='/culture-event/popcorn-store/user-gift' class='btn_category_product_gift'>선물하기</a>
-                    <a href='/culture-event/popcorn-store/purchase-confirm' class='btn_category_product_buy'>구매하기</a>
-                </li>
-
-                <li class=''>
-                    <a href='/culture-event/popcorn-store/product-detail' class='btn_category_product'>
-                        <span class='com_list_img_wrap'>
-                            <img src='http://img.cgv.co.kr/GiftStore/Product/Pc/Detail/16105061094000.jpg' alt='4DX관람권'>
-                        </span>
-                        <span class='com_list_text_wrap'>
-                            <span class='com_list_text_title'>4DX관람권</span>
-                            <span class='com_list_text_name'>4DX 영화관람권</span>
-                            <span class='com_list_sale_price_wrap'>
-                                <span class='store_deatail_source_price'>19,000</span>
-                            </span>
-                        </span>
-                    </a>
-                    <a href='/culture-event/popcorn-store/user-cart' class='btn_category_product_cart'>장바구니</a>
-                    <a href='/culture-event/popcorn-store/user-gift' class='btn_category_product_gift'>선물하기</a>
-                    <a href='/culture-event/popcorn-store/purchase-confirm' class='btn_category_product_buy'>구매하기</a>
-                </li>
-            </ul>
-        </div>
 
 
         <!--/ Contents End -->
@@ -368,231 +246,19 @@
                 </li>
                 <li class="" id="liTheater02"><a href="javascript:void(0);"
                                                  onclick="fnTheaterData('02');">경기</a><span>54</span></li>
-                <li class="" id="liTheater202"><a href="javascript:void(0);"
-                                                  onclick="fnTheaterData('202');">인천</a><span>13</span>
-                </li>
-                <li class="" id="liTheater12"><a href="javascript:void(0);"
-                                                 onclick="fnTheaterData('12');">강원</a><span>4</span></li>
-                <li class="" id="liTheater03"><a href="javascript:void(0);"
-                                                 onclick="fnTheaterData('03');">대전/충청</a><span>22</span>
-                </li>
-                <li class="" id="liTheater11"><a href="javascript:void(0);"
-                                                 onclick="fnTheaterData('11');">대구</a><span>8</span></li>
-                <li class="" id="liTheater207"><a href="javascript:void(0);"
-                                                  onclick="fnTheaterData('207');">부산/울산</a><span>15</span>
-                </li>
-                <li class="" id="liTheater204"><a href="javascript:void(0);"
-                                                  onclick="fnTheaterData('204');">경상</a><span>19</span>
-                </li>
-                <li class="" id="liTheater206"><a href="javascript:void(0);"
-                                                  onclick="fnTheaterData('206');">광주/전라/제주</a><span>24</span>
-                </li>
             </ul>
             <ul class="pop_product_cgv_content" id="divLocation01">
                 <li><a href="javascript:void(0);">CGV강남</a></li>
                 <li><a href="javascript:void(0);">CGV강변</a></li>
                 <li><a href="javascript:void(0);">CGV건대입구</a></li>
-                <li><a href="javascript:void(0);">CGV구로</a></li>
-                <li><a href="javascript:void(0);">CGV대학로</a></li>
-                <li><a href="javascript:void(0);">CGV동대문</a></li>
-                <li><a href="javascript:void(0);">CGV등촌</a></li>
-                <li><a href="javascript:void(0);">CGV명동</a></li>
-                <li><a href="javascript:void(0);">CGV명동역 씨네라이브러리</a></li>
-                <li><a href="javascript:void(0);">CGV목동</a></li>
-                <li><a href="javascript:void(0);">CGV미아</a></li>
-                <li><a href="javascript:void(0);">CGV불광</a></li>
-                <li><a href="javascript:void(0);">CGV상봉</a></li>
-                <li><a href="javascript:void(0);">CGV성신여대입구</a></li>
-                <li><a href="javascript:void(0);">CGV송파</a></li>
-                <li><a href="javascript:void(0);">CGV수유</a></li>
-                <li><a href="javascript:void(0);">CGV신촌아트레온</a></li>
-                <li><a href="javascript:void(0);">CGV압구정</a></li>
-                <li><a href="javascript:void(0);">CGV여의도</a></li>
-                <li><a href="javascript:void(0);">CGV연남</a></li>
-                <li><a href="javascript:void(0);">CGV영등포</a></li>
-                <li><a href="javascript:void(0);">CGV왕십리</a></li>
-                <li><a href="javascript:void(0);">CGV용산아이파크몰</a></li>
-                <li><a href="javascript:void(0);">CGV중계</a></li>
-                <li><a href="javascript:void(0);">CGV천호</a></li>
-                <li><a href="javascript:void(0);">CGV피카디리1958</a></li>
-                <li><a href="javascript:void(0);">CGV하계</a></li>
-                <li><a href="javascript:void(0);">CGV홍대</a></li>
             </ul>
             <ul class="pop_product_cgv_content" id="divLocation02" style="display:none;">
                 <li><a href="javascript:void(0);">CGV경기광주</a></li>
                 <li><a href="javascript:void(0);">CGV고양행신</a></li>
                 <li><a href="javascript:void(0);">CGV광교</a></li>
-                <li><a href="javascript:void(0);">CGV광교상현</a></li>
-                <li><a href="javascript:void(0);">CGV구리</a></li>
-                <li><a href="javascript:void(0);">CGV김포</a></li>
-                <li><a href="javascript:void(0);">CGV김포운양</a></li>
-                <li><a href="javascript:void(0);">CGV김포풍무</a></li>
-                <li><a href="javascript:void(0);">CGV김포한강</a></li>
-                <li><a href="javascript:void(0);">CGV동백</a></li>
-                <li><a href="javascript:void(0);">CGV동수원</a></li>
-                <li><a href="javascript:void(0);">CGV동탄</a></li>
-                <li><a href="javascript:void(0);">CGV동탄스타</a></li>
-                <li><a href="javascript:void(0);">CGV동탄역</a></li>
-                <li><a href="javascript:void(0);">CGV동탄호수공원</a></li>
-                <li><a href="javascript:void(0);">CGV배곧</a></li>
-                <li><a href="javascript:void(0);">CGV범계</a></li>
-                <li><a href="javascript:void(0);">CGV부천</a></li>
-                <li><a href="javascript:void(0);">CGV부천역</a></li>
-                <li><a href="javascript:void(0);">CGV부천옥길</a></li>
-                <li><a href="javascript:void(0);">CGV북수원</a></li>
-                <li><a href="javascript:void(0);">CGV산본</a></li>
-                <li><a href="javascript:void(0);">CGV서현</a></li>
-                <li><a href="javascript:void(0);">CGV성남모란</a></li>
-                <li><a href="javascript:void(0);">CGV소풍</a></li>
-                <li><a href="javascript:void(0);">CGV수원</a></li>
-                <li><a href="javascript:void(0);">CGV스타필드시티위례</a></li>
-                <li><a href="javascript:void(0);">CGV시흥</a></li>
-                <li><a href="javascript:void(0);">CGV안산</a></li>
-                <li><a href="javascript:void(0);">CGV안성</a></li>
-                <li><a href="javascript:void(0);">CGV안양</a></li>
-                <li><a href="javascript:void(0);">CGV야탑</a></li>
-                <li><a href="javascript:void(0);">CGV양주옥정</a></li>
-                <li><a href="javascript:void(0);">CGV역곡</a></li>
-                <li><a href="javascript:void(0);">CGV오리</a></li>
-                <li><a href="javascript:void(0);">CGV오산</a></li>
-                <li><a href="javascript:void(0);">CGV오산중앙</a></li>
-                <li><a href="javascript:void(0);">CGV용인</a></li>
-                <li><a href="javascript:void(0);">CGV의정부</a></li>
-                <li><a href="javascript:void(0);">CGV의정부태흥</a></li>
-                <li><a href="javascript:void(0);">CGV이천</a></li>
-                <li><a href="javascript:void(0);">CGV일산</a></li>
-                <li><a href="javascript:void(0);">CGV정왕</a></li>
-                <li><a href="javascript:void(0);">CGV죽전</a></li>
-                <li><a href="javascript:void(0);">CGV파주문산</a></li>
-                <li><a href="javascript:void(0);">CGV파주야당</a></li>
-                <li><a href="javascript:void(0);">CGV판교</a></li>
-                <li><a href="javascript:void(0);">CGV평촌</a></li>
-                <li><a href="javascript:void(0);">CGV평택</a></li>
-                <li><a href="javascript:void(0);">CGV평택소사</a></li>
-                <li><a href="javascript:void(0);">CGV포천</a></li>
-                <li><a href="javascript:void(0);">CGV하남미사</a></li>
-                <li><a href="javascript:void(0);">CGV화성봉담</a></li>
-                <li><a href="javascript:void(0);">CGV화정</a></li>
+
             </ul>
-            <ul class="pop_product_cgv_content" id="divLocation202" style="display:none;">
-                <li><a href="javascript:void(0);">CGV계양</a></li>
-                <li><a href="javascript:void(0);">CGV남주안</a></li>
-                <li><a href="javascript:void(0);">CGV부평</a></li>
-                <li><a href="javascript:void(0);">CGV송도타임스페이스</a></li>
-                <li><a href="javascript:void(0);">CGV연수역</a></li>
-                <li><a href="javascript:void(0);">CGV인천</a></li>
-                <li><a href="javascript:void(0);">CGV인천공항</a></li>
-                <li><a href="javascript:void(0);">CGV인천논현</a></li>
-                <li><a href="javascript:void(0);">CGV인천도화</a></li>
-                <li><a href="javascript:void(0);">CGV인천연수</a></li>
-                <li><a href="javascript:void(0);">CGV인천학익</a></li>
-                <li><a href="javascript:void(0);">CGV주안역</a></li>
-                <li><a href="javascript:void(0);">CGV청라</a></li>
-            </ul>
-            <ul class="pop_product_cgv_content" id="divLocation12" style="display:none;">
-                <li><a href="javascript:void(0);">CGV강릉</a></li>
-                <li><a href="javascript:void(0);">CGV원주</a></li>
-                <li><a href="javascript:void(0);">CGV인제</a></li>
-                <li><a href="javascript:void(0);">CGV춘천</a></li>
-            </ul>
-            <ul class="pop_product_cgv_content" id="divLocation03" style="display:none;">
-                <li><a href="javascript:void(0);">CGV대전</a></li>
-                <li><a href="javascript:void(0);">CGV대전가수원</a></li>
-                <li><a href="javascript:void(0);">CGV대전가오</a></li>
-                <li><a href="javascript:void(0);">CGV대전탄방</a></li>
-                <li><a href="javascript:void(0);">CGV대전터미널</a></li>
-                <li><a href="javascript:void(0);">CGV유성노은</a></li>
-                <li><a href="javascript:void(0);">CGV논산</a></li>
-                <li><a href="javascript:void(0);">CGV당진</a></li>
-                <li><a href="javascript:void(0);">CGV보령</a></li>
-                <li><a href="javascript:void(0);">CGV서산</a></li>
-                <li><a href="javascript:void(0);">CGV세종</a></li>
-                <li><a href="javascript:void(0);">CGV천안</a></li>
-                <li><a href="javascript:void(0);">CGV천안터미널</a></li>
-                <li><a href="javascript:void(0);">CGV천안펜타포트</a></li>
-                <li><a href="javascript:void(0);">CGV청주(서문)</a></li>
-                <li><a href="javascript:void(0);">CGV청주성안길</a></li>
-                <li><a href="javascript:void(0);">CGV청주율량</a></li>
-                <li><a href="javascript:void(0);">CGV청주지웰시티</a></li>
-                <li><a href="javascript:void(0);">CGV청주터미널</a></li>
-                <li><a href="javascript:void(0);">CGV충북혁신</a></li>
-                <li><a href="javascript:void(0);">CGV충주교현</a></li>
-                <li><a href="javascript:void(0);">CGV홍성</a></li>
-            </ul>
-            <ul class="pop_product_cgv_content" id="divLocation11" style="display:none;">
-                <li><a href="javascript:void(0);">CGV대구수성</a></li>
-                <li><a href="javascript:void(0);">CGV대구스타디움</a></li>
-                <li><a href="javascript:void(0);">CGV대구아카데미</a></li>
-                <li><a href="javascript:void(0);">CGV대구월성</a></li>
-                <li><a href="javascript:void(0);">CGV대구이시아</a></li>
-                <li><a href="javascript:void(0);">CGV대구칠곡</a></li>
-                <li><a href="javascript:void(0);">CGV대구한일</a></li>
-                <li><a href="javascript:void(0);">CGV대구현대</a></li>
-            </ul>
-            <ul class="pop_product_cgv_content" id="divLocation207" style="display:none;">
-                <li><a href="javascript:void(0);">CGV남포</a></li>
-                <li><a href="javascript:void(0);">CGV대연</a></li>
-                <li><a href="javascript:void(0);">CGV동래</a></li>
-                <li><a href="javascript:void(0);">CGV부산대</a></li>
-                <li><a href="javascript:void(0);">CGV서면</a></li>
-                <li><a href="javascript:void(0);">CGV서면삼정타워</a></li>
-                <li><a href="javascript:void(0);">CGV센텀시티</a></li>
-                <li><a href="javascript:void(0);">CGV아시아드</a></li>
-                <li><a href="javascript:void(0);">CGV정관</a></li>
-                <li><a href="javascript:void(0);">CGV하단아트몰링</a></li>
-                <li><a href="javascript:void(0);">CGV해운대</a></li>
-                <li><a href="javascript:void(0);">CGV화명</a></li>
-                <li><a href="javascript:void(0);">CGV울산삼산</a></li>
-                <li><a href="javascript:void(0);">CGV울산신천</a></li>
-                <li><a href="javascript:void(0);">CGV울산진장</a></li>
-            </ul>
-            <ul class="pop_product_cgv_content" id="divLocation204" style="display:none;">
-                <li><a href="javascript:void(0);">CGV거제</a></li>
-                <li><a href="javascript:void(0);">CGV경산</a></li>
-                <li><a href="javascript:void(0);">CGV고성</a></li>
-                <li><a href="javascript:void(0);">CGV구미</a></li>
-                <li><a href="javascript:void(0);">CGV김천율곡</a></li>
-                <li><a href="javascript:void(0);">CGV김해</a></li>
-                <li><a href="javascript:void(0);">CGV김해율하</a></li>
-                <li><a href="javascript:void(0);">CGV김해장유</a></li>
-                <li><a href="javascript:void(0);">CGV마산</a></li>
-                <li><a href="javascript:void(0);">CGV북포항</a></li>
-                <li><a href="javascript:void(0);">CGV안동</a></li>
-                <li><a href="javascript:void(0);">CGV양산물금</a></li>
-                <li><a href="javascript:void(0);">CGV양산삼호</a></li>
-                <li><a href="javascript:void(0);">CGV진주혁신</a></li>
-                <li><a href="javascript:void(0);">CGV창원</a></li>
-                <li><a href="javascript:void(0);">CGV창원더시티</a></li>
-                <li><a href="javascript:void(0);">CGV창원상남</a></li>
-                <li><a href="javascript:void(0);">CGV통영</a></li>
-                <li><a href="javascript:void(0);">CGV포항</a></li>
-            </ul>
-            <ul class="pop_product_cgv_content" id="divLocation206" style="display:none;">
-                <li><a href="javascript:void(0);">CGV광양</a></li>
-                <li><a href="javascript:void(0);">CGV광양 엘에프스퀘어</a></li>
-                <li><a href="javascript:void(0);">CGV군산</a></li>
-                <li><a href="javascript:void(0);">CGV나주</a></li>
-                <li><a href="javascript:void(0);">CGV목포</a></li>
-                <li><a href="javascript:void(0);">CGV목포평화광장</a></li>
-                <li><a href="javascript:void(0);">CGV서전주</a></li>
-                <li><a href="javascript:void(0);">CGV순천</a></li>
-                <li><a href="javascript:void(0);">CGV순천신대</a></li>
-                <li><a href="javascript:void(0);">CGV여수웅천</a></li>
-                <li><a href="javascript:void(0);">CGV익산</a></li>
-                <li><a href="javascript:void(0);">CGV전주</a></li>
-                <li><a href="javascript:void(0);">CGV전주고사</a></li>
-                <li><a href="javascript:void(0);">CGV전주효자</a></li>
-                <li><a href="javascript:void(0);">CGV정읍</a></li>
-                <li><a href="javascript:void(0);">CGV제주</a></li>
-                <li><a href="javascript:void(0);">CGV제주노형</a></li>
-                <li><a href="javascript:void(0);">CGV광주금남로</a></li>
-                <li><a href="javascript:void(0);">CGV광주상무</a></li>
-                <li><a href="javascript:void(0);">CGV광주용봉</a></li>
-                <li><a href="javascript:void(0);">CGV광주첨단</a></li>
-                <li><a href="javascript:void(0);">CGV광주충장로</a></li>
-                <li><a href="javascript:void(0);">CGV광주터미널</a></li>
-                <li><a href="javascript:void(0);">CGV광주하남</a></li>
-            </ul>
+
         </div>
     </div>
 </div>

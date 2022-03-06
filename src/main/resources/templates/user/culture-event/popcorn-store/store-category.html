@@ -164,7 +164,7 @@
             <ul class="com_list_style">
                 <!-- 반복 실행 -->
                 <li class="" th:each="giftDTO : ${giftDTOList}">
-                    <a href="/culture-event/popcorn-store/product-detail" class="btn_category_product">
+                    <a th:href="@{/culture-event/popcorn-store/product-detail?gcode=} + ${giftDTO.gcode}" class="btn_category_product">
                         <span class="com_list_img_wrap">
                             <img th:src="${giftDTO.gfile}" alt="CGV 영화관람권">
                         </span>
