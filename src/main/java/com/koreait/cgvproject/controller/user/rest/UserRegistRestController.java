@@ -22,6 +22,9 @@ public class UserRegistRestController {
             System.out.println("같은 아이디가 존재합니다.");
             return 1;
         }
+        if(userid.length() < 4 || userid.length() > 19){
+            return 2;
+        }
 
         return 0;
     }
