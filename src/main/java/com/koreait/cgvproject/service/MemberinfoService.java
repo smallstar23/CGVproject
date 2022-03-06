@@ -36,4 +36,12 @@ public class MemberinfoService {
 //        return memberinfoRepository.findById(id).get();
 //    }
 
+    public int idCheck(String userid){
+        MemberinfoEntity check=memberinfoRepository.findByUserid(userid);
+        if(check!=null){
+            return 1;
+        }
+        return 0;
+    }
+
 }

@@ -1,6 +1,5 @@
 package com.koreait.cgvproject.controller.user.page;
 
-import com.koreait.cgvproject.dto.IdcheckDTO;
 import com.koreait.cgvproject.dto.Member_info_DTO;
 import com.koreait.cgvproject.entity.MemberinfoEntity;
 import com.koreait.cgvproject.repository.MemberinfoRepository;
@@ -11,9 +10,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
-
-import javax.servlet.http.HttpServletRequest;
-import java.util.Optional;
 
 @Controller
 @Slf4j // 로깅을 위한 어노테이션
@@ -105,13 +101,6 @@ public class UserRegistController {
 //        return "result";
 //    }
 
-    @PostMapping("/idCheck")
-    @ResponseBody
-    public String idCheck(@RequestParam("id") String id){
-
-        System.out.println("전달받은 id:"+id);
-        return "";
-    }
 
 
 }
