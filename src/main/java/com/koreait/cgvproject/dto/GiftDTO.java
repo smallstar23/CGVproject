@@ -19,9 +19,5 @@ public class GiftDTO{
     private String price;
     private String gfile;
     private String endMonth;
-
-    public Gift toEntity() {
-        return Gift.builder().gcode(gcode).category(category).title(title).gname(gname).content(content).price(price)
-                .gfile(gfile).endMonth(endMonth).build();
-    }
+    private Integer mainon;
 }

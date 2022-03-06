@@ -334,21 +334,23 @@
         <!-- S Category product -->
         <div class='category_product_wrap'>
             <ul class='category_product_list'>
+
                 <li>
                     <strong class='category_product_title'>영화관람권<a href='/culture-event/popcorn-store/store-category?cno=2'
                                                                    class='btn_category_product'>더보기</a></strong>
                     <ul class='category_product_inner_list'>
-                        <li class=' '>
-                            <a href='/culture-event/popcorn-store/product-detail' class='btn_category_product'>
+                        <!-- 반복할 부분 -->
+                        <li class=' ' th:each="movieDTO : ${movieDTOList}">
+                            <a th:href='@{/culture-event/popcorn-store/product-detail?gcode=} + ${movieDTO.gcode}' class='btn_category_product'>
                                 <span class='best_product_img_wrap'>
-                                    <img src="http://img.cgv.co.kr/GiftStore/Product/Pc/List/16094706927780.jpg"
-                                         alt="CGV 영화관람권"/>
+                                    <img th:src="${movieDTO.gfile}"
+                                         th:alt="${movieDTO.title}"/>
                                 </span>
                                 <span class='best_product_text_wrap'>
-                                    <span class='best_product_text_title'>CGV 영화관람권</span>
-                                    <span class='best_product_text_name'>즐거운 경험은 CGV에서!</span>
+                                    <span class='best_product_text_title' th:text="${movieDTO.title}"></span>
+                                    <span class='best_product_text_name'>OneToOne어케하냐...</span>
                                     <span class='best_product_sale_price_wrap'>
-                                        <span class='store_deatail_source_price'>11,000</span>
+                                        <span class='store_deatail_source_price' th:text="${movieDTO.price}"></span>
                                     </span>
                                 </span>
                             </a>
@@ -359,239 +361,125 @@
                             <a href="#none" onclick="fnMoveLink('3', '100253', '0', '1'); return false;"
                                class="btn_category_product_buy">3</a>
                         </li>
-                        <li class=' '>
-                            <a href='/culture-event/popcorn-store/product-detail' class='btn_category_product'>
-                                <span class='best_product_img_wrap'>
-                                    <img src="http://img.cgv.co.kr/GiftStore/Product/Pc/List/15458911951520.jpg"
-                                         alt="CGV 골드클래스"/>
-                                </span>
-                                <span class='best_product_text_wrap'>
-                                    <span class='best_product_text_title'>CGV 골드클래스</span>
-                                    <span class='best_product_text_name'>최고의 관람환경을 제공하는 프리미엄 상영관</span>
-                                    <span class='best_product_sale_price_wrap'>
-                                        <span class='store_deatail_source_price'>35,000</span>
-                                    </span>
-                                </span>
-                            </a>
-                            <a href="#none" onclick="fnMoveLink('1', '100026', '0', ''); return false;"
-                               class="btn_category_product_cart">1</a>
-                            <a href="#none" onclick="fnMoveLink('2', '100026', '0', '1'); return false;"
-                               class="btn_category_product_gift">2</a>
-                            <a href="#none" onclick="fnMoveLink('3', '100026', '0', '1'); return false;"
-                               class="btn_category_product_buy">3</a>
-                        </li>
-
-                        <li class=' '>
-                            <a href='/culture-event/popcorn-store/product-detail' class='btn_category_product'>
-                                <span class='best_product_img_wrap'>
-                                    <img src="http://img.cgv.co.kr/GiftStore/Product/Pc/List/16105061088530.jpg"
-                                         alt="4DX관람권"/>
-                                </span>
-                                <span class='best_product_text_wrap'>                  
-                                    <span class='best_product_text_title'>4DX관람권</span>                  
-                                    <span class='best_product_text_name'>오감만족 영화 속 주인공 되기</span>                  
-                                    <span class='best_product_sale_price_wrap'>                  
-                                        <span class='store_deatail_source_price'>19,000</span>                  
-                                    </span>
-                                </span>
-                            </a>
-                            <a href="#none" onclick="fnMoveLink('1', '100255', '0', ''); return false;"
-                               class="btn_category_product_cart">1</a>
-                            <a href="#none" onclick="fnMoveLink('2', '100255', '0', '1'); return false;"
-                               class="btn_category_product_gift">2</a>
-                            <a href="#none" onclick="fnMoveLink('3', '100255', '0', '1'); return false;"
-                               class="btn_category_product_buy">3</a>
-                        </li>
-
-                        <li class=' '>
-                            <a href='/culture-event/popcorn-store/product-detail' class='btn_category_product'>
-                                <span class='best_product_img_wrap'>
-                                    <img src="http://img.cgv.co.kr/GiftStore/Product/Pc/List/16104445886810.jpg"
-                                         alt="IMAX 관람권"/>
-                                </span>
-                                <span class='best_product_text_wrap'>
-                                    <span class='best_product_text_title'>IMAX 관람권</span>
-                                    <span class='best_product_text_name'>사람이 볼 수 있는 최대 영상, IMAX</span>                  
-                                    <span class='best_product_sale_price_wrap'>                  
-                                        <span class='store_deatail_source_price'>16,000</span>                 
-                                    </span>
-                                </span>
-                            </a>
-                            <a href="#none" onclick="fnMoveLink('1', '100254', '0', ''); return false;"
-                               class="btn_category_product_cart">1</a>
-                            <a href="#none" onclick="fnMoveLink('2', '100254', '0', '1'); return false;"
-                               class="btn_category_product_gift">2</a>
-                            <a href="#none" onclick="fnMoveLink('3', '100254', '0', '1'); return false;"
-                               class="btn_category_product_buy">3</a>
-                        </li>
+                        <!-- 반복할 부분 -->
                     </ul>
                 </li>
                 <li>
                     <strong class='category_product_title'>콤보<a href='/culture-event/popcorn-store/store-category?cno=4'
                                                                 class='btn_category_product'>더보기</a></strong>
-                    <ul class='category_product_inner_list'>
-                        <li class=' '><a href='product-detail.jsp?GG_NO=100019' class='btn_category_product'> <span
-                                class='best_product_img_wrap'><img
-                                src="http://img.cgv.co.kr/GiftStore/Product/Pc/List/15463252009160.jpg"
-                                alt="CGV콤보"/></span> <span class='best_product_text_wrap'>                  <span
-                                class='best_product_text_title'>CGV콤보</span>                  <span
-                                class='best_product_text_name'>CGV의 영원한 베스트셀러!</span>                  <span
-                                class='best_product_sale_price_wrap'>                  <span
-                                class='store_deatail_source_price'>9,000</span>                  </span>
-              </span>
-                        </a>
-                            <a href="#none" onclick="fnMoveLink('1', '100019', '0', ''); return false;"
-                               class="btn_category_product_cart">1</a> <a href="#none"
-                                                                          onclick="fnMoveLink('2', '100019', '0', '1'); return false;"
-                                                                          class="btn_category_product_gift">2</a> <a
-                                    href="#none" onclick="fnMoveLink('3', '100019', '0', '1'); return false;"
-                                    class="btn_category_product_buy">3</a>
-                        <li class=' '><a href='product-detail.jsp?GG_NO=100020' class='btn_category_product'> <span
-                                class='best_product_img_wrap'><img
-                                src="http://img.cgv.co.kr/GiftStore/Product/Pc/List/15463251537260.jpg"
-                                alt="더블콤보"/></span> <span class='best_product_text_wrap'>                  <span
-                                class='best_product_text_title'>더블콤보</span>                  <span
-                                class='best_product_text_name'>취향별로 원하는 맛 선택하세요!</span>                  <span
-                                class='best_product_sale_price_wrap'>                  <span
-                                class='store_deatail_source_price'>12,000</span>                  </span>
-              </span>
-                        </a>
-                            <a href="#none" onclick="fnMoveLink('1', '100020', '0', ''); return false;"
-                               class="btn_category_product_cart">1</a> <a href="#none"
-                                                                          onclick="fnMoveLink('2', '100020', '0', '1'); return false;"
-                                                                          class="btn_category_product_gift">2</a> <a
-                                    href="#none" onclick="fnMoveLink('3', '100020', '0', '1'); return false;"
-                                    class="btn_category_product_buy">3</a>
-                        <li class=' '><a href='product-detail.jsp?GG_NO=100073' class='btn_category_product'> <span
-                                class='best_product_img_wrap'><img
-                                src="http://img.cgv.co.kr/GiftStore/Product/Pc/List/15464065561050.jpg"
-                                alt="스몰세트"/></span> <span class='best_product_text_wrap'>                  <span
-                                class='best_product_text_title'>스몰세트</span>                  <span
-                                class='best_product_text_name'>혼영할때 필수품</span>                  <span
-                                class='best_product_sale_price_wrap'>                  <span
-                                class='store_deatail_source_price'>6,500</span>                  </span>
-              </span>
-                        </a>
-                            <a href="#none" onclick="fnMoveLink('1', '100073', '0', ''); return false;"
-                               class="btn_category_product_cart">1</a> <a href="#none"
-                                                                          onclick="fnMoveLink('2', '100073', '0', '1'); return false;"
-                                                                          class="btn_category_product_gift">2</a> <a
-                                    href="#none" onclick="fnMoveLink('3', '100073', '0', '1'); return false;"
-                                    class="btn_category_product_buy">3</a>
-                    </ul>
+
+                        <ul class='category_product_inner_list'>
+                            <!-- 반복할 부분 -->
+                            <li class=' ' th:each="comboDTO : ${comboDTOList}">
+                                <a th:href='@{/culture-event/popcorn-store/product-detail?gcode=} + ${comboDTO.gcode}' class='btn_category_product'>
+                                <span class='best_product_img_wrap'>
+                                    <img th:src="${comboDTO.gfile}"
+                                         th:alt="${comboDTO.title}"/>
+                                </span>
+                                    <span class='best_product_text_wrap'>
+                                    <span class='best_product_text_title' th:text="${comboDTO.title}"></span>
+                                    <span class='best_product_text_name'>OneToOne어케하냐...</span>
+                                    <span class='best_product_sale_price_wrap'>
+                                        <span class='store_deatail_source_price' th:text="${comboDTO.price}"></span>
+                                    </span>
+                                </span>
+                                </a>
+                                <a href="#none" onclick="fnMoveLink('1', '100253', '0', ''); return false;"
+                                   class="btn_category_product_cart">1</a>
+                                <a href="#none" onclick="fnMoveLink('2', '100253', '0', '1'); return false;"
+                                   class="btn_category_product_gift">2</a>
+                                <a href="#none" onclick="fnMoveLink('3', '100253', '0', '1'); return false;"
+                                   class="btn_category_product_buy">3</a>
+                            </li>
+                            <!-- 반복할 부분 -->
+                        </ul>
                 </li>
                 <li>
                     <strong class='category_product_title'>팝콘<a href='/culture-event/popcorn-store/store-category?cno=5'
                                                                 class='btn_category_product'>더보기</a></strong>
                     <ul class='category_product_inner_list'>
-                        <li class=' '><a href='product-detail.jsp?GG_NO=100069' class='btn_category_product'> <span
-                                class='best_product_img_wrap'><img
-                                src="http://img.cgv.co.kr/GiftStore/Product/Pc/List/15463244796940.jpg" alt="고소팝콘(L)"/></span>
-                            <span class='best_product_text_wrap'>                  <span
-                                    class='best_product_text_title'>고소팝콘(L)</span>                  <span
-                                    class='best_product_text_name'>클래식 팝콘 No.1</span>                  <span
-                                    class='best_product_sale_price_wrap'>                  <span
-                                    class='store_deatail_source_price'>5,000</span>                  </span>
-              </span>
-                        </a>
-                            <a href="#none" onclick="fnMoveLink('1', '100069', '0', ''); return false;"
-                               class="btn_category_product_cart">1</a> <a href="#none"
-                                                                          onclick="fnMoveLink('2', '100069', '0', '1'); return false;"
-                                                                          class="btn_category_product_gift">2</a> <a
-                                    href="#none" onclick="fnMoveLink('3', '100069', '0', '1'); return false;"
-                                    class="btn_category_product_buy">3</a>
-                        <li class=' '><a href='product-detail.jsp?GG_NO=100068' class='btn_category_product'> <span
-                                class='best_product_img_wrap'><img
-                                src="http://img.cgv.co.kr/GiftStore/Product/Pc/List/15463244213800.jpg" alt="달콤팝콘(L)"/></span>
-                            <span class='best_product_text_wrap'>                  <span
-                                    class='best_product_text_title'>달콤팝콘(L)</span>                  <span
-                                    class='best_product_text_name'>달콤한 카라멜 향이 가득한 달콤팝콘</span>                  <span
-                                    class='best_product_sale_price_wrap'>                  <span
-                                    class='store_deatail_source_price'>6,000</span>                  </span>
-              </span>
-                        </a>
-                            <a href="#none" onclick="fnMoveLink('1', '100068', '0', ''); return false;"
-                               class="btn_category_product_cart">1</a> <a href="#none"
-                                                                          onclick="fnMoveLink('2', '100068', '0', '1'); return false;"
-                                                                          class="btn_category_product_gift">2</a> <a
-                                    href="#none" onclick="fnMoveLink('3', '100068', '0', '1'); return false;"
-                                    class="btn_category_product_buy">3</a>
-                        <li class=' '><a href='product-detail.jsp?GG_NO=100071' class='btn_category_product'> <span
-                                class='best_product_img_wrap'><img
-                                src="http://img.cgv.co.kr/GiftStore/Product/Pc/List/15463247055100.jpg"
-                                alt="더블치즈팝콘(L)"/></span> <span class='best_product_text_wrap'>                  <span
-                                class='best_product_text_title'>더블치즈팝콘(L)</span>                  <span
-                                class='best_product_text_name'>치즈매니아들 주목!</span>                  <span
-                                class='best_product_sale_price_wrap'>                  <span
-                                class='store_deatail_source_price'>6,000</span>                  </span>
-              </span>
-                        </a>
-                            <a href="#none" onclick="fnMoveLink('1', '100071', '0', ''); return false;"
-                               class="btn_category_product_cart">1</a> <a href="#none"
-                                                                          onclick="fnMoveLink('2', '100071', '0', '1'); return false;"
-                                                                          class="btn_category_product_gift">2</a> <a
-                                    href="#none" onclick="fnMoveLink('3', '100071', '0', '1'); return false;"
-                                    class="btn_category_product_buy">3</a>
+                        <!-- 반복할 부분 -->
+                        <li class=' ' th:each="popcornDTO : ${popcornDTOList}">
+                            <a th:href='@{/culture-event/popcorn-store/product-detail?gcode=} + ${popcornDTO.gcode}' class='btn_category_product'>
+                                <span class='best_product_img_wrap'>
+                                    <img th:src="${popcornDTO.gfile}"
+                                         th:alt="${popcornDTO.title}"/>
+                                </span>
+                                <span class='best_product_text_wrap'>
+                                    <span class='best_product_text_title' th:text="${popcornDTO.title}"></span>
+                                    <span class='best_product_text_name'>OneToOne어케하냐...</span>
+                                    <span class='best_product_sale_price_wrap'>
+                                        <span class='store_deatail_source_price' th:text="${popcornDTO.price}"></span>
+                                    </span>
+                                </span>
+                            </a>
+                            <a href="#none" onclick="fnMoveLink('1', '100253', '0', ''); return false;"
+                               class="btn_category_product_cart">1</a>
+                            <a href="#none" onclick="fnMoveLink('2', '100253', '0', '1'); return false;"
+                               class="btn_category_product_gift">2</a>
+                            <a href="#none" onclick="fnMoveLink('3', '100253', '0', '1'); return false;"
+                               class="btn_category_product_buy">3</a>
+                        </li>
+                        <!-- 반복할 부분 -->
                     </ul>
                 </li>
                 <li>
-                    <strong class='category_product_title'>음료<a href='/culture-event/popcorn-store/store-category?cno=6'
+                    <strong class='category_product_title'>음료
+                        <a href='/culture-event/popcorn-store/store-category?cno=6'
                                                                 class='btn_category_product'>더보기</a></strong>
                     <ul class='category_product_inner_list'>
-                        <li class=' '><a href='product-detail.jsp?GG_NO=100083' class='btn_category_product'> <span
-                                class='best_product_img_wrap'><img
-                                src="http://img.cgv.co.kr/GiftStore/Product/Pc/List/15464083668990.jpg" alt="탄산음료(M)"/></span>
-                            <span class='best_product_text_wrap'>                  <span
-                                    class='best_product_text_title'>탄산음료(M)</span>                  <span
-                                    class='best_product_text_name'>시원한 탄산음료와 함께 스트레스도 날리세요</span>                  <span
-                                    class='best_product_sale_price_wrap'>                  <span
-                                    class='store_deatail_source_price'>2,500</span>                  </span>
-              </span>
-                        </a>
-                            <a href="#none" onclick="fnMoveLink('1', '100083', '0', ''); return false;"
-                               class="btn_category_product_cart">1</a> <a href="#none"
-                                                                          onclick="fnMoveLink('2', '100083', '0', '1'); return false;"
-                                                                          class="btn_category_product_gift">2</a> <a
-                                    href="#none" onclick="fnMoveLink('3', '100083', '0', '1'); return false;"
-                                    class="btn_category_product_buy">3</a>
-                        <li class=' '><a href='product-detail.jsp?GG_NO=100089' class='btn_category_product'> <span
-                                class='best_product_img_wrap'><img
-                                src="http://img.cgv.co.kr/GiftStore/Product/Pc/List/15464096039760.jpg"
-                                alt="아메리카노(HOT)"/></span> <span class='best_product_text_wrap'>                  <span
-                                class='best_product_text_title'>아메리카노(HOT)</span>                  <span
-                                class='best_product_text_name'>현대인의 필수품</span>                  <span
-                                class='best_product_sale_price_wrap'>                  <span
-                                class='store_deatail_source_price'>3,500</span>                  </span>
-              </span>
-                        </a>
-                            <a href="#none" onclick="fnMoveLink('1', '100089', '0', ''); return false;"
-                               class="btn_category_product_cart">1</a> <a href="#none"
-                                                                          onclick="fnMoveLink('2', '100089', '0', '1'); return false;"
-                                                                          class="btn_category_product_gift">2</a> <a
-                                    href="#none" onclick="fnMoveLink('3', '100089', '0', '1'); return false;"
-                                    class="btn_category_product_buy">3</a>
+                        <!-- 반복할 부분 -->
+                        <li class=' ' th:each="drinkDTO : ${drinkDTOList}">
+                            <a th:href='@{/culture-event/popcorn-store/product-detail?gcode=} + ${drinkDTO.gcode}' class='btn_category_product'>
+                                <span class='best_product_img_wrap'>
+                                    <img th:src="${drinkDTO.gfile}"
+                                         th:alt="${drinkDTO.title}"/>
+                                </span>
+                                <span class='best_product_text_wrap'>
+                                    <span class='best_product_text_title' th:text="${drinkDTO.title}"></span>
+                                    <span class='best_product_text_name'>OneToOne어케하냐...</span>
+                                    <span class='best_product_sale_price_wrap'>
+                                        <span class='store_deatail_source_price' th:text="${drinkDTO.price}"></span>
+                                    </span>
+                                </span>
+                            </a>
+                            <a href="#none" onclick="fnMoveLink('1', '100253', '0', ''); return false;"
+                               class="btn_category_product_cart">1</a>
+                            <a href="#none" onclick="fnMoveLink('2', '100253', '0', '1'); return false;"
+                               class="btn_category_product_gift">2</a>
+                            <a href="#none" onclick="fnMoveLink('3', '100253', '0', '1'); return false;"
+                               class="btn_category_product_buy">3</a>
+                        </li>
+                        <!-- 반복할 부분 -->
                     </ul>
                 </li>
                 <li>
                     <strong class='category_product_title'>스낵<a href='/culture-event/popcorn-store/store-category?cno=7'
                                                                 class='btn_category_product'>더보기</a></strong>
                     <ul class='category_product_inner_list'>
-                        <li class=' '><a href='product-detail.jsp?GG_NO=100017' class='btn_category_product'> <span
-                                class='best_product_img_wrap'><img
-                                src="http://img.cgv.co.kr/GiftStore/Product/Pc/List/15459092398190.jpg"
-                                alt="칠리치즈나쵸"/></span> <span class='best_product_text_wrap'>                  <span
-                                class='best_product_text_title'>칠리치즈나쵸</span>                  <span
-                                class='best_product_text_name'>바삭바삭 나쵸, 얼마나 맛있게요?</span>                  <span
-                                class='best_product_sale_price_wrap'>                  <span
-                                class='store_deatail_source_price'>4,900</span>                  </span>
-              </span>
-                        </a>
-                            <a href="#none" onclick="fnMoveLink('1', '100017', '0', ''); return false;"
-                               class="btn_category_product_cart">1</a> <a href="#none"
-                                                                          onclick="fnMoveLink('2', '100017', '0', '1'); return false;"
-                                                                          class="btn_category_product_gift">2</a> <a
-                                    href="#none" onclick="fnMoveLink('3', '100017', '0', '1'); return false;"
-                                    class="btn_category_product_buy">3</a>
+                        <!-- 반복할 부분 -->
+                        <li class=' ' th:each="snackDTO : ${snackDTOList}">
+                            <a th:href='@{/culture-event/popcorn-store/product-detail?gcode=} + ${snackDTO.gcode}' class='btn_category_product'>
+                                <span class='best_product_img_wrap'>
+                                    <img th:src="${snackDTO.gfile}"
+                                         th:alt="${snackDTO.title}"/>
+                                </span>
+                                <span class='best_product_text_wrap'>
+                                    <span class='best_product_text_title' th:text="${snackDTO.title}"></span>
+                                    <span class='best_product_text_name'>OneToOne어케하냐...</span>
+                                    <span class='best_product_sale_price_wrap'>
+                                        <span class='store_deatail_source_price' th:text="${snackDTO.price}"></span>
+                                    </span>
+                                </span>
+                            </a>
+                            <a href="#none" onclick="fnMoveLink('1', '100253', '0', ''); return false;"
+                               class="btn_category_product_cart">1</a>
+                            <a href="#none" onclick="fnMoveLink('2', '100253', '0', '1'); return false;"
+                               class="btn_category_product_gift">2</a>
+                            <a href="#none" onclick="fnMoveLink('3', '100253', '0', '1'); return false;"
+                               class="btn_category_product_buy">3</a>
+                        </li>
+                        <!-- 반복할 부분 -->
                     </ul>
                 </li>
             </ul>
