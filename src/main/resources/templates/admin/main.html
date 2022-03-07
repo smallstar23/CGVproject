@@ -15,16 +15,7 @@
 <!--            <input class="form-control" type="text" placeholder="Search for..." aria-label="Search for..." aria-describedby="btnNavbarSearch" />-->
 <!--            <button class="btn btn-primary" id="btnNavbarSearch" type="button"><i class="fas fa-search"></i></button>-->
 <!--        </div>-->
-        <select class="form-control" onchange="selectTheater(this.value)">
-            <option>상영관을 선택해주세요 ▼</option>
-            <option value="강남CGV">강남CGV</option>
-            <option value="강변CGV">강변CGV</option>
-            <option value="경기광주CGV">경기광주CGV</option>
-            <option value="동수원CGV">동수원CGV</option>
-            <option value="용인CGV">용인CGV</option>
-        </select>
-        <div>
-
+       <div style="padding-top: 30px"><p style="font-weight: bold; color:lightgrey; display: inline-block">Logged at: <p style="color:white;display: inline-block" th:text="${session.tcode}"></p></p>
         </div>
     </form>
     <!-- Navbar-->
