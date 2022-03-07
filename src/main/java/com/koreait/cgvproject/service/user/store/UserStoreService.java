@@ -31,7 +31,7 @@ public class UserStoreService {
     }
 
     public Map<String ,List<GiftDTO>> getMainDTOList(){
-        List<Gift> giftList = giftRepository.findByMainonOrderByGcode(1); // 1 = true 인 상태 ( 현재 베스트 상품에 등록된 상태를 말함 )
+        List<Gift> giftList = giftRepository.findAllByMainonGreaterThan(0);
         List<GiftDTO> movGifDTOList = new ArrayList<>(); List<GiftDTO> comGifDTOList = new ArrayList<>();
         List<GiftDTO> popGifDTOList = new ArrayList<>(); List<GiftDTO> bevGifDTOList = new ArrayList<>();
         List<GiftDTO> snaGifDTOList = new ArrayList<>();

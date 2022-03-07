@@ -1,5 +1,6 @@
 package com.koreait.cgvproject.dto;
 
+import com.koreait.cgvproject.entity.Theater;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -17,4 +18,9 @@ public class TheaterDTO {
     private String location;
     private String hp;
     private String photo;
+
+    public Theater toEntity(){
+        return Theater.builder().tcode(tcode).tname(tname).areacode(areacode)
+                .location(location).hp(hp).photo(photo).build();
+    }
 }

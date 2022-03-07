@@ -30,22 +30,10 @@ public class MovieDTO {
 
 
     public Movie toEntity(){
-        Movie movie =Movie.builder()
-
-                .mcode(mcode)
-                .mrank(mrank)
-                .titleKo(titleKo)
-                .titleEn(titleEn)
-                .genre(genre)
-                .country(country)
-                .movieRating(movieRating)
-                .runtime(runtime)
-                .launchDate(launchDate)
-                .regDate(LocalDateTime.now())
-                .poster(poster)
-                .build();
-
-        return movie;
+        return Movie.builder()
+                .mcode(mcode).mrank(mrank).titleKo(titleKo).titleEn(titleEn).genre(genre).country(country)
+                .movieRating(movieRating).runtime(runtime).launchDate(launchDate)
+                .regDate(LocalDateTime.now()).poster(poster).build();
     }
 
 }
