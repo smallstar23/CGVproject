@@ -39,18 +39,18 @@
     </ul>
 </nav>
 
-<script>
-    function go_detail() {
-        let id = document.getElementById("number");
+<!--<script>-->
+<!--    function go_detail() {-->
+<!--        let id = document.getElementById("number");-->
 
-        console.log(id);
+<!--        console.log(id);-->
 
-        location.href ='/manage_news_detail/' + id;
+<!--        location.href ='/manage_news_detail/' + id;-->
 
-        return true;
+<!--        return true;-->
 
-    }
-</script>
+<!--    }-->
+<!--</script>-->
 
 <!-- header -->
 <div th:replace="admin/fragment/header :: header"></div>
@@ -79,7 +79,6 @@
                             <th>제목</th>
                             <th>등록일</th>
                             <th>조회수</th>
-
                         </tr>
                         </thead>
 <!--                        <tfoot>-->
@@ -92,9 +91,10 @@
 <!--                        </tr>-->
 <!--                        </tfoot>-->
                         <tbody>
-
-                        <tr th:each="news : ${adminNewsList}" onclick="go_detail()">
-                            <td th:text="${news.getIdx()}" style="width: 10%;" id="number"></td>
+<!--                        <tr th:each="news : ${adminNewsList}" onclick="go_detail()">-->
+                        <tr th:each="news : ${adminNewsList}">
+                            <td style="width: 10%;"><a th:href="@{'/manage_news_detail/'+${news.getIdx()}}" th:text="${news.getIdx()}"></a> </td>
+<!--                            <td th:text="${news.getIdx()}" style="width: 10%;"></td>-->
                             <td th:text="${news.getCategory()}" style="width: 15%;"></td>
                             <td th:text="${news.getTitle()}" style="width: 30%;"></td>
                             <td th:text="${#temporals.format(news.getRegdate(), 'yyyy-MM-dd HH:mm')}" style="width: 15%;"></td>
