@@ -1,12 +1,10 @@
 package com.koreait.cgvproject.controller.admin.page;
 
-
-
-
 import com.koreait.cgvproject.dto.Member_info_DTO;
 import com.koreait.cgvproject.entity.MemberinfoEntity;
 import com.koreait.cgvproject.repository.MemberinfoRepository;
 import com.koreait.cgvproject.service.admin.member.MemberService;
+
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -19,7 +17,7 @@ import java.util.List;
 @AllArgsConstructor
 @Controller
 public class AdminMemberController {
-
+    
     private MemberinfoRepository memberinfoRepository;
 
     private MemberService memberService;
@@ -43,8 +41,6 @@ public class AdminMemberController {
         model.addAttribute("post",member_info_dto);
         return "admin/member/member_user_view";
     }
-
-
 
     @GetMapping("member_user_view")//manage_user_view 페이지
     public String member_user_view(){
