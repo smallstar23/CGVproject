@@ -1,8 +1,8 @@
 package com.koreait.cgvproject.service.admin.member;
 
-import com.koreait.cgvproject.dto.Member_info_DTO;
-import com.koreait.cgvproject.entity.MemberinfoEntity;
-import com.koreait.cgvproject.repository.MemberinfoRepository;
+import com.koreait.cgvproject.dto.MemberDTO;
+import com.koreait.cgvproject.entity.Member;
+import com.koreait.cgvproject.repository.MemberRepository;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -14,52 +14,52 @@ import java.util.List;
 @AllArgsConstructor
 public class MemberService {
 
-    private MemberinfoRepository memberinfoRepository;
+    private MemberRepository memberRepository;
 
-    public List<Member_info_DTO> getMemberList(){
+    public List<MemberDTO> getMemberList(){
 
-        List<Member_info_DTO> member_info_dtoList =new ArrayList<>();
-        List<MemberinfoEntity> memberinfoEntityList =memberinfoRepository.findAll();
-        for(MemberinfoEntity memberinfoEntity : memberinfoEntityList){
-         Member_info_DTO member_info_dto=Member_info_DTO.builder()
-                 .idx(memberinfoEntity.getIdx())
-                 .userid(memberinfoEntity.getUserid())
-                 .username(memberinfoEntity.getUsername())
-                 .userpw(memberinfoEntity.getUserpw())
-                 .hp1(memberinfoEntity.getHp())
-                 .ssn1(memberinfoEntity.getSsn())
-                 .email1(memberinfoEntity.getEmail())
-                 .nickname(memberinfoEntity.getNickname())
-                 .regdate(memberinfoEntity.getRegdate())
+        List<MemberDTO> member__dtoList =new ArrayList<>();
+        List<Member> memberList = memberRepository.findAll();
+        for(Member member : memberList){
+         MemberDTO member__dto = MemberDTO.builder()
+                 .idx(member.getIdx())
+                 .userid(member.getUserid())
+                 .username(member.getUsername())
+                 .userpw(member.getUserpw())
+                 .hp1(member.getHp())
+                 .ssn1(member.getSsn())
+                 .email1(member.getEmail())
+                 .nickname(member.getNickname())
+                 .regdate(member.getRegdate())
                  .build();
-            member_info_dtoList.add(member_info_dto);
+            member__dtoList.add(member__dto);
         }
-        return member_info_dtoList;
+        return member__dtoList;
     }
 
 
     @Transactional
-    public void insertPost(Member_info_DTO member_info_dto){
-        memberinfoRepository.save(member_info_dto.toadminMember()).getIdx();
+    public void insertPost(MemberDTO member__dto){
+        memberRepository.save(member__dto.toadminMember()).getIdx();
     }
 
 
     @Transactional
-    public Member_info_DTO getPost(Long idx){
-        MemberinfoEntity memberinfoEntity =memberinfoRepository.findById(idx).get();
+    public MemberDTO getPost(Long idx){
+        Member member = memberRepository.findById(idx).get();
 
-        Member_info_DTO member_info_dto =Member_info_DTO.builder()
-                .idx(memberinfoEntity.getIdx())
-                .userid(memberinfoEntity.getUserid())
-                .username(memberinfoEntity.getUsername())
-                .userpw(memberinfoEntity.getUserpw())
-                .hp1(memberinfoEntity.getHp())
-                .email1(memberinfoEntity.getEmail())
-                .ssn1(memberinfoEntity.getSsn())
-                .nickname(memberinfoEntity.getNickname())
-                .regdate(memberinfoEntity.getRegdate())
+        MemberDTO member__dto = MemberDTO.builder()
+                .idx(member.getIdx())
+                .userid(member.getUserid())
+                .username(member.getUsername())
+                .userpw(member.getUserpw())
+                .hp1(member.getHp())
+                .email1(member.getEmail())
+                .ssn1(member.getSsn())
+                .nickname(member.getNickname())
+                .regdate(member.getRegdate())
                 .build();
-        return member_info_dto;
+        return member__dto;
 
     }
 }

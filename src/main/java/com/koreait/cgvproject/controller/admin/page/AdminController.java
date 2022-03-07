@@ -24,10 +24,11 @@ public class AdminController{
     public ModelAndView login() {
         return new ModelAndView("/admin/login");
     }
-    @PostMapping("admin/main")
-    public String postMain(@RequestParam(value = "tcode") String tcode){
+    @PostMapping("admin/main/post")
+    public String postMain(@RequestParam(value = "tcode") String tcode, Model model){
         session.setAttribute("tcode", tcode);
         System.out.println("들어온 세션 값 : " + session.getAttribute("tcode"));
+        model.addAttribute("tcode", session.getAttribute("tcode"));
         return "admin/main";
     }
 }
