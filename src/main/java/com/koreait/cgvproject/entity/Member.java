@@ -1,6 +1,6 @@
 package com.koreait.cgvproject.entity;
 
-import com.koreait.cgvproject.dto.Member_info_DTO;
+import com.koreait.cgvproject.dto.MemberDTO;
 import lombok.*;
 import org.springframework.data.annotation.CreatedDate;
 
@@ -20,7 +20,7 @@ import java.time.LocalDateTime;
 @ToString
 @Table(name="Member")
 @Builder
-public class MemberinfoEntity {
+public class Member {
 
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "seq_Member_idx")
@@ -121,8 +121,8 @@ public class MemberinfoEntity {
         this.ssn = ssn;
     }
 
-    public Member_info_DTO toDTO(){
-         return  Member_info_DTO.builder()
+    public MemberDTO toDTO(){
+         return  MemberDTO.builder()
                  .idx(idx)
                  .userid(userid).username(username).userpw(userpw)
                  .ssn1(ssn).hp1(hp).email1(email).nickname(nickname)
