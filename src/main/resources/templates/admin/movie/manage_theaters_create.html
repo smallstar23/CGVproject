@@ -65,19 +65,32 @@
     <main>
         <div class="container-fluid px-4" style="margin:0 auto;">
             <h2 style="text-align:center;">상영관 등록</h2>
-            <form style="width:40%; border:solid 2px red; border-radius:10px; padding:5%; margin:0 auto;" action="/manage_theaters" method="post">
+            <form style="width:40%; border:solid 2px red; border-radius:10px; padding:5%; margin:0 auto;" action="/manage_theaters_create" method="post">
+                <input type="hidden" name="tcode" value="1">
+
                 <div class="form-row">
                     <div class="col">상영관
-                        <select class="form-control" name="tcode">
+                        <select class="form-control" name="hcode">
                             <option>관 선택해주세요</option>
-                            <option >1관</option>
-                            <option >2관</option>
-                            <option >3관</option>
-                            <option >4관</option>
-                            <option >5관</option>
-                            <option >6관</option>
+                            <option >1</option>
+                            <option >2</option>
+                            <option >3</option>
+                            <option >4</option>
+                            <option >5</option>
+                            <option >6</option>
                         </select>
                     </div>
+                    <!--<div class="col">상영관
+                        <select class="form-control" name="tcode">
+                            <option>관 선택해주세요</option>
+                            <option >1</option>
+                            <option >2</option>
+                            <option >3</option>
+                            <option >4</option>
+                            <option >5</option>
+                            <option >6</option>
+                        </select>
+                    </div>-->
                     <div class="col">상영관명
                         <select class="form-control" name="hname">
 
@@ -92,16 +105,6 @@
 
                 <hr/>
                 <div class="form-row">
-                    <div class="col">특별관
-                        <select class="form-control">
-                            <option></option>
-                            <option ></option>
-                            <option ></option>
-                            <option ></option>
-                            <option ></option>
-                            <option ></option>
-                        </select>
-                    </div>
 
                     <div class="col">위치
                         <select class="form-control" name="location">
@@ -109,35 +112,6 @@
                             <option >6층</option>
                             <option >8층</option>
                             <option >10층</option>
-                        </select>
-                    </div>
-                </div>
-                <hr/>
-                <label for="exampleInputEmail1">총 좌석수</label>
-                <select class="form-control">
-                    <option></option>
-                    <option >124석</option>
-                    <option >158석</option>
-                    <option >172석</option>
-                </select>
-                <hr/>
-
-                <div class="form-row">
-                    <div class="col">일반석
-                        <select class="form-control">
-                            <option></option>
-                            <option value="115석">115석</option>
-                            <option value="143석">143석</option>
-                            <option value="155석">155석</option>
-                        </select>
-                    </div>
-
-                    <div class="col">장애인석
-                        <select class="form-control">
-                            <option></option>
-                            <option value="9석">9석</option>
-                            <option value="15석">15석</option>
-                            <option value="17석">17석</option>
                         </select>
                     </div>
                 </div>

@@ -4,6 +4,7 @@ import com.koreait.cgvproject.dto.HallDTO;
 import com.koreait.cgvproject.entity.Hall;
 import com.koreait.cgvproject.repository.HallRepository;
 import lombok.AllArgsConstructor;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -11,19 +12,15 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Service
+@AllArgsConstructor
 public class AdminHallService {
+
     private HallRepository hallRepository;
 
-    public AdminHallService(HallRepository hallRepository){
-        this.hallRepository=hallRepository;
-    }
-
     @Transactional
-    public Long savePost(HallDTO hallDTO){
-        return hallRepository.save(hallDTO.toEntity()).getHcode();
-    }
+    public void savePost(HallDTO hallDTO){hallRepository.save(hallDTO.toEntity());}
 
-    @Transactional
+
     public List<HallDTO> getHallList(){
         List<Hall> hallList = hallRepository.findAll();
         List<HallDTO> hallDTOList = new ArrayList<>();

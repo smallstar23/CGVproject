@@ -1,8 +1,8 @@
 package com.koreait.cgvproject.controller.admin.page;
 
 
-import com.koreait.cgvproject.dto.Member2DTO;
-import com.koreait.cgvproject.service.admin.service.MemberService;
+//import com.koreait.cgvproject.dto.Member2DTO;
+//import com.koreait.cgvproject.service.admin.service.MemberService;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -16,27 +16,27 @@ import java.util.List;
 @Controller
 public class AdminMemberController {
 
-    private MemberService memberService;
+//    private MemberService memberService;
 
 
-    @GetMapping("member-lookup")//member-lookup 페이지 회원정보 조회
-    public String member_lookup(Model model){
-        List<Member2DTO> member2DTOList =memberService.getMember2List();
-        model.addAttribute("member2DTOList",member2DTOList);
-        return "/admin/member/member-lookup";
-    }
-    @PostMapping("/post")
-    public  String write(Member2DTO member2DTO){
-        memberService.insertPost(member2DTO);
-        return  "redirect:/";
-    }
+//    @GetMapping("member-lookup")//member-lookup 페이지 회원정보 조회
+//    public String member_lookup(Model model){
+//        List<Member2DTO> member2DTOList =memberService.getMember2List();
+//        model.addAttribute("member2DTOList",member2DTOList);
+//        return "/admin/member/member-lookup";
+//    }
+//    @PostMapping("/post")
+//    public  String write(Member2DTO member2DTO){
+//        memberService.insertPost(member2DTO);
+//        return  "redirect:/";
+//    }
 
-    @GetMapping("/post/{id}")
-    public  String view(@PathVariable("id") Long id,Model model){
-        Member2DTO member2DTO =memberService.getPost(id);
-        model.addAttribute("post",member2DTO);
-        return "admin/member/member_user_view";
-    }
+//    @GetMapping("/post/{id}")
+//    public  String view(@PathVariable("id") Long id,Model model){
+//        Member2DTO member2DTO =memberService.getPost(id);
+//        model.addAttribute("post",member2DTO);
+//        return "admin/member/member_user_view";
+//    }
 
 
 

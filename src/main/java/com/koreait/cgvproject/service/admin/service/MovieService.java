@@ -3,7 +3,7 @@ package com.koreait.cgvproject.service.admin.service;
 
 import com.koreait.cgvproject.dto.MovieDTO;
 import com.koreait.cgvproject.entity.Movie;
-import com.koreait.cgvproject.entity.MovieEntity;
+//import com.koreait.cgvproject.entity.MovieEntity;
 import com.koreait.cgvproject.repository.MovieRepository;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
