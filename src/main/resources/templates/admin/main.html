@@ -11,9 +11,20 @@
     <button class="btn btn-link btn-sm order-1 order-lg-0 me-4 me-lg-0" id="sidebarToggle" href="#!"><i class="fas fa-bars"></i></button>
     <!-- Navbar Search-->
     <form class="d-none d-md-inline-block form-inline ms-auto me-0 me-md-3 my-2 my-md-0">
-        <div class="input-group">
-            <input class="form-control" type="text" placeholder="Search for..." aria-label="Search for..." aria-describedby="btnNavbarSearch" />
-            <button class="btn btn-primary" id="btnNavbarSearch" type="button"><i class="fas fa-search"></i></button>
+<!--        <div class="input-group" display="none">-->
+<!--            <input class="form-control" type="text" placeholder="Search for..." aria-label="Search for..." aria-describedby="btnNavbarSearch" />-->
+<!--            <button class="btn btn-primary" id="btnNavbarSearch" type="button"><i class="fas fa-search"></i></button>-->
+<!--        </div>-->
+        <select class="form-control" onclick="selectTheater()">
+            <option>상영관을 선택해주세요 ▼</option>
+            <option value="1">강남CGV</option>
+            <option value="2">강변CGV</option>
+            <option value="3">경기광주CGV</option>
+            <option value="4">동수원CGV</option>
+            <option value="5">용인CGV</option>
+        </select>
+        <div>
+
         </div>
     </form>
     <!-- Navbar-->
@@ -131,6 +142,16 @@
 <script src="assets/demo/chart-area-demo.js"></script>
 <script src="assets/demo/chart-bar-demo.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/simple-datatables@latest" crossorigin="anonymous"></script>
-<script src="../../static/js/datatables-simple-demo.js"></script>
+<script src="/js/datatables-simple-demo.js"></script>
+
+<script>
+
+    function selectTheater(){
+
+        console.log("theater 선택했습니다.")
+
+    }
+
+</script>
 </body>
 </html>

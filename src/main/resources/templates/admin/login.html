@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="ko"  xmlns:th="http://www.thymeleaf.org/">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <link rel="stylesheet" href="/css/login.css"/>
+    <title>로그인</title>
+</head>
+<body>
+<section class="login">
+    <img src="/css/logoRed.png" alt="CGV" width="150px"/><span>CULTUREPLEX</span>
+    <h2>로그인</h2>
+    <ul>
+        <div id="login">
+            <li>
+                <input
+                        required
+                        id="userid"
+                        type="text"
+                        placeholder="아이디"
+                        name="userid"
+                />
+            </li>
+            <li>
+                <input
+                        required
+                        id="userpw"
+                        type="password"
+                        placeholder="비밀번호"
+                        minlength="4"
+                        name="userpw"
+                />
+            </li>
+            <li>
+                <input type="checkbox" id="chk_id" name="chk_id" />
+            </li>
+            <li>
+                <input type="button" value="로그인" onclick="login()"/>
+            </li>
+        </div>
+    </ul>
+</section>
+</body>
+
+<script>
+        function login() {
+            let useridVal=document.getElementById("userid").value;
+            let userpwVal=document.getElementById("userpw").value;
+            if (useridVal=="admin" ||  userpwVal=="1111") {
+                alert("환영합니다!");
+                location.href="/admin-main";
+            } else {
+                alert("아이디 및 비밀번호를 확인해주세요")
+                history.back();
+            }
+        }
+
+</script>
+</html>
