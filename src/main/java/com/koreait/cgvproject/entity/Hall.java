@@ -16,8 +16,10 @@ import java.time.LocalDateTime;
 )
 @Data
 @Entity
-@NoArgsConstructor(access = AccessLevel.PROTECTED)
+@NoArgsConstructor
+@AllArgsConstructor
 @EntityListeners(AuditingEntityListener.class)
+@Builder
 public class Hall{
 
     @Id
@@ -30,12 +32,4 @@ public class Hall{
     @CreatedDate
     private LocalDateTime regdate;
 
-    @Builder
-    public Hall(Long hcode, Long tcode, String hname, String location, LocalDateTime regdate){
-        this.hcode = hcode;
-        this.tcode = tcode;
-        this.hname = hname;
-        this.location = location;
-        this.regdate = regdate;
-    }
 }
