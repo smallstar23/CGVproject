@@ -55,7 +55,6 @@ public class AdminMovieController {
 //        adminHallService.savePost(hallDTO);
 //        return "redirect:/";
 //    }
-
     @GetMapping("manage_ongoingmovies")//movie-ongoing 페이지
     public String movie_ongoing(){
         return "/admin/movie/manage_ongoingmovies";
