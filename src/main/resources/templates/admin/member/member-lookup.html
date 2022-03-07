@@ -59,22 +59,22 @@
             <tr>
               <th>Id</th>
               <th>Password</th>
-              <th>Hp</th>
-              <th>Address</th>
-              <th>age</th>
-              <th>Reg date</th>
-              <th>Point</th>
+              <th>휴대폰 번호</th>
+              <th>주민등록번호</th>
+              <th>E-mail</th>
+              <th>닉네임</th>
+              <th>회원 등록 날짜</th>
             </tr>
             </thead>
             <tfoot>
             <tr>
               <th>Id</th>
               <th>Password</th>
-              <th>Hp</th>
-              <th>Address</th>
-              <th>age</th>
-              <th>Reg date</th>
-              <th>Point</th>
+              <th>휴대폰 번호</th>
+              <th>주민등록번호</th>
+              <th>E-mail</th>
+              <th>닉네임</th>
+              <th>회원 등록 날짜</th>
             </tr>
             </tfoot>
             <tbody>
@@ -89,7 +89,7 @@
               <td style="width: 15%;" th:text="${member.ssn1}"></td>
               <td style="width: 10%;" th:text="${member.email1}"></td>
               <td style="width: 15%;" th:text="${member.nickname}"></td>
-              <td style="width: 15%;" th:text="${member.regdate}"></td>
+              <td style="width: 15%;" th:text="${#temporals.format(member.getRegdate(), 'yyyy-MM-dd')}"></td>
 <!--              th:text="${#temporals.format(.getRegdate(), 'yyyy-MM-dd')}"-->
             </tr>
 

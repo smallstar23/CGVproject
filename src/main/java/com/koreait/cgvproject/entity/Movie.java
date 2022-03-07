@@ -24,6 +24,7 @@ import java.util.List;
         initialValue = 1,
         allocationSize = 1
 )
+@Table(name="movie")
 public class Movie {
 
     @Id
@@ -40,14 +41,14 @@ public class Movie {
     private LocalDateTime regDate;
     private String poster;
 
-    @OneToMany(fetch = FetchType.LAZY, mappedBy = "movie")
-    private List<Actor> actors;
-    @OneToOne(fetch = FetchType.LAZY, mappedBy = "movie")
-    private Director director;
-    @OneToOne(fetch = FetchType.LAZY, mappedBy = "movie")
-    private Trailer trailer;
-    @OneToMany(fetch = FetchType.LAZY, mappedBy = "movie")
-    private List<Reply> replies;
+//    @OneToMany(fetch = FetchType.LAZY, mappedBy = "movie")
+//    private List<Actor> actors;
+//    @OneToOne(fetch = FetchType.LAZY, mappedBy = "movie")
+//    private Director director;
+//    @OneToOne(fetch = FetchType.LAZY, mappedBy = "movie")
+//    private Trailer trailer;
+//    @OneToMany(fetch = FetchType.LAZY, mappedBy = "movie")
+//    private List<Reply> replies;
 
 
     public MovieDTO toDTO(){
