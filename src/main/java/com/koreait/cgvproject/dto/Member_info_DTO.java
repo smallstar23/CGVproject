@@ -2,6 +2,7 @@ package com.koreait.cgvproject.dto;
 
 import com.koreait.cgvproject.entity.MemberinfoEntity;
 import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
 import lombok.ToString;
 
@@ -12,8 +13,10 @@ import java.time.LocalDateTime;
 @AllArgsConstructor // 모든 생성자를 자동으로 만들게 해주는 롬복
 @ToString // toString 쓸수있게해줌
 @Data
+@Builder
 public class Member_info_DTO {
 
+    private Long idx;
     private String userid;
     private String username;
     private String userpw;
@@ -30,6 +33,16 @@ public class Member_info_DTO {
 //    private String address3;
     private LocalDateTime regdate;
     private String nickname;
+
+
+    public MemberinfoEntity toadminMember(){
+      MemberinfoEntity  memberinfoEntity=MemberinfoEntity.builder()
+              .idx(idx)
+              .userid(userid).userpw(userpw).username(username).ssn(ssn1+ssn2+ssn3).hp(hp1+hp2+hp3)
+              .email(email1+email2).regdate(LocalDateTime.now()).nickname(nickname).valpoint(0).build();
+            return  memberinfoEntity;
+    }
+
 
 
     public MemberinfoEntity toEntity(){

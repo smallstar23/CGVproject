@@ -29,6 +29,7 @@ public class Gift{
     private String gfile;
     private String endMonth;
     private Integer mainon;
+    private String mainonString;
 
 
 //    @OneToMany(fetch = FetchType.LAZY, mappedBy = "gift")
@@ -36,6 +37,6 @@ public class Gift{
 
     public GiftDTO toDTO(){
         return GiftDTO.builder().gcode(gcode).category(category).title(title).gname(gname)
-                .content(content).price(price).gfile(gfile).endMonth(endMonth).mainon(mainon).build();
+                .content(content).price(price).gfile(gfile).endMonth(endMonth).mainon(mainon).mainonString(mainonString).build();
     }
 }

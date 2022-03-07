@@ -20,4 +20,5 @@ public class GiftDTO{
     private String gfile;
     private String endMonth;
     private Integer mainon;
+    private String mainonString;
 }

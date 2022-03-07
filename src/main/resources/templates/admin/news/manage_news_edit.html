@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="ko"   xmlns:th="http://www.thymeleaf.org/">
 <head>
-    <title>news_write</title>
+    <title>news_edit</title>
 
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
@@ -9,7 +9,7 @@
     <meta name="description" content="" />
     <meta name="author" content="" />
     <link href="https://cdn.jsdelivr.net/npm/simple-datatables@latest/dist/style.css" rel="stylesheet" />
-    <link href="css/styles.css" rel="stylesheet" />
+    <link href="/css/styles.css" rel="stylesheet" />
     <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/js/all.min.js" crossorigin="anonymous"></script>
     <script src="//code.jquery.com/jquery-1.11.0.min.js"></script>
 </head>
@@ -43,8 +43,7 @@
 <script>
     function checkForm() {
 
-
-        let form = document.notification;
+        let form = document.edit_form;
 
         if(form.title.value=="") {
             alert("제목을 입력해주세요");
@@ -55,27 +54,7 @@
             form.content.focus();
             return false;
         }
-         alert("공지가 등록되었습니다.")
-
-        // else if ((form.n_title.value !="") && (form.summernote.value != "")){
-        // let leaveMsg = confirm("공지를 등록하시겠습니까?");
-        //     document.write(leaveMsg);
-        //     if(leaveMsg == true){
-        //         alert("공지가 등록되었습니다.")
-        //     } else if(leaveMsg == false) {
-        //         return "/manage_news";
-        //     }
-        // }
-
-
-        // document.write(leaveMsg);
-        //
-        // if(leaveMsg == true){
-        //     form.submit();
-        //     alert("공지가 등록되었습니다.")
-        // } else if(leaveMsg == false) {
-        //    return false;
-        // }
+        alert("수정이 완료되었습니다.")
 
         form.submit();
     }
@@ -89,9 +68,10 @@
 <div id="layoutSidenav_content" style="margin-top:70px; margin-left: 240px">
     <main>
         <div class="container-fluid px-4" >
-            <h2>공지 작성</h2>
+            <h2>공지 수정</h2>
 
-            <form method="post" name="notification" action="manage_news_clear">
+            <form method="post" name="edit_form" action="manage_news_update">
+                <input name="idx" type="hidden" th:value="${edit.getIdx()}">
                 <table width=900 border=1 cellspacing=5 cellpadding=10>
                     <tr>
                         <td style="padding-left: 20px;"><b>작성자</b></td>
@@ -106,32 +86,31 @@
 
                         <td style="padding-left: 20px;"><b>구 분</b></td>
                         <td>
-                            <select name="category" id="" class="" style="width:400px;">
-                                <option selected="selected" value="전체" name="n_sel">전체</option>
-                                <option value="시스템점검">시스템점검</option>
-                                <option value="극장">극장</option>
-                                <option value="기타">기타</option>
+                            <select name="category" id="" class="" style="width:400px;" th:value="${edit.getCategory()}">
+                                <option th:selected="${edit.getCategory()}=='전체'">전체</option>
+                                <option th:selected="${edit.getCategory()}=='시스템점검'">시스템점검</option>
+                                <option th:selected="${edit.getCategory()}=='극장'">극장</option>
+                                <option th:selected="${edit.getCategory()}=='기타'">기타</option>
                             </select>
                         </td>
                     </tr>
 
                     <tr>
                         <td style="padding-left: 20px;"><b>제 목</b></td>
-                        <td><input type=text name="title" size=50  maxlength=50 style="width: 400px"></td>
+                        <td><input type=text name="title" size=50  maxlength=50 style="width: 400px" th:value="${edit.getTitle()}"></td>
                     </tr>
 
                     <tr>
                         <td style="padding-left: 20px;"><b>내 용</b></td>
-                        <td><textarea id="summernote" name="content"></textarea></td>
-<!--                                          <td><textarea name="q_content" cols=40 rows=5 style="width: 400px"></textarea></td> -->
+                        <td><textarea id="summernote" name="content" th:utext="${edit.getContent()}"></textarea></td>
                     </tr>
                 </table>
 
                 <p></p>
                 <p>
-                    <input type="button" value="등록" style="margin-left: 250px" onclick="checkForm()">
-                    <input type="reset" value="공지 다시 작성하기">
-                    <input type="button" value="리스트" onclick="location.href='/manage_news'">
+                    <input type="button" value="수정완료" style="color:indianred; margin-left: 648px" onclick="checkForm()">
+                    <input type="button" value="뒤로가기" style="color:indianred; margin-top: 5px" th:onclick="|location.href='@{|/manage_news_detail/${edit.getIdx()}|}'|">
+                    <input type="button" value="목록으로" style="color:indianred;" onclick="location.href='/manage_news'">
                 </p>
 
 
