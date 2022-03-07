@@ -1,9 +1,7 @@
 package com.koreait.cgvproject.entity;
 
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
-import lombok.ToString;
+import com.koreait.cgvproject.dto.Member_info_DTO;
+import lombok.*;
 import org.springframework.data.annotation.CreatedDate;
 
 import javax.persistence.*;
@@ -21,6 +19,7 @@ import java.time.LocalDateTime;
 @NoArgsConstructor
 @ToString
 @Table(name="Member")
+@Builder
 public class MemberinfoEntity {
 
     @Id
@@ -120,6 +119,14 @@ public class MemberinfoEntity {
 
     public void setSsn(String ssn) {
         this.ssn = ssn;
+    }
+
+    public Member_info_DTO toDTO(){
+         return  Member_info_DTO.builder()
+                 .idx(idx)
+                 .userid(userid).username(username).userpw(userpw)
+                 .ssn1(ssn).hp1(hp).email1(email).nickname(nickname)
+                 .regdate(LocalDateTime.now()).build();
     }
 }
 

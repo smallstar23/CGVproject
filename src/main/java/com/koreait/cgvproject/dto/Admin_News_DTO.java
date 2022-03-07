@@ -11,6 +11,8 @@ import java.time.LocalDateTime;
 @ToString // toString 쓸수있게해줌
 @Data
 public class Admin_News_DTO {
+
+    private Long idx; // 업데이트를 위한 idx
     private String title;
     private String content;
     private String category;
@@ -18,6 +20,6 @@ public class Admin_News_DTO {
     private LocalDateTime regdate;
 
     public AdminNewsEntity toEntity(){
-        return new AdminNewsEntity(null,title,content,category,0,regdate.now());
+        return new AdminNewsEntity(idx,title,content,category,0,regdate.now());
     }
 }

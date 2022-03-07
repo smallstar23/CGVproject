@@ -3,17 +3,26 @@ package com.koreait.cgvproject.controller.admin.page;
 
 import com.koreait.cgvproject.dto.HallDTO;
 import com.koreait.cgvproject.dto.MovieDTO;
+<<<<<<< HEAD
 import com.koreait.cgvproject.service.admin.hall.AdminHallService;
 import com.koreait.cgvproject.service.admin.service.MovieService;
 import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+=======
+import com.koreait.cgvproject.service.admin.movie.MovieService;
+import lombok.AllArgsConstructor;
+>>>>>>> 05cb7e02b6e1923f889dede347d9f8350449bc3e
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
+<<<<<<< HEAD
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.servlet.ModelAndView;
+=======
+
+>>>>>>> 05cb7e02b6e1923f889dede347d9f8350449bc3e
 
 import java.util.List;
 

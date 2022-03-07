@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="ko"   xmlns:th="http://www.thymeleaf.org/">
 <head>
-    <title>manage_news</title>
+    <title>manage_news_detail</title>
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
@@ -59,24 +59,17 @@
                 <tr style="border: #212121 solid 1px;">
                     <td style="padding-left: 10px; border: #212121 solid 1px;"><b>내 용</b></td>
                     <td style="border: #212121 solid 1px; text-align: left" colspan="3">
-                        <p th:text="${managenews.getContent()}">
-<!--                            안녕하십니까, CGV입니다.<br/><br/>-->
-<!--                            원활하고 안정된 서비스 제공을 위하여 2022년 2월 새벽 시스템 점검 작업이 예정되어 있습니다.<br/>-->
-<!--                            점검 시간 중 CGV홈페이지 및 모바일의 모든 서비스가 중단될 예정이오니 이용에 불편 없으시기 바랍니다.<br/><br/>-->
-<!--                            1. 일시<br/>-->
-<!--                            - 2/22(화) 02시 ~ 07시 (월요일에서 화요일 넘어가는 새벽)<br/><br/>-->
-<!--                            2. 내용<br/>-->
-<!--                            - 정기 PM작업(시스템 성능 개선 작업)<br/>-->
-<!--                            - 작업 대상 : 극장영업시스템, 온라인 서비스(홈페이지/모바일)<br/><br/><br/>-->
-<!--                            더욱 안정적이고 편리한 서비스를 제공하는 CGV가 되겠습니다.<br/>-->
-<!--                            감사합니다.-->
+                        <p th:utext="${managenews.getContent()}">
                         </p>
                     </td>
                 </tr>
             </table>
 
-            <p></p>
-            <p><input type="button" value="목록으로" style="color:indianred;margin-left: 820px" onclick="location.href='/manage_news'"></p>
+            <p style="margin-bottom: 5px">
+                <input type="button" value="수정하기" style="background-color:palegreen; margin-left: 648px; margin-top: 5px" th:onclick="|location.href='@{|/manage_news_edit/${managenews.getIdx()}|}'|">
+                <input type="button" value="삭제하기" style="background-color:indianred;" th:onclick="|location.href='@{|/manage_news_delete/${managenews.getIdx()}|}'|">
+                <input type="button" value="목록으로" style="background-color:darkorange;" onclick="location.href='/manage_news'">
+            </p>
 
             <table style="width: 900px; border-top: #212121 solid 1px; border-bottom: #212121 solid 0.5px;text-align: center" cellspacing=5 cellpadding=10>
                 <tr style="border: #212121 solid 1px;">

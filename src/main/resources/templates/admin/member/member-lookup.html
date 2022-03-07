@@ -78,117 +78,21 @@
             </tr>
             </tfoot>
             <tbody>
-            <tr th:each="member : ${member2DTOList}">
+            <!--            <tr th:each="news : ${adminNewsList}" th:onclick="|location.href='@{|/manage_news_detail/${news.getIdx()}|}'|">-->
+            <!--              <a th:href="@{member_user_view/{id}(id=${member.id})}"></a>-->
+            <!--              th:onclick="|location.href='@{/member_user_view}'|" 두개 다 가능-->
+            <tr th:each="member : ${member2DTOList}" th:onclick="|location.href='@{|/post/${member.getIdx()}|}'|">
 
-<!--              <a th:href="@{member_user_view/{id}(id=${member.id})}"></a>-->
-<!--              th:onclick="|location.href='@{/member_user_view}'|" 두개 다 가능-->
-              <td style="width: 10%;" ><a th:href="@{'/post/'+${member.id}}" th:text="${member.userid}"></a></td>
-              <td style="width: 10%;" th:text="${member.password}"></td>
-              <td style="width: 15%;" th:text="${member.hp}"></td>
-              <td style="width: 15%;" th:text="${member.address}"></td>
-              <td style="width: 10%;" th:text="${member.age}"></td>
-              <td style="width: 15%;" th:text="${member.point}"></td>
+              <td style="width: 10%;" th:text="${member.userid}"></td>
+              <td style="width: 10%;" th:text="${member.userpw}"></td>
+              <td style="width: 15%;" th:text="${member.hp1}"></td>
+              <td style="width: 15%;" th:text="${member.ssn1}"></td>
+              <td style="width: 10%;" th:text="${member.email1}"></td>
+              <td style="width: 15%;" th:text="${member.nickname}"></td>
               <td style="width: 15%;" th:text="${member.regdate}"></td>
+<!--              th:text="${#temporals.format(.getRegdate(), 'yyyy-MM-dd')}"-->
             </tr>
-            <tr onclick="location.href=''">
-              <td>banana</td>
-              <td>5678</td>
-              <td>010-2222-2222</td>
-              <td>서울특별시 노원구 공릉동</td>
-              <td>30</td>
-              <td>2020/01/02</td>
-              <td>5,000 P</td>
-            </tr>
-            <tr onclick="location.href=''">
-              <td>apple</td>
-              <td>1234</td>
-              <td>010-3333-3333</td>
-              <td>서울특별시 강남구 양재동</td>
-              <td>15</td>
-              <td>2020/12/02</td>
-              <td>4,000 P</td>
-            </tr>
-            <tr onclick="location.href=''">
-              <td>hello</td>
-              <td>1234</td>
-              <td>010-3333-3333</td>
-              <td>서울특별시 강남구 양재동</td>
-              <td>15</td>
-              <td>2020/12/02</td>
-              <td>4,000 P</td>
-            </tr>
-            <tr onclick="location.href=''">
-              <td>banana</td>
-              <td>5678</td>
-              <td>010-2222-2222</td>
-              <td>서울특별시 노원구 공릉동</td>
-              <td>30</td>
-              <td>2020/01/02</td>
-              <td>5,000 P</td>
-            </tr>
-            <tr onclick="location.href=''">
-              <td>hello</td>
-              <td>1234</td>
-              <td>010-3333-3333</td>
-              <td>서울특별시 강남구 양재동</td>
-              <td>15</td>
-              <td>2020/12/02</td>
-              <td>4,000 P</td>
-            </tr>
-            <tr onclick="location.href=''">
-              <td>hello</td>
-              <td>1234</td>
-              <td>010-3333-3333</td>
-              <td>서울특별시 강남구 양재동</td>
-              <td>15</td>
-              <td>2020/12/02</td>
-              <td>4,000 P</td>
-            </tr>
-            <tr onclick="location.href=''">
-              <td>banana</td>
-              <td>5678</td>
-              <td>010-2222-2222</td>
-              <td>서울특별시 노원구 공릉동</td>
-              <td>30</td>
-              <td>2020/01/02</td>
-              <td>5,000 P</td>
-            </tr>
-            <tr onclick="location.href=''">
-              <td>hello</td>
-              <td>1234</td>
-              <td>010-3333-3333</td>
-              <td>서울특별시 강남구 양재동</td>
-              <td>15</td>
-              <td>2020/12/02</td>
-              <td>4,000 P</td>
-            </tr>
-            <tr onclick="location.href=''">
-              <td>hello</td>
-              <td>1234</td>
-              <td>010-3333-3333</td>
-              <td>서울특별시 강남구 양재동</td>
-              <td>15</td>
-              <td>2020/12/02</td>
-              <td>4,000 P</td>
-            </tr>
-            <tr onclick="location.href=''">
-              <td>banana</td>
-              <td>5678</td>
-              <td>010-2222-2222</td>
-              <td>서울특별시 노원구 공릉동</td>
-              <td>30</td>
-              <td>2020/01/02</td>
-              <td>5,000 P</td>
-            </tr>
-            <tr onclick="location.href=''">
-              <td>hello</td>
-              <td>1234</td>
-              <td>010-3333-3333</td>
-              <td>서울특별시 강남구 양재동</td>
-              <td>15</td>
-              <td>2020/12/02</td>
-              <td>4,000 P</td>
-            </tr>
+
             </tbody>
           </table>
         </div>
