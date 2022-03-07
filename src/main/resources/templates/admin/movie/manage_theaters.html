@@ -69,15 +69,15 @@
                         </tr>
                         </thead>
                         <tfoot>
-                        <tr>
-                            <th>No</th>
+                        <tr class="text-center" th:each="hall:${HallList}">
+                            <th th:text="${hall.hcode}">No</th>
                             <th>상영관</th>
-                            <th>상영관명</th>
-                            <th>위치</th>
+                            <th th:text="${hall.hname}">상영관명</th>
+                            <th th:text="${hall.location}">위치</th>
                             <th>총 좌석수</th>
                             <th>일반석</th>
                             <th>장애인석</th>
-                            <th>regdate</th>
+                            <th >regdate</th>
                         </tr>
                         </tfoot>
                         <tbody>
