@@ -8,6 +8,7 @@ import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import com.koreait.cgvproject.service.admin.movie.MovieService;
 import lombok.AllArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -25,6 +26,7 @@ import java.util.List;
 @Slf4j
 @AllArgsConstructor
 @Controller
+@Slf4j
 public class AdminMovieController {
 
     private MovieService movieService;
@@ -101,6 +103,6 @@ public class AdminMovieController {
     @PostMapping("/manage_ongoingmovies_create")
     public String write(MovieDTO movieDTO){
         movieService.insertPoint(movieDTO);
-        return "redirect:/";
+        return "redirect:/manage_ongoingmovies";
     }
 }

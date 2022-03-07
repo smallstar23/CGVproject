@@ -5,6 +5,7 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.springframework.format.annotation.DateTimeFormat;
 
 
 import java.time.LocalDate;
@@ -24,11 +25,14 @@ public class MovieDTO {
     private String country;
     private String movieRating;
     private Long runtime;
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
     private LocalDate launchDate;
     private LocalDateTime regDate;
     private String poster;
 
 
+
+// [2022-03-01]
     public Movie toEntity(){
         return Movie.builder()
                 .mcode(mcode).mrank(mrank).titleKo(titleKo).titleEn(titleEn).genre(genre).country(country)
