@@ -65,10 +65,10 @@
     <main>
         <div class="container-fluid px-4" style="margin:0 auto;">
             <h2 style="text-align:center;">상영관 등록</h2>
-            <form style="width:40%; border:solid 2px red; border-radius:10px; padding:5%; margin:0 auto;">
+            <form style="width:40%; border:solid 2px red; border-radius:10px; padding:5%; margin:0 auto;" action="/manage_theaters" method="post">
                 <div class="form-row">
                     <div class="col">상영관
-                        <select class="form-control">
+                        <select class="form-control" name="tcode">
                             <option>관 선택해주세요</option>
                             <option >1관</option>
                             <option >2관</option>
@@ -79,7 +79,7 @@
                         </select>
                     </div>
                     <div class="col">상영관명
-                        <select class="form-control">
+                        <select class="form-control" name="hname">
 
                             <option>상영관명 선택해주세요</option>
                             <option >2D</option>
@@ -104,7 +104,7 @@
                     </div>
 
                     <div class="col">위치
-                        <select class="form-control">
+                        <select class="form-control" name="location">
                             <option>위치 선택해주세요</option>
                             <option >6층</option>
                             <option >8층</option>
