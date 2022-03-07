@@ -5,6 +5,7 @@ import com.koreait.cgvproject.dto.MovieDTO;
 import com.koreait.cgvproject.entity.Movie;
 import com.koreait.cgvproject.repository.MovieRepository;
 import lombok.AllArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -13,6 +14,7 @@ import java.util.List;
 
 @Service
 @AllArgsConstructor
+@Slf4j
 public class MovieService {
 
     private MovieRepository movieRepository;
@@ -20,6 +22,7 @@ public class MovieService {
     @Transactional
     public void insertPoint(MovieDTO movieDTO){
          movieRepository.save(movieDTO.toEntity());
+         log.info(movieDTO.toString());
     }
 
     public List<MovieDTO> getMovieList(){
