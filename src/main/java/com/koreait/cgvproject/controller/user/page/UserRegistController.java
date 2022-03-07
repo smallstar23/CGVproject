@@ -1,8 +1,8 @@
 package com.koreait.cgvproject.controller.user.page;
 
-import com.koreait.cgvproject.dto.Member_info_DTO;
-import com.koreait.cgvproject.entity.MemberinfoEntity;
-import com.koreait.cgvproject.repository.MemberinfoRepository;
+import com.koreait.cgvproject.dto.MemberDTO;
+import com.koreait.cgvproject.entity.Member;
+import com.koreait.cgvproject.repository.MemberRepository;
 
 import com.koreait.cgvproject.service.MemberinfoService;
 import lombok.extern.slf4j.Slf4j;
@@ -16,7 +16,7 @@ import org.springframework.web.bind.annotation.*;
 public class UserRegistController {
 
     @Autowired // 스프링 부트가 미리 생성해놓은 객체를 가져다가 자동으로 연결
-    private MemberinfoRepository memberinfoRepository;
+    private MemberRepository memberRepository;
 
     @Autowired
     private MemberinfoService memberinfoService;
@@ -29,7 +29,7 @@ public class UserRegistController {
 
 //    @GetMapping("/user/finish_do")
 //    public String finish_do(Model model, Long id){
-//        MemberinfoEntity member = memberinfoService.viewuserid(id);
+//        Member member = memberinfoService.viewuserid(id);
 //        model.addAttribute("form",memberinfoService.viewuserid(id));
 //
 //        return "user/regist/finish_do";
@@ -47,7 +47,7 @@ public class UserRegistController {
 
     // 회원가입 완료페이지(finish_do)로 오면 regist 메소드를 통해 DB에 담기게 함
     @PostMapping("/user/finish_do")
-    public String createMemberinfo(Member_info_DTO memberinfoDTO){
+    public String createMemberinfo(MemberDTO memberinfoDTO){
         // 서비스 이용 잠시 중지
         // memberinfoService.regist(memberinfoDTO);
 
@@ -55,12 +55,12 @@ public class UserRegistController {
         log.info(memberinfoDTO.toString());
 
         // 1. DTO를 변환 -> Entity로
-        MemberinfoEntity memberinfoEntity = memberinfoDTO.toEntity();
-//        System.out.println(memberinfoEntity.toString());
-        log.info(memberinfoEntity.toString());
+        Member member = memberinfoDTO.toEntity();
+//        System.out.println(member.toString());
+        log.info(member.toString());
 
         //2. Repository에게 Entity를 DB안에 저장하게 함!
-        MemberinfoEntity saved = memberinfoRepository.save(memberinfoEntity);
+        Member saved = memberRepository.save(member);
 //        System.out.println(saved.toString());
         log.info(saved.toString());
 
@@ -73,11 +73,11 @@ public class UserRegistController {
         log.info("id : " + id);
 
         // 1. ID로 데이터를 가져옴!
-        MemberinfoEntity memberinfoEntity = memberinfoRepository.findById(id).orElse(null);
-//        Optional<MemberinfoEntity> memberinfoEntity = memberinfoRepository.findById(id);
+        Member member = memberRepository.findById(id).orElse(null);
+//        Optional<Member> member = memberinfoRepository.findById(id);
 
         // 2. 가져온 데이터를 모델에 등록
-        model.addAttribute("memberinfo",memberinfoEntity);
+        model.addAttribute("memberinfo", member);
 
         // 3. 보여줄 페이지를 설정!
         return "user/regist/finish_do";
@@ -96,7 +96,7 @@ public class UserRegistController {
 //    public String checkid(@RequestParam String userid) {
 //
 ////        String userid = req.substring(9);
-////        Optional<MemberinfoEntity> memberinfoEntity = memberinfoRepository.findById()
+////        Optional<Member> memberinfoEntity = memberinfoRepository.findById()
 //        System.out.println(userid);
 //        return "result";
 //    }
