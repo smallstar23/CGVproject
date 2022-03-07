@@ -7,23 +7,15 @@ import com.koreait.cgvproject.service.admin.hall.AdminHallService;
 import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import com.koreait.cgvproject.service.admin.movie.MovieService;
-import lombok.AllArgsConstructor;
-import lombok.extern.slf4j.Slf4j;
+
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.servlet.ModelAndView;
-
-
-
-
 import java.util.List;
 
-@Slf4j
 @AllArgsConstructor
 @Controller
 @Slf4j
@@ -90,7 +82,7 @@ public class AdminMovieController {
 
     @GetMapping("manage_ongoingmovies")//movie-ongoing 페이지
     public String movie_ongoing(Model model){
-        List<MovieDTO> movieDTOList =movieService.getMovieList();
+        List<MovieDTO> movieDTOList = movieService.getMovieList();
         model.addAttribute("MovieList",movieDTOList);
         return "/admin/movie/manage_ongoingmovies";
     }

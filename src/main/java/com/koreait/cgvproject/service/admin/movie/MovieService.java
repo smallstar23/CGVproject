@@ -3,10 +3,7 @@ package com.koreait.cgvproject.service.admin.movie;
 
 import com.koreait.cgvproject.dto.MovieDTO;
 import com.koreait.cgvproject.entity.Movie;
-<<<<<<< HEAD:src/main/java/com/koreait/cgvproject/service/admin/service/MovieService.java
-//import com.koreait.cgvproject.entity.MovieEntity;
-=======
->>>>>>> 05cb7e02b6e1923f889dede347d9f8350449bc3e:src/main/java/com/koreait/cgvproject/service/admin/movie/MovieService.java
+
 import com.koreait.cgvproject.repository.MovieRepository;
 import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;

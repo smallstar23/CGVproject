@@ -56,14 +56,14 @@
         </div>
         <div class="card-body" style="margin: 0 auto;">
           <div style="border:1px solid #a52834; border-radius: 10px; width: 700px; height: auto; margin-top:10%; padding:20px"  >
-
-            <h2 style="text-align: center">김사과 님</h2>
-            <p style="text-align: center" th:text="${post.userid}"></p>
-            <p style="text-align: center" th:text="${post.hp1}"></p>
+<!--            th:text="|Hello, ${name}!!|"-->
+            <h2 style="text-align: center" th:text="|${post.userid} 님|"></h2>
+            <p style="text-align: center" th:text="|회원 이름 : ${post.username}|"></p>
+            <p style="text-align: center" th:text="|휴대폰 번호 : ${post.hp1}|"></p>
             <hr/>
 
             <div style="width:50%;height:auto; text-align: center; margin:0 auto; ">
-              <p>Email: <input class="form-control" th:value="${post.email1}" readonly></p>
+              <p>E-mail : <input class="form-control" th:value="${post.email1}" readonly></p>
               <p>회원등급 : <select class="form-control">
                 <option><--선택하세요--></option>
                 <option selected>일반</option>
@@ -74,8 +74,8 @@
               </select></p>
             </div>
             <div style="width:50%;height:auto; text-align: center; margin:0 auto; ">
-              <p>Age: <input class="form-control" th:value="${post.ssn1}" readonly></p>
-              <p>nickname: <input class="form-control" th:value="${post.getNickname()}"  readonly></p>
+              <p>주민등록번호 : <input class="form-control" th:value="${post.ssn1}" readonly></p>
+              <p>닉네임 : <input class="form-control" th:value="${post.getNickname()}"  readonly></p>
             </div>
             <div style="width:50%;height:auto; text-align: center; margin:0 auto; ">
               <p>자주가는 CGV</p>
