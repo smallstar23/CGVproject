@@ -9,6 +9,7 @@ import lombok.NoArgsConstructor;
 
 import javax.persistence.Entity;
 import javax.persistence.*;
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.List;
 
@@ -28,13 +29,14 @@ public class Movie {
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE,generator = "seq_movie")
     private Long mcode;
+    private Long mrank;
     private String titleKo;
     private String titleEn;
     private String genre;
     private String country;
     private String movieRating;
     private Long runtime;
-    private LocalDateTime launchDate;
+    private LocalDate launchDate;
     private LocalDateTime regDate;
     private String poster;
 
@@ -45,7 +47,7 @@ public class Movie {
 
 
     public MovieDTO toDTO(){
-        return MovieDTO.builder().mcode(mcode).titleKo(titleKo).titleEn(titleEn).genre(genre).country(country)
+        return MovieDTO.builder().mcode(mcode).mrank(mrank).titleKo(titleKo).titleEn(titleEn).genre(genre).country(country)
                 .movieRating(movieRating).runtime(runtime).launchDate(launchDate).regDate(regDate).poster(poster).build();
     }
 }
