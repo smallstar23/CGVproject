@@ -9,7 +9,6 @@ import lombok.NoArgsConstructor;
 import javax.persistence.*;
 
 @Data
-@Entity
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
@@ -19,15 +18,18 @@ import javax.persistence.*;
         initialValue = 1,
         allocationSize = 1
 )
+@Entity
 public class Theater {
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE,generator = "seq_theater")
     private Long tcode;
     private String tname;
+    private Long areacode;
     private String location;
     private String hp;
+    private String photo;
 
     public TheaterDTO toDTO(){
-        return TheaterDTO.builder().tcode(tcode).tname(tname).location(location).hp(hp).build();
+        return TheaterDTO.builder().tcode(tcode).tname(tname).areacode(areacode).location(location).hp(hp).photo(photo).build();
     }
 }

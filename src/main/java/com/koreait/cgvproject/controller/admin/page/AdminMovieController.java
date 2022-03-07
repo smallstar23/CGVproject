@@ -4,17 +4,32 @@ package com.koreait.cgvproject.controller.admin.page;
 import com.koreait.cgvproject.dto.MovieDTO;
 import com.koreait.cgvproject.service.admin.service.MovieService;
 import lombok.AllArgsConstructor;
+<<<<<<< HEAD
+=======
+
+>>>>>>> a2a48a47ad9d7e79da9f6948e5aaff2b55e20409
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+<<<<<<< HEAD
+=======
+
+
+>>>>>>> a2a48a47ad9d7e79da9f6948e5aaff2b55e20409
 
 import java.util.List;
 
 @AllArgsConstructor
 @Controller
 public class AdminMovieController {
+<<<<<<< HEAD
     private MovieService movieService;
+=======
+
+    private MovieService movieService;
+
+>>>>>>> a2a48a47ad9d7e79da9f6948e5aaff2b55e20409
 
     @GetMapping("manage_movieSchedule")//movie-schedule 페이지
     public String movie_schedule(){

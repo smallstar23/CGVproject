@@ -14,8 +14,10 @@ CREATE TABLE Member (
 CREATE TABLE Theater (
     tcode number(7) primary key,
     tname varchar2(10) not null, -- 극장이름 강남CGV
+    areacode number(2) not null,
     location varchar2(200) not null, -- 극장 위치
-    hp varchar2(20) not null -- 극장 번호
+    hp varchar2(20) not null, -- 극장 번호
+    photo varchar2(100) not null
 );
 
 CREATE TABLE Point (
@@ -32,6 +34,7 @@ CREATE TABLE Point (
 
 CREATE TABLE Movie (
     mcode number(7) primary key,
+    mrank number(2),
     title_ko varchar2(100)   not null, -- 제목 한글
     title_en varchar2(100) not null, -- 제목 영문
     genre varchar2(40)   not null, -- 장르
