@@ -9,6 +9,7 @@ import lombok.NoArgsConstructor;
 
 import javax.persistence.Entity;
 import javax.persistence.*;
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.List;
 
@@ -35,7 +36,7 @@ public class Movie {
     private String country;
     private String movieRating;
     private Long runtime;
-    private LocalDateTime launchDate;
+    private LocalDate launchDate;
     private LocalDateTime regDate;
     private String poster;
 

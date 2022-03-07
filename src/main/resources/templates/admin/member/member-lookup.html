@@ -78,15 +78,17 @@
             </tr>
             </tfoot>
             <tbody>
-            <tr th:onclick="'location.href=\''+ @{/member_user_view} + '\''">
+            <tr th:each="member : ${member2DTOList}">
+
+<!--              <a th:href="@{member_user_view/{id}(id=${member.id})}"></a>-->
 <!--              th:onclick="|location.href='@{/member_user_view}'|" 두개 다 가능-->
-              <td style="width: 10%;">apple</td>
-              <td style="width: 10%;">1234</td>
-              <td style="width: 15%;">010-1111-1111</td>
-              <td style="width: 15%;">경기도 수원시 영통구</td>
-              <td style="width: 10%;">20</td>
-              <td style="width: 15%;">2020/02/02</td>
-              <td style="width: 15%;">50,000 P</td>
+              <td style="width: 10%;" ><a th:href="@{'/post/'+${member.id}}" th:text="${member.userid}"></a></td>
+              <td style="width: 10%;" th:text="${member.password}"></td>
+              <td style="width: 15%;" th:text="${member.hp}"></td>
+              <td style="width: 15%;" th:text="${member.address}"></td>
+              <td style="width: 10%;" th:text="${member.age}"></td>
+              <td style="width: 15%;" th:text="${member.point}"></td>
+              <td style="width: 15%;" th:text="${member.regdate}"></td>
             </tr>
             <tr onclick="location.href=''">
               <td>banana</td>
