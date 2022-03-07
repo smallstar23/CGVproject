@@ -4,7 +4,6 @@ import com.koreait.cgvproject.dto.HallDTO;
 import com.koreait.cgvproject.entity.Hall;
 import com.koreait.cgvproject.repository.HallRepository;
 import lombok.AllArgsConstructor;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 

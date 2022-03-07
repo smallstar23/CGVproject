@@ -3,8 +3,6 @@ package com.koreait.cgvproject.dto;
 import com.koreait.cgvproject.entity.Hall;
 import lombok.*;
 
-import java.time.LocalDateTime;
-
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
