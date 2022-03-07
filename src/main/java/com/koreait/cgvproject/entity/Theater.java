@@ -9,7 +9,6 @@ import lombok.NoArgsConstructor;
 import javax.persistence.*;
 
 @Data
-@Entity
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
@@ -19,6 +18,7 @@ import javax.persistence.*;
         initialValue = 1,
         allocationSize = 1
 )
+@Entity
 public class Theater {
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE,generator = "seq_theater")
