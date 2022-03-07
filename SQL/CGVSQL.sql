@@ -7,9 +7,11 @@ CREATE TABLE Member (
     hp varchar2(13)   not null,
     email varchar2(50)   not null,
     nickname varchar2(20)   not null,
-    valPoint number(10) DEFAULT 0, -- 사용가능한 포인트
     reg_date date not null
 );
+create sequence seq_member
+    increment by 1
+    start with 1;
 
 CREATE TABLE Theater (
     tcode number(7) primary key,
@@ -25,6 +27,7 @@ CREATE TABLE Point (
     mem_idx number(7)   not null,
     kind varchar2(10) not null, -- 종류(use,get)에 따라 +- 결정
     tcode number(7)   not null, -- join으로 극장정보
+    valPoint number(10) DEFAULT 0, -- 사용가능한 포인트
     pointChange number(5) not null, -- 포인트 변경량
     reg_date date not null, -- 등록일
     constraint fk_point_mem_idx foreign key(mem_idx) references Member(idx),
@@ -45,6 +48,9 @@ CREATE TABLE Movie (
     reg_date date not null, -- 등록일
     poster varchar2(200) not null -- 포스터 이미지 경로
 );
+create sequence seq_movie
+	increment by 1
+    start with 1;
 
 CREATE TABLE Hall (
     hcode number(10) primary key,
@@ -93,7 +99,6 @@ CREATE TABLE Actor (
     photo varchar2(100) default 'http://img.cgv.co.kr/R2014/images/common/default_230_260.gif', 
     constraint fk_Actor_mcode foreign key(mcode) references Movie (mcode)
 );
-
 create sequence seq_actor
 	increment by 1
     start with 1;
@@ -107,9 +112,7 @@ CREATE TABLE Director (
     constraint fk_Director_mcode foreign key(mcode) references Movie (mcode)
 );
 
-create sequence seq_movie
-	increment by 1
-    start with 1;
+
 
 CREATE TABLE Reply (
     idx number(7) primary key,
@@ -136,6 +139,9 @@ CREATE TABLE Price (
     constraint ck_price_week check(week in('월~목','금~일')),
     constraint fk_Price_tcode foreign key(tcode) references Theater (tcode)
 );
+create sequence seq_price
+    start with 1
+    increment by 1;
 
 
 CREATE TABLE Schedule (
@@ -215,14 +221,13 @@ CREATE TABLE Gift (
     gfile varchar2(200)   not null,-- 이미지 경로
     end_month varchar2(10)   not null, -- 종료일
     mainon number(1) default 0,
-    constraint ck_gift_mainon check(mainon in (1,0))
+    mainon_string varchar2(100) default '없음'
 );
-create table Gift_Explain(
-    idx number(10) primary key,
-    gcode number(10) not null,
-    about varchar2(50) not null,
-    constraint fk_gift_Explain_gcode foreign key(gcode) references Gift(gcode)
-);
+create sequence seq_gift
+    start with 1
+    increment by 1
+    maxvalue 9999999999;
+
 
 CREATE TABLE Gift_payment (
     gpcode number(14) primary key,
@@ -234,24 +239,20 @@ CREATE TABLE Gift_payment (
     constraint fk_gift_gcode foreign key(gcode) references Gift(gcode)
 );
 
-create sequence seq_gift
-    start with 1
-    increment by 1
-    maxvalue 9999999999;
-    
-create sequence seq_gift_explain
-    start with 1
-    increment by 1;
 
-drop table gift_payment; drop table gift; drop table ticket_payment; drop table ticket; drop table notification; drop table seathtml;
+drop table gift_payment;  drop table gift; drop table ticket_payment; drop table ticket; drop table notification; drop table seathtml;
 drop table seat; drop table schedule;drop table price; drop table reply; drop table director; drop table actor; drop table trailer;
 drop table favCGV; drop table wishlist;drop table hall;drop table movie; drop table point; drop table theater;  drop table member;
 
-drop sequence seq_gift; drop sequence seq_gift_explain;
+drop sequence seq_gift; drop sequence seq_movie; drop sequence seq_actor;
 
-select * from gift;
 
--- 실행해보자
+-- 있다 없어진 테이블 삭제 --
+drop table gift_Explain;
+
+drop sequence seq_gift_explain;
+-- 있다 없어진 테이블 삭제 끝 --
+
 
 -- 멤버, 공지 시퀀스(태훈)
 
