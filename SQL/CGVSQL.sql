@@ -7,9 +7,11 @@ CREATE TABLE Member (
     hp varchar2(13)   not null,
     email varchar2(50)   not null,
     nickname varchar2(20)   not null,
-    valPoint number(10) DEFAULT 0, -- 사용가능한 포인트
     reg_date date not null
 );
+create sequence seq_member
+    increment by 1
+    start with 1;
 
 CREATE TABLE Theater (
     tcode number(7) primary key,
@@ -25,6 +27,7 @@ CREATE TABLE Point (
     mem_idx number(7)   not null,
     kind varchar2(10) not null, -- 종류(use,get)에 따라 +- 결정
     tcode number(7)   not null, -- join으로 극장정보
+    valPoint number(10) DEFAULT 0, -- 사용가능한 포인트
     pointChange number(5) not null, -- 포인트 변경량
     reg_date date not null, -- 등록일
     constraint fk_point_mem_idx foreign key(mem_idx) references Member(idx),
