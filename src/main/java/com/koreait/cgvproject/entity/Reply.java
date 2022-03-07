@@ -6,6 +6,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
+import java.time.LocalDateTime;
 
 @Data
 @Entity
@@ -13,22 +14,24 @@ import javax.persistence.*;
 @AllArgsConstructor
 @Builder
 @SequenceGenerator(
-        name = "seq_director",
-        sequenceName="seq_director",
+        name = "seq_reply",
+        sequenceName="seq_reply",
         initialValue = 1,
         allocationSize = 1
 )
-public class Director {
+public class Reply {
+
     @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE,generator = "seq_director")
+    @GeneratedValue(strategy = GenerationType.SEQUENCE,generator = "seq_reply")
     private Long idx;
 
-    //private Long mcode;
-    @OneToOne
+    @ManyToOne
     private Movie movie;
+    //private Long mcode;
+    private Long memIdx;
+    private String content;
+    private Long reLike;
+    private LocalDateTime regDate;
 
-    private String nameKo;
-    private String nameEn;
-    private String photo;
 
 }
