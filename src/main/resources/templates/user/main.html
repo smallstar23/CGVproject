@@ -301,7 +301,7 @@
                     <strong id="ctl00_PlaceHolderContent_AD_MOVIE_NM" class="movieSelection_title">나이트메어 앨리</strong>
                     <span id="ctl00_PlaceHolderContent_AD_DESCRIPTION_NM" class="movieSelection_txt">2022년 아카데미 시상식 작품상 후보!<br>기예르모 델 토로 감독 신작!</span>
                     <div class="movieSelection_video_controller_wrap">
-                        <a href="http://ad.cgv.co.kr/click/CGV/CGV_201401/main@MovieSelection2021?ads_id%3d46592%26creative_id%3d66199%26click_id%3d86512%26maid%3D%26event%3d" id="ctl00_PlaceHolderContent_AD_CLIP_DETAIL_URL" class="btn_movieSelection_detailView">상세보기</a>
+                        <a href="/movies/detail-view/" id="ctl00_PlaceHolderContent_AD_CLIP_DETAIL_URL" class="btn_movieSelection_detailView">상세보기</a>
 
                         <a href="#none" id="ctl00_PlaceHolderContent_playStop" class="btn_movieSelection_playStop active">Stop</a>
                         <a href="#none" id="ctl00_PlaceHolderContent_soundOnOff" class="btn_movieSelection_soundOnOff">Sound On</a>
@@ -318,7 +318,7 @@
                         <h3><a href="#none" class="active" id="btnMovie">무비차트</a></h3>
                         <h3><a href="#none" id="btnReserMovie">상영예정작</a></h3>
                     </div>
-                    <a th:href="@{movies}" id="btn_allView_Movie" class="btn_allView">전체보기</a>
+                    <a href="/movies" id="btn_allView_Movie" class="btn_allView">전체보기</a>
                 </div>
 
                 <div class="swiper movieChart_list" id="movieChart_list">
@@ -1069,7 +1069,7 @@
             <div class="contents">
                 <div class="event_title_wrap">
                     <h3>EVENT</h3>
-                    <a href="/culture-event/event/defaultNew.aspx" id="btn_allView_Event" class="btn_allView">전체보기</a>
+                    <a href="/culture-event/defaultNew" id="btn_allView_Event" class="btn_allView">전체보기</a>
                     <a href="#none" class="btn_eventControl">playStop</a>
                 </div>
                 <div class="event_list_wrap">
@@ -1077,7 +1077,7 @@
                         <div class="swiper-wrapper">
 
                             <div class="swiper-slide">
-                                <a onclick="gaEventLog('PC_메인', '이벤트', '[라이브뷰잉]BTS PTD ON STAGE - SEOUL');" href="/culture-event/event/detailViewUnited.aspx?seq=34075">
+                                <a onclick="gaEventLog('PC_메인', '이벤트', '[라이브뷰잉]BTS PTD ON STAGE - SEOUL');" href="/culture-event/defaultNew">
                                     <div class="img_wrap"><img src="https://img.cgv.co.kr/WebApp/contents/eventV4/34075/16456658549810.jpg" alt="[라이브뷰잉]BTS PTD ON STAGE - SEOUL" onerror="errorImage(this)"></div>
                                     <strong>[라이브뷰잉]BTS PTD ON STAGE - SEOUL</strong>
                                     <span>2022.02.23~2022.03.12</span>
@@ -1085,7 +1085,7 @@
                             </div>
 
                             <div class="swiper-slide">
-                                <a onclick="gaEventLog('PC_메인', '이벤트', '[2022 아카데미 기획전]아카데미 후보작을 한 곳에!');" href="/culture-event/event/detailViewUnited.aspx?seq=34056">
+                                <a onclick="gaEventLog('PC_메인', '이벤트', '[2022 아카데미 기획전]아카데미 후보작을 한 곳에!');" href="/culture-event/defaultNew">
                                     <div class="img_wrap"><img src="https://img.cgv.co.kr/WebApp/contents/eventV4/34056/16454185221710.jpg" alt="[2022 아카데미 기획전]아카데미 후보작을 한 곳에!" onerror="errorImage(this)"></div>
                                     <strong>[2022 아카데미 기획전]아카데미 후보작을 한 곳에!</strong>
                                     <span>2022.02.21~2022.03.30</span>
@@ -1093,7 +1093,7 @@
                             </div>
 
                             <div class="swiper-slide">
-                                <a onclick="gaEventLog('PC_메인', '이벤트', '[더 배트맨]CGV 필름마크');" href="/culture-event/event/detailViewUnited.aspx?seq=34062">
+                                <a onclick="gaEventLog('PC_메인', '이벤트', '[더 배트맨]CGV 필름마크');" href="/culture-event/defaultNew">
                                     <div class="img_wrap"><img src="https://img.cgv.co.kr/WebApp/contents/eventV4/34062/16454267088970.jpg" alt="[더 배트맨]CGV 필름마크" onerror="errorImage(this)"></div>
                                     <strong>[더 배트맨]CGV 필름마크</strong>
                                     <span>2022.02.21~2022.03.20</span>
@@ -1101,7 +1101,7 @@
                             </div>
 
                             <div class="swiper-slide">
-                                <a onclick="gaEventLog('PC_메인', '이벤트', '[더 배트맨] SCREENX 리미티드 포스터');" href="/culture-event/event/detailViewUnited.aspx?seq=34070">
+                                <a onclick="gaEventLog('PC_메인', '이벤트', '[더 배트맨] SCREENX 리미티드 포스터');" href="/culture-event/defaultNew">
                                     <div class="img_wrap"><img src="https://img.cgv.co.kr/WebApp/contents/eventV4/34070/16455196366760.jpg" alt="[더 배트맨] SCREENX 리미티드 포스터" onerror="errorImage(this)"></div>
                                     <strong>[더 배트맨] SCREENX 리미티드 포스터</strong>
                                     <span>2022.02.22~2022.03.31</span>
@@ -1109,7 +1109,7 @@
                             </div>
 
                             <div class="swiper-slide">
-                                <a onclick="gaEventLog('PC_메인', '이벤트', '[더 배트맨]IMAX 한정판 포스터 증정');" href="/culture-event/event/detailViewUnited.aspx?seq=34069">
+                                <a onclick="gaEventLog('PC_메인', '이벤트', '[더 배트맨]IMAX 한정판 포스터 증정');" href="/culture-event/defaultNew">
                                     <div class="img_wrap"><img src="https://img.cgv.co.kr/WebApp/contents/eventV4/34069/16455172595980.jpg" alt="[더 배트맨]IMAX 한정판 포스터 증정" onerror="errorImage(this)"></div>
                                     <strong>[더 배트맨]IMAX 한정판 포스터 증정</strong>
                                     <span>2022.02.22~2022.03.07</span>
@@ -1117,7 +1117,7 @@
                             </div>
 
                             <div class="swiper-slide">
-                                <a onclick="gaEventLog('PC_메인', '이벤트', '[더 배트맨] 4DX 리미티드 포스터');" href="/culture-event/event/detailViewUnited.aspx?seq=34067">
+                                <a onclick="gaEventLog('PC_메인', '이벤트', '[더 배트맨] 4DX 리미티드 포스터');" href="/culture-event/defaultNew">
                                     <div class="img_wrap"><img src="https://img.cgv.co.kr/WebApp/contents/eventV4/34067/16455166356280.jpg" alt="[더 배트맨] 4DX 리미티드 포스터" onerror="errorImage(this)"></div>
                                     <strong>[더 배트맨] 4DX 리미티드 포스터</strong>
                                     <span>2022.02.22~2022.03.31</span>
@@ -1141,10 +1141,10 @@
 
                     <li>
                         <dl class='giftcon_list'>
-                            <dt>영화관람권<a href='/culture-event/popcorn-store/store-category.aspx?CategoryIdx=2' alt='영화관람권' class='btn_more'>더보기</a></dt>
+                            <dt>영화관람권<a href='/culture-event/popcorn-store/store-category?cno=2' alt='영화관람권' class='btn_more'>더보기</a></dt>
 
                             <dd>
-                                <a href='/culture-event/popcorn-store/product-detail.aspx?GG_NO=100253'>
+                                <a href='/culture-event/popcorn-store/product-detail'>
                                     <div class='img_wrap' data-scale=false><img src='https://img.cgv.co.kr/GiftStore/Product/Pc/List/16094706927780.jpg' alt='CGV 영화관람권'></div>
                                     <div class='giftcon_info_wrap'>
                                         <span>CGV 영화관람권</span>
@@ -1154,7 +1154,7 @@
                             </dd>
 
                             <dd>
-                                <a href='/culture-event/popcorn-store/product-detail.aspx?GG_NO=100026'>
+                                <a href='/culture-event/popcorn-store/product-detail'>
                                     <div class='img_wrap' data-scale=false><img src='https://img.cgv.co.kr/GiftStore/Product/Pc/List/15458911951520.jpg' alt='CGV 골드클래스'></div>
                                     <div class='giftcon_info_wrap'>
                                         <span>CGV 골드클래스</span>
@@ -1164,7 +1164,7 @@
                             </dd>
 
                             <dd>
-                                <a href='/culture-event/popcorn-store/product-detail.aspx?GG_NO=100255'>
+                                <a href='/culture-event/popcorn-store/product-detail'>
                                     <div class='img_wrap' data-scale=false><img src='https://img.cgv.co.kr/GiftStore/Product/Pc/List/16105061088530.jpg' alt='4DX관람권'></div>
                                     <div class='giftcon_info_wrap'>
                                         <span>4DX관람권</span>
@@ -1177,10 +1177,10 @@
                     </li>
                     <li>
                         <dl class='giftcon_list'>
-                            <dt>기프트카드<a href='/culture-event/popcorn-store/store-category.aspx?CategoryIdx=3' alt='기프트카드' class='btn_more'>더보기</a></dt>
+                            <dt>기프트카드<a href='/culture-event/popcorn-store/store-category?cno=3' alt='기프트카드' class='btn_more'>더보기</a></dt>
 
                             <dd>
-                                <a href='/culture-event/popcorn-store/product-detail.aspx?GG_NO=100161'>
+                                <a href='/culture-event/popcorn-store/product-detail'>
                                     <div class='img_wrap' data-scale=false><img src='https://img.cgv.co.kr/GiftStore/Product/Pc/List/15814124358590.jpg' alt='PACONNIE A형'></div>
                                     <div class='giftcon_info_wrap'>
                                         <span>PACONNIE A형</span>
@@ -1190,7 +1190,7 @@
                             </dd>
 
                             <dd>
-                                <a href='/culture-event/popcorn-store/product-detail.aspx?GG_NO=100162'>
+                                <a href='/culture-event/popcorn-store/product-detail'>
                                     <div class='img_wrap' data-scale=false><img src='https://img.cgv.co.kr/GiftStore/Product/Pc/List/15814158039890.jpg' alt='PACONNIE B형'></div>
                                     <div class='giftcon_info_wrap'>
                                         <span>PACONNIE B형</span>
@@ -1200,7 +1200,7 @@
                             </dd>
 
                             <dd>
-                                <a href='/culture-event/popcorn-store/product-detail.aspx?GG_NO=100163'>
+                                <a href='/culture-event/popcorn-store/product-detail'>
                                     <div class='img_wrap' data-scale=false><img src='https://img.cgv.co.kr/GiftStore/Product/Pc/List/15814162227570.jpg' alt='PACONNIE C형'></div>
                                     <div class='giftcon_info_wrap'>
                                         <span>PACONNIE C형</span>
@@ -1213,10 +1213,10 @@
                     </li>
                     <li>
                         <dl class='giftcon_list'>
-                            <dt>콤보<a href='/culture-event/popcorn-store/store-category.aspx?CategoryIdx=4' alt='콤보' class='btn_more'>더보기</a></dt>
+                            <dt>콤보<a href='/culture-event/popcorn-store/store-category?cno=4' alt='콤보' class='btn_more'>더보기</a></dt>
 
                             <dd>
-                                <a href='/culture-event/popcorn-store/product-detail.aspx?GG_NO=100019'>
+                                <a href='/culture-event/popcorn-store/product-detail'>
                                     <div class='img_wrap' data-scale=false><img src='https://img.cgv.co.kr/GiftStore/Product/Pc/List/15463252009160.jpg' alt='CGV콤보'></div>
                                     <div class='giftcon_info_wrap'>
                                         <span>CGV콤보</span>
@@ -1226,7 +1226,7 @@
                             </dd>
 
                             <dd>
-                                <a href='/culture-event/popcorn-store/product-detail.aspx?GG_NO=100020'>
+                                <a href='/culture-event/popcorn-store/product-detail'>
                                     <div class='img_wrap' data-scale=false><img src='https://img.cgv.co.kr/GiftStore/Product/Pc/List/15463251537260.jpg' alt='더블콤보'></div>
                                     <div class='giftcon_info_wrap'>
                                         <span>더블콤보</span>
@@ -1236,7 +1236,7 @@
                             </dd>
 
                             <dd>
-                                <a href='/culture-event/popcorn-store/product-detail.aspx?GG_NO=100073'>
+                                <a href='/culture-event/popcorn-store/product-detail'>
                                     <div class='img_wrap' data-scale=false><img src='https://img.cgv.co.kr/GiftStore/Product/Pc/List/15464065561050.jpg' alt='스몰세트'></div>
                                     <div class='giftcon_info_wrap'>
                                         <span>스몰세트</span>
