@@ -62,99 +62,28 @@
                             <th>상영관</th>
                             <th>상영관명</th>
                             <th>위치</th>
-                            <th>총 좌석수</th>
-                            <th>일반석</th>
-                            <th>장애인석</th>
-                            <th>regdate</th>
                         </tr>
                         </thead>
                         <tfoot>
-                        <tr class="text-center" th:each="hall:${HallList}">
-                            <th th:text="${hall.hcode}">No</th>
+                        <tr class="text-center">
+                            <th>No</th>
                             <th>상영관</th>
-                            <th th:text="${hall.hname}">상영관명</th>
-                            <th th:text="${hall.location}">위치</th>
-                            <th>총 좌석수</th>
-                            <th>일반석</th>
-                            <th>장애인석</th>
-                            <th >regdate</th>
+                            <th>상영관명</th>
+                            <th>위치</th>
                         </tr>
                         </tfoot>
                         <tbody>
-                        <tr>
-                            <td style="width: 10%;">7</td>
-                            <td style="width: 10%;">2관</td>
-                            <td style="width: 25%;">2D(스페셜 특가)</td>
-                            <td style="width: 15%;">LASER</td>
-                            <td style="width: 10%;">6층</td>
-                            <td style="width: 10%;">126석</td>
-                            <td style="width: 10%;">9석</td>
-                            <td style="width: 10%;">2022-2-17</td>
-                        </tr>
-                        <tr>
-                            <td>6</td>
-                            <td>6관</td>
-                            <td>2D</td>
-                            <td>LASER</td>
-                            <td>10층</td>
-                            <td>126석</td>
-                            <td>9석</td>
-                            <td>2022-2-17</td>
-                        </tr>
-                        <tr>
-                            <td>5</td>
-                            <td>5관</td>
-                            <td>2D</td>
-                            <td>LASER</td>
-                            <td>10층</td>
-                            <td>172석</td>
-                            <td>17석</td>
-                            <td>2022-2-17</td>
-                        </tr>
-                        <tr>
-                            <td>4</td>
-                            <td>4관</td>
-                            <td>SCREENX 2D</td>
-                            <td>SCRENNX</td>
-                            <td>8층</td>
-                            <td>124석</td>
-                            <td>9석</td>
-                            <td>2022-2-17</td>
-                        </tr>
-                        <tr>
-                            <td>3</td>
-                            <td>4관</td>
-                            <td>2D</td>
-                            <td>LCK관</td>
-                            <td>8층</td>
-                            <td>124석</td>
-                            <td>9석</td>
-                            <td>2022-2-17</td>
-                        </tr>
-                        <tr>
-                            <td>2</td>
-                            <td>3관</td>
-                            <td>2D</td>
-                            <td>삼화페인트 안심닥터관</td>
-                            <td>8층</td>
-                            <td>172석</td>
-                            <td>17석</td>
-                            <td>2022-2-17</td>
-                        </tr>
-                        <tr>
-                            <td>1</td>
-                            <td>1관 </td>
-                            <td>2D</td>
-                            <td>일반</td>
-                            <td>6층</td>
-                            <td>158석</td>
-                            <td>15석</td>
-                            <td>2022-2-17</td>
+                        <tr class="text-center" th:each="hall, i:${HallList}">
+
+                            <td style="width: 10%;" th:text="${i.index+1}"></td>
+
+                            <td style="width: 10%;" th:text="${hall.hcode}">2관</td>
+                            <td style="width: 25%;" th:text="${hall.hname}">2D(스페셜 특가)</td>
+                            <td style="width: 10%;" th:text="${hall.location}">6층</td>
                         </tr>
                         </tbody>
                     </table>
                 </div>
-
 
             </div>
         </div>
