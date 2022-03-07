@@ -16,7 +16,7 @@ public class AdminController {
 //        model.addAttribute("data","Hello spring 타임리프");
 //        return  "admin/basic/text-basic";
 //    }
-    @GetMapping("admin-main")
+    @GetMapping("admin/main")
     public ModelAndView main(){
         return new ModelAndView("/admin/main");
     }
