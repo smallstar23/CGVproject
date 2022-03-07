@@ -19,7 +19,7 @@ import java.time.LocalDateTime;
 @NoArgsConstructor
 @ToString
 @Table(name="Notification")
-public class AdminNewsEntity {
+public class Notification {
 
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "seq_Notification_idx")

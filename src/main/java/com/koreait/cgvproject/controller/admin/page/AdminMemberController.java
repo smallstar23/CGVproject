@@ -1,10 +1,11 @@
 package com.koreait.cgvproject.controller.admin.page;
 
 
-import com.koreait.cgvproject.dto.Member_info_DTO;
-import com.koreait.cgvproject.entity.MemberinfoEntity;
-import com.koreait.cgvproject.repository.MemberinfoRepository;
+import com.koreait.cgvproject.dto.MemberDTO;
+import com.koreait.cgvproject.repository.MemberRepository;
+
 import com.koreait.cgvproject.service.admin.member.MemberService;
+
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -18,31 +19,31 @@ import java.util.List;
 @Controller
 public class AdminMemberController {
 
-    private MemberinfoRepository memberinfoRepository;
+
+    private MemberRepository memberRepository;
+
 
     private MemberService memberService;
 
 
     @GetMapping("member-lookup")//member-lookup 페이지 회원정보 조회
     public String member_lookup(Model model){
-        List<Member_info_DTO> member_info_dtoList =memberService.getMemberList();
-        model.addAttribute("member2DTOList",member_info_dtoList);
+        List<MemberDTO> member__dtoList =memberService.getMemberList();
+        model.addAttribute("member2DTOList", member__dtoList);
         return "/admin/member/member-lookup";
     }
     @PostMapping("/post")
-    public  String write(Member_info_DTO member_info_dto){
-        memberService.insertPost(member_info_dto);
+    public  String write(MemberDTO member__dto){
+        memberService.insertPost(member__dto);
         return  "redirect:/";
     }
 
     @GetMapping("/post/{idx}")
     public  String view(@PathVariable("idx") Long id,Model model){
-        Member_info_DTO member_info_dto =memberService.getPost(id);
-        model.addAttribute("post",member_info_dto);
+        MemberDTO member__dto =memberService.getPost(id);
+        model.addAttribute("post", member__dto);
         return "admin/member/member_user_view";
     }
-
-
 
     @GetMapping("member_user_view")//manage_user_view 페이지
     public String member_user_view(){

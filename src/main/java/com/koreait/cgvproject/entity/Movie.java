@@ -1,6 +1,5 @@
 package com.koreait.cgvproject.entity;
 
-import com.koreait.cgvproject.dto.GiftDTO;
 import com.koreait.cgvproject.dto.MovieDTO;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -43,8 +42,12 @@ public class Movie {
 
     @OneToMany(fetch = FetchType.LAZY, mappedBy = "movie")
     private List<Actor> actors;
+    @OneToOne(fetch = FetchType.LAZY, mappedBy = "movie")
+    private Director director;
+    @OneToOne(fetch = FetchType.LAZY, mappedBy = "movie")
+    private Trailer trailer;
     @OneToMany(fetch = FetchType.LAZY, mappedBy = "movie")
-    private List<Director> directors;
+    private List<Reply> replies;
 
 
     public MovieDTO toDTO(){
