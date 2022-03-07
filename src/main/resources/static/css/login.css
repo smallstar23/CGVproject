@@ -8,27 +8,18 @@
   text-align: center;
 }
 .login h2 {
-<<<<<<< HEAD
-  padding: 20px 0 0;
-  border-top: 2px solid #111;
-=======
+
   padding: 0 0 20px;
   border-bottom: 2px solid #111;
->>>>>>> 8a7a5b14be1f488ef1e2c9f0fc3f2a9c77527ddc
   text-align: center;
   line-height: 1;
   font-size: 32px;
   color: #111;
-<<<<<<< HEAD
   margin:10px;
 }
-.login > ul {
-  padding: 10px 0 33px;
-=======
-}
+
 .login > ul {
   padding: 40px 0 33px;
->>>>>>> 8a7a5b14be1f488ef1e2c9f0fc3f2a9c77527ddc
 }
 .login > ul li {
   padding: 0 0 12px;
