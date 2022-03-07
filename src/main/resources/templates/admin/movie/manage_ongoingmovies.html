@@ -95,20 +95,10 @@
                             <td style="width: 5%;" th:text="${movie.movieRating}"></td>
                             <td style="width: 5%;" th:text="${movie.runtime}"></td>
                             <td style="width: 5%;" th:text="${movie.launchDate}"></td>
-                            <td style="width: 5%;" th:text="${movie.regDate}"></td>
+                            <td style="width: 5%;"  th:text="${#temporals.format(movie.regDate, 'yyyy-MM-dd')}"></td>
+<!--                            th:text="${#temporals.format(.getRegdate(), 'yyyy-MM-dd')}"-->
                         </tr>
-                        <tr>
-                            <td style="width: 5%;">7</td>
-                            <td style="width: 10%;">20220217</td>
-                            <td style="width: 15%;">극장판 주술회전 0</td>
-                            <td style="width: 10%;">Jujutsu Kaisen: Zero</td>
-                            <td style="width: 10%;">2022.02.17</td>
-                            <td style="width: 5%;">신규</td>
-                            <td style="width: 5%;">일본</td>
-                            <td style="width: 5%;">105분</td>
-                            <td style="width: 5%;">15세 이상</td>
-                            <td>2022-2-17</td>
-                        </tr>
+
                         </tbody>
                     </table>
                 </div>

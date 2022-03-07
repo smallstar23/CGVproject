@@ -2,18 +2,20 @@ package com.koreait.cgvproject.controller.admin.page;
 
 
 import com.koreait.cgvproject.dto.MovieDTO;
-import com.koreait.cgvproject.service.admin.service.MovieService;
+import com.koreait.cgvproject.service.admin.movie.MovieService;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 
+
 import java.util.List;
 
 @AllArgsConstructor
 @Controller
 public class AdminMovieController {
+
     private MovieService movieService;
 
 
