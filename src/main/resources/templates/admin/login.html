@@ -13,6 +13,17 @@
     <h2>로그인</h2>
     <ul>
         <div id="login">
+
+            <li>
+                <select class="form-control" id="selTheater">
+                    <option>극장을 선택해주세요 ▼</option>
+                    <option value="강남CGV">강남CGV</option>
+                    <option value="강변CGV">강변CGV</option>
+                    <option value="경기광주CGV">경기광주CGV</option>
+                    <option value="동수원CGV">동수원CGV</option>
+                    <option value="용인CGV">용인CGV</option>
+                </select>
+            </li>
             <li>
                 <input
                         required
@@ -44,16 +55,22 @@
 </body>
 
 <script>
+
+
         function login() {
             let useridVal=document.getElementById("userid").value;
             let userpwVal=document.getElementById("userpw").value;
+            let selTheater=document.getElementById("selTheater").value;
             if (useridVal=="admin" && userpwVal=="1111") {
-                alert("환영합니다!");
+                alert(selTheater+"님 환영합니다!");
                 location.href="/admin-main";
             } else {
                 alert("아이디 및 비밀번호를 확인해주세요")
             }
         }
+
+
+
 
 </script>
 </html>
