@@ -13,6 +13,8 @@ public class TheaterDTO {
 
     private Long tcode;
     private String tname;
+    private Long areacode;
     private String location;
     private String hp;
+    private String photo;
 }

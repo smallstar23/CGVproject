@@ -15,6 +15,7 @@ import java.time.LocalDateTime;
 public class MovieDTO {
 
     private Long mcode;
+    private Long mrank;
     private String titleKo;
     private String titleEn;
     private String genre;
