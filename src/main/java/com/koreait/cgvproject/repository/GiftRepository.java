@@ -12,4 +12,5 @@ public interface GiftRepository extends JpaRepository<Gift, Long> {
 
     List<Gift> findByCategoryOrderByGcode(String cno);
     List<Gift> findByMainonOrderByGcode(Integer mainon);
+    List<Gift> findAllByMainonGreaterThan(Integer mainon);
 }
