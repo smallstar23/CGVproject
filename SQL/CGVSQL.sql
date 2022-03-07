@@ -250,4 +250,14 @@ select * from gift;
 
 -- 실행해보자
 
+-- 멤버, 공지 시퀀스(태훈)
 
+create sequence seq_Member_idx
+    increment by 1
+    start with 1;
+
+create sequence seq_Notification_idx
+    increment by 1
+    start with 1;
+
+---------------------------------
