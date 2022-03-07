@@ -58,8 +58,8 @@
           <div style="border:1px solid #a52834; border-radius: 10px; width: 700px; height: auto; margin-top:10%; padding:20px"  >
 
             <h2 style="text-align: center">김사과 님</h2>
-            <p style="text-align: center">appleid</p>
-            <p style="text-align: center">010-0000-0000</p>
+            <p style="text-align: center" th:text="${post.userid}"></p>
+            <p style="text-align: center" th:text="${post.hp}"></p>
             <hr/>
 
             <div style="width:50%;height:auto; text-align: center; margin:0 auto; ">
@@ -74,9 +74,9 @@
               </select></p>
             </div>
             <div style="width:50%;height:auto; text-align: center; margin:0 auto; ">
-              <p>Address: <input class="form-control" value="서울특별시 노원구 공릉동" readonly></p>
-              <p>Age: <input class="form-control" value="20" readonly></p>
-              <p>사용가능한 포인트: <input class="form-control" value="50,000" readonly></p>
+              <p>Address: <input class="form-control" th:value="${post.address}" readonly></p>
+              <p>Age: <input class="form-control" th:value="${post.age}" readonly></p>
+              <p>사용가능한 포인트: <input class="form-control" th:value="${post.point}"  readonly></p>
             </div>
             <div style="width:50%;height:auto; text-align: center; margin:0 auto; ">
               <p>자주가는 CGV</p>
