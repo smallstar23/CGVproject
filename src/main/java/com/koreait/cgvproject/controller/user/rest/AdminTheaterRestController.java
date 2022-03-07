@@ -10,19 +10,21 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
+
 @Controller
 public class AdminTheaterRestController {
 
     @Autowired
     private AdminTheaterService adminTheaterService;
 
-    @PostMapping("/selTheater")
-    @ResponseBody
-    private TheaterDTO getTheater(@RequestParam("tname") String tname){
+    @PostMapping("/login")
+    private String login(@RequestParam("tname") String tname, HttpServletRequest request){
         System.out.println("전달 받은 theater name:" + tname);
-        TheaterDTO findTheater= adminTheaterService.getTheater(tname).toDTO();
-        System.out.println(findTheater);
-        return findTheater;
+        HttpSession session= request.getSession();
+        session.setAttribute("tname", tname);
+        return "ok";
     }
 
 
