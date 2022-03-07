@@ -40,6 +40,14 @@
 </nav>
 
 <!--<script>-->
+<!--    let del_msg = document.getElementById("delete_msg");-->
+<!--    if([[${msg}]] != ""){-->
+<!--        alert("삭제가 완료되었습니다.");-->
+<!--    } ;-->
+
+<!--</script>-->
+
+<!--<script>-->
 <!--    function go_detail() {-->
 <!--        let id = document.getElementById("number");-->
 
@@ -92,9 +100,8 @@
 <!--                        </tfoot>-->
                         <tbody>
 <!--                        <tr th:each="news : ${adminNewsList}" onclick="go_detail()">-->
-                        <tr th:each="news : ${adminNewsList}">
-                            <td style="width: 10%;"><a th:href="@{'/manage_news_detail/'+${news.getIdx()}}" th:text="${news.getIdx()}"></a> </td>
-<!--                            <td th:text="${news.getIdx()}" style="width: 10%;"></td>-->
+                        <tr th:each="news : ${adminNewsList}" th:onclick="|location.href='@{|/manage_news_detail/${news.getIdx()}|}'|">
+                            <td th:text="${news.getIdx()}" style="width: 10%;"></td>
                             <td th:text="${news.getCategory()}" style="width: 15%;"></td>
                             <td th:text="${news.getTitle()}" style="width: 30%;"></td>
                             <td th:text="${#temporals.format(news.getRegdate(), 'yyyy-MM-dd HH:mm')}" style="width: 15%;"></td>
@@ -195,10 +202,14 @@
 
 
             </div>
+
+            <input type="hidden" id="delete_msg">[[${msg}]]</input>
+
         </div>
     </main>
 
 </div>
+
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
 <script src="js/scripts.js"></script>
