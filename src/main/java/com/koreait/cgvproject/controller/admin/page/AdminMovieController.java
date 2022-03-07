@@ -39,22 +39,22 @@ public class AdminMovieController {
     @GetMapping("/manage_theaters")//movie-theaters 페이지
     public String movie_theaters(Model model){
 
-        List<HallDTO> hallDTOList = adminHallService.getHallList();
-        model.addAttribute("HallList",hallDTOList);
+//        List<HallDTO> hallDTOList = adminHallService.getHallList();
+//        model.addAttribute("HallList",hallDTOList);
 
         return "/admin/movie/manage_theaters";
     }
 
-    @GetMapping("/manage_theaters_create")//movie-theaters 페이지
-    public String movie_theaters_create(){
-        return "/admin/movie/manage_theaters_create";
-    }
+//    @GetMapping("/manage_theaters_create")//movie-theaters 페이지
+//    public String movie_theaters_create(){
+//        return "/admin/movie/manage_theaters_create";
+//    }
 
-    @PostMapping("/manage_theaters_create")
-    public String movie_theaters_write(HallDTO hallDTO){
-        adminHallService.savePost(hallDTO);
-        return "redirect:/";
-    }
+//    @PostMapping("/manage_theaters_create")
+//    public String movie_theaters_write(HallDTO hallDTO){
+//        adminHallService.savePost(hallDTO);
+//        return "redirect:/";
+//    }
 
     @GetMapping("manage_ongoingmovies")//movie-ongoing 페이지
     public String movie_ongoing(){
