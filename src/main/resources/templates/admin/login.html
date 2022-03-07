@@ -9,7 +9,7 @@
 </head>
 <body>
 <section class="login">
-    <img src="/css/logoRed.png" alt="CGV" width="150px"/><span>CULTUREPLEX</span>
+    <img src="/img/logoRed.png" alt="CGV" width="150px"/><span>CULTUREPLEX</span>
     <h2>로그인</h2>
     <ul>
         <div id="login">
@@ -47,12 +47,11 @@
         function login() {
             let useridVal=document.getElementById("userid").value;
             let userpwVal=document.getElementById("userpw").value;
-            if (useridVal=="admin" ||  userpwVal=="1111") {
+            if (useridVal=="admin" && userpwVal=="1111") {
                 alert("환영합니다!");
                 location.href="/admin-main";
             } else {
                 alert("아이디 및 비밀번호를 확인해주세요")
-                history.back();
             }
         }
 
