@@ -17,19 +17,7 @@
     <h2>로그인</h2>
     <ul>
         <div id="login">
-                <div id="select">
-                    <select name="area" id="area" onchange="setAcode(this.value)">
-                        <option value="none">지역선택</option>
-<!--                        <option value="극장의 지역코드">서울</option>-->
-<!--                        <option value="극장의 지역코드">경기</option>-->
-                        <option value="1">서울</option>
-                        <option value="2">경기</option>
-                    </select>
-                    <select name="theater" id="theater" disabled onchange="setTcode(this.value)">
-                        <option value="none">극장선택</option>
-                        <option value="15">강남CGV</option>
-                    </select>
-                </div>
+
             <li>
                 <input
                         required
@@ -57,5 +45,19 @@
 </section>
 
 </body>
-<script src="/js/login.js"></script>
+<script>
+    function login() {
+        let useridVal=document.getElementById("userid").value;
+        let userpwVal=document.getElementById("userpw").value;
+        if (useridVal=="admin" && userpwVal=="1111") {
+            alert("환영합니다!");
+            // postToUrl("/admin/main/post", {'tcode' : tcode} ,"post");
+            location.href="/admin/main"
+        }
+        else {
+            alert("아이디 및 비밀번호를 확인해주세요")
+        }
+    }
+
+</script>
 </html>
