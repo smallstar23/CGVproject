@@ -18,5 +18,4 @@ public class Hall{
     private Long tcode;
     private String hname;
     private String location;
-
 }

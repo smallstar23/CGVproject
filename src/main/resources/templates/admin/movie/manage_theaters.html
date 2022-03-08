@@ -59,6 +59,7 @@
                         <thead>
                         <tr>
                             <th>No</th>
+                            <th>극장</th>
                             <th>상영관</th>
                             <th>상영관명</th>
                             <th>위치</th>
@@ -67,6 +68,7 @@
                         <tfoot>
                         <tr class="text-center">
                             <th>No</th>
+                            <th>극장</th>
                             <th>상영관</th>
                             <th>상영관명</th>
                             <th>위치</th>
@@ -75,11 +77,12 @@
                         <tbody>
                         <tr class="text-center" th:each="hall, i:${HallList}">
 
-                            <td style="width: 10%;" th:text="${i.index+1}"></td>
-
-                            <td style="width: 10%;" th:text="${hall.hcode}">2관</td>
-                            <td style="width: 25%;" th:text="${hall.hname}">2D(스페셜 특가)</td>
-                            <td style="width: 10%;" th:text="${hall.location}">6층</td>
+                            <td style="width: 4%;" th:text="${i.index+1}"></td>
+                            <!-- 여기에 극장명 이름 넣고 싶은데..... ㅠㅠ 어케함-->
+                            <td style="width: 4%;" th:text="${hall.tcode}"></td>
+                            <td style="width: 4%;" th:text="${hall.hcode}+관"></td>
+                            <td style="width: 10%;" th:text="${hall.hname}"></td>
+                            <td style="width: 10%;" th:text="${hall.location}"></td>
                         </tr>
                         </tbody>
                     </table>
