@@ -1,11 +1,14 @@
 package com.koreait.cgvproject.controller.user.page;
 
 import com.koreait.cgvproject.dto.MovieDTO;
+import com.koreait.cgvproject.dto.TrailerDTO;
+import com.koreait.cgvproject.entity.Trailer;
 import com.koreait.cgvproject.service.user.moive.UserMovieService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 
 import java.util.List;
 
@@ -22,8 +25,11 @@ public class UserMovieController {
         return "/user/movies/movies";
     }
 
-    @GetMapping("/movies/detail-view/")
-    public String detailview(Model model){
+    @GetMapping("/movies/detail-view/{mcode}")
+    public String detailview(@PathVariable("mcode") Long mcode, Model model){
+        System.out.println("들어온 mcode"+mcode);
+        TrailerDTO trailerDTO=userMovieService.getTrailer(mcode);
+        model.addAttribute("trailer",trailerDTO);
         return "user/movies/detail-view";
     }
 
