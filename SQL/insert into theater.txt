@@ -1,0 +1,5 @@
+insert into theater(tcode, areacode, tname, location, hp, photo) values (seq_theater.nextval, 01, '강남CGV', '서울특별시 강남구 역삼동 814-6 스타플렉스', '1544-1122','https://img.cgv.co.kr/Theater/Theater/2014/1211/CGVgangnam.jpg' );
+insert into theater(tcode, areacode, tname, location, hp, photo) values (seq_theater.nextval, 01, '강변CGV', '서울특별시 광진구 구의동 546-4 테크노마트 10층', '1544-1122', 'https://img.cgv.co.kr/Theater/Theater/2019/0107/15468415578940.png');
+insert into theater(tcode, areacode, tname, location, hp, photo) values (seq_theater.nextval, 02, '경기광주CGV', '경기도 광주시 역동16-1 2층', '1544-1122','https://img.cgv.co.kr/Theater/Theater/2018/0309/15205836456080.jpg');
+insert into theater(tcode, areacode, tname, location, hp, photo) values (seq_theater.nextval, 02, '동수원CGV', '경기도 수원시 팔달구 인계동 1113-11,12 씨네파크 7층', '1544-1122','https://img.cgv.co.kr/Theater/Theater/2019/1210/15759380284040.jpg');
+insert into theater(tcode, areacode, tname, location, hp, photo) values (seq_theater.nextval, 02, '용인CGV', '경기도 용인시 처인구 김량장동 301-3, 5층', '1544-1122','https://img.cgv.co.kr/Theater/Theater/2018/0330/15224028011320.jpg');
