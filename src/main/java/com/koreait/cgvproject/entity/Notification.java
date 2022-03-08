@@ -30,7 +30,7 @@ public class Notification {
     private String category;
     private int hit;
     @CreatedDate
-    private LocalDateTime regdate;
+    private LocalDateTime regDate;
 
     public Long getIdx() {
         return idx;
@@ -73,10 +73,10 @@ public class Notification {
     }
 
     public LocalDateTime getRegdate() {
-        return regdate;
+        return regDate;
     }
 
     public void setRegdate(LocalDateTime regdate) {
-        this.regdate = regdate;
+        this.regDate = regdate;
     }
 }

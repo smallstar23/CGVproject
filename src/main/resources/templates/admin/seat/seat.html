@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org/">
+<head th:replace="admin/fragment/head :: head('Admin - seat')"></head>
+<head>
+    <link rel="stylesheet" href="/css/seat.css">
+
+</head>
+
+<body class="sb-nav-fixed">
+<nav class="sb-topnav navbar navbar-expand navbar-dark bg-dark">
+    <!-- Navbar Brand-->
+    <a class="navbar-brand  ps-3" href="main.jsp">CGV Administrator</a>
+    <!-- Sidebar Toggle-->
+    <button class="btn btn-link btn-sm order-1 order-lg-0 me-4 me-lg-0" id="sidebarToggle" href="#!"><i
+            class="fas fa-bars"></i></button>
+    <!-- Navbar Search-->
+    <form class="d-none d-md-inline-block form-inline ms-auto me-0 me-md-3 my-2 my-md-0">
+        <div class="input-group">
+            <input class="form-control" type="text" placeholder="Search for..." aria-label="Search for..."
+                   aria-describedby="btnNavbarSearch"/>
+            <button class="btn btn-primary" id="btnNavbarSearch" type="button"><i class="fas fa-search"></i></button>
+        </div>
+    </form>
+    <!-- Navbar-->
+    <ul class="navbar-nav ms-auto ms-md-0 me-3 me-lg-4">
+        <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" id="navbarDropdown" href="#" role="button" data-bs-toggle="dropdown"
+               aria-expanded="false"><i class="fas fa-user fa-fw"></i></a>
+            <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
+                <li><a class="dropdown-item" href="#">Settings</a></li>
+                <li><a class="dropdown-item" href="#">Activity Log</a></li>
+                <li>
+                    <hr class="dropdown-divider"/>
+                </li>
+                <li><a class="dropdown-item" href="#">Logout</a></li>
+            </ul>
+        </li>
+    </ul>
+</nav>
+
+<!-- header -->
+<div th:replace="admin/fragment/header :: header"></div>
+<!-- header 끝 -->
+
+
+<div id="layoutSidenav_content" style="margin-top:70px; margin-left: 240px">
+    <main>
+        <div class="container-fluid px-4">
+            <h2>좌석 배치 / 관리</h2>
+            <div id="select">
+                <select name="area" id="area" onchange="check();">
+                    <option value="none">지역 선택</option>
+                    <option value="acode1">서울</option>
+                    <option value="acode2">경기</option>
+                </select>
+
+                <select name="theater" id="theater" disabled onchange="check()">
+                    <option value="none">극장 선택</option>
+                    <option value="tcode1">강남CGV</option>
+                    <option value="tcode2">강변CGV</option>
+                    <option value="tcode3">판교CGV</option>
+                </select>
+
+                <select name="hall" id="hall" disabled onchange="check()">
+                    <option value="none">상영관 선택</option>
+                    <option value="hcode1">2관</option>
+                    <option value="hcode2">4관</option>
+                    <option value="hcode3">8관</option>
+                </select>
+
+                좌석의 최대행 :
+                <select name="st_row" id="st_row" disabled onchange="createSeat()">
+                    <option value="none">최대 행</option>
+                    <option value="A">A</option>
+                    <option value="B">B</option>
+                    <option value="C">C</option>
+                    <option value="D">D</option>
+                    <option value="E">E</option>
+                    <option value="F">F</option>
+                    <option value="G">G</option>
+                    <option value="H">H</option>
+                    <option value="I">I</option>
+                    <option value="J">J</option>
+                    <option value="K">K</option>
+                    <option value="L">L</option>
+                    <option value="M">M</option>
+                    <option value="N">N</option>
+                    <option value="O">O</option>
+                    <option value="P">P</option>
+                    <option value="Q">Q</option>
+                    <option value="R">R</option>
+                    <option value="S">S</option>
+                    <option value="T">T</option>
+                    <option value="U">U</option>
+                    <option value="V">V</option>
+                    <option value="W">W</option>
+                    <option value="X">X</option>
+                    <option value="Y">Y</option>
+                    <option value="Z">Z</option>
+                </select>
+
+                좌석의 최대열 :
+                <select name="st_col" id="st_col" disabled onchange="createSeat()">
+                    <option value="none">최대 열</option>
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                    <option value="4">4</option>
+                    <option value="5">5</option>
+                    <option value="6">6</option>
+                    <option value="7">7</option>
+                    <option value="8">8</option>
+                    <option value="9">9</option>
+                    <option value="10">10</option>
+                    <option value="11">11</option>
+                    <option value="12">12</option>
+                    <option value="13">13</option>
+                    <option value="14">14</option>
+                    <option value="15">15</option>
+                    <option value="16">16</option>
+                    <option value="17">17</option>
+                    <option value="18">18</option>
+                    <option value="19">19</option>
+                    <option value="20">20</option>
+                    <option value="21">21</option>
+                    <option value="22">22</option>
+                    <option value="23">23</option>
+                    <option value="24">24</option>
+                    <option value="25">25</option>
+                    <option value="26">26</option>
+                    <option value="27">27</option>
+                    <option value="28">28</option>
+                    <option value="29">29</option>
+                    <option value="30">30</option>
+                </select>
+            </div>
+
+            <div id="empty_seat" class="mt-3" style="display: flex;">
+                <div id="row">
+                    가로통로 ex) D,H
+                    <div class="form-floating mx-3">
+                        <input type="text" class="form-control" id="empty_row" placeholder="ex) C, G" disabled onkeyup="createSeat()">
+                        <label for="empty_row">가로 통로</label>
+                    </div>
+                </div>
+                <div id="col">
+                    세로통로 ex) 3,9
+                    <div class="form-floating mx-3">
+                        <input type="text" class="form-control" id="empty_col" placeholder="ex) C, G" disabled onkeyup="createSeat()">
+                        <label for="empty_col">세로 통로</label>
+                    </div>
+                </div>
+            </div>
+            <div id="seats" class="mt-3"></div>
+
+        </div>
+    </main>
+</div>
+
+    <script src="/js/scripts.js"></script>
+    <script src="/js/seat.js"></script>
+</body>
+</html>
+
