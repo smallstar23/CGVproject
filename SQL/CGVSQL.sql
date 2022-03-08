@@ -7,6 +7,7 @@ CREATE TABLE Member (
     hp varchar2(13)   not null,
     email varchar2(50)   not null,
     nickname varchar2(20)   not null,
+    valpoint number(7) default 0,
     reg_date date not null
 );
 create sequence seq_member
@@ -249,7 +250,7 @@ drop sequence seq_gift; drop sequence seq_movie; drop sequence seq_actor;
 
 -- 있다 없어진 테이블 삭제 --
 drop table gift_Explain;
-
+select * from gift;
 drop sequence seq_gift_explain;
 -- 있다 없어진 테이블 삭제 끝 --
 

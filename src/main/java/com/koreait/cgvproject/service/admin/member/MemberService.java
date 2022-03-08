@@ -30,7 +30,7 @@ public class MemberService {
                  .ssn1(member.getSsn())
                  .email1(member.getEmail())
                  .nickname(member.getNickname())
-                 .regdate(member.getRegdate())
+                 .regDate(member.getRegDate())
                  .build();
             member__dtoList.add(member__dto);
         }
@@ -57,7 +57,7 @@ public class MemberService {
                 .email1(member.getEmail())
                 .ssn1(member.getSsn())
                 .nickname(member.getNickname())
-                .regdate(member.getRegdate())
+                .regDate(member.getRegDate())
                 .build();
         return member__dto;
 

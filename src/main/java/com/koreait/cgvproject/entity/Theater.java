@@ -5,6 +5,7 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.hibernate.annotations.Fetch;
 
 import javax.persistence.*;
 
@@ -32,4 +33,7 @@ public class Theater {
     public TheaterDTO toDTO(){
         return TheaterDTO.builder().tcode(tcode).tname(tname).areacode(areacode).location(location).hp(hp).photo(photo).build();
     }
+
+    @OneToOne(fetch = FetchType.LAZY, mappedBy = "theater")
+    private Price price;
 }
