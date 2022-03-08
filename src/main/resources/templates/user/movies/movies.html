@@ -145,7 +145,7 @@
                             <div class="box-image">
                                 <strong class="rank" >No. <strong th:text="${movie.mrank}"></strong></strong>
 
-                                <a th:href="@{movies/detail-view/}">
+                                <a th:onclick="|location.href='@{|/movies/detail-view/${movie.getMcode()}|}'|">
                             <span class="thumb-image">
                                 <img th:src="@{${movie.poster}}" alt="언차티드 포스터">
                                 <span class="ico-grade grade-12"></span>

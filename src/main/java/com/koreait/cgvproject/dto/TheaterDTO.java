@@ -23,4 +23,5 @@ public class TheaterDTO {
         return Theater.builder().tcode(tcode).tname(tname).areacode(areacode)
                 .location(location).hp(hp).photo(photo).build();
     }
+
 }

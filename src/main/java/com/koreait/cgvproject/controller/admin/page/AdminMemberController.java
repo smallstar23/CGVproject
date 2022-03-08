@@ -40,6 +40,7 @@ public class AdminMemberController {
 
     @GetMapping("/post/{idx}")
     public  String view(@PathVariable("idx") Long id,Model model){
+        System.out.println("들어온 idx"+id);
         MemberDTO member__dto =memberService.getPost(id);
         model.addAttribute("post", member__dto);
         return "admin/member/member_user_view";

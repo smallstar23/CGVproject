@@ -1,25 +1,26 @@
 CREATE TABLE Member (
-    idx number(7) primary key,
-    userid varchar2(20) unique not null,
-    userpw varchar2(20)   not null,
-    username varchar2(10)   not null,
-    ssn varchar2(6)   not null, -- 주민등록번호 앞자리
-    hp varchar2(13)   not null,
-    email varchar2(50)   not null,
-    nickname varchar2(20)   not null,
-    reg_date date not null
+                        idx number(7) primary key,
+                        userid varchar2(20) unique not null,
+                        userpw varchar2(20)   not null,
+                        username varchar2(10)   not null,
+                        ssn varchar2(6)   not null, -- 주민등록번호 앞자리
+                        hp varchar2(13)   not null,
+                        email varchar2(50)   not null,
+                        nickname varchar2(20)   not null,
+                        valPoint number(10) DEFAULT 0 not null, -- 사용가능한 포인트
+                        regDate date not null
 );
-create sequence seq_member
+create sequence seq_Member_idx
     increment by 1
     start with 1;
 
 CREATE TABLE Theater (
-    tcode number(7) primary key,
-    tname varchar2(10) not null, -- 극장이름 강남CGV
-    areacode number(2) not null,
-    location varchar2(200) not null, -- 극장 위치
-    hp varchar2(20) not null, -- 극장 번호
-    photo varchar2(100) not null
+                         tcode number(7) primary key,
+                         tname varchar2(30) not null, -- 극장이름 강남CGV
+                         areacode number(2) not null,
+                         location varchar2(200) not null, -- 극장 위치
+                         hp varchar2(20) not null, -- 극장 번호
+                         photo varchar2(100) not null
 );
 
 CREATE TABLE Point (
@@ -78,18 +79,25 @@ CREATE TABLE favCGV (
 );
 
 CREATE TABLE Trailer (
-    idx number(7) primary key,
-    mcode number(7)   not null,
-    photo1 varchar2(100),
-    photo2 varchar2(100),
-    photo3 varchar2(100),
-    photo4 varchar2(100),
-    photo5 varchar2(100),
-    trailer1 varchar2(100),
-    trailer2 varchar2(100),
-    trailer3 varchar2(100),
-    constraint fk_Trailer_mcode foreign key(mcode) references Movie (mcode)
+                         idx number(7) primary key,
+                         mcode number(7)   not null,
+                         description1 varchar2(500),
+                         description2 varchar2(500),
+                         description3 varchar2(500),
+                         photo1 varchar2(200),
+                         photo2 varchar2(200),
+                         photo3 varchar2(200),
+                         photo4 varchar2(200),
+                         photo5 varchar2(200),
+                         trailer1 varchar2(200),
+                         trailer2 varchar2(200),
+                         trailer3 varchar2(200),
+                         constraint fk_Trailer_mcode foreign key(mcode) references Movie (mcode)
 );
+
+create sequence seq_trailer
+    increment by 1
+    start with 1;
 
 CREATE TABLE Actor (
     idx number(7) primary key,
