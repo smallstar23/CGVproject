@@ -47,7 +47,7 @@ CREATE TABLE Movie (
     runtime number(3) not null, -- 러닝타임
     launch_date date not null, -- 개봉일
     reg_date date not null, -- 등록일
-    poster varchar2(200) not null -- 포스터 이미지 경로
+    poster varchar2(500) not null -- 포스터 이미지 경로
 );
 create sequence seq_movie
 	increment by 1

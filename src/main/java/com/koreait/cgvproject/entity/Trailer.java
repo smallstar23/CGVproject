@@ -38,6 +38,9 @@ public class Trailer {
     private String trailer2;
     private String trailer3;
 
+
+
+
     public TrailerDTO toDTO(){
         return TrailerDTO.builder().idx(idx).mcode(mcode).description1(description1).description2(description2)
                 .description3(description3).photo1(photo1).photo2(photo2).photo3(photo3).photo4(photo4)
