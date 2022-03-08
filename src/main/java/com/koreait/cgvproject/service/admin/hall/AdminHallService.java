@@ -19,7 +19,6 @@ public class AdminHallService {
     @Transactional
     public void savePost(HallDTO hallDTO){hallRepository.save(hallDTO.toEntity());}
 
-
     public List<HallDTO> getHallList(){
         List<Hall> hallList = hallRepository.findAll();
         List<HallDTO> hallDTOList = new ArrayList<>();
