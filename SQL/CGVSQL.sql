@@ -10,9 +10,6 @@ CREATE TABLE Member (
                         valPoint number(10) DEFAULT 0 not null, -- 사용가능한 포인트
                         regDate date not null
 );
-create sequence seq_Member_idx
-    increment by 1
-    start with 1;
 
 CREATE TABLE Theater (
                          tcode number(7) primary key,
@@ -194,7 +191,7 @@ CREATE TABLE Seathtml (
 CREATE TABLE Notification (
     idx number(7)   primary key,
     title varchar2(100)   not null,
-    content varchar2(1000)   not null,
+    content varchar2(10000)   not null,
     category varchar2(20)   not null,
     hit number(7)  DEFAULT 0 not null,
     reg_date date not null
@@ -270,11 +267,11 @@ drop sequence seq_gift_explain;
 
 -- 멤버, 공지 시퀀스(태훈)
 
-create sequence seq_Member_idx
+create sequence seq_Member
     increment by 1
     start with 1;
 
-create sequence seq_Notification_idx
+create sequence seq_Notification
     increment by 1
     start with 1;
 
