@@ -22,6 +22,9 @@ CREATE TABLE Theater (
                          hp varchar2(20) not null, -- 극장 번호
                          photo varchar2(100) not null
 );
+create sequence seq_theater
+    increment by 1
+    start with 1
 
 CREATE TABLE Point (
     idx number(7) primary key,
@@ -60,7 +63,9 @@ CREATE TABLE Hall (
     location varchar2(10)   not null, -- 상영관 위치
     constraint fk_Hall_tcode foreign key(tcode) references Theater (tcode)
 );
-
+create sequence seq_hall
+    increment by 1
+    start with 1
 
 CREATE TABLE Wishlist (
     idx number(7) primary key,
