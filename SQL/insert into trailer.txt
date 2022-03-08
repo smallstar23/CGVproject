@@ -1,0 +1,19 @@
+insert into trailer(idx, mcode, description1, description2, description3, photo1, photo2, photo3, photo4, photo5, trailer1, trailer2, trailer3)
+values (seq_trailer.nextval, 1, '지난 2년간 고담시의 어둠 속에서 범법자들을 응징하며 배트맨으로 살아온 브루스 웨인. 알프레드와 제임스 고든 경위의 도움 아래, 도시의 부패한 공직자들과 고위 관료들 사이에서 복수의 화신으로 활약한다. ', '고담의 시장 선거를 앞두고 고담의 엘리트 집단을 목표로 잔악한 연쇄살인을 저지르는 수수께끼 킬러 리들러가 나타나자, 최고의 탐정 브루스 웨인이 수사에 나서고 남겨진 단서를 풀어가며 캣우먼, 펭귄, 카마인 팔코네, 리들러를 차례대로 만난다.  사이코 범인의 미스터리를 수사하면서 그 모든 증거가 자신을 향한 의도적인 메시지였음을 깨닫고,','리들러에게 농락 당한 배트맨은 광기에 사로잡힌다. 범인의 무자비한 계획을 막고 오랫동안 고담시를 썩게 만든 권력 부패의 고리를 끊어야 하지만,  부모님의 죽음에 얽힌 진실이 밝혀지자 복수와 정의 사이에서 갈등한다.',
+'https://img.cgv.co.kr/Movie/Thumbnail/StillCut/000085/85632/85632200251_727.jpg','https://img.cgv.co.kr/Movie/Thumbnail/StillCut/000085/85632/85632200250_727.jpg'
+,'https://img.cgv.co.kr/Movie/Thumbnail/StillCut/000085/85632/85632200249_727.jpg','https://img.cgv.co.kr/Movie/Thumbnail/StillCut/000085/85632/85632200248_727.jpg','https://img.cgv.co.kr/Movie/Thumbnail/StillCut/000085/85632/85632200121_727.jpg'
+,'http://h.vod.cgv.co.kr/vodCGVa/85632/85632_199767_1200_128_960_540.mp4', 'http://h.vod.cgv.co.kr/vodCGVa/85632/85632_199700_1200_128_960_540.mp4',
+'http://h.vod.cgv.co.kr/vodCGVa/85632/85632_199699_1200_128_960_540.mp4');
+
+insert into trailer(idx, mcode, description1, description2, description3, photo1, photo2, photo3, photo4, photo5, trailer1, trailer2, trailer3)
+values (seq_trailer.nextval, 2, '학문의 자유를 갈망하며 탈북한 천재 수학자 이학성(최민식). 그는 자신의 신분과 사연을 숨긴 채 상위 1%의 영재들이 모인 자사고의 경비원으로 살아간다. ',
+'차갑고 무뚝뚝한 표정으로 학생들의 기피 대상 1호인 이학성은 어느 날 자신의 정체를 알게 된 뒤 수학을 가르쳐 달라 조르는 수학을 포기한 고등학생 한지우(김동휘)를 만난다. ',
+'정답만을 찾는 세상에서 방황하던 ‘한지우’에게 올바른 풀이 과정을 찾아나가는 법을 가르치며 ‘이학성’ 역시 뜻하지 않은 삶의 전환점을 맞게 된다.',
+'https://img.cgv.co.kr/Movie/Thumbnail/StillCut/000085/85666/85666200778_727.jpg'
+,'https://img.cgv.co.kr/Movie/Thumbnail/StillCut/000085/85666/85666200777_727.jpg'
+,'https://img.cgv.co.kr/Movie/Thumbnail/StillCut/000085/85666/85666200614_727.jpg'
+,'https://img.cgv.co.kr/Movie/Thumbnail/StillCut/000085/85666/85666200342_727.jpg'
+,'https://img.cgv.co.kr/Movie/Thumbnail/StillCut/000085/85666/85666200338_727.jpg',
+'http://h.vod.cgv.co.kr/vodCGVa/85666/85666_200801_1200_128_960_540.mp4',
+'http://h.vod.cgv.co.kr/vodCGVa/85666/85666_200317_1200_128_960_540.mp4'
+,'http://h.vod.cgv.co.kr/vodCGVa/85666/85666_200474_1200_128_960_540.mp4');
