@@ -106,8 +106,14 @@ function convertNumber(alph) {
 }
 
 function submit() {
+
     // 조건 셀렉트가 다 활성화 되있는가.
-    if (!rowList.disabled) alert('정보를 입력해주세요');
+    if (!rowList.disabled) {
+        alert('정보를 입력해주세요');
+        return;
+    }
+
+    seatHtmlExist();
 
     //SeatHtml의 데이터
     let hcode = theater.value;
@@ -116,22 +122,8 @@ function submit() {
     let row_empty = empty_row.value.replaceAll(' ', '').toUpperCase().trim();
     let col_empty = empty_col.value.replaceAll(' ', '').trim();
     const array = [];
-    //seat의 데이터기입
-    //getElementByClassName으로 추출하면 HTMLCollection으로 나와 forEach사용 못함
     allSeats = document.querySelectorAll('.seat');
     dis_seats = document.querySelectorAll('.disabled');
-
-    allSeats.forEach(seat => {
-
-    })
-    // const area = document.getElementById('area');
-    // const theater = document.getElementById('theater');
-    // const hall = document.getElementById('hall');
-    // const rowList = document.getElementById('st_row');
-    // const colList = document.getElementById('st_col');
-    // const empty_row = document.getElementById('empty_row');
-    // const empty_col = document.getElementById('empty_col');
-    // const seats = document.getElementById('seats');
 }
 function seatHtmlExist(){
     fetch('/admin/api/exist/'+hall.value)

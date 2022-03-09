@@ -16,11 +16,11 @@ public class AdminTheaterService {
     @Autowired
     private TheaterRepository theaterRepository;
 
-    // 상영관 코드 정보 받기
+    // 극장 코드 정보 받기
     public List<TheaterDTO> getCGV(Long acode){
         List<Theater> theaterlist=theaterRepository.findAllByAreacode(acode);
-        List<TheaterDTO> cgvDTOlist=new ArrayList<>();
-        for(Theater theater:theaterlist) cgvDTOlist.add(theater.toDTO());
+        List<TheaterDTO> cgvDTOlist = new ArrayList<>();
+        for(Theater theater : theaterlist) cgvDTOlist.add(theater.toDTO());
         return cgvDTOlist;
     }
 
