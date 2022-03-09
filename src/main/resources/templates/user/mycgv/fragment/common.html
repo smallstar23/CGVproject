@@ -22,7 +22,7 @@
             </div>
             <div class="box-contents newtype">
                 <div class="person-info">
-                    <strong>공유</strong>
+                    <strong th:text="${member.username}"></strong>
                     <em>zero-U</em>
                     <span>zero-U : <i>닉네임을 설정해주세요.</i> </span>
                     <button id="go_edit_page" type="button" title="새창열림">나의 정보 변경</button>
@@ -43,7 +43,7 @@
                             <div class="pop-contents">
                                 <!-- Contents Addon -->
                                 <div class="sect-my-grade">
-                                    <p><strong>공유</strong> 고객님의 연도별 고객 등급 이력입니다.</p>
+                                    <p><strong th:text="${member.username}"></strong> 고객님의 연도별 고객 등급 이력입니다.</p>
                                     <div class="grade-lst-light scrollbox">
                                         <table summary="연도별 VIP 세부 등급 이력" id="mytable">
                                             <caption>VIP 등급 이력 리스트</caption>
@@ -109,7 +109,7 @@
                 <ul>
                     <li>
                         <strong>CGV 사용가능 포인트</strong>
-                        <span><em class="txt-maroon"><a href="/user/mycgv/point/mycgv-cgvPoint-pointList">1,000</a></em> 점</span>
+                        <span><em class="txt-maroon"><a href="/user/mycgv/point/mycgv-cgvPoint-pointList" th:text="${member.valpoint}"></a></em> 점</span>
                     </li>
                     <li class="tooltip_list cf">
                         <strong>VIP선정 포인트</strong><a href="" class="mycgv_tooltip"><img src="https://img.cgv.co.kr/R2014/images/common/mycgv_tooltip/ico_tooltip.png" alt="i" /></a>

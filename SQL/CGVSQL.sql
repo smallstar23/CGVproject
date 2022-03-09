@@ -1,26 +1,23 @@
 CREATE TABLE Member (
-                        idx number(7) primary key,
-                        userid varchar2(20) unique not null,
-                        userpw varchar2(20)   not null,
-                        username varchar2(10)   not null,
-                        ssn varchar2(6)   not null, -- 주민등록번호 앞자리
-                        hp varchar2(13)   not null,
-                        email varchar2(50)   not null,
-                        nickname varchar2(20)   not null,
-                        valPoint number(10) DEFAULT 0 not null, -- 사용가능한 포인트
-                        regDate date not null
+    idx number(7) primary key,
+    userid varchar2(20) unique not null,
+    userpw varchar2(20)   not null,
+    username varchar2(10)   not null,
+    ssn varchar2(6)   not null, -- 주민등록번호 앞자리
+    hp varchar2(13)   not null,
+    email varchar2(50)   not null,
+    nickname varchar2(20)   not null,
+    valPoint number(10) DEFAULT 0 not null, -- 사용가능한 포인트
+    reg_date date not null
 );
-create sequence seq_Member_idx
-    increment by 1
-    start with 1;
 
 CREATE TABLE Theater (
-                         tcode number(7) primary key,
-                         tname varchar2(30) not null, -- 극장이름 강남CGV
-                         areacode number(2) not null,
-                         location varchar2(200) not null, -- 극장 위치
-                         hp varchar2(20) not null, -- 극장 번호
-                         photo varchar2(100) not null
+    tcode number(7) primary key,
+    tname varchar2(30) not null, -- 극장이름 강남CGV
+    areacode number(2) not null,
+    location varchar2(200) not null, -- 극장 위치
+    hp varchar2(20) not null, -- 극장 번호
+    photo varchar2(100) not null
 );
 
 create sequence seq_theater
@@ -58,11 +55,11 @@ create sequence seq_movie
     start with 1;
 
 CREATE TABLE Hall (
-                      hcode number(10) primary key,
-                      tcode number(7)   not null, -- 극장코드
-                      hname varchar2(10)   not null, -- 상영관 이름
-                      location varchar2(100)   not null, -- 상영관 위치
-                      constraint fk_Hall_tcode foreign key(tcode) references Theater (tcode)
+    hcode number(10) primary key,
+    tcode number(7)   not null, -- 극장코드
+    hname varchar2(10)   not null, -- 상영관 이름
+    location varchar2(100)   not null, -- 상영관 위치
+    constraint fk_Hall_tcode foreign key(tcode) references Theater (tcode)
 );
 create sequence seq_hall
     increment by 1
@@ -85,20 +82,20 @@ CREATE TABLE favCGV (
 );
 
 CREATE TABLE Trailer (
-                         idx number(7) primary key,
-                         mcode number(7)   not null,
-                         description1 varchar2(500),
-                         description2 varchar2(500),
-                         description3 varchar2(500),
-                         photo1 varchar2(200),
-                         photo2 varchar2(200),
-                         photo3 varchar2(200),
-                         photo4 varchar2(200),
-                         photo5 varchar2(200),
-                         trailer1 varchar2(200),
-                         trailer2 varchar2(200),
-                         trailer3 varchar2(200),
-                         constraint fk_Trailer_mcode foreign key(mcode) references Movie (mcode)
+     idx number(7) primary key,
+     mcode number(7)   not null,
+     description1 varchar2(500),
+     description2 varchar2(500),
+     description3 varchar2(500),
+     photo1 varchar2(200),
+     photo2 varchar2(200),
+     photo3 varchar2(200),
+     photo4 varchar2(200),
+     photo5 varchar2(200),
+     trailer1 varchar2(200),
+     trailer2 varchar2(200),
+     trailer3 varchar2(200),
+     constraint fk_Trailer_mcode foreign key(mcode) references Movie (mcode)
 );
 
 create sequence seq_trailer
@@ -199,7 +196,7 @@ create sequence seq_seathtml
 CREATE TABLE Notification (
     idx number(7)   primary key,
     title varchar2(100)   not null,
-    content varchar2(1000)   not null,
+    content varchar2(10000)   not null,
     category varchar2(20)   not null,
     hit number(7)  DEFAULT 0 not null,
     reg_date date not null
@@ -275,11 +272,11 @@ drop sequence seq_gift_explain;
 
 -- 멤버, 공지 시퀀스(태훈)
 
-create sequence seq_Member_idx
+create sequence seq_Member
     increment by 1
     start with 1;
 
-create sequence seq_Notification_idx
+create sequence seq_Notification
     increment by 1
     start with 1;
 

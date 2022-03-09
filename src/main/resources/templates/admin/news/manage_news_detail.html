@@ -52,7 +52,7 @@
                 <tr style="border: #212121 solid 1px;">
                     <td style="padding-left: 10px; border: #212121 solid 1px; width: 100px"><b>제 목</b></td>
                     <td th:text="${managenews.getTitle()}" style="border: #212121 solid 1px; width: 450px"></td>
-                    <td style="border: #212121 solid 1px;"><span>등록일: </span> <span th:text="${#temporals.format(managenews.getRegdate(), 'yyyy-MM-dd')}"></span></td>
+                    <td style="border: #212121 solid 1px;"><span>등록일: </span> <span th:text="${#temporals.format(managenews.getRegDate(), 'yyyy-MM-dd')}"></span></td>
                     <td style="border: #212121 solid 1px;"><span>조회수: </span> <span th:text="${managenews.getHit()}"></span></td>
                 </tr>
 
@@ -75,13 +75,13 @@
                 <tr style="border: #212121 solid 1px;">
                     <td style="padding-left: 10px; border: #212121 solid 1px; width: 100px"><b>▲ 이전글</b></td>
                     <td th:text="${managenews_prev.getTitle()}" style="border-left: #212121 solid 1px;"></td>
-                    <td style="border-right: #212121 solid 1px;"><span>등록일: </span> <span th:text="${#temporals.format(managenews_prev.getRegdate(), 'yyyy-MM-dd')}"></span></td>
+                    <td style="border-right: #212121 solid 1px;"><span>등록일: </span> <span th:text="${#temporals.format(managenews_prev.getRegDate(), 'yyyy-MM-dd')}"></span></td>
                 </tr>
 
                 <tr style="border: #212121 solid 1px;">
                     <td style="padding-left: 10px; border: #212121 solid 1px; width: 100px"><b>▼ 다음글</b></td>
                     <td th:text="${managenews_next.getTitle()}" style="border-left: #212121 solid 1px;"></td>
-                    <td style="border-right: #212121 solid 1px;"><span>등록일: </span><span th:text="${#temporals.format(managenews_next.getRegdate(), 'yyyy-MM-dd')}"></span></td>
+                    <td style="border-right: #212121 solid 1px;"><span>등록일: </span><span th:text="${#temporals.format(managenews_next.getRegDate(), 'yyyy-MM-dd')}"></span></td>
                 </tr>
             </table>
 

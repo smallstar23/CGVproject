@@ -43,11 +43,11 @@
                             </a>
                         </div>
                         <!-- /Advertisement -->
+                        <th:block th:if="${session.userid==null}">
                         <li>
                             <a href="/user/login">
                                 <img src="/img/loginPassword.png" alt="로그인"/>
-                                <span>로그인</span></a
-                            >
+                                <span>로그인</span></a>
                         </li>
                         <li>
                             <a href="/user/agreement">
@@ -55,13 +55,30 @@
                                 <span>회원가입</span>
                             </a>
                         </li>
+                            <li>
+                                <a href="/user/login">
+                                    <img src="/img/loginMember.png" alt="MY CGV"/>
+                                    <span>MY CGV</span></a
+                                >
+                            </li>
+                        </th:block>
+                        <th:block th:unless="${session.userid==null}">
+                            <li>
+                                <a href="/user/logout">
+                                    <img src="/img/loginPassword.png" alt="로그아웃"/>
+                                    <span>로그아웃</span></a>
+                            </li>
+                            <li>
+                                <a href="/user/mycgv">
+                                    <img src="/img/loginMember.png" alt="MY CGV"/>
+                                    <span>MY CGV</span></a
+                                >
+                            </li>
 
-                        <li>
-                            <a href="/user/mycgv">
-                                <img src="/img/loginMember.png" alt="MY CGV"/>
-                                <span>MY CGV</span></a
-                            >
-                        </li>
+                        </th:block>
+
+
+
 
                         <li>
                             <a href="/support">

@@ -32,7 +32,6 @@ public class MovieService {
 
         for(Movie movie : movieEntityList){
             MovieDTO movieDTO = MovieDTO.builder()
-
                     .mcode(movie.getMcode())
                     .mrank(movie.getMrank())
                     .titleKo(movie.getTitleKo())
@@ -48,5 +47,32 @@ public class MovieService {
              movieDTOList.add(movieDTO);
         }
         return movieDTOList;
+    }
+
+
+    @Transactional
+    public  MovieDTO getPost(Long mcode){
+        Movie movie =movieRepository.findById(mcode).get();
+
+        MovieDTO movieDTO =MovieDTO.builder()
+                .mcode(movie.getMcode())
+                .mrank(movie.getMrank())
+                .titleKo(movie.getTitleKo())
+                .titleEn(movie.getTitleEn())
+                .genre(movie.getGenre())
+                .country(movie.getCountry())
+                .movieRating(movie.getMovieRating())
+                .runtime(movie.getRuntime())
+                .launchDate(movie.getLaunchDate())
+                .regDate(movie.getRegDate())
+                .poster(movie.getPoster())
+                .build();
+
+        return movieDTO;
+    }
+
+    @Transactional
+    public  void delete(Long mcode){
+        movieRepository.deleteById(mcode);
     }
 }
