@@ -85,7 +85,7 @@
                         </tr>
                         </tfoot>
                         <tbody>
-                        <tr th:each="movie : ${MovieList}">
+                        <tr th:each="movie : ${MovieList}" th:onclick="|location.href='@{|/manage_ongoingmovies/${movie.getMcode()}|}'|">
                             <td style="width: 5%;" th:text="${movie.mcode}"></td>
                             <td style="width: 10%;" th:text="${movie.mrank}"></td>
                             <td style="width: 15%;" th:text="${movie.titleKo}"></td>
