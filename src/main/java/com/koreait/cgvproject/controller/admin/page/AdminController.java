@@ -12,10 +12,6 @@ import javax.servlet.http.HttpSession;
 @Controller
 public class AdminController{
 
-    @Autowired
-    private HttpSession session;
-    @Autowired
-    private AdminTheaterService adminTheaterService;
 
     @GetMapping("admin/login")
     public ModelAndView login() {
