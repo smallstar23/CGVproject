@@ -8,6 +8,7 @@ import lombok.NoArgsConstructor;
 import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
 import javax.persistence.*;
+import java.util.List;
 
 @SequenceGenerator(
         name = "seq_gift",
@@ -39,4 +40,7 @@ public class Gift{
         return GiftDTO.builder().gcode(gcode).category(category).title(title).gname(gname)
                 .content(content).price(price).gfile(gfile).endMonth(endMonth).mainon(mainon).mainonString(mainonString).build();
     }
+
+//    @OneToMany(fetch = FetchType.LAZY, mappedBy = "users")
+//    private List<GiftPayment> giftPaymentList;
 }

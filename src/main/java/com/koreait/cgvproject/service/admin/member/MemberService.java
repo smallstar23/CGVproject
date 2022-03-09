@@ -30,12 +30,20 @@ public class MemberService {
                  .ssn1(member.getSsn())
                  .email1(member.getEmail())
                  .nickname(member.getNickname())
-                 .regdate(member.getRegdate())
+                 .regDate(member.getRegDate())
                  .build();
             member__dtoList.add(member__dto);
         }
         return member__dtoList;
     }
+
+
+    public Member getMember(String userid){
+        Member member = memberRepository.findByUserid(userid);
+
+        return member;
+    }
+
 
 
     @Transactional
@@ -57,7 +65,7 @@ public class MemberService {
                 .email1(member.getEmail())
                 .ssn1(member.getSsn())
                 .nickname(member.getNickname())
-                .regdate(member.getRegdate())
+                .regDate(member.getRegDate())
                 .build();
         return member__dto;
 
