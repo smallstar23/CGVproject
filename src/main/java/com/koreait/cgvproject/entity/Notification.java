@@ -10,8 +10,8 @@ import java.time.LocalDateTime;
 
 @Entity
 @SequenceGenerator(
-        name="seq_Notification_idx",
-        sequenceName = "seq_Notification_idx",
+        name="seq_Notification",
+        sequenceName = "seq_Notification",
         initialValue = 1,
         allocationSize = 1
 )
@@ -22,7 +22,7 @@ import java.time.LocalDateTime;
 public class Notification {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "seq_Notification_idx")
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "seq_Notification")
     private Long idx;
 
     private String title;
@@ -72,11 +72,11 @@ public class Notification {
         this.hit = hit;
     }
 
-    public LocalDateTime getRegdate() {
+    public LocalDateTime getRegDate() {
         return regDate;
     }
 
-    public void setRegdate(LocalDateTime regdate) {
+    public void setRegDate(LocalDateTime regdate) {
         this.regDate = regdate;
     }
 }

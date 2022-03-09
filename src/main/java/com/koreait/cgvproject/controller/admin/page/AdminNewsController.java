@@ -104,7 +104,7 @@ public class AdminNewsController {
         Notification notificationnext = notificationRepository.findById(id + 1L).orElse(null);
         Notification notificationnull = notificationRepository.findById(id).orElse(null);
         notificationnull.setTitle("글이 존재하지 않습니다.");
-        notificationnull.setRegdate(null);
+        notificationnull.setRegDate(null);
 
         // 2. 가져온 데이터를 모델에 등록
         if(notificationprev == null){

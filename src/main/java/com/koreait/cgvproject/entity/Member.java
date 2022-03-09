@@ -9,8 +9,8 @@ import java.time.LocalDateTime;
 
 @Entity
 @SequenceGenerator(
-        name="seq_Member_idx",
-        sequenceName = "seq_Member_idx",
+        name="seq_Member",
+        sequenceName = "seq_Member",
         initialValue = 1,
         allocationSize = 1
 )
@@ -24,7 +24,7 @@ import java.time.LocalDateTime;
 public class Member {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "seq_Member_idx")
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "seq_Member")
     private Long idx;
 
     private String userid;
