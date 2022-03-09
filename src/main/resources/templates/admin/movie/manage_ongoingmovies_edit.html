@@ -66,6 +66,8 @@
         <div class="container-fluid px-4" style="margin:0 auto;">
             <h2 style="text-align:center;">상영중인 영화 등록</h2>
             <form   th:action="@{'/manage_ongoingmovies/edit/' + ${mcode.mcode}}" method="post" style="width:40%; border:solid 2px red; border-radius:10px; padding:5%; margin:0 auto;">
+                <input type="hidden" name="_method" value="put"/>
+                <input type="hidden" name="id" th:value="${mcode.mcode}"/>
                 <div class="form-row">
                     <div class="form-group col-md-6">
                         <label for="inputmcode">영화코드</label>
