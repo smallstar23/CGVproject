@@ -32,7 +32,6 @@ div{
 
 .row_div {
     display: flex;
-
 }
 
 .empty {
@@ -42,8 +41,10 @@ div{
 }
 
 .disabled {
-    visibility: hidden;
+    background-color: white;
+    color: #e5e5df;
 }
+
 .none{
     display: none;
 }
@@ -63,8 +64,4 @@ div{
 .reserved{
     background-color: aqua;
     color: gray;
-}
-.active {
-    background:url('../seat_icons_20210617.png');
-    color: white;
 }

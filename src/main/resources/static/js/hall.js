@@ -7,12 +7,11 @@ const th = document.getElementById('theater');
 function setAcode(areacode){
     if(areacode === "none") th.disabled = true;
     else th.disabled = false;
-    acode = areacode;
     console.log(acode);
     $("#theater").html(`<option value="none">극장선택</option>`);
    $.ajax({
         url: "/areacode", // 클라이언트가 요청을 보낼 서버의 URL 주소
-        data: { acode: acode },                // HTTP 요청과 함께 서버로 보낼 데이터
+        data: { acode: areacode },                // HTTP 요청과 함께 서버로 보낼 데이터
         type: "POST",                             // HTTP 요청 방식(GET, POST)
        dataType: "json"                         // 서버에서 보내줄 데이터의 타입
     })
