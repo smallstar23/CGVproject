@@ -47,15 +47,15 @@ public class UserRegistController {
 
     // 회원가입 완료페이지(finish_do)로 오면 regist 메소드를 통해 DB에 담기게 함
     @PostMapping("/user/finish_do")
-    public String createMemberinfo(MemberDTO memberinfoDTO){
+    public String createMemberinfo(MemberDTO memberDTO){
         // 서비스 이용 잠시 중지
         // memberinfoService.regist(memberinfoDTO);
 
         //        System.out.println(memberinfoDTO.toString()); -> 로깅으로 변환(로깅은 자동차의 블랙박스와 비슷한 역할)
-        log.info(memberinfoDTO.toString());
+        log.info(memberDTO.toString());
 
         // 1. DTO를 변환 -> Entity로
-        Member member = memberinfoDTO.toEntity();
+        Member member = memberDTO.toEntity(memberDTO);
 //        System.out.println(member.toString());
         log.info(member.toString());
 

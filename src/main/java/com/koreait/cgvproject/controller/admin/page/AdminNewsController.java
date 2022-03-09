@@ -25,9 +25,11 @@ public class AdminNewsController {
     @GetMapping("manage_news")//manage_news  페이지
     public  String manage_news(Model model){
         // 1. 모든 공지사항 가져오기
-        List<Notification> adminNewsEntitiyList = notificationRepository.findAll();
+        List<Notification> notificationList = notificationRepository.findAll();
+
+        log.info(notificationList.toString());
         // 2. 가져온 공지사항 묶음을 뷰로 전달
-        model.addAttribute("adminNewsList",adminNewsEntitiyList);
+        model.addAttribute("adminNewsList",notificationList);
         // 3. 뷰 페이지를 설정
         return "/admin/news/manage_news";
     }

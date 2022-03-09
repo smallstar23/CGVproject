@@ -1,6 +1,7 @@
 package com.koreait.cgvproject.entity;
 
 import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.NoArgsConstructor;
 import lombok.ToString;
 import org.springframework.data.annotation.CreatedDate;
@@ -8,6 +9,7 @@ import org.springframework.data.annotation.CreatedDate;
 import javax.persistence.*;
 import java.time.LocalDateTime;
 
+@Builder
 @Entity
 @SequenceGenerator(
         name="seq_Notification",
@@ -31,6 +33,10 @@ public class Notification {
     private int hit;
     @CreatedDate
     private LocalDateTime regDate;
+
+
+
+
 
     public Long getIdx() {
         return idx;
