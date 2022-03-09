@@ -59,7 +59,7 @@ public class AdminMovieController {
 
 
 
-    @GetMapping("manage_ongoingmovies")//movie-ongoing 페이지
+    @GetMapping("/manage_ongoingmovies" )//movie-ongoing 페이지
     public String movie_ongoing(Model model){
         List<MovieDTO> movieDTOList = movieService.getMovieList();
         model.addAttribute("MovieList",movieDTOList);
