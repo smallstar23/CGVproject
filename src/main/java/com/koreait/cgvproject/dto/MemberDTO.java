@@ -44,7 +44,7 @@ public class MemberDTO {
 
 
 
-    public Member toEntity(){
+    public Member toEntity(MemberDTO memberDTO){
         return new Member(null, userid,username,userpw,getSsn1().substring(2)+getSsn2()+getSsn3(),getHp1()
                 + "-" + getHp2() + "-" + getHp3(),getEmail1()+"@"+getEmail2(),regDate.now(),nickname,0);
     }

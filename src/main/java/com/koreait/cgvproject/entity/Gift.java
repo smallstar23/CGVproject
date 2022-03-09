@@ -33,8 +33,9 @@ public class Gift{
     private String mainonString;
 
 
-//    @OneToMany(fetch = FetchType.LAZY, mappedBy = "gift")
-//    private List<giftPaymentEntity> giftPaymentList;
+
+    @OneToMany(fetch = FetchType.LAZY, mappedBy = "gift")
+    private List<GiftPayment> giftPayments;
 
     public GiftDTO toDTO(){
         return GiftDTO.builder().gcode(gcode).category(category).title(title).gname(gname)

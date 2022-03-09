@@ -6,6 +6,7 @@ import org.springframework.data.annotation.CreatedDate;
 
 import javax.persistence.*;
 import java.time.LocalDateTime;
+import java.util.List;
 
 @Entity
 @SequenceGenerator(
@@ -41,6 +42,22 @@ public class Member {
     private LocalDateTime regDate;
     private String nickname;
     private int valpoint;
+
+    @OneToMany(fetch = FetchType.LAZY , mappedBy = "member")
+    private List<GiftPayment> giftPayments;
+
+    public Member(Long o, String userid, String username, String userpw, String s, String s1, String s2, LocalDateTime now, String nickname, int i) {
+        this.idx = o;
+        this.userid = userid;
+        this.username = username;
+        this.userpw = userpw;
+        this.ssn = s;
+        this.hp = s1;
+        this.email = s2;
+        this.regDate = now;
+        this.nickname = nickname;
+        this.valpoint = i;
+    }
 
     public MemberDTO toDTO(){
          return  MemberDTO.builder()
