@@ -1,28 +1,30 @@
 CREATE TABLE Member (
-                        idx number(7) primary key,
-                        userid varchar2(20) unique not null,
-                        userpw varchar2(20)   not null,
-                        username varchar2(10)   not null,
-                        ssn varchar2(6)   not null, -- 주민등록번호 앞자리
-                        hp varchar2(13)   not null,
-                        email varchar2(50)   not null,
-                        nickname varchar2(20)   not null,
-                        valPoint number(10) DEFAULT 0 not null, -- 사용가능한 포인트
-                        regDate date not null
+    idx number(7) primary key,
+    userid varchar2(20) unique not null,
+    userpw varchar2(20)   not null,
+    username varchar2(10)   not null,
+    ssn varchar2(6)   not null, -- 주민등록번호 앞자리
+    hp varchar2(13)   not null,
+    email varchar2(50)   not null,
+    nickname varchar2(20)   not null,
+    valPoint number(10) DEFAULT 0 not null, -- 사용가능한 포인트
+    reg_date date not null
 );
+create sequence seq_member
+    start with 1
+    increment by 1;
 
 CREATE TABLE Theater (
-                         tcode number(7) primary key,
-                         tname varchar2(30) not null, -- 극장이름 강남CGV
-                         areacode number(2) not null,
-                         location varchar2(200) not null, -- 극장 위치
-                         hp varchar2(20) not null, -- 극장 번호
-                         photo varchar2(100) not null
+    tcode number(7) primary key,
+    tname varchar2(30) not null, -- 극장이름 강남CGV
+    areacode number(2) not null,
+    location varchar2(200) not null, -- 극장 위치
+    hp varchar2(20) not null, -- 극장 번호
+    photo varchar2(100) not null
 );
-
 create sequence seq_theater
     increment by 1
-    start with 1
+    start with 1;
 
 CREATE TABLE Point (
     idx number(7) primary key,
@@ -36,6 +38,9 @@ CREATE TABLE Point (
     constraint fk_Point_tcode foreign key(tcode) references Theater (tcode),
     constraint ck_point_kind check(kind in('use','get'))
 );
+create sequence seq_point
+    start with 1
+    increment by 1;
 
 CREATE TABLE Movie (
     mcode number(7) primary key,
@@ -55,23 +60,15 @@ create sequence seq_movie
     start with 1;
 
 CREATE TABLE Hall (
-                      hcode number(10) primary key,
-                      tcode number(7)   not null, -- 극장코드
-                      hname varchar2(10)   not null, -- 상영관 이름
-                      location varchar2(100)   not null, -- 상영관 위치
-                      constraint fk_Hall_tcode foreign key(tcode) references Theater (tcode)
+    hcode number(10) primary key,
+    tcode number(7)   not null, -- 극장코드
+    hname varchar2(10)   not null, -- 상영관 이름
+    location varchar2(100)   not null, -- 상영관 위치
+    constraint fk_Hall_tcode foreign key(tcode) references Theater (tcode)
 );
 create sequence seq_hall
     increment by 1
-    start with 1
-
-CREATE TABLE Wishlist (
-    idx number(7) primary key,
-    mcode number(7) not null, -- 영화 코드
-    mem_idx number(7) not null, -- 유저 코드
-    constraint fk_wishlist_mcode foreign key(mcode) references movie(mcode),
-    constraint fk_wishilist_mem_idx foreign key(mem_idx) references Member(idx)
-);
+    start with 1;
 
 CREATE TABLE favCGV (
     idx number(7) primary key,
@@ -80,24 +77,26 @@ CREATE TABLE favCGV (
     constraint fk_favCGV_mem_idx foreign key(mem_idx) references Member(idx),
     constraint fk_favCGV_tcode foreign key(tcode) references Theater(tcode)
 );
+create sequence seq_favCGV
+    increment by 1
+    start with 1;
 
 CREATE TABLE Trailer (
-                         idx number(7) primary key,
-                         mcode number(7)   not null,
-                         description1 varchar2(500),
-                         description2 varchar2(500),
-                         description3 varchar2(500),
-                         photo1 varchar2(200),
-                         photo2 varchar2(200),
-                         photo3 varchar2(200),
-                         photo4 varchar2(200),
-                         photo5 varchar2(200),
-                         trailer1 varchar2(200),
-                         trailer2 varchar2(200),
-                         trailer3 varchar2(200),
-                         constraint fk_Trailer_mcode foreign key(mcode) references Movie (mcode)
+     idx number(7) primary key,
+     mcode number(7)   not null,
+     description1 varchar2(500),
+     description2 varchar2(500),
+     description3 varchar2(500),
+     photo1 varchar2(200),
+     photo2 varchar2(200),
+     photo3 varchar2(200),
+     photo4 varchar2(200),
+     photo5 varchar2(200),
+     trailer1 varchar2(200),
+     trailer2 varchar2(200),
+     trailer3 varchar2(200),
+     constraint fk_Trailer_mcode foreign key(mcode) references Movie (mcode)
 );
-
 create sequence seq_trailer
     increment by 1
     start with 1;
@@ -122,8 +121,9 @@ CREATE TABLE Director (
     photo varchar2(100) default 'http://img.cgv.co.kr/R2014/images/common/default_230_260.gif',
     constraint fk_Director_mcode foreign key(mcode) references Movie (mcode)
 );
-
-
+create sequence seq_director
+    increment by 1
+    start with 1;
 
 CREATE TABLE Reply (
     idx number(7) primary key,
@@ -135,6 +135,9 @@ CREATE TABLE Reply (
     constraint fk_Reply_mcode foreign key(mcode) references Movie (mcode),
     constraint fk_Reply_mem_idx foreign key(mem_idx) references Member (idx)
 );
+create sequence seq_reply
+    increment by 1
+    start with 1;
 
 
 
@@ -164,6 +167,9 @@ CREATE TABLE Schedule (
     constraint fk_Schedule_mcode foreign key(mcode) references Movie (mcode),
     constraint fk_Schedule_hcode foreign key(hcode) references Hall (hcode)
 );
+create sequence seq_schedule
+    increment by 1
+    start with 1;
 
 CREATE TABLE Seat (
     stcode number(10)   primary key,
@@ -174,19 +180,24 @@ CREATE TABLE Seat (
     constraint ck_seat_disabled check(disabled in (0,1)),
     constraint fk_Seat_hcode foreign key(hcode) references Hall (hcode)
 );
-
+create sequence seq_seat
+    start with 1
+    increment by 1;
 
 CREATE TABLE Seathtml (
     st_idx number(7) primary key,
     hcode number(10) not null,
     st_row number(2) not null, -- 19까지만 작성
     st_col varchar2(1) not null, -- 알파벳 L까지만 작성
-    row_empty varchar2(10)   not null, -- n 다음 row가 비워짐
-    col_empty varchar2(10)   not null, -- n 다음 col이 비워짐
+    row_empty varchar2(10) default 0 not null, -- n 다음 row가 비워짐
+    col_empty varchar2(10) default 0 not null, -- n 다음 col이 비워짐
     constraint ck_sh_row check(st_row>0 and st_row<20),
     constraint ck_sh_col check(ascii(st_col) >= ascii('A') and ascii(st_col) <= ascii('L')),
     constraint fk_Seathtml_hcode foreign key(hcode) references Hall (hcode)
 );
+create sequence seq_seathtml
+    start with 1
+    increment by 1;
 
 CREATE TABLE Notification (
     idx number(7)   primary key,
@@ -196,6 +207,9 @@ CREATE TABLE Notification (
     hit number(7)  DEFAULT 0 not null,
     reg_date date not null
 );
+create sequence seq_notification
+    increment by 1
+    start with 1;
 
 
 CREATE TABLE Ticket (
@@ -207,6 +221,9 @@ CREATE TABLE Ticket (
     constraint fk_Ticket_stcode foreign key(stcode) references Seat (stcode),
     constraint fk_Ticket_mem_idx foreign key(mem_idx) references Member (idx)
 );
+create sequence seq_ticket
+    increment by 1
+    start with 1;
 
 
 CREATE TABLE Ticket_payment (
@@ -220,6 +237,9 @@ CREATE TABLE Ticket_payment (
     totPrice varchar2(10)   not null, -- 총합 가격
     constraint fk_Ticket_payment_ticode foreign key(ticode) references Ticket (ticode)
 );
+create sequence seq_ticket_payment
+    increment by 1
+    start with 1;
 
 
 CREATE TABLE Gift (
@@ -236,9 +256,7 @@ CREATE TABLE Gift (
 );
 create sequence seq_gift
     start with 1
-    increment by 1
-    maxvalue 9999999999;
-
+    increment by 1;
 
 CREATE TABLE Gift_payment (
     gpcode number(14) primary key,
@@ -249,21 +267,31 @@ CREATE TABLE Gift_payment (
     constraint fk_Gift_payment_mem_idx foreign key(mem_idx) references Member (idx),
     constraint fk_gift_gcode foreign key(gcode) references Gift(gcode)
 );
+create sequence seq_gift_payment
+    increment by 1
+    start with 1;
 
 
 drop table gift_payment;  drop table gift; drop table ticket_payment; drop table ticket; drop table notification; drop table seathtml;
 drop table seat; drop table schedule;drop table price; drop table reply; drop table director; drop table actor; drop table trailer;
-drop table favCGV; drop table wishlist;drop table hall;drop table movie; drop table point; drop table theater;  drop table member;
+drop table favCGV; drop table hall;drop table movie; drop table point; drop table theater;  drop table member;
 
-drop sequence seq_gift; drop sequence seq_movie; drop sequence seq_actor;
+
+drop sequence seq_gift_payment; drop sequence seq_gift; drop sequence seq_actor;
+drop sequence seq_director; drop sequence seq_favCGV; drop sequence seq_hall;
+drop sequence seq_member; drop sequence seq_movie; drop sequence seq_notification;
+drop sequence seq_point; drop sequence seq_price; drop sequence seq_reply;
+drop sequence seq_schedule; drop sequence seq_trailer; drop sequence seq_ticket_payment;
+drop sequence seq_ticket; drop sequence seq_theater; drop sequence seq_seathtml;
+drop sequence seq_seat;
 
 
 -- 있다 없어진 테이블 삭제 --
 drop table gift_Explain;
+drop table wishlist;
 
 drop sequence seq_gift_explain;
 -- 있다 없어진 테이블 삭제 끝 --
-
 
 -- 멤버, 공지 시퀀스(태훈)
 

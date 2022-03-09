@@ -36,7 +36,6 @@ public class UserStoreController {
 
     @GetMapping("/popcorn-store/store-category")
     public String category(@RequestParam(value = "cno", required = false, defaultValue = "1") String cno, Model model){
-        System.out.println("Get으로 들어온 카테고리 넘버 : " + cno);
         if(cno.equals("1")) cno = "2";
         List<GiftDTO> giftDTOList = userStoreService.getGiftDTOList(cno);
         model.addAttribute("giftDTOList", giftDTOList);

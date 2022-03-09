@@ -1,4 +1,4 @@
-package com.koreait.cgvproject.controller.admin.page.rest;
+package com.koreait.cgvproject.controller.admin.rest;
 
 import com.koreait.cgvproject.dto.TheaterDTO;
 import com.koreait.cgvproject.entity.Theater;
@@ -22,15 +22,13 @@ public class AdminTheaterRestController {
 
     @PostMapping("/areacode")
     @ResponseBody
-    public List<TheaterDTO> areacode(@RequestParam("acode") int acode, Model model){
-        Long area=new Long(acode);
-        List<TheaterDTO> cgvlist=adminTheaterService.getCGV(area);
+    public List<TheaterDTO> areacode(@RequestParam("acode") int acode, Model model) {
+        Long area = Long.valueOf(String.valueOf(acode));
+        List<TheaterDTO> cgvlist = adminTheaterService.getCGV(area);
         System.out.println(cgvlist);
-        model.addAttribute("cgvlist",cgvlist);
+        model.addAttribute("cgvlist", cgvlist);
         return cgvlist;
     }
-
-
 
 
 }
