@@ -14,4 +14,6 @@ public interface TheaterRepository extends JpaRepository<Theater, Long> {
     List<Theater> findAllByAreacode(Long areacode);
 
     Theater findByTcode(Long tcode);
+
+
 }
