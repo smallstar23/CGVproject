@@ -177,19 +177,24 @@ CREATE TABLE Seat (
     constraint ck_seat_disabled check(disabled in (0,1)),
     constraint fk_Seat_hcode foreign key(hcode) references Hall (hcode)
 );
-
+create sequence seq_seat
+    start with 1
+    increment by 1;
 
 CREATE TABLE Seathtml (
     st_idx number(7) primary key,
     hcode number(10) not null,
     st_row number(2) not null, -- 19까지만 작성
     st_col varchar2(1) not null, -- 알파벳 L까지만 작성
-    row_empty varchar2(10)   not null, -- n 다음 row가 비워짐
-    col_empty varchar2(10)   not null, -- n 다음 col이 비워짐
+    row_empty varchar2(10) default 0 not null, -- n 다음 row가 비워짐
+    col_empty varchar2(10) default 0 not null, -- n 다음 col이 비워짐
     constraint ck_sh_row check(st_row>0 and st_row<20),
     constraint ck_sh_col check(ascii(st_col) >= ascii('A') and ascii(st_col) <= ascii('L')),
     constraint fk_Seathtml_hcode foreign key(hcode) references Hall (hcode)
 );
+create sequence seq_seathtml
+    start with 1
+    increment by 1;
 
 CREATE TABLE Notification (
     idx number(7)   primary key,
