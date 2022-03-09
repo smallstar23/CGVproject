@@ -33,12 +33,9 @@ public class UserMovieService {
     }
 
     public TrailerDTO getTrailer(Long mcode){
-        System.out.println("service에서 받은 "+mcode);
         Trailer trailer= trailerRepository.findByMcode(mcode);
         TrailerDTO trailerDTO=trailer.toDTO();
-        System.out.println(trailer);
         return trailerDTO;
-
     }
 
 

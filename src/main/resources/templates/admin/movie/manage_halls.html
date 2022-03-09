@@ -51,36 +51,32 @@
             <div class="card mb-4">
                 <div class="card-header">
                     <i class="fas fa-table me-1"></i>
-                    극장 관리
-                    <input type="button" value="상영관 등록" onclick="location.href='/manage_theaters_create'"   style="background-color: #F08080; float:right"/>
+                    상영관 관리
                 </div>
                 <div class="card-body">
                     <table id="datatablesSimple" class="dataTable-table">
                         <thead>
                         <tr>
-                            <th>지역코드</th>
-                            <th>극장번호</th>
-                            <th>극장명</th>
+                            <th>상영관 번호</th>
+                            <th>상영관 이름</th>
                             <th>위치</th>
-                            <th>전화번호</th>
+                            <th>좌석수</th>
                         </tr>
                         </thead>
 <!--                        <tfoot>-->
 <!--                        <tr class="text-center">-->
-<!--                            <th>지역코드</th>-->
-<!--                            <th>극장번호</th>-->
-<!--                            <th>극장명</th>-->
+<!--                            <th>상영관 번호</th>-->
+<!--                            <th>상영관 이름</th>-->
 <!--                            <th>위치</th>-->
-<!--                            <th>전화번호</th>-->
+<!--                            <th>좌석수</th>-->
 <!--                        </tr>-->
 <!--                        </tfoot>-->
                         <tbody>
-                        <tr th:each="theater :${theaters}" th:onclick="|location.href='@{|/movie/theaters/${theater.tcode}|}'|">
-                            <td style="width: 4%;" th:text="${theater.areacode}"></td>
-                            <td style="width: 4%;" th:text="${theater.tcode}"></td>
-                            <td style="width: 4%;" th:text="${theater.tname}"></td>
-                            <td style="width: 20%;" th:text="${theater.location}"></td>
-                            <td style="width: 10%;" th:text="${theater.hp}"></td>
+                        <tr class="text-center" th:each="hall :${halls}">
+                                <td style="width: 4%;" th:text="${hall.tcode}"></td>
+                                <td style="width: 4%;" th:text="${hall.hname}"></td>
+                                <td style="width: 4%;" th:text="${hall.location}"></td>
+                                <td style="width: 20%;" ></td>
                         </tr>
                         </tbody>
                     </table>

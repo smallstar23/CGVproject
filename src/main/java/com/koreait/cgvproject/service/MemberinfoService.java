@@ -15,20 +15,20 @@ public class MemberinfoService {
     @Autowired
     MemberRepository memberRepository;
 
-    public void regist(MemberDTO memberinfoDTO) {
-//        System.out.println(memberinfoDTO.toString()); -> 로깅으로 변환(로깅은 자동차의 블랙박스와 비슷한 역할)
-        log.info(memberinfoDTO.toString());
-
-        // 1. DTO를 변환 -> Entity로
-        Member member = memberinfoDTO.toEntity();
-//        System.out.println(member.toString());
-        log.info(member.toString());
-
-        //2. Repository에게 Entity를 DB안에 저장하게 함!
-        Member saved = memberRepository.save(member);
-//        System.out.println(saved.toString());
-        log.info(saved.toString());
-    }
+//    public void regist(MemberDTO memberDTO) {
+////        System.out.println(memberinfoDTO.toString()); -> 로깅으로 변환(로깅은 자동차의 블랙박스와 비슷한 역할)
+//        log.info(memberDTO.toString());
+//
+//        // 1. DTO를 변환 -> Entity로
+//        Member member = memberDTO.toEntity();
+////        System.out.println(member.toString());
+//        log.info(member.toString());
+//
+//        //2. Repository에게 Entity를 DB안에 저장하게 함!
+//        Member saved = memberRepository.save(member);
+////        System.out.println(saved.toString());
+//        log.info(saved.toString());
+//    }
 
 //    public void idCheck(Long id){
 //

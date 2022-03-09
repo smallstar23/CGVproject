@@ -3,6 +3,7 @@ package com.koreait.cgvproject.controller.admin.page;
 
 import com.koreait.cgvproject.dto.HallDTO;
 import com.koreait.cgvproject.dto.MovieDTO;
+import com.koreait.cgvproject.dto.TheaterDTO;
 import com.koreait.cgvproject.service.admin.hall.AdminHallService;
 import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -54,31 +55,9 @@ public class AdminMovieController {
         return "/admin/movie/manage_pricerm_create";
     }
 
-    @GetMapping("/manage_theaters")//movie-theaters 페이지
-    public String movie_theaters(Model model){
-
-        List<HallDTO> hallDTOList = adminHallService.getHallList();
-        model.addAttribute("HallList",hallDTOList);
-
-        return "/admin/movie/manage_theaters";
-    }
-
-    @GetMapping("/manage_theaters_create")//movie-theaters 페이지
-    public String movie_theaters_create(){
-        return "/admin/movie/manage_theaters_create";
-    }
-
-    @PostMapping("/manage_theaters_create")
-    public String movie_theaters_write(@ModelAttribute HallDTO hallDTO, Model model){
-        log.info(hallDTO.toString());
-        adminHallService.savePost(hallDTO);
-
-        List<HallDTO> hallDTOList = adminHallService.getHallList();
-        model.addAttribute("HallList",hallDTOList);
 
 
-        return "redirect:/manage_theaters";
-    }
+
 
     @GetMapping("/manage_ongoingmovies" )//movie-ongoing 페이지
     public String movie_ongoing(Model model){
