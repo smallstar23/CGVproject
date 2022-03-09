@@ -1,22 +1,40 @@
 package com.koreait.cgvproject.controller.user.page;
 
+import com.koreait.cgvproject.entity.Member;
+import com.koreait.cgvproject.service.admin.member.MemberService;
+import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.servlet.ModelAndView;
 
+import javax.servlet.http.HttpSession;
+
+@Slf4j
+@RequiredArgsConstructor
 @Controller
 public class UserMycgvController {
 
+    private final HttpSession httpSession;
     private final String ROOT = "user/mycgv";
+    private final MemberService memberService;
 
     @GetMapping("/user/mycgv")
     public String mycgv(){
-        return ROOT + "/mycgv";
+//        Member member = memberService.getMember((String)httpSession.getAttribute("userid"));
+//
+//        log.info(member.toString());
+//        model.setViewName(ROOT+"/fragment/common");
+//        model.addObject("member", member);
+
+//        model.addAttribute("member",member);
+
+        return ROOT+"/mycgv";
     }
 
     @GetMapping("/user/mycgv/point")
-    public String mycgv_cgvPoint(){
-        return ROOT + "/point/mycgv-cgvPoint";
-    }
+    public String mycgv_cgvPoint(){return ROOT + "/point/mycgv-cgvPoint";}
 
     @GetMapping("/user/mycgv/point/mycgv-cgvPoint-pointInfo")
     public String mycgv_cgvPoint_pointInfo(){
