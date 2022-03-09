@@ -9,11 +9,10 @@ import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import com.koreait.cgvproject.service.admin.movie.MovieService;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -22,6 +21,7 @@ import java.util.List;
 @Slf4j
 public class AdminMovieController {
 
+    @Autowired
     private MovieService movieService;
     private AdminHallService adminHallService;
 
@@ -76,4 +76,29 @@ public class AdminMovieController {
         movieService.insertPoint(movieDTO);
         return "redirect:/manage_ongoingmovies";
     }
+    @GetMapping("/manage_ongoingmovies/{mcode}")
+    public  String view(@PathVariable("mcode") Long mcode, Model model){
+        MovieDTO movieDTO =movieService.getPost(mcode);
+        model.addAttribute("mcode",movieDTO);
+        return  "admin/movie/manage_ongoingmovies_view";
+    }
+    @GetMapping("/manage_ongoingmovies/edit/{mcode}")
+    public  String edit(@PathVariable("mcode") Long mcode, Model model){
+        MovieDTO movieDTO =movieService.getPost(mcode);
+        model.addAttribute("mcode",movieDTO);
+        return "admin/movie/manage_ongoingmovies_edit";
+    }
+    @PutMapping("/manage_ongoingmovies/edit/{mcode}")
+    public String  update(MovieDTO movieDTO){
+        movieService.insertPoint(movieDTO);
+        return "redirect:/manage_ongoingmovies";
+    }
+
+    @DeleteMapping("/manage_ongoingmovies/{mcode}")
+    public String delete(@PathVariable("mcode") Long mcode){
+        movieService.delete(mcode);
+        return  "redirect:/manage_ongoingmovies";
+    }
+
+
 }

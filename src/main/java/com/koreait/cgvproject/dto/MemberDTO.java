@@ -30,7 +30,7 @@ public class MemberDTO {
 //    private String address1;
 //    private String address2;
 //    private String address3;
-    private LocalDateTime regdate;
+    private LocalDateTime regDate;
     private String nickname;
 
 
@@ -38,7 +38,7 @@ public class MemberDTO {
       Member member = Member.builder()
               .idx(idx)
               .userid(userid).userpw(userpw).username(username).ssn(ssn1+ssn2+ssn3).hp(hp1+hp2+hp3)
-              .email(email1+email2).regdate(LocalDateTime.now()).nickname(nickname).valpoint(0).build();
+              .email(email1+email2).regDate(LocalDateTime.now()).nickname(nickname).valpoint(0).build();
             return member;
     }
 
@@ -46,7 +46,7 @@ public class MemberDTO {
 
     public Member toEntity(){
         return new Member(null, userid,username,userpw,getSsn1().substring(2)+getSsn2()+getSsn3(),getHp1()
-                + "-" + getHp2() + "-" + getHp3(),getEmail1()+"@"+getEmail2(),regdate.now(),nickname,0);
+                + "-" + getHp2() + "-" + getHp3(),getEmail1()+"@"+getEmail2(),regDate.now(),nickname,0);
     }
 
 
