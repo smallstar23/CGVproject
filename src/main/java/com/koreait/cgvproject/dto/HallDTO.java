@@ -1,7 +1,13 @@
 package com.koreait.cgvproject.dto;
 
 import com.koreait.cgvproject.entity.Hall;
+import com.koreait.cgvproject.entity.Theater;
+import com.koreait.cgvproject.repository.TheaterRepository;
+import com.koreait.cgvproject.service.admin.theater.AdminTheaterService;
 import lombok.*;
+import org.springframework.beans.factory.annotation.Autowired;
+
+import java.util.List;
 
 @Data
 @AllArgsConstructor
@@ -17,11 +23,12 @@ public class HallDTO{
     public Hall toEntity() {
         Hall hall = Hall.builder()
                 .hcode(hcode)
-                .tcode(tcode)
+                //.theater(tcode)
                 .hname(hname)
                 .location(location)
                 .build();
         return hall;
     }
+
 
 }

@@ -1,12 +1,10 @@
 package com.koreait.cgvproject.entity;
 
 import com.koreait.cgvproject.dto.TheaterDTO;
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 import javax.persistence.*;
+import java.util.List;
 
 @Data
 @NoArgsConstructor
@@ -29,7 +27,12 @@ public class Theater {
     private String hp;
     private String photo;
 
+    @OneToMany(fetch = FetchType.LAZY, mappedBy = "theater")
+    private List<Hall> halls;
+
     public TheaterDTO toDTO(){
         return TheaterDTO.builder().tcode(tcode).tname(tname).areacode(areacode).location(location).hp(hp).photo(photo).build();
     }
+
+
 }
