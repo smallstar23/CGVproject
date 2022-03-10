@@ -1,5 +1,6 @@
-package com.koreait.cgvproject.service.admin;
+package com.koreait.cgvproject.service.admin.seat;
 
+import com.koreait.cgvproject.dto.SeathtmlDTO;
 import com.koreait.cgvproject.entity.Seathtml;
 import com.koreait.cgvproject.repository.SeatHtmlRepository;
 import lombok.AllArgsConstructor;
@@ -13,9 +14,12 @@ public class AdminSeatService {
 
     private SeatHtmlRepository seatHtmlRepository;
 
-    public Integer seatHtmlExist(Long hcode){
+    public boolean seatHtmlExist(Long hcode){
         Optional<Seathtml> seathtml = seatHtmlRepository.findByHcode(hcode);
-        if(seathtml.isPresent()) return 1;
-        else return 0;
+        if(seathtml.isPresent()) return true;
+        else return false;
+    }
+    public void seatHtmlCreate(SeathtmlDTO seathtmlDTO){
+        seatHtmlRepository.save(seathtmlDTO.toEntity());
     }
 }
