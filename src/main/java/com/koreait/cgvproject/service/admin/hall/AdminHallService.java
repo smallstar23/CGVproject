@@ -4,7 +4,9 @@ import com.koreait.cgvproject.dto.HallDTO;
 import com.koreait.cgvproject.entity.Hall;
 import com.koreait.cgvproject.entity.Theater;
 import com.koreait.cgvproject.repository.HallRepository;
+import com.koreait.cgvproject.repository.TheaterRepository;
 import lombok.AllArgsConstructor;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -14,12 +16,24 @@ import java.util.List;
 @Service
 @AllArgsConstructor
 public class AdminHallService {
-
+    @Autowired
     private HallRepository hallRepository;
 
+    @Autowired
+    private TheaterRepository theaterRepository;
 
-    public void savePost(HallDTO hallDTO){
-        hallRepository.save(hallDTO.toEntity());
+
+    public int savePost(HallDTO hallDTO){
+        Hall hall=new Hall();
+        Theater theater=theaterRepository.findByTcode(hallDTO.getTcode());
+        hall.setHcode(hallDTO.getHcode());
+        hall.setTheater(theater);
+        hall.setLocation(hallDTO.getLocation());
+        hall.setHname(hallDTO.getHname());
+        hall.setHguan(hallDTO.getHguan());
+        hallRepository.save(hall);
+
+    return 1;
     }
 
 //    @Transactional

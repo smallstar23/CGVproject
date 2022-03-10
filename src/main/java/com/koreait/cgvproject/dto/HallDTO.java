@@ -16,19 +16,19 @@ import java.util.List;
 public class HallDTO{
 
     private Long hcode;
+    private TheaterDTO theater;
     private Long tcode;
+    private Long hguan;
     private String hname;
     private String location;
 
     public Hall toEntity() {
-        Hall hall = Hall.builder()
+        return Hall.builder()
                 .hcode(hcode)
-                //.theater(tcode)
+                .theater(theater.toEntity())
                 .hname(hname)
+                .hguan(hguan)
                 .location(location)
                 .build();
-        return hall;
     }
-
-
 }

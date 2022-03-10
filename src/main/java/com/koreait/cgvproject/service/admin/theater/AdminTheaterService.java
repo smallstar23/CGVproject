@@ -27,9 +27,7 @@ public class AdminTheaterService {
 
     public TheaterDTO getTheater(Long tcode) {
         Theater theater = theaterRepository.findByTcode(tcode);
-        System.out.println(theater);
         TheaterDTO findtheaterDTO = theater.toDTO();
-        System.out.println(findtheaterDTO);
         return findtheaterDTO;
 
     }
@@ -45,9 +43,7 @@ public class AdminTheaterService {
 
     }
     public List<HallDTO> getHallList(Long tcode) {
-        System.out.println(tcode);
         Theater theater=theaterRepository.findByTcode(tcode);
-        System.out.println(theater);
         List<HallDTO> hallDTOList=new ArrayList<>();
         if(theater!=null){
             theater.getHalls().stream().forEach(hall -> {

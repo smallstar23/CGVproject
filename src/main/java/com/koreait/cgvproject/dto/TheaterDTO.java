@@ -19,6 +19,7 @@ public class TheaterDTO {
     private String hp;
     private String photo;
 
+
     public Theater toEntity(){
         return Theater.builder().tcode(tcode).tname(tname).areacode(areacode)
                 .location(location).hp(hp).photo(photo).build();

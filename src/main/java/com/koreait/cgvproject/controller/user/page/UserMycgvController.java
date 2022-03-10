@@ -22,7 +22,9 @@ public class UserMycgvController {
     @GetMapping("/user/mycgv")
     public String mycgv(Model model){
         Member member = memberService.getMember((String)httpSession.getAttribute("userid"));
+
         model.addAttribute("member", member);
+
         return ROOT+"/mycgv";
     }
 
