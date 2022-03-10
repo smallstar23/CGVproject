@@ -7,19 +7,31 @@ import lombok.AllArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
-@RequestMapping("/api")
+@RequestMapping("/api/seatHtml")
 @AllArgsConstructor
 public class AdminSeatRestController {
 
     private AdminSeatService adminSeatService;
 
-    @GetMapping("/seatHtml/exist/{hcode}")
+    @GetMapping("/exist/{hcode}")
     public boolean seatHtmlExist(@PathVariable Long hcode){
         return adminSeatService.seatHtmlExist(hcode);
     }
 
-    @PostMapping("/seatHtml/create")
+    @PostMapping("/create")
     public void seatHtmlCreate(@RequestBody SeathtmlDTO seathtmlDTO){
         adminSeatService.seatHtmlCreate(seathtmlDTO);
+    }
+    @GetMapping("/read/{hcode}")
+    public SeathtmlDTO seatHtmlRead(@PathVariable Long hcode){
+        return adminSeatService.seatHtmlRead(hcode);
+    }
+    @PostMapping("/update")
+    public void seatHtmlUpdate(@RequestBody SeathtmlDTO seatHtmlDTO){
+        adminSeatService.seatHtmlUpdate(seatHtmlDTO);
+    }
+    @GetMapping("/delete/{stIdx}")
+    public void seatHtmlDelete(@PathVariable Long stIdx){
+        adminSeatService.seatHtmlDelete(stIdx);
     }
 }

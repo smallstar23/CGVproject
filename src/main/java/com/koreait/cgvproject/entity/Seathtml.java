@@ -1,5 +1,6 @@
 package com.koreait.cgvproject.entity;
 
+import com.koreait.cgvproject.dto.SeathtmlDTO;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -29,4 +30,10 @@ public class Seathtml {
     private String stCol;
     private String rowEmpty;
     private String colEmpty;
+
+    public SeathtmlDTO toDTO(){
+        return SeathtmlDTO.builder()
+                .stIdx(stIdx).hcode(hcode).stRow(stRow).stCol(stCol).rowEmpty(rowEmpty)
+                .colEmpty(colEmpty).build();
+    }
 }
