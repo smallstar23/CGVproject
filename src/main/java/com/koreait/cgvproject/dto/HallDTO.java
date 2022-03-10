@@ -29,6 +29,4 @@ public class HallDTO{
                 .build();
         return hall;
     }
-
-
 }

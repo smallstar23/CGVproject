@@ -144,3 +144,7 @@ function seatHtmlCreate(){
         })
     });
 }
+function findTheater(areacode){
+    // 김영신 2022-03-10 이제 해야되는 부분
+    fetch('/api/findTheater'+areacode)
+}

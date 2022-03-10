@@ -12,9 +12,16 @@ import javax.persistence.*;
 @ToString(exclude = "theater")
 @AllArgsConstructor
 @Builder
+@SequenceGenerator(
+        name = "seq_hall",
+        sequenceName = "seq_hall",
+        initialValue = 1,
+        allocationSize = 1
+)
 public class Hall{
 
     @Id
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "seq_hall")
     private Long hcode;
 
 //    private Long tcode;
