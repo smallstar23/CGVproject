@@ -60,11 +60,12 @@ create sequence seq_movie
     start with 1;
 
 CREATE TABLE Hall (
-    hcode number(10) primary key,
-    tcode number(7)   not null, -- 극장코드
-    hname varchar2(10)   not null, -- 상영관 이름
-    location varchar2(100)   not null, -- 상영관 위치
-    constraint fk_Hall_tcode foreign key(tcode) references Theater (tcode)
+   hcode number(10) not null primary key,
+   hguan number(10) not null, -- 2관
+   tcode number(7) not null,  -- 극장 코드
+   name varchar2(10)   not null, -- 상영관 이름
+   location varchar2(100)   not null, -- 상영관 위치
+   constraint fk_Hall_tcode foreign key(tcode) references Theater (tcode)
 );
 create sequence seq_hall
     increment by 1
