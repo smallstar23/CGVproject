@@ -20,12 +20,11 @@ public class AdminTheaterRestController {
     @Autowired
     private AdminTheaterService adminTheaterService;
 
-    @PostMapping("/areacode")
+    @PostMapping("/api/areacode")
     @ResponseBody
     public List<TheaterDTO> areacode(@RequestParam("acode") int acode, Model model) {
         Long area = Long.valueOf(String.valueOf(acode));
         List<TheaterDTO> cgvlist = adminTheaterService.getCGV(area);
-        System.out.println(cgvlist);
         model.addAttribute("cgvlist", cgvlist);
         return cgvlist;
     }

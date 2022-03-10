@@ -12,22 +12,28 @@ import javax.persistence.*;
 @ToString(exclude = "theater")
 @AllArgsConstructor
 @Builder
+@SequenceGenerator(
+        name = "seq_hall",
+        sequenceName = "seq_hall",
+        initialValue = 1,
+        allocationSize = 1
+)
 public class Hall{
 
     @Id
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "seq_hall")
     private Long hcode;
-
-//    private Long tcode;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name="tcode")
     private Theater theater;
-
+    private Long hguan;
     private String hname;
     private String location;
 
     public HallDTO toDTO(){
-        return HallDTO.builder().tcode(theater.getTcode())
+        return HallDTO.builder()
+                .theater(theater.toDTO()).hguan(hguan)
                 .hcode(hcode).hname(hname).location(location)
                 .build();
     }

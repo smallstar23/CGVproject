@@ -60,11 +60,12 @@ create sequence seq_movie
     start with 1;
 
 CREATE TABLE Hall (
-    hcode number(10) primary key,
-    tcode number(7)   not null, -- 극장코드
-    hname varchar2(10)   not null, -- 상영관 이름
-    location varchar2(100)   not null, -- 상영관 위치
-    constraint fk_Hall_tcode foreign key(tcode) references Theater (tcode)
+   hcode number(10) not null primary key,
+   hguan number(10) not null, -- 2관
+   tcode number(7) not null,  -- 극장 코드
+   name varchar2(10)   not null, -- 상영관 이름
+   location varchar2(100)   not null, -- 상영관 위치
+   constraint fk_Hall_tcode foreign key(tcode) references Theater (tcode)
 );
 create sequence seq_hall
     increment by 1
@@ -187,14 +188,15 @@ create sequence seq_seat
 CREATE TABLE Seathtml (
     st_idx number(7) primary key,
     hcode number(10) not null,
-    st_row number(2) not null, -- 19까지만 작성
-    st_col varchar2(1) not null, -- 알파벳 L까지만 작성
-    row_empty varchar2(10) default 0 not null, -- n 다음 row가 비워짐
-    col_empty varchar2(10) default 0 not null, -- n 다음 col이 비워짐
-    constraint ck_sh_row check(st_row>0 and st_row<20),
-    constraint ck_sh_col check(ascii(st_col) >= ascii('A') and ascii(st_col) <= ascii('L')),
+    st_row varchar(2) not null, -- 알파벳 Z
+    st_col varchar2(2) not null, -- 
+    row_empty varchar2(40) default 0 not null, -- n 다음 row가 비워짐
+    col_empty varchar2(40) default 0 not null, -- n 다음 col이 비워짐
+    constraint ck_sh_col check(ascii(st_row) >= ascii('A') and ascii(st_row) <= ascii('Z')),
     constraint fk_Seathtml_hcode foreign key(hcode) references Hall (hcode)
 );
+
+delete from seathtml where st_idx = 3;
 create sequence seq_seathtml
     start with 1
     increment by 1;
@@ -271,6 +273,7 @@ create sequence seq_gift_payment
     increment by 1
     start with 1;
 
+select * from seathtml;
 
 drop table gift_payment;  drop table gift; drop table ticket_payment; drop table ticket; drop table notification; drop table seathtml;
 drop table seat; drop table schedule;drop table price; drop table reply; drop table director; drop table actor; drop table trailer;
@@ -285,6 +288,7 @@ drop sequence seq_schedule; drop sequence seq_trailer; drop sequence seq_ticket_
 drop sequence seq_ticket; drop sequence seq_theater; drop sequence seq_seathtml;
 drop sequence seq_seat;
 
+commit; -- 데이터를 잘 넣어놨는데도 안뜬다. 누르셈
 
 -- 있다 없어진 테이블 삭제 --
 drop table gift_Explain;
