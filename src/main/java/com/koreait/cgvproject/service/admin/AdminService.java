@@ -29,7 +29,6 @@ public class AdminService {
     }
 
     public List<HallDTO> findHallByTcode(Long tcode) {
-        System.out.println("service" + tcode);
         List<HallDTO> hallDTOList = new ArrayList<>();
         List<Hall> hallList = new ArrayList<>();
 

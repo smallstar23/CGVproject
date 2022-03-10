@@ -26,8 +26,8 @@ div{
     margin: 0.6px;
 }
 .seat:hover{
-    background:url('../seat_icons_20210617.png');
-    color: white;
+    background-color: white;
+    color: #e5e5df;
 }
 
 .row_div {

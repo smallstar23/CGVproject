@@ -1,9 +1,7 @@
 package com.koreait.cgvproject.entity;
 
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import com.koreait.cgvproject.dto.SeathtmlDTO;
+import lombok.*;
 
 import javax.persistence.*;
 
@@ -24,9 +22,23 @@ public class Seathtml {
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "seq_seathtml")
     private Long stIdx;
 
-    private Long hcode;
     private String stRow;
     private String stCol;
     private String rowEmpty;
     private String colEmpty;
+
+    @OneToOne
+    @JoinColumn(name = "hcode")
+    private Hall hall;
+
+    public SeathtmlDTO toDTO(){
+        return SeathtmlDTO.builder()
+                .stIdx(stIdx)
+                .stRow(stRow)
+                .stCol(stCol)
+                .rowEmpty(rowEmpty)
+                .colEmpty(colEmpty)
+                .hcode(hall.getHcode())
+                .build();
+    }
 }

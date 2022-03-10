@@ -30,7 +30,6 @@ public class AdminRestController {
 
     @GetMapping("/findHall/{tcode}")
     public List<HallDTO> findHall(@PathVariable Long tcode){
-        System.out.println("rest : " + tcode);
         return adminService.findHallByTcode(tcode);
     }
 }
