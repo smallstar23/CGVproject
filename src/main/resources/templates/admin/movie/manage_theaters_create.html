@@ -75,7 +75,7 @@
                         <option value="2">경기</option>
                     </select>
                     <select class="form-control" name="tcode" id="theater" disabled onchange="setTcode(this.value)">
-                        <option value="none">극장선택</option>
+                        <option th:text="${tcode}"></option>
                     </select>
                 </div>
                 <div class="form-row">

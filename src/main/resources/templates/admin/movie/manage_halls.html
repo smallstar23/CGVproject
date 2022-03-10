@@ -52,6 +52,7 @@
                 <div class="card-header">
                     <i class="fas fa-table me-1"></i>
                     상영관 관리
+                    <input type="button" value="상영관 등록" th:onclick="|location.href='@{|/manage/addhall/${hall.tcode}|}'|"  style="background-color: #F08080; float:right"/>
                 </div>
                 <div class="card-body">
                     <table id="datatablesSimple" class="dataTable-table">
@@ -73,7 +74,7 @@
 <!--                        </tfoot>-->
                         <tbody>
                         <tr class="text-center" th:each="hall :${halls}">
-                                <td style="width: 4%;" th:text="${hall.tcode}"></td>
+                                <td style="width: 4%;" th:text="${hall.code}"></td>
                                 <td style="width: 4%;" th:text="${hall.hname}"></td>
                                 <td style="width: 4%;" th:text="${hall.location}"></td>
                                 <td style="width: 20%;" ></td>

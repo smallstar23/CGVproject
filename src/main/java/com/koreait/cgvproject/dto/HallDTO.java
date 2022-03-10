@@ -15,6 +15,7 @@ import java.util.List;
 @Builder
 public class HallDTO{
 
+
     private Long hcode;
     private Long tcode;
     private String hname;
@@ -23,7 +24,7 @@ public class HallDTO{
     public Hall toEntity() {
         Hall hall = Hall.builder()
                 .hcode(hcode)
-                //.theater(tcode)
+                // .theater(tcode)
                 .hname(hname)
                 .location(location)
                 .build();

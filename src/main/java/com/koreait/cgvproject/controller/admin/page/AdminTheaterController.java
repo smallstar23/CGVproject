@@ -46,8 +46,9 @@ public class AdminTheaterController {
     }
 
     //movie-theaters 상영관 등록 페이지
-    @GetMapping("/manage_theaters_create")
-    public String movie_theaters_create(){
+    @GetMapping("/manage/addhall/{tcode}")
+    public String movie_theaters_create(@PathVariable("tcode") Long tcode, Model model){
+    model.addAttribute("tcode",tcode);
         return "/admin/movie/manage_theaters_create";
     }
 
