@@ -65,7 +65,7 @@
     <main>
         <div class="container-fluid px-4" style="margin:0 auto;">
             <h2 style="text-align:center;">상영관 등록</h2>
-            <form style="width:40%; border:solid 2px red; border-radius:10px; padding:5%; margin:0 auto;" action="/manage_theaters_create" method="post">
+            <form style="width:40%; border:solid 2px red; border-radius:10px; padding:5%; margin:0 auto;" action="/manage_halls_create" method="post">
                 <div id="select col">
                     <select class="form-control" id="area" onchange="setAcode(this.value)">
                         <option value="none">지역선택</option>
@@ -75,12 +75,11 @@
                         <option value="2">경기</option>
                     </select>
                     <select class="form-control" name="tcode" id="theater" disabled onchange="setTcode(this.value)">
-                        <option th:text="${tcode}"></option>
                     </select>
                 </div>
                 <div class="form-row">
                     <div class="col">상영관
-                        <select class="form-control" name="hcode">
+                        <select class="form-control" name="hguan">
                             <option>관 선택해주세요</option>
                             <option >1</option>
                             <option >2</option>

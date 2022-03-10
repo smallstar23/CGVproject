@@ -52,12 +52,12 @@
                 <div class="card-header">
                     <i class="fas fa-table me-1"></i>
                     상영관 관리
-                    <input type="button" value="상영관 등록" th:onclick="|location.href='@{|/manage/addhall/${hall.tcode}|}'|"  style="background-color: #F08080; float:right"/>
-                </div>
+                    </div>
                 <div class="card-body">
                     <table id="datatablesSimple" class="dataTable-table">
                         <thead>
                         <tr>
+                            <th>극장</th>
                             <th>상영관 번호</th>
                             <th>상영관 이름</th>
                             <th>위치</th>
@@ -73,11 +73,15 @@
 <!--                        </tr>-->
 <!--                        </tfoot>-->
                         <tbody>
+                        <input type="button" value="상영관 등록" th:onclick="|location.href='@{|/manage/addhall/${tcode}|}'|"  style="background-color: #F08080; float:right"/>
+
                         <tr class="text-center" th:each="hall :${halls}">
-                                <td style="width: 4%;" th:text="${hall.code}"></td>
-                                <td style="width: 4%;" th:text="${hall.hname}"></td>
-                                <td style="width: 4%;" th:text="${hall.location}"></td>
-                                <td style="width: 20%;" ></td>
+                                <td style="width: 10%;" th:text="${hall.getTheater().tname}"></td>
+                                 <td style="width: 5%;" th:text="${hall.hguan}+관"></td>
+                                <td style="width: 10%;" th:text="${hall.hname}"></td>
+                                <td style="width: 10%;" th:text="${hall.location}"></td>
+                                <td style="width: 5%;" ></td>
+
                         </tr>
                         </tbody>
                     </table>
