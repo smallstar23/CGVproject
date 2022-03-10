@@ -16,9 +16,8 @@ public class UserController {
     @Autowired
     HttpSession httpSession;
 
-    @GetMapping("user-main")
+    @GetMapping("/main")
     public String main(Model model){
-        log.info(httpSession.getAttribute("userid")+"::: session");
         return "/user/main";
     }
 }

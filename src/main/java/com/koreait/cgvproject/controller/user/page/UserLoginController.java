@@ -27,10 +27,8 @@ public class UserLoginController {
         return "user/login/login";
     }
 
-    @PostMapping("/user-main")
+    @PostMapping("/main")
     public String postMain(@RequestParam String userid, @RequestParam String userpw){
-        log.info("user id::"+userid);
-        log.info("user pw::"+userpw);
 
         if(userLoginService.login(userid,userpw)) {
             session.setAttribute("userid", userid);
@@ -43,7 +41,7 @@ public class UserLoginController {
     @GetMapping("/user/logout")
     public String logout(){
         session.invalidate();
-        return "redirect:/user-main";
+        return "redirect:/main";
     }
 
     @GetMapping("/user/login-agreement")
