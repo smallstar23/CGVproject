@@ -36,8 +36,10 @@ public class Theater {
     @OneToMany(fetch = FetchType.LAZY, mappedBy = "theater")
     private List<Hall> halls;
 
-    public TheaterDTO toDTO(){
-        return TheaterDTO.builder().tcode(tcode).tname(tname).areacode(areacode).location(location).hp(hp).photo(photo).build();
+    public TheaterDTO toDTO() {
+        return TheaterDTO.builder().tcode(tcode)
+                .tname(tname).areacode(areacode)
+                .location(location).hp(hp).photo(photo).build();
     }
 
 

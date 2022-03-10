@@ -8,6 +8,12 @@ const empty_row = document.getElementById('empty_row');
 const empty_col = document.getElementById('empty_col');
 const seats = document.getElementById('seats');
 
+function areaCheck(){
+    if (area.value !== "none") {
+        theater.disabled = false;
+        findTheater(area.value);
+    }
+}
 function check() {
     // 초기화
     theater.disabled = true;
@@ -19,13 +25,16 @@ function check() {
     seats.style.display = "none";
 
     // 1단계 검사
-    if (area.value !== "none") theater.disabled = false;
+    if (area.value !== "none") {
+        theater.disabled = false;
+    }
 
     // 2단계 검사
     if (theater.value !== "none" && !theater.disabled) hall.disabled = false;
 
     // 마지막 검사
     if (hall.value !== "none" && !hall.disabled) {
+        findHall(theater.value);
         // 초기화
         rowList.disabled = false;
         colList.disabled = false;
@@ -37,6 +46,7 @@ function check() {
         empty_row.value = 0;
         empty_col.value = 0;
 
+        isSeatHtmlExist(hall.value);
         //동작 실행
         showSeat(rowList.value, colList.value, empty_row.value, empty_col.value);
         seatInit();
@@ -108,25 +118,54 @@ function convertNumber(alph) {
 function submit() {
 
     // 조건 셀렉트가 다 활성화 되있는가.
-    if (!rowList.disabled) {
+    if (rowList.disabled) {
         alert('정보를 입력해주세요');
         return;
     }
-
-    seatHtmlExist();
-
-    //SeatHtml의 데이터
-    let hcode = theater.value;
-    let st_row = rowList.value
-    let st_col = colList.value;
-    let row_empty = empty_row.value.replaceAll(' ', '').toUpperCase().trim();
-    let col_empty = empty_col.value.replaceAll(' ', '').trim();
-    const array = [];
-    allSeats = document.querySelectorAll('.seat');
-    dis_seats = document.querySelectorAll('.disabled');
+    seatHtmlCreate();
 }
-function seatHtmlExist(){
-    fetch('/admin/api/exist/'+hall.value)
+function isSeatHtmlExist(hcode){
+    fetch('/api/seatHtml/exist/'+hcode)
+        .then(response => response.json()).then(data => {
+           if(data) alert('seatHtml에 이미 존재합니다 update');
+           else alert('seatHtml에 존재하지 않습니다. create');
+        });
+}
+function seatHtmlCreate(){
+    //SeatHtml의 데이터
+    let _hcode = hall.value;
+    let _st_row = rowList.value
+    let _st_col = colList.value;
+    let _row_empty = empty_row.value.replaceAll(' ', '').toUpperCase().trim();
+    let _col_empty = empty_col.value.replaceAll(' ', '').trim();
+
+    fetch('/api/seatHtml/create', {
+        method:"POST",
+        headers: {
+            'Content-Type': 'application/json',
+        },
+        body : JSON.stringify({
+            hcode : _hcode,
+            stRow : _st_row,
+            stCol : _st_col,
+            rowEmpty : _row_empty,
+            colEmpty : _col_empty
+        })
+    });
+}
+function findTheater(areacode){
+    theater.innerHTML = `<option value="none">극장 선택</option>`
+    fetch('/api/findTheater/'+areacode)
+        .then(response => response.json())
+        .then(data => {
+            data.forEach(theaterDTO => {
+                theater.innerHTML += `<option value="${theaterDTO.tcode}">${theaterDTO.tname}</option>`
+            });
+        })
+}
+
+function findHall(tcode){
+    fetch('/api/findHall/' + tcode)
         .then(response => response.json())
         .then(data => console.log(data));
 }
