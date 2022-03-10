@@ -21,13 +21,15 @@ public class UserMycgvController {
     private final MemberService memberService;
 
     @GetMapping("/user/mycgv")
-    public String mycgv(){
-//        Member member = memberService.getMember((String)httpSession.getAttribute("userid"));
+    public String mycgv(Model model){
+        Member member = memberService.getMember((String)httpSession.getAttribute("userid"));
+
+        model.addAttribute("member",member);
 //
 //        log.info(member.toString());
 //        model.setViewName(ROOT+"/fragment/common");
 //        model.addObject("member", member);
-
+//
 //        model.addAttribute("member",member);
 
         return ROOT+"/mycgv";
