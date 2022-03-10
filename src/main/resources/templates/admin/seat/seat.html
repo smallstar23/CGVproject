@@ -54,15 +54,12 @@
                     <option value="2">경기</option>
                 </select>
 
-                <select name="theater" id="theater" disabled onchange="check()">
+                <select name="theater" id="theater" disabled onchange="theaterCheck()">
                     <option value="none">극장 선택</option>
                 </select>
 
                 <select name="hall" id="hall" disabled onchange="check()">
                     <option value="none">상영관 선택</option>
-                    <option value="1">2관</option>
-                    <option value="2">4관</option>
-                    <option value="3">8관</option>
                 </select>
 
                 좌석의 최대행 :
@@ -149,8 +146,8 @@
                 </div>
             </div>
             <div id="seats" class="mt-3"></div>
-            <button type="button" class="btn btn-outline-danger position-relative start-50 mt-3" onclick="submit()">등록</button>
-
+            <button type="button" id="submit" class="btn btn-outline-danger position-relative start-50 mt-3" onclick="submit()">등록</button>
+            <button type="button" id="delete" class="btn btn-outline-danger position-relative start-50 mt-3" onclick="_delete()">삭제</button>
         </div>
     </main>
 </div>
