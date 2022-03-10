@@ -182,7 +182,7 @@ function seatHtmlCreate() {
             rowEmpty: empty_row.value.replaceAll(' ', '').toUpperCase().trim(),
             colEmpty: empty_col.value.replaceAll(' ', '').trim()
         })
-    })
+    }).catch(error => alert(error))
     alert('좌석 배치도가 등록되었습니다.');
 }
 function seatHtmlRead(hcode) {
@@ -236,7 +236,7 @@ function findHall(tcode) {
     fetch('/api/findHall/' + tcode)
         .then(response => response.json())
         .then(data => data.forEach(hallDTO => {
-            hall.innerHTML += `<option value="${hallDTO.hcode}">${hallDTO.hname}</option>`
+            hall.innerHTML += `<option value="${hallDTO.hcode}">${hallDTO.hguan+'관'}</option>`
         }));
 }
 
