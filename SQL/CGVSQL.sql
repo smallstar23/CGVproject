@@ -195,7 +195,6 @@ CREATE TABLE Seathtml (
     constraint fk_Seathtml_hcode foreign key(hcode) references Hall (hcode)
 );
 
-select * from seathtml;
 delete from seathtml where st_idx = 3;
 create sequence seq_seathtml
     start with 1
@@ -273,7 +272,7 @@ create sequence seq_gift_payment
     increment by 1
     start with 1;
 
-select * from theater;
+select * from seathtml;
 
 drop table gift_payment;  drop table gift; drop table ticket_payment; drop table ticket; drop table notification; drop table seathtml;
 drop table seat; drop table schedule;drop table price; drop table reply; drop table director; drop table actor; drop table trailer;

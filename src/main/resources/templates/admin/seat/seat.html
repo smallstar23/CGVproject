@@ -48,7 +48,7 @@
         <div class="container-fluid px-4">
             <h2>좌석 배치 / 관리</h2>
             <div id="select">
-                <select name="area" id="area" onchange="check();">
+                <select name="area" id="area" onchange="areaCheck();">
                     <option value="none">지역 선택</option>
                     <option value="1">서울</option>
                     <option value="2">경기</option>
@@ -56,9 +56,6 @@
 
                 <select name="theater" id="theater" disabled onchange="check()">
                     <option value="none">극장 선택</option>
-                    <option value="tcode1">강남CGV</option>
-                    <option value="tcode2">강변CGV</option>
-                    <option value="tcode3">판교CGV</option>
                 </select>
 
                 <select name="hall" id="hall" disabled onchange="check()">

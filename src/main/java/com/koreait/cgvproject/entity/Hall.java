@@ -24,8 +24,6 @@ public class Hall{
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "seq_hall")
     private Long hcode;
 
-//    private Long tcode;
-
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name="tcode")
     private Theater theater;
@@ -34,7 +32,8 @@ public class Hall{
     private String location;
 
     public HallDTO toDTO(){
-        return HallDTO.builder().tcode(theater.getTcode())
+        return HallDTO.builder()
+                .theater(theater.toDTO())
                 .hcode(hcode).hname(hname).location(location)
                 .build();
     }

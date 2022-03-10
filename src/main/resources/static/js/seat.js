@@ -8,6 +8,12 @@ const empty_row = document.getElementById('empty_row');
 const empty_col = document.getElementById('empty_col');
 const seats = document.getElementById('seats');
 
+function areaCheck(){
+    if (area.value !== "none") {
+        theater.disabled = false;
+        findTheater(area.value);
+    }
+}
 function check() {
     // 초기화
     theater.disabled = true;
@@ -19,13 +25,16 @@ function check() {
     seats.style.display = "none";
 
     // 1단계 검사
-    if (area.value !== "none") theater.disabled = false;
+    if (area.value !== "none") {
+        theater.disabled = false;
+    }
 
     // 2단계 검사
     if (theater.value !== "none" && !theater.disabled) hall.disabled = false;
 
     // 마지막 검사
     if (hall.value !== "none" && !hall.disabled) {
+        findHall(theater.value);
         // 초기화
         rowList.disabled = false;
         colList.disabled = false;
@@ -145,6 +154,18 @@ function seatHtmlCreate(){
     });
 }
 function findTheater(areacode){
-    // 김영신 2022-03-10 이제 해야되는 부분
-    fetch('/api/findTheater'+areacode)
+    theater.innerHTML = `<option value="none">극장 선택</option>`
+    fetch('/api/findTheater/'+areacode)
+        .then(response => response.json())
+        .then(data => {
+            data.forEach(theaterDTO => {
+                theater.innerHTML += `<option value="${theaterDTO.tcode}">${theaterDTO.tname}</option>`
+            });
+        })
+}
+
+function findHall(tcode){
+    fetch('/api/findHall/' + tcode)
+        .then(response => response.json())
+        .then(data => console.log(data));
 }
