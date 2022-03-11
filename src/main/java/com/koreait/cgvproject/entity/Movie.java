@@ -37,22 +37,23 @@ public class Movie {
     private String country;
     private String movieRating;
     private Long runtime;
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
     private LocalDate launchDate;
     private LocalDateTime regDate;
     private String poster;
 
-//    @OneToMany(fetch = FetchType.LAZY, mappedBy = "movie")
-//    private List<Actor> actors;
-//    @OneToOne(fetch = FetchType.LAZY, mappedBy = "movie")
-//    private Director director;
-//    @OneToOne(fetch = FetchType.LAZY, mappedBy = "movie")
-//    private Trailer trailer;
+    @OneToMany(fetch = FetchType.LAZY, mappedBy = "movie")
+    private List<Actor> actors;
+    @OneToMany(fetch = FetchType.LAZY, mappedBy = "movie")
+    private List<Director> director;
+    @OneToMany(fetch = FetchType.LAZY, mappedBy = "movie")
+    private List<Trailer> trailer;
 //    @OneToMany(fetch = FetchType.LAZY, mappedBy = "movie")
 //    private List<Reply> replies;
 
 
     public MovieDTO toDTO(){
         return MovieDTO.builder().mcode(mcode).mrank(mrank).titleKo(titleKo).titleEn(titleEn).genre(genre).country(country)
-                .movieRating(movieRating).runtime(runtime).launchDate(launchDate).regDate(regDate).poster(poster).build();
+                .movieRating(movieRating).runtime(runtime).launchDate(launchDate).regDate(LocalDateTime.now()).poster(poster).build();
     }
 }

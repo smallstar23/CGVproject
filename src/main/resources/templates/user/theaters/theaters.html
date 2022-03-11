@@ -130,7 +130,7 @@
                     <h4><img src="https://img.cgv.co.kr/R2014/images/title/h4_favorite_cgv.png" alt="자주가는 CGV"></h4>
                     <ul id="favoriteTheaters">
                         <!-- 여기는 로그인시 본인이 등록한 자주가는 영화관을 a태그에 넣어줍니다. -->
-                        <li><a href="#" data-regioncode="" data-theatercode="" data-selecteddate="20220209"><span>1<em>순위</em></span>여기임</a></li>
+                        <li><a href="#" data-regioncode="" data-theatercode="" data-selecteddate="20220209"><span>1<em>순위</em></span></a></li>
 
                         <li><a href="#" data-regioncode="" data-theatercode="" data-selecteddate="20220209"><span>2<em>순위</em></span></a></li>
 
@@ -145,7 +145,25 @@
                 </div>
 
                 <!--  coding start. 등록한 영화관을 여기서 반복으로 보여줍니다. -->
-                <div class="sect-city"><ul><li class="on"><a href="#">서울</a><div class="area"><ul><li class="on"><a title="CGV강남" href="theaters.jsp">CGV강남</a></li></ul></div></li></ul></div></div>
+                <div class="sect-city">
+                    <ul>
+                        <li id="seoul" class="on">
+                            <a href="#" onclick="theaters(1)">서울</a>
+                            <div class="area">
+<!--                                <ul class="seoullist" th:each="theater:${theaterList}">-->
+<!--                                    <li class=""><a th:title="|th:text=${theater.tname}|" th:text="${theater.tname}" href="#"></a></li>-->
+                                    <ul class="seoullist"></ul>
+                            </div>
+                        </li>
+                        <li id="gyeonggi">
+                            <a href="#" onclick="theaters(2)">경기</a>
+                            <div class="area">
+                                <ul class="gyeonggilist"></ul>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
         </div>
 
         <!-- 실컨텐츠 시작, 여기서부터 상단 영화관에 맞춰 화면 이동없이 정보를 변경합니다. -->
@@ -153,8 +171,6 @@
             <h3><img src="https://img.cgv.co.kr/R2014/images/title/h3_theater.gif" alt="THEATER"></h3>
             <div class="sect-theater ">
                 <h4 class="theater-tit"><span>CGV강남</span></h4>
-                <a href="support-lease.jsp" class="round inred btn_lease"><span style="padding:0 14px;">단체/대관문의</span></a>
-
                 <div class="wrap-theaterinfo">
                     <div class="box-image">
                         <div id="theater_img_container" class="thumb-image"><img src="https://img.cgv.co.kr/Theater/Theater/2014/1211/CGVgangnam.jpg" alt="CGV강남 극장이미지"></div>
@@ -716,7 +732,7 @@
 
 
 </div>
-
+<script src="/js/theaters.js"></script>
 
 </body>
 </html>

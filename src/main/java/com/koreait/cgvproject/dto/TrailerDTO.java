@@ -1,6 +1,7 @@
 package com.koreait.cgvproject.dto;
 
 import com.koreait.cgvproject.entity.Movie;
+import com.koreait.cgvproject.entity.Trailer;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -26,4 +27,6 @@ public class TrailerDTO {
     private String trailer1;
     private String trailer2;
     private String trailer3;
+
+
 }

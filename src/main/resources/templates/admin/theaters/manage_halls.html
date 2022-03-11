@@ -52,15 +52,17 @@
                 <div class="card-header">
                     <i class="fas fa-table me-1"></i>
                     상영관 관리
-                </div>
+                    </div>
                 <div class="card-body">
                     <table id="datatablesSimple" class="dataTable-table">
                         <thead>
                         <tr>
+                            <th>극장</th>
                             <th>상영관 번호</th>
                             <th>상영관 이름</th>
                             <th>위치</th>
                             <th>좌석수</th>
+                            <th>수정</th>
                         </tr>
                         </thead>
 <!--                        <tfoot>-->
@@ -72,11 +74,16 @@
 <!--                        </tr>-->
 <!--                        </tfoot>-->
                         <tbody>
+                        <input type="button" value="상영관 등록" th:onclick="|location.href='@{|/manage/addhall/${tcode}|}'|"  style="background-color: #F08080; float:right"/>
+
                         <tr class="text-center" th:each="hall :${halls}">
-                                <td style="width: 4%;" th:text="${hall.tcode}"></td>
-                                <td style="width: 4%;" th:text="${hall.hname}"></td>
-                                <td style="width: 4%;" th:text="${hall.location}"></td>
-                                <td style="width: 20%;" ></td>
+                                <td style="width: 10%;" th:text="${hall.getTheater().tname}"></td>
+                                 <td style="width:10%;" th:text="${hall.hguan}+관"></td>
+                                <td style="width: 10%;" th:text="${hall.hname}"></td>
+                                <td style="width: 10%;" th:text="${hall.location}"></td>
+                                <td style="width: 5%;" ></td>
+                            <td style="width: 5%;"><button class="btn" style="width:100px; border-radius: 10px; border:1px darkred solid" th:onclick="|location.href='@{|/manage/updatehall/${hall.hcode}|}'|">수정</button></td>
+
                         </tr>
                         </tbody>
                     </table>
@@ -88,7 +95,7 @@
 </div>
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
-<script src="js/scripts.js"></script>
+<script src="/js/scripts.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.min.js" crossorigin="anonymous"></script>
 <script src="assets/demo/chart-area-demo.js"></script>
 <script src="assets/demo/chart-bar-demo.js"></script>

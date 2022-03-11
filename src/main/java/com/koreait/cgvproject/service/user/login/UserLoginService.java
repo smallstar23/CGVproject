@@ -19,7 +19,6 @@ public class UserLoginService{
     MemberRepository memberRepository;
 
   public boolean login(String userid, String userpw){
-      log.info(userid+"--"+userpw);
       Member member =  memberRepository.findByUserid(userid);
 
      if(member!=null&&member.getUserpw().equals(userpw)) return true;
