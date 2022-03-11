@@ -59,7 +59,7 @@
                         <thead>
                         <tr>
                             <th>영화코드</th>
-                            <th>영화순위</th>
+                            <th>상영여부</th>
                             <th>영화명</th>
                             <th>영화명(영문)</th>
                             <th>장르</th>
@@ -73,7 +73,7 @@
                         <tfoot>
                         <tr>
                             <th>영화코드</th>
-                            <th>영화순위</th>
+                            <th>상영여부</th>
                             <th>영화명</th>
                             <th>영화명(영문)</th>
                             <th>장르</th>
@@ -87,7 +87,7 @@
                         <tbody>
                         <tr th:each="movie : ${MovieList}" th:onclick="|location.href='@{|/manage_ongoingmovies/${movie.getMcode()}|}'|">
                             <td style="width: 5%;" th:text="${movie.mcode}"></td>
-                            <td style="width: 10%;" th:text="${movie.mrank}"></td>
+                            <td style="width: 10%;" th:text="${movie.mscreen}"></td>
                             <td style="width: 15%;" th:text="${movie.titleKo}"></td>
                             <td style="width: 10%;" th:text="${movie.titleEn}"></td>
                             <td style="width: 10%;" th:text="${movie.genre}"></td>

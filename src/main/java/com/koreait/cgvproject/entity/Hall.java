@@ -40,7 +40,8 @@ public class Hall{
 
     public HallDTO toDTO(){
         return HallDTO.builder()
-                .theater(theater.toDTO()).hguan(hguan)
+                .theater(theater.toDTO())
+                .hguan(hguan)
                 .hcode(hcode).hname(hname).location(location)
                 .build();
     }
