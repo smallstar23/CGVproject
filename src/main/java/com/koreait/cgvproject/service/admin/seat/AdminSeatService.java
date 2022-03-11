@@ -1,59 +1,65 @@
 package com.koreait.cgvproject.service.admin.seat;
 
-import com.koreait.cgvproject.dto.HallDTO;
-import com.koreait.cgvproject.dto.SeathtmlDTO;
+import com.koreait.cgvproject.dto.SeatDTO;
 import com.koreait.cgvproject.entity.Hall;
-import com.koreait.cgvproject.entity.Seathtml;
+import com.koreait.cgvproject.entity.Seat;
 import com.koreait.cgvproject.repository.HallRepository;
-import com.koreait.cgvproject.repository.SeatHtmlRepository;
+import com.koreait.cgvproject.repository.SeatRepository;
 import lombok.AllArgsConstructor;
-import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.autoconfigure.quartz.QuartzTransactionManager;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Optional;
 
 @Service
 @AllArgsConstructor
 public class AdminSeatService {
-
-    private SeatHtmlRepository seatHtmlRepository;
+    private SeatRepository seatRepository;
     private HallRepository hallRepository;
 
-    public boolean seatHtmlExist(Long hcode) {
-        Optional<Hall> hall = hallRepository.findById(hcode);
-        Optional<Seathtml> seatHtml = Optional.empty();
+    public boolean create(SeatDTO seatDTO) {
+        Optional<Hall> hall = hallRepository.findById(seatDTO.getHcode());
+        Seat seat = new Seat();
+        if (hall.isPresent())
+            seat = seatRepository.save(seatDTO.toEntityForCreateHallRequired(hall.get()));
+        if (seat.getStcode() != null) return true;
+        else return false;
+    }
+
+    public void update(SeatDTO seatDTO) {
+        Optional<Hall> hall = hallRepository.findById(seatDTO.getHcode());
         if (hall.isPresent()) {
-            seatHtml = seatHtmlRepository.findByHall(hall.get());
+            Optional<Seat> seatOptional = seatRepository.findByHallAndStNum(hall.get(), seatDTO.getStNum());
+            if (seatOptional.isPresent()) {
+                long seatId = seatOptional.get().getStcode();
+                Optional<Seat> seat = seatRepository.findById(seatId);
+                seat.ifPresent(st -> {
+                    st.setDisabled(seatDTO.getDisabled());
+                });
+            } else {
+                // 상영관 코드와 좌석 이름에 맞지 않는 좌석;; 없는 좌석이 있을 경우 새로운 좌석을 만든다.
+                seatRepository.save(seatDTO.toEntityForCreateHallRequired(hall.get()));
+            }
         }
-        return seatHtml.isPresent();
     }
 
-    public void seatHtmlCreate(SeathtmlDTO seathtmlDTO) {
-        Optional<Hall> hall = hallRepository.findById(seathtmlDTO.getHcode());
-        hall.ifPresent(ha -> seatHtmlRepository.save(seathtmlDTO.toEntityForCreate(ha)));
-    }
-
-    public void seatHtmlUpdate(SeathtmlDTO seathtmlDTO) {
-        Optional<Seathtml> seathtml = seatHtmlRepository.findById(seathtmlDTO.getStIdx());
-        seathtml.ifPresent(sHtml -> {
-            sHtml.setStCol(seathtmlDTO.getStCol());
-            sHtml.setStRow(seathtmlDTO.getStRow());
-            sHtml.setRowEmpty(seathtmlDTO.getRowEmpty());
-            sHtml.setColEmpty(seathtmlDTO.getColEmpty());
-            seatHtmlRepository.save(sHtml);
-        });
-    }
-
-    public SeathtmlDTO seatHtmlRead(Long hcode) {
+    public List<SeatDTO> read(Long hcode) {
         Optional<Hall> hall = hallRepository.findById(hcode);
-        Optional<Seathtml> seathtml = Optional.empty();
-        if (hall.isPresent()) seathtml = seatHtmlRepository.findByHall(hall.get());
-        return seathtml.map(Seathtml::toDTO).orElse(new SeathtmlDTO());
-//        if (seatHtml.isPresent()) return seatHtml.get().toDTO();
-//        return new SeathtmlDTO();
+        List<SeatDTO> seatDTOList = new ArrayList<>();
+        hall.ifPresent(hal -> {
+            List<Seat> seatList = seatRepository.findAllByHallOrderByStNum(hal);
+            seatList.forEach(seatEntity -> seatDTOList.add(seatEntity.toDTO()) );
+        });
+        return seatDTOList;
     }
 
-    public void seatHtmlDelete(Long stIdx) {
-        seatHtmlRepository.deleteById(stIdx);
+    @Transactional
+    public void delete(Long hcode){
+        Optional<Hall> hall = hallRepository.findById(hcode);
+        hall.ifPresent(hal -> { seatRepository.deleteAllByHall(hal);
+        });
     }
 }
