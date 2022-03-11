@@ -48,6 +48,15 @@ public class AdminTheaterController {
         return "/admin/theaters/manage_halls_create";
     }
 
+    // 업데이트 페이지에 기존 정보 띄워줌
+    @GetMapping("/manage/updatehall/{hcode}")
+    public String updateHall(@PathVariable("hcode") Long hcode, Model model){
+        model.addAttribute("hcode",hcode);
+        HallDTO hallDTO= adminHallService.findHall(hcode);
+        model.addAttribute("hall", hallDTO);
+        return "/admin/theaters/manage_halls_update";
+    }
+
     @PostMapping("/manage_halls_create")
     public String movie_theaters_write(@ModelAttribute HallDTO hallDTO, Model model){
         Long hallint=hallDTO.getTcode();
