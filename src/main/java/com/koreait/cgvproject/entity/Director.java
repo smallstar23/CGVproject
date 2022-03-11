@@ -1,10 +1,7 @@
 package com.koreait.cgvproject.entity;
 
 import com.koreait.cgvproject.dto.DirectorDTO;
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 import javax.persistence.*;
 
@@ -13,6 +10,7 @@ import javax.persistence.*;
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
+@ToString(exclude = "movie")
 @SequenceGenerator(
         name = "seq_director",
         sequenceName="seq_director",
@@ -28,12 +26,12 @@ public class Director {
     @JoinColumn(name = "mcode")
     private Movie  movie;
 
-    private String nameKo;
-    private String nameEn;
-    private String photo;
+    private String dnameKo;
+    private String dnameEn;
+    private String dphoto;
 
     public DirectorDTO toDTO(){
-        return  DirectorDTO.builder().idx(idx).mcode(movie.getMcode()).nameKo(nameKo).nameEn(nameEn)
-                .photo(photo).build();
+        return  DirectorDTO.builder().idx(idx).movie(movie.toDTO()).dnameKo(dnameKo).dnameEn(dnameEn)
+                .dphoto(dphoto).build();
     }
 }

@@ -2,6 +2,7 @@ package com.koreait.cgvproject.controller.user.page;
 
 import com.koreait.cgvproject.dto.MovieDTO;
 import com.koreait.cgvproject.dto.TrailerDTO;
+import com.koreait.cgvproject.entity.Movie;
 import com.koreait.cgvproject.entity.Trailer;
 import com.koreait.cgvproject.service.user.moive.UserMovieService;
 import org.springframework.beans.factory.annotation.Autowired;

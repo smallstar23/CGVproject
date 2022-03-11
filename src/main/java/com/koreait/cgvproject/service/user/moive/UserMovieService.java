@@ -32,8 +32,8 @@ public class UserMovieService {
         return movieDTOList;
     }
 
-    public TrailerDTO getTrailer(Long mcode){
-        Trailer trailer= trailerRepository.findByMcode(mcode);
+    public TrailerDTO getTrailer(Long idx){
+        Trailer trailer= trailerRepository.findByIdx(idx);
         TrailerDTO trailerDTO=trailer.toDTO();
         return trailerDTO;
     }
