@@ -65,31 +65,17 @@
     <main>
         <div class="container-fluid px-4" style="margin:0 auto;">
             <h2 style="text-align:center;">상영중인 영화 등록</h2>
-            <form   action="/manage_ongoingmovies_create" method="post" style="width:40%; border:solid 2px red; border-radius:10px; padding:5%; margin:0 auto;">
+            <form   action="/manage_ongoingmovies_create" method="post" style="width:70%; border:solid 2px red; border-radius:10px; padding:5%; margin:0 auto;">
                 <div class="form-row">
-                    <div class="form-group col-md-6">
-                        <label for="inputmcode">영화코드</label>
-                        <input type="text" class="form-control" id="inputmcode" placeholder="" name="mcode">
-                    </div>
-                    <div class="form-group col-md-6">
-                        <label for="inputmrank">영화순위</label>
-                        <input type="text" class="form-control" id="inputmrank" placeholder="" name="mrank">
-                    </div>
-                </div>
-                <hr/>
-                <div class="form-row">
-                    <div class="form-group col-md-6">
+                    <div class="form-group col-md-3">
                         <label for="inputtitleko">영화 명</label>
                         <input type="text" class="form-control" id="inputtitleKo" placeholder="" name="titleKo">
                     </div>
-                    <div class="form-group col-md-6">
+                    <div class="form-group col-md-3">
                         <label for="inputtitleEn">영화 명(영문)</label>
                         <input type="text" class="form-control" id="inputtitleEn" placeholder="" name="titleEn">
                     </div>
-                </div>
-                <hr/>
-                <div class="form-row">
-                    <div class="form-group col-md-6">
+                    <div class="form-group col-md-3">
                         <label for="inputgenre">장르</label>
                         <select name="genre" id="inputgenre" class="form-control"  >
                             <option selected="selected" value="액션" name="">액션</option>
@@ -114,17 +100,15 @@
                             <option value="서부극(웨스턴)">서부극(웨스턴)</option>
                         </select>
                     </div>
-                    <div class="form-group col-md-6">
+                    <div class="form-group col-md-3">
                         <label for="inputcountry">제작국가</label>
                         <input type="text" class="form-control" id="inputcountry" placeholder="" name="country">
                     </div>
                 </div>
                 <hr/>
-
                 <div class="form-row">
-                    <div class="form-group col-md-6">
-                        <label for="inputmovieRating">관람 등급</label>
-<!--                        <input type="text" class="form-control" id="inputmovieRating" placeholder="" name="movieRating">-->
+                    <div class="form-group col-md-3">
+                        <label for="inputtitleko">관람등급</label>
                         <select name="movieRating" id="inputmovieRating" class="form-control"  >
                             <option selected="selected" value="전체이용가" name="">전체이용가</option>
                             <option value="12세 이상">12세 이상</option>
@@ -132,26 +116,109 @@
                             <option value="청소년 관람 불가">청소년 관람 불가</option>
                         </select>
                     </div>
-                    <div class="form-group col-md-6">
+                    <div class="form-group col-md-3">
                         <label for="inputruntime">러닝 타임</label>
                         <input type="text" class="form-control" id="inputruntime" placeholder="" name="runtime">
+                    </div>
+                    <div class="form-group col-md-3">
+                        <label for="inputtitleEn">개봉일</label>
+                        <input type="date" class="form-control" id="inputlaunchdate" placeholder="" name="launchDate">
+                    </div>
+                    <div class="form-group col-md-3">
+                        <label for="exampleFormControlFile1" >파일등록(링크)</label>
+                        <input type="text" class="form-control-file" id="exampleFormControlFile1" name="poster">
                     </div>
                 </div>
                 <hr/>
                 <div class="form-row">
-                    <div class="form-group col-md-12" >
-                        <label for="inputlaunchdate">개봉일</label>
-                        <input type="date" class="form-control" id="inputlaunchdate" placeholder="" name="launchDate">
+                    <div class="form-group col-md-3">
+                        <label for="inputtitleko">상영 여부</label>
+                        <input type="text" class="form-control" id="inputtitleKo" placeholder="" name="titleKo" >
+                    </div>
+                    <div class="form-group col-md-3">
+                        <label for="inputdescription1">description1</label>
+                        <input type="text" class="form-control" id="inputdescription1" placeholder="" name="description1" >
+                    </div>
+                    <div class="form-group col-md-3">
+                        <label for="inputdescription2">description2</label>
+                        <input type="text" class="form-control" id="inputdescription2" placeholder="" name="description2" >
+                    </div>
+                    <div class="form-group col-md-3">
+                        <label for="inputdescription3">description3</label>
+                        <input type="text" class="form-control" id="inputdescription3" placeholder="" name="description3" >
                     </div>
                 </div>
                 <hr/>
-                <div class="form-group">
-                    <label for="exampleFormControlFile1" >파일등록(링크)</label>
-                    <input type="text" class="form-control-file" id="exampleFormControlFile1" name="poster">
+                <div class="form-row">
+                    <div class="form-group col-md-3">
+                        <label for="inputphoto1">photo1</label>
+                        <input type="text" class="form-control" id="inputphoto1" placeholder="" name="photo1" >
+                    </div>
+                    <div class="form-group col-md-3">
+                        <label for="inputtphoto2">photo2</label>
+                        <input type="text" class="form-control" id="inputtphoto2" placeholder="" name="photo2" >
+                    </div>
+                    <div class="form-group col-md-3">
+                        <label for="inputphoto3">photo3</label>
+                        <input type="text" class="form-control" id="inputphoto3" placeholder="" name="photo3" >
+                    </div>
+                    <div class="form-group col-md-3">
+                        <label for="inputphoto4">photo4</label>
+                        <input type="text" class="form-control" id="inputphoto4" placeholder="" name="photo4" >
+                    </div>
+                    <div class="form-group col-md-3">
+                        <label for="inputphoto5">photo5</label>
+                        <input type="text" class="form-control" id="inputphoto5" placeholder="" name="photo5" >
+                    </div>
+                </div>
+                <hr/>
+                <div class="form-row">
+                    <div class="form-group col-md-3">
+                        <label for="inputtrailer1">trailer1</label>
+                        <input type="text" class="form-control" id="inputtrailer1" placeholder="" name="trailer1" >
+                    </div>
+                    <div class="form-group col-md-3">
+                        <label for="inputtrailer2">trailer2</label>
+                        <input type="text" class="form-control" id="inputtrailer2" placeholder="" name="trailer2" >
+                    </div>
+                    <div class="form-group col-md-3">
+                        <label for="inputtrailer3">trailer3</label>
+                        <input type="text" class="form-control" id="inputtrailer3" placeholder="" name="trailer3" >
+                    </div>
+                </div>
+                <hr/>
+                <div class="form-row">
+                    <div class="form-group col-md-3">
+                        <label for="inputnameKo">감독 명(nameKo)</label>
+                        <input type="text" class="form-control" id="inputnameKo" placeholder="" name=nameKo>
+                    </div>
+                    <div class="form-group col-md-3">
+                        <label for="inputnameEn">감독 명(nameEn)</label>
+                        <input type="text" class="form-control" id="inputnameEn" placeholder="" name="nameEn" >
+                    </div>
+                    <div class="form-group col-md-3">
+                        <label for="inputphoto">photo</label>
+                        <input type="text" class="form-control" id="inputphoto" placeholder="" name="photo" >
+                    </div>
+                </div>
+                <hr/>
+                <div class="form-row">
+                    <div class="form-group col-md-3">
+                        <label for="inputnameKo">배우명(nameKo)</label>
+                        <input type="text" class="form-control" id="inputnameKo" placeholder="" name="nameKo" >
+                    </div>
+                    <div class="form-group col-md-3">
+                        <label for="inputnameEn">배우명(nameEn)</label>
+                        <input type="text" class="form-control" id="inputnameEn" placeholder="" name="nameEn" >
+                    </div>
+                    <div class="form-group col-md-3">
+                        <label for="inputtitleEn">photo</label>
+                        <input type="text" class="form-control" id="inputtitleEn" placeholder="" name="photo" >
+                    </div>
+                </div>
                     <hr/>
                     <button type="reset" class="btn btn-primary" >리셋</button>
                     <button type="submit" class="btn btn-primary" style="background-color: #F08080">작성</button>
-                </div>
             </form>
         </div>
     </main>
