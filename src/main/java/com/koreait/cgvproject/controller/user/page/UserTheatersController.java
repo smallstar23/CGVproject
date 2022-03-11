@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import java.util.List;
@@ -18,17 +19,16 @@ public class UserTheatersController {
     @GetMapping("/theaters")
     public String theaters(Model model){
         List<TheaterDTO> theaterDTOList=adminTheaterService.getCGV(1L);
+        model.addAttribute("theater",theaterDTOList.get(0));
         model.addAttribute("theaterList",  theaterDTOList);
-        System.out.println(theaterDTOList);
         return "user/theaters/theaters";
     }
 
     @GetMapping("/theaters/{tcode}")
-    public String theatersview(@RequestParam("tcode") Long tcode, Model model){
+    public String theatersview(@PathVariable Long tcode, Model model){
         TheaterDTO theaterDTO=adminTheaterService.getTheater(tcode);
-        model.addAttribute("theaterList",  theaterDTO);
-        System.out.println(theaterDTO);
-        return "user/theaters/theaters";
+        model.addAttribute("theater", theaterDTO);
+        return "/user/theaters/theaters";
     }
 
 

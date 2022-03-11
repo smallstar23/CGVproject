@@ -170,14 +170,16 @@
         <div class="wrap-theater">
             <h3><img src="https://img.cgv.co.kr/R2014/images/title/h3_theater.gif" alt="THEATER"></h3>
             <div class="sect-theater ">
-                <h4 class="theater-tit"><span>CGV강남</span></h4>
+                <h4 class="theater-tit"><span th:text="${theater.tname}"></span></h4>
                 <div class="wrap-theaterinfo">
                     <div class="box-image">
-                        <div id="theater_img_container" class="thumb-image"><img src="https://img.cgv.co.kr/Theater/Theater/2014/1211/CGVgangnam.jpg" alt="CGV강남 극장이미지"></div>
+                        <div id="theater_img_container" class="thumb-image">
+                            <img th:src="@{${theater.photo}}" alt="극장이미지"></div>
                     </div>
                     <div class="box-contents">
                         <div class="theater-info">
-                            <strong class="title">서울특별시 강남구 역삼동 814-6 스타플렉스<br>서울특별시 강남구 강남대로 438  (역삼동)</strong>
+                            <strong class="title" th:text="${theater.location}">
+                                </strong>
                             <span class="txt-info">
                         <em>1544-1122</em>
                         <em>6관 / 874석</em>
@@ -190,12 +192,12 @@
                             <h5>공지사항</h5>
                             <ul>
 
-                                <li><a href="support-news.jsp" target="_blank" title="새창 열림">22년 문화가 있는 날 가격 조정 안내</a></li>
+                                <li><a href="#" target="_blank" title="새창 열림">22년 문화가 있는 날 가격 조정 안내</a></li>
 
-                                <li><a href="support-news.jsp" target="_blank" title="새창 열림">PAYCO 서비스 개선 작업에 따른 서비스 이용 일시중지 (12/8 04:00~04:30)</a></li>
+                                <li><a href="#" target="_blank" title="새창 열림">PAYCO 서비스 개선 작업에 따른 서비스 이용 일시중지 (12/8 04:00~04:30)</a></li>
 
                             </ul>
-                            <a class="link-more" href="support-news.jsp" target="_blank" title="새창 열림">공지사항 더보기</a>
+                            <a class="link-more" href="#" target="_blank" title="새창 열림">공지사항 더보기</a>
                         </div>
                     </div>
                 </div>
@@ -274,146 +276,16 @@
                     <!-- Contents Start -->
                     <div class="showtimes-wrap" style="padding-top: 50px">
 
-                        <div class="sect-city">
-                            <ul>
-
-                                <li class="<%=m1%>">
-                                    <a href="./showtime.jsp?areacode=01" title="현재 선택">서울</a>
-                                </li>
-
-                                <li class="<%=m2%>">
-                                    <a href="./showtime.jsp?areacode=02">경기</a>
-                                </li>
-
-                                <li class="<%=m3%>">
-                                    <a href="./showtime.jsp?areacode=03">인천</a>
-                                </li>
-
-                                <li class="<%=m4%>">
-                                    <a href="./showtime.jsp?areacode=04">강원</a>
-                                </li>
-
-                                <li class="<%=m5%>">
-                                    <a href="./showtime.jsp?areacode=05">대전/충청</a>
-                                </li>
-
-                                <li class="<%=m6%>">
-                                    <a href="./showtime.jsp?areacode=06">대구</a>
-                                </li>
-
-                                <li class="<%=m7%>">
-                                    <a href="./showtime.jsp?areacode=07">부산/울산</a>
-                                </li>
-
-                                <li class="<%=m8%>">
-                                    <a href="./showtime.jsp?areacode=08">경상</a>
-                                </li>
-
-                                <li class="<%=m9%>">
-                                    <a href="./showtime.jsp?areacode=09">광주/전라/제주</a>
-                                </li>
-
-                            </ul>
-                        </div>
 
                         <div class="sect-schedule">
                             <div id="slider" class="slider">
 
-                                <div class="item-wrap"><ul class="item" style="width: 800px; height: 156.003px;">
-                                    <li class="on">
-                                        <div class="day">
-                                            <a href="#">
-                                                <span> 02월</span>
-                                                <em>수</em>
-                                                <strong>16</strong>
-                                            </a>
-                                        </div>
-                                    </li>
+                                <div class="item-wrap">
+                                    <ul class="item" style="width: 800px; height: 156.003px;">
 
+                                </ul>
 
-
-                                    <li>
-                                        <div class="day">
-                                            <a href="#">
-                                                <span> 02월</span>
-                                                <em>목</em>
-                                                <strong>17</strong>
-                                            </a>
-                                        </div>
-                                    </li>
-
-
-
-                                    <li>
-                                        <div class="day">
-                                            <a href="#">
-                                                <span> 02월</span>
-                                                <em>금</em>
-                                                <strong>18</strong>
-                                            </a>
-                                        </div>
-                                    </li>
-
-
-
-                                    <li>
-                                        <div class="day">
-                                            <a href="#">
-                                                <span> 02월</span>
-                                                <em>토</em>
-                                                <strong>19</strong>
-                                            </a>
-                                        </div>
-                                    </li>
-
-
-
-                                    <li>
-                                        <div class="day">
-                                            <a href="#">
-                                                <span> 02월</span>
-                                                <em>일</em>
-                                                <strong>20</strong>
-                                            </a>
-                                        </div>
-                                    </li>
-
-
-
-                                    <li>
-                                        <div class="day">
-                                            <a href="#">
-                                                <span> 02월</span>
-                                                <em>월</em>
-                                                <strong>21</strong>
-                                            </a>
-                                        </div>
-                                    </li>
-
-
-
-                                    <li>
-                                        <div class="day">
-                                            <a href="#">
-                                                <span> 02월</span>
-                                                <em>화</em>
-                                                <strong>22</strong>
-                                            </a>
-                                        </div>
-                                    </li>
-
-
-
-                                    <li>
-                                        <div class="day">
-                                            <a href="#">
-                                                <span> 02월</span>
-                                                <em>수</em>
-                                                <strong>23</strong>
-                                            </a>
-                                        </div>
-                                    </li>
-                                </ul></div>
+                                </div>
 
 
                                 <button type="button" class="btn-prev">이전 날자보기</button>
@@ -733,6 +605,5 @@
 
 </div>
 <script src="/js/theaters.js"></script>
-
 </body>
 </html>
