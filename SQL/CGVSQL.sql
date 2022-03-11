@@ -175,9 +175,8 @@ create sequence seq_schedule
 
 CREATE TABLE Seat (
     stcode number(10)   primary key,
-    hcode number(10)   not null,
-    st_num varchar2(10)   not null, -- 좌석 번호
-    st_name varchar2(10)   not null, -- 좌석 이름
+    hcode number(10) not null,
+    st_num varchar2(10) not null, -- 좌석 번호
     disabled number(1) not null, -- 좌석 숨김기능(0,1)
     constraint ck_seat_disabled check(disabled in (0,1)),
     constraint fk_Seat_hcode foreign key(hcode) references Hall (hcode)
