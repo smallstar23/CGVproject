@@ -168,6 +168,8 @@ function isSeatHtmlExist(hcode) {
                 seatHtmlRead(hcode);
                 seats.style.display = 'block';
                 seatRead(hcode);
+                document.getElementById('submit').innerText = '수정'
+                document.getElementById('delete').style.display = 'unset';
             } else {
                 isNewSeatHtml = true;
                 alert('새로운 좌석 배치도를 생성합니다.');
@@ -178,6 +180,8 @@ function isSeatHtmlExist(hcode) {
                 empty_col.value = 0;
                 seats.style.display = "block";
                 createSeat();
+                document.getElementById('submit').innerText = '등록'
+                document.getElementById('delete').style.display = 'none';
             }
         });
 }
