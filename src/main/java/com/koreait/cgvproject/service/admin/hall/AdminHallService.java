@@ -45,7 +45,6 @@ public class AdminHallService {
             hallDTO.setHname(hall.getHname());
             hallDTO.setTheater(hall.getTheater().toDTO());
             hallDTO.setTcode(hall.getTheater().getTcode());
-            System.out.println(hallDTO);
             return hallDTO;
         }
         return null;
