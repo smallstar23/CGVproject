@@ -38,5 +38,4 @@ public class UserMovieService {
         return trailerDTO;
     }
 
-
 }
