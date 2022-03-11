@@ -36,6 +36,22 @@ public class AdminHallService {
     return 1;
     }
 
+    public HallDTO findHall(Long hcode){
+        Hall hall=hallRepository.findByHcode(hcode);
+        if(hall!=null){
+            HallDTO hallDTO=new HallDTO();
+            hallDTO.setHguan(hall.getHguan());
+            hallDTO.setLocation(hall.getLocation());
+            hallDTO.setHname(hall.getHname());
+            hallDTO.setTheater(hall.getTheater().toDTO());
+            hallDTO.setTcode(hall.getTheater().getTcode());
+            System.out.println(hallDTO);
+            return hallDTO;
+        }
+        return null;
+
+    }
+
 //    @Transactional
 //    public List<HallDTO> getHallList(){
 //        List<Hall> hallList = hallRepository.findAll();
