@@ -1,0 +1,2 @@
+insert into gift_payment (gpcode,mem_idx,gcode,reg_date,status) values (seq_gift_payment.nextval,1,4,sysdate,'사용');
+insert into gift_payment (gpcode,mem_idx,gcode,reg_date,status) values (seq_gift_payment.nextval,1,2,sysdate,'미사용');
