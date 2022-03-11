@@ -60,7 +60,6 @@ public class AdminTheaterController {
     @PostMapping("/manage_halls_create")
     public String movie_theaters_write(@ModelAttribute HallDTO hallDTO, Model model){
         Long hallint=hallDTO.getTcode();
-        System.out.println(hallDTO);
         if (adminHallService.savePost(hallDTO) == 1){
             return "redirect:/movie/theaters/"+hallint;
         }
