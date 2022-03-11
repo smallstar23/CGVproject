@@ -1,5 +1,6 @@
 package com.koreait.cgvproject.entity;
 
+import com.koreait.cgvproject.dto.ActorDTO;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -23,14 +24,16 @@ public class Actor {
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE,generator = "seq_actor")
     private Long idx;
-
-    //private Long mcode;
     @ManyToOne
+    @JoinColumn(name = "mcode")
     private Movie movie;
-
     private String nameKo;
     private String nameEn;
     private String photo;
 
+    public ActorDTO toDTO(){
+        return  ActorDTO.builder().idx(idx).mcode(movie.getMcode()).nameKo(nameKo).nameEn(nameEn)
+                .photo(photo).build();
+    }
 
 }
