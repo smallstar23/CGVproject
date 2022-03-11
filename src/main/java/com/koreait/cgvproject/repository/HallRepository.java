@@ -13,4 +13,7 @@ import java.util.List;
 public interface HallRepository extends JpaRepository<Hall, Long> {
 
     List<Hall> findAllByTheater(Theater theater);
+
+    Hall findByHcode(Long hcode);
+
 }

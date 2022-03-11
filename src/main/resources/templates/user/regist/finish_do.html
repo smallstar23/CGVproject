@@ -47,7 +47,7 @@
     <div id="cgvwrap">
         <div class="header_content">
             <div class="contents" style="width:980px; margin:0 auto;">
-                <h1><a href="./main.jsp"><img src="/img/logoRed.png"
+                <h1><a href="/main"><img src="/img/logoRed.png"
                                               alt="CGV" /></a><span>CULTUREPLEX</span></h1>
                 <ul class="memberInfo_wrap">
                     <div class="ad-partner">
@@ -57,7 +57,7 @@
                         </a>
                     </div>
                     <li>
-                        <a th:href="@{login}">
+                        <a th:href="@{/user/login}">
                             <img src="/img/loginPassword.png" alt="로그인" />
                             <span>로그인</span></a>
                     </li>
@@ -117,7 +117,7 @@
                                 <p class="b_txt"><strong class="em">CGV  회원가입</strong>을 축하합니다.</p>
                             </div>
                             <div class="btn_sec col2">
-                                <a th:href="@{/user-main}" class="btn btn_em" title="CGV 웹사이트">홈페이지 바로가기</a>
+                                <a th:href="@{/main}" class="btn btn_em" title="CGV 웹사이트">홈페이지 바로가기</a>
                             </div>
                             <div class="uesr_data">
                                 <h3 class="haze">내 정보</h3>

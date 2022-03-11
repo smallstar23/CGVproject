@@ -62,6 +62,7 @@
                             <th>상영관 이름</th>
                             <th>위치</th>
                             <th>좌석수</th>
+                            <th>수정</th>
                         </tr>
                         </thead>
 <!--                        <tfoot>-->
@@ -77,10 +78,11 @@
 
                         <tr class="text-center" th:each="hall :${halls}">
                                 <td style="width: 10%;" th:text="${hall.getTheater().tname}"></td>
-                                 <td style="width: 5%;" th:text="${hall.hguan}+관"></td>
+                                 <td style="width:10%;" th:text="${hall.hguan}+관"></td>
                                 <td style="width: 10%;" th:text="${hall.hname}"></td>
                                 <td style="width: 10%;" th:text="${hall.location}"></td>
                                 <td style="width: 5%;" ></td>
+                            <td style="width: 5%;"><button class="btn" style="width:100px; border-radius: 10px; border:1px darkred solid" th:onclick="|location.href='@{|/manage/updatehall/${hall.hcode}|}'|">수정</button></td>
 
                         </tr>
                         </tbody>
