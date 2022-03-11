@@ -1,37 +1,48 @@
 package com.koreait.cgvproject.controller.admin.rest;
 
-import com.koreait.cgvproject.dto.SeathtmlDTO;
-import com.koreait.cgvproject.entity.Seathtml;
+import com.koreait.cgvproject.dto.SeatDTO;
+import com.koreait.cgvproject.entity.Hall;
+import com.koreait.cgvproject.entity.Seat;
+import com.koreait.cgvproject.repository.HallRepository;
+import com.koreait.cgvproject.repository.SeatRepository;
 import com.koreait.cgvproject.service.admin.seat.AdminSeatService;
 import lombok.AllArgsConstructor;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+import java.util.Optional;
+import java.util.stream.DoubleStream;
+
 @RestController
-@RequestMapping("/api/seatHtml")
 @AllArgsConstructor
+@RequestMapping("/api/seat")
 public class AdminSeatRestController {
+
 
     private AdminSeatService adminSeatService;
 
-    @GetMapping("/exist/{hcode}")
-    public boolean seatHtmlExist(@PathVariable Long hcode){
-        return adminSeatService.seatHtmlExist(hcode);
+    @Transactional
+    @PostMapping("/create")
+    public boolean create(@RequestBody SeatDTO seatDTO) {
+        return adminSeatService.create(seatDTO);
+
     }
 
-    @PostMapping("/create")
-    public void seatHtmlCreate(@RequestBody SeathtmlDTO seathtmlDTO){
-        adminSeatService.seatHtmlCreate(seathtmlDTO);
-    }
-    @GetMapping("/read/{hcode}")
-    public SeathtmlDTO seatHtmlRead(@PathVariable Long hcode){
-        return adminSeatService.seatHtmlRead(hcode);
-    }
+    @Transactional
     @PostMapping("/update")
-    public void seatHtmlUpdate(@RequestBody SeathtmlDTO seatHtmlDTO){
-        adminSeatService.seatHtmlUpdate(seatHtmlDTO);
+    public void update(@RequestBody SeatDTO seatDTO) {
+        adminSeatService.update(seatDTO);
     }
-    @GetMapping("/delete/{stIdx}")
-    public void seatHtmlDelete(@PathVariable Long stIdx){
-        adminSeatService.seatHtmlDelete(stIdx);
+
+    @GetMapping("/read/{hcode}")
+    public List<SeatDTO> read(@PathVariable Long hcode){
+        return adminSeatService.read(hcode);
+    }
+
+    @GetMapping("/delete/{hcode}")
+    public void delete(@PathVariable Long hcode){
+        adminSeatService.delete(hcode);
     }
 }
+

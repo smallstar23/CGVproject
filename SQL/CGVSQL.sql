@@ -44,7 +44,7 @@ create sequence seq_point
 
 CREATE TABLE Movie (
     mcode number(7) primary key,
-    mrank number(2),
+    mscreen varchar2(100)  default '상영중', --상영여부(상영중,상영예정,종영)
     title_ko varchar2(100)   not null, -- 제목 한글
     title_en varchar2(100) not null, -- 제목 영문
     genre varchar2(40)   not null, -- 장르
@@ -89,11 +89,11 @@ CREATE TABLE Trailer (
      description1 varchar2(500),
      description2 varchar2(500),
      description3 varchar2(500),
-     photo1 varchar2(200),
-     photo2 varchar2(200),
-     photo3 varchar2(200),
-     photo4 varchar2(200),
-     photo5 varchar2(200),
+     photo1 varchar2(300),
+     photo2 varchar2(300),
+     photo3 varchar2(300),
+     photo4 varchar2(300),
+     photo5 varchar2(300),
      trailer1 varchar2(200),
      trailer2 varchar2(200),
      trailer3 varchar2(200),
@@ -106,9 +106,9 @@ create sequence seq_trailer
 CREATE TABLE Actor (
     idx number(7) primary key,
     mcode number(7)   not null,
-    name_ko varchar2(100)   not null, -- 배우 이름
-    name_en varchar2(100)   not null, -- 배우 영문 이름
-    photo varchar2(100) default 'http://img.cgv.co.kr/R2014/images/common/default_230_260.gif', 
+    aname_ko varchar2(100)   not null, -- 배우 이름
+    aname_en varchar2(100)   not null, -- 배우 영문 이름
+    aphoto varchar2(500) default 'http://img.cgv.co.kr/R2014/images/common/default_230_260.gif',
     constraint fk_Actor_mcode foreign key(mcode) references Movie (mcode)
 );
 create sequence seq_actor
@@ -118,9 +118,9 @@ create sequence seq_actor
 CREATE TABLE Director (
     idx number(7) primary key,
     mcode number(7)   not null,
-    name_ko varchar2(50)   not null, -- 감독 이름
-    name_en varchar2(50)  not null, -- 감독 영문 이름
-    photo varchar2(100) default 'http://img.cgv.co.kr/R2014/images/common/default_230_260.gif',
+    dname_ko varchar2(50)   not null, -- 감독 이름
+    dname_en varchar2(50)  not null, -- 감독 영문 이름
+    dphoto varchar2(500) default 'http://img.cgv.co.kr/R2014/images/common/default_230_260.gif',
     constraint fk_Director_mcode foreign key(mcode) references Movie (mcode)
 );
 create sequence seq_director
@@ -175,9 +175,8 @@ create sequence seq_schedule
 
 CREATE TABLE Seat (
     stcode number(10)   primary key,
-    hcode number(10)   not null,
-    st_num varchar2(10)   not null, -- 좌석 번호
-    st_name varchar2(10)   not null, -- 좌석 이름
+    hcode number(10) not null,
+    st_num varchar2(10) not null, -- 좌석 번호
     disabled number(1) not null, -- 좌석 숨김기능(0,1)
     constraint ck_seat_disabled check(disabled in (0,1)),
     constraint fk_Seat_hcode foreign key(hcode) references Hall (hcode)
