@@ -31,6 +31,9 @@ public class Hall{
     private String hname;
     private String location;
 
+    @OneToOne(fetch = FetchType.LAZY, mappedBy = "hall")
+    private Seathtml seathtml;
+
     public HallDTO toDTO(){
         return HallDTO.builder()
                 .theater(theater.toDTO()).hguan(hguan)
