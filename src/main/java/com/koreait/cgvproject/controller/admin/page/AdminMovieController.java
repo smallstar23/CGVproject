@@ -47,21 +47,6 @@ public class AdminMovieController {
 //        return "redirect:/";
 //    }
 
-
-    @GetMapping("manage_pricem")//movie-pricem 페이지
-        public String movie_pricem(){
-        return "/admin/movie/manage_pricem";
-    }
-
-    @GetMapping("manage_pricerm_create")//movie-pricem 페이지
-    public String movie_pricem_create(){
-        return "/admin/movie/manage_pricerm_create";
-    }
-
-
-
-
-
     @GetMapping("/manage_ongoingmovies" )//movie-ongoing 페이지
     public String movie_ongoing(Model model){
         List<MovieDTO> movieDTOList = movieService.getMovieList();

@@ -30,6 +30,7 @@ public class Price {
     private String adultPrice;
     private String stuPrice;
 
-    @OneToOne
+    @ManyToOne
+    @JoinColumn(name = "tcode")
     private Theater theater;
 }

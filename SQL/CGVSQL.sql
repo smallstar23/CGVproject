@@ -145,13 +145,13 @@ create sequence seq_reply
 
 CREATE TABLE Price (
     pcode number(7)   primary key,
-    tcode number(7)   not null,
+    tcode number(7) not null,
     week varchar2(10)   not null, -- 월~목 , 금~일
     slot varchar2(20)   not null, -- 모닝(06:00~), 브런치(10:01 ~)
     start_time varchar2(10)   not null, -- 06:00
     end_time varchar2(10)   not null, -- 10:00
-    adult_price number(10)   not null, -- 성인 가격
-    stu_price number(10)   not null, -- 학생 가격
+    adult_price varchar2(10)   not null, -- 성인 가격
+    stu_price varchar2(10)   not null, -- 학생 가격
     constraint ck_price_week check(week in('월~목','금~일')),
     constraint fk_Price_tcode foreign key(tcode) references Theater (tcode)
 );
@@ -274,7 +274,7 @@ create sequence seq_gift_payment
 
 
 drop table gift_payment;  drop table gift; drop table ticket_payment; drop table ticket; drop table notification; drop table seathtml;
-drop table seat; drop table schedule;drop table price; drop table reply; drop table director; drop table actor; drop table trailer;
+drop table seat; drop table schedule; drop table price; drop table reply; drop table director; drop table actor; drop table trailer;
 drop table favCGV; drop table hall; drop table movie; drop table point; drop table theater;  drop table member;
 
 
