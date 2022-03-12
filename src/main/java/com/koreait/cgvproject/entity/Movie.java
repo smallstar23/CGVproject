@@ -30,7 +30,7 @@ public class Movie {
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE,generator = "seq_movie")
     private Long mcode;
-    private Long mrank;
+    private String mscreen;
     private String titleKo;
     private String titleEn;
     private String genre;
@@ -53,7 +53,9 @@ public class Movie {
 
 
     public MovieDTO toDTO(){
-        return MovieDTO.builder().mcode(mcode).mrank(mrank).titleKo(titleKo).titleEn(titleEn).genre(genre).country(country)
+        return MovieDTO.builder().mcode(mcode).mscreen(mscreen).titleKo(titleKo).titleEn(titleEn).genre(genre).country(country)
                 .movieRating(movieRating).runtime(runtime).launchDate(launchDate).regDate(LocalDateTime.now()).poster(poster).build();
     }
+
+
 }

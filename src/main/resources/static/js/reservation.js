@@ -153,8 +153,23 @@ $(document).ready(function () {
     console.log(fordate);
     for (let i = 0; i < howmany; i++) {
         //2022.03.17(목)형식으로
+          // month+1 추가, 1일 되면 현재 월에 +1
+        if(dateArray[i]==1){
+            month=month+1;
+            fordate.innerHTML += `<li class="month dimmed">
+                                            <div>
+                                                <span class="year">2022</span>
+                                                <span class="month">${month}</span>
+                                                <div>
+                                                </div>
+                                            </div>
+                                            </li>`
+
+        }
         let init = year+"."+month+"."+dateArray[i]+"("+newdayArray[i]+")";
         fordate.innerHTML += `<li data-index="1" date="${init}" class="day passday"><a href="#" onclick="return false;"><span class="dayweek">${newdayArray[i]}</span><span class="day">${dateArray[i]}</span><span class="sreader"></span></a></li>`
+
+
     }
 
 
@@ -232,7 +247,6 @@ $(document).ready(function () {
 
 // 영화 스크롤 내려가기
     $(".movieScroll").scroll(function () {
-        console.log("스크롤!")
         let topY = $(this).scrollTop();
         $(".Movieslider-y").css("top", topY / 2);
 
