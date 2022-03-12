@@ -5,6 +5,7 @@ import com.koreait.cgvproject.dto.TheaterDTO;
 import lombok.*;
 
 import javax.persistence.*;
+import java.util.List;
 
 @Data
 @Entity
@@ -23,20 +24,24 @@ public class Hall{
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "seq_hall")
     private Long hcode;
-
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name="tcode")
-    private Theater theater;
     private Long hguan;
     private String hname;
     private String location;
 
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name="tcode")
+    private Theater theater;
+
     @OneToOne(fetch = FetchType.LAZY, mappedBy = "hall")
     private Seathtml seathtml;
 
+    @OneToMany(fetch = FetchType.LAZY, mappedBy = "hall")
+    private List<Seat> seatList;
+
     public HallDTO toDTO(){
         return HallDTO.builder()
-                .theater(theater.toDTO()).hguan(hguan)
+                .theater(theater.toDTO())
+                .hguan(hguan)
                 .hcode(hcode).hname(hname).location(location)
                 .build();
     }

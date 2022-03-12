@@ -14,11 +14,17 @@ import lombok.NoArgsConstructor;
 @Builder
 public class ActorDTO {
      private  Long idx;
+     private  MovieDTO movie;
      private  Long mcode;
-     private  String nameKo;
-     private  String nameEn;
-     private  String photo;
+     private  String anameKo;
+     private  String anameEn;
+     private  String aphoto;
 
-
+     public Actor toEntityCreate(){
+          return Actor.builder()
+                  .idx(idx).anameKo(anameKo)
+                  .anameEn(anameEn).aphoto(aphoto)
+                  .movie(movie.toEntity()).build();
+     }
 
 }

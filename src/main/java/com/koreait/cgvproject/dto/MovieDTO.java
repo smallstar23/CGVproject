@@ -18,7 +18,7 @@ import java.time.LocalDateTime;
 public class MovieDTO {
 
     private Long mcode;
-    private Long mrank;
+    private String mscreen;
     private String titleKo;
     private String titleEn;
     private String genre;
@@ -35,7 +35,7 @@ public class MovieDTO {
 // [2022-03-01]
     public Movie toEntity(){
         return Movie.builder()
-                .mcode(mcode).mrank(mrank).titleKo(titleKo).titleEn(titleEn).genre(genre).country(country)
+                .mcode(mcode).mscreen(mscreen).titleKo(titleKo).titleEn(titleEn).genre(genre).country(country)
                 .movieRating(movieRating).runtime(runtime).launchDate(launchDate)
                 .regDate(LocalDateTime.now()).poster(poster).build();
     }
