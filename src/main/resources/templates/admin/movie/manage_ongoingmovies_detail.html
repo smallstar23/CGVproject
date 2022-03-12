@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org/">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-
+  to-fit=no">
+    <!-- Custom styles for this template -->
+    <link href="/css/jumbotron-narrow.css" rel="stylesheet">
+    <!-- Bootstrap CDN -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+    <meta name="description" content="" />
+    <meta name="author" content="" />
+    <title>영화 관리</title>
+    <link href="https://cdn.jsdelivr.net/npm/simple-datatables@latest/dist/style.css" rel="stylesheet" />
+    <link href="/css/styles.css" rel="stylesheet" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/js/all.min.js" crossorigin="anonymous"></script>
+    <script src="//code.jquery.com/jquery-1.11.0.min.js"></script>
+    <script type="text/javascript">
+        $(document).ready( function() {
+
+            $("#headers").load("header.jsp");
+
+        });
+    </script>
+</head>
+<body class="sb-nav-fixed" >
+<nav class="sb-topnav navbar navbar-expand navbar-dark bg-dark">
+    <!-- Navbar Brand-->
+    <a class="navbar-brand ps-3" href="../../../../../../Downloads/cgv_admin/index.html">CGV Administrator</a>
+    <!-- Sidebar Toggle-->
+    <button class="btn btn-link btn-sm order-1 order-lg-0 me-4 me-lg-0" id="sidebarToggle" href="#!"><i class="fas fa-bars"></i></button>
+    <!-- Navbar Search-->
+    <form class="d-none d-md-inline-block form-inline ms-auto me-0 me-md-3 my-2 my-md-0">
+        <div class="input-group">
+            <input class="form-control" type="text" placeholder="Search for..." aria-label="Search for..." aria-describedby="btnNavbarSearch" />
+            <button class="btn btn-primary" id="btnNavbarSearch" type="button"><i class="fas fa-search"></i></button>
+        </div>
+    </form>
+    <!-- Navbar-->
+    <ul class="navbar-nav ms-auto ms-md-0 me-3 me-lg-4">
+        <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" id="navbarDropdown" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false"><i class="fas fa-user fa-fw"></i></a>
+            <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
+                <li><a class="dropdown-item" href="#!">Settings</a></li>
+                <li><a class="dropdown-item" href="#!">Activity Log</a></li>
+                <li><hr class="dropdown-divider" /></li>
+                <li><a class="dropdown-item" href="#!">Logout</a></li>
+            </ul>
+        </li>
+    </ul>
+</nav>
+
+
+<!-- header -->
+<div th:replace="admin/fragment/header :: header"></div>
+<!-- header 끝 -->
+
+<div id="layoutSidenav_content" style="margin-top:100px; margin-left: 240px">
+    <main>
+        <div class="container-fluid px-4" style="margin:0 auto;">
+            <h2 style="text-align:center;">영화 상세 등록</h2>
+            <form  action="/manage_ongoingmovies_creates" method="post" style="width:70%; border:solid 2px red; border-radius:10px; padding:5%; margin:0 auto;">
+                <input  type="hidden" th:value="${mcode}" name="mcode" >
+
+                <hr/>
+                <div class="form-row">
+                    <div class="form-group col-md-3">
+                        <label for="inputdescription1">description1</label>
+                        <input type="text" class="form-control" id="inputdescription1" placeholder="" name="description1" th:value="${trailer.description1}">
+                    </div>
+                    <div class="form-group col-md-3">
+                        <label for="inputdescription2">description2</label>
+                        <input type="text" class="form-control" id="inputdescription2" placeholder="" name="description2" th:value="${trailer.description2}">
+                    </div>
+                    <div class="form-group col-md-3">
+                        <label for="inputdescription3">description3</label>
+                        <input type="text" class="form-control" id="inputdescription3" placeholder="" name="description3" th:value="${trailer.description3}">
+                    </div>
+                </div>
+                <hr/>
+                <div class="form-row">
+                    <div class="form-group col-md-3">
+                        <label for="inputphoto1">photo1</label>
+                        <input type="text" class="form-control" id="inputphoto1" placeholder="" name="photo1" th:value="${trailer.photo1}">
+                    </div>
+                    <div class="form-group col-md-3">
+                        <label for="inputtphoto2">photo2</label>
+                        <input type="text" class="form-control" id="inputtphoto2" placeholder="" name="photo2" th:value="${trailer.photo2}">
+                    </div>
+                    <div class="form-group col-md-3">
+                        <label for="inputphoto3">photo3</label>
+                        <input type="text" class="form-control" id="inputphoto3" placeholder="" name="photo3" th:value="${trailer.photo3}">
+                    </div>
+                    <div class="form-group col-md-3">
+                        <label for="inputphoto4">photo4</label>
+                        <input type="text" class="form-control" id="inputphoto4" placeholder="" name="photo4" th:value="${trailer.photo4}">
+                    </div>
+                    <div class="form-group col-md-3">
+                        <label for="inputphoto5">photo5</label>
+                        <input type="text" class="form-control" id="inputphoto5" placeholder="" name="photo5" th:value="${trailer.photo5}">
+                    </div>
+                </div>
+                <hr/>
+                <div class="form-row">
+                    <div class="form-group col-md-3">
+                        <label for="inputtrailer1">trailer1</label>
+                        <input type="text" class="form-control" id="inputtrailer1" placeholder="" name="trailer1" th:value="${trailer.trailer1}">
+                    </div>
+                    <div class="form-group col-md-3">
+                        <label for="inputtrailer2">trailer2</label>
+                        <input type="text" class="form-control" id="inputtrailer2" placeholder="" name="trailer2" th:value="${trailer.trailer2}">
+                    </div>
+                    <div class="form-group col-md-3">
+                        <label for="inputtrailer3">trailer3</label>
+                        <input type="text" class="form-control" id="inputtrailer3" placeholder="" name="trailer3" th:value="${trailer.trailer3}">
+                    </div>
+                </div>
+                <hr/>
+                <div class="form-row">
+                    <div class="form-group col-md-3">
+                        <label for="inputdnameKo">감독 명(한글)</label>
+                        <input type="text" class="form-control" id="inputdnameKo" placeholder="" name=dnameKo th:value="${director.dnameKo}">
+                    </div>
+                    <div class="form-group col-md-3">
+                        <label for="inputdnameEn">감독 명(영문)</label>
+                        <input type="text" class="form-control" id="inputdnameEn" placeholder="" name="dnameEn" th:value="${director.dnameEn}">
+                    </div>
+                    <div class="form-group col-md-3">
+                        <label for="inputdphoto">photo</label>
+                        <input type="text" class="form-control" id="inputdphoto" placeholder="" name="dphoto" th:value="${director.dphoto}">
+                    </div>
+                </div>
+                <hr/>
+                <div class="form-row">
+                    <div class="form-group col-md-3">
+                        <label for="inputanameKo">배우명(anameKo)</label>
+                        <input type="text" class="form-control" id="inputanameKo" placeholder="" name="anameKo" th:value="${actor.anameKo}">
+                    </div>
+                    <div class="form-group col-md-3">
+                        <label for="inputnameEn">배우명(nameEn)</label>
+                        <input type="text" class="form-control" id="inputnameEn" placeholder="" name="anameEn" th:value="${actor.anameEn}">
+                    </div>
+                    <div class="form-group col-md-3">
+                        <label for="inputaphoto">photo</label>
+                        <input type="text" class="form-control" id="inputaphoto" placeholder="" name="aphoto" th:value="${actor.aphoto}">
+                    </div>
+                </div>
+                <hr/>
+                <button type="reset" class="btn btn-primary" >리셋</button>
+                <button type="submit" class="btn btn-primary" style="background-color: #F08080">수정</button>
+            </form>
+        </div>
+    </main>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
+<script src="js/scripts.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.min.js" crossorigin="anonymous"></script>
+<script src="assets/demo/chart-area-demo.js"></script>
+<script src="assets/demo/chart-bar-demo.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/simple-datatables@latest" crossorigin="anonymous"></script>
+<script src="js/datatables-simple-demo.js"></script>
+</body>
+</html>

@@ -14,6 +14,7 @@ import java.util.Optional;
 public interface TrailerRepository extends JpaRepository<Trailer, Long> {
 
 
-    Trailer findByIdx(Long Idx);
+    Trailer findByMovie(Movie movie);
 
+    
 }
