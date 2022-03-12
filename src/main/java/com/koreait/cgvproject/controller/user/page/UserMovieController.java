@@ -19,6 +19,7 @@ public class UserMovieController {
     @Autowired
     private UserMovieService userMovieService;
 
+    // 수정해야함......
     @GetMapping("movies")
     public String movies(Model model){
         List<MovieDTO> movieDTOList=userMovieService.getList();
