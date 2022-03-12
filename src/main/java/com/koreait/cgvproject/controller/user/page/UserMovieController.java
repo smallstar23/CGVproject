@@ -26,12 +26,12 @@ public class UserMovieController {
         return "/user/movies/movies";
     }
 
-//    @GetMapping("/movies/detail-view/{mcode}")
-//    public String detailview(@PathVariable("mcode") Long mcode, Model model){
+    @GetMapping("/movies/detail-view/{mcode}")
+    public String detailview(@PathVariable("mcode") Long mcode, Model model){
 //        TrailerDTO trailerDTO=userMovieService.getTrailer(mcode);
 //        model.addAttribute("trailer",trailerDTO);
-//        return "user/movies/detail-view";
-//    }
+        return "user/movies/detail-view";
+    }
 
     @GetMapping("movies/detail-view/cast")
     public String cast(Model model){
