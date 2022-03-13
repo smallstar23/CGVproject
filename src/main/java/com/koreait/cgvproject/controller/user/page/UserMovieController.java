@@ -27,8 +27,8 @@ public class UserMovieController {
 
     @GetMapping("/movies/detail-view/{mcode}")
     public String detailview(@PathVariable("mcode") Long mcode, Model model){
-        TrailerDTO trailerDTO=userMovieService.getTrailer(mcode);
-        model.addAttribute("trailer",trailerDTO);
+//        TrailerDTO trailerDTO=userMovieService.getTrailer(mcode);
+//        model.addAttribute("trailer",trailerDTO);
         return "user/movies/detail-view";
     }
 
