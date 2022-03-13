@@ -1,6 +1,6 @@
 package com.koreait.cgvproject.controller.admin.rest;
 
-import com.koreait.cgvproject.model.dto.SeathtmlDTO;
+import com.koreait.cgvproject.dto.SeathtmlDTO;
 import com.koreait.cgvproject.service.admin.seat.AdminSeatHtmlService;
 import lombok.AllArgsConstructor;
 import org.springframework.web.bind.annotation.*;

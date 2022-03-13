@@ -1,6 +1,6 @@
 package com.koreait.cgvproject.controller.admin.rest;
 
-import com.koreait.cgvproject.model.dto.SeatDTO;
+import com.koreait.cgvproject.dto.SeatDTO;
 import com.koreait.cgvproject.service.admin.seat.AdminSeatService;
 import lombok.AllArgsConstructor;
 import org.springframework.transaction.annotation.Transactional;

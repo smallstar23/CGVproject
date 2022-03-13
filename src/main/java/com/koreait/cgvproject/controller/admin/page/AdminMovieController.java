@@ -1,10 +1,10 @@
 package com.koreait.cgvproject.controller.admin.page;
 
 
-import com.koreait.cgvproject.model.dto.ActorDTO;
-import com.koreait.cgvproject.model.dto.DirectorDTO;
-import com.koreait.cgvproject.model.dto.MovieDTO;
-import com.koreait.cgvproject.model.dto.TrailerDTO;
+import com.koreait.cgvproject.dto.ActorDTO;
+import com.koreait.cgvproject.dto.DirectorDTO;
+import com.koreait.cgvproject.dto.MovieDTO;
+import com.koreait.cgvproject.dto.TrailerDTO;
 import com.koreait.cgvproject.repository.MovieRepository;
 import com.koreait.cgvproject.service.admin.actor.AdminActorService;
 import com.koreait.cgvproject.service.admin.director.AdminDirectorService;

@@ -1,4 +1,4 @@
-package com.koreait.cgvproject.model.dto;
+package com.koreait.cgvproject.dto;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;

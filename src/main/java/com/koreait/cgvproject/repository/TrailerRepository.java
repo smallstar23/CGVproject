@@ -1,7 +1,7 @@
 package com.koreait.cgvproject.repository;
 
-import com.koreait.cgvproject.model.entity.Movie;
-import com.koreait.cgvproject.model.entity.Trailer;
+import com.koreait.cgvproject.entity.Movie;
+import com.koreait.cgvproject.entity.Trailer;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;

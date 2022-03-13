@@ -1,6 +1,6 @@
-package com.koreait.cgvproject.model.dto;
+package com.koreait.cgvproject.dto;
 
-import com.koreait.cgvproject.model.entity.Hall;
+import com.koreait.cgvproject.entity.Hall;
 import lombok.*;
 
 @Data

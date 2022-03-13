@@ -1,4 +1,4 @@
-package com.koreait.cgvproject.model.entity;
+package com.koreait.cgvproject.entity;
 
 
 import lombok.AllArgsConstructor;

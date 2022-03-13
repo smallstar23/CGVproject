@@ -1,14 +1,14 @@
 package com.koreait.cgvproject.service.admin.movie;
 
 
-import com.koreait.cgvproject.model.dto.ActorDTO;
-import com.koreait.cgvproject.model.dto.DirectorDTO;
-import com.koreait.cgvproject.model.dto.TrailerDTO;
-import com.koreait.cgvproject.model.entity.Actor;
-import com.koreait.cgvproject.model.entity.Director;
-import com.koreait.cgvproject.model.entity.Movie;
-import com.koreait.cgvproject.model.entity.Trailer;
-import com.koreait.cgvproject.model.dto.MovieDTO;
+import com.koreait.cgvproject.dto.ActorDTO;
+import com.koreait.cgvproject.dto.DirectorDTO;
+import com.koreait.cgvproject.dto.TrailerDTO;
+import com.koreait.cgvproject.entity.Actor;
+import com.koreait.cgvproject.entity.Director;
+import com.koreait.cgvproject.entity.Movie;
+import com.koreait.cgvproject.entity.Trailer;
+import com.koreait.cgvproject.dto.MovieDTO;
 import com.koreait.cgvproject.repository.ActorRepository;
 import com.koreait.cgvproject.repository.DiretorRepository;
 import com.koreait.cgvproject.repository.MovieRepository;

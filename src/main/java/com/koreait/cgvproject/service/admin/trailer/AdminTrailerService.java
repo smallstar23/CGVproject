@@ -1,9 +1,9 @@
 package com.koreait.cgvproject.service.admin.trailer;
 
 
-import com.koreait.cgvproject.model.dto.TrailerDTO;
-import com.koreait.cgvproject.model.entity.Movie;
-import com.koreait.cgvproject.model.entity.Trailer;
+import com.koreait.cgvproject.dto.TrailerDTO;
+import com.koreait.cgvproject.entity.Movie;
+import com.koreait.cgvproject.entity.Trailer;
 import com.koreait.cgvproject.repository.MovieRepository;
 import com.koreait.cgvproject.repository.TrailerRepository;
 import lombok.AllArgsConstructor;

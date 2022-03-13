@@ -1,9 +1,9 @@
 package com.koreait.cgvproject.service.admin.actor;
 
 
-import com.koreait.cgvproject.model.dto.ActorDTO;
-import com.koreait.cgvproject.model.entity.Actor;
-import com.koreait.cgvproject.model.entity.Movie;
+import com.koreait.cgvproject.dto.ActorDTO;
+import com.koreait.cgvproject.entity.Actor;
+import com.koreait.cgvproject.entity.Movie;
 import com.koreait.cgvproject.repository.ActorRepository;
 import com.koreait.cgvproject.repository.MovieRepository;
 import lombok.AllArgsConstructor;

@@ -1,8 +1,8 @@
 package com.koreait.cgvproject.controller.admin.page;
 
 
-import com.koreait.cgvproject.model.dto.NotificationDTO;
-import com.koreait.cgvproject.model.entity.Notification;
+import com.koreait.cgvproject.dto.NotificationDTO;
+import com.koreait.cgvproject.entity.Notification;
 import com.koreait.cgvproject.repository.NotificationRepository;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;

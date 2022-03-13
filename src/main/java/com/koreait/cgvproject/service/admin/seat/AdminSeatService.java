@@ -1,8 +1,8 @@
 package com.koreait.cgvproject.service.admin.seat;
 
-import com.koreait.cgvproject.model.dto.SeatDTO;
-import com.koreait.cgvproject.model.entity.Hall;
-import com.koreait.cgvproject.model.entity.Seat;
+import com.koreait.cgvproject.dto.SeatDTO;
+import com.koreait.cgvproject.entity.Hall;
+import com.koreait.cgvproject.entity.Seat;
 import com.koreait.cgvproject.repository.HallRepository;
 import com.koreait.cgvproject.repository.SeatRepository;
 import lombok.AllArgsConstructor;

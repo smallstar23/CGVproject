@@ -1,6 +1,6 @@
-package com.koreait.cgvproject.model.dto;
+package com.koreait.cgvproject.dto;
 
-import com.koreait.cgvproject.model.entity.Notification;
+import com.koreait.cgvproject.entity.Notification;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.ToString;

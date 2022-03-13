@@ -1,7 +1,7 @@
 package com.koreait.cgvproject.service.user.login;
 
 
-import com.koreait.cgvproject.model.entity.Member;
+import com.koreait.cgvproject.entity.Member;
 import com.koreait.cgvproject.repository.MemberRepository;
 import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;

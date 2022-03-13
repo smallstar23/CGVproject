@@ -1,7 +1,7 @@
 package com.koreait.cgvproject.service.user.moive;
 
-import com.koreait.cgvproject.model.dto.MovieDTO;
-import com.koreait.cgvproject.model.entity.Movie;
+import com.koreait.cgvproject.dto.MovieDTO;
+import com.koreait.cgvproject.entity.Movie;
 import com.koreait.cgvproject.repository.MovieRepository;
 import com.koreait.cgvproject.repository.TrailerRepository;
 import lombok.AllArgsConstructor;

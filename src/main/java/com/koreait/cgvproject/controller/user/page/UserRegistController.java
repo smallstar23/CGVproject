@@ -1,7 +1,7 @@
 package com.koreait.cgvproject.controller.user.page;
 
-import com.koreait.cgvproject.model.dto.MemberDTO;
-import com.koreait.cgvproject.model.entity.Member;
+import com.koreait.cgvproject.dto.MemberDTO;
+import com.koreait.cgvproject.entity.Member;
 import com.koreait.cgvproject.repository.MemberRepository;
 
 import com.koreait.cgvproject.service.MemberinfoService;

@@ -1,6 +1,6 @@
 package com.koreait.cgvproject.controller.user.page;
 
-import com.koreait.cgvproject.model.dto.GiftDTO;
+import com.koreait.cgvproject.dto.GiftDTO;
 import com.koreait.cgvproject.service.user.store.UserStoreService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;

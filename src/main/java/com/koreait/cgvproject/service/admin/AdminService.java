@@ -1,9 +1,9 @@
 package com.koreait.cgvproject.service.admin;
 
-import com.koreait.cgvproject.model.dto.HallDTO;
-import com.koreait.cgvproject.model.dto.TheaterDTO;
-import com.koreait.cgvproject.model.entity.Hall;
-import com.koreait.cgvproject.model.entity.Theater;
+import com.koreait.cgvproject.dto.HallDTO;
+import com.koreait.cgvproject.dto.TheaterDTO;
+import com.koreait.cgvproject.entity.Hall;
+import com.koreait.cgvproject.entity.Theater;
 import com.koreait.cgvproject.repository.HallRepository;
 import com.koreait.cgvproject.repository.TheaterRepository;
 import lombok.AllArgsConstructor;

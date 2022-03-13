@@ -1,6 +1,6 @@
-package com.koreait.cgvproject.model.entity;
+package com.koreait.cgvproject.entity;
 
-import com.koreait.cgvproject.model.dto.MemberDTO;
+import com.koreait.cgvproject.dto.MemberDTO;
 import lombok.*;
 import org.springframework.data.annotation.CreatedDate;
 
