@@ -7,8 +7,6 @@ import com.koreait.cgvproject.entity.Theater;
 import com.koreait.cgvproject.repository.HallRepository;
 import com.koreait.cgvproject.repository.TheaterRepository;
 import lombok.AllArgsConstructor;
-import lombok.NoArgsConstructor;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
@@ -34,7 +32,7 @@ public class AdminService {
 
         Theater theater = theaterRepository.findByTcode(tcode);
         if (theater != null) {
-            hallList = hallRepository.findAllByTheater(theater);
+            hallList = hallRepository.findAllByTheaterOrderByHcode(theater);
         }
 
         hallList.forEach(hall -> {

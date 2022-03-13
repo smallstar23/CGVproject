@@ -3,7 +3,7 @@
       xmlns="http://www.w3.org/1999/xhtml"
       xmlns:th="http://www.thymeleaf.org/">
 <head>
-
+    <title>support-news-detail</title>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
     <meta http-equiv="Expires" content="-1" />
@@ -179,9 +179,6 @@
 
         <!-- Contents Start -->
 
-        <!-- Contents Area -->
-        <div id="contents">
-            <!-- Contents Start -->
             <div class="cols-content">
 
                 <div th:replace="user/support/fragment/nav :: nav-user"></div>
@@ -193,27 +190,27 @@
                     </div>
                     <div class="board_view_area">
                         <ul class="top_title_faq">
-                            <li class="title">[[시스템점검]] 2022년 2월 시스템 점검 안내</li>
+                            <li class="title" th:text="|[${supportnews.getCategory()}] ${supportnews.getTitle()}|"></li>
                             <li class="stit_area">
-                                <span>등록일<em class="regist_day">2022.02.16</em></span>
-                                <span class="check_tit_area">조회수<em class="check_num">72</em></span>
+                                <span class="check_tit_area">등록일 <em class="check_num" style="margin-left: 10px;" th:text="${#temporals.format(supportnews.getRegDate(), 'yyyy-MM-dd')}"></em> </span>
+                                <span class="check_tit_area">조회수 <em class="check_num" th:text="${supportnews.getHit()}"></em></span>
                             </li>
                         </ul>
                         <div class="view_area">
-                            <p></p><p>안녕하십니까, CGV입니다.&nbsp;</p><p>&nbsp;</p><p>원활하고 안정된 서비스 제공을 위하여 2022년 2월 새벽 시스템 점검 작업이 예정되어 있습니다.</p><p>점검 시간 중 CGV홈페이지 및 모바일의 모든 서비스가 중단될 예정이오니 이용에 불편 없으시기 바랍니다.&nbsp; &nbsp;&nbsp;&nbsp;</p><p>&nbsp;</p><p>1. 일시</p><p>- 2/22(화) 02시 ~ 07시 (월요일에서 화요일 넘어가는 새벽)&nbsp;</p><p>&nbsp;</p><p>&nbsp;</p><p>2. 내용&nbsp;</p><p>- 정기 PM작업(시스템 성능 개선 작업)&nbsp; &nbsp; &nbsp;</p><p>- 작업 대상 : 극장영업시스템, 온라인 서비스(홈페이지/모바일)&nbsp; &nbsp; &nbsp;&nbsp;</p><p>&nbsp;</p><p>&nbsp;</p><p>더욱 안정적이고 편리한 서비스를 제공하는 CGV가 되겠습니다.</p><p>감사합니다.&nbsp; &nbsp;</p><p></p>
+                            <p th:utext="${supportnews.getContent()}">
                         </div>
                         <div class="customer_btn"><button onclick="location.href='/support/support-news'" type="button" class="round inblack"><span>목록으로</span></button></div>
                         <!-- 이전글,다음글 (s) -->
                         <div class="btm_sup_list">
                             <ul class="line_sup_next">
-                                <li class="stit">이전글</li>
-                                <li class="name"><a href="#" class="txt">이전 글이 없습니다.</a></li>
-
+                                <li class="stit" >이전글</li>
+                                <li class="name"><a href="#" class="txt" th:text="${supportnews_prev.getTitle()}"></a></li>
+                                <li class="check_writ_area">등록일<span class="check_num"  th:text="${#temporals.format(supportnews_prev.getRegDate(), 'yyyy-MM-dd')}"></span></li>
                             </ul>
                             <ul class="line_sup_prev">
                                 <li class="stit">다음글</li>
-                                <li class="name"><a href="#" class="txt">PAYCO 서비스 개선 작업에 따른 서비스 이용 일시중지 (12/8 04:00~04:30)</a></li>
-                                <li class="check_writ_area">등록일<span class="check_num">2021.11.29</span></li>
+                                <li class="name"><a href="#" class="txt" th:text="${supportnews_next.getTitle()}"></a></li>
+                                <li class="check_writ_area">등록일<span class="check_num"  th:text="${#temporals.format(supportnews_next.getRegDate(), 'yyyy-MM-dd')}"></span></li>
                             </ul>
                         </div>
                         <!-- 이전글,다음글 (e) -->

@@ -17,9 +17,7 @@ public class UserTheaterRestController {
 
     @PostMapping("/theatersList")
     public List<TheaterDTO> theaterDTOList(@RequestParam("areacode") Long areacode){
-        System.out.println("api:"+areacode);
         List<TheaterDTO> theaterDTOList=adminTheaterService.getCGV(areacode);
-        System.out.println(theaterDTOList);
         return theaterDTOList;
     }
 }

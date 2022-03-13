@@ -64,17 +64,15 @@
 <div id="layoutSidenav_content" style="margin-top:100px; margin-left: 240px">
     <main>
         <div class="container-fluid px-4" style="margin:0 auto;">
-            <h2 style="text-align:center;">상영중인 영화 등록</h2>
-            <form   action="/manage_ongoingmovies_create" method="post" style="width:40%; border:solid 2px red; border-radius:10px; padding:5%; margin:0 auto;">
+            <h2 style="text-align:center;">영화</h2>
+            <form action="/manage_ongoingmovies_create" method="post" style="width:40%; border:solid 2px red; border-radius:10px; padding:5%; margin:0 auto;">
                 <div class="form-row">
-                    <div class="form-group col-md-6">
-                        <label for="inputmcode">영화코드</label>
-                        <input type="text" class="form-control" id="inputmcode" placeholder="" name="mcode" th:value="${mcode.mcode}"  readonly>
-                    </div>
-                    <div class="form-group col-md-6">
-                        <label for="inputmrank">영화순위</label>
-                        <input type="text" class="form-control" id="inputmrank" placeholder="" name="mrank" th:value="${mcode.mrank}" readonly>
-                    </div>
+                    <label for="inputmscreen">상영여부</label>
+                    <select name="mscreen" id="inputmscreen" th:value="${mcode.mscreen}" class="form-control"  readonly>
+                        <option th:selected="${mcode.mscreen} == '상영중'" name="">상영중</option>
+                        <option th:selected="${mcode.mscreen} == '상영예정'">상영예정</option>
+                        <option th:selected="${mcode.mscreen} == '상영종영'">종영</option>
+                    </select>
                 </div>
                 <hr/>
                 <div class="form-row">
@@ -92,20 +90,20 @@
                     <div class="form-group col-md-6">
                         <label for="inputgenre">장르</label>
                         <select name="genre" id="inputgenre" class="form-control" th:value="${mcode.genre}"  readonly="genre">
-                            <option  th:selected="${mcode.genre} == '액션'" name="">액션</option>
-                            <option th:selected="${mcode.genre} == '애니메이션'">애니메이션</option>
-                            <option th:selected="${mcode.genre} == '드라마'">드라마</option>
-                            <option th:selected="${mcode.genre} == '범죄'">범죄</option>
-                            <option th:selected="${mcode.genre} == '스릴러'">스릴러</option>
-                            <option th:selected="${mcode.genre} == '멜로/로맨스'">멜로/로맨스</option>
-                            <option th:selected="${mcode.genre} == '공포(호러)'">공포(호러)</option>
-                            <option th:selected="${mcode.genre} == '미스터리'">미스터리</option>
-                            <option th:selected="${mcode.genre} == 'SF'">SF</option>
-                            <option th:selected="${mcode.genre} == '성인물(에로)'">성인물(에로)</option>
-                            <option th:selected="${mcode.genre} == '판타지'">판타지</option>
-                            <option th:selected="${mcode.genre} == '어드벤처'">어드벤처</option>
-                            <option th:selected="${mcode.genre} == '사극'">사극</option>
-                            <option th:selected="${mcode.genre} == '가족'">가족</option>
+                            <option th:selected="${mcode.genre} == '액션'" name="" readonly>액션</option>
+                            <option th:selected="${mcode.genre} == '애니메이션'" readonly>애니메이션</option>
+                            <option th:selected="${mcode.genre} == '드라마'" readonly>드라마</option>
+                            <option th:selected="${mcode.genre} == '범죄'" readonly>범죄</option>
+                            <option th:selected="${mcode.genre} == '스릴러'"readonly>스릴러</option>
+                            <option th:selected="${mcode.genre} == '멜로/로맨스'" readonly>멜로/로맨스</option>
+                            <option th:selected="${mcode.genre} == '공포(호러)'" readonly>공포(호러)</option>
+                            <option th:selected="${mcode.genre} == '미스터리'"readonly >미스터리</option>
+                            <option th:selected="${mcode.genre} == 'SF'" readonly>SF</option>
+                            <option th:selected="${mcode.genre} == '성인물(에로)'" readonly>성인물(에로)</option>
+                            <option th:selected="${mcode.genre} == '판타지'" readonly>판타지</option>
+                            <option th:selected="${mcode.genre} == '어드벤처'" readonly>어드벤처</option>
+                            <option th:selected="${mcode.genre} == '사극'" readonly>사극</option>
+                            <option th:selected="${mcode.genre} == '가족'" readonly>가족</option>
                             <option th:selected="${mcode.genre} == '전쟁'">전쟁</option>
                             <option th:selected="${mcode.genre} == '기타'">기타</option>
                             <option th:selected="${mcode.genre} == '다큐멘터리'">다큐멘터리</option>
@@ -127,10 +125,10 @@
                         <label for="inputmovieRating">관람 등급</label>
                         <!--                        <input type="text" class="form-control" id="inputmovieRating" placeholder="" name="movieRating">-->
                         <select name="movieRating" id="inputmovieRating" class="form-control"  th:value="${mcode.movieRating}" readonly="movieRating">
-                            <option th:selected="${mcode.movieRating} == '전체이용가'" name="">전체 이용가</option>
-                            <option th:selected="${mcode.movieRating} == '12세 이상'" name="">12세 이상</option>
-                            <option th:selected="${mcode.movieRating} == '15세 이상'" name="">15세 이상</option>
-                            <option th:selected="${mcode.movieRating} == '청소년 관람불가'" name="">청소년 관람불가</option>
+                            <option th:selected="${mcode.movieRating} == '전체이용가'" name="" readonly>전체 이용가</option>
+                            <option th:selected="${mcode.movieRating} == '12세 이상'" name="" readonly>12세 이상</option>
+                            <option th:selected="${mcode.movieRating} == '15세 이상'" name="" readonly>15세 이상</option>
+                            <option th:selected="${mcode.movieRating} == '청소년 관람불가'" name="" readonly>청소년 관람불가</option>
                         </select>
                     </div>
                     <div class="form-group col-md-6">
@@ -148,11 +146,13 @@
                 <hr/>
                 <div class="form-group">
                     <label for="exampleFormControlFile1" >파일등록(링크)</label>
-                    <input type="text" class="form-control-file" id="exampleFormControlFile1" name="poster" th:value="${mcode.poster}"  readonly>
+                    <input type="text" class="form-control-file" id="exampleFormControlFile1" name="poster" th:value="${mcode.poster}" readonly >
                     <hr/>
                         <input th:onclick="|location.href='@{/manage_ongoingmovies}'|" class="btn btn-primary" type="button"  value="목록">
                         <a class="btn btn-info" th:href="@{'/manage_ongoingmovies/edit/' + ${mcode.mcode}}" role="button">수정</a>
-
+                        <a class="btn btn-info" th:href="@{'/manage_ongoingmovies/create/' + ${mcode.mcode}}" role="button">상세정보 등록</a>
+                        <a class="btn btn-info" th:href="@{'/manage_ongoingmovies/detail/' + ${mcode.mcode}}" role="button">상세정보 수정</a>
+                        <a class="btn btn-info" th:href="@{'/manage_ongoingmovies/detail/' + ${mcode.mcode}}" role="button">상세정보 수정</a>
 
                 </div>
             </form>

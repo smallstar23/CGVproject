@@ -1,9 +1,7 @@
 package com.koreait.cgvproject.entity;
 
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import com.koreait.cgvproject.dto.ActorDTO;
+import lombok.*;
 import org.thymeleaf.spring5.expression.Mvc;
 
 import javax.persistence.*;
@@ -13,6 +11,7 @@ import javax.persistence.*;
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
+@ToString(exclude = "movie")
 @SequenceGenerator(
         name = "seq_actor",
         sequenceName="seq_actor",
@@ -23,14 +22,16 @@ public class Actor {
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE,generator = "seq_actor")
     private Long idx;
-
-    //private Long mcode;
     @ManyToOne
+    @JoinColumn(name = "mcode")
     private Movie movie;
+    private String anameKo;
+    private String anameEn;
+    private String aphoto;
 
-    private String nameKo;
-    private String nameEn;
-    private String photo;
-
+    public ActorDTO toDTO(){
+        return  ActorDTO.builder().idx(idx).movie(movie.toDTO()).anameKo(anameKo).anameEn(anameEn)
+                .aphoto(aphoto).build();
+    }
 
 }

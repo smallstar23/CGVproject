@@ -124,11 +124,19 @@ function submit() {
         return;
     }
     if (isNewSeatHtml) {
-        if(confirm('좌석 배치도를 이대로 등록하시겠습니까?')) seatHtmlCreate();
+        if(confirm('좌석 배치도를 이대로 등록하시겠습니까?')) {
+            seatHtmlCreate();
+            seatCreate();
+            toFirstStatus(theater, hall, rowList, colList);
+        }
         else alert('좌석 배치도 등록을 취소하셨습니다');
     }
     else {
-        if(confirm('좌석 배치도를 이대로 수정하시겠습니까?')) seatHtmlUpdate();
+        if(confirm('좌석 배치도를 이대로 수정하시겠습니까?')) {
+            seatHtmlUpdate();
+            seatUpdate();
+            toFirstStatus(theater, hall, rowList, colList);
+        }
         else alert('좌석 배치도 수정을 취소하셨습니다.');
     }
 }
@@ -141,7 +149,11 @@ function _delete(){
     if(isNewSeatHtml) {
         alert('좌석배치도가 등록되어 있지 않습니다.');
     }else{
-        if(confirm('정말로 해당 좌석배치도를 삭제하시겠습니까?')) seatHtmlDelete();
+        if(confirm('정말로 해당 좌석배치도를 삭제하시겠습니까?')) {
+            seatDelete(hall.value);
+            seatHtmlDelete();
+            toFirstStatus(theater, hall, rowList, colList);
+        }
         else alert('좌석배치도 삭제가 취소되었습니다.');
     }
 }
@@ -155,6 +167,7 @@ function isSeatHtmlExist(hcode) {
                 toDisabledByTrueOrFalse(false, rowList, colList, empty_row, empty_col);
                 seatHtmlRead(hcode);
                 seats.style.display = 'block';
+                seatRead(hcode);
             } else {
                 isNewSeatHtml = true;
                 alert('새로운 좌석 배치도를 생성합니다.');
@@ -216,8 +229,70 @@ function seatHtmlUpdate() {
 }
 
 function seatHtmlDelete(){
-    fetch('/api/seatHtml/delete/{stIdx}');
+    fetch('/api/seatHtml/delete/'+st_idx);
     alert('좌석 배치도가 삭제되었습니다');
+}
+// seat 부분
+function seatCreate(){
+    const allSeat = document.querySelectorAll('.seat');
+    allSeat.forEach(seat => {
+        let intDisabled = seat.classList.contains('disabled')? 1 : 0;
+        SeatCreateAjax(hall.value, seat.id, intDisabled);
+    })
+}
+function seatUpdate(){
+    const allSeat = document.querySelectorAll('.seat');
+    allSeat.forEach(seat => {
+        let intDisabled = seat.classList.contains('disabled')? 1 : 0;
+        seatUpdateAjax(hall.value, seat.id, intDisabled);
+    })
+}
+
+function SeatCreateAjax(hcode, stNum, disabled){
+    fetch('/api/seat/create', {
+        method: "POST",
+        headers : {
+            'Content-Type' : 'application/json',
+        },
+        body: JSON.stringify({
+            stNum: stNum,
+            hcode: hcode,
+            disabled: disabled,
+        }),
+    });
+}
+function seatUpdateAjax(hcode, stNum, disabled){
+    fetch('/api/seat/update', {
+        method:"POST",
+        headers:{
+            'Content-Type' : 'application/json',
+        },
+        body:JSON.stringify({
+            stNum: stNum,
+            hcode: hcode,
+            disabled: disabled,
+        })
+    });
+}
+
+function seatRead(hcode){
+    const allSeat = document.getElementsByClassName('seat');
+    fetch("/api/seat/read/"+ hcode)
+        .then(response => response.json())
+        .then(data => {
+            data.forEach(seatDTO => {
+                for(let j = 0 ; j < allSeat.length; j++){
+                    if(seatDTO.stNum === allSeat[j].id){
+                        if(seatDTO.disabled) allSeat[j].classList.add('disabled');
+                        break;
+
+                    }
+                }
+            })
+        });
+}
+function seatDelete(hcode){
+    fetch("/api/seat/delete/"+hcode);
 }
 
 function findTheater(areacode) {

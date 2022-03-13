@@ -2,6 +2,7 @@ package com.koreait.cgvproject.controller.user.page;
 
 import com.koreait.cgvproject.dto.MovieDTO;
 import com.koreait.cgvproject.dto.TrailerDTO;
+import com.koreait.cgvproject.entity.Movie;
 import com.koreait.cgvproject.entity.Trailer;
 import com.koreait.cgvproject.service.user.moive.UserMovieService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,6 +19,7 @@ public class UserMovieController {
     @Autowired
     private UserMovieService userMovieService;
 
+    // 수정해야함......
     @GetMapping("movies")
     public String movies(Model model){
         List<MovieDTO> movieDTOList=userMovieService.getList();

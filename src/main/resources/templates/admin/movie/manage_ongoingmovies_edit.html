@@ -64,137 +64,94 @@
 <div id="layoutSidenav_content" style="margin-top:100px; margin-left: 240px">
     <main>
         <div class="container-fluid px-4" style="margin:0 auto;">
-            <h2 style="text-align:center;">상영중인 영화 등록</h2>
-            <form   th:action="@{'/manage_ongoingmovies/edit/' + ${mcode.mcode}}" method="post" style="width:80%; border:solid 2px red; border-radius:10px; padding:5%; margin:0 auto;">
-                <input type="hidden" name="_method" value="put"/>
-                <input type="hidden" name="id" th:value="${mcode.mcode}"/>
+            <h2 style="text-align:center;">영화 수정</h2>
+            <form  action="/manage_ongoingmovies_create" method="post" style="width:40%; border:solid 2px red; border-radius:10px; padding:5%; margin:0 auto;">
+                <input type="hidden" name="mcode" th:value="${mcode}" readonly/>
                 <div class="form-row">
-                    <div class="form-group col-md-3">
-                        <label for="inputmcode">영화명</label>
-                        <input type="text" class="form-control" id="inputmcode" placeholder="" name="mcode"th:value="${mcode.mcode}">
-                    </div>
-                    <div class="form-group col-md-3">
-                        <label for="inputmrank">영화명(영문)</label>
-                        <input type="text" class="form-control" id="inputmrank" placeholder="" name="mrank" th:value="${mcode.mrank}">
-                    </div>
-                    <div class="form-group col-md-3">
-                        <label for="inputtitleko">장르</label>
-                        <input type="text" class="form-control" id="inputtitleKo" placeholder="" name="titleKo" th:value="${mcode.titleKo}">
-                    </div>
-                    <div class="form-group col-md-3">
-                        <label for="inputtitleko">제작국가</label>
-                        <input type="text" class="form-control" id="inputtitleKo" placeholder="" name="titleKo" th:value="${mcode.titleKo}">
+                    <div class="form-group col-md-6">
+                        <label for="inputmscreen">상영여부</label>
+                        <select name="mscreen" id="inputmscreen" class="form-control" th:value="${movie.mscreen}" >
+                            <option selected="selected" value="상영중" name="">상영중</option>
+                            <option value="상영예정">상영예정</option>
+                            <option value="종영">종영</option>
+                        </select>
                     </div>
                 </div>
                 <hr/>
                 <div class="form-row">
-                    <div class="form-group col-md-3">
-                        <label for="inputtitleko">관람등급</label>
-                        <input type="text" class="form-control" id="inputtitleKo" placeholder="" name="titleKo" th:value="${mcode.titleKo}">
+                    <div class="form-group col-md-6">
+                        <label for="inputtitleko">영화 명</label>
+                        <input type="text" class="form-control" id="inputtitleKo" placeholder="" name="titleKo" th:value="${movie.titleKo}">
                     </div>
-                    <div class="form-group col-md-3">
-                        <label for="inputtitleEn">러닝 타임(분)</label>
-                        <input type="text" class="form-control" id="inputtitleEn" placeholder="" name="titleEn" th:value="${mcode.titleEn}">
-                    </div>
-                    <div class="form-group col-md-3">
-                        <label for="inputtitleEn">개봉일</label>
-                        <input type="text" class="form-control" id="inputtitleEn" placeholder="" name="titleEn" th:value="${mcode.titleEn}">
-                    </div>
-                    <div class="form-group col-md-3">
-                        <label for="inputtitleEn">파일 등록(링크)</label>
-                        <input type="text" class="form-control" id="inputtitleEn" placeholder="" name="titleEn" th:value="${mcode.titleEn}">
+                    <div class="form-group col-md-6">
+                        <label for="inputtitleEn">영화 명(영문)</label>
+                        <input type="text" class="form-control" id="inputtitleEn" placeholder="" name="titleEn" th:value="${movie.titleEn}">
                     </div>
                 </div>
                 <hr/>
                 <div class="form-row">
-                    <div class="form-group col-md-3">
-                        <label for="inputtitleko">상영 여부</label>
-                        <input type="text" class="form-control" id="inputtitleKo" placeholder="" name="titleKo" th:value="${mcode.titleKo}">
+                    <div class="form-group col-md-6">
+                        <label for="inputgenre">장르</label>
+                        <select name="genre" id="inputgenre" class="form-control"  th:value="${movie.genre}"  >
+                            <option selected="selected" value="액션" name="">액션</option>
+                            <option value="애니메이션">애니메이션</option>
+                            <option value="드라마">드라마</option>
+                            <option value="범죄">범죄</option>
+                            <option value="스릴러">스릴러</option>
+                            <option value="멜로/로맨스">멜로/로맨스</option>
+                            <option value="공포(호러)">공포(호러)</option>
+                            <option value="미스터리">미스터리</option>
+                            <option value="SF">SF</option>
+                            <option value="성인물(에로)">성인물(에로)</option>
+                            <option value="판타지">판타지</option>
+                            <option value="어드벤처">어드벤처</option>
+                            <option value="사극">사극</option>
+                            <option value="가족">가족</option>
+                            <option value="전쟁">전쟁</option>
+                            <option value="기타">기타</option>
+                            <option value="다큐멘터리">다큐멘터리</option>
+                            <option value="뮤지컬">뮤지컬</option>
+                            <option value="공연">공연</option>
+                            <option value="서부극(웨스턴)">서부극(웨스턴)</option>
+                        </select>
                     </div>
-                    <div class="form-group col-md-3">
-                        <label for="inputtitleEn">description1</label>
-                        <input type="text" class="form-control" id="inputtitleEn" placeholder="" name="titleEn" th:value="${mcode.titleEn}">
-                    </div>
-                    <div class="form-group col-md-3">
-                        <label for="inputtitleEn">description2</label>
-                        <input type="text" class="form-control" id="inputtitleEn" placeholder="" name="titleEn" th:value="${mcode.titleEn}">
-                    </div>
-                    <div class="form-group col-md-3">
-                        <label for="inputtitleEn">description3</label>
-                        <input type="text" class="form-control" id="inputtitleEn" placeholder="" name="titleEn" th:value="${mcode.titleEn}">
-                    </div>
-                </div>
-                <hr/>
-                <div class="form-row">
-                    <div class="form-group col-md-3">
-                        <label for="inputtitleko">photo1</label>
-                        <input type="text" class="form-control" id="inputtitleKo" placeholder="" name="titleKo" th:value="${mcode.titleKo}">
-                    </div>
-                    <div class="form-group col-md-3">
-                        <label for="inputtitleEn">photo2</label>
-                        <input type="text" class="form-control" id="inputtitleEn" placeholder="" name="titleEn" th:value="${mcode.titleEn}">
-                    </div>
-                    <div class="form-group col-md-3">
-                        <label for="inputtitleEn">photo3</label>
-                        <input type="text" class="form-control" id="inputtitleEn" placeholder="" name="titleEn" th:value="${mcode.titleEn}">
-                    </div>
-                    <div class="form-group col-md-3">
-                        <label for="inputtitleEn">photo4</label>
-                        <input type="text" class="form-control" id="inputtitleEn" placeholder="" name="titleEn" th:value="${mcode.titleEn}">
-                    </div>
-                    <div class="form-group col-md-3">
-                        <label for="inputtitleEn">photo5</label>
-                        <input type="text" class="form-control" id="inputtitleEn" placeholder="" name="titleEn" th:value="${mcode.titleEn}">
+                    <div class="form-group col-md-6">
+                        <label for="inputcountry">제작국가</label>
+                        <input type="text" class="form-control" id="inputcountry" placeholder="" name="country" th:value="${movie.country}">
                     </div>
                 </div>
                 <hr/>
                 <div class="form-row">
-                    <div class="form-group col-md-3">
-                        <label for="inputtitleko">trailer1</label>
-                        <input type="text" class="form-control" id="inputtitleKo" placeholder="" name="titleKo" th:value="${mcode.titleKo}">
+                    <div class="form-group col-md-6">
+                        <label for="inputmovieRating">관람 등급</label>
+                        <!--                        <input type="text" class="form-control" id="inputmovieRating" placeholder="" name="movieRating">-->
+                        <select name="movieRating" id="inputmovieRating" class="form-control"  th:value="${movie.movieRating}">
+                            <option selected="selected" value="전체이용가" name="">전체이용가</option>
+                            <option value="12세 이상">12세 이상</option>
+                            <option value="15세 이상">15세 이상</option>
+                            <option value="청소년 관람 불가">청소년 관람 불가</option>
+                        </select>
                     </div>
-                    <div class="form-group col-md-3">
-                        <label for="inputtitleEn">trailer2</label>
-                        <input type="text" class="form-control" id="inputtitleEn" placeholder="" name="titleEn" th:value="${mcode.titleEn}">
-                    </div>
-                    <div class="form-group col-md-3">
-                        <label for="inputtitleEn">trailer3</label>
-                        <input type="text" class="form-control" id="inputtitleEn" placeholder="" name="titleEn" th:value="${mcode.titleEn}">
-                    </div>
-                </div>
-                <hr/>
-                <div class="form-row">
-                    <div class="form-group col-md-3">
-                        <label for="inputtitleko">감독 명(nameKo)</label>
-                        <input type="text" class="form-control" id="inputtitleKo" placeholder="" name="titleKo" th:value="${mcode.titleKo}">
-                    </div>
-                    <div class="form-group col-md-3">
-                        <label for="inputtitleEn">감독명(nameEn)</label>
-                        <input type="text" class="form-control" id="inputtitleEn" placeholder="" name="titleEn" th:value="${mcode.titleEn}">
-                    </div>
-                    <div class="form-group col-md-3">
-                        <label for="inputtitleEn">photo</label>
-                        <input type="text" class="form-control" id="inputtitleEn" placeholder="" name="titleEn" th:value="${mcode.titleEn}">
+                    <div class="form-group col-md-6">
+                        <label for="inputruntime">러닝 타임</label>
+                        <input type="text" class="form-control" id="inputruntime" placeholder="" name="runtime" th:value="${movie.runtime}">
                     </div>
                 </div>
                 <hr/>
                 <div class="form-row">
-                    <div class="form-group col-md-3">
-                        <label for="inputtitleko">nameKo</label>
-                        <input type="text" class="form-control" id="inputtitleKo" placeholder="" name="titleKo" th:value="${mcode.titleKo}">
-                    </div>
-                    <div class="form-group col-md-3">
-                        <label for="inputtitleEn">nameEn</label>
-                        <input type="text" class="form-control" id="inputtitleEn" placeholder="" name="titleEn" th:value="${mcode.titleEn}">
-                    </div>
-                    <div class="form-group col-md-3">
-                        <label for="inputtitleEn">photo</label>
-                        <input type="text" class="form-control" id="inputtitleEn" placeholder="" name="titleEn" th:value="${mcode.titleEn}">
+                    <div class="form-group col-md-12" >
+                        <label for="inputlaunchdate">개봉일</label>
+                        <input type="date" class="form-control" id="inputlaunchdate" placeholder="" name="launchDate" th:value="${movie.launchDate}">
                     </div>
                 </div>
-                <hr/>
+                    <hr/>
+                    <div class="form-group">
+                        <label for="exampleFormControlFile1" >파일등록(링크)</label>
+                        <input type="text" class="form-control-file" id="exampleFormControlFile1" name="poster" th:value="${movie.poster}">
+                      <hr/>
                     <button type="reset" class="btn btn-primary" >리셋</button>
                     <button type="submit" class="btn btn-primary" style="background-color: #F08080">수정 완료</button>
+                    </div>
             </form>
         </div>
     </main>
