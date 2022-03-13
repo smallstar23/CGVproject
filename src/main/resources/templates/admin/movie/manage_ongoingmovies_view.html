@@ -70,8 +70,7 @@
                     <label for="inputmscreen">상영여부</label>
                     <select name="mscreen" id="inputmscreen" th:value="${mcode.mscreen}" class="form-control"  readonly>
                         <option th:selected="${mcode.mscreen} == '상영중'" name="">상영중</option>
-                        <option th:selected="${mcode.mscreen} == '상영예정'">상영예정</option>
-                        <option th:selected="${mcode.mscreen} == '상영종영'">종영</option>
+                        <option th:selected="${mcode.mscreen} == '상영종료'">상영종료</option>
                     </select>
                 </div>
                 <hr/>
@@ -90,7 +89,7 @@
                     <div class="form-group col-md-6">
                         <label for="inputgenre">장르</label>
                         <select name="genre" id="inputgenre" class="form-control" th:value="${mcode.genre}"  readonly="genre">
-                            <option  th:selected="${mcode.genre} == '액션'" name="" readonly>액션</option>
+                            <option th:selected="${mcode.genre} == '액션'" name="" readonly>액션</option>
                             <option th:selected="${mcode.genre} == '애니메이션'" readonly>애니메이션</option>
                             <option th:selected="${mcode.genre} == '드라마'" readonly>드라마</option>
                             <option th:selected="${mcode.genre} == '범죄'" readonly>범죄</option>
@@ -146,12 +145,13 @@
                 <hr/>
                 <div class="form-group">
                     <label for="exampleFormControlFile1" >파일등록(링크)</label>
-                    <input type="text" class="form-control-file" id="exampleFormControlFile1" name="poster" th:value="${mcode.poster}"  readonly>
+                    <input type="text" class="form-control-file" id="exampleFormControlFile1" name="poster" th:value="${mcode.poster}" readonly >
                     <hr/>
                         <input th:onclick="|location.href='@{/manage_ongoingmovies}'|" class="btn btn-primary" type="button"  value="목록">
                         <a class="btn btn-info" th:href="@{'/manage_ongoingmovies/edit/' + ${mcode.mcode}}" role="button">수정</a>
-                    <a class="btn btn-info" th:href="@{'/manage_ongoingmovies/create/' + ${mcode.mcode}}" role="button">상세정보 등록</a>
-
+                        <a class="btn btn-info" th:href="@{'/manage_ongoingmovies/create/' + ${mcode.mcode}}" role="button">상세정보 등록</a>
+                        <a class="btn btn-info" th:href="@{'/manage_ongoingmovies/detail/' + ${mcode.mcode}}" role="button">상세정보 수정</a>
+                        <a class="btn btn-info" th:href="@{'/manage_ongoingmovies/detail/' + ${mcode.mcode}}" role="button">상세정보 수정</a>
 
                 </div>
             </form>

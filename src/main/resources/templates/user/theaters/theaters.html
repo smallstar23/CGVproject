@@ -66,9 +66,6 @@
     <![endif]-->
 
     <!--[if lte IE 9]>
-    <script type="text/javascript">
-        var iever = 'msie9';
-    </script>
 
     <script type="text/javascript" src="https://img.cgv.co.kr/R2014/js/jquery.plugin/jquery.placeholder.js"></script>
     <![endif]-->
@@ -99,6 +96,7 @@
 
 
 </script>
+
 
 
 </head>
@@ -178,7 +176,7 @@
                                 </strong>
                             <span class="txt-info">
                         <em>1544-1122</em>
-                        <em>6관 / 874석</em>
+                        <em th:text="${lengthhalls}+관"></em>
                         <span></span>
                     </span>
                             <!-- 최대 10개까지만 보여집니다 -->
@@ -600,6 +598,21 @@
 
 
 </div>
-<script src="/js/theaters.js"></script>
+
+<script src="/js/theaters.js" ></script>
+<!--<script th:inline="javascript">  여기 진짜 모르겠다.............-->
+<!--    /*<![CDATA[*/-->
+<!--    let receive = [[${tcode}]];-->
+<!--    let findtcode=document.getElementsByClassName("findtcode")-->
+<!--    console.log(receive);-->
+
+<!--    for(let i=0; i<=findtcode.length; i++){-->
+<!--        console.log(findtcode[i])-->
+<!--    }-->
+<!--    /*]]>*/-->
+
+
+<!--</script>-->
+
 </body>
 </html>

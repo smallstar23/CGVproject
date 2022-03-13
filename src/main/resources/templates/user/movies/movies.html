@@ -109,9 +109,8 @@
 
                     <div class="submenu">
                         <ul>
-                            <!-- sorting 부분입니다. 화면 전환없이 상영작만 볼 수 있도록 구현합니다. -->
                             <li class="on"><a href="movies.html" title="선택">무비차트</a></li>
-                            <li><a href="pre-movies.html">상영예정작</a></li>
+<!--                            <li><a href="pre-movies.html">상영예정작</a></li>-->
                             <!--<li><a href="/movies/?lt=3">CGV아트하우스</a></li>//-->
                         </ul>
                     </div>
@@ -122,735 +121,28 @@
                     <div class="nowshow">
                         <input type="checkbox" id="chk_nowshow">
 
-                        <label for="chk_nowshow">현재 상영작만 보기</label>
+                        <label for="chk_nowshow" style="margin-bottom: 20px">현재 상영작만 보기</label>
 
                     </div>
                     <!--  sorting 부분입니다. 화면 전환없이 데이터만 순서 변경하여 나열하는 기능 여기서 구현합니다. -->
-                    <label for="order_type" class="hidden">정렬</label>
-                    <select id="order_type" name="order-type">
-                        <option title="현재 선택됨" selected="" value="1">예매율순</option>
-                        <option value="2">평점순</option>
-                        <option value="3">관람객순</option>
-                    </select>
-                    <button type="button" class="round gray"><span>GO</span></button>
+<!--                    <label for="order_type" class="hidden">정렬</label>-->
+<!--                    <select id="order_type" name="order-type">-->
+<!--                        <option title="현재 선택됨" selected="" value="1">예매율순</option>-->
+<!--                        <option value="2">평점순</option>-->
+<!--                        <option value="3">관람객순</option>-->
+<!--                    </select>-->
+<!--                    <button type="button" class="round gray"><span>GO</span></button>-->
                 </div>
                 <!-- //Sorting -->
 
-                <div class="sect-movie-chart">
+                <div class="sect-movie-chart" style="margin-top: 60px">
                     <h4 class="hidden">
                         무비차트 - 예매율순
                     </h4>
-                    <ol >
-                        <li th:each="movie : ${MovieList}">
-                            <div class="box-image">
-                                <strong class="rank" >No. <strong th:text="${movie.mrank}"></strong></strong>
+                    <ol id="changeView">
 
-                                <a th:onclick="|location.href='@{|/movies/detail-view/${movie.getMcode()}|}'|">
-                            <span class="thumb-image">
-                                <img th:src="@{${movie.poster}}" alt="언차티드 포스터">
-                                <span class="ico-grade grade-12"></span>
-                            </span>
-
-                                </a>
-                            </div>
-
-                            <div class="box-contents">
-                                <a th:href="@{movies/detail-view}">
-                                    <strong class="title" th:text="${movie.titleKo}">변경전</strong>
-                                </a>
-
-                                <span class="txt-info">
-                            <strong th:text="${#temporals.format(movie.launchDate,'yyyy-MM-dd')}"}></strong>
-                                <span>개봉</span>
-                        </span>
-                                <span class="like">
-                            <a class="link-reservation" th:href="@{ticket}">예매</a>
-                        </span>
-                            </div>
-
-                        </li>
-                    </ol>
-
-                    <ol id="secondRow">
-
-                        <li>
-                            <div class="box-image">
-                                <strong class="rank">No.4</strong>
-                                <a th:href="@{movies/detail-view}">
-                            <span class="thumb-image">
-                                <img src="https://img.cgv.co.kr/Movie/Thumbnail/Poster/000085/85627/85627_320.jpg" alt="리코리쉬 피자 포스터" onerror="errorImage(this)">
-                                <span class="ico-grade grade-15">15세 이상</span>
-                            </span>
-                                </a>
-                                <span class="screentype">
-
-                        </span>
-                            </div>
-                            <div class="box-contents">
-                                <a th:href="@{movies/detail-view}">
-                                    <strong class="title">리코리쉬 피자</strong>
-                                </a>
-
-                                <div class="score">
-                                    <strong class="percent">예매율<span>2.7%</span></strong>
-                                    <!-- 2020.05.07 개봉전 프리에그 노출, 개봉후 골든에그지수 노출변경 (적용 범위4~ 7위)-->
-                                    <div class="egg-gage small">
-                                        <span class="egg great"></span>
-                                        <span class="percent">96%</span>
-                                    </div>
-                                </div>
-
-                                <span class="txt-info">
-                            <strong>
-                                2022.02.16
-                                <span>개봉</span>
-
-                            </strong>
-                        </span>
-                                <span class="like">
-                            <a class="link-reservation" href="ticket.html">예매</a>
-                        </span>
-                            </div>
-                        </li>
-
-                        <li>
-                            <div class="box-image">
-                                <strong class="rank">No.5</strong>
-                                <a th:href="@{movies/detail-view}">
-                            <span class="thumb-image">
-                                <img src="https://img.cgv.co.kr/Movie/Thumbnail/Poster/000083/83739/83739_320.jpg" alt="나일 강의 죽음 포스터" onerror="errorImage(this)">
-                                <span class="ico-grade grade-12">12세 이상</span>
-                            </span>
-                                </a>
-                                <span class="screentype">
-
-                        </span>
-                            </div>
-                            <div class="box-contents">
-                                <a th:href="@{movies/detail-view}">
-                                    <strong class="title">나일 강의 죽음</strong>
-                                </a>
-
-                                <div class="score">
-                                    <strong class="percent">예매율<span>1.9%</span></strong>
-                                    <!-- 2020.05.07 개봉전 프리에그 노출, 개봉후 골든에그지수 노출변경 (적용 범위4~ 7위)-->
-                                    <div class="egg-gage small">
-                                        <span class="egg great"></span>
-                                        <span class="percent">89%</span>
-                                    </div>
-                                </div>
-
-                                <span class="txt-info">
-                            <strong>
-                                2022.02.09
-                                <span>개봉</span>
-
-                            </strong>
-                        </span>
-                                <span class="like">
-                            <a class="link-reservation" href="ticket.html">예매</a>
-                        </span>
-                            </div>
-                        </li>
-
-                        <li>
-                            <div class="box-image">
-                                <strong class="rank">No.6</strong>
-                                <a th:href="@{movies/detail-view}">
-                            <span class="thumb-image">
-                                <img src="https://img.cgv.co.kr/Movie/Thumbnail/Poster/000083/83152/83152_320.jpg" alt="나의 촛불 포스터" onerror="errorImage(this)">
-                                <span class="ico-grade grade-all">전체</span>
-                            </span>
-                                </a>
-                                <span class="screentype">
-
-                        </span>
-                            </div>
-                            <div class="box-contents">
-                                <a th:href="@{movies/detail-view}">
-                                    <strong class="title">나의 촛불</strong>
-                                </a>
-
-                                <div class="score">
-                                    <strong class="percent">예매율<span>1.1%</span></strong>
-                                    <!-- 2020.05.07 개봉전 프리에그 노출, 개봉후 골든에그지수 노출변경 (적용 범위4~ 7위)-->
-                                    <div class="egg-gage small">
-                                        <span class="egg great"></span>
-                                        <span class="percent">93%</span>
-                                    </div>
-                                </div>
-
-                                <span class="txt-info">
-                            <strong>
-                                2022.02.10
-                                <span>개봉</span>
-
-                            </strong>
-                        </span>
-                                <span class="like">
-                            <a class="link-reservation" href="ticket.html">예매</a>
-                        </span>
-                            </div>
-                        </li>
-
-                        <li>
-                            <div class="box-image">
-                                <strong class="rank">No.7</strong>
-                                <a th:href="@{movies/detail-view}">
-                            <span class="thumb-image">
-                                <img src="https://img.cgv.co.kr/Movie/Thumbnail/Poster/000085/85561/85561_320.jpg" alt="해적-도깨비 깃발 포스터" onerror="errorImage(this)">
-                                <span class="ico-grade grade-12">12세 이상</span>
-                            </span>
-                                </a>
-                                <span class="screentype">
-
-                        </span>
-                            </div>
-                            <div class="box-contents">
-                                <a th:href="@{movies/detail-view}">
-                                    <strong class="title">해적-도깨비 깃발</strong>
-                                </a>
-
-                                <div class="score">
-                                    <strong class="percent">예매율<span>0.7%</span></strong>
-                                    <!-- 2020.05.07 개봉전 프리에그 노출, 개봉후 골든에그지수 노출변경 (적용 범위4~ 7위)-->
-                                    <div class="egg-gage small">
-                                        <span class="egg good"></span>
-                                        <span class="percent">80%</span>
-                                    </div>
-                                </div>
-
-                                <span class="txt-info">
-                            <strong>
-                                2022.01.26
-                                <span>개봉</span>
-
-                            </strong>
-                        </span>
-                                <span class="like">
-                            <a class="link-reservation" href="ticket.html">예매</a>
-                        </span>
-                            </div>
-                        </li>
 
                     </ol>
-
-                    <div class="chart-ad-bottom" id="chart-ad-bottom">
-                        <iframe src="http://ad.cgv.co.kr/NetInsight/html/CGV/CGV_201401/sub@SponsorBar_980" width="980" height="90" title="광고-안테벨룸 " frameborder="0" scrolling="no" marginwidth="0" marginheight="0" name="SponsorBar_980" id="SponsorBar_980"></iframe>
-                    </div>
-
-                    <ol class="list-more">
-
-                    <li>
-                        <div class="box-image">
-                            <strong class="rank">No.8</strong>
-                            <a th:href="@{movies/detail-view}">
-                            <span class="thumb-image">
-                                <img src="https://img.cgv.co.kr/Movie/Thumbnail/Poster/000085/85291/85291_320.jpg" alt="킹메이커 포스터" onerror="errorImage(this)">
-                                <span class="ico-grade grade-15">15세 이상</span>
-                            </span>
-                            </a>
-                            <span class="screentype">
-
-                        </span>
-                        </div>
-                        <div class="box-contents">
-                            <a th:href="@{movies/detail-view}">
-                                <strong class="title">킹메이커</strong>
-                            </a>
-
-                            <div class="score">
-                                <strong class="percent">예매율<span>0.6%</span></strong>
-                                <!-- 2020.05.07 개봉전 프리에그 노출, 개봉후 골든에그지수 노출변경 (적용 범위4~ 7위)-->
-                                <div class="egg-gage small">
-                                    <span class="egg great"></span>
-                                    <span class="percent">91%</span>
-                                </div>
-                            </div>
-
-                            <span class="txt-info">
-                            <strong>
-                                2022.01.26
-                                <span>개봉</span>
-
-                            </strong>
-                        </span>
-                            <span class="like">
-                            <a class="link-reservation" href="ticket.html">예매</a>
-                        </span>
-                        </div>
-                    </li>
-
-                    <li>
-                        <div class="box-image">
-                            <strong class="rank">No.9</strong>
-                            <a th:href="@{movies/detail-view}">
-                            <span class="thumb-image">
-                                <img src="https://img.cgv.co.kr/Movie/Thumbnail/Poster/000084/84949/84949_320.jpg" alt="스파이더맨-노 웨이 홈 포스터" onerror="errorImage(this)">
-                                <span class="ico-grade grade-12">12세 이상</span>
-                            </span>
-                            </a>
-                            <span class="screentype">
-
-                        </span>
-                        </div>
-                        <div class="box-contents">
-                            <a th:href="@{movies/detail-view}">
-                                <strong class="title">스파이더맨-노 웨이 홈</strong>
-                            </a>
-
-                            <div class="score">
-                                <strong class="percent">예매율<span>0.6%</span></strong>
-                                <!-- 2020.05.07 개봉전 프리에그 노출, 개봉후 골든에그지수 노출변경 (적용 범위4~ 7위)-->
-                                <div class="egg-gage small">
-                                    <span class="egg great"></span>
-                                    <span class="percent">95%</span>
-                                </div>
-                            </div>
-
-                            <span class="txt-info">
-                            <strong>
-                                2021.12.15
-                                <span>개봉</span>
-
-                            </strong>
-                        </span>
-                            <span class="like">
-                            <a class="link-reservation" href="ticket.html">예매</a>
-                        </span>
-                        </div>
-                    </li>
-
-                    <li>
-                        <div class="box-image">
-                            <strong class="rank">No.10</strong>
-                            <a th:href="@{movies/detail-view}">
-                            <span class="thumb-image">
-                                <img src="https://img.cgv.co.kr/Movie/Thumbnail/Poster/000085/85633/85633_320.jpg" alt="굿 보스 포스터" onerror="errorImage(this)">
-                                <span class="ico-grade grade-15">15세 이상</span>
-                            </span>
-                            </a>
-                            <span class="screentype">
-
-                                <a class="arthouse" href="#" data-regioncode="MovieCollage">아트하우스</a>
-
-                        </span>
-                        </div>
-                        <div class="box-contents">
-                            <a th:href="@{movies/detail-view}">
-                                <strong class="title">굿 보스</strong>
-                            </a>
-
-                            <div class="score">
-                                <strong class="percent">예매율<span>0.4%</span></strong>
-                                <!-- 2020.05.07 개봉전 프리에그 노출, 개봉후 골든에그지수 노출변경 (적용 범위4~ 7위)-->
-                                <div class="egg-gage small">
-                                    <span class="egg great"></span>
-                                    <span class="percent">93%</span>
-                                </div>
-                            </div>
-
-                            <span class="txt-info">
-                            <strong>
-                                2022.02.10
-                                <span>개봉</span>
-
-                            </strong>
-                        </span>
-                            <span class="like">
-                            <a class="link-reservation" href="ticket.html">예매</a>
-                        </span>
-                        </div>
-                    </li>
-
-                    <li>
-                        <div class="box-image">
-                            <strong class="rank">No.11</strong>
-                            <a th:href="@{movies/detail-view}">
-                            <span class="thumb-image">
-                                <img src="https://img.cgv.co.kr/Movie/Thumbnail/Poster/000085/85595/85595_320.jpg" alt="355 포스터" onerror="errorImage(this)">
-                                <span class="ico-grade grade-15">15세 이상</span>
-                            </span>
-                            </a>
-                            <span class="screentype">
-
-                        </span>
-                        </div>
-                        <div class="box-contents">
-                            <a th:href="@{movies/detail-view}">
-                                <strong class="title">355</strong>
-                            </a>
-
-                            <div class="score">
-                                <strong class="percent">예매율<span>0.4%</span></strong>
-                                <!-- 2020.05.07 개봉전 프리에그 노출, 개봉후 골든에그지수 노출변경 (적용 범위4~ 7위)-->
-                                <div class="egg-gage small">
-                                    <span class="egg good"></span>
-                                    <span class="percent">82%</span>
-                                </div>
-                            </div>
-
-                            <span class="txt-info">
-                            <strong>
-                                2022.02.09
-                                <span>개봉</span>
-
-                            </strong>
-                        </span>
-                            <span class="like">
-                            <a class="link-reservation" href="ticket.html">예매</a>
-                        </span>
-                        </div>
-                    </li>
-
-                    <li>
-                        <div class="box-image">
-                            <strong class="rank">No.12</strong>
-                            <a th:href="@{movies/detail-view}">
-                            <span class="thumb-image">
-                                <img src="https://img.cgv.co.kr/Movie/Thumbnail/Poster/000084/84780/84780_320.jpg" alt="씽2게더 포스터" onerror="errorImage(this)">
-                                <span class="ico-grade grade-all">전체</span>
-                            </span>
-                            </a>
-                            <span class="screentype">
-
-                        </span>
-                        </div>
-                        <div class="box-contents">
-                            <a th:href="@{movies/detail-view}">
-                                <strong class="title">씽2게더</strong>
-                            </a>
-
-                            <div class="score">
-                                <strong class="percent">예매율<span>0.3%</span></strong>
-                                <!-- 2020.05.07 개봉전 프리에그 노출, 개봉후 골든에그지수 노출변경 (적용 범위4~ 7위)-->
-                                <div class="egg-gage small">
-                                    <span class="egg great"></span>
-                                    <span class="percent">98%</span>
-                                </div>
-                            </div>
-
-                            <span class="txt-info">
-                            <strong>
-                                2022.01.05
-                                <span>개봉</span>
-
-                            </strong>
-                        </span>
-                            <span class="like">
-                            <a class="link-reservation" href="ticket.html">예매</a>
-                        </span>
-                        </div>
-                    </li>
-
-                    <li>
-                        <div class="box-image">
-                            <strong class="rank">No.13</strong>
-                            <a th:href="@{movies/detail-view}">
-                            <span class="thumb-image">
-                                <img src="https://img.cgv.co.kr/Movie/Thumbnail/Poster/000085/85582/85582_320.jpg" alt="피그 포스터" onerror="errorImage(this)">
-                                <span class="ico-grade grade-12">12세 이상</span>
-                            </span>
-                            </a>
-                            <span class="screentype">
-
-                                <a class="arthouse" href="#" data-regioncode="MovieCollage">아트하우스</a>
-
-                        </span>
-                        </div>
-                        <div class="box-contents">
-                            <a th:href="@{movies/detail-view}">
-                                <strong class="title">피그</strong>
-                            </a>
-
-                            <div class="score">
-                                <strong class="percent">예매율<span>0.2%</span></strong>
-                                <!-- 2020.05.07 개봉전 프리에그 노출, 개봉후 골든에그지수 노출변경 (적용 범위4~ 7위)-->
-                                <div class="egg-gage small">
-                                    <span class="sprite_preegg default"></span>
-                                    <span class="percent">99%</span>
-                                </div>
-                            </div>
-
-                            <span class="txt-info">
-                            <strong>
-                                2022.02.23
-                                <span>개봉</span>
-                                <em class="dday">D-7</em>
-                            </strong>
-                        </span>
-                            <span class="like">
-                            <a class="link-reservation" href="ticket.html">예매</a>
-                        </span>
-                        </div>
-                    </li>
-
-                    <li>
-                        <div class="box-image">
-                            <strong class="rank">No.14</strong>
-                            <a th:href="@{movies/detail-view}">
-                            <span class="thumb-image">
-                                <img src="https://img.cgv.co.kr/Movie/Thumbnail/Poster/000085/85680/85680_320.jpg" alt="에이핑크 스페셜 무비-혼 포스터" onerror="errorImage(this)">
-                                <span class="ico-grade grade-all">전체</span>
-                            </span>
-                            </a>
-                            <span class="screentype">
-
-                        </span>
-                        </div>
-                        <div class="box-contents">
-                            <a th:href="@{movies/detail-view}">
-                                <strong class="title">에이핑크 스페셜 무비-혼</strong>
-                            </a>
-
-                            <div class="score">
-                                <strong class="percent">예매율<span>0.2%</span></strong>
-                                <!-- 2020.05.07 개봉전 프리에그 노출, 개봉후 골든에그지수 노출변경 (적용 범위4~ 7위)-->
-                                <div class="egg-gage small">
-                                    <span class="sprite_preegg default"></span>
-                                    <span class="percent">?</span>
-                                </div>
-                            </div>
-
-                            <span class="txt-info">
-                            <strong>
-                                2022.02.23
-                                <span>개봉</span>
-                                <em class="dday">D-7</em>
-                            </strong>
-                        </span>
-                            <span class="like">
-                            <a class="link-reservation" href="ticket.html">예매</a>
-                        </span>
-                        </div>
-                    </li>
-
-                    <li>
-                        <div class="box-image">
-                            <strong class="rank">No.15</strong>
-                            <a th:href="@{movies/detail-view}">
-                            <span class="thumb-image">
-                                <img src="https://img.cgv.co.kr/Movie/Thumbnail/Poster/000085/85560/85560_320.jpg" alt="만년이 지나도 변하지 않는 게 있어 포스터" onerror="errorImage(this)">
-                                <span class="ico-grade grade-12">12세 이상</span>
-                            </span>
-                            </a>
-                            <span class="screentype">
-
-                        </span>
-                        </div>
-                        <div class="box-contents">
-                            <a th:href="@{movies/detail-view}">
-                                <strong class="title">만년이 지나도 변하지 않는 게 있어</strong>
-                            </a>
-
-                            <div class="score">
-                                <strong class="percent">예매율<span>0.2%</span></strong>
-                                <!-- 2020.05.07 개봉전 프리에그 노출, 개봉후 골든에그지수 노출변경 (적용 범위4~ 7위)-->
-                                <div class="egg-gage small">
-                                    <span class="egg good"></span>
-                                    <span class="percent">81%</span>
-                                </div>
-                            </div>
-
-                            <span class="txt-info">
-                            <strong>
-                                2022.02.09
-                                <span>개봉</span>
-
-                            </strong>
-                        </span>
-                            <span class="like">
-                            <a class="link-reservation" href="ticket.html">예매</a>
-                        </span>
-                        </div>
-                    </li>
-
-                    <li>
-                        <div class="box-image">
-                            <strong class="rank">No.16</strong>
-                            <a th:href="@{movies/detail-view}">
-                            <span class="thumb-image">
-                                <img src="https://img.cgv.co.kr/Movie/Thumbnail/Poster/000085/85644/85644_320.jpg" alt="역으로 가는 길을 알려줘 포스터" onerror="errorImage(this)">
-                                <span class="ico-grade grade-all">전체</span>
-                            </span>
-                            </a>
-                            <span class="screentype">
-
-                        </span>
-                        </div>
-                        <div class="box-contents">
-                            <a th:href="@{movies/detail-view}">
-                                <strong class="title">역으로 가는 길을 알려줘</strong>
-                            </a>
-
-                            <div class="score">
-                                <strong class="percent">예매율<span>0.2%</span></strong>
-                                <!-- 2020.05.07 개봉전 프리에그 노출, 개봉후 골든에그지수 노출변경 (적용 범위4~ 7위)-->
-                                <div class="egg-gage small">
-                                    <span class="sprite_preegg default"></span>
-                                    <span class="percent">?</span>
-                                </div>
-                            </div>
-
-                            <span class="txt-info">
-                            <strong>
-                                2022.02.17
-                                <span>개봉</span>
-                                <em class="dday">D-1</em>
-                            </strong>
-                        </span>
-                            <span class="like">
-                            <a class="link-reservation" href="ticket.html">예매</a>
-                        </span>
-                        </div>
-                    </li>
-
-                    <li>
-                        <div class="box-image">
-                            <strong class="rank">No.17</strong>
-                            <a th:href="@{movies/detail-view}">
-                            <span class="thumb-image">
-                                <img src="https://img.cgv.co.kr/Movie/Thumbnail/Poster/000085/85634/85634_320.jpg" alt="시크릿 카운터 포스터" onerror="errorImage(this)">
-                                <span class="ico-grade grade-15">15세 이상</span>
-                            </span>
-                            </a>
-                            <span class="screentype">
-
-                                <a class="arthouse" href="#" data-regioncode="MovieCollage">아트하우스</a>
-
-                        </span>
-                        </div>
-                        <div class="box-contents">
-                            <a th:href="@{movies/detail-view}">
-                                <strong class="title">시크릿 카운터</strong>
-                            </a>
-
-                            <div class="score">
-                                <strong class="percent">예매율<span>0.2%</span></strong>
-                                <!-- 2020.05.07 개봉전 프리에그 노출, 개봉후 골든에그지수 노출변경 (적용 범위4~ 7위)-->
-                                <div class="egg-gage small">
-                                    <span class="sprite_preegg default"></span>
-                                    <span class="percent">99%</span>
-                                </div>
-                            </div>
-
-                            <span class="txt-info">
-                            <strong>
-                                2022.02.17
-                                <span>개봉</span>
-                                <em class="dday">D-1</em>
-                            </strong>
-                        </span>
-                            <span class="like">
-                            <a class="link-reservation" href="ticket.html">예매</a>
-                        </span>
-                        </div>
-                    </li>
-
-                    <li>
-                        <div class="box-image">
-                            <strong class="rank">No.18</strong>
-                            <a th:href="@{movies/detail-view}">
-                            <span class="thumb-image">
-                                <img src="https://img.cgv.co.kr/Movie/Thumbnail/Poster/000085/85640/85640_320.jpg" alt="뮤지컬 이퀄(LIVE) 포스터" onerror="errorImage(this)">
-                                <span class="ico-grade grade-15">15세 이상</span>
-                            </span>
-                            </a>
-                            <span class="screentype">
-
-                        </span>
-                        </div>
-                        <div class="box-contents">
-                            <a th:href="@{movies/detail-view}">
-                                <strong class="title">뮤지컬 이퀄(LIVE)</strong>
-                            </a>
-
-                            <div class="score">
-                                <strong class="percent">예매율<span>0.2%</span></strong>
-                                <!-- 2020.05.07 개봉전 프리에그 노출, 개봉후 골든에그지수 노출변경 (적용 범위4~ 7위)-->
-                                <div class="egg-gage small">
-                                    <span class="egg good"></span>
-                                    <span class="percent">?</span>
-                                </div>
-                            </div>
-
-                            <span class="txt-info">
-                            <strong>
-                                2022.02.15
-                                <span>개봉</span>
-
-                            </strong>
-                        </span>
-                            <span class="like">
-                            <a class="link-reservation" href="ticket.html">예매</a>
-                        </span>
-                        </div>
-                    </li>
-
-                    <li>
-                        <div class="box-image">
-                            <strong class="rank">No.19</strong>
-                            <a th:href="@{movies/detail-view}">
-                            <span class="thumb-image">
-                                <img src="https://img.cgv.co.kr/Movie/Thumbnail/Poster/000085/85469/85469_320.jpg" alt="드라이브 마이 카 포스터" onerror="errorImage(this)">
-                                <span class="ico-grade grade-15">15세 이상</span>
-                            </span>
-                            </a>
-                            <span class="screentype">
-
-                                <a class="arthouse" href="#" data-regioncode="MovieCollage">아트하우스</a>
-
-                        </span>
-                        </div>
-                        <div class="box-contents">
-                            <a th:href="@{movies/detail-view}">
-                                <strong class="title">드라이브 마이 카</strong>
-                            </a>
-
-                            <div class="score">
-                                <strong class="percent">예매율<span>0.2%</span></strong>
-                                <!-- 2020.05.07 개봉전 프리에그 노출, 개봉후 골든에그지수 노출변경 (적용 범위4~ 7위)-->
-                                <div class="egg-gage small">
-                                    <span class="egg great"></span>
-                                    <span class="percent">93%</span>
-                                </div>
-                            </div>
-
-                            <span class="txt-info">
-                            <strong>
-                                2021.12.23
-                                <span>개봉</span>
-
-                            </strong>
-                        </span>
-                            <span class="like">
-                            <a class="link-reservation" href="ticket.html">예매</a>
-                        </span>
-                        </div>
-                    </li>
-
-                    </ol>
-
-
-                    <button class="btn-more-fontbold">더보기 <i class="link-more">더보기</i></button>
-
-                    <div class="chart-ad">
-                        <div class="box-com">
-                            <iframe src="http://ad.cgv.co.kr/NetInsight/html/CGV/CGV_201401/sub@Movie_Chart" width="160" height="300" frameborder="0" scrolling="no" topmargin="0" leftmargin="0" marginwidth="0" marginheight="0" id="Movie_Chart" name="Movie_Chart" title="기업광고 -CGV"></iframe>
-                        </div>
-                        <div class="chart_ad_desc">
-                            <dl>
-                                <dt>
-                                    <img src="http://img.cgv.co.kr/R2014/images/ad/ico_ad1.png" alt="ad">
-                                    <span id="ad_txt1">CGV 기프트 카드</span>
-                                </dt>
-                                <dd>
-                                    <span id="ad_txt2">감사의 마음을 선물하세요! </span>
-                                </dd>
-                            </dl>
-                        </div>
-                    </div>
-
                 </div>
             </div>
 
@@ -887,4 +179,134 @@
 
 
 </body>
+
+<script th:inline="javascript">
+
+    /*<![CDATA[*/
+    let movieList=[[${MovieList}]];
+
+    // ol 태그 안 changeView, 무비리스트 전체 다
+    let changeView= document.getElementById("changeView");
+    for(let i=0; i<=movieList.length-1; i++){
+        changeView.innerHTML+=
+        `
+                        <li>
+                            <strong class="rank">No. ${i+1}</strong>
+                                <div class="box-image">
+                                <a onclick=location.href='/movies/detail-view/}'>
+                            <span class="thumb-image">
+                                <img src="${movieList[i].poster}" alt="언차티드 포스터">
+                                <span class="ico-grade grade-12"></span>
+                            </span>
+
+                                </a>
+                            </div>
+
+                            <div class="box-contents">
+                                <a href="movies/detail-view">
+                                    <strong class="title">${movieList[i].titleKo}</strong>
+                                </a>
+
+                                <span class="txt-info">
+                            <strong>${movieList[i].launchDate}</strong>
+                                <span>개봉</span>
+                        </span>
+                                <span class="like">
+                            <a class="link-reservation" href="#">예매</a>
+                        </span>
+                            </div>
+
+                        </li>
+`}
+    /*]]>*/
+
+    // // 순위 반영
+    // let rank=document.getElementsByClassName("rank");
+    // for(let i=0; i<=rank.length-1; i++){
+    //     rank[i].innerHTML=
+    // }
+    // chk_nowshow 현재 상영중인 것만 보기 선택시
+    $("#chk_nowshow").change(function(){
+        changeView.innerHTML="";
+        if($("#chk_nowshow").is(':checked')){
+            let now="상영중";
+            $.ajax({
+                url:"/nowplaying",
+                data:{now, now},
+                type:"post",
+                dataType:"json"
+            }).done(function(res){
+                console.log(res);
+                for(let i=0; i<=res.length-1; i++){
+
+                    changeView.innerHTML+=
+                        `
+                        <li>
+                            <strong class="rank">No. ${i+1}</strong>
+                                <div class="box-image">
+                                <a onclick=location.href='/movies/detail-view/}'>
+                            <span class="thumb-image">
+                                <img src="${res[i].poster}" alt="언차티드 포스터">
+                                <span class="ico-grade grade-12"></span>
+                            </span>
+
+                                </a>
+                            </div>
+
+                            <div class="box-contents">
+                                <a href="movies/detail-view">
+                                    <strong class="title">${res[i].titleKo}</strong>
+                                </a>
+
+                                <span class="txt-info">
+                            <strong>${res[i].launchDate}</strong>
+                                <span>개봉</span>
+                        </span>
+                                <span class="like">
+                            <a class="link-reservation" href="#">예매</a>
+                        </span>
+                            </div>
+
+                        </li>
+`
+                }
+            })
+        }else{
+            for(let i=0; i<=movieList.length-1; i++){
+                changeView.innerHTML+=
+                    `
+                        <li>
+                            <strong class="rank">No. ${i+1}</strong>
+                                <div class="box-image">
+                                <a onclick=location.href='/movies/detail-view/}'>
+                            <span class="thumb-image">
+                                <img src="${movieList[i].poster}" alt="언차티드 포스터">
+                                <span class="ico-grade grade-12"></span>
+                            </span>
+
+                                </a>
+                            </div>
+
+                            <div class="box-contents">
+                                <a href="movies/detail-view">
+                                    <strong class="title">${movieList[i].titleKo}</strong>
+                                </a>
+
+                                <span class="txt-info">
+                            <strong>${movieList[i].launchDate}</strong>
+                                <span>개봉</span>
+                        </span>
+                                <span class="like">
+                            <a class="link-reservation" href="#">예매</a>
+                        </span>
+                            </div>
+
+                        </li>
+`}
+        }
+    })
+
+
+
+</script>
 </html>

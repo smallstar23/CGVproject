@@ -1,8 +1,8 @@
 package com.koreait.cgvproject.dto;
 
 
-import com.koreait.cgvproject.entity.Member;
 import com.koreait.cgvproject.entity.Movie;
+import com.koreait.cgvproject.entity.Member;
 import com.koreait.cgvproject.entity.Wishlist;
 import lombok.AllArgsConstructor;
 import lombok.Builder;

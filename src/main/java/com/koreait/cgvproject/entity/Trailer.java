@@ -1,11 +1,7 @@
 package com.koreait.cgvproject.entity;
 
-import com.koreait.cgvproject.dto.MovieDTO;
 import com.koreait.cgvproject.dto.TrailerDTO;
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 import javax.persistence.*;
 
@@ -20,6 +16,7 @@ import javax.persistence.*;
         initialValue = 1,
         allocationSize = 1
 )
+@ToString(exclude = "movie")
 public class Trailer {
 
     @Id
@@ -44,7 +41,7 @@ public class Trailer {
 
 
     public TrailerDTO toDTO(){
-        return TrailerDTO.builder().idx(idx).movie(movie.toDTO()).description1(description1).description2(description2)
+        return TrailerDTO.builder().idx(idx).movieDTO(movie.toDTO()).description1(description1).description2(description2)
                 .description3(description3).photo1(photo1).photo2(photo2).photo3(photo3).photo4(photo4)
                 .photo5(photo5).trailer1(trailer1).trailer2(trailer2).trailer3(trailer3).build();
     }

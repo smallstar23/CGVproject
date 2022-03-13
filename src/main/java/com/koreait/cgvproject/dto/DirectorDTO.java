@@ -2,7 +2,6 @@ package com.koreait.cgvproject.dto;
 
 
 import com.koreait.cgvproject.entity.Director;
-import com.koreait.cgvproject.entity.Movie;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
