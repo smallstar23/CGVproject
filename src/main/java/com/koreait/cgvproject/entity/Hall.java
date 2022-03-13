@@ -37,6 +37,9 @@ public class Hall{
     @OneToMany(fetch = FetchType.LAZY, mappedBy = "hall")
     private List<Seat> seatList;
 
+    @OneToMany(fetch = FetchType.LAZY, mappedBy = "hall")
+    private List<Schedule> scheduleList;
+
     public HallDTO toDTO(){
         return HallDTO.builder()
                 .theater(theater.toDTO())

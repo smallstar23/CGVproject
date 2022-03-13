@@ -16,6 +16,7 @@ import javax.persistence.*;
         allocationSize = 1
 )
 @Builder
+@ToString(exclude = "hall")
 public class Seathtml {
 
     @Id
