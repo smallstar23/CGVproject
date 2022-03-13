@@ -5,9 +5,7 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.ToString;
 
-import java.time.LocalDate;
 import java.time.LocalDateTime;
-import java.time.LocalTime;
 
 @AllArgsConstructor // 모든 생성자를 자동으로 만들게 해주는 롬복
 @ToString // toString 쓸수있게해줌

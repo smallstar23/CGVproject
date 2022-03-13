@@ -4,13 +4,11 @@ import com.koreait.cgvproject.dto.MemberDTO;
 import com.koreait.cgvproject.entity.Member;
 import com.koreait.cgvproject.repository.MemberRepository;
 import lombok.AllArgsConstructor;
-import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import javax.servlet.http.HttpSession;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;

@@ -1,6 +1,5 @@
 package com.koreait.cgvproject.dto;
 
-import com.koreait.cgvproject.entity.Gift;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;

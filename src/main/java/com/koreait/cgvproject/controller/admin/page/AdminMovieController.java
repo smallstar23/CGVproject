@@ -1,12 +1,11 @@
 package com.koreait.cgvproject.controller.admin.page;
 
 
-import com.koreait.cgvproject.dto.*;
-import com.koreait.cgvproject.entity.Actor;
-import com.koreait.cgvproject.entity.Director;
-import com.koreait.cgvproject.entity.Trailer;
+import com.koreait.cgvproject.dto.ActorDTO;
+import com.koreait.cgvproject.dto.DirectorDTO;
+import com.koreait.cgvproject.dto.MovieDTO;
+import com.koreait.cgvproject.dto.TrailerDTO;
 import com.koreait.cgvproject.repository.MovieRepository;
-import com.koreait.cgvproject.repository.TheaterRepository;
 import com.koreait.cgvproject.service.admin.actor.AdminActorService;
 import com.koreait.cgvproject.service.admin.director.AdminDirectorService;
 import com.koreait.cgvproject.service.admin.hall.AdminHallService;
@@ -104,7 +103,7 @@ public class AdminMovieController {
     }
 
     @PostMapping("/manage_ongoingmovies_creates")
-    public  String view_create(@ModelAttribute TrailerDTO trailerDTO,DirectorDTO directorDTO,ActorDTO actorDTO,Model model){
+    public  String view_create(@ModelAttribute TrailerDTO trailerDTO, DirectorDTO directorDTO, ActorDTO actorDTO, Model model){
         Long trailerint =trailerDTO.getMcode();
         System.out.println("확인");
         if (movieService.creatTrailer(trailerDTO) == 1) {

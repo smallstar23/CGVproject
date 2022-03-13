@@ -1,18 +1,12 @@
 package com.koreait.cgvproject.controller.admin.rest;
 
 import com.koreait.cgvproject.dto.SeatDTO;
-import com.koreait.cgvproject.entity.Hall;
-import com.koreait.cgvproject.entity.Seat;
-import com.koreait.cgvproject.repository.HallRepository;
-import com.koreait.cgvproject.repository.SeatRepository;
 import com.koreait.cgvproject.service.admin.seat.AdminSeatService;
 import lombok.AllArgsConstructor;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
-import java.util.Optional;
-import java.util.stream.DoubleStream;
 
 @RestController
 @AllArgsConstructor

@@ -2,7 +2,6 @@ package com.koreait.cgvproject.entity;
 
 import com.koreait.cgvproject.dto.ActorDTO;
 import lombok.*;
-import org.thymeleaf.spring5.expression.Mvc;
 
 import javax.persistence.*;
 

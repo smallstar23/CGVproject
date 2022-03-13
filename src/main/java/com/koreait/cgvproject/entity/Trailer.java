@@ -1,6 +1,5 @@
 package com.koreait.cgvproject.entity;
 
-import com.koreait.cgvproject.dto.MovieDTO;
 import com.koreait.cgvproject.dto.TrailerDTO;
 import lombok.*;
 
