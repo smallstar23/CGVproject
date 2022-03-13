@@ -21,14 +21,14 @@ public class AdminPriceController {
     private TheaterRepository theaterRepository;
 
     @GetMapping("")
-    public String price(@RequestParam(value = "tcode",required = false, defaultValue = "none") String tcode, Model model){
-        if(tcode.equals("none")){
+    public String price(@RequestParam(value = "tcode",required = false) Long tcode, Model model){
+        if(tcode == null){
             DefaultDTO defaultDTO = new DefaultDTO();
             model.addAttribute("theaterDTO", defaultDTO);
             return ROOT + "price";
         }
-        Optional<Theater> theaterDTO = theaterRepository.findById(Long.valueOf(tcode));
-        theaterDTO.ifPresent(DTO -> model.addAttribute("theaterDTO", DTO));
+        Optional<Theater> theaterOptional = theaterRepository.findById(Long.valueOf(tcode));
+        theaterOptional.ifPresent(theater -> model.addAttribute("theaterDTO", theater.toDTO()));
         return ROOT + "price";
     }
 
@@ -38,4 +38,6 @@ public class AdminPriceController {
         theaterDTO.ifPresent(DTO -> model.addAttribute("theaterDTO", DTO));
         return ROOT + "price_CRUD";
     }
+
+
 }

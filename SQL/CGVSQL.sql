@@ -159,6 +159,7 @@ create sequence seq_price
     start with 1
     increment by 1;
 
+select * from price where tcode = 1 order by week desc, start_time;
 
 CREATE TABLE Schedule (
     schecode number(10)   primary key,
