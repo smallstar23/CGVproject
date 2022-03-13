@@ -1,8 +1,7 @@
-package com.koreait.cgvproject.dto;
+package com.koreait.cgvproject.model.dto;
 
 
-import com.koreait.cgvproject.entity.Actor;
-import com.koreait.cgvproject.entity.Movie;
+import com.koreait.cgvproject.model.entity.Actor;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;

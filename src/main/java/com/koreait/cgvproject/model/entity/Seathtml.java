@@ -1,6 +1,6 @@
-package com.koreait.cgvproject.entity;
+package com.koreait.cgvproject.model.entity;
 
-import com.koreait.cgvproject.dto.SeathtmlDTO;
+import com.koreait.cgvproject.model.dto.SeathtmlDTO;
 import lombok.*;
 
 import javax.persistence.*;

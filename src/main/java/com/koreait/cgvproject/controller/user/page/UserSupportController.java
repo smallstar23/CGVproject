@@ -1,6 +1,6 @@
 package com.koreait.cgvproject.controller.user.page;
 
-import com.koreait.cgvproject.entity.Notification;
+import com.koreait.cgvproject.model.entity.Notification;
 import com.koreait.cgvproject.repository.NotificationRepository;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,9 +12,6 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
-
-import java.time.LocalDateTime;
-import java.util.List;
 
 @Controller
 @Slf4j

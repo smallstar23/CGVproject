@@ -1,13 +1,12 @@
-package com.koreait.cgvproject.entity;
+package com.koreait.cgvproject.model.entity;
 
-import com.koreait.cgvproject.dto.SeatDTO;
+import com.koreait.cgvproject.model.dto.SeatDTO;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
-import java.util.List;
 
 @Entity
 @Data

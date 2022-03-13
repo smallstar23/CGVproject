@@ -1,7 +1,7 @@
-package com.koreait.cgvproject.dto;
+package com.koreait.cgvproject.model.dto;
 
-import com.koreait.cgvproject.entity.Hall;
-import com.koreait.cgvproject.entity.Seathtml;
+import com.koreait.cgvproject.model.entity.Hall;
+import com.koreait.cgvproject.model.entity.Seathtml;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;

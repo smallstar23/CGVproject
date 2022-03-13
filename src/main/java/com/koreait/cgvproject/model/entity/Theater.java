@@ -1,12 +1,11 @@
-package com.koreait.cgvproject.entity;
+package com.koreait.cgvproject.model.entity;
 
-import com.koreait.cgvproject.dto.TheaterDTO;
+import com.koreait.cgvproject.model.dto.TheaterDTO;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import org.hibernate.annotations.Fetch;
 
 
 import javax.persistence.*;

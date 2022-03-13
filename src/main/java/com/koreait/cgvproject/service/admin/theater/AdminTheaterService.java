@@ -1,9 +1,8 @@
 package com.koreait.cgvproject.service.admin.theater;
 
-import com.koreait.cgvproject.dto.HallDTO;
-import com.koreait.cgvproject.dto.TheaterDTO;
-import com.koreait.cgvproject.entity.Hall;
-import com.koreait.cgvproject.entity.Theater;
+import com.koreait.cgvproject.model.dto.HallDTO;
+import com.koreait.cgvproject.model.dto.TheaterDTO;
+import com.koreait.cgvproject.model.entity.Theater;
 import com.koreait.cgvproject.repository.TheaterRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;

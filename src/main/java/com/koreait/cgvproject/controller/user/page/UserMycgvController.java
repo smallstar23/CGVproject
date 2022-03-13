@@ -1,6 +1,6 @@
 package com.koreait.cgvproject.controller.user.page;
 
-import com.koreait.cgvproject.entity.Member;
+import com.koreait.cgvproject.model.entity.Member;
 import com.koreait.cgvproject.service.admin.member.MemberService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;

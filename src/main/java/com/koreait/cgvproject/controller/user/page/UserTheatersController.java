@@ -1,15 +1,13 @@
 package com.koreait.cgvproject.controller.user.page;
 
-import com.koreait.cgvproject.dto.HallDTO;
-import com.koreait.cgvproject.dto.TheaterDTO;
-import com.koreait.cgvproject.entity.Hall;
+import com.koreait.cgvproject.model.dto.HallDTO;
+import com.koreait.cgvproject.model.dto.TheaterDTO;
 import com.koreait.cgvproject.service.admin.theater.AdminTheaterService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestParam;
 
 import java.util.List;
 

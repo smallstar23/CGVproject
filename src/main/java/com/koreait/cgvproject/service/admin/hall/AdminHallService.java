@@ -1,17 +1,13 @@
 package com.koreait.cgvproject.service.admin.hall;
 
-import com.koreait.cgvproject.dto.HallDTO;
-import com.koreait.cgvproject.entity.Hall;
-import com.koreait.cgvproject.entity.Theater;
+import com.koreait.cgvproject.model.dto.HallDTO;
+import com.koreait.cgvproject.model.entity.Hall;
+import com.koreait.cgvproject.model.entity.Theater;
 import com.koreait.cgvproject.repository.HallRepository;
 import com.koreait.cgvproject.repository.TheaterRepository;
 import lombok.AllArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Transactional;
-
-import java.util.ArrayList;
-import java.util.List;
 
 @Service
 @AllArgsConstructor

@@ -1,7 +1,7 @@
 package com.koreait.cgvproject.repository;
 
-import com.koreait.cgvproject.entity.Hall;
-import com.koreait.cgvproject.entity.Seathtml;
+import com.koreait.cgvproject.model.entity.Hall;
+import com.koreait.cgvproject.model.entity.Seathtml;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 

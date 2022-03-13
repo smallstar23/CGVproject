@@ -1,13 +1,7 @@
-package com.koreait.cgvproject.dto;
+package com.koreait.cgvproject.model.dto;
 
-import com.koreait.cgvproject.entity.Hall;
-import com.koreait.cgvproject.entity.Theater;
-import com.koreait.cgvproject.repository.TheaterRepository;
-import com.koreait.cgvproject.service.admin.theater.AdminTheaterService;
+import com.koreait.cgvproject.model.entity.Hall;
 import lombok.*;
-import org.springframework.beans.factory.annotation.Autowired;
-
-import java.util.List;
 
 @Data
 @AllArgsConstructor

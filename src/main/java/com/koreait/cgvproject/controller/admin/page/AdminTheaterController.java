@@ -1,7 +1,7 @@
 package com.koreait.cgvproject.controller.admin.page;
 
-import com.koreait.cgvproject.dto.HallDTO;
-import com.koreait.cgvproject.dto.TheaterDTO;
+import com.koreait.cgvproject.model.dto.HallDTO;
+import com.koreait.cgvproject.model.dto.TheaterDTO;
 import com.koreait.cgvproject.service.admin.hall.AdminHallService;
 import com.koreait.cgvproject.service.admin.theater.AdminTheaterService;
 import org.springframework.beans.factory.annotation.Autowired;
