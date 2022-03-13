@@ -79,8 +79,8 @@
     <script type="text/javascript" src="https://img.cgv.co.kr/R2014/js/jquery.plugin/jquery.placeholder.js"></script>
     <![endif]-->
 
-    <script type="text/javascript">
-        var loginStatus = 'True';
+    <script th:inline="javascript" type="text/javascript">
+        let loginStatus = [[${session.userid}]];
 
         $(document).ready(function () {
             $.giftstore_bigBanner('big_banner_wrap', []);
@@ -88,6 +88,26 @@
 
         });
 
+        function logincheck(){
+                alert("로그인 후 이용해주세요");
+                return location.href = "/user/login";
+
+            // } else {
+            //     let gcode = $(this).attr("gcode");
+            //     let movieDTOList = [[${movieDTOList}]];
+            //
+            //     // let movieinfo = new Object();
+            //     // movieDTOList.forEach(function (movie){
+            //     //     movieinfo.gcode= movie.gcode;
+            //     // })
+            //
+            //     console.log(movieDTOList);
+            //     console.log(gcode);
+            //     // return th:
+            //     // return location.href="/user/login";
+            //     // return th:href('@{/culture-event/popcorn-store/product-detail?gcode=} + ${movieDTO.gcode}');
+            // }
+        }
 
         function fnReloadDealList() {
             var jsonData = "";
@@ -116,8 +136,9 @@
 
         //페이지 이동
         function fnMoveLink(mvtype, pno, pidx, cnt) {
-            if (loginStatus == "False") {
-                app.goLogin();
+            if (loginStatus == null) {
+                alert("로그인 후 이용해주세요.")
+                return false;
             } else {
                 if (mvtype == '1') {
                     fnAddCart(pno, pidx);
@@ -136,7 +157,8 @@
         function fnBuyGoods(_idx, pidx, type, cnt) {
 
             if (loginStatus == "False") {
-                app.goLogin();
+                alert("로그인 후 이용해주세요.")
+                return false;
             }
 
             var _Cnt = cnt;
@@ -192,7 +214,8 @@
         //장바구니
         function fnAddCart(_idx, _pidx) {
             if (loginStatus == "False") {
-                app.goLogin();
+                alert("로그인 후 이용해주세요.")
+                return false;
             }
 
             var _Cnt = 1;
@@ -333,7 +356,7 @@
         <!-- E 선물추천 10 -->
         <!-- S Category product -->
         <div class='category_product_wrap'>
-            <ul class='category_product_list'>
+            <ul class='category_product_list' th:if="${session.userid == null}">
 
                 <li>
                     <strong class='category_product_title'>영화관람권<a href='/culture-event/popcorn-store/store-category?cno=2'
@@ -341,7 +364,7 @@
                     <ul class='category_product_inner_list'>
                         <!-- 반복할 부분 -->
                         <li class=' ' th:each="movieDTO : ${movieDTOList}">
-                            <a th:href='@{/culture-event/popcorn-store/product-detail?gcode=} + ${movieDTO.gcode}' class='btn_category_product'>
+                            <a onclick="logincheck()" class='btn_category_product' >
                                 <span class='best_product_img_wrap'>
                                     <img th:src="${movieDTO.gfile}"
                                          th:alt="${movieDTO.title}"/>
@@ -367,11 +390,10 @@
                 <li>
                     <strong class='category_product_title'>콤보<a href='/culture-event/popcorn-store/store-category?cno=4'
                                                                 class='btn_category_product'>더보기</a></strong>
-
                         <ul class='category_product_inner_list'>
                             <!-- 반복할 부분 -->
                             <li class=' ' th:each="comboDTO : ${comboDTOList}">
-                                <a th:href='@{/culture-event/popcorn-store/product-detail?gcode=} + ${comboDTO.gcode}' class='btn_category_product'>
+                                <a onclick="logincheck()" class='btn_category_product' >
                                 <span class='best_product_img_wrap'>
                                     <img th:src="${comboDTO.gfile}"
                                          th:alt="${comboDTO.title}"/>
@@ -400,7 +422,8 @@
                     <ul class='category_product_inner_list'>
                         <!-- 반복할 부분 -->
                         <li class=' ' th:each="popcornDTO : ${popcornDTOList}">
-                            <a th:href='@{/culture-event/popcorn-store/product-detail?gcode=} + ${popcornDTO.gcode}' class='btn_category_product'>
+<!--                        <li class=' ' th:each="popcornDTO : ${popcornDTOList}" th:if="${session.userid==null}">-->
+                            <a onclick="logincheck()" class='btn_category_product' >
                                 <span class='best_product_img_wrap'>
                                     <img th:src="${popcornDTO.gfile}"
                                          th:alt="${popcornDTO.title}"/>
@@ -427,6 +450,158 @@
                     <strong class='category_product_title'>음료
                         <a href='/culture-event/popcorn-store/store-category?cno=6'
                                                                 class='btn_category_product'>더보기</a></strong>
+                    <ul class='category_product_inner_list'>
+                        <!-- 반복할 부분 -->
+                        <li class=' ' th:each="drinkDTO : ${drinkDTOList}">
+                            <a onclick="logincheck()" class='btn_category_product' >
+                                <span class='best_product_img_wrap'>
+                                    <img th:src="${drinkDTO.gfile}"
+                                         th:alt="${drinkDTO.title}"/>
+                                </span>
+                                <span class='best_product_text_wrap'>
+                                    <span class='best_product_text_title' th:text="${drinkDTO.title}"></span>
+                                    <span class='best_product_text_name' th:text="${drinkDTO.mainonString}"></span>
+                                    <span class='best_product_sale_price_wrap'>
+                                        <span class='store_deatail_source_price' th:text="${drinkDTO.price}"></span>
+                                    </span>
+                                </span>
+                            </a>
+                            <a href="#none" onclick="fnMoveLink('1', '100253', '0', ''); return false;"
+                               class="btn_category_product_cart">1</a>
+                            <a href="#none" onclick="fnMoveLink('2', '100253', '0', '1'); return false;"
+                               class="btn_category_product_gift">2</a>
+                            <a href="#none" onclick="fnMoveLink('3', '100253', '0', '1'); return false;"
+                               class="btn_category_product_buy">3</a>
+                        </li>
+                        <!-- 반복할 부분 -->
+                    </ul>
+                </li>
+                <li>
+                    <strong class='category_product_title'>스낵<a href='/culture-event/popcorn-store/store-category?cno=7'
+                                                                class='btn_category_product'>더보기</a></strong>
+                    <ul class='category_product_inner_list'>
+                        <!-- 반복할 부분 -->
+                        <li class=' ' th:each="snackDTO : ${snackDTOList}">
+                            <a onclick="logincheck()" class='btn_category_product' >
+                                <span class='best_product_img_wrap'>
+                                    <img th:src="${snackDTO.gfile}"
+                                         th:alt="${snackDTO.title}"/>
+                                </span>
+                                <span class='best_product_text_wrap'>
+                                    <span class='best_product_text_title' th:text="${snackDTO.title}"></span>
+                                    <span class='best_product_text_name' th:text="${snackDTO.mainonString}"></span>
+                                    <span class='best_product_sale_price_wrap'>
+                                        <span class='store_deatail_source_price' th:text="${snackDTO.price}"></span>
+                                    </span>
+                                </span>
+                            </a>
+                            <a href="#none" onclick="fnMoveLink('1', '100253', '0', ''); return false;"
+                               class="btn_category_product_cart">1</a>
+                            <a href="#none" onclick="fnMoveLink('2', '100253', '0', '1'); return false;"
+                               class="btn_category_product_gift">2</a>
+                            <a href="#none" onclick="fnMoveLink('3', '100253', '0', '1'); return false;"
+                               class="btn_category_product_buy">3</a>
+                        </li>
+                        <!-- 반복할 부분 -->
+                    </ul>
+                </li>
+            </ul>
+
+<!--            로그인 상태 판별 if문-->
+            <ul class='category_product_list' th:unless="${session.userid == null}">
+
+                <li>
+                    <strong class='category_product_title'>영화관람권<a href='/culture-event/popcorn-store/store-category?cno=2'
+                                                                   class='btn_category_product'>더보기</a></strong>
+                    <ul class='category_product_inner_list'>
+                        <!-- 반복할 부분 -->
+                        <li class=' ' th:each="movieDTO : ${movieDTOList}">
+                                <a th:href='@{/culture-event/popcorn-store/product-detail?gcode=} + ${movieDTO.gcode}' class='btn_category_product' >
+                                <span class='best_product_img_wrap'>
+                                    <img th:src="${movieDTO.gfile}"
+                                         th:alt="${movieDTO.title}"/>
+                                </span>
+                                <span class='best_product_text_wrap'>
+                                    <span class='best_product_text_title' th:text="${movieDTO.title}"></span>
+                                    <span class='best_product_text_name' th:text="${movieDTO.mainonString}"></span>
+                                    <span class='best_product_sale_price_wrap'>
+                                        <span class='store_deatail_source_price' th:text="${movieDTO.price}"></span>
+                                    </span>
+                                </span>
+                            </a>
+                            <a href="#none" onclick="fnMoveLink('1', '100253', '0', ''); return false;"
+                               class="btn_category_product_cart">1</a>
+                            <a href="#none" onclick="fnMoveLink('2', '100253', '0', '1'); return false;"
+                               class="btn_category_product_gift">2</a>
+                            <a href="#none" onclick="fnMoveLink('3', '100253', '0', '1'); return false;"
+                               class="btn_category_product_buy">3</a>
+                        </li>
+                        <!-- 반복할 부분 -->
+                    </ul>
+                </li>
+                <li>
+                    <strong class='category_product_title'>콤보<a href='/culture-event/popcorn-store/store-category?cno=4'
+                                                                class='btn_category_product'>더보기</a></strong>
+                    <ul class='category_product_inner_list'>
+                        <!-- 반복할 부분 -->
+                        <li class=' ' th:each="comboDTO : ${comboDTOList}">
+                            <a th:href='@{/culture-event/popcorn-store/product-detail?gcode=} + ${comboDTO.gcode}' class='btn_category_product'>
+                                <span class='best_product_img_wrap'>
+                                    <img th:src="${comboDTO.gfile}"
+                                         th:alt="${comboDTO.title}"/>
+                                </span>
+                                <span class='best_product_text_wrap'>
+                                    <span class='best_product_text_title' th:text="${comboDTO.title}"></span>
+                                    <span class='best_product_text_name' th:text="${comboDTO.mainonString}"></span>
+                                    <span class='best_product_sale_price_wrap'>
+                                        <span class='store_deatail_source_price' th:text="${comboDTO.price}"></span>
+                                    </span>
+                                </span>
+                            </a>
+                            <a href="#none" onclick="fnMoveLink('1', '100253', '0', ''); return false;"
+                               class="btn_category_product_cart">1</a>
+                            <a href="#none" onclick="fnMoveLink('2', '100253', '0', '1'); return false;"
+                               class="btn_category_product_gift">2</a>
+                            <a href="#none" onclick="fnMoveLink('3', '100253', '0', '1'); return false;"
+                               class="btn_category_product_buy">3</a>
+                        </li>
+                        <!-- 반복할 부분 -->
+                    </ul>
+                </li>
+                <li>
+                    <strong class='category_product_title'>팝콘<a href='/culture-event/popcorn-store/store-category?cno=5'
+                                                                class='btn_category_product'>더보기</a></strong>
+                    <ul class='category_product_inner_list'>
+                        <!-- 반복할 부분 -->
+                        <li class=' ' th:each="popcornDTO : ${popcornDTOList}">
+                            <!--                        <li class=' ' th:each="popcornDTO : ${popcornDTOList}" th:if="${session.userid==null}">-->
+                            <a th:href='@{/culture-event/popcorn-store/product-detail?gcode=} + ${popcornDTO.gcode}' class='btn_category_product'>
+                                <span class='best_product_img_wrap'>
+                                    <img th:src="${popcornDTO.gfile}"
+                                         th:alt="${popcornDTO.title}"/>
+                                </span>
+                                <span class='best_product_text_wrap'>
+                                    <span class='best_product_text_title' th:text="${popcornDTO.title}"></span>
+                                    <span class='best_product_text_name' th:text="${popcornDTO.mainonString}"></span>
+                                    <span class='best_product_sale_price_wrap'>
+                                        <span class='store_deatail_source_price' th:text="${popcornDTO.price}"></span>
+                                    </span>
+                                </span>
+                            </a>
+                            <a href="#none" onclick="fnMoveLink('1', '100253', '0', ''); return false;"
+                               class="btn_category_product_cart">1</a>
+                            <a href="#none" onclick="fnMoveLink('2', '100253', '0', '1'); return false;"
+                               class="btn_category_product_gift">2</a>
+                            <a href="#none" onclick="fnMoveLink('3', '100253', '0', '1'); return false;"
+                               class="btn_category_product_buy">3</a>
+                        </li>
+                        <!-- 반복할 부분 -->
+                    </ul>
+                </li>
+                <li>
+                    <strong class='category_product_title'>음료
+                        <a href='/culture-event/popcorn-store/store-category?cno=6'
+                           class='btn_category_product'>더보기</a></strong>
                     <ul class='category_product_inner_list'>
                         <!-- 반복할 부분 -->
                         <li class=' ' th:each="drinkDTO : ${drinkDTOList}">
@@ -483,6 +658,7 @@
                     </ul>
                 </li>
             </ul>
+
         </div>
 
         <!-- E Category product -->
