@@ -4,16 +4,22 @@ import com.koreait.cgvproject.dto.MemberDTO;
 import com.koreait.cgvproject.entity.Member;
 import com.koreait.cgvproject.repository.MemberRepository;
 import lombok.AllArgsConstructor;
+import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import javax.servlet.http.HttpSession;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
+@Slf4j
 @Service
 @AllArgsConstructor
 public class MemberService {
-
+    @Autowired
     private MemberRepository memberRepository;
 
     public List<MemberDTO> getMemberList(){
@@ -69,5 +75,23 @@ public class MemberService {
                 .build();
         return member__dto;
 
+    }
+
+    public void update(Long idx,MemberDTO memberDTO){
+        Optional<Member> member =memberRepository.findById(idx);
+        member.ifPresent(select ->{
+            select.setUserid(memberDTO.getUserid());
+            select.setUsername(memberDTO.getUsername());
+            select.setUserpw(memberDTO.getUserpw());
+            select.setEmail(memberDTO.getEmail1()+"@"+memberDTO.getEmail2());
+            select.setHp(memberDTO.getHp1()+"-"+memberDTO.getHp2()+"-"+memberDTO.getHp3());
+            select.setSsn(memberDTO.getSsn1().substring(2)+memberDTO.getSsn2()+memberDTO.getSsn3());
+        });
+        memberRepository.save(member.get());
+    }
+
+    public void delete(Long idx){
+        log.info("idx="+idx);
+        memberRepository.deleteById(idx);
     }
 }
