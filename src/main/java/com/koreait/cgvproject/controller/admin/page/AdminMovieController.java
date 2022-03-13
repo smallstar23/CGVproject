@@ -32,20 +32,9 @@ public class AdminMovieController {
     private AdminTrailerService adminTrailerService;
     private AdminDirectorService adminDirectorService;
     private AdminActorService adminActorService;
-    private AdminHallService adminHallService;
 
 //    private MovieService movieService;
 
-
-    @GetMapping("manage_movieSchedule")//movie-schedule 페이지
-    public String movie_schedule(){
-        return "/admin/movie/manage_movieSchedule";
-    }
-
-    @GetMapping("/manage_movieSchedule_create")//movie-schedule 페이지
-    public String movie_schedule_create(){
-        return "/admin/movie/manage_movieSchedule_create";
-    }
 
 //    @PostMapping("/manage_movieSchedule_create")
 //    public String writes(MovieDTO movieDTO){
