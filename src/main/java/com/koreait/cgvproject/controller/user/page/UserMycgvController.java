@@ -9,6 +9,8 @@ import com.koreait.cgvproject.service.admin.member.MemberService;
 import com.koreait.cgvproject.service.user.login.UserLoginService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.apache.catalina.core.ApplicationContext;
+import org.springframework.beans.factory.BeanFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -118,7 +120,6 @@ public class UserMycgvController {
 
     @PostMapping("/user/mycgv/myinfo/mycgv-myinfo-edit")
     public String putProfile( @ModelAttribute MemberDTO memberDTO, Model model){
-        log.info(memberDTO.toString());
         Member member = memberService.getMember((String)httpSession.getAttribute("userid"));
         model.addAttribute("member", member);
         memberService.update(member.getIdx(), memberDTO);
@@ -151,7 +152,6 @@ public class UserMycgvController {
     public String mycgv_myinfo_leavecgv(Model model){
         Member member = memberService.getMember((String)httpSession.getAttribute("userid"));
         memberService.delete(member.getIdx());
-
         return "redirect:/user/logout";
     }
 
