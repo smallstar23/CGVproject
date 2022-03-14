@@ -41,7 +41,7 @@ public class Trailer {
 
 
     public TrailerDTO toDTO(){
-        return TrailerDTO.builder().idx(idx).movieDTO(movie.toDTO()).description1(description1).description2(description2)
+        return TrailerDTO.builder().traileridx(idx).movieDTO(movie.toDTO()).description1(description1).description2(description2)
                 .description3(description3).photo1(photo1).photo2(photo2).photo3(photo3).photo4(photo4)
                 .photo5(photo5).trailer1(trailer1).trailer2(trailer2).trailer3(trailer3).build();
     }

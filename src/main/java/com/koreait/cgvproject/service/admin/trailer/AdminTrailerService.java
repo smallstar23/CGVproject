@@ -14,6 +14,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 @Service
 @AllArgsConstructor
@@ -31,7 +32,6 @@ public class AdminTrailerService {
 
         Trailer trailer =trailerRepository.findByMovie(movie);
         if (trailer!= null){
-            System.out.println(trailer);
             TrailerDTO trailerDTO =new TrailerDTO();
             trailerDTO.setDescription1(trailer.getDescription1());
             trailerDTO.setDescription2(trailer.getDescription2());
@@ -46,7 +46,7 @@ public class AdminTrailerService {
             trailerDTO.setTrailer3(trailer.getTrailer3());
             trailerDTO.setMovieDTO(movie.toDTO());
 //          trailerDTO.setMcode(trailer.getMovie().getMcode());
-
+            trailerDTO.setTraileridx(trailer.getIdx());
             return trailerDTO;
         }
 
@@ -65,4 +65,19 @@ public class AdminTrailerService {
         return trailerDTOList;
     }
 
+    @Transactional
+    public void updateTrailerTest(TrailerDTO trailerDTO){
+        trailerRepository.save(trailerDTO.toEntityForCreate());
+    }
+
+
+
+    @Transactional
+    public  int updateTrailer(Trailer trailer){
+
+        trailerRepository.save(trailer);
+        log.info(trailer.toString());
+
+        return  1;
+    }
 }

@@ -161,15 +161,18 @@ create sequence seq_price
 
 select * from price where tcode = 1 order by week desc, start_time;
 
+
 CREATE TABLE Schedule (
-    schecode number(10)   primary key,
-    mcode number(7)   not null,
-    hcode number(10)   not null,
-    scdate date   not null, -- 날짜
-    sctime varchar2(10) not null, -- 시간
-    constraint fk_Schedule_mcode foreign key(mcode) references Movie (mcode),
-    constraint fk_Schedule_hcode foreign key(hcode) references Hall (hcode)
+  schecode number(10)   primary key,
+  mcode number(7)   not null,
+  hcode number(10)   not null,
+  scdate date   not null, -- 날짜, 시간까지 같이 저장할 것
+  constraint fk_Schedule_mcode foreign key(mcode) references Movie (mcode),
+  constraint fk_Schedule_hcode foreign key(hcode) references Hall (hcode)
 );
+insert into schedule(schecode, mcode, hcode, scdate) values (seq_schedule.nextval, 64, 46, TO_DATE('2022/03/14 21:00:00','YYYY-MM-DD HH24:MI:SS'));
+ALTER SESSION SET NLS_DATE_FORMAT = 'YYYY-MM-DD HH24:MI:SS';
+
 create sequence seq_schedule
     increment by 1
     start with 1;
