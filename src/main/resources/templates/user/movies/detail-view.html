@@ -93,11 +93,11 @@
         <div class="wrap-movie-detail" id="select_main">
 
             <div class="sect-base-movie">
-                <h3><strong>극장판 주술회전 0</strong>기본정보</h3>
+                <h3><strong th:utext="${movie.getTitleKo()}"></strong>기본정보</h3>
                 <div class="box-image">
-                    <a href="https://img.cgv.co.kr/Movie/Thumbnail/Poster/000085/85603/85603_1000.jpg" title="포스터 크게 보기 새창" target="_blank">
+                    <a th:href="${movie.poster}" title="포스터 크게 보기 새창" target="_blank">
             <span class="thumb-image">
-                <img src="https://img.cgv.co.kr/Movie/Thumbnail/Poster/000085/85603/85603_320.jpg" alt="극장판 주술회전 0 포스터 새창" onerror="errorImage(this)">
+                <img th:src="${movie.poster}" alt="극장판 주술회전 0 포스터 새창" onerror="errorImage(this)">
                 <span class="ico-posterdetail">포스터 크게 보기</span>
                 <span class="ico-grade grade-15"> 15세 이상</span>
             </span>
@@ -106,11 +106,11 @@
                 <div class="box-contents">
                     <!-- 해당 영화 정보 시작-->
                     <div class="title">
-                        <strong>영화한글명</strong>
+                        <strong th:utext="${movie.getTitleKo()}">영화한글명</strong>
 
                         <em class="round brown"><span>예매중</span></em>
                         <em class="round red"><span>D-7</span></em>
-                        <p>영문 영화명</p>
+                        <p th:utext="${movie.getTitleEn()}"></p>
                     </div>
 
                     <!-- 영화 예매율 -->
@@ -122,10 +122,7 @@
                         <dl>
                             <dt>감독 :&nbsp;</dt>
                             <dd>
-
-
-                                <a href="#">박성후</a>
-
+                                <a href="#" th:utext="${director.dnameKo}"></a>
                             </dd>
 
                             <dd>
@@ -136,28 +133,17 @@
                             <dd class="on">
 
 
-                                <a href="#">오가타 메구미, </a>
+                                <a href="#" th:utext="${actor.anameKo}"></a>
 
-                                <a href="#">하나자와 카나, </a>
-
-                                <a href="#">코마츠 미카코, </a>
-
-                                <a href="#">우치야마 코우키, </a>
-
-                                <a href="#">세키 토모카즈, </a>
-
-                                <a href="#">나카무라 유이치, </a>
-
-                                <a href="#">사쿠라이 타카히로</a>
 
                             </dd>
-
-                            <dt>장르 :&nbsp;애니메이션</dt>
+                            <dt>장르 :&nbsp;</dt>
+                            <dt th:utext="${movie.genre}"></dt>
                             <dd></dd>
                             <dt>&nbsp;/ 기본 :&nbsp;</dt>
-                            <dd class="on">15세 이상,&nbsp;105분,&nbsp;일본</dd>
+                            <dd class="on" th:utext="|${movie.movieRating},|+| ${movie.runtime}분,|+| ${movie.country}|"></dd>
                             <dt>개봉 :&nbsp;</dt>
-                            <dd class="on">2022.02.17</dd>
+                            <dd class="on" th:utext="${movie.launchDate}"></dd>
 
 
 
@@ -227,17 +213,15 @@
                         <li class="last"><a th:href="@{detail-show-times}">상영시간표</a></li>
                     </ul>
                     <div class="sect-story-movie" >
-                        어릴 적 소꿉친구인 오리모토 리카를 교통사고로 눈앞에서 잃은 옷코츠 유타.<br>
+                        <br><br>
+                        <strong th:utext="${trailer.getDescription1()}"></strong><br>
+
+                        <strong><br></strong>
+                        <br th:utext="${trailer.getDescription2()}">
                         <br>
-                        <strong th:text="${trailer.getDescription1()}">??????????????????</strong><br>
-                        옷코츠는 원령으로 변한 리카의 저주에 괴로워한 나머지, 자신도 죽기를 바라지만 최강의 주술사인 고죠 사토루에 의해 주술고전에 들어가게 된다. 그리고 동급생인 젠인마키, 이누마키 토게, 판다를 만나면서 굳은 결심을 한다.<br>
                         <br>
-                        <strong>“살아도 된다는 자신감이 필요해”<br>
-                            “나는 주술고전에서 리카의 저주를 풀겠습니다”</strong><br>
-                        한편, 옷코츠와 친구들 앞에 과거에 일반인을 대량으로 학살해서 고전에서 추방된 최악의 주저사인 게토 스구루가 나타난다.<br>
-                        <br>
-                        <strong>“12월 24일, 우리는 백귀야행을 결행한다”</strong><br>
-                        주술사만의 낙원을 만들려는 게토는 비술사를 섬멸하겠다면서, 신주쿠와 교토에 천의 저주를 내리는데…과연 옷코츠는 게토를 막을 수 있을까? 그리고리카의 저주를 풀 수 있을까?
+                        <strong th:utext="${trailer.getDescription3()}"></strong><br>
+
                     </div>
                     <!-- .sect-story -->
                     <!-- 2020.05.07 성별예매분포, 연령별예매분포 UI 변경 -->
