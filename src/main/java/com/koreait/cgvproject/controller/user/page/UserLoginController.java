@@ -1,5 +1,7 @@
 package com.koreait.cgvproject.controller.user.page;
 
+import com.koreait.cgvproject.entity.Member;
+import com.koreait.cgvproject.repository.MemberRepository;
 import com.koreait.cgvproject.service.user.login.UserLoginService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -22,6 +24,9 @@ public class UserLoginController {
     @Autowired
     private HttpSession session;
 
+    @Autowired
+    private MemberRepository memberRepository;
+
     @GetMapping("/user/login")
     public String login(){
         return "user/login/login";
@@ -29,9 +34,11 @@ public class UserLoginController {
 
     @PostMapping("/main")
     public String postMain(@RequestParam String userid, @RequestParam String userpw){
-
+        Member member = memberRepository.findByUserid(userid);
         if(userLoginService.login(userid,userpw)) {
             session.setAttribute("userid", userid);
+            session.setAttribute("username", member.getUsername()); // 주문자 정보 확인 위해서
+            session.setAttribute("userhp",member.getHp()); // 주문자 정보 확인 위해서
             return "/user/main"; //메인
         }
         return "redirect:/user/login"; //다시 로그인
@@ -40,7 +47,6 @@ public class UserLoginController {
 
     @GetMapping("/user/logout")
     public String logout(){
-        log.info("로그아웃성공");
         session.invalidate();
         return "redirect:/main";
     }

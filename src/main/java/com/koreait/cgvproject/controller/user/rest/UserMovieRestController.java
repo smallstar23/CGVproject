@@ -15,7 +15,7 @@ public class UserMovieRestController {
     @Autowired
     UserMovieService userMovieService;
 
-    @GetMapping("/api")
+    @PostMapping("/movielist")
     public List<MovieDTO> list(){
         return userMovieService.getList();
     }

@@ -27,6 +27,7 @@ public class UserMovieService {
     private DiretorRepository diretorRepository;
     private ActorRepository actorRepository;
 
+
     public List<MovieDTO> getList(){
 
         List<MovieDTO> movieDTOList=new ArrayList<>();

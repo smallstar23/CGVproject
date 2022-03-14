@@ -2,6 +2,7 @@ package com.koreait.cgvproject.controller.user.page;
 
 import com.koreait.cgvproject.dto.GiftDTO;
 import com.koreait.cgvproject.service.user.store.UserStoreService;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -14,6 +15,7 @@ import java.util.Map;
 
 @Controller
 @RequestMapping("/culture-event")
+@Slf4j
 public class UserStoreController {
 
     @Autowired
@@ -49,6 +51,16 @@ public class UserStoreController {
         return ROOT + "/product-detail";
     }
 
+    @GetMapping("/popcorn-store/purchase-confirm")
+    public String directPay(@RequestParam(value = "gcode", required = false) Long gcode, @RequestParam(value = "totalCount") String total, Model model){
+        if(gcode == null) return "user/culture-event/no-gift";
+//        log.info(String.valueOf(total));
+        GiftDTO selectDTO = userStoreService.getGiftDTO(gcode);
+        model.addAttribute("giftDTO", selectDTO);
+
+        return ROOT + "/purchase-confirm";
+    }
+
     @GetMapping("/popcorn-store/user-cart")
     public String userCart(){
         return ROOT + "/user-cart";
@@ -62,11 +74,6 @@ public class UserStoreController {
     @GetMapping("/popcorn-store/store-payment")
     public String giftPay(){
         return ROOT + "/store-payment";
-    }
-
-    @GetMapping("/popcorn-store/purchase-confirm")
-    public String directPay(){
-        return ROOT + "/purchase-confirm";
     }
 
     @GetMapping("/popcorn-store/payment-successcomplete")

@@ -51,11 +51,11 @@
             <div class="card mb-4">
                 <div class="card-header">
                     <i class="fas fa-table me-1"></i>
-                    현재 상영중인 영화
-                    <input type="button" value="영화 등록" th:onclick="|location.href='@{/manage_movieSchedule_create}'|"   style="background-color: #F08080; float:right"/>
+                    현재 스케쥴 관리
+                    <input type="button" value="스케쥴 등록" th:onclick="|location.href='@{/movie/schedule/create}'|"   style="background-color: #F08080; float:right"/>
                 </div>
                 <div class="card-body">
-                    <table id="datatablesSimple">
+                    <table id="datatablesSimple" class="dataTable-table">
                         <thead>
                         <tr>
                             <th>스케쥴 코드</th>
@@ -70,22 +70,8 @@
                             <th>종료 시간</th>
                         </tr>
                         </thead>
-                        <tfoot>
-                        <tr>
-                            <th>스케쥴 코드</th>
-                            <th>영화코드</th>
-                            <th>영화명</th>
-                            <th>상영여부</th>
-                            <th>러닝타임</th>
-                            <th>극장</th>
-                            <th>상영관</th>
-                            <th>상영일</th>
-                            <th>시작 시간</th>
-                            <th>종료 시간</th>
-                        </tr>
-                        </tfoot>
                         <tbody>
-                        <tr th:each="schedule:${scheduleList}">
+                        <tr th:each="schedule:${scheduleList}" th:onclick="|location.href='@{|/movie/schedule/${schedule.getSchecode()}|}'|">
                             <td style="width: 5%;" th:text="${schedule.getSchecode()}"></td>
                             <td style="width: 5%;" th:text="${schedule.getMovieDTO().getMcode()}"></td>
                             <td style="width: 20%;" th:text="${schedule.getMovieDTO().getTitleKo()}"></td>
@@ -94,8 +80,8 @@
                             <td style="width: 10%;" th:text="${schedule.getHallDTO().getTheater().getTname()}"></td>
                             <td style="width: 5%;" th:text="${schedule.getHallDTO().getHguan()}+관"></td>
                             <td style="width: 10%;" th:text="${#temporals.format(schedule.getScdate(), 'yyyy-MM-dd')}"></td>
-                            <td style="width: 5%;" th:text="${#temporals.format(schedule.getScdate(), 'HH:mm:ss')}">13:00</td>
-                            <td style="width: 5%;"></td>
+                            <td style="width: 5%;" th:text="${#temporals.format(schedule.getScdate(), 'HH:mm:ss')}"></td>
+                            <td style="width: 5%;" th:text="${#temporals.format(schedule.getEnddate(), 'HH:mm:ss')}"></td>
                         </tr>
 
                         </tbody>
