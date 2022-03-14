@@ -1,12 +1,11 @@
 package com.koreait.cgvproject.controller.admin.page;
 
 
-import com.koreait.cgvproject.dto.*;
-import com.koreait.cgvproject.entity.Actor;
-import com.koreait.cgvproject.entity.Director;
-import com.koreait.cgvproject.entity.Trailer;
+import com.koreait.cgvproject.dto.ActorDTO;
+import com.koreait.cgvproject.dto.DirectorDTO;
+import com.koreait.cgvproject.dto.MovieDTO;
+import com.koreait.cgvproject.dto.TrailerDTO;
 import com.koreait.cgvproject.repository.MovieRepository;
-import com.koreait.cgvproject.repository.TheaterRepository;
 import com.koreait.cgvproject.service.admin.actor.AdminActorService;
 import com.koreait.cgvproject.service.admin.director.AdminDirectorService;
 import com.koreait.cgvproject.service.admin.hall.AdminHallService;
@@ -33,20 +32,9 @@ public class AdminMovieController {
     private AdminTrailerService adminTrailerService;
     private AdminDirectorService adminDirectorService;
     private AdminActorService adminActorService;
-    private AdminHallService adminHallService;
 
 //    private MovieService movieService;
 
-
-    @GetMapping("manage_movieSchedule")//movie-schedule 페이지
-    public String movie_schedule(){
-        return "/admin/movie/manage_movieSchedule";
-    }
-
-    @GetMapping("/manage_movieSchedule_create")//movie-schedule 페이지
-    public String movie_schedule_create(){
-        return "/admin/movie/manage_movieSchedule_create";
-    }
 
 //    @PostMapping("/manage_movieSchedule_create")
 //    public String writes(MovieDTO movieDTO){
@@ -104,9 +92,8 @@ public class AdminMovieController {
     }
 
     @PostMapping("/manage_ongoingmovies_creates")
-    public  String view_create(@ModelAttribute TrailerDTO trailerDTO,DirectorDTO directorDTO,ActorDTO actorDTO,Model model){
+    public  String view_create(@ModelAttribute TrailerDTO trailerDTO, DirectorDTO directorDTO, ActorDTO actorDTO, Model model){
         Long trailerint =trailerDTO.getMcode();
-        System.out.println("확인");
         if (movieService.creatTrailer(trailerDTO) == 1) {
             movieService.creatDiretor(directorDTO);
             movieService.creatActor(actorDTO);
@@ -117,7 +104,7 @@ public class AdminMovieController {
 
     @GetMapping("/manage_ongoingmovies/detail/{mcode}")
     public  String view_detail(@PathVariable("mcode") Long mcode, Model model){
-        model.addAttribute("mcode",mcode);
+         model.addAttribute("mcode",mcode);
          TrailerDTO trailerDTO =adminTrailerService.findTrailer(mcode);
          model.addAttribute("trailer",trailerDTO);
          DirectorDTO directorDTO=adminDirectorService.findDiretor(mcode);
@@ -127,8 +114,6 @@ public class AdminMovieController {
 
         return  "admin/movie/manage_ongoingmovies_detail";
     }
-
-
 
 
     @GetMapping("/manage_ongoingmovies/edit/{mcode}")

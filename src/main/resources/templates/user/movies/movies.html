@@ -139,50 +139,13 @@
                     <h4 class="hidden">
                         무비차트 - 예매율순
                     </h4>
-                    <ol>
-
-                        <li th:each="movie : ${MovieList}">
-                            <strong class="rank"></strong>
-                                <div class="box-image">
-                                <a th:onclick="|location.href='@{|/movies/detail-view/${movie.getMcode()}|}'|">
-                            <span class="thumb-image">
-                                <img th:src="@{${movie.poster}}" alt="언차티드 포스터">
-                                <span class="ico-grade grade-12"></span>
-                            </span>
-
-                                </a>
-                            </div>
-
-                            <div class="box-contents">
-                                <a th:href="@{movies/detail-view}">
-                                    <strong class="title" th:text="${movie.titleKo}">변경전</strong>
-                                </a>
-
-                                <span class="txt-info">
-                            <strong th:text="${#temporals.format(movie.launchDate,'yyyy-MM-dd')}"}></strong>
-                                <span>개봉</span>
-                        </span>
-                                <span class="like">
-                            <a class="link-reservation" th:href="@{ticket}">예매</a>
-                        </span>
-                            </div>
-
-                        </li>
+                    <ol id="changeView">
 
 
                     </ol>
                 </div>
             </div>
-
-
-
-
-
-
-
-
         </div>
-
 
         <!-- .sect-moviechart -->
         <!--/ Contents End -->
@@ -208,12 +171,133 @@
 
 </body>
 
-<script>
-    let rank=document.getElementsByClassName("rank");
-    console.log(rank);
-    for(let i=0; i<=rank.length; i++){
-        rank[i].innerText="No. "+(i+1);
+<script th:inline="javascript">
 
-    }
+    /*<![CDATA[*/
+    let movieList=[[${MovieList}]];
+
+    // ol 태그 안 changeView, 무비리스트 전체 다
+    let changeView= document.getElementById("changeView");
+    for(let i=0; i<=movieList.length-1; i++){
+        changeView.innerHTML+=
+        `
+                        <li>
+                            <strong class="rank">No. ${i+1}</strong>
+                                <div class="box-image">
+                                <a onclick=location.href='/movies/detail-view/}'>
+                            <span class="thumb-image">
+                                <img src="${movieList[i].poster}" alt="언차티드 포스터">
+                                <span class="ico-grade grade-12"></span>
+                            </span>
+
+                                </a>
+                            </div>
+
+                            <div class="box-contents">
+                                <a href="movies/detail-view">
+                                    <strong class="title">${movieList[i].titleKo}</strong>
+                                </a>
+
+                                <span class="txt-info">
+                            <strong>${movieList[i].launchDate}</strong>
+                                <span>개봉</span>
+                        </span>
+                                <span class="like">
+                            <a class="link-reservation" href="#">예매</a>
+                        </span>
+                            </div>
+
+                        </li>
+`}
+    /*]]>*/
+
+    // // 순위 반영
+    // let rank=document.getElementsByClassName("rank");
+    // for(let i=0; i<=rank.length-1; i++){
+    //     rank[i].innerHTML=
+    // }
+    // chk_nowshow 현재 상영중인 것만 보기 선택시
+    $("#chk_nowshow").change(function(){
+        changeView.innerHTML="";
+        if($("#chk_nowshow").is(':checked')){
+            let now="상영중";
+            $.ajax({
+                url:"/nowplaying",
+                data:{now, now},
+                type:"post",
+                dataType:"json"
+            }).done(function(res){
+                console.log(res);
+                for(let i=0; i<=res.length-1; i++){
+
+                    changeView.innerHTML+=
+                        `
+                        <li>
+                            <strong class="rank">No. ${i+1}</strong>
+                                <div class="box-image">
+                                <a onclick=location.href='/movies/detail-view/}'>
+                            <span class="thumb-image">
+                                <img src="${res[i].poster}" alt="언차티드 포스터">
+                                <span class="ico-grade grade-12"></span>
+                            </span>
+
+                                </a>
+                            </div>
+
+                            <div class="box-contents">
+                                <a href="movies/detail-view">
+                                    <strong class="title">${res[i].titleKo}</strong>
+                                </a>
+
+                                <span class="txt-info">
+                            <strong>${res[i].launchDate}</strong>
+                                <span>개봉</span>
+                        </span>
+                                <span class="like">
+                            <a class="link-reservation" href="#">예매</a>
+                        </span>
+                            </div>
+
+                        </li>
+`
+                }
+            })
+        }else{
+            for(let i=0; i<=movieList.length-1; i++){
+                changeView.innerHTML+=
+                    `
+                        <li>
+                            <strong class="rank">No. ${i+1}</strong>
+                                <div class="box-image">
+                                <a onclick=location.href='/movies/detail-view/}'>
+                            <span class="thumb-image">
+                                <img src="${movieList[i].poster}" alt="언차티드 포스터">
+                                <span class="ico-grade grade-12"></span>
+                            </span>
+
+                                </a>
+                            </div>
+
+                            <div class="box-contents">
+                                <a href="movies/detail-view">
+                                    <strong class="title">${movieList[i].titleKo}</strong>
+                                </a>
+
+                                <span class="txt-info">
+                            <strong>${movieList[i].launchDate}</strong>
+                                <span>개봉</span>
+                        </span>
+                                <span class="like">
+                            <a class="link-reservation" href="#">예매</a>
+                        </span>
+                            </div>
+
+                        </li>
+`}
+        }
+    })
+
+
+
 </script>
 </html>

@@ -1,7 +1,6 @@
 package com.koreait.cgvproject.entity;
 
 import com.koreait.cgvproject.dto.HallDTO;
-import com.koreait.cgvproject.dto.TheaterDTO;
 import lombok.*;
 
 import javax.persistence.*;
@@ -37,6 +36,9 @@ public class Hall{
 
     @OneToMany(fetch = FetchType.LAZY, mappedBy = "hall")
     private List<Seat> seatList;
+
+    @OneToMany(fetch = FetchType.LAZY, mappedBy = "hall")
+    private List<Schedule> scheduleList;
 
     public HallDTO toDTO(){
         return HallDTO.builder()

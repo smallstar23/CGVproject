@@ -2,7 +2,6 @@ package com.koreait.cgvproject.dto;
 
 
 import com.koreait.cgvproject.entity.Actor;
-import com.koreait.cgvproject.entity.Movie;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -13,7 +12,7 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @Builder
 public class ActorDTO {
-     private  Long idx;
+     private  Long actoridx;
      private  MovieDTO movie;
      private  Long mcode;
      private  String anameKo;
@@ -22,7 +21,7 @@ public class ActorDTO {
 
      public Actor toEntityCreate(){
           return Actor.builder()
-                  .idx(idx).anameKo(anameKo)
+                  .idx(actoridx).anameKo(anameKo)
                   .anameEn(anameEn).aphoto(aphoto)
                   .movie(movie.toEntity()).build();
      }

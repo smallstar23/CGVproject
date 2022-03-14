@@ -1,22 +1,17 @@
 package com.koreait.cgvproject.dto;
 
-import com.koreait.cgvproject.entity.Hall;
-import com.koreait.cgvproject.entity.Movie;
-import com.koreait.cgvproject.entity.Seathtml;
 import com.koreait.cgvproject.entity.Trailer;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import javax.persistence.OneToOne;
-
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
 public class TrailerDTO {
-    private Long idx;
+    private Long traileridx;
     private MovieDTO movieDTO;
     private Long mcode;
     private String description1;
@@ -33,13 +28,12 @@ public class TrailerDTO {
 
     public Trailer toEntityForCreate(){
         return  Trailer.builder()
-                .idx(idx).description1(description1)
+                .idx(traileridx).description1(description1)
                 .description2(description2).description3(description3)
                 .photo1(photo1).photo2(photo2).photo3(photo3).photo4(photo4)
                 .photo5(photo5)
                 .trailer1(trailer1).trailer2(trailer2).trailer3(trailer3)
                 .movie(movieDTO.toEntity())
                 .build();
-
     }
 }

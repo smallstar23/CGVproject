@@ -6,7 +6,6 @@ import com.koreait.cgvproject.entity.Seat;
 import com.koreait.cgvproject.repository.HallRepository;
 import com.koreait.cgvproject.repository.SeatRepository;
 import lombok.AllArgsConstructor;
-import org.springframework.boot.autoconfigure.quartz.QuartzTransactionManager;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
