@@ -49,7 +49,7 @@ public class UserSupportController {
     }
 
     @GetMapping("/support/support-news")
-    public String support_news(@PageableDefault(size = 5, sort = "idx", direction = Sort.Direction.DESC) Pageable pageable, Model model){
+    public String support_news(@PageableDefault(size = 10, sort = "idx", direction = Sort.Direction.DESC) Pageable pageable, Model model){
 
         // 페이지
         Page<Notification> notifications = notificationRepository.findAll(pageable);
