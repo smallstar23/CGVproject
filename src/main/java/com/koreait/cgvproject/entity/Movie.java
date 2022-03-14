@@ -48,6 +48,9 @@ public class Movie {
     private List<Director> director;
     @OneToMany(fetch = FetchType.LAZY, mappedBy = "movie")
     private List<Trailer> trailer;
+    @OneToMany(fetch = FetchType.LAZY, mappedBy = "movie")
+    private List<Schedule> scheduleList;
+
 //    @OneToMany(fetch = FetchType.LAZY, mappedBy = "movie")
 //    private List<Reply> replies;
 

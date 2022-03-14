@@ -6,7 +6,6 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import org.hibernate.annotations.Fetch;
 
 
 import javax.persistence.*;
@@ -35,6 +34,9 @@ public class Theater {
 
     @OneToMany(fetch = FetchType.LAZY, mappedBy = "theater")
     private List<Hall> halls;
+
+    @OneToMany(fetch = FetchType.LAZY, mappedBy = "theater")
+    private List<Point> points;
 
     public TheaterDTO toDTO() {
         return TheaterDTO.builder().tcode(tcode)

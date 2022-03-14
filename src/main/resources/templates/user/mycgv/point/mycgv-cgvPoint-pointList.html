@@ -323,8 +323,11 @@
 
 
 
-                        <tr>
-                            <td colspan="4" class="nodata">내역이 존재하지 않습니다.</td>
+                        <tr th:each="point : ${points}">
+                            <th scope="col" th:text="${point.member}"></th>
+                            <th scope="col">구매 극장</th>
+                            <th scope="col">적립일</th>
+                            <th scope="col">적립</th>
                         </tr>
 
 

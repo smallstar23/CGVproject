@@ -191,25 +191,24 @@
 
 
                 <p class="info-com">고객님의 개인정보 보호를 위한 절차이오니, CGV 로그인 시 사용하는 비밀번호를 입력해 주세요.</p>
-                <form id="form1" method="post" novalidate="novalidate">
+                <form id="form1" method="post" novalidate="novalidate" action="/user/mycgv/myinfo/mycgv-myinfo-edit-myinfo">
                     <fieldset class="confirm">
                         <legend>비밀번호 확인</legend>
                         <div class="info-confirm">
                             <p>
                                 <strong>아이디</strong>
-                                <span>GongU</span>
+                                <input type="text" id="userid" name="userid" required="required" maxlength="20" class="small"/>
                             </p>
                             <p>
-                                <strong><label for="txtPassword">비밀번호</label></strong>
-                                <input type="password" id="txtPassword" name="txtPassword" data-title="비밀번호를 " data-message="정상적으로 입력해 주세요." required="required" maxlength="20" class="small" />
+                                <strong><label for="userpw">비밀번호</label></strong>
+                                <input type="password" id="userpw" name="userpw" data-title="비밀번호를 " data-message="정상적으로 입력해 주세요." required="required" maxlength="20" class="small" />
                             </p>
                         </div>
                     </fieldset>
                     <div class="set-btn">
                         <button type="submit" id="save" class="round inred on"><span>확인</span></button>
-                        <a href="/user-main" class="round gray" style="height: 25px"><span>CGV 첫화면으로</span></a>
+                        <a href="/main" class="round gray" style="height: 25px"><span>CGV 첫화면으로</span></a>
                         <br/><br/>
-                        <a href="/user/mycgv/myinfo/mycgv-myinfo-edit-myinfo"><button type="button" class="round inred"><span>맞는 비밀번호 입력시 어디로 가는지 확인용 버튼</span></button></a>
                     </div>
                 </form>
 

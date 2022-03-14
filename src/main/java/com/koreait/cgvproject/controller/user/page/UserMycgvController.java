@@ -1,23 +1,34 @@
 package com.koreait.cgvproject.controller.user.page;
 
+import com.koreait.cgvproject.dto.MemberDTO;
 import com.koreait.cgvproject.entity.Member;
+import com.koreait.cgvproject.entity.Point;
+import com.koreait.cgvproject.repository.MemberRepository;
+import com.koreait.cgvproject.repository.PointRepository;
 import com.koreait.cgvproject.service.admin.member.MemberService;
+import com.koreait.cgvproject.service.user.login.UserLoginService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpSession;
+import java.util.List;
 
 @Slf4j
 @RequiredArgsConstructor
 @Controller
 public class UserMycgvController {
 
+    private final UserLoginService userLoginService;
     private final HttpSession httpSession;
     private final String ROOT = "user/mycgv";
     private final MemberService memberService;
+    @Autowired
+    private PointRepository pointRepository;
+    private final MemberRepository memberRepository;
 
     @GetMapping("/user/mycgv")
     public String mycgv(Model model){
@@ -44,6 +55,8 @@ public class UserMycgvController {
     public String mycgv_cgvPoint_pointList(Model model){
         Member member = memberService.getMember((String)httpSession.getAttribute("userid"));
         model.addAttribute("member", member);
+        List<Point> points = pointRepository.findAll();
+        model.addAttribute("points", points);
         return ROOT + "/point/mycgv-cgvPoint-pointList";
     }
 
@@ -103,6 +116,23 @@ public class UserMycgvController {
         return ROOT + "/myinfo/mycgv-myinfo";
     }
 
+    @PostMapping("/user/mycgv/myinfo/mycgv-myinfo-edit")
+    public String putProfile( @ModelAttribute MemberDTO memberDTO, Model model){
+        log.info(memberDTO.toString());
+        Member member = memberService.getMember((String)httpSession.getAttribute("userid"));
+        model.addAttribute("member", member);
+        memberService.update(member.getIdx(), memberDTO);
+
+        return ROOT + "/myinfo/mycgv-myinfo-edit-myinfo";
+    }
+
+    @PostMapping("/user/mycgv/myinfo/mycgv-myinfo-edit-myinfo")
+    public String postProfile(@RequestParam(required = false) String userid, @RequestParam(required = false) String userpw){
+        if(userLoginService.login(userid,userpw)) {
+            return "redirect:/user/mycgv/myinfo/mycgv-myinfo-edit-myinfo";
+        }
+        return "redirect:/user/mycgv/mycgv-myinfo"; //다시 로그인
+    }
     @GetMapping("/user/mycgv/myinfo/mycgv-myinfo-edit-myinfo")
     public String mycgv_myinfo_edit_myinfo(Model model){
         Member member = memberService.getMember((String)httpSession.getAttribute("userid"));
@@ -120,8 +150,9 @@ public class UserMycgvController {
     @GetMapping("/user/mycgv/myinfo/mycgv-myinfo-leavecgv")
     public String mycgv_myinfo_leavecgv(Model model){
         Member member = memberService.getMember((String)httpSession.getAttribute("userid"));
-        model.addAttribute("member", member);
-        return ROOT + "/myinfo/mycgv-myinfo-leavecgv";
+        memberService.delete(member.getIdx());
+
+        return "redirect:/user/logout";
     }
 
     @GetMapping("/user/mycgv/mycgv-popcorn-store")

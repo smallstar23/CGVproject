@@ -1,6 +1,5 @@
 package com.koreait.cgvproject.service;
 
-import com.koreait.cgvproject.dto.MemberDTO;
 import com.koreait.cgvproject.entity.Member;
 import com.koreait.cgvproject.repository.MemberRepository;
 import lombok.extern.slf4j.Slf4j;
