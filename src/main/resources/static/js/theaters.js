@@ -34,6 +34,7 @@ function theaters(areacode){
         for(let i=0; i<=res.length; i++){
             $(".seoullist").append(`<li class="addon"><a class="findtcode" href="/theaters/${res[i].tcode}" th:value=${res[i].tcode}>${res[i].tname}</a></li>`)
 
+            
         }
        })
 
