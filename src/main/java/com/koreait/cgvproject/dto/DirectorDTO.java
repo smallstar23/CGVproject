@@ -13,7 +13,7 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @Builder
 public class DirectorDTO {
-    private  Long idx;
+    private  Long directoridx;
     private  MovieDTO movie;
     private  Long mcode;
     private  String dnameKo;
@@ -23,7 +23,7 @@ public class DirectorDTO {
 
     public Director toEntityCreate(){
         return  Director.builder()
-                .idx(idx).dnameKo(dnameKo)
+                .idx(directoridx).dnameKo(dnameKo)
                 .dnameEn(dnameEn).dphoto(dphoto)
                 .movie(movie.toEntity())
                 .build();

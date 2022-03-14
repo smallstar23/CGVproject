@@ -32,10 +32,11 @@ public class UserMovieService {
         return movieDTOList;
     }
 
-//    public TrailerDTO getTrailer(Long mcode){
-//        Trailer trailer= trailerRepository.findByMcode(mcode);
-//        TrailerDTO trailerDTO=trailer.toDTO();
-//        return trailerDTO;
-//    }
+    public TrailerDTO getTrailer(Long mcode){
+        Movie movie=movieRepository.findByMcode(mcode);
+        Trailer trailer= trailerRepository.findByMovie(movie);
+        TrailerDTO trailerDTO=trailer.toDTO();
+        return trailerDTO;
+    }
 
 }

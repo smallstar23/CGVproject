@@ -30,7 +30,7 @@ public class Actor {
     private String aphoto;
 
     public ActorDTO toDTO(){
-        return  ActorDTO.builder().idx(idx).movie(movie.toDTO()).anameKo(anameKo).anameEn(anameEn)
+        return  ActorDTO.builder().actoridx(idx).movie(movie.toDTO()).anameKo(anameKo).anameEn(anameEn)
                 .aphoto(aphoto).build();
     }
 

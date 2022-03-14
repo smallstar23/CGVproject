@@ -66,8 +66,10 @@
         <div class="container-fluid px-4" style="margin:0 auto;">
             <h2 style="text-align:center;">영화 상세 등록</h2>
             <form  action="/manage_ongoingmovies_creates" method="post" style="width:70%; border:solid 2px red; border-radius:10px; padding:5%; margin:0 auto;">
-                <input  type="hidden" th:value="${mcode}" name="mcode" >
-
+                <input type="hidden" th:value="${mcode}" name="mcode" >
+                <input type="hidden" th:value="${trailer.getTraileridx()}" name="traileridx">
+                <input type="hidden" th:value="${director.getDirectoridx()}" name="directoridx">
+                <input type="hidden" th:value="${actor.getActoridx()}" name="actoridx">
                 <hr/>
                 <div class="form-row">
                     <div class="form-group col-md-3">

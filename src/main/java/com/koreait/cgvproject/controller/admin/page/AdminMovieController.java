@@ -106,7 +106,6 @@ public class AdminMovieController {
     @PostMapping("/manage_ongoingmovies_creates")
     public  String view_create(@ModelAttribute TrailerDTO trailerDTO,DirectorDTO directorDTO,ActorDTO actorDTO,Model model){
         Long trailerint =trailerDTO.getMcode();
-        System.out.println("확인");
         if (movieService.creatTrailer(trailerDTO) == 1) {
             movieService.creatDiretor(directorDTO);
             movieService.creatActor(actorDTO);
@@ -117,7 +116,7 @@ public class AdminMovieController {
 
     @GetMapping("/manage_ongoingmovies/detail/{mcode}")
     public  String view_detail(@PathVariable("mcode") Long mcode, Model model){
-        model.addAttribute("mcode",mcode);
+         model.addAttribute("mcode",mcode);
          TrailerDTO trailerDTO =adminTrailerService.findTrailer(mcode);
          model.addAttribute("trailer",trailerDTO);
          DirectorDTO directorDTO=adminDirectorService.findDiretor(mcode);
@@ -127,8 +126,6 @@ public class AdminMovieController {
 
         return  "admin/movie/manage_ongoingmovies_detail";
     }
-
-
 
 
     @GetMapping("/manage_ongoingmovies/edit/{mcode}")

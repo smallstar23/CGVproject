@@ -31,7 +31,7 @@ public class Director {
     private String dphoto;
 
     public DirectorDTO toDTO(){
-        return  DirectorDTO.builder().idx(idx).movie(movie.toDTO()).dnameKo(dnameKo).dnameEn(dnameEn)
+        return  DirectorDTO.builder().directoridx(idx).movie(movie.toDTO()).dnameKo(dnameKo).dnameEn(dnameEn)
                 .dphoto(dphoto).build();
     }
 }

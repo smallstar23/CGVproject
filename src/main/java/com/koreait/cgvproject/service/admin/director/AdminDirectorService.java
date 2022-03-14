@@ -34,10 +34,11 @@ public class AdminDirectorService {
         if (director !=null){
             DirectorDTO directorDTO= new DirectorDTO();
             directorDTO.setMovie(movie.toDTO());
-//            directorDTO.setMcode(director.getMovie().getMcode());
+//          directorDTO.setMcode(director.getMovie().getMcode());
             directorDTO.setDnameKo(director.getDnameKo());
             directorDTO.setDnameEn(director.getDnameEn());
             directorDTO.setDphoto(director.getDphoto());
+            directorDTO.setDirectoridx(director.getIdx());
 
 
             return  directorDTO;
