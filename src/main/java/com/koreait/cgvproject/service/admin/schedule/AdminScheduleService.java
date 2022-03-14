@@ -28,6 +28,7 @@ public class AdminScheduleService {
     @Autowired
     private HallRepository hallRepository;
 
+    // 스케쥴 전체 리스트 찾기
     public List<ScheduleDTO> getScheduleList(){
         List<ScheduleDTO> scheduleDTOList=new ArrayList<>();
         List<Movie> movieList=movieRepository.findAll();
@@ -43,6 +44,7 @@ public class AdminScheduleService {
                         scheduleDTO.setScdate(schedule.getScdate());
                         scheduleDTO.setMovieDTO(schedule.getMovie().toDTO());
                         scheduleDTO.setHallDTO(schedule.getHall().toDTO());
+                        scheduleDTO.setEnddate(schedule.getScdate().plusMinutes(schedule.getMovie().getRuntime()));
                         scheduleDTOList.add(scheduleDTO);
                 }
                 }
@@ -51,4 +53,48 @@ public class AdminScheduleService {
         }
         return scheduleDTOList;
     }
+    // 스케쥴 insert
+    public int addSchedule(ScheduleDTO scheduleDTO){
+        Schedule schedule=new Schedule();
+        Movie movie=movieRepository.findByMcode(scheduleDTO.getMcode());
+        Hall hall=hallRepository.findByHcode(scheduleDTO.getHcode());
+        if(movie!=null || hall!=null){
+            schedule.setSchecode(scheduleDTO.getSchecode());
+            schedule.setScdate(scheduleDTO.getScdate());
+            schedule.setHall(hall);
+            schedule.setMovie(movie);
+            scheduleRepository.save(schedule);
+
+            return 1;
+        }
+        return 0;
+
+    }
+
+    // 스케쥴 코드로 해당하는 스케쥴 찾기
+    public ScheduleDTO findSchedule(Long schecode){
+        Optional<Schedule> schedule=scheduleRepository.findById(schecode);
+        if(schedule!=null){
+            ScheduleDTO scheduleDTO=schedule.get().toDTO();
+            Movie movie=movieRepository.findByMcode(scheduleDTO.getMcode());
+            Hall hall=hallRepository.findByHcode(scheduleDTO.getHcode());
+            scheduleDTO.setMovieDTO(movie.toDTO());
+            scheduleDTO.setHallDTO(hall.toDTO());
+            return scheduleDTO;
+        }
+        return null;
+    }
+
+    // 삭제
+    public void deleteSchedule(Long schecode){
+        Optional<Schedule> schedule=scheduleRepository.findById(schecode);
+        System.out.println(schedule);
+        schedule.ifPresent(schedule1 -> {
+            scheduleRepository.delete(schedule1);
+                    System.out.println("삭제되었습니다.");
+        }
+        );
+
+    }
+
 }

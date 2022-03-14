@@ -15,7 +15,6 @@ import java.util.List;
 public class UserMovieService {
 
     private MovieRepository movieRepository;
-    private TrailerRepository trailerRepository;
 
     public List<MovieDTO> getList(){
 

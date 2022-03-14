@@ -33,14 +33,6 @@ public class AdminMovieController {
     private AdminDirectorService adminDirectorService;
     private AdminActorService adminActorService;
 
-//    private MovieService movieService;
-
-
-//    @PostMapping("/manage_movieSchedule_create")
-//    public String writes(MovieDTO movieDTO){
-//        movieService.insertPoint(movieDTO);
-//        return "redirect:/";
-//    }
 
 
     @GetMapping("manage_pricem")//movie-pricem 페이지

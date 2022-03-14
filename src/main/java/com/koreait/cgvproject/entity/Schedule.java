@@ -1,5 +1,6 @@
 package com.koreait.cgvproject.entity;
 
+import com.koreait.cgvproject.dto.ScheduleDTO;
 import lombok.*;
 import org.springframework.format.annotation.DateTimeFormat;
 
@@ -38,6 +39,15 @@ public class Schedule {
     //private Long hcode;
     @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss")
     private LocalDateTime scdate;
+
+    public ScheduleDTO toDTO(){
+        return ScheduleDTO.builder()
+                .schecode(schecode)
+                .mcode(movie.getMcode())
+                .hcode(hall.getHcode())
+                .scdate(scdate)
+                .build();
+    }
 
 
 }
