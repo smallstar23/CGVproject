@@ -46,8 +46,7 @@ public class MovieService {
     public  int creatTrailer(TrailerDTO trailerDTO){
         Trailer trailer =new Trailer();
         Movie movie =movieRepository.findByMcode(trailerDTO.getMcode());
-        log.info(String.valueOf(movie));
-        trailer.setIdx(trailerDTO.getIdx());
+        trailer.setIdx(trailerDTO.getTraileridx());
         trailer.setMovie(movie);
         trailer.setDescription1(trailerDTO.getDescription1());
         trailer.setDescription2(trailerDTO.getDescription2());
@@ -69,7 +68,7 @@ public class MovieService {
     public  int creatDiretor(DirectorDTO directorDTO){
         Director director=new Director();
         Movie movie =movieRepository.findByMcode(directorDTO.getMcode());
-        director.setIdx(directorDTO.getIdx());
+        director.setIdx(directorDTO.getDirectoridx());
         director.setMovie(movie);
         director.setDnameKo(directorDTO.getDnameKo());
         director.setDnameEn(directorDTO.getDnameEn());
@@ -82,7 +81,7 @@ public class MovieService {
     public  int creatActor(ActorDTO actorDTO){
         Actor actor =new Actor();
         Movie movie =movieRepository.findByMcode(actorDTO.getMcode());
-        actor.setIdx(actorDTO.getIdx());
+        actor.setIdx(actorDTO.getActoridx());
         actor.setMovie(movie);
         actor.setAnameKo(actorDTO.getAnameKo());
         actor.setAnameEn(actorDTO.getAnameEn());
@@ -161,6 +160,12 @@ public class MovieService {
         }
         return null;
     }
+
+
+
+
+
+
 
     @Transactional
     public  void delete(Long mcode){

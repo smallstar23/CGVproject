@@ -28,6 +28,7 @@ public class UserMovieService {
         return movieDTOList;
     }
 
+
     public List<MovieDTO> getnow(String now){
         List<MovieDTO> movieDTOList=new ArrayList<>();
         List<Movie> nowmovie= movieRepository.findAllByMscreen(now);
@@ -42,5 +43,6 @@ public class UserMovieService {
 //        TrailerDTO trailerDTO=trailer.toDTO();
 //        return trailerDTO;
 //    }
+
 
 }

@@ -147,12 +147,11 @@
                     <label for="exampleFormControlFile1" >파일등록(링크)</label>
                     <input type="text" class="form-control-file" id="exampleFormControlFile1" name="poster" th:value="${mcode.poster}" readonly >
                     <hr/>
-                        <input th:onclick="|location.href='@{/manage_ongoingmovies}'|" class="btn btn-primary" type="button"  value="목록">
-                        <a class="btn btn-info" th:href="@{'/manage_ongoingmovies/edit/' + ${mcode.mcode}}" role="button">수정</a>
                         <a class="btn btn-info" th:href="@{'/manage_ongoingmovies/create/' + ${mcode.mcode}}" role="button">상세정보 등록</a>
                         <a class="btn btn-info" th:href="@{'/manage_ongoingmovies/detail/' + ${mcode.mcode}}" role="button">상세정보 수정</a>
-                        <a class="btn btn-info" th:href="@{'/manage_ongoingmovies/detail/' + ${mcode.mcode}}" role="button">상세정보 수정</a>
-
+                    <hr/>
+                        <input th:onclick="|location.href='@{/manage_ongoingmovies}'|" class="btn btn-primary" type="button"  value="목록">
+                        <a class="btn btn-info" th:href="@{'/manage_ongoingmovies/edit/' + ${mcode.mcode}}" role="button">수정</a>
                 </div>
             </form>
         </div>

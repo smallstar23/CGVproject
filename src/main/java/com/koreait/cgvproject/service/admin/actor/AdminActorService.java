@@ -39,6 +39,7 @@ public class AdminActorService {
             actorDTO.setAphoto(actor.getAphoto());
 //          actorDTO.setMcode(actor.getMovie().getMcode());
             actorDTO.setMovie(movie.toDTO());
+            actorDTO.setActoridx(actor.getIdx());
 
             return actorDTO;
         }
