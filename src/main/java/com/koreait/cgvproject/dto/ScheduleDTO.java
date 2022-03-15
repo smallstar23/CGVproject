@@ -19,6 +19,7 @@ public class ScheduleDTO {
     private Long mcode;
     private HallDTO hallDTO;
     private Long hcode;
+    private Long tcode;
     @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME)
     private LocalDateTime scdate;
     @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm")
