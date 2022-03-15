@@ -266,6 +266,7 @@ CREATE TABLE Gift_payment (
     gpcode number(14) primary key,
     mem_idx number(10)   not null,
     gcode number(10)   not null,
+    is_stacked number(10) not null,
     reg_date date not null,
     status varchar2(10)   not null, -- 결제완료 사용 등등
     constraint fk_Gift_payment_mem_idx foreign key(mem_idx) references Member (idx),

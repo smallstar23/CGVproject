@@ -350,21 +350,11 @@
                                     <!-- 등급종류 클래스 : vip, rvip, vvip -->
                                 </div>
                                 <div class="box-contents">
-                                    <strong>공유님</strong>
-                                    <a id="go_edit_page" href="#" class="edit" target="_blank" title="새창열림">나의 정보 변경</a>
+                                    <strong th:text="${member.username}"></strong>
+                                    <a id="go_edit_page" href="/user/mycgv/mycgv-myinfo" class="edit" target="_blank" title="새창열림">나의 정보 변경</a>
                                     <em></em>
 
                                 </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="box-round-wgray">
-                        <div class="box-round-inner">
-                            <div class="inner-contents-log">
-                                <a href="/user/mycgv-movielog-expected">
-                                    <em>0</em>
-                                    <strong>기대되는 영화</strong>
-                                </a>
                             </div>
                         </div>
                     </div>
