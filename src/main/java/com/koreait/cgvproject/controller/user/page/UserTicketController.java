@@ -1,6 +1,10 @@
 package com.koreait.cgvproject.controller.user.page;
 
+import com.koreait.cgvproject.dto.MovieDTO;
+import com.koreait.cgvproject.dto.TheaterDTO;
 import com.koreait.cgvproject.service.Kakaopay;
+import com.koreait.cgvproject.service.admin.theater.AdminTheaterService;
+import com.koreait.cgvproject.service.user.moive.UserMovieService;
 import lombok.Setter;
 import lombok.extern.java.Log;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -10,15 +14,29 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import java.util.List;
+
 
 @Log
 @Controller
 public class UserTicketController {
 
+    @Autowired
+    private UserMovieService userMovieService;
+
+    @Autowired
+    private AdminTheaterService adminTheaterService;
+
     @GetMapping("ticket")
-    public String reservation(){
+    public String reservation(Model model){
+        List<MovieDTO> movieDTOList=userMovieService.getList();
+        List<TheaterDTO> theaterDTOList=adminTheaterService.findall();
+        model.addAttribute("movielist", movieDTOList);
+        model.addAttribute("theaterlist",theaterDTOList);
         return "user/ticket/reservation";
     }
+
+
 
     @GetMapping("/user/ticket/home_ticket")
     public String homeTicket(){
