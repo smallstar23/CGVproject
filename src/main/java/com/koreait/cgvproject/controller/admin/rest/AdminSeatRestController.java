@@ -22,7 +22,6 @@ public class AdminSeatRestController {
         return adminSeatService.create(seatDTO);
 
     }
-
     @Transactional
     @PostMapping("/update")
     public void update(@RequestBody SeatDTO seatDTO) {
