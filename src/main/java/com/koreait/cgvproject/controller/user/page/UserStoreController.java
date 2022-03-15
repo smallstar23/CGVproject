@@ -1,7 +1,11 @@
 package com.koreait.cgvproject.controller.user.page;
 
 import com.koreait.cgvproject.dto.GiftDTO;
+import com.koreait.cgvproject.entity.Member;
+import com.koreait.cgvproject.repository.MemberRepository;
+import com.koreait.cgvproject.service.KakaopayGiftService;
 import com.koreait.cgvproject.service.user.store.UserStoreService;
+import lombok.Setter;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -10,6 +14,8 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 import java.util.List;
 import java.util.Map;
 
@@ -18,8 +24,13 @@ import java.util.Map;
 @Slf4j
 public class UserStoreController {
 
+    @Setter(onMethod_ = @Autowired)
+    private KakaopayGiftService kakaopayGiftService;
+
     @Autowired
     private UserStoreService userStoreService;
+
+    private MemberRepository memberRepository;
 
     private final String ROOT = "user/culture-event/popcorn-store";
 
@@ -58,7 +69,46 @@ public class UserStoreController {
         GiftDTO selectDTO = userStoreService.getGiftDTO(gcode);
         model.addAttribute("giftDTO", selectDTO);
 
+
+
         return ROOT + "/purchase-confirm";
+    }
+
+    @GetMapping("/kakaoPay/store")
+    public String kakaoPay(@RequestParam(value = "title") String title) {
+        return "redirect:" + kakaopayGiftService.kakaoPayReady(title);
+    }
+
+    @GetMapping("/popcorn-store/payment-successcomplete")
+    public String kakaoPaySuccess(@RequestParam("pg_token") String pg_token, Model model, HttpServletRequest request) throws Exception{
+        log.info("kakaoPaySuccess pg_token : " + pg_token);
+
+
+//        log.info(giftPayment.toString());
+//        HttpSession session = request.getSession();
+//        String userid = (String) session.getAttribute("userid");
+//
+//        log.info(userid);
+//        Member member = memberRepository.findByUserid(userid);
+//        log.info(member.toString());
+
+        // 세션으로 처리할꺼임
+//        GiftPaymentDTO giftPaymentDTO = new GiftPaymentDTO();
+//
+//
+//        giftPaymentDTO.setGcode(4);
+//        giftPaymentDTO.setStatus("미사용");
+//        giftPaymentDTO.setRegDate(LocalDateTime.now());
+//        giftPaymentDTO.setGpcode(10L);
+//        giftPaymentDTO.setMemIdx(member.getIdx());
+//
+//        GiftPaymentDTO save = giftPaymentDTORepository.save(giftPaymentDTO);
+
+
+        model.addAttribute("info", kakaopayGiftService.kakaoPayInfo(pg_token));
+
+        return "user/culture-event/popcorn-store/payment-successcomplete";
+
     }
 
     @GetMapping("/popcorn-store/user-cart")
@@ -74,11 +124,6 @@ public class UserStoreController {
     @GetMapping("/popcorn-store/store-payment")
     public String giftPay(){
         return ROOT + "/store-payment";
-    }
-
-    @GetMapping("/popcorn-store/payment-successcomplete")
-    public String success(){
-        return ROOT + "/payment-successcomplete";
     }
 
     @GetMapping("/popcorn-store/payment-failcomplete")
