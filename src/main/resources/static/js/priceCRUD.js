@@ -29,7 +29,7 @@ function submit(){
         alert('관람가격 수정을 진행합니다.');
         priceUpdate();
         alert('생성 및 업데이트가 완료되었습니다.');
-        location.href = "/admin/price?tcode="+tcode.value;
+        location.href = '/admin/price?tcode='+tcode.value;
     }
     else {
         alert('관람가격 설정을 진행합니다.');
@@ -122,8 +122,7 @@ function priceCreate() {
             .then(data => data)
             .catch(error => console.log(error));
     }
-    alert('등록이 완료되었습니다');
-    location.href = '/admin/price?tcode='+tcode.value;
+
 }
 function priceUpdate(){
 

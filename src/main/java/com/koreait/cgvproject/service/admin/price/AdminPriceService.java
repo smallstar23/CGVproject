@@ -71,4 +71,5 @@ public class AdminPriceService {
             priceRepository.deleteAllByTheater(theater);
         });
     }
+
 }
