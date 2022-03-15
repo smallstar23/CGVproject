@@ -1,4 +1,8 @@
-$(document).ready(function () {
+
+
+// 스케쥴 불러오기
+let mcode;
+let tcode;
 
     // step 1. 예매가이드 팝업
     let guide = document.getElementsByClassName('button-guide');
@@ -22,48 +26,31 @@ $(document).ready(function () {
         blackscreen[0].style.display = 'none';
     };
 
-    // 영화 선택시 하단에 정보 전달하는 부분인데 포스터를 어떻게 할지 더 고민해야함, 영화 id값으로 포스터를 찾아서 전달해야하나 고민중
-
     let placeholder = document.getElementsByClassName('placeholder');
     let movie_click = document.getElementsByClassName('movieClick');
     let movieTitle = document.getElementsByClassName('movie_title');
 
-    for (let i = 0; i <= movie_click.length - 1; i++) {
+    for (let i = 0; i <= movie_click.length-1; i++) {
         movie_click[i].addEventListener('click', function () {
-            for (let j = 0; j <= movie_click.length - 1; j++) {
-                //영화 클릭시 블랙 변경
-                this.classList.add("selected");
-                movie_click[j].classList.remove("selected");
+            for(let k=0; k<movie_click.length;k++){
+                movie_click[k].classList.remove("selected");
+                movie_click[i].classList.add("selected");
+                // mcode 저장
+                mcode=movie_click[i].value;
             }
-
             // 영화명 전달
             let movieName = document.getElementsByClassName('movieName')[i].getAttribute('title');
-            console.log("영화 선택!");
-            console.log(movieName);
             movieTitle[0].style.display = 'block';
             placeholder[1].style.display = 'none';
             let movieSel = document.getElementById("movie_sel");
             movieSel.innerHTML = `<input style="background-color: #1d1d1c; color:#cccccc; font-weight: bold" name="movieName" id="movieName" value="${movieName}"></input>`;
-            movieSel.setAttribute("href","/theaters");
+            movieSel.setAttribute("href","/movies/detail-view/"+mcodeArray[i]);
 
-            // 포스터넣기
-            if (movieName == "극장판주술회전0") {
-                let moviePoster = document.getElementById("movie_poster");
-                moviePoster.style.display = 'block';
-                moviePoster.src = '/img/85603.jpg';
-            }
-            ;
-            if (movieName == "언차티드") {
-                let moviePoster = document.getElementById("movie_poster");
-                moviePoster.style.display = 'block';
-                moviePoster.src = '/img/85624.jpg';
-            }
-            ;
-            if (movieName == "더배트맨") {
-                let moviePoster = document.getElementById("movie_poster");
-                moviePoster.style.display = 'block';
-                moviePoster.src = '/img/85603.jpg';
-            }
+            // 포스터 넣기
+            // src 값을 찾아오기(타임리프로 받아서 array로 전달)
+            let moviePoster = document.getElementById("movie_poster");
+            moviePoster.style.display = 'block';
+            moviePoster.src = url[i];
 
         });
     }
@@ -80,13 +67,18 @@ $(document).ready(function () {
     let area_theater_list = document.getElementsByClassName("area_theater_list");
 
 
+let schecodeArray=new Array();
+let scdateArray=new Array();
     for (let i = 0; i <= theaterClick.length - 1; i++) {
         theaterClick[i].addEventListener('click', function () {
             let theaterName = theaterSelect[i].innerText;
             placeholder[2].style.display = 'none';
-            sendTheaterName[0].setAttribute('href', '/theaters');
+            // 영화관 tcode전달해서 같이 href에 적용하기
+            sendTheaterName[0].setAttribute('href', '/theaters/'+tcodeArray[i]);
             sendTheaterName[0].setAttribute('title', theaterName);
             sendTheaterName[0].innerText = theaterName +"CGV >";
+            // tcode 저장
+            tcode=theaterClick[i].value;
             for (let x = 0; x <= infoTheater.length - 1; x++) {
                 infoTheater[x].style.display = 'block';
             }
@@ -95,8 +87,30 @@ $(document).ready(function () {
                 theaterClick[j].classList.remove("selected");
 
             }
-        })
+            // 극장 클릭시에 영화, 극장 선택시 해당하는 스케쥴이 있는지 찾아오기
+
+            fetch('/api/findSchedule', {
+                method: "POST",
+                headers: {
+                    'Content-Type': 'application/json',},
+                body: JSON.stringify({
+                    mcode:mcode,
+                    tcode:tcode
+                })
+            }).then(response=>response.json())
+                .then(data=> {
+                    for(let i=0; i<=data.length-1; i++){
+                        schecodeArray[i]=data[i].schecode;
+                        scdateArray[i]=data[i].scdate;
+                    }
+                })
+
+            //
+
+
+            })
     }
+
 
     /*
         작성자 : 김영신
@@ -110,16 +124,7 @@ $(document).ready(function () {
         })
     }
 
-    // 이부분 먹이면 겹치는 html 부분이 생겨서 스크립트 오류로 다음 기능들도 실행이 안됨....
-    // 지역 선택 부분
-    // for(let i=0; i<=theaterAreaClick.length; i++){
-    //     areaSelect[i].addEventListener('click', function(){
-    //         for(let j=0; j<=theaterAreaClick.length; j++){
-    //             theaterAreaClick[i].classList.add("selected");
-    //             theaterAreaClick[j].classList.remove("selected");
-    //         }
-    //     })
-    // }
+
 
 
     // 날짜 부분 오늘 날짜 기준으로 howmany 값 조절하면 +howmany 만큼 날짜 뿌릴 수 있음, 아직 월 넘어가는건 못하겠음..
@@ -150,7 +155,6 @@ $(document).ready(function () {
     }
 
     const fordate = document.getElementById("fordate");
-    console.log(fordate);
     for (let i = 0; i < howmany; i++) {
         //2022.03.17(목)형식으로
           // month+1 추가, 1일 되면 현재 월에 +1
@@ -166,14 +170,44 @@ $(document).ready(function () {
                                             </li>`
 
         }
-        let init = year+"."+month+"."+dateArray[i]+"("+newdayArray[i]+")";
-        fordate.innerHTML += `<li data-index="1" date="${init}" class="day passday"><a href="#" onclick="return false;"><span class="dayweek">${newdayArray[i]}</span><span class="day">${dateArray[i]}</span><span class="sreader"></span></a></li>`
+        // 1~9월일때는 0추가
+        let newmonth;
+        if(month<10){
+            newmonth="0"+month;
+        }
+        // 1~9일일때는 0추가
+        if(dateArray[i]<10){
+            dateArray[i]="0"+dateArray[i]
+        }
+
+        let init = year+"-"+newmonth+"-"+dateArray[i]+"("+newdayArray[i]+")";
+
+        fordate.innerHTML += `<li data-index="1" date="${init}" class="day passday checkdate"><a href="#" onclick="return false;"><span class="dayweek">${newdayArray[i]}</span><span class="day">${dateArray[i]}</span><span class="sreader"></span></a></li>`
 
 
     }
+// 가져온 스케쥴 리스트중에서 날짜가 같으면 클릭할 수 있게 해주기
+    console.log(scdateArray)
+    const newscdateArray=new Array(); // 가져온 스케쥴리스트 중 날짜 리스트인데, 날짜부분만 뽑아서 새로 저장하는중.....진행중임
+    for(let i=0; i<=scdateArray.length-1; i++){
+        console.log(scdateArray[i])
+        // newscdateArray[i]=scdateArray[i].split("T")[0];
+        // console.log(newscdateArray[i]);
+    }
 
 
-    // 날짜 클릭시 날짜 전달하기
+    // 달력에서 가져온 checkdate의 값을 "(" 기준으로 나눈 후 앞부분만 새로 array에 저장함
+    const checkdate=document.getElementsByClassName("checkdate");
+    const newcheckdate=new Array();
+    for(let i=0; i<=checkdate.length-1; i++){
+        newcheckdate[i]=checkdate[i].getAttribute("date").split("(")[0];
+    }
+console.log(newcheckdate)
+
+
+
+
+// 날짜 클릭시 날짜 전달하기
     let passday = document.getElementsByClassName("passday");
     for (let i = 0; i <= passday.length - 1; i++) {
         passday[i].addEventListener('click', function () {
@@ -333,5 +367,3 @@ $(document).ready(function () {
     })
 
 
-
-})

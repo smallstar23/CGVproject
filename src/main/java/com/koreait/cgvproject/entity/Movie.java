@@ -53,8 +53,6 @@ public class Movie {
 
 //    @OneToMany(fetch = FetchType.LAZY, mappedBy = "movie")
 //    private List<Reply> replies;
-
-
     public MovieDTO toDTO(){
         return MovieDTO.builder().mcode(mcode).mscreen(mscreen).titleKo(titleKo).titleEn(titleEn).genre(genre).country(country)
                 .movieRating(movieRating).runtime(runtime).launchDate(launchDate).regDate(LocalDateTime.now()).poster(poster).build();
