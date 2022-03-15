@@ -36,6 +36,9 @@
           href="https://img.cgv.co.kr/R2014/js/jquery.ui/smoothness/jquery-ui-1.10.4.custom.min.css"/>
 
 
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"
+            integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4="
+            crossorigin="anonymous"></script>
     <script type="text/javascript" src="https://img.cgv.co.kr/R2014/js/app.config.js"></script>
     <script type="text/javascript" src="https://img.cgv.co.kr/R2014/js/jquery-1.10.2.min.js"></script>
     <script type="text/javascript" src="https://img.cgv.co.kr/R2014/js/jquery.plugin/jquery.tmpl.min.js"></script>
@@ -96,104 +99,6 @@
 
             window.open(url, '', 'left=' + px + ',top=' + py + ',width=' + owidth + ',height=' + oheight);
             return false;
-        }
-
-        //결제하기 버튼 클릭
-        function fn_Payment() {
-            var LOCAL_USER_YN = "N";
-            var CardCode = "";
-
-            //LOCAL_USER_YN가 'Y'인 경우
-            if (LOCAL_USER_YN == "Y") {
-                alert("CJ ONE 회원이 아닙니다. 지금 CJ ONE 통합회원 가입하고 쿠폰/포인트 등 다양한 혜택을 누리세요.");
-                location.href = "https://www.cjone.com/cjmweb/join.do?coopco_cd=7010&brnd_cd=1000";
-
-                return;
-            }
-
-            //카카오페이를 선택한 경우
-            if ($("#pKKO").css("display") == "block") {
-                CardCode = "KKO";
-            } else if ($("#liCard").find("dt").attr("class") != undefined) {
-                CardCode = $("#liCard").find("dt").attr("class").split(' ')[1].replace("cards_", "");
-            } else {
-                alert("결제수단을 선택하세요.");
-                return;
-            }
-
-            //약관 선택 여부
-            if ($(".com_all_particle_checker:checked").length < 2) {
-                alert("결제대행서비스 약관에 모두 동의하셔야 결제가 가능합니다.");
-                return;
-            }
-
-            //결제 VALIDATION
-            var jsonData = "{USER_ID: '" + "" + "'}";
-            jQuery.ajax({
-                type: "POST",
-                url: "purchase-confirm.aspx/GetPaymentInfoCheck",
-                data: jsonData,
-                contentType: "application/json; charset=utf-8",
-                dataType: "json",
-                async: false,
-                success: function (data) {
-                    if (data.d.split('|')[0] == "00") {
-                        //정상
-                        //결제 PG창 호출
-                        childwin = window.open("", "X_ANSIM_POP", "width=" + 400 + ", height=" + 600);
-                        order_no = data.d.split('|')[1];
-
-                        var form = document.createElement("form");
-                        form.name = "payment";
-                        form.method = "post";
-                        form.action = "payment.jsp";
-                        form.target = "X_ANSIM_POP";
-
-                        var input_card_code = document.createElement("input");
-                        input_card_code.type = "hidden";
-                        input_card_code.name = "CardCode";
-                        input_card_code.value = CardCode;
-
-                        form.appendChild(input_card_code);
-
-                        var input_TYPE = document.createElement("input");
-                        input_TYPE.type = "hidden";
-                        input_TYPE.name = "TYPE";
-                        input_TYPE.value = "p";
-
-                        form.appendChild(input_TYPE);
-
-                        document.body.appendChild(form);
-
-                        form.submit();
-
-                        $.fn.dimedPopUp(true, 'com_pop_wrap', '0.7');
-
-                        timer = null;
-                        pgwin();
-                    } else {
-                        alert(data.d.split('|')[1]);
-                        //장바구니에서 왔는지
-                        if ("0" == "" || "0" == "0") {
-                            location.href = "user-cart.jsp";
-                        } else {
-                            if ("100253" != "0") {
-                                location.href = "product-detail.jsp?GG_NO=100253";
-                            } else {
-                                location.href = "product-detail.jsp?GG_NO=0";
-                            }
-                        }
-                    }
-                },
-                complete: function (data) {
-                    //$(window).stopLoading(); // 로딩바 종료
-                },
-                error: function (xhr, status, err) {
-                    var err = eval("(" + xhr.responseText + ")");
-                    alert(err.Message);
-                    //$(window).stopLoading(); // 로딩바 종료
-                }
-            });
         }
 
         pgwin = function () {
@@ -369,49 +274,20 @@
             </p>
             <ul class="com_list_style1">
 
-                <li>
+                <li th:each="product : ${giftDTO}">
                     <div class="product_info_img">
-                        <img src="http://img.cgv.co.kr/GiftStore/Product/Mobile/List/16094706929660.jpg"
-                             alt="dummy image">
-                        <strong class="product_info_name">
-                            CGV 영화관람권</strong> <span class="product_info_origin">
-                            일반 영화관람권
-
-                        </span>
+                        <img th:src='${product.gfile}' th:alt='${product.title}'>
+                        <strong class="product_info_name" th:utext='${product.title}'></strong>
+                        <span class="product_info_origin" th:utext="${product.gname}"></span>
                     </div>
                     <div class="product_info_wrap">
-
-                    <span class="product_info_one_price">
-                        11,000</span>
-
+                        <span class="product_info_one_price" th:utext="${product.price}"  style="margin-top: 34px"></span>
                     </div>
                     <div class="product_info_cnt_wrap">
-                        3개
+                        <span>1개</span>
                     </div>
-                    <span class="product_info_price">
-                    33,000</span></li>
-
-                <li>
-                    <div class="product_info_img">
-                        <img src="http://img.cgv.co.kr/GiftStore/Product/Mobile/List/15458911953240.jpg"
-                             alt="dummy image">
-                        <strong class="product_info_name">
-                            CGV 골드클래스</strong> <span class="product_info_origin">
-                            골드클래스 관람권
-
-                        </span>
-                    </div>
-                    <div class="product_info_wrap">
-
-                    <span class="product_info_one_price">
-                        35,000</span>
-
-                    </div>
-                    <div class="product_info_cnt_wrap">
-                        1개
-                    </div>
-                    <span class="product_info_price">
-                    35,000</span></li>
+                    <span class="product_info_price" th:utext="${product.price}"></span>
+                </li>
 
             </ul>
             <table class="com_cart_total_price_wrap">
@@ -422,31 +298,21 @@
                 </colgroup>
                 <thead>
                 <tr>
-                    <th>
-                        총 상품 금액
-                    </th>
-                    <th>
-                        할인금액
-                    </th>
-                    <th>
-                        총 결제 예정금액
-                    </th>
+                    <th>총 상품 금액</th>
+                    <th>할인금액</th>
+                    <th>총 결제 예정금액</th>
                 </tr>
                 </thead>
                 <tbody>
                 <tr>
                     <td>
-                        <strong>
-                            68,000</strong>
+                        <strong th:utext="${giftDTO.price}"></strong>
                     </td>
                     <td class="com_cart_calculator_marker">
-
                         <strong>0</strong>
-
                     </td>
                     <td>
-                        <strong class="cart_total_price">
-                            68,000</strong>
+                        <strong class="cart_total_price" th:utext="${giftDTO.price}"></strong>
                     </td>
                 </tr>
                 </tbody>
@@ -466,13 +332,10 @@
             <strong class="com_box_design_title">주문자 정보 확인</strong>
             <ul class="com_box_design">
                 <li>
-                    <label for="user_info_name">
-                        이름</label>
-                    <input type="text" id="user_info_name" placeholder="이름" style="width: 128px" value="김영신" readonly>
-                    <label for="user_info_phonenum">
-                        휴대전화 번호</label>
-                    <input type="tel" id="user_info_phonenum" placeholder="휴대전화 번호" style="width: 228px"
-                           value="010-2209-9718" readonly>
+                    <label for="user_info_name">이름</label>
+                    <input type="text" id="user_info_name" placeholder="이름" style="width: 128px" th:value="${session.username}" readonly>
+                    <label for="user_info_phonenum" >휴대전화 번호</label>
+                    <input type="tel" id="user_info_phonenum" placeholder="휴대전화 번호" style="width: 228px" th:value="${session.userhp}" readonly>
                 </li>
             </ul>
             <p class="com_box_design_olist">
@@ -493,8 +356,8 @@
             <strong class="com_box_design_title">결제 수단</strong>
             <ul class="com_box_design radioCheck">
                 <li id="liCard">
-                    <input type="radio" name="radio" class="com_custom_radio" id="payment_card"><label
-                        for="payment_card">신용카드</label>
+                    <input type="radio" name="radio" class="com_custom_radio" id="payment_card">
+                    <label for="payment_card">신용카드</label>
                     <div class="com_custom_selectbox_wrap fixed">
                         <dl class="com_custom_selectbox">
                             <dt><a href="#none" class="com_custom_selectbox_btn"
@@ -593,8 +456,11 @@
                 </li>
 
             </ul>
-            <p class="com_box_design_olist" id="pKKO">
-                카카오페이는 신용카드 선할인과 카드사 포인트는 이용하실 수 없으며 신용카드별 청구 할인은 이용하실 수 있습니다.</p>
+
+            <p class="com_box_design_olist" id="Kakao" style="display: none">
+                카카오페이는 신용카드 선할인과 카드사 포인트는 이용하실 수 없으며 신용카드별 청구 할인은 이용하실 수 있습니다.
+            </p>
+
             <div class="com_agree_wrap">
                 <p class="com_list_style1_title">
                     <input type="checkbox" id="check00" class="com_custom_checkbox com_all_checker"><label
@@ -629,14 +495,263 @@
                 </dl>
             </div>
             <div class="com_btn_wrap pT40">
-                <a href="/culture-event/popcorn-store/payment-successcomplete" class="btn_style0" onclick="fn_Payment()">결제하기</a>
-                <a href="/culture-event/popcorn-store/user-gift" class="btn_prev">
+                <a class="btn_style0" onclick="fn_Payment()">결제하기</a>
+<!--                <a href="/culture-event/popcorn-store/payment-successcomplete" class="btn_style0" onclick="fn_Payment()">결제하기</a>-->
+                <a href="javascript:window.history.back()" class="btn_prev">
                     <img th:src="@{/img/btn_prev.png}" alt="이전화면으로 이동">이전화면</a>
             </div>
         </div>
+
         <!-- E 결제수단 -->
+        <script th:inline="javascript">
+            let loginStatus = [[${session.userid}]]
+            let kakaoindex = document.getElementById("Kakao")
+
+            //카카오 페이 클릭 시 div 나오도록
+            $("#payment_kakaopay").change(function(){
+               if($("#payment_kakaopay").is(":checked")){
+                   kakaoindex.style.display = 'block'
+               }
+            });
+
+            $("#payment_card").change(function(){
+                if($("#payment_card").is(":checked")){
+                    kakaoindex.style.display = 'none'
+                }
+            });
+
+            // 약관 서비스 모두 동의 체크박스
+            $("#check00").change(function(){
+                if($("#check00").is(":checked")){
+                    $('#check10').prop('checked',true);
+                    $('#check11').prop('checked',true);
+                    $('#check20').prop('checked',true);
+                    $('#check21').prop('checked',true);
+                    $('#check22').prop('checked',true);
+                }
+            });
+            $("#check00").change(function(){
+                if(!$("#check00").is(":checked")){
+                    $('#check10').prop('checked',false);
+                    $('#check11').prop('checked',false);
+                    $('#check20').prop('checked',false);
+                    $('#check21').prop('checked',false);
+                    $('#check22').prop('checked',false);
+
+                }
+            });
+            $("#check10").change(function(){
+                if($("#check10").is(":checked") && $("#check11").is(":checked")){
+                    $('#check00').prop('checked',true);
+                }
+            });
+            $("#check11").change(function(){
+                if($("#check10").is(":checked") && $("#check11").is(":checked")){
+                    $('#check00').prop('checked',true);
+                }
+            });
+            $("#check10").change(function(){
+                if(!$("#check10").is(":checked") || !$("#check11").is(":checked")){
+                    $('#check00').prop('checked',false);
+                }
+            });
+            $("#check11").change(function(){
+                if(!$("#check10").is(":checked") || !$("#check11").is(":checked")){
+                    $('#check00').prop('checked',false);
+                }
+            });
+            $("#check11").change(function(){
+                if($("#check11").is(":checked")){
+                    $('#check20').prop('checked',true);
+                    $('#check21').prop('checked',true);
+                    $('#check22').prop('checked',true);
+                }
+            });
+            $("#check11").change(function(){
+                if(!$("#check11").is(":checked")){
+                    $('#check20').prop('checked',false);
+                    $('#check21').prop('checked',false);
+                    $('#check22').prop('checked',false);
+                }
+            });
+            $("#check20").change(function(){
+                if(!$("#check20").is(":checked")){
+                    $('#check00').prop('checked',false);
+                    $('#check11').prop('checked',false);
+                }
+            });
+            $("#check21").change(function(){
+                if(!$("#check21").is(":checked")){
+                    $('#check00').prop('checked',false);
+                    $('#check11').prop('checked',false);
+                }
+            });
+            $("#check22").change(function(){
+                if(!$("#check22").is(":checked")){
+                    $('#check00').prop('checked',false);
+                    $('#check11').prop('checked',false);
+                }
+            });
+            $("#check20").change(function(){
+                if($("#check20").is(":checked") && $("#check21").is(":checked") && $("#check22").is(":checked")){
+                    $('#check00').prop('checked',true);
+                    $('#check11').prop('checked',true);
+                }
+            });
+            $("#check21").change(function(){
+                if($("#check20").is(":checked") && $("#check21").is(":checked") && $("#check22").is(":checked")){
+                    $('#check00').prop('checked',true);
+                    $('#check11').prop('checked',true);
+                }
+            });
+            $("#check22").change(function(){
+                if($("#check20").is(":checked") && $("#check21").is(":checked") && $("#check22").is(":checked")){
+                    $('#check00').prop('checked',true);
+                    $('#check11').prop('checked',true);
+                }
+            });
+            $("#check20").change(function(){
+                if(!$("#check20").is(":checked") || !$("#check21").is(":checked") || !$("#check22").is(":checked")){
+                    $('#check11').prop('checked',false);
+                }
+            });
+            $("#check21").change(function(){
+                if(!$("#check20").is(":checked") || !$("#check21").is(":checked") || !$("#check22").is(":checked")){
+                    $('#check11').prop('checked',false);
+                }
+            });
+            $("#check22").change(function(){
+                if(!$("#check20").is(":checked") || !$("#check21").is(":checked") || !$("#check22").is(":checked")){
+                    $('#check11').prop('checked',false);
+                }
+            });
+
+            // 결제 버튼 클릭 시
+            function fn_Payment(){
+                // 로그인이 안되있을 경우
+                if (loginStatus == null) {
+                    alert("CGV 회원이 아닙니다. 지금 CGV에 가입하고 쿠폰/포인트 등 다양한 혜택을 누리세요.");
+                    location.href = "/user/login";
+                    return;
+                }
+
+                // 결제 수단 선택 안됐을 경우
+                else {
+                    let kakao_checked = $('#payment_kakaopay').is(':checked');
+                    let card_checked = $('#payment_card').is(':checked');
+                    let check00 = $('#check00').is(':checked');
+
+                    if (kakao_checked == false && card_checked == false) {
+                        alert("결제 수단을 선택해주세요!")
+                        return false;
+                    } else if (check00 == false) {
+                        alert("결제대행서비스 약관에 모두 동의하셔야 결제가 가능합니다.")
+                        return false;
+                    }
+                    // else if (카카오페이) {
+                    //
+                    // }
+                }
+
+                location.href='/culture-event/popcorn-store/payment-successcomplete';
+
+                };
 
 
+
+
+            // if(!$("#payment_kakaopay").is(":checked")){
+            //
+            // }
+
+            //카카오페이를 선택한 경우
+            // if (check.style.display == 'none') {
+            //     check.style.display = 'block'
+            //     // CardCode = "KKO";
+            // }
+            // else if ($("#liCard").find("dt").attr("class") != undefined) {
+            //     CardCode = $("#liCard").find("dt").attr("class").split(' ')[1].replace("cards_", "");
+            // }
+            // else {
+            //     alert("결제수단을 선택하세요.");
+            //     return;
+            // }
+            //
+            // //약관 선택 여부
+            // if ($(".com_all_particle_checker:checked").length < 2) {
+            //     alert("결제대행서비스 약관에 모두 동의하셔야 결제가 가능합니다.");
+            //     return;
+            // }
+
+            // //결제 VALIDATION
+            // var jsonData = "{USER_ID: '" + "" + "'}";
+            // jQuery.ajax({
+            //     type: "POST",
+            //     url: "purchase-confirm.aspx/GetPaymentInfoCheck",
+            //     data: jsonData,
+            //     contentType: "application/json; charset=utf-8",
+            //     dataType: "json",
+            //     async: false,
+            //     success: function (data) {
+            //         if (data.d.split('|')[0] == "00") {
+            //             //정상
+            //             //결제 PG창 호출
+            //             childwin = window.open("", "X_ANSIM_POP", "width=" + 400 + ", height=" + 600);
+            //             order_no = data.d.split('|')[1];
+            //
+            //             var form = document.createElement("form");
+            //             form.name = "payment";
+            //             form.method = "post";
+            //             form.action = "payment.jsp";
+            //             form.target = "X_ANSIM_POP";
+            //
+            //             var input_card_code = document.createElement("input");
+            //             input_card_code.type = "hidden";
+            //             input_card_code.name = "CardCode";
+            //             input_card_code.value = CardCode;
+            //
+            //             form.appendChild(input_card_code);
+            //
+            //             var input_TYPE = document.createElement("input");
+            //             input_TYPE.type = "hidden";
+            //             input_TYPE.name = "TYPE";
+            //             input_TYPE.value = "p";
+            //
+            //             form.appendChild(input_TYPE);
+            //
+            //             document.body.appendChild(form);
+            //
+            //             form.submit();
+            //
+            //             $.fn.dimedPopUp(true, 'com_pop_wrap', '0.7');
+            //
+            //             timer = null;
+            //             pgwin();
+            //         } else {
+            //             alert(data.d.split('|')[1]);
+            //             //장바구니에서 왔는지
+            //             if ("0" == "" || "0" == "0") {
+            //                 location.href = "user-cart.jsp";
+            //             } else {
+            //                 if ("100253" != "0") {
+            //                     location.href = "product-detail.jsp?GG_NO=100253";
+            //                 } else {
+            //                     location.href = "product-detail.jsp?GG_NO=0";
+            //                 }
+            //             }
+            //         }
+            //     },
+            //     complete: function (data) {
+            //         //$(window).stopLoading(); // 로딩바 종료
+            //     },
+            //     error: function (xhr, status, err) {
+            //         var err = eval("(" + xhr.responseText + ")");
+            //         alert(err.Message);
+            //         //$(window).stopLoading(); // 로딩바 종료
+            //     }
+
+
+        </script>
         <!--/ Contents End -->
     </div>
     <!-- /Contents Area -->

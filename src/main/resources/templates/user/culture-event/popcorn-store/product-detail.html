@@ -204,20 +204,26 @@
                         </dd>
                     </dl>
                     <div class='category_product_detail_price_wrap'>
-                        <div class='com_form_number'><a href="#none"
-                                                        onclick="$.fn.comFormNumberCnt('com_form_count0', 'com_total_price' ,'com_total_price0', -1, 1, 10);"
-                                                        class="com_btn_minus">-</a> <span
-                                class='com_form_count com_form_count0'>1</span> <a href="#none"
-                                                                                   onclick="$.fn.comFormNumberCnt('com_form_count0','com_total_price', 'com_total_price0', 1, 1, 10);"
-                                                                                   class="com_btn_plus">+</a> <span
-                                class='com_total_price' id='spantotalprice' th:text="${giftDTO.price}"></span></div>
-                        <div class='category_product_detail_total_price'><p class='com_form_total_price'>총 구매금액<span
-                                class='com_total_price0 com_product_total_price' th:text="${giftDTO.price}"></span></p></div>
+                        <div class='com_form_number'>
+                            <a href="#none" onclick="$.fn.comFormNumberCnt('com_form_count0', 'com_total_price' ,'com_total_price0', -1, 1, 10);" class="com_btn_minus">-</a>
+                            <span class='com_form_count com_form_count0 totalCount'>1</span>
+                            <a href="#none" onclick="$.fn.comFormNumberCnt('com_form_count0','com_total_price', 'com_total_price0', 1, 1, 10);" class="com_btn_plus">+</a>
+                            <span class='com_total_price' th:id='spantotalprice' th:text="${giftDTO.price}"></span>
+                        </div>
+                        <div class='category_product_detail_total_price'>
+                            <p class='com_form_total_price'>총 구매금액<span class='com_total_price0 com_product_total_price' th:text="${giftDTO.price}"></span></p>
+                        </div>
                     </div>
-                    <div class='category_product_detail_btn_wrap'> <a
-                            href='/culture-event/popcorn-store/user-cart'
-                            onclick='app.goLogin(); return false;'>선물하기</a><a
-                            href='/culture-event/popcorn-store/purchase-confirm'>구매하기</a>
+                    <div class='category_product_detail_btn_wrap'>
+                        <a href='#' onclick='nogift()'>선물하기</a>
+<!--                        <a href='/culture-event/popcorn-store/user-cart' onclick='app.goLogin(); return false;'>선물하기</a>-->
+<!--                        <a th:href='@{/culture-event/popcorn-store/purchase-confirm?gcode=} + ${giftDTO.gcode}'>구매하기</a>-->
+<!--                        http://localhost:8080/culture-event/popcorn-store/purchase-confirm?gcode=1-->
+
+                        <a th:href='@{/culture-event/popcorn-store/purchase-confirm(gcode=${giftDTO.gcode}, totalCount=${giftDTO.price})}'>구매하기</a>
+<!--                        http://localhost:8080/culture-event/popcorn-store/purchase-confirm?id=1&id=totalCount-->
+
+<!--                        <a href='/culture-event/popcorn-store/purchase-confirm'>구매하기</a>-->
                     </div>
                 </div>
             </div>
@@ -233,6 +239,17 @@
     <!-- /Contents Area -->
 </div>
 <!-- E Contaniner -->
+
+<script th:inline="javascript">
+    function nogift() {
+        alert("현재 선물하기를 이용할 수 없습니다.");
+        return false;
+    }
+
+    // let totalcount = [[${totalCount}]]
+    // let total = document.getElementsByClassName('totalCount')
+    // console.log(total)
+</script>
 
 <!-- S Popup -->
 <div class="com_pop_wrap">

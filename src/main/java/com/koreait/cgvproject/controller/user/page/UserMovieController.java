@@ -1,7 +1,11 @@
 package com.koreait.cgvproject.controller.user.page;
 
+import com.koreait.cgvproject.dto.ActorDTO;
+import com.koreait.cgvproject.dto.DirectorDTO;
 import com.koreait.cgvproject.dto.MovieDTO;
 import com.koreait.cgvproject.dto.TrailerDTO;
+import com.koreait.cgvproject.entity.Movie;
+import com.koreait.cgvproject.repository.MovieRepository;
 import com.koreait.cgvproject.service.user.moive.UserMovieService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -16,6 +20,8 @@ public class UserMovieController {
 
     @Autowired
     private UserMovieService userMovieService;
+    @Autowired
+    private MovieRepository movieRepository;
 
     @GetMapping("movies")
     public String movies(Model model){
@@ -25,12 +31,18 @@ public class UserMovieController {
     }
 
 
-//    @GetMapping("/movies/detail-view/{mcode}")
-//    public String detailview(@PathVariable("mcode") Long mcode, Model model){
-//        TrailerDTO trailerDTO=userMovieService.getTrailer(mcode);
-//        model.addAttribute("trailer",trailerDTO);
-//        return "user/movies/detail-view";
-//    }
+    @GetMapping("/movies/detail-view/{mcode}")
+    public String detailview(@PathVariable("mcode") Long mcode, Model model){
+        Movie movie=movieRepository.findByMcode(mcode);
+        model.addAttribute("movie",movie);
+        TrailerDTO trailerDTO=userMovieService.getTrailer(movie);
+        model.addAttribute("trailer",trailerDTO);
+        DirectorDTO directorDTO=userMovieService.getDirector(movie);
+        model.addAttribute("director",directorDTO);
+        ActorDTO actorDTO=userMovieService.getActor(movie);
+        model.addAttribute("actor",actorDTO);
+        return "user/movies/detail-view";
+    }
 
     @GetMapping("movies/detail-view/cast")
     public String cast(Model model){

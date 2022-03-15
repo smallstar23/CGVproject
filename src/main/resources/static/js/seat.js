@@ -251,15 +251,7 @@ function seatUpdate(){
         seatUpdateAjax(hall.value, seat.id, intDisabled);
     })
 }
-function seatUpdateHelper(){
-    const allSeat = document.querySelectorAll('.seat');
-    const stNumList = [];
-    allSeat.forEach(seat => {
-        stNumList.push(seat.id);
-    })
-    stNumList.
-    return stNumList;
-}
+
 function SeatCreateAjax(hcode, stNum, disabled){
     fetch('/api/seat/create', {
         method: "POST",

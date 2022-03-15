@@ -9,6 +9,9 @@ import lombok.AllArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
+import java.util.List;
+
 @Service
 @AllArgsConstructor
 public class AdminHallService {
@@ -47,11 +50,13 @@ public class AdminHallService {
 
     }
 
-//    @Transactional
-//    public List<HallDTO> getHallList(){
-//        List<Hall> hallList = hallRepository.findAll();
+    // theater service에 halllist 불러올수 있음
+//    public List<HallDTO> getHallList(Long tcode){
+//        Theater theater=theaterRepository.findByTcode(tcode);
+//        System.out.println(theater);
+//        List<Hall> hallList = hallRepository.findAllByTheater(theater);
+//        System.out.println(hallList);
 //        List<HallDTO> hallDTOList = new ArrayList<>();
-//
 //        for(Hall hall : hallList){
 //            HallDTO hallDTO = HallDTO.builder().hcode(hall.getHcode())
 //                    .tcode(hall.getTheater().getTcode()).location(hall.getLocation())
