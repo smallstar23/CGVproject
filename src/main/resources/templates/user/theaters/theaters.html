@@ -603,20 +603,13 @@
 
 </div>
 
-<script src="/js/theaters.js" ></script>
-<!--<script th:inline="javascript">  여기 진짜 모르겠다.............-->
-<!--    /*<![CDATA[*/-->
-<!--    let receive = [[${tcode}]];-->
-<!--    let findtcode=document.getElementsByClassName("findtcode")-->
-<!--    console.log(receive);-->
+<script src="/js/theaters.js" th:inline="javascript" ></script>
+<script>
+    /*<![CDATA[*/
+    let receive = [[${tcode}]];
+    /*]]>*/
 
-<!--    for(let i=0; i<=findtcode.length; i++){-->
-<!--        console.log(findtcode[i])-->
-<!--    }-->
-<!--    /*]]>*/-->
-
-
-<!--</script>-->
+</script>
 
 </body>
 </html>
