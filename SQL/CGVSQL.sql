@@ -145,20 +145,19 @@ create sequence seq_reply
 
 CREATE TABLE Price (
     pcode number(7)   primary key,
-    tcode number(7)   not null,
+    tcode number(7) not null,
     week varchar2(10)   not null, -- 월~목 , 금~일
     slot varchar2(20)   not null, -- 모닝(06:00~), 브런치(10:01 ~)
     start_time varchar2(10)   not null, -- 06:00
     end_time varchar2(10)   not null, -- 10:00
-    adult_price number(10)   not null, -- 성인 가격
-    stu_price number(10)   not null, -- 학생 가격
+    adult_price varchar2(10)   not null, -- 성인 가격
+    stu_price varchar2(10)   not null, -- 학생 가격
     constraint ck_price_week check(week in('월~목','금~일')),
     constraint fk_Price_tcode foreign key(tcode) references Theater (tcode)
 );
 create sequence seq_price
     start with 1
     increment by 1;
-
 
 
 CREATE TABLE Schedule (
@@ -169,12 +168,12 @@ CREATE TABLE Schedule (
   constraint fk_Schedule_mcode foreign key(mcode) references Movie (mcode),
   constraint fk_Schedule_hcode foreign key(hcode) references Hall (hcode)
 );
-insert into schedule(schecode, mcode, hcode, scdate) values (seq_schedule.nextval, 64, 46, TO_DATE('2022/03/14 21:00:00','YYYY-MM-DD HH24:MI:SS'));
-ALTER SESSION SET NLS_DATE_FORMAT = 'YYYY-MM-DD HH24:MI:SS';
-
 create sequence seq_schedule
     increment by 1
     start with 1;
+    
+--insert into schedule(schecode, mcode, hcode, scdate) values (seq_schedule.nextval, 64, 46, TO_DATE('2022/03/14 21:00:00','YYYY-MM-DD HH24:MI:SS'));
+--ALTER SESSION SET NLS_DATE_FORMAT = 'YYYY-MM-DD HH24:MI:SS';
 
 CREATE TABLE Seat (
     stcode number(10)   primary key,
@@ -277,7 +276,7 @@ create sequence seq_gift_payment
 
 
 drop table gift_payment;  drop table gift; drop table ticket_payment; drop table ticket; drop table notification; drop table seathtml;
-drop table seat; drop table schedule;drop table price; drop table reply; drop table director; drop table actor; drop table trailer;
+drop table seat; drop table schedule; drop table price; drop table reply; drop table director; drop table actor; drop table trailer;
 drop table favCGV; drop table hall; drop table movie; drop table point; drop table theater;  drop table member;
 
 
@@ -344,9 +343,9 @@ insert into Gift (gcode, category, title, gname, content, price, gfile, end_mont
 insert into Gift (gcode, category, title, gname, content, price, gfile, end_month, mainon, mainon_string) values (seq_gift.nextval,'7','오징어(완제품)','오징어(완제품)','영화 보는 즐거움에 씹는 즐거움까지 더해보세요!','3,500','http://img.cgv.co.kr/GiftStore/Product/Pc/Detail/15459089336130.jpg','6',3,'한봉지로는 모자라요');
 
 
-insert into Movie (mcode, mrank, title_ko, title_en, genre, country, movie_rating, runtime, launch_date, reg_date, poster) values (seq_movie.nextval, 1, '더 배트맨', 'The Batman', '액션', '미국', '15세 이상', 176, '20220301', sysdate, 'https://img.cgv.co.kr/Movie/Thumbnail/Poster/000085/85632/85632_1000.jpg');
-insert into Movie (mcode, mrank, title_ko, title_en, genre, country, movie_rating, runtime, launch_date, reg_date, poster) values (seq_movie.nextval, 2, '이상한 나라의 수학자', 'In Our Prime', '드라마', '한국', '12세 이상', 117, '20220309', sysdate, 'https://img.cgv.co.kr/Movie/Thumbnail/Poster/000085/85666/85666_1000.jpg');
-insert into Movie (mcode, mrank, title_ko, title_en, genre, country, movie_rating, runtime, launch_date, reg_date, poster) values (seq_movie.nextval, 3, '나의 히어로 아카데미아 더 무비 월드 히어로즈 미션', 'My Hero Academia World Heroes Mission', '애니메이션', '일본', '12세 이상', 104, '20220309', sysdate, 'https://img.cgv.co.kr/Movie/Thumbnail/Poster/000085/85684/85684_1000.jpg');
+insert into Movie (mcode, mscreen, title_ko, title_en, genre, country, movie_rating, runtime, launch_date, reg_date, poster) values (seq_movie.nextval, '상영중', '더 배트맨', 'The Batman', '액션', '미국', '15세 이상', 176, '20220301', sysdate, 'https://img.cgv.co.kr/Movie/Thumbnail/Poster/000085/85632/85632_1000.jpg');
+insert into Movie (mcode, mscreen, title_ko, title_en, genre, country, movie_rating, runtime, launch_date, reg_date, poster) values (seq_movie.nextval, '상영중', '이상한 나라의 수학자', 'In Our Prime', '드라마', '한국', '12세 이상', 117, '20220309', sysdate, 'https://img.cgv.co.kr/Movie/Thumbnail/Poster/000085/85666/85666_1000.jpg');
+insert into Movie (mcode, mscreen, title_ko, title_en, genre, country, movie_rating, runtime, launch_date, reg_date, poster) values (seq_movie.nextval, '상영중', '나의 히어로 아카데미아 더 무비 월드 히어로즈 미션', 'My Hero Academia World Heroes Mission', '애니메이션', '일본', '12세 이상', 104, '20220309', sysdate, 'https://img.cgv.co.kr/Movie/Thumbnail/Poster/000085/85684/85684_1000.jpg');
 
 
 insert into theater(tcode, areacode, tname, location, hp, photo) values (seq_theater.nextval, 01, '강남CGV', '서울특별시 강남구 역삼동 814-6 스타플렉스', '1544-1122','https://img.cgv.co.kr/Theater/Theater/2014/1211/CGVgangnam.jpg' );

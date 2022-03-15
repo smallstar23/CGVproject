@@ -1,5 +1,6 @@
 package com.koreait.cgvproject.entity;
 
+import com.koreait.cgvproject.dto.PriceDTO;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -30,6 +31,20 @@ public class Price {
     private String adultPrice;
     private String stuPrice;
 
-    @OneToOne
+    @ManyToOne
+    @JoinColumn(name = "tcode")
     private Theater theater;
+
+    public PriceDTO toDTO(){
+        return PriceDTO.builder()
+                .pcode(pcode)
+                .week(week)
+                .slot(slot)
+                .startTime(startTime)
+                .endTime(endTime)
+                .adultPrice(adultPrice)
+                .stuPrice(stuPrice)
+                .tcode(theater.getTcode())
+                .build();
+    }
 }

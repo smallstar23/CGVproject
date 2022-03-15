@@ -1,4 +1,4 @@
-package com.koreait.cgvproject.domain;
+package com.koreait.cgvproject.controller.admin.domain;
 
 import lombok.Data;
 

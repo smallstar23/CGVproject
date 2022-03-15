@@ -27,8 +27,9 @@ public class AdminSeatService {
         if (seat.getStcode() != null) return true;
         else return false;
     }
-
+    @Transactional
     public void update(SeatDTO seatDTO) {
+
         Optional<Hall> hall = hallRepository.findById(seatDTO.getHcode());
         if (hall.isPresent()) {
             Optional<Seat> seatOptional = seatRepository.findByHallAndStNum(hall.get(), seatDTO.getStNum());
@@ -45,6 +46,8 @@ public class AdminSeatService {
         }
     }
 
+
+    @Transactional
     public List<SeatDTO> read(Long hcode) {
         Optional<Hall> hall = hallRepository.findById(hcode);
         List<SeatDTO> seatDTOList = new ArrayList<>();
