@@ -64,4 +64,6 @@ public class AdminSeatService {
         hall.ifPresent(hal -> { seatRepository.deleteAllByHall(hal);
         });
     }
+
+
 }
