@@ -152,7 +152,7 @@ public class UserMycgvController {
     public String mycgv_myinfo_leavecgv(Model model){
         Member member = memberService.getMember((String)httpSession.getAttribute("userid"));
         memberService.delete(member.getIdx());
-        return "redirect:/user/logout";
+        return "/user/mycgv/myinfo/mycgv-myinfo-leavecgv";
     }
 
     @GetMapping("/user/mycgv/mycgv-popcorn-store")
