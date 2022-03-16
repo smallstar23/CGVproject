@@ -56,6 +56,80 @@ let tcode;
     }
 
 
+
+
+
+// 날짜 부분 오늘 날짜 기준으로 howmany 값 조절하면 +howmany 만큼 날짜 뿌릴 수 있음, 아직 월 넘어가는건 못하겠음..
+// 배열이나 객체같은 것들은 보통 const로 자료형을 잡아주는게 좋습니다.
+// 배열의 요소값들이 바뀌는 것이지 배열자체의 위치값이 바뀌는것이 아닙니다. (이유)
+// 그리고 howmany 만큼이 아니라 전에꺼였으면 howmany + 1 이었음 ㅡㅡ
+let howmany = 25;
+let today = new Date().getDate();
+let month = new Date().getMonth()+1;
+const year = new Date().getFullYear();
+const lastDate = new Date(year, month, 0).getDate(); // 해당월의 마지막일
+let day = new Date().getDay();
+const dayArray = ["일", "월", "화", "수", "목", "금", "토"];
+const dateArray = [];
+for (let i = 0; i < howmany; i++) {
+    let initToday = today + i;
+    // 배열에 넘겨주려는 값이 해당 월의 마지막일보다 클 경우
+    if (initToday > lastDate) initToday = today + i - lastDate;
+    // 넘겨주려는 값에 마지막일 수를 뻅니다. (32 - 31 = 1)
+    dateArray[i] = initToday;
+}
+const newdayArray = [];
+for (let i = 0; i < howmany; i++) {
+    let newday = day + i;
+    // 불필요한 if문 제거
+    newday = newday % 7;
+    newdayArray[i] = dayArray[newday];
+}
+
+const fordate = document.getElementById("fordate");
+for (let i = 0; i < howmany; i++) {
+    //2022.03.17(목)형식으로
+    // month+1 추가, 1일 되면 현재 월에 +1
+    if(dateArray[i]==1){
+        month=month+1;
+        fordate.innerHTML += `<li class="month dimmed">
+                                            <div>
+                                                <span class="year">2022</span>
+                                                <span class="month">${month}</span>
+                                                <div>
+                                                </div>
+                                            </div>
+                                            </li>`
+
+    }
+    // 1~9월일때는 0추가
+    let newmonth;
+    if(month<10){
+        newmonth="0"+month;
+    }
+    // 1~9일일때는 0추가
+    if(dateArray[i]<10){
+        dateArray[i]="0"+dateArray[i]
+    }
+
+    let init = year+"-"+newmonth+"-"+dateArray[i]+"("+newdayArray[i]+")";
+
+    fordate.innerHTML += `<li data-index="1" date="${init}" class="day passday checkdate dimmed"><a href="#" onclick="return false;"><span class="dayweek">${newdayArray[i]}</span><span class="day">${dateArray[i]}</span><span class="sreader"></span></a></li>`
+
+
+}
+
+
+
+// 달력에서 가져온 checkdate의 값을 "(" 기준으로 나눈 후 앞부분만 새로 array에 저장함
+const checkdate=document.getElementsByClassName("checkdate");
+const newcheckdate=new Array();
+for(let i=0; i<=checkdate.length-1; i++){
+    newcheckdate[i]=checkdate[i].getAttribute("date").split("(")[0];
+}
+
+
+
     // 영화관 선택 부분 구현
 
     let theaterAreaClick = document.getElementsByClassName("theaterAreaClick");
@@ -67,10 +141,17 @@ let tcode;
     let area_theater_list = document.getElementsByClassName("area_theater_list");
 
 
-let schecodeArray=new Array();
+// fetch문에서 받아올 데이터 리스트 : 날짜array, hallDTOset
 let scdateArray=new Array();
+let hallDTOset=new Set();
+let hallDTOarray=new Array();
     for (let i = 0; i <= theaterClick.length - 1; i++) {
         theaterClick[i].addEventListener('click', function () {
+            // 새로운 상영관을 클릭할때마다 달력부분 전체 다시 dimmed 되돌리기
+            for(let a=0; a<= checkdate.length-1; a++){
+                checkdate[a].classList.add('dimmed')
+            }
+            // 상영관 하단 검은 부분으로 전달하기
             let theaterName = theaterSelect[i].innerText;
             placeholder[2].style.display = 'none';
             // 영화관 tcode전달해서 같이 href에 적용하기
@@ -100,8 +181,18 @@ let scdateArray=new Array();
             }).then(response=>response.json())
                 .then(data=> {
                     for(let i=0; i<=data.length-1; i++){
-                        schecodeArray[i]=data[i].schecode;
-                        scdateArray[i]=data[i].scdate;
+                        // hall DTO를 set에 넣어줌 (중복값 비허용) ???????????????????????안됨
+                        // hallDTOarray[i]=data[i].hallDTO;
+                        // console.log(hallDTOarray)
+                        // 2022-03-16 형태로 string으로 저장해줌
+                        scdateArray[i]=data[i].scdate.substring(0,10);
+                        for(let j=0; j<=newcheckdate.length-1;j++){
+                            // 데이터 날짜만큼 돌면서 달력과 같은 날짜가 존재할 경우 dimmed 제거
+                            if(scdateArray[i] == newcheckdate[j]){
+                                console.log(scdateArray[i])
+                                checkdate[j].classList.remove('dimmed')
+                            }
+                        }
                     }
                 })
 
@@ -127,86 +218,6 @@ let scdateArray=new Array();
 
 
 
-    // 날짜 부분 오늘 날짜 기준으로 howmany 값 조절하면 +howmany 만큼 날짜 뿌릴 수 있음, 아직 월 넘어가는건 못하겠음..
-    // 배열이나 객체같은 것들은 보통 const로 자료형을 잡아주는게 좋습니다.
-    // 배열의 요소값들이 바뀌는 것이지 배열자체의 위치값이 바뀌는것이 아닙니다. (이유)
-    // 그리고 howmany 만큼이 아니라 전에꺼였으면 howmany + 1 이었음 ㅡㅡ
-    let howmany = 25;
-    let today = new Date().getDate();
-    let month = new Date().getMonth()+1;
-    const year = new Date().getFullYear();
-    const lastDate = new Date(year, month, 0).getDate(); // 해당월의 마지막일
-    let day = new Date().getDay();
-    const dayArray = ["일", "월", "화", "수", "목", "금", "토"];
-    const dateArray = [];
-    for (let i = 0; i < howmany; i++) {
-        let initToday = today + i;
-        // 배열에 넘겨주려는 값이 해당 월의 마지막일보다 클 경우
-        if (initToday > lastDate) initToday = today + i - lastDate;
-        // 넘겨주려는 값에 마지막일 수를 뻅니다. (32 - 31 = 1)
-        dateArray[i] = initToday;
-    }
-    const newdayArray = [];
-    for (let i = 0; i < howmany; i++) {
-        let newday = day + i;
-        // 불필요한 if문 제거
-        newday = newday % 7;
-        newdayArray[i] = dayArray[newday];
-    }
-
-    const fordate = document.getElementById("fordate");
-    for (let i = 0; i < howmany; i++) {
-        //2022.03.17(목)형식으로
-          // month+1 추가, 1일 되면 현재 월에 +1
-        if(dateArray[i]==1){
-            month=month+1;
-            fordate.innerHTML += `<li class="month dimmed">
-                                            <div>
-                                                <span class="year">2022</span>
-                                                <span class="month">${month}</span>
-                                                <div>
-                                                </div>
-                                            </div>
-                                            </li>`
-
-        }
-        // 1~9월일때는 0추가
-        let newmonth;
-        if(month<10){
-            newmonth="0"+month;
-        }
-        // 1~9일일때는 0추가
-        if(dateArray[i]<10){
-            dateArray[i]="0"+dateArray[i]
-        }
-
-        let init = year+"-"+newmonth+"-"+dateArray[i]+"("+newdayArray[i]+")";
-
-        fordate.innerHTML += `<li data-index="1" date="${init}" class="day passday checkdate"><a href="#" onclick="return false;"><span class="dayweek">${newdayArray[i]}</span><span class="day">${dateArray[i]}</span><span class="sreader"></span></a></li>`
-
-
-    }
-// 가져온 스케쥴 리스트중에서 날짜가 같으면 클릭할 수 있게 해주기
-    console.log(scdateArray)
-    const newscdateArray=new Array(); // 가져온 스케쥴리스트 중 날짜 리스트인데, 날짜부분만 뽑아서 새로 저장하는중.....진행중임
-    for(let i=0; i<=scdateArray.length-1; i++){
-        console.log(scdateArray[i])
-        // newscdateArray[i]=scdateArray[i].split("T")[0];
-        // console.log(newscdateArray[i]);
-    }
-
-
-    // 달력에서 가져온 checkdate의 값을 "(" 기준으로 나눈 후 앞부분만 새로 array에 저장함
-    const checkdate=document.getElementsByClassName("checkdate");
-    const newcheckdate=new Array();
-    for(let i=0; i<=checkdate.length-1; i++){
-        newcheckdate[i]=checkdate[i].getAttribute("date").split("(")[0];
-    }
-console.log(newcheckdate)
-
-
-
-
 // 날짜 클릭시 날짜 전달하기
     let passday = document.getElementsByClassName("passday");
     for (let i = 0; i <= passday.length - 1; i++) {
@@ -214,6 +225,10 @@ console.log(newcheckdate)
             for (let j = 0; j <= passday.length - 1; j++) {
                 this.classList.add("selected");
                 let clickDate = this.getAttribute("date");
+                if(this.classList.contains('dimmed')){
+                    this.classList.remove("selected");
+                    clickDate="";
+                }
                 let sendDate = document.getElementsByClassName("sendDate")[0].innerHTML = `<input style="background-color: #1d1d1c; color:#cccccc; font-weight: bold" name="selDate" id="selDate" value="${clickDate}"></input>`;
                 passday[j].classList.remove("selected");
                 placeholder[2].style.display = 'none';
