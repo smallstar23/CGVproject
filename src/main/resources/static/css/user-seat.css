@@ -1,0 +1,68 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+body{
+    background-color: #f2f0e5;
+}
+#seats {
+    margin: 0 auto;
+    background-color: white;
+    width: fit-content;
+    height: fit-content;
+}
+div{
+    box-sizing: border-box;
+}
+.seat {
+    width: 15px;
+    height: 15px;
+    background-color: #666;
+    color: white;
+    text-align: center;
+    font-size: 11px;
+    cursor: pointer;
+    margin: 0.6px;
+}
+.seat:hover{
+    background-color: white;
+    color: #e5e5df;
+}
+
+.row_div {
+    display: flex;
+}
+
+.empty {
+    width: 15px;
+    height: 15px;
+    border: 1px solid rgba(0, 0, 0, 0);
+}
+.disabled {
+    background-color: white;
+    color: #e5e5df;
+    visibility: hidden;
+}
+.none{
+    display: none;
+}
+
+.row-text {
+    border: 1px solid #e5e5df;
+    font-size: 12px;
+    width: 15px;
+    height: 15px;
+    border-left: hidden;
+    border-right: hidden;
+    border-bottom: hidden;
+    text-align: center;
+    font-weight: bold;
+    color: #333;
+}
+
+#seats .seat{background-image:url(http://img.cgv.co.kr/CGV_RIA/Ticket/image/reservation/step2/seat_icons_20210617.png); background-repeat:no-repeat;}
+#seats .seat{background-color:#666; background-position:1000px 1000px;}
+#seats .selected {background-color:#ad1712; background-position:0px 0px;}
+#seats .disabled {visibility: hidden}
+#seats .reserved {background-color:#bbb; background-position:-1000px 0;}
