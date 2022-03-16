@@ -162,12 +162,14 @@
             <div class="payment_complete_contents_wrap">
                 <p>
                     <strong>상품 결제가 완료되었습니다.</strong>
-                    <span>[[${info.partner_order_id}]]</span>
+                    <span th:utext="${gpcode.gpcode}"></span>
+                    <span th:utext="${session.title}">안녕</span>
                 </p>
                 <dl>
                     <dt>총 상품금액</dt>
                     <dd>
-                        <span>[[${info.amount.total}]]</span>
+                        <span th:utext="${session.price}"></span>
+
                     </dd>
                     <dt>할인금액</dt>
                     <dd>
@@ -175,7 +177,8 @@
                     </dd>
                     <dt class="payment_complete_total">총 결제금액</dt>
                     <dd>
-                        <span>[[${info.amount.total}]]</span>
+                        <span th:utext="${session.price}"></span>
+
                     </dd>
                 </dl>
             </div>

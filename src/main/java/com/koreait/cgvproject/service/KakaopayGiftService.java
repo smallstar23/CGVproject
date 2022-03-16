@@ -4,8 +4,8 @@ package com.koreait.cgvproject.service;
 import java.net.URI;
 import java.net.URISyntaxException;
 
-import com.koreait.cgvproject.domain.KakaoPayApprovalVO;
-import com.koreait.cgvproject.domain.KakaoPayReadyVO;
+import com.koreait.cgvproject.controller.admin.domain.KakaoPayApprovalVO;
+import com.koreait.cgvproject.controller.admin.domain.KakaoPayReadyVO;
 import com.koreait.cgvproject.entity.GiftPayment;
 import lombok.extern.java.Log;
 import org.springframework.beans.factory.annotation.Autowired;
