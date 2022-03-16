@@ -38,11 +38,15 @@ public class UserScheduleService {
         Movie movie=movieRepository.findByMcode(mcode);
         Theater theater=theaterRepository.findByTcode(tcode);
         List<Hall> hallList=hallRepository.findAllByTheater(theater);
+        ScheduleDTO scheduleDTO=new ScheduleDTO();
         List<Schedule> scheduleList=new ArrayList<>();
             for(Hall hall: hallList){
                 scheduleList=scheduleRepository.findAllByMovieAndHall(movie, hall);
                 for(Schedule schedule: scheduleList){
-                    scheduleDTOList.add(schedule.toDTO());
+                    scheduleDTO.setHallDTO(hall.toDTO());
+                    scheduleDTO.setSchecode(schedule.getSchecode());
+                    scheduleDTO.setScdate(schedule.getScdate());
+                    scheduleDTOList.add(scheduleDTO);
             }
         }
         return scheduleDTOList;
