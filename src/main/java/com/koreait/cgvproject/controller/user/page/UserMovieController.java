@@ -49,8 +49,16 @@ public class UserMovieController {
         return "user/movies/cast";
     }
 
-    @GetMapping("movies/detail-view/trailer")
-    public String trailer(Model model){
+    @GetMapping("movies/detail-view/trailer/{mcode}")
+    public String trailer(@PathVariable("mcode")Long mcode, Model model){
+        Movie movie=movieRepository.findByMcode(mcode);
+        model.addAttribute("movie",movie);
+        TrailerDTO trailerDTO=userMovieService.getTrailer(movie);
+        model.addAttribute("trailer",trailerDTO);
+        DirectorDTO directorDTO=userMovieService.getDirector(movie);
+        model.addAttribute("director",directorDTO);
+        ActorDTO actorDTO=userMovieService.getActor(movie);
+        model.addAttribute("actor",actorDTO);
         return "user/movies/trailer";
     }
     @GetMapping("movies/detail-view/still-cut")

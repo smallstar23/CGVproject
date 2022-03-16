@@ -1,11 +1,18 @@
 package com.koreait.cgvproject.controller.user.page;
 
 import com.koreait.cgvproject.dto.GiftDTO;
+import com.koreait.cgvproject.entity.Gift;
+import com.koreait.cgvproject.entity.GiftPayment;
 import com.koreait.cgvproject.entity.Member;
+import com.koreait.cgvproject.repository.GiftPaymentRepository;
+import com.koreait.cgvproject.repository.GiftRepository;
 import com.koreait.cgvproject.repository.MemberRepository;
 import com.koreait.cgvproject.service.KakaopayGiftService;
 import com.koreait.cgvproject.service.user.store.UserStoreService;
+import lombok.AllArgsConstructor;
 import lombok.Setter;
+import lombok.Value;
+import lombok.extern.java.Log;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -16,21 +23,24 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
+import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Map;
 
 @Controller
 @RequestMapping("/culture-event")
 @Slf4j
+@AllArgsConstructor
 public class UserStoreController {
 
     @Setter(onMethod_ = @Autowired)
     private KakaopayGiftService kakaopayGiftService;
 
-    @Autowired
     private UserStoreService userStoreService;
-
+    private HttpSession session;
     private MemberRepository memberRepository;
+    private GiftPaymentRepository giftPaymentRepository;
+    private GiftRepository giftRepository;
 
     private final String ROOT = "user/culture-event/popcorn-store";
 
@@ -69,6 +79,9 @@ public class UserStoreController {
         GiftDTO selectDTO = userStoreService.getGiftDTO(gcode);
         model.addAttribute("giftDTO", selectDTO);
 
+        session.setAttribute("price", selectDTO.getPrice());
+        session.setAttribute("title", selectDTO.getTitle());
+        session.setAttribute("gcode", selectDTO.getGcode());
 
 
         return ROOT + "/purchase-confirm";
@@ -83,33 +96,56 @@ public class UserStoreController {
     public String kakaoPaySuccess(@RequestParam("pg_token") String pg_token, Model model, HttpServletRequest request) throws Exception{
         log.info("kakaoPaySuccess pg_token : " + pg_token);
 
+        HttpSession session = request.getSession();
+        String memberid = (String) session.getAttribute("userid");
+        String price = (String) session.getAttribute("price");
+        String title = (String) session.getAttribute("title");
+        Long gcode = (Long) session.getAttribute("gcode");
 
-//        log.info(giftPayment.toString());
-//        HttpSession session = request.getSession();
-//        String userid = (String) session.getAttribute("userid");
-//
-//        log.info(userid);
-//        Member member = memberRepository.findByUserid(userid);
-//        log.info(member.toString());
+        Member member =memberRepository.findByUserid(memberid);
+        Gift gift =giftRepository.findById(gcode).orElse(null);
 
-        // 세션으로 처리할꺼임
-//        GiftPaymentDTO giftPaymentDTO = new GiftPaymentDTO();
-//
-//
-//        giftPaymentDTO.setGcode(4);
-//        giftPaymentDTO.setStatus("미사용");
-//        giftPaymentDTO.setRegDate(LocalDateTime.now());
-//        giftPaymentDTO.setGpcode(10L);
-//        giftPaymentDTO.setMemIdx(member.getIdx());
-//
-//        GiftPaymentDTO save = giftPaymentDTORepository.save(giftPaymentDTO);
+        GiftPayment giftpayment111 = new GiftPayment();
+        giftpayment111.setGift(gift);
+        giftpayment111.setMember(member);
+        giftpayment111.setStatus("미사용");
+        giftpayment111.setRegDate(LocalDateTime.now());
 
+        GiftPayment giftPayment = giftPaymentRepository.save(giftpayment111);
 
+        model.addAttribute("gpcode",giftpayment111);
         model.addAttribute("info", kakaopayGiftService.kakaoPayInfo(pg_token));
 
         return "user/culture-event/popcorn-store/payment-successcomplete";
 
     }
+
+//    @GetMapping("/popcorn-store/payment-successcomplete/temp")
+//    public String success(Model model, HttpServletRequest request) throws Exception{
+//
+//        HttpSession session = request.getSession();
+//        String memberid = (String) session.getAttribute("userid");
+//        String price = (String) session.getAttribute("price");
+//        String title = (String) session.getAttribute("title");
+//        Long gcode = (Long) session.getAttribute("gcode");
+//
+//        Member member =memberRepository.findByUserid(memberid);
+//        Gift gift =giftRepository.findById(gcode).orElse(null);
+//
+//        GiftPayment giftpayment111 = new GiftPayment();
+//        giftpayment111.setGift(gift);
+//        giftpayment111.setMember(member);
+//        giftpayment111.setStatus("미사용");
+//        giftpayment111.setRegDate(LocalDateTime.now());
+//
+//        GiftPayment giftPayment = giftPaymentRepository.save(giftpayment111);
+//
+//        model.addAttribute("gpcode",giftpayment111);
+//
+//        return "user/culture-event/popcorn-store/payment-successcomplete";
+//
+//    }
+
 
     @GetMapping("/popcorn-store/user-cart")
     public String userCart(){
