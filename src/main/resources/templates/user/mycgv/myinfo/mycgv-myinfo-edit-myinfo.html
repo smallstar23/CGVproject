@@ -229,7 +229,7 @@
                                 <label for="input_member_name"><span class="haze">"필수"</span> ✔ 이름</label>
                             </th>
                             <td style="text-align:left">
-                                <span class="input_txt"><input type="text" class="text" id="input_member_name1" name="username" th:value="${member.username}"  readonly></span><!-- 에러시 .error 클래스 추가 -->
+                                <span class="input_txt"><input type="text" class="text" id="input_member_name1" name="username" th:value="${session.username}"  readonly></span><!-- 에러시 .error 클래스 추가 -->
                             </td>
                         </tr>
                         <tr class="input">
@@ -238,7 +238,7 @@
                             </th>
                             <td style="text-align:left">
                                 <div class="input_group">
-                                    <span class="input_txt w250"><input type="text" class="text" title="사용 할 영문 아이디 명 입력" name="userid" id="mbr_id" maxlength="12" th:value="${member.userid}" readonly><!-- 에러시 .error 클래스 추가 --></span>
+                                    <span class="input_txt w250"><input type="text" class="text" title="사용 할 영문 아이디 명 입력" name="userid" id="mbr_id" maxlength="12" th:value="${session.userid}" readonly><!-- 에러시 .error 클래스 추가 --></span>
                                 </div>
                             </td>
                         </tr>
@@ -362,7 +362,7 @@
                 </div>
                 <div class="btn_sec">
                     <button type="button" class="btn" style="margin-left: 30%; margin-top: 20px" onclick="history.back();">취소</button>
-                    <button type="submit" class="btn btn_em" style="margin-top: 20px">등록</button>
+                    <button type="submit" class="btn btn_em" style="margin-top: 20px" onclick="alert('회원정보 수정이 완료되었습니다.')">등록</button>
                 </div>
                 </form>
             </div>

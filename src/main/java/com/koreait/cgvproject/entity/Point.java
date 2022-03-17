@@ -24,6 +24,8 @@ public class Point {
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "seq_point")
     private Long idx;
 
+    private Long pcode;
+
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name="mem_idx")
     private Member member;
