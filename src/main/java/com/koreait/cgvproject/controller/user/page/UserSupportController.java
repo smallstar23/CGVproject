@@ -71,52 +71,10 @@ public class UserSupportController {
         return ROOT + "/news/support-news";
     }
 
-    @GetMapping("support/news/support-news-detail-view/1")
-    public String support_news_detail_1(Model model){
-
-        // 1. ID로 데이터를 가져옴!
-        Notification notification_user = notificationRepository.findById(1L).orElse(null);
-
-        // 1-1. 조회수 증가
-        notification_user.setHit(notification_user.getHit() + 1);
-
-        Notification updatehit = notificationRepository.save(notification_user);
-
-        Notification realnotification_user = notificationRepository.findById(1L).orElse(null);
-
-        model.addAttribute("supportnews", realnotification_user);
-        log.info(realnotification_user.toString());
-        // 1-2. 이전 글, 다음 글
-
-        Notification notificationprev_user = notificationRepository.findById(4L).orElse(null);
-        Notification notificationnext_user = notificationRepository.findById(2L).orElse(null);
-        Notification notificationnull_user = notificationRepository.findById(21L).orElse(null);
-        notificationnull_user.setTitle("글이 존재하지 않습니다.");
-        notificationnull_user.setRegDate(null);
-
-        // 2. 가져온 데이터를 모델에 등록
-
-
-        if(notificationprev_user == null){
-            model.addAttribute("supportnews_prev", notificationnull_user);
-        } else if(notificationprev_user != null){
-            model.addAttribute("supportnews_prev", notificationprev_user);
-        }
-        if(notificationnext_user == null){
-            model.addAttribute("supportnews_next", notificationnull_user);
-        } else if(notificationnext_user != null){
-            model.addAttribute("supportnews_next",notificationnext_user);
-        }
-
-        log.info(realnotification_user.toString());
-        return ROOT + "/news/support-news-detail-view";
-    }
-
-
     @GetMapping("support/news/support-news-detail-view/{id}")
     public String support_news_detail_view(@PathVariable Long id,Model model){
 
-        // 1. ID로 데이터를 가져옴!
+        // 1. ID로 데이터를 가져옴! (1~200) 가져옴
         Notification notification_user = notificationRepository.findById(id).orElse(null);
 
         // 1-1. 조회수 증가
@@ -132,20 +90,23 @@ public class UserSupportController {
 
         Notification notificationprev_user = notificationRepository.findById(id - 1L).orElse(null);
         Notification notificationnext_user = notificationRepository.findById(id + 1L).orElse(null);
-        Notification notificationnull_user = notificationRepository.findById(1L).orElse(null);
-        notificationnull_user.setTitle("글이 존재하지 않습니다.");
-        notificationnull_user.setRegDate(null);
+        Notification notification = new Notification();
+        notification.setRegDate(null);
+        notification.setTitle("글이 존재하지 않습니다.");
+
+        log.info(realnotification_user.toString());
+        log.info(notification.toString());
 
         // 2. 가져온 데이터를 모델에 등록
 
 
         if(notificationprev_user == null){
-            model.addAttribute("supportnews_prev", notificationnull_user);
+            model.addAttribute("supportnews_prev", notification);
         } else if(notificationprev_user != null){
             model.addAttribute("supportnews_prev", notificationprev_user);
         }
         if(notificationnext_user == null){
-            model.addAttribute("supportnews_next", notificationnull_user);
+            model.addAttribute("supportnews_next", notification);
         } else if(notificationnext_user != null){
             model.addAttribute("supportnews_next",notificationnext_user);
         }
