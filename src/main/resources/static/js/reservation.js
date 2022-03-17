@@ -141,15 +141,15 @@ for(let i=0; i<=checkdate.length-1; i++){
     let area_theater_list = document.getElementsByClassName("area_theater_list");
 
 
-// fetch문에서 받아올 데이터 리스트 : 날짜array, hallDTOset
-let scdateArray=new Array();
-let hallDTOset=new Set();
-let hallDTOarray=new Array();
+
+let scheduleList=document.getElementById('scheduleList');
     for (let i = 0; i <= theaterClick.length - 1; i++) {
         theaterClick[i].addEventListener('click', function () {
-            // 새로운 상영관을 클릭할때마다 달력부분 전체 다시 dimmed 되돌리기
+            // 새로운 상영관을 클릭할때마다 달력부분 전체 다시 dimmed 되돌리고, selected 해제
             for(let a=0; a<= checkdate.length-1; a++){
                 checkdate[a].classList.add('dimmed')
+                checkdate[a].classList.remove('selected')
+                $("#selDate").val("");
             }
             // 상영관 하단 검은 부분으로 전달하기
             let theaterName = theaterSelect[i].innerText;
@@ -181,26 +181,59 @@ let hallDTOarray=new Array();
             }).then(response=>response.json())
                 .then(data=> {
                     for(let i=0; i<=data.length-1; i++){
-                        // hall DTO를 set에 넣어줌 (중복값 비허용) ???????????????????????안됨
-                        // hallDTOarray[i]=data[i].hallDTO;
-                        // console.log(hallDTOarray)
+                        const schecodeArray=new Array();
+                        const scdateArray=new Array();
+                        scheduleList.innerHTML="";
+                        schecodeArray[i]=data[i].schecode;
                         // 2022-03-16 형태로 string으로 저장해줌
                         scdateArray[i]=data[i].scdate.substring(0,10);
                         for(let j=0; j<=newcheckdate.length-1;j++){
                             // 데이터 날짜만큼 돌면서 달력과 같은 날짜가 존재할 경우 dimmed 제거
                             if(scdateArray[i] == newcheckdate[j]){
-                                console.log(scdateArray[i])
-                                checkdate[j].classList.remove('dimmed')
+                                checkdate[j].classList.remove('dimmed');
+                                checkdate[j].classList.add('findSchedule');
+                                // 스케쥴이 있는 경우 findSchedule 이라는 class를 추가하고 그 날짜를 클릭했을때 이벤트 추가
+                                let findSchedule=document.getElementsByClassName('findSchedule');
+                                for(let a=0; a<=findSchedule.length;a++){
+                                    findSchedule[a].addEventListener('click', function(){
+                                        scheduleList.innerHTML=""
+                                        // 가리고 있던 placeholder 제거
+                                        placeholder[0].classList.add('hidden')
+                                        let scdate=findSchedule[a].getAttribute("date").split('(')[0];
+                                        // 날짜에 해당하는 스케쥴 정보만 받아올 것
+                                        if(scdate== scdateArray[i]){
+                                            scheduleList.innerHTML+=
+                                                `
+                                                <div class="theater" screen_cd="014" movie_cd="20028955">
+                                        <span class="title"><span class="name">${data[i].hallDTO.hname}</span>
+                                            <span class="floor">${data[i].hallDTO.hguan}관</span><span class="seatcount">총 좌석수</span></span>
+                                        <ul>
+                                            <li data-index="0" data-remain_seat="124" play_start_tm="1750" screen_cd="014" movie_cd="20028955" play_num="5">
+                                            <a class="button" href="#" onclick="screenTimeClickListener(event);return false;">
+                                                <span class="time"><span>${data[i].scdate.substring(11,16)}</span></span><span class="count">잔여좌석</span>
+                                                <div class="sreader">종료시간 19:56</div>
+                                                <span class="sreader mod"></span></a>
+                                            </li>
+                                         </ul>
+                                    </div>
+                                                
+                                                `
+                                        }
+
+                                    })
+                                }
+
+
                             }
                         }
                     }
                 })
-
-            //
-
-
             })
     }
+
+
+
+
 
 
     /*

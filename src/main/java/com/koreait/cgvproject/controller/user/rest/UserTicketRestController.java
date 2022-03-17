@@ -1,6 +1,7 @@
 package com.koreait.cgvproject.controller.user.rest;
 
 import com.koreait.cgvproject.dto.ScheduleDTO;
+import com.koreait.cgvproject.entity.Schedule;
 import com.koreait.cgvproject.service.admin.schedule.AdminScheduleService;
 import com.koreait.cgvproject.service.user.schedule.UserScheduleService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,6 +23,4 @@ public class UserTicketRestController {
         System.out.println(scheduleDTOlist);
         return scheduleDTOlist;
     }
-
-
 }
