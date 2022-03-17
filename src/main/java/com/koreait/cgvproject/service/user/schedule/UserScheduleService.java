@@ -13,6 +13,7 @@ import lombok.AllArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -43,13 +44,12 @@ public class UserScheduleService {
             for(Hall hall: hallList){
                 scheduleList=scheduleRepository.findAllByMovieAndHall(movie, hall);
                 for(Schedule schedule: scheduleList){
-                    scheduleDTO.setHallDTO(hall.toDTO());
-                    scheduleDTO.setSchecode(schedule.getSchecode());
-                    scheduleDTO.setScdate(schedule.getScdate());
-                    scheduleDTOList.add(scheduleDTO);
+                    scheduleDTOList.add(schedule.toDTO());
+
             }
         }
         return scheduleDTOList;
 
     }
+
 }
