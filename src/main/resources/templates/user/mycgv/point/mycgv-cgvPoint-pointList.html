@@ -217,7 +217,7 @@
 
                             </th>
 
-                            <td>1,561 점</td>
+                            <td th:text="${session.valpoint}"></td>
                         </tr>
 
                         <tr class="tooltip_list">
@@ -226,7 +226,7 @@
                                 <a href="#" class="mycgv_tooltip"><img src="https://img.cgv.co.kr/R2014/images/common/mycgv_tooltip/ico_tooltip_qmark.png" alt="?" /></a>
                                 <div class="tooltip_con tc2"><span><img src="https://img.cgv.co.kr/R2014/images/common/mycgv_tooltip/tooltip_con2.png" alt="CGV에서 구매를 통해 적립된 매표 구매 포인트/매점&amp;씨네샵 구매 포인트/VIP 선정에 포함되는 이벤트 포인트가 누적으로 합산된 포인트 입니다" /></span></div>
                             </th>
-                            <td class="dotted">15 점</td>
+                            <td class="dotted">0 점</td>
                         </tr>
                         <tr class="tooltip_list">
                             <th scope="row" class="dotted">
@@ -243,7 +243,7 @@
                                 <div class="tooltip_con tc4"><span><img src="https://img.cgv.co.kr/R2014/images/common/mycgv_tooltip/tooltip_con4.png" alt="CGV 매점 또는 씨네샵에서 구매 후 적립 진행 시 제공되는 포인트로 적립일자(24시간 기준)로 누적 적립되며 실제 누적포인트 반영까지 적립일로부터 최대 3일 소요됩니다" /></span></div>
                             </th>
 
-                            <td class="dotted">15 점</td>
+                            <td class="dotted">0 점</td>
                         </tr>
                         <tr class="tooltip_list">
                             <th scope="row" class="dotted">
@@ -267,41 +267,10 @@
                     <p class="marginT10">※ CGV VIP 선정은 이벤트 포인트를 제외한 매표/매점/씨네샵 구매 포인트 합산 기준으로 적용됩니다. </p>
                     <p class="common_p">※ 매표/매점 구매 누적 포인트는 <span class="col_red">관람 후 2-3일 후</span>에 반영됩니다.</p>
                     <p class="common_p">※ 포인트 조회 시 표시되는 적립일은 VIP 선정기준 적립일이며 CGV 가용일자와 상이할 수 있습니다.</p>
-                    <p class="common_p">※ 자세한 포인트 적립 및 사용내역은 CGV에서 확인하시기 바랍니다.<a href="https://www.cjone.com/cjmweb/my-one/point.do" target="_blank" ><span class="col_red">[CGV 포인트 조회]</span></a></p>
+                    <p class="common_p">※ 자세한 포인트 적립 및 사용내역은 CGV에서 확인하시기 바랍니다.<a href="/user/mycgv/mycgv-cgvPoint-pointInfo" target="_blank" ><span class="col_red">[CGV 포인트 조회]</span></a></p>
 
                 </div>
                 <!-- CGV 포인트 상세 내역 Table End -->
-
-                <div class="tit-mycgv marginT30">
-
-                </div>
-
-
-                <div class="sect-use-expense">
-                    <form name="aspnetForm" method="post" action="./pointlist.aspx?g=1" id="aspnetForm">
-                        <div>
-                            <input type="hidden" name="__VIEWSTATE" id="__VIEWSTATE" value="/wEPDwULLTE2NDU3MDcxNTZkZHCufti+N9ztQn4LS1j5rU/gm4+b" />
-                        </div>
-
-                        <div>
-
-                            <input type="hidden" name="__VIEWSTATEGENERATOR" id="__VIEWSTATEGENERATOR" value="821B55D4" />
-                        </div>
-                        <div class="box-polaroid">
-                            <div class="box-inner">
-                                <strong class="period">조회기간</strong>
-                                <span id="period_wrap"></span>
-                                <p>
-                                    <label for="startdate">시작일 입력</label><input type="text" id="startdate" name="startdate" value="2022-01-13" datepicker="datepicker" date="date" /> ~
-                                    <label for="enddate">종료일 입력</label><input type="text" id="enddate" name="enddate" value="2022-02-13" datepicker="datepicker" date="date" />
-                                    <button type="button" id="btn_search" class="round inblack"><span>조회하기</span></button>
-                                </p>
-                            </div>
-                        </div>
-                    </form>
-                </div>
-
-
                 <div class="tbl-data">
                     <table summary="상품명, 구매극장, 결제금액, 적립일, 적립금액 표기">
                         <caption>CGV 영화 관람권 사용내역 리스트</caption>
@@ -323,17 +292,12 @@
 
 
 
-                        <tr th:each="point : ${points}">
-                            <th scope="col" th:text="${point.member}"></th>
-                            <th scope="col">구매 극장</th>
-                            <th scope="col">적립일</th>
-                            <th scope="col">적립</th>
+                        <tr th:each="points:${pointList}">
+                            <th scope="col" th:text="${points.getKind()}"></th>
+                            <th scope="col" th:text="${points.getTheaterDTO().getTcode()}"></th>
+                            <th scope="col" th:text="${points.getRegDate()}"></th>
+                            <th scope="col" th:text="${points.getValPoint()}"></th>
                         </tr>
-
-
-
-
-
                         </tbody>
                     </table>
                 </div>

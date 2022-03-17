@@ -22,9 +22,9 @@
             </div>
             <div class="box-contents newtype">
                 <div class="person-info">
-                    <strong th:text="${member.username}"></strong>
-                    <em th:text="${member.userid}"></em>
-                    <span>닉네임 : <i th:text="${member.nickname}"></i> </span>
+                    <strong th:text="${session.username}"></strong>
+                    <em th:text="${session.userid}"></em>
+                    <span>닉네임 : <i th:text="${session.nickname}"></i> </span>
                     <button id="go_edit_page" type="button" title="새창열림">나의 정보 변경</button>
                 </div>
                 <div class="grade-info">
@@ -43,7 +43,7 @@
                             <div class="pop-contents">
                                 <!-- Contents Addon -->
                                 <div class="sect-my-grade">
-                                    <p><strong th:text="${member.username}"></strong> 고객님의 연도별 고객 등급 이력입니다.</p>
+                                    <p><strong th:text="${session.username}"></strong> 고객님의 연도별 고객 등급 이력입니다.</p>
                                     <div class="grade-lst-light scrollbox">
                                         <table summary="연도별 VIP 세부 등급 이력" id="mytable">
                                             <caption>VIP 등급 이력 리스트</caption>
@@ -117,13 +117,13 @@
                 <ul>
                     <li>
                         <strong>CGV 사용가능 포인트</strong>
-                        <span><em class="txt-maroon"><a href="/user/mycgv/point/mycgv-cgvPoint-pointList" th:text="${member.valpoint}"></a></em> 점</span>
+                        <span><em class="txt-maroon"><a href="/user/mycgv/point/mycgv-cgvPoint-pointList" th:text="${session.valpoint}"></a></em> 점</span>
                     </li>
                     <li class="tooltip_list cf">
                         <strong>VIP선정 포인트</strong><a href="" class="mycgv_tooltip"><img src="https://img.cgv.co.kr/R2014/images/common/mycgv_tooltip/ico_tooltip.png" alt="i" /></a>
 
                         <div class="tooltip_con tc2"><span><img src="https://img.cgv.co.kr/R2014/images/common/mycgv_tooltip/tooltip_con2.png" alt="CGV에서 구매를 통해 적립된 매표 구매 포인트/매점&amp;씨네샵 구매 포인트/VIP 선정에 포함되는 이벤트 포인트가 누적으로 합산된 포인트 입니다" /></span></div>
-                        <span><em th:text="${member.valpoint}"></em> 점</span>
+                        <span><em th:text="${session.valpoint}"></em> 점</span>
                     </li>
                 </ul>
 

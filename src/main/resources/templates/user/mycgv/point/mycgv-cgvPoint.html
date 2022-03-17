@@ -198,16 +198,13 @@
                         <span>영수증에 표기되어있는 적립번호와 인증번호를 입력해 주세요.</span><br />
 
                     </p>
-                    <form id="form1" method="post" novalidate="novalidate">
+                    <form id="form1" method="post" action="/user/mycgv/point">
                         <div class="box-polaroid">
                             <div class="box-inner">
                                 <label for="code1"><strong>적립번호</strong></label>
-                                <input type="text" class="num only-number" id="code1" name="code1" maxlength="4" length="4" required="required" title="첫번째 4자리" data-title="적립번호 첫번째자리를 " data-message="정상적으로 입력해 주세요."/>
-                                <input type="text" class="num only-number" id="code2" name="code2" maxlength="4" length="4" required="required" title="두번째 4자리" data-title="적립번호 두번째자리를 " data-message="정상적으로 입력해 주세요."/>
-                                <input type="text" class="num only-number" id="code3" name="code3" maxlength="4" length="4" required="required" title="세번째 4자리" data-title="적립번호 세번째자리를 " data-message="정상적으로 입력해 주세요."/>
-                                <input type="text" class="num only-number" id="code4" name="code4" maxlength="4" length="4" required="required" title="네번째 4자리" data-title="적립번호 네번째자리를 " data-message="정상적으로 입력해 주세요."/>
-                                <label for="password"><strong>인증번호</strong></label>
-                                <input type="password" id="password" name="password" maxlength="3" length="3" required="required" data-title="인증번호를 " data-message="정상적으로 입력해 주세요."/>
+                                <input type="text" class="num only-number" id="code1" name="pcode1" maxlength="3" length="3" required="required" title="첫번째 4자리" data-title="적립번호 첫번째자리를 " data-message="정상적으로 입력해 주세요."/>
+                                <input type="text" class="num only-number" id="code2" name="pcode2" maxlength="3" length="3" required="required" title="두번째 4자리" data-title="적립번호 두번째자리를 " data-message="정상적으로 입력해 주세요."/>
+                                <input type="text" class="num only-number" id="code3" name="pcode3" maxlength="3" length="3" required="required" title="세번째 4자리" data-title="적립번호 세번째자리를 " data-message="정상적으로 입력해 주세요."/>
                                 <button type="submit" class="round inred"><span>적립하기</span></button>
                             </div>
                         </div>
@@ -241,13 +238,11 @@
                     <!-- //Box Moudle -->
                 </div>
                 <!-- //CGV 예매 관련 정책 안내 Box Type -->
-                <form name="targetform" id="targetform" method="post" action="https://www.cgv.co.kr/user/mycgv/cjone-point/cafeteria-proc.aspx" novalidate="novalidate">
+                <form name="targetform" id="targetform" method="post" action="/user/mycgv/point" novalidate="novalidate">
                     <input type="hidden" name="coupon1No" id="coupon1No" />
                     <input type="hidden" name="coupon2No" id="coupon2No" />
                     <input type="hidden" name="coupon3No" id="coupon3No" />
                     <input type="hidden" name="coupon4No" id="coupon4No" />
-
-                    <input type="hidden" name="passwordNo" id="passwordNo" />
                 </form>
                 <script type="text/javascript" src="https://img.cgv.co.kr/R2014//js/system/crypto.js"></script>
                 <script type="text/javascript">
