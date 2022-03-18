@@ -188,10 +188,13 @@
             }
 
         let addon = document.getElementsByClassName(`addon`);
+        console.log(nowPageindex);
 
         // 현재 페이지와 비교해서 동일한거면 class="on"을 넣을 것임
-        for(let i = 0; i< addon.length; i++){
-            if(nowPageindex == i){
+        for(let i = 0; i< totalPage; i++){
+
+            if((nowPageindex%bottomsize) == i){
+                console.log(i);
                addon[i].classList.add('on');
             }
         }
@@ -207,11 +210,11 @@
         }
 
         function goPrev(){
-            location.href = '/support/support-news?page=' + (firstBottomNumber - bottomsize - 1);
+            location.href = '/support/support-news?page=' + (firstBottomNumber - bottomsize + 8);
         }
 
         function goLast(){
-            location.href = '/support/support-news?page=' + totalPage;
+            location.href = '/support/support-news?page=' + (totalPage-1);
         }
 
         function goNext(){
