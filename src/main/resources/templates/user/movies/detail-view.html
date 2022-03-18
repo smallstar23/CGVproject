@@ -110,7 +110,7 @@
                 <div class="box-contents">
                     <!-- 해당 영화 정보 시작-->
                     <div class="title">
-                        <strong th:utext="${movie.getTitleKo()}">영화한글명</strong>
+                        <strong th:utext="${movie.getTitleKo()}"></strong>
 
                         <em class="round brown"><span>예매중</span></em>
                         <em class="round red"><span>D-7</span></em>
@@ -143,7 +143,6 @@
                             </dd>
                             <dt>장르 :&nbsp;</dt>
                             <dt th:utext="${movie.genre}"></dt>
-                            <dd></dd>
                             <dt>&nbsp;/ 기본 :&nbsp;</dt>
                             <dd class="on" th:utext="|${movie.movieRating},|+| ${movie.runtime}분,|+| ${movie.country}|"></dd>
                             <dt>개봉 :&nbsp;</dt>
@@ -210,11 +209,11 @@
                     <!-- 메뉴가 선택되면 a 에 title="선택" 이라고 넣는다 -->
                     <ul class="tab-menu">
                         <li class="on"><a title="현재 선택됨" href="#">주요정보 </a></li>
-                        <li><a th:href="@{cast}">감독/출연</a></li>
+                        <li><a th:href="@{'/movies/detail-view/cast/'+${movie.mcode}}">감독/출연</a></li>
                         <li><a th:href="@{'/movies/detail-view/trailer/'+${movie.mcode}}">트레일러</a></li>
-                        <li><a th:href="@{still-cut}">스틸컷</a></li>
+                        <li><a th:href="@{'/movies/detail-view/still-cut/'+${movie.mcode}}">스틸컷</a></li>
                         <li><a href="#">평점/리뷰</a></li> <!-- 이부분 아직 cgv에서도 구현 전인것같음. -->
-                        <li class="last"><a th:href="@{detail-show-times}">상영시간표</a></li>
+                        <li class="last"><a th:href="@{'/movies/detail-view/detail-show-times/'+${movie.mcode}}">상영시간표</a></li>
                     </ul>
                     <div class="sect-story-movie" >
                         <br><br>
