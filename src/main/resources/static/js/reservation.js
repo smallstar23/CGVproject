@@ -194,9 +194,10 @@ let scheduleList=document.getElementById('scheduleList');
                                 checkdate[j].classList.add('findSchedule');
                                 // 스케쥴이 있는 경우 findSchedule 이라는 class를 추가하고 그 날짜를 클릭했을때 이벤트 추가
                                 let findSchedule=document.getElementsByClassName('findSchedule');
-                                for(let a=0; a<=findSchedule.length;a++){
+                                for(let a=0; a<=findSchedule.length-1;a++){
                                     findSchedule[a].addEventListener('click', function(){
-                                        scheduleList.innerHTML=""
+                                        console.log(data[i]);
+
                                         // 가리고 있던 placeholder 제거
                                         placeholder[0].classList.add('hidden')
                                         let scdate=findSchedule[a].getAttribute("date").split('(')[0];
@@ -209,7 +210,7 @@ let scheduleList=document.getElementById('scheduleList');
                                             <span class="floor">${data[i].hallDTO.hguan}관</span><span class="seatcount">총 좌석수</span></span>
                                         <ul>
                                             <li data-index="0" data-remain_seat="124" play_start_tm="1750" screen_cd="014" movie_cd="20028955" play_num="5">
-                                            <a class="button" href="#" onclick="screenTimeClickListener(event);return false;">
+                                            <a class="button" href="#" onclick="screenTimeClickListener()">
                                                 <span class="time"><span>${data[i].scdate.substring(11,16)}</span></span><span class="count">잔여좌석</span>
                                                 <div class="sreader">종료시간 19:56</div>
                                                 <span class="sreader mod"></span></a>
