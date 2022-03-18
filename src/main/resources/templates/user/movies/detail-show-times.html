@@ -92,24 +92,28 @@
         <div class="wrap-movie-detail" id="select_main">
 
             <div class="sect-base-movie">
-                <h3><strong>극장판 주술회전 0</strong>기본정보</h3>
+                <h3><strong th:utext="${movie.getTitleKo()}"></strong>기본정보</h3>
                 <div class="box-image">
-                    <a href="https://img.cgv.co.kr/Movie/Thumbnail/Poster/000085/85603/85603_1000.jpg" title="포스터 크게 보기 새창" target="_blank">
+                    <a th:href="${movie.poster}" title="포스터 크게 보기 새창" target="_blank">
             <span class="thumb-image">
-                <img src="https://img.cgv.co.kr/Movie/Thumbnail/Poster/000085/85603/85603_320.jpg" alt="극장판 주술회전 0 포스터 새창" onerror="errorImage(this)">
+                <img th:src="${movie.poster}" alt="극장판 주술회전 0 포스터 새창" onerror="errorImage(this)">
                 <span class="ico-posterdetail">포스터 크게 보기</span>
-                <span class="ico-grade grade-15"> 15세 이상</span>
+                <span class="ico-grade "th:classappend=
+                        "${(movie.movieRating =='전체 이용가' ? 'grade-all': '') +
+                                                (movie.movieRating =='15세 이상' ? 'grade-15': '')+
+                                                (movie.movieRating =='12세 이상' ? 'grade-12': '')+
+                                                (movie.movieRating =='청소년 관람불가' ? 'grade-19': '')}" th:utext="${movie.movieRating}"></span>
             </span>
                     </a>
                 </div>
                 <div class="box-contents">
                     <!-- 해당 영화 정보 시작-->
                     <div class="title">
-                        <strong>영화한글명</strong>
+                        <strong th:utext="${movie.getTitleKo()}"></strong>
 
                         <em class="round brown"><span>예매중</span></em>
                         <em class="round red"><span>D-7</span></em>
-                        <p>영문 영화명</p>
+                        <p th:utext="${movie.getTitleEn()}"></p>
                     </div>
 
                     <!-- 영화 예매율 -->
@@ -123,7 +127,7 @@
                             <dd>
 
 
-                                <a href="#">박성후</a>
+                                <a href="#" th:utext="${director.dnameKo}"></a>
 
                             </dd>
 
@@ -150,12 +154,12 @@
 
                             </dd>
 
-                            <dt>장르 :&nbsp;애니메이션</dt>
-                            <dd></dd>
+                            <dt>장르 :&nbsp;</dt>
+                            <dt th:utext="${movie.genre}"></dt>
                             <dt>&nbsp;/ 기본 :&nbsp;</dt>
-                            <dd class="on">15세 이상,&nbsp;105분,&nbsp;일본</dd>
+                            <dd class="on" th:utext="|${movie.movieRating},|+| ${movie.runtime}분,|+| ${movie.country}|"></dd>
                             <dt>개봉 :&nbsp;</dt>
-                            <dd class="on">2022.02.17</dd>
+                            <dd class="on" th:utext="${movie.launchDate}"></dd>
 
 
 
@@ -215,12 +219,12 @@
                 <div class="col-detail" id="menu">
                     <!-- 메뉴가 선택되면 a 에 title="선택" 이라고 넣는다 -->
                     <ul class="tab-menu">
-                        <li><a th:href="@{./}">주요정보 </a></li>
-                        <li><a th:href="@{cast}">감독/출연</a></li>
-                        <li><a th:href="@{trailer}">트레일러</a></li>
-                        <li><a th:href="@{still-cut}">스틸컷</a></li>
-                        <li><a th:href="@{./}">평점/리뷰</a></li> <!-- 이부분 아직 cgv에서도 구현 전인것같음. -->
-                        <li class="last on"><a title="현재 선택됨" href="#">상영시간표</a></li>
+                        <li class="on"><a title="현재 선택됨" href="#">주요정보 </a></li>
+                        <li><a th:href="@{'/movies/detail-view/cast/'+${movie.mcode}}">감독/출연</a></li>
+                        <li><a th:href="@{'/movies/detail-view/trailer/'+${movie.mcode}}">트레일러</a></li>
+                        <li><a th:href="@{'/movies/detail-view/still-cut/'+${movie.mcode}}">스틸컷</a></li>
+                        <li><a href="#">평점/리뷰</a></li> <!-- 이부분 아직 cgv에서도 구현 전인것같음. -->
+                        <li class="last"><a th:href="@{'/movies/detail-view/detail-show-times/'+${movie.mcode}}">상영시간표</a></li>
                     </ul>
 
                     <div class="descri-info movie-detail">

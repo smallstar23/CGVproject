@@ -1,6 +1,4 @@
 
-
-
 let areacode=1;
 $.ajax({
     url:"/theatersList",
@@ -9,7 +7,7 @@ $.ajax({
     dataType: "json"
 }).done(function(res){
     for(let i=0; i<=res.length; i++){
-        $(".seoullist").append(`<li class="addon"><a class="findtcode" href="/theaters/${res[i].tcode}" th:value=${res[i].tcode}>${res[i].tname}</a></li>`)
+        $(".seoullist").append(`<li><a href="/theaters/${res[i].tcode}" th:value=${res[i].tcode}>${res[i].tname}</a></li>`)
 
     }
 
@@ -32,7 +30,7 @@ function theaters(areacode){
         dataType: "json"
     }).done(function(res){
         for(let i=0; i<=res.length; i++){
-            $(".seoullist").append(`<li class="addon"><a class="findtcode" href="/theaters/${res[i].tcode}" th:value=${res[i].tcode}>${res[i].tname}</a></li>`)
+            $(".seoullist").append(`<li><a href="/theaters/${res[i].tcode}" th:value=${res[i].tcode}>${res[i].tname}</a></li>`)
 
             
         }
@@ -54,8 +52,10 @@ function theaters(areacode){
             dataType: "json"
         }).done(function(res){
             for(let i=0; i<=res.length; i++){
-                $(".gyeonggilist").append(`<li class="addon"><a class="findtcode" href="/theaters/${res[i].tcode}" th:value=${res[i].tcode}>${res[i].tname}</a></li>`)
+                $(".gyeonggilist").append(`<li><a href="/theaters/${res[i].tcode}" th:value=${res[i].tcode}>${res[i].tname}</a></li>`)
             }
+
+
 
 
         })

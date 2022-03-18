@@ -161,23 +161,24 @@
         <div class="payment_complete_wrap">
             <div class="payment_complete_contents_wrap">
                 <p>
-                    <strong>상품 결제가 완료되었습니다.</strong><span></span></p>
+                    <strong>상품 결제가 완료되었습니다.</strong>
+                    <span th:utext="${gpcode.gpcode}"></span>
+                    <span th:utext="${session.title}">안녕</span>
+                </p>
                 <dl>
                     <dt>총 상품금액</dt>
                     <dd>
-
-                        <span>0</span>
-
+                        <span th:utext="${session.price}"></span>
                     </dd>
                     <dt>할인금액</dt>
                     <dd>
-
                         <span>0</span>
+                    </dd>
+                    <dt class="payment_complete_total">총 결제금액</dt>
+                    <dd>
+                        <span th:utext="${session.price}"></span>
 
                     </dd>
-                    <dt class="payment_complete_total">총 결제금액 ()</dt>
-                    <dd>
-                        <span></span></dd>
                 </dl>
             </div>
             <p class="com_box_design_olist">

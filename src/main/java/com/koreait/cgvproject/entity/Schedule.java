@@ -44,6 +44,7 @@ public class Schedule {
         return ScheduleDTO.builder()
                 .schecode(schecode)
                 .mcode(movie.getMcode())
+                .hallDTO(hall.toDTO())
                 .hcode(hall.getHcode())
                 .scdate(scdate)
                 .build();
