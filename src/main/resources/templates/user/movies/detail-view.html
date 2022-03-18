@@ -208,7 +208,7 @@
                 <div class="col-detail">
                     <!-- 메뉴가 선택되면 a 에 title="선택" 이라고 넣는다 -->
                     <ul class="tab-menu">
-                        <li class="on"><a title="현재 선택됨" href="#">주요정보 </a></li>
+                        <li class="on"><a title="현재 선택됨"  th:href="@{'/movies/detail-view/'+${movie.mcode}}">주요정보 </a></li>
                         <li><a th:href="@{'/movies/detail-view/cast/'+${movie.mcode}}">감독/출연</a></li>
                         <li><a th:href="@{'/movies/detail-view/trailer/'+${movie.mcode}}">트레일러</a></li>
                         <li><a th:href="@{'/movies/detail-view/still-cut/'+${movie.mcode}}">스틸컷</a></li>
@@ -340,7 +340,7 @@
                                                             (movie.movieRating =='청소년 관람불가' ? 'grade-19': '')}" th:utext="${movie.movieRating}"></span>         </span>     </a>
                                             </div>
                                             <div class="box-contents">
-                                                <a href="/movies/detail-view/?midx=85624" title="언차티드 상세보기 새창">         <strong class="title" th:utext="${movie.titleKo}"></strong>     </a>     <span class="txt-info" style="margin-bottom:2px;">         <em class="genre" th:utext="${movie.genre}"></em>         <span>             <i>2022.02.16</i>             <strong>개봉</strong>                              <em class="dday">D-3</em>                      </span>     </span>      <a class="link-reservation" href="/ticket/?MOVIE_CD=20028855&amp;MOVIE_CD_GROUP=20028855">예매</a>
+                                                <a href="/movies/detail-view/?midx=85624" title="언차티드 상세보기 새창">         <strong class="title" th:utext="${movie.titleKo}"></strong>     </a>     <span class="txt-info" style="margin-bottom:2px;">         <em class="genre" th:utext="${movie.genre}"></em>         <span>             <i th:utext="${movie.launchDate}"></i>             <strong>개봉</strong>                              <em class="dday">D-3</em>                      </span>     </span>      <a class="link-reservation" href="/ticket/?MOVIE_CD=20028855&amp;MOVIE_CD_GROUP=20028855">예매</a>
                                             </div>
                                         </div>
                                         <div class="sect-trailer">
