@@ -49,7 +49,7 @@ public class UserSupportController {
     }
 
     @GetMapping("/support/support-news")
-    public String support_news(@PageableDefault(size = 10, sort = "idx", direction = Sort.Direction.DESC) Pageable pageable, Model model){
+    public String support_news(@PageableDefault(size = 1, sort = "idx", direction = Sort.Direction.DESC) Pageable pageable, Model model){
 
         // 페이지
         Page<Notification> notifications = notificationRepository.findAll(pageable);
@@ -58,6 +58,7 @@ public class UserSupportController {
         int totalPage = notifications.getTotalPages();
         int nowPage = notifications.getNumber();
         int size = notifications.getSize();
+
 
 //        // 공지 리스트 가져오기
 //        List<Notification> notificationList = notificationRepository.findAll();
@@ -111,7 +112,6 @@ public class UserSupportController {
             model.addAttribute("supportnews_next",notificationnext_user);
         }
 
-        log.info(realnotification_user.toString());
         return ROOT + "/news/support-news-detail-view";
     }
 
