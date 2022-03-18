@@ -49,7 +49,7 @@ public class UserSupportController {
     }
 
     @GetMapping("/support/support-news")
-    public String support_news(@PageableDefault(size = 10, sort = "idx", direction = Sort.Direction.DESC) Pageable pageable, Model model){
+    public String support_news(@PageableDefault(size = 1, sort = "idx", direction = Sort.Direction.DESC) Pageable pageable, Model model){
 
         // 페이지
         Page<Notification> notifications = notificationRepository.findAll(pageable);
@@ -57,8 +57,7 @@ public class UserSupportController {
         boolean next = notifications.hasNext();
         int totalPage = notifications.getTotalPages();
         int nowPage = notifications.getNumber();
-
-        log.info(String.valueOf(prev));
+        int size = notifications.getSize();
 
 //        // 공지 리스트 가져오기
 //        List<Notification> notificationList = notificationRepository.findAll();
@@ -67,6 +66,7 @@ public class UserSupportController {
         model.addAttribute("pageNext",next);
         model.addAttribute("pagePrev",prev);
         model.addAttribute("newsList",notifications);
+        model.addAttribute("size",size);
 
         return ROOT + "/news/support-news";
     }
@@ -85,7 +85,7 @@ public class UserSupportController {
         Notification realnotification_user = notificationRepository.findById(id).orElse(null);
 
         model.addAttribute("supportnews", realnotification_user);
-        log.info(realnotification_user.toString());
+//        log.info(realnotification_user.toString());
         // 1-2. 이전 글, 다음 글
 
         Notification notificationprev_user = notificationRepository.findById(id - 1L).orElse(null);
@@ -94,8 +94,8 @@ public class UserSupportController {
         notification.setRegDate(null);
         notification.setTitle("글이 존재하지 않습니다.");
 
-        log.info(realnotification_user.toString());
-        log.info(notification.toString());
+//        log.info(realnotification_user.toString());
+//        log.info(notification.toString());
 
         // 2. 가져온 데이터를 모델에 등록
 
