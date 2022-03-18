@@ -44,7 +44,6 @@ public class MemberService {
 
     public Member getMember(String userid){
         Member member = memberRepository.findByUserid(userid);
-
         return member;
     }
 

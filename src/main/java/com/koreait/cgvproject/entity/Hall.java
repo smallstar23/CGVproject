@@ -44,6 +44,7 @@ public class Hall{
         return HallDTO.builder()
                 .theater(theater.toDTO())
                 .hguan(hguan)
+                .seatSize(seatList.size())
                 .hcode(hcode).hname(hname).location(location)
                 .build();
     }

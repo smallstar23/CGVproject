@@ -39,6 +39,8 @@ public class UserLoginController {
             session.setAttribute("userid", userid);
             session.setAttribute("username", member.getUsername()); // 주문자 정보 확인 위해서
             session.setAttribute("userhp",member.getHp()); // 주문자 정보 확인 위해서
+            session.setAttribute("nickname", member.getNickname());
+            session.setAttribute("valpoint", member.getValpoint());
             return "/user/main"; //메인
         }
         return "redirect:/user/login"; //다시 로그인
