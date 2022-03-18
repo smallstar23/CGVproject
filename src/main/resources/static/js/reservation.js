@@ -142,7 +142,9 @@ for(let i=0; i<=checkdate.length-1; i++){
 
 
 
+
 let scheduleList=document.getElementById('scheduleList');
+let sendHallInfo=document.getElementsByClassName('sendHallInfo');
     for (let i = 0; i <= theaterClick.length - 1; i++) {
         theaterClick[i].addEventListener('click', function () {
             // 새로운 상영관을 클릭할때마다 달력부분 전체 다시 dimmed 되돌리고, selected 해제
@@ -168,8 +170,9 @@ let scheduleList=document.getElementById('scheduleList');
                 theaterClick[j].classList.remove("selected");
 
             }
-            // 극장 클릭시에 영화, 극장 선택시 해당하는 스케쥴이 있는지 찾아오기
 
+
+            // 극장 클릭시에 영화, 극장 선택시 해당하는 스케쥴이 있는지 찾아오기
             fetch('/api/findSchedule', {
                 method: "POST",
                 headers: {
@@ -184,6 +187,7 @@ let scheduleList=document.getElementById('scheduleList');
                         const schecodeArray=new Array();
                         const scdateArray=new Array();
                         scheduleList.innerHTML="";
+                        sendHallInfo[0].innerHTML="";
                         schecodeArray[i]=data[i].schecode;
                         // 2022-03-16 형태로 string으로 저장해줌
                         scdateArray[i]=data[i].scdate.substring(0,10);
@@ -196,7 +200,6 @@ let scheduleList=document.getElementById('scheduleList');
                                 let findSchedule=document.getElementsByClassName('findSchedule');
                                 for(let a=0; a<=findSchedule.length-1;a++){
                                     findSchedule[a].addEventListener('click', function(){
-                                        console.log(data[i]);
 
                                         // 가리고 있던 placeholder 제거
                                         placeholder[0].classList.add('hidden')
@@ -207,23 +210,32 @@ let scheduleList=document.getElementById('scheduleList');
                                                 `
                                                 <div class="theater" screen_cd="014" movie_cd="20028955">
                                         <span class="title"><span class="name">${data[i].hallDTO.hname}</span>
-                                            <span class="floor">${data[i].hallDTO.hguan}관</span><span class="seatcount">총 좌석수</span></span>
+                                            <span class="floor">${data[i].hallDTO.hguan}관</span><span class="seatcount">(총 ${data[i].hallDTO.seatSize}석)</span></span>
                                         <ul>
-                                            <li data-index="0" data-remain_seat="124" play_start_tm="1750" screen_cd="014" movie_cd="20028955" play_num="5">
-                                            <a class="button" href="#" onclick="screenTimeClickListener()">
+                                            <li class="addSelected" th:value="${data[i].hallDTO.hguan}" onclick="screenTimeClickListener(${data[i].hallDTO.hcode})" data-index="0" data-remain_seat="124" play_start_tm="1750" screen_cd="014" movie_cd="20028955" play_num="5">
+                                            <a class="button">
                                                 <span class="time"><span>${data[i].scdate.substring(11,16)}</span></span><span class="count">잔여좌석</span>
                                                 <div class="sreader">종료시간 19:56</div>
                                                 <span class="sreader mod"></span></a>
                                             </li>
                                          </ul>
                                     </div>
-                                                
                                                 `
-                                        }
+                                                // 상단에 스케쥴 선택시에 같이 정보 전달하기
+                                            let addSelected=document.getElementsByClassName('addSelected');
+                                            for(let i=0;i<=addSelected.length-1; i++){
+                                                addSelected[i].addEventListener('click',function(){
+                                                    addSelected[i].classList.add('selected')
 
+                                                    sendHallInfo[0].innerHTML= `
+                                                    <input style="background-color: #1d1d1c; color:#cccccc; font-weight: bold" value="${data[i].hallDTO.hguan}관">
+                                                    `
+                                                })
+                                            }
+
+                                        }
                                     })
                                 }
-
 
                             }
                         }
@@ -233,15 +245,21 @@ let scheduleList=document.getElementById('scheduleList');
     }
 
 
+// 상영 시간을 클릭했을때
+
+function screenTimeClickListener(hcode){
+    // 여기서 hall 코드 받아가면 됩니다.
+    console.log(hcode);
+
+}
 
 
 
-
-    /*
-        작성자 : 김영신
-        2022-03-05 03:12
-        지역 선택 부분
-     */
+/*
+    작성자 : 김영신
+    2022-03-05 03:12
+    지역 선택 부분
+ */
     for (let item of theaterAreaClick) {
         item.addEventListener('click', function () {
             for (let ti of theaterAreaClick) ti.classList.remove('selected');

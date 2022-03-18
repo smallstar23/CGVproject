@@ -190,7 +190,11 @@
                                         </div>
                                             <!--movie list-->
                                             <th:block th:each="movie: ${movielist}">
-                                            <li class="movieClick" th:classappend="${movie.getMovieRating()}" th:value="${movie.getMcode()}" data-index="0" movie_cd_group="20028797" movie_idx="85603" >
+                                            <li class="movieClick" th:classappend="${(movie.getMovieRating() =='전체 이용가' ? 'grade-all': '')
+                                           +  (movie.getMovieRating() =='15세 이상' ? 'rating-15': '')
+                                           + (movie.getMovieRating() =='12세 이상' ? 'rating-12': '')
+                                           + (movie.getMovieRating() =='청소년 관람불가' ? 'rating-19': '')
+                                            }" th:value="${movie.getMcode()}" data-index="0" movie_cd_group="20028797" movie_idx="85603" >
                                                 <a class="movieName" href="#nomove" onclick="return false;" th:attr="title=${movie.getTitleKo()}"><span class="icon">&nbsp;</span>
                                                     <span class="text" th:text="${movie.getTitleKo()}"></span><span class="sreader"></span></a>
                                             </li>
@@ -2187,7 +2191,7 @@
                     </div>
                     <div class="row screen infoTheater" style="display: none;">
                         <span class="header">상영관</span>
-                        <span class="data"></span>
+                        <span class="data sendHallInfo"></span>
                     </div>
                     <div class="row number infoTheater" style="display: none;">
                         <span class="header">인원</span>
