@@ -33,7 +33,6 @@ public class AdminScheduleController {
     //movie-schedule 상세페이지
     @GetMapping("movie/schedule/{schecode}")
     public String movie_schedule_detail(@PathVariable("schecode") Long schecode, Model model){
-        System.out.println(schecode);
         ScheduleDTO scheduleDTO=adminScheduleService.findSchedule(schecode);
         model.addAttribute("schedule",scheduleDTO);
         return "/admin/schedule/manage_movieScheduledetail";

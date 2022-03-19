@@ -25,6 +25,13 @@ function popupClose() {
 };
 
 let placeholder = document.getElementsByClassName('placeholder');
+// 0. 스케줄(시간)선택 가이드, 1. 영화선택 가이드, 2. 극장선택 가이드, 3. 좌석선택 가이드
+
+const schedultGuideText = placeholder[0];
+const movieGuideText = placeholder[1];
+const theaterGuideText = placeholder[2];
+const seatGuideText = placeholder[3];
+
 let movie_click = document.getElementsByClassName('movieClick');
 let movieTitle = document.getElementsByClassName('movie_title');
 
@@ -52,7 +59,6 @@ for (let i = 0; i <= movie_click.length - 1; i++) {
 
     });
 }
-
 
 // 날짜 부분 오늘 날짜 기준으로 howmany 값 조절하면 +howmany 만큼 날짜 뿌릴 수 있음, 아직 월 넘어가는건 못하겠음..
 // 배열이나 객체같은 것들은 보통 const로 자료형을 잡아주는게 좋습니다.
@@ -109,9 +115,7 @@ for (let i = 0; i < howmany; i++) {
 
     let init = year + "-" + newmonth + "-" + dateArray[i] + "(" + newdayArray[i] + ")";
 
-    fordate.innerHTML += `<li data-index="1" date="${init}" class="day passday checkdate dimmed"><a href="#" onclick="return false;"><span class="dayweek">${newdayArray[i]}</span><span class="day">${dateArray[i]}</span><span class="sreader"></span></a></li>`
-
-
+    fordate.innerHTML += `<li data-index="${i}" date="${init}" class="day passday checkdate dimmed"><a href="#" onclick="return false;"><span class="dayweek">${newdayArray[i]}</span><span class="day">${dateArray[i]}</span><span class="sreader"></span></a></li>`
 }
 
 
@@ -136,6 +140,134 @@ let area_theater_list = document.getElementsByClassName("area_theater_list");
 
 let scheduleList = document.getElementById('scheduleList');
 let sendHallInfo = document.getElementsByClassName('sendHallInfo');
+
+window.onload = function(){
+    theaterInit();
+}
+
+
+function theaterInit() {
+    const remove = function(){ console.log('이벤트 초기화')};
+    const theaterClick = document.querySelectorAll('.theaterClick');
+    const dateScheduleExisted = document.querySelectorAll('.findSchedule');
+
+
+    theaterClick.forEach(theater => {
+        theater.addEventListener('click', function () {
+            tcode = theater.value;
+            toFirstDateStatus();
+            transferTheaterName(theater);
+            extraFunction(theaterClick);
+            theater.classList.add('selected');
+            dimmedOrNot();
+
+            dateScheduleExistedInit();
+        })
+    });
+}
+
+function toFirstDateStatus() {
+    const checkDate = document.querySelectorAll(".checkdate");
+
+    checkDate.forEach(d => {
+        d.classList.add('dimmed');
+        d.classList.remove('selected');
+    })
+}
+
+function transferTheaterName(theater) {
+    const theaterTransferred = document.getElementsByClassName('sendTheaterName')[0];
+
+    theaterTransferred.setAttribute('href', '/theaters/' + theater.value);
+    theaterTransferred.setAttribute('title', theater.getAttribute('tname'));
+    theaterGuideText.style.display = 'none';
+}
+
+function extraFunction(theaterList) {
+    for (let i = 0; i < infoTheater.length; i++) {
+        infoTheater[i].style.display = 'block';
+    }
+    theaterList.forEach(theater => {
+        theater.classList.remove('selected')
+    })
+}
+
+function dimmedOrNot() {
+    const regExp = '\\d{4}-\\d{2}-\\d{2}';
+    const dateList = document.querySelectorAll('.checkdate');
+    const result = findScheduleAjax(mcode, tcode);
+
+    result.then(response => response.json())
+        .then(data => {
+            data.forEach(scheduleDTO => {
+                const scdate = scheduleDTO.scdate.match(regExp)[0]; // 정규식 ex(2022-02-10)
+                    dateList.forEach(date => {
+                        if(date.getAttribute('date').match(regExp)[0] == scdate){
+                            date.classList.remove('dimmed');
+                            date.classList.add('findSchedule');
+                            date.setAttribute('scdate', scdate); // 클릭시 검색을 위한 속성값
+                        }
+                    })
+            })
+        })
+}
+
+function findScheduleAjax(mcode, tcode) {
+    return fetch('/api/findSchedule', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({
+            mcode: mcode,
+            tcode: tcode,
+        })
+    })
+}
+
+function dateScheduleExistedInit(){
+    const dateScheduleExisted = document.querySelectorAll('.findSchedule');
+    dateScheduleExisted.forEach(date => {
+        date.onclick = function(){
+            // addEventListener 같은경우 이벤트가 중복되어 바인딩 될수 있습니다. 그래서 결과가 중복으로 나올 수도 있구요.
+            // 그래서 onclick이라는 이벤트 핸들러 프로퍼티를 사용했습니다.
+            const result = findScheduleOnlyMcodeAjax(mcode, date.getAttribute('scdate'));
+            result.then(response => response.json())
+                .then(data => console.log(data));
+        }
+    })
+}
+function findScheduleOnlyMcodeAjax(mcode, scdate){
+    if(mcode == null || scdate == null){
+        alert('정보를 다시 입력하세요');
+        return;
+    }
+    return fetch(`/api/findSchedule?mcode=${mcode}&scdate=${scdate}`)
+}
+function generateScheduleBoneHtml(scheduleDTO, tcode){
+    const _hallDTO = scheduleDTO.hallDTO;
+    const _movieDTO = scheduleDTO.movieDTO;
+    if(_hallDTO.tcode !== tcode) return; // 해당 영화관의 스케줄이 아니므로 넘김
+
+    let scheduleHtml = '';
+    scheduleHtml += `<div class="theater" hcode="${_hallDTO.hcode}" mcode="${_movieDTO.mcode}">`;
+    scheduleHtml += `<span class="title">
+                        <span class="name">${_hallDTO.hname}</span>
+                        <span class="floor">${_hallDTO.hguan + '관 ' + _hallDTO.location}</span>
+                        <span class="seatcount">총 ${_hallDTO.seatSize + '석'}</span>
+                    </span>`;
+    scheduleHtml += `<ul>`
+    /*
+        알찬내용 여기에 들어가면 된다.
+    */
+
+    scheduleHtml += `</ul>`
+    scheduleHtml += `</div>`
+    return scheduleHtml
+}
+
+/*
+
 for (let i = 0; i <= theaterClick.length - 1; i++) {
     theaterClick[i].addEventListener('click', function () {
         // 새로운 상영관을 클릭할때마다 달력부분 전체 다시 dimmed 되돌리고, selected 해제
@@ -162,7 +294,6 @@ for (let i = 0; i <= theaterClick.length - 1; i++) {
 
         }
 
-
         // 극장 클릭시에 영화, 극장 선택시 해당하는 스케쥴이 있는지 찾아오기
         fetch('/api/findSchedule', {
             method: "POST",
@@ -176,8 +307,8 @@ for (let i = 0; i <= theaterClick.length - 1; i++) {
         }).then(response => response.json())
             .then(data => {
                 for (let i = 0; i <= data.length - 1; i++) {
-                    const schecodeArray = new Array();
-                    const scdateArray = new Array();
+                    const schecodeArray = [];
+                    const scdateArray = [];
                     scheduleList.innerHTML = "";
                     sendHallInfo[0].innerHTML = "";
                     schecodeArray[i] = data[i].schecode;
@@ -194,17 +325,16 @@ for (let i = 0; i <= theaterClick.length - 1; i++) {
                                 findSchedule[a].addEventListener('click', function () {
 
                                     // 가리고 있던 placeholder 제거
-                                    placeholder[0].classList.add('hidden')
+                                    schedultGuideText.classList.add('hidden')
                                     let scdate = findSchedule[a].getAttribute("date").split('(')[0];
                                     // 날짜에 해당하는 스케쥴 정보만 받아올 것
                                     if (scdate == scdateArray[i]) {
-                                        scheduleList.innerHTML +=
-                                            `
-                                                <div class="theater" screen_cd="014" movie_cd="20028955">
-                                        <span class="title"><span class="name">${data[i].hallDTO.hname}</span>
+                                        scheduleList.innerHTML += ` <div class="theater">
+                                        <span class="title">
+                                        <span class="name">${data[i].hallDTO.hname}</span>
                                             <span class="floor">${data[i].hallDTO.hguan}관</span><span class="seatcount">(총 ${data[i].hallDTO.seatSize}석)</span></span>
                                         <ul>
-                                            <li class="addSelected" th:value="${data[i].hallDTO.hguan}" onclick="screenTimeClickListener(${data[i].hallDTO.hcode})" data-index="0" data-remain_seat="124" play_start_tm="1750" screen_cd="014" movie_cd="20028955" play_num="5">
+                                            <li class="addSelected" value="${data[i].hallDTO.hguan}" onclick="screenTimeClickListener(${data[i].hallDTO.hcode})">
                                             <a class="button">
                                                 <span class="time"><span>${data[i].scdate.substring(11, 16)}</span></span><span class="count">잔여좌석</span>
                                                 <div class="sreader">종료시간 19:56</div>
@@ -213,6 +343,7 @@ for (let i = 0; i <= theaterClick.length - 1; i++) {
                                          </ul>
                                     </div>
                                                 `
+
                                         // 상단에 스케쥴 선택시에 같이 정보 전달하기
                                         let addSelected = document.getElementsByClassName('addSelected');
                                         for (let i = 0; i <= addSelected.length - 1; i++) {
@@ -235,6 +366,7 @@ for (let i = 0; i <= theaterClick.length - 1; i++) {
             })
     })
 }
+*/
 
 
 // 상영 시간을 클릭했을때
@@ -242,7 +374,6 @@ for (let i = 0; i <= theaterClick.length - 1; i++) {
 function screenTimeClickListener(hcode) {
     // 여기서 hall 코드 받아가면 됩니다.
     console.log(hcode);
-
 }
 
 
@@ -422,9 +553,13 @@ $(".clickPoint").on({
     }
 })
 
-// EpsteinKim의 reservation_EpsteinKim.js
+
+/*
+    EpsteinKim의 reservation_EpsteinKim.js
+*/
+
 const alpha = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z'];
-showSeat('H','8','0','0');
+showSeat('H', '8', '0', '0');
 seatInit();
 
 function showSeat(rowVal, colVal, em_rowVal, em_colVal) {

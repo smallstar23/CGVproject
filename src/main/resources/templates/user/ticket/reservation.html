@@ -18,7 +18,7 @@
 
 
     <meta id="ctl00_og_image" property="og:image" content="https://img.cgv.co.kr/WebApp/images/common/logo_new_kakao_prevw.png"></meta>
-    <link rel="alternate" href="http://m.cgv.co.kr" />
+
     <link rel="shortcut icon" href="https://img.cgv.co.kr/theater_img/favicon.ico" type="image/x-icon" />
     <title id="ctl00_headerTitle">영화 그 이상의 감동. CGV</title>
     <link rel="shortcut icon" type="image/x-icon" href="https://img.cgv.co.kr/R2014/images/favicon.ico" />
@@ -33,17 +33,13 @@
     <link rel="stylesheet" media="print" type="text/css" href="https://img.cgv.co.kr/R2014/css/print.css" />
     <link rel="stylesheet" type="text/css" href="https://img.cgv.co.kr/R2014/js/jquery.ui/smoothness/jquery-ui-1.10.4.custom.min.css" />
 
-    <script type="text/javascript" src="/common/js/extraTheaters.js"></script>
-    <script type="text/javascript" src="https://img.cgv.co.kr/R2014/js/app.config.js"></script>
     <script type="text/javascript" src="https://img.cgv.co.kr/R2014/js/jquery-1.10.2.min.js"></script>
     <script type="text/javascript" src="https://img.cgv.co.kr/R2014/js/jquery.plugin/jquery.tmpl.min.js"></script>
     <script type="text/javascript" src="https://img.cgv.co.kr/R2014/js/jquery.plugin/jquery.validate.js"></script>
     <script type="text/javascript" src="https://img.cgv.co.kr/R2014/js/jquery.plugin/jquery.paging.min.js"></script>
     <script type="text/javascript" src="https://img.cgv.co.kr/R2014/js/jquery.ui/jquery-ui-1.10.4.custom.min.js"></script>
     <script type="text/javascript" src="https://img.cgv.co.kr/R2014/js/jquery.utils.js"></script>
-    <script type="text/javascript" src="https://img.cgv.co.kr/R2014/js/app.utils.js"></script>
     <script type="text/javascript" src="https://img.cgv.co.kr/R2014/js/jquery.utils.pageing.js"></script>
-    <script type="text/javascript" src="https://img.cgv.co.kr/R2014/js/app.init.js"></script>
 
     <!--[if lte IE 9]><script type="text/javascript" src="https://img.cgv.co.kr/R2014/js/jquery.plugin/jquery.placeholder.js"></script><![endif]-->
     <script type="text/javascript" src="https://img.cgv.co.kr/R2014/js/jquery.plugin/jquery.dotdotdot.min.js"></script>
@@ -194,7 +190,7 @@
                                            +  (movie.getMovieRating() =='15세 이상' ? 'rating-15': '')
                                            + (movie.getMovieRating() =='12세 이상' ? 'rating-12': '')
                                            + (movie.getMovieRating() =='청소년 관람불가' ? 'rating-19': '')
-                                            }" th:value="${movie.getMcode()}" data-index="0" movie_cd_group="20028797" movie_idx="85603" >
+                                            }" th:value="${movie.getMcode()}" th:mcode="${movie.getMcode()}" th:titleko="${movie.getTitleKo()}" th:poster="${movie.getPoster()}">
                                                 <a class="movieName" href="#nomove" onclick="return false;" th:attr="title=${movie.getTitleKo()}"><span class="icon">&nbsp;</span>
                                                     <span class="text" th:text="${movie.getTitleKo()}"></span><span class="sreader"></span></a>
                                             </li>
@@ -245,8 +241,8 @@
                                                         <span class="count"></span></a>
                                                     <div class="area_theater_list nano has-scrollbar">
                                                         <ul class="content scroll-y" tabindex="-1" style="right: -15px;">
-                                                            <li class="theaterClick" data-index="0" areaindex="0" th:value="${theaterlist[0].getTcode()}"  rating_cd="undefined" style="display: list-item;"><a href="#nomove" class="theaterSelect">강남<span class="sreader"></span></a></li>
-                                                            <li class="theaterClick" data-index="2" areaindex="0" th:value="${theaterlist[1].getTcode()}"  rating_cd="undefined" style="display: list-item;"><a href="#nomove" class="theaterSelect" title="강변역 테크노마트">강변<span class="sreader"></span></a></li>
+                                                            <li class="theaterClick" data-index="0" areaindex="0" tname='강남CGV' th:value="${theaterlist[0].getTcode()}"  rating_cd="undefined" style="display: list-item;"><a href="#nomove" class="theaterSelect">강남<span class="sreader"></span></a></li>
+                                                            <li class="theaterClick" data-index="2" areaindex="0" tname="강변CGV" th:value="${theaterlist[1].getTcode()}"  rating_cd="undefined" style="display: list-item;"><a href="#nomove" class="theaterSelect" title="강변역 테크노마트">강변<span class="sreader"></span></a></li>
                                                         </ul>
                                                         <div class="pane pane-y" style="display: block; opacity: 1; visibility: visible;"><div class="" style="height: 50px; top: 0px;"></div></div><div class="pane pane-x" style="display: none; opacity: 1; visibility: visible;"><div class="" style="width: 50px;"></div></div>
                                                     </div>
@@ -256,9 +252,9 @@
                                                     <a class="areaSelect"><span class="name">경기</span><span class="count"></span></a>
                                                     <div class="area_theater_list nano has-scrollbar">
                                                         <ul class="content scroll-y" tabindex="-1" style="right: -15px;">
-                                                            <li class="theaterClick" data-index="5" areaindex="1" th:value="${theaterlist[2].getTcode()}"  rating_cd="undefined" style="display: list-item;"><a href="#nomove" class="theaterSelect">경기광주<span class="sreader"></span></a></li>
-                                                            <li class="theaterClick" data-index="9" areaindex="1" th:value="${theaterlist[3].getTcode()}"  rating_cd="undefined" style="display: list-item;"><a href="#nomove" class="theaterSelect">동수원CGV<span class="sreader"></span></a></li>
-                                                            <li class="theaterClick" data-index="10" areaindex="1" th:value="${theaterlist[4].getTcode()}"  rating_cd="undefined" style="display: list-item;"><a href="#nomove" class="theaterSelect">용인CGV<span class="sreader"></span></a></li>
+                                                            <li class="theaterClick" data-index="5" areaindex="1" tname="경기광주CGV" th:value="${theaterlist[2].getTcode()}"  rating_cd="undefined" style="display: list-item;"><a href="#nomove" class="theaterSelect">경기광주<span class="sreader"></span></a></li>
+                                                            <li class="theaterClick" data-index="9" areaindex="1" tname="동수원CGV" th:value="${theaterlist[3].getTcode()}"  rating_cd="undefined" style="display: list-item;"><a href="#nomove" class="theaterSelect">동수원CGV<span class="sreader"></span></a></li>
+                                                            <li class="theaterClick" data-index="10" areaindex="1" tname="용인CGV" th:value="${theaterlist[4].getTcode()}"  rating_cd="undefined" style="display: list-item;"><a href="#nomove" class="theaterSelect">용인CGV<span class="sreader"></span></a></li>
 
                                                         </ul><div class="pane pane-y" style="display: none; opacity: 1; visibility: visible;"><div class="slider slider-y" style="height: 50px;"></div></div><div class="pane pane-x" style="display: none; opacity: 1; visibility: visible;"><div class="" style="width: 50px;"></div></div>
                                                     </div>
@@ -323,21 +319,30 @@
 
                                     <!-- 하단 스케쥴 반복 구간-->
                                     <div id="scheduleList">
+<!--
 
-<!--                                    <div class="theater" screen_cd="014" movie_cd="20028955">-->
-<!--                                        <span class="title"><span class="name">SCREENX 2D</span>-->
-<!--                                            <span class="floor">4관[SCREENX] 8층</span><span class="seatcount">(총124석)</span></span>-->
-<!--                                        <ul>-->
-<!--                                            <li data-index="0" data-remain_seat="124" play_start_tm="1750" screen_cd="014" movie_cd="20028955" play_num="5">-->
-<!--                                            <a class="button" href="#" onclick="screenTimeClickListener(event);return false;">-->
-<!--                                                <span class="time"><span>17:50</span></span><span class="count">120석</span><div class="sreader">종료시간 19:56</div>-->
-<!--                                                <span class="sreader mod"></span></a>-->
-<!--                                            </li>-->
-<!--                                            <li data-index="1" data-remain_seat="124" play_start_tm="2015" screen_cd="014" movie_cd="20028955" play_num="6">-->
-<!--                                                <a class="button" href="#" onclick="screenTimeClickListener(event);return false;"><span class="time"><span>20:15</span></span>-->
-<!--                                                    <span class="count">107석</span><div class="sreader">종료시간 22:21</div><span class="sreader mod"></span></a></li>-->
-<!--                                        </ul>-->
-<!--                                    </div>-->
+                                    <div class="theater" screen_cd="014" movie_cd="20028955">
+                                        <span class="title">
+                                            <span class="name">SCREENX 2D</span>
+                                            <span class="floor">4관[SCREENX] 8층</span><span class="seatcount">(총124석)</span>
+                                        </span>
+                                        <ul>
+                                            <li data-index="0" data-remain_seat="124" play_start_tm="1750" screen_cd="014" movie_cd="20028955" play_num="5">
+                                                <a class="button" href="#" onclick="screenTimeClickListener(event);return false;">
+                                                    <span class="time">
+                                                        <span>17:50</span>
+                                                    </span>
+                                                    <span class="count">120석</span>
+                                                    <div class="sreader">종료시간 19:56</div>
+                                                    <span class="sreader mod"></span>
+                                                </a>
+                                            </li>
+                                            <li data-index="1" data-remain_seat="124" play_start_tm="2015" screen_cd="014" movie_cd="20028955" play_num="6">
+                                                <a class="button" href="#" onclick="screenTimeClickListener(event);return false;"><span class="time"><span>20:15</span></span>
+                                                    <span class="count">107석</span><div class="sreader">종료시간 22:21</div><span class="sreader mod"></span></a></li>
+                                        </ul>
+                                    </div>
+-->
 
                                     </div>
 
@@ -2093,7 +2098,7 @@
                 </div>
                 <div class="info theater">
                     <div class="row name infoTheater" style="display: none;">
-                        <span class="header">극장</span>
+                        <span class="header" style="width:24px;">극장</span>
                         <span class="data letter-spacing-min ellipsis-line1">
                             <a class="sendTheaterName" href="" target="_blank" onmousedown="javascript:logClick('SUMMARY/극장상세보기');">
                                 </a></span>
@@ -2123,36 +2128,6 @@
                     </div>
                     <div class="placeholder" title="좌석선택"></div>
                 </div>
-                <!-- <div class="info payment-ticket">
-				<div class="row payment-millitary">
-					<span class="header">군인</span>
-					<span class="data"><span class="price"></span>원 x <span class="quantity"></span></span>
-				</div>
-				<div class="row payment-adult">
-					<span class="header">일반</span>
-					<span class="data"><span class="price"></span>원 x <span class="quantity"></span></span>
-				</div>
-				<div class="row payment-youth">
-					<span class="header">청소년</span>
-					<span class="data"><span class="price"></span>원 x <span class="quantity"></span></span>
-				</div>
-				<div class="row payment-child">
-					<span class="header">어린이</span>
-					<span class="data"><span class="price"></span>원 x <span class="quantity"></span></span>
-				</div>
-				<div class="row payment-senior">
-					<span class="header">경로</span>
-					<span class="data"><span class="price"></span>원 x <span class="quantity"></span></span>
-				</div>
-				<div class="row payment-special">
-					<span class="header">우대</span>
-					<span class="data"><span class="price"></span>원 x <span class="quantity"></span></span>
-				</div>
-				<div class="row payment-final">
-					<span class="header">총금액</span>
-					<span class="data"><span class="price">0</span><span class="won">원</span></span>
-				</div>
-			</div> -->
                 <div class="info path">
                     <div class="row colspan4">
                         <span class="path-step2" title="좌석선택">&nbsp;</span>
@@ -2283,10 +2258,7 @@
 <!-- E Contaniner -->
 <div th:replace="user/fragment/footer:: footer-user"></div>
 
-
 </div>
-
-<script type="text/javascript" src="https://img.cgv.co.kr/R2014//js/system/crypto.js"></script>
 
 <script th:inline="javascript">
     /*<![CDATA[*/

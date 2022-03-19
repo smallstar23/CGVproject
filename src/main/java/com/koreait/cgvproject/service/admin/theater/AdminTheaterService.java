@@ -32,7 +32,7 @@ public class AdminTheaterService {
     }
 
 
-    public List<TheaterDTO> findall() {
+    public List<TheaterDTO> findAll() {
         List<Theater> theaterList=theaterRepository.findAll();
         List<TheaterDTO> theaterDTOList= new ArrayList<>();
         for(Theater theater: theaterList){

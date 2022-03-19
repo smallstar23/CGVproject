@@ -43,6 +43,7 @@ public class Hall{
     public HallDTO toDTO(){
         return HallDTO.builder()
                 .theater(theater.toDTO())
+                .tcode(theater.getTcode())
                 .hguan(hguan)
                 .seatSize(seatList.size())
                 .hcode(hcode).hname(hname).location(location)

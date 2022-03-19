@@ -24,7 +24,7 @@ public class AdminTheaterController {
     // 극장 리스트
     @GetMapping("/movie/theaters")
     public String movie_theaters(Model model){
-        List<TheaterDTO> theaterDTOlist=adminTheaterService.findall();
+        List<TheaterDTO> theaterDTOlist=adminTheaterService.findAll();
         model.addAttribute("theaters",theaterDTOlist);
         return "/admin/theaters/manage_theaters";
     }
