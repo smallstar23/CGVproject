@@ -2088,10 +2088,10 @@
                             <a id="movie_sel" href="#" target="_blank" onmousedown="javascript:logClick('SUMMARY/영화상세보기');">
                             </a></span>
                     </div>
-                    <div class="row movie_type" style="display: none;">
+                    <div class="row movie_type" style="display: block;">
                         <span class="data ellipsis-line1"></span>
                     </div>
-                    <div class="row movie_rating" style="display: none;">
+                    <div class="row movie_rating" style="display: block;">
                         <span class="data" title=""></span>
                     </div>
                     <div class="placeholder" title="영화선택"></div>
@@ -2104,15 +2104,15 @@
                                 </a></span>
                     </div>
                     <div class="row date infoTheater" style="display: none;">
-                        <span class="header">일시</span>
+                        <span class="header" style="width:34px;">일시</span>
                         <span class="data sendDate"></span>
                     </div>
                     <div class="row screen infoTheater" style="display: none;">
-                        <span class="header">상영관</span>
+                        <span class="header" style="width:34px;">상영관</span>
                         <span class="data sendHallInfo"></span>
                     </div>
                     <div class="row number infoTheater" style="display: none;">
-                        <span class="header">인원</span>
+                        <span class="header" style="width:34px;">인원</span>
                         <span class="data"></span>
                     </div>
                     <div class="placeholder" title="극장선택"></div>
@@ -2263,7 +2263,6 @@
 <script th:inline="javascript">
     /*<![CDATA[*/
     let movielist=[[${movielist}]]
-    console.log(movielist);
     // 영화 url 전달
     const url=new Array();
     for(let i=0; i<=movielist.length-1; i++){
@@ -2278,7 +2277,6 @@
 
     // 극장 리스트
     let theaterlist= [[${theaterlist}]]
-    console.log(theaterlist);
 
     // 극장 tcode 리스트
     const tcodeArray=new Array();

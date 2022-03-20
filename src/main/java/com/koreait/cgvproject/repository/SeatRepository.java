@@ -12,5 +12,6 @@ import java.util.Optional;
 public interface SeatRepository extends JpaRepository<Seat, Long> {
     Optional<Seat> findByHallAndStNum(Hall hall, String stNum);
     List<Seat> findAllByHallOrderByStNum(Hall hall);
+    Long countAllByHallAndDisabledEquals(Hall hall, Integer disabled);
     void deleteAllByHall(Hall hall);
 }

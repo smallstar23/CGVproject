@@ -5,10 +5,7 @@ import com.koreait.cgvproject.entity.Hall;
 import com.koreait.cgvproject.entity.Movie;
 import com.koreait.cgvproject.entity.Schedule;
 import com.koreait.cgvproject.entity.Theater;
-import com.koreait.cgvproject.repository.HallRepository;
-import com.koreait.cgvproject.repository.MovieRepository;
-import com.koreait.cgvproject.repository.ScheduleRepository;
-import com.koreait.cgvproject.repository.TheaterRepository;
+import com.koreait.cgvproject.repository.*;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -16,6 +13,8 @@ import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 @Service
 @AllArgsConstructor
@@ -25,6 +24,7 @@ public class UserScheduleService {
     private MovieRepository movieRepository;
     private HallRepository hallRepository;
     private TheaterRepository theaterRepository;
+    private SeatRepository seatRepository;
 
 
     // 영화, 극장코드로 스케쥴 받아오기
@@ -53,23 +53,42 @@ public class UserScheduleService {
         return scheduleDTOList;
     }
 
-    //mcode랑 scdate가 들어있음
-    public List<ScheduleDTO> findAllOnlyMcode(Long mcode, String scdate){
+    //mcode, tcode, scdate가 들어있음
+    public List<ScheduleDTO> findAllOnlyMcode(Long mcode, Long tcode, String scdate){
 
         List<ScheduleDTO> scheduleDTOList = new ArrayList<>();
         Movie movie = outOptional(movieRepository.findById(mcode));
 
-        List<Schedule> scheduleList= scheduleRepository.findAllByMovie(movie);
+        List<Schedule> scheduleList= scheduleRepository.findAllByMovieOrderByScdate(movie);
         if(!scheduleList.isEmpty()) {
-            scheduleList.forEach(schedule -> {
+            for (Schedule schedule : scheduleList) {
+                String scheduleScdate = null;
                 ScheduleDTO scheduleDTO = schedule.toDTO();
+
+
+                Pattern regex = Pattern.compile("\\d{4}-\\d{2}-\\d{2}");
+                Matcher regexMatcher = regex.matcher(scheduleDTO.getScdate().toString());
+                if (regexMatcher.find()) scheduleScdate = regexMatcher.group();
+
+                // 날짜가 일치하지 않으면 거름
+                if (!scheduleScdate.equals(scdate)) continue;
+                // 해당 CGV의 정보가 아니면 거름
+                if(!scheduleDTO.getHallDTO().getTheater().getTcode().equals(tcode)) continue;
+                // 해당 CGV정보는 스케줄을 부를때 필요 없으므로 null로 세팅 ( 개발자 도구에서 보기가 불편함 )
+                scheduleDTO.getHallDTO().setTheater(null);
+
                 assert movie != null; // 무비는 null이 아니라고 가정한다.
                 scheduleDTO.setMovieDTO(movie.toDTO());
-                scheduleDTOList.add(schedule.toDTO());
-            });
+                scheduleDTOList.add(scheduleDTO);
+            }
             return scheduleDTOList;
         }
         return null;
+    }
+
+    public Long getSeatCount(Long hcode){
+        Hall hall = outOptional(hallRepository.findById(hcode));
+        return seatRepository.countAllByHallAndDisabledEquals(hall, 0);
     }
 
     //Optional 객체에서 알맹이만 빼내는 메서드

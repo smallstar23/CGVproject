@@ -19,9 +19,14 @@ public class UserTicketRestController {
         return userScheduleService.findScheduleList(scheduleDTO.getMcode(), scheduleDTO.getTcode());
     }
     @GetMapping("/api/findSchedule")
-    public List<ScheduleDTO> findAllOnlyMcode(@RequestParam Long mcode, @RequestParam String scdate){
-        System.out.println("실행은 되니");
-        return userScheduleService.findAllOnlyMcode(mcode, scdate);
+    public List<ScheduleDTO> findAllOnlyMcode(@RequestParam Long mcode, @RequestParam String scdate,
+                                              @RequestParam Long tcode){
+        return userScheduleService.findAllOnlyMcode(mcode, tcode, scdate);
+    }
+
+    @GetMapping("/api/schedule/getSeatCount")
+    public Long getSeatCount(@RequestParam Long hcode){
+        return userScheduleService.getSeatCount(hcode);
     }
 
 }

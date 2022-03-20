@@ -2,6 +2,7 @@ package com.koreait.cgvproject.entity;
 
 import com.koreait.cgvproject.dto.HallDTO;
 import lombok.*;
+import org.hibernate.annotations.Formula;
 
 import javax.persistence.*;
 import java.util.List;

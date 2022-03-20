@@ -1,6 +1,8 @@
 // 스케쥴 불러오기
 let mcode;
 let tcode;
+let schecode;
+let hcode;
 
 // step 1. 예매가이드 팝업
 let guide = document.getElementsByClassName('button-guide');
@@ -38,10 +40,10 @@ for (let i = 0; i <= movie_click.length - 1; i++) {
     movie_click[i].addEventListener('click', function () {
         for (let k = 0; k < movie_click.length; k++) {
             movie_click[k].classList.remove("selected");
-            movie_click[i].classList.add("selected");
-            // mcode 저장
-            mcode = movie_click[i].value;
         }
+        movie_click[i].classList.add("selected");
+        // mcode 저장
+        mcode = movie_click[i].value;
         // 영화명 전달
         let movieName = document.getElementsByClassName('movieName')[i].getAttribute('title');
         movieTitle[0].style.display = 'block';
@@ -55,7 +57,8 @@ for (let i = 0; i <= movie_click.length - 1; i++) {
         let moviePoster = document.getElementById("movie_poster");
         moviePoster.style.display = 'block';
         moviePoster.src = url[i];
-
+        toFirstDateStatus()
+        dimmedOrNot()
     });
 }
 
@@ -157,6 +160,7 @@ function theaterInit() {
 
 function toFirstDateStatus() {
     const checkDate = document.querySelectorAll(".checkdate");
+    document.getElementById('scheduleList').innerHTML = '';
 
     checkDate.forEach(d => {
         d.classList.add('dimmed');
@@ -183,6 +187,8 @@ function extraFunction(theaterList) {
 }
 
 function dimmedOrNot() {
+    if(tcode == null || mcode == null) return;
+
     const regExp = '\\d{4}-\\d{2}-\\d{2}';
     const dateList = document.querySelectorAll('.checkdate');
     const result = findScheduleAjax(mcode, tcode);
@@ -219,69 +225,136 @@ function findScheduleAjax(mcode, tcode) {
     })
 }
 
-function ifFindScheduleAction(DOM){
-    if(!DOM.classList.contains('findSchedule')) return false;
+function ifFindScheduleAction(DOM) {
+    if (!DOM.classList.contains('findSchedule')) return false;
+
     const findSchedule = document.querySelectorAll('.findSchedule');
+
+    // select 값 기입
     findSchedule.forEach(sc => sc.classList.remove('selected'));
     DOM.classList.add('selected')
 
-    const result = findScheduleOnlyMcodeAjax(mcode, DOM.getAttribute('scdate'));
+    // 가이드라인 삭제
+    schedultGuideText.style.display = 'none';
+
+    // 하단에 정보 전달 (초기화 필요)
+    document.querySelector('.sendDate').innerText = DOM.getAttribute('date');
+
+    // AJAX시작
+    const result = findScheduleFinalAjax(mcode, DOM.getAttribute('scdate'), tcode);
     result.then(response => response.json())
-        .then(data => console.log(data));
+        .then(data => {
+            generateScheduleBoneHtml(data).then(addSeatCountHtml)
+        });
 }
 
-// // 날짜 클릭시 날짜 전달하기
-// let passday = document.getElementsByClassName("passday");
-// for (let i = 0; i <= passday.length - 1; i++) {
-//     passday[i].addEventListener('click', function () {
-//         for (let j = 0; j <= passday.length - 1; j++) {
-//             this.classList.add("selected");
-//             let clickDate = this.getAttribute("date");
-//             if (this.classList.contains('dimmed')) {
-//                 this.classList.remove("selected");
-//                 clickDate = "";
-//             }
-//             let sendDate = document.getElementsByClassName("sendDate")[0].innerHTML = `<input style="background-color: #1d1d1c; color:#cccccc; font-weight: bold" name="selDate" id="selDate" value="${clickDate}"></input>`;
-//             passday[j].classList.remove("selected");
-//             placeholder[2].style.display = 'none';
-//             for (let x = 0; x <= infoTheater.length - 1; x++) {
-//                 infoTheater[x].style.display = 'block';
-//             }
-//
-//         }
-//
-//     })
-// }
-
-function findScheduleOnlyMcodeAjax(mcode, scdate) {
-    if (mcode == null || scdate == null) {
+function findScheduleFinalAjax(mcode, scdate, tcode) {
+    if (mcode == null || scdate == null || tcode == null) {
         alert('정보를 다시 입력하세요');
         return;
     }
-    return fetch(`/api/findSchedule?mcode=${mcode}&scdate=${scdate}`)
+    return fetch(`/api/findSchedule?mcode=${mcode}&tcode=${tcode}&scdate=${scdate}`);
 }
 
-function generateScheduleBoneHtml(scheduleDTO, tcode) {
-    const _hallDTO = scheduleDTO.hallDTO;
-    const _movieDTO = scheduleDTO.movieDTO;
-    if (_hallDTO.tcode !== tcode) return; // 해당 영화관의 스케줄이 아니므로 넘김
-
+// 개인메모 async는 자바의 synchronized와 동일한 기능을 가지는 것 같음
+// promise 객체를 이용하지는 않았지만 promise객체가 생성되는 시점을 바탕으로 동작하게 하면 데이터 충돌이 안일어남.
+// 반복을 할 메서드
+async function generateScheduleBoneHtml(scheduleDTOList) {
+    const scheduleList = document.getElementById('scheduleList');
+    scheduleList.innerHTML = ''; // 초기화
     let scheduleHtml = '';
-    scheduleHtml += `<div class="theater" hcode="${_hallDTO.hcode}" mcode="${_movieDTO.mcode}">`;
-    scheduleHtml += `<span class="title">
+
+    const hcodeInitList = []; // 현재까지 들어간 hcode목록
+    for (let scheduleDTO of scheduleDTOList) {
+        if (hcodeInitList.includes(scheduleDTO.hcode)) continue; // 현재까지 들어간 목록에 있으면 다음으로
+        hcodeInitList.push(scheduleDTO.hcode);
+
+        const _hallDTO = scheduleDTO.hallDTO;
+
+        scheduleHtml += `<div class="theater" hcode="${scheduleDTO.hcode}" mcode="${scheduleDTO.mcode}">`;
+        scheduleHtml += `<span class="title">
                         <span class="name">${_hallDTO.hname}</span>
                         <span class="floor">${_hallDTO.hguan + '관 ' + _hallDTO.location}</span>
-                        <span class="seatcount">총 ${_hallDTO.seatSize + '석'}</span>
+                        <span class="seatcount"></span>
                     </span>`;
-    scheduleHtml += `<ul>`
-    /*
-        알찬내용 여기에 들어가면 된다.
-    */
+        scheduleHtml += `<ul>`
+        /*
+            <li>에 해당하는 내용이 들어감.
+        */
+        console.log(scheduleDTOList)
+        scheduleHtml += addDetailHtml(scheduleDTOList, scheduleDTO.hcode);
+        scheduleHtml += `</ul>`
+        scheduleHtml += `</div>`
 
-    scheduleHtml += `</ul>`
-    scheduleHtml += `</div>`
-    return scheduleHtml
+    }
+    scheduleList.innerHTML = scheduleHtml;
 }
+
+function addSeatCountHtml() {
+    const theaterList = document.querySelectorAll('#scheduleList > .theater');
+    theaterList.forEach(theater => {
+        const hcode = theater.getAttribute('hcode');
+        const spanSeatCount = theater.querySelectorAll('.seatcount')[0];
+        getPromiseSeatCount(hcode).then(response => response.json()).then(data => spanSeatCount.innerText = `(총 ${data}석)`);
+    })
+}
+
+function addDetailHtml(scheduleDTOList, hcode) {
+    let detailHtml = '';
+    for (let scheduleDTO of scheduleDTOList) {
+        if (hcode !== scheduleDTO.hcode) continue;
+        const startTime = scheduleDTO.scdate.split('T')[1].substring(0,5);
+        //scdate = 2022-03-23T15:00:00  //split('T') = ['2022-03-23', '15:00:00'] // substring(0,5) = 15:00
+        const endTemp = new Date(scheduleDTO.scdate.split('T')[0] + " " + scheduleDTO.scdate.split('T')[1]);
+        endTemp.setMinutes(endTemp.getMinutes()+scheduleDTO.movieDTO.runtime);
+
+        const endTime = `${addZero(endTemp.getHours())}:${addZero(endTemp.getMinutes())}`
+
+        detailHtml += `<li remain_seat="120" schecode="${scheduleDTO.schecode}" start_tm="${startTime.replace(':', '')}" hcode="${hcode}" mcode="${scheduleDTO.mcode}" movieRating="${scheduleDTO.movieDTO.movieRating}">
+                        <a class="button">
+                            <span class="time" onclick="schecodeSelect(this)">
+                                <span>${startTime}</span>
+                            </span>
+                            <span class="count">0석</span>
+                            <div class="sreader">종료시간 ${endTime}</div>
+                            <span class="sreader mod"></span>
+                        </a>
+                      </li>`
+    }
+    return detailHtml;
+}
+
+function getPromiseSeatCount(hcode) {
+    if (hcode == null) {
+        alert('홀의 정보를 받지 못하였습니다 ( 총 좌석 수 )');
+        return false;
+    }
+    return fetch('/api/schedule/getSeatCount?hcode=' + hcode)
+}
+
+function schecodeSelect(DOM) {
+    const parentList = DOM.parentNode.parentElement;
+    const spanTitle = DOM.parentNode.parentNode.parentElement.previousElementSibling; // <span class="title"> ( 홀 정보 들어있는 곳 )
+    schecode = parentList.getAttribute('schecode');
+    hcode = parentList.getAttribute('hcode');
+
+    document.querySelectorAll('#scheduleList li').forEach(infoList => infoList.classList.remove('selected'));
+    parentList.classList.add('selected');
+
+    document.querySelector('.sendHallInfo').innerText = spanTitle.querySelector('.floor').innerText;
+    document.querySelector('.movie_type > span').innerText = spanTitle.querySelector('.name').innerText;
+    document.querySelector('.movie_rating > span').innerText = parentList.getAttribute('movieRating');
+
+    document.querySelector('.sendDate').innerText = document.querySelector('.findSchedule.selected')
+        .getAttribute('date') +' '+ DOM.firstElementChild.innerText;
+}
+
+function addZero(number){
+    return parseInt(number) < 10 ? "0" + number : number;
+}
+
+
+
 
 /*
 
@@ -383,8 +456,32 @@ for (let i = 0; i <= theaterClick.length - 1; i++) {
             })
     })
 }
+
 */
 
+
+// // 날짜 클릭시 날짜 전달하기
+// let passday = document.getElementsByClassName("passday");
+// for (let i = 0; i <= passday.length - 1; i++) {
+//     passday[i].addEventListener('click', function () {
+//         for (let j = 0; j <= passday.length - 1; j++) {
+//             this.classList.add("selected");
+//             let clickDate = this.getAttribute("date");
+//             if (this.classList.contains('dimmed')) {
+//                 this.classList.remove("selected");
+//                 clickDate = "";
+//             }
+//             let sendDate = document.getElementsByClassName("sendDate")[0].innerHTML = `<input style="background-color: #1d1d1c; color:#cccccc; font-weight: bold" name="selDate" id="selDate" value="${clickDate}"></input>`;
+//             passday[j].classList.remove("selected");
+//             placeholder[2].style.display = 'none';
+//             for (let x = 0; x <= infoTheater.length - 1; x++) {
+//                 infoTheater[x].style.display = 'block';
+//             }
+//
+//         }
+//
+//     })
+// }
 
 // 상영 시간을 클릭했을때
 
