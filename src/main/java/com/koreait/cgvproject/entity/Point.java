@@ -35,13 +35,13 @@ public class Point {
     private Theater theater;
 
     private String kind;
-    private Long valPoint;
-    private Long pointChange;
+    private int valpoint;
+    private Long pointchange;
     private LocalDateTime regDate;
 
     public PointDTO toDTO(){
         return PointDTO.builder()
-                .mem_idx(member.getIdx()).tcode(theater.getTcode()).kind(kind).pointChange(pointChange)
-                .valPoint(valPoint).regDate(regDate).build();
+                .mem_idx(member.getIdx()).tcode(theater.getTcode()).kind(kind).pointchange(pointchange)
+                .valpoint(valpoint).regDate(regDate).build();
     }
 }

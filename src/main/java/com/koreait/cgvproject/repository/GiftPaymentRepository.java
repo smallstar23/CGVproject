@@ -14,8 +14,10 @@ public interface GiftPaymentRepository extends JpaRepository<GiftPayment, Long> 
     @Query(value = "SELECT * FROM gift_payment where mem_idx = :memberIdx", nativeQuery = true)
     List<GiftPayment> findByMemberIdx(Long memberIdx);
 
-//    GiftPayment findByUserid(Long memberIdx);
+    @Query(value = "SELECT mem_idx FROM gift_payment where mem_idx = :memberIdx", nativeQuery = true)
+    Long findByMember(Long memberIdx);
 
-//    @Query(value = "select p.gpcode, m.username, g.title, g.price, p.regDate, p.status from  GiftPayment p, p.gift g, p.member m where p.member = m.idx and g.gcode= p.gift and p.member = :memberIdx")
-//    List<GiftPaymentListDTO> findListAll(Long memberIdx);
+    GiftPayment deleteByMember(Long memberIdx);
+
+    boolean existsGiftPaymentByMemberIdx(Long memberIdx);
 }
