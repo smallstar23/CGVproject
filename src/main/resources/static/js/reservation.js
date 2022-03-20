@@ -226,12 +226,24 @@ let sendHallInfo=document.getElementsByClassName('sendHallInfo');
                                             for(let i=0;i<=addSelected.length-1; i++){
                                                 addSelected[i].addEventListener('click',function(){
                                                     addSelected[i].classList.add('selected')
-
                                                     sendHallInfo[0].innerHTML= `
                                                     <input style="background-color: #1d1d1c; color:#cccccc; font-weight: bold" value="${data[i].hallDTO.hguan}관">
                                                     `
                                                 })
                                             }
+
+                                            // step2 부분 유저가 선택한 hall정보로 변경하기
+                                            let userSelectInfo= document.getElementById('user-select-info');
+                                            userSelectInfo.innerHTML =
+                                                `
+                                                <p class="theater-info">
+                                                  <span class="site">${data[i].hallDTO.theater.tname}</span>
+                                                  <span class="screen">${data[i].hallDTO.hguan}관 ${data[i].hallDTO.location}</span>
+                                                  <span class="seatNum">남은좌석&nbsp;<b class="restNum">?</b>/<b class="totalNum">${data[i].hallDTO.seatSize}</b></span>
+                                                </p>
+                                                  <p class="playYMD-info"><b>${scdate}&nbsp;&nbsp;</b><b>${data[i].scdate.substring(11,16)} ~ ${data[i].enddate.substring(11,16)}</b></p>
+                                                                                
+                                                `
 
                                         }
                                     })
@@ -246,10 +258,10 @@ let sendHallInfo=document.getElementsByClassName('sendHallInfo');
 
 
 // 상영 시간을 클릭했을때
-
 function screenTimeClickListener(hcode){
     // 여기서 hall 코드 받아가면 됩니다.
     console.log(hcode);
+
 
 }
 

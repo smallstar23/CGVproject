@@ -13,6 +13,7 @@ import lombok.AllArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
@@ -50,6 +51,28 @@ public class UserScheduleService {
         }
         return scheduleDTOList;
 
+    }
+
+
+    // 날짜, 영화관 정보로 스케쥴 받아오기
+    public List<ScheduleDTO> findbyDate(Long tcode, LocalDateTime scdate){
+        LocalDateTime enddate=scdate.plusDays(1);
+        Theater theater=theaterRepository.findByTcode(tcode);
+        List<Schedule> scheduleList=new ArrayList<>();
+        List<ScheduleDTO> scheduleDTOList=new ArrayList<>();
+        if(theater!=null){
+            List<Hall> hallList=hallRepository.findAllByTheater(theater);
+            if(hallList!=null){
+                for(Hall hall: hallList) {
+                    scheduleList=scheduleRepository.findAllByHallAndScdateBetween(hall, scdate, enddate);
+                    for(Schedule schedule:scheduleList){
+                        scheduleDTOList.add(schedule.toDTO());
+                    }
+                }
+            }
+        }
+
+        return scheduleDTOList;
     }
 
 }
