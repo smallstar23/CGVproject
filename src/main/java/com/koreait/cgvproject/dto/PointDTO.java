@@ -15,15 +15,13 @@ import java.time.LocalDateTime;
 public class PointDTO {
 
     private Long idx;
-    private Long pcode1;
-    private Long pcode2;
-    private Long pcode3;
+    private Long pcode;
     private MemberDTO memberDTO;
     private Long mem_idx;
     private String kind;
     private TheaterDTO theaterDTO;
     private Long tcode;
-    private Long valPoint;
-    private Long pointChange;
+    private int valpoint;
+    private Long pointchange;
     private LocalDateTime regDate;
 }
