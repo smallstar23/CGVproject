@@ -136,7 +136,6 @@ let infoTheater = document.getElementsByClassName("infoTheater");
 let sendTheaterName = document.getElementsByClassName("sendTheaterName");
 let area_theater_list = document.getElementsByClassName("area_theater_list");
 
-
 let scheduleList = document.getElementById('scheduleList');
 let sendHallInfo = document.getElementsByClassName('sendHallInfo');
 
@@ -166,6 +165,9 @@ function toFirstDateStatus() {
     document.getElementById('scheduleList').innerHTML = '';
     document.querySelector('.sendDate').innerText = '';
     document.querySelector('.sendHallInfo').innerText = '';
+    hcode="";
+    schecode="";
+
 
     checkDate.forEach(d => {
         d.classList.add('dimmed');
@@ -307,6 +309,7 @@ function addDetailHtml(scheduleDTOList, hcode) {
     let detailHtml = '';
     for (let scheduleDTO of scheduleDTOList) {
         if (hcode !== scheduleDTO.hcode) continue;
+        console.log(scheduleDTO)
         const startTime = scheduleDTO.scdate.split('T')[1].substring(0,5);
         //scdate = 2022-03-23T15:00:00  //split('T') = ['2022-03-23', '15:00:00'] // substring(0,5) = 15:00
         const endTemp = new Date(scheduleDTO.scdate.split('T')[0] + " " + scheduleDTO.scdate.split('T')[1]);
@@ -314,12 +317,12 @@ function addDetailHtml(scheduleDTOList, hcode) {
 
         const endTime = `${addZero(endTemp.getHours())}:${addZero(endTemp.getMinutes())}`
 
-        detailHtml += `<li remain_seat="120" schecode="${scheduleDTO.schecode}" start_tm="${startTime.replace(':', '')}" hcode="${hcode}" mcode="${scheduleDTO.mcode}" movieRating="${scheduleDTO.movieDTO.movieRating}">
+        detailHtml += `<li size="${scheduleDTO.hallDTO.seatSize}" endtime="${endTime}"  schedule="${scheduleDTO.scdate}" schecode="${scheduleDTO.schecode}" start_tm="${startTime.replace(':', '')}" hcode="${hcode}" mcode="${scheduleDTO.mcode}" movieRating="${scheduleDTO.movieDTO.movieRating}">
                         <a class="button">
                             <span class="time" onclick="schecodeSelect(this)">
                                 <span>${startTime}</span>
                             </span>
-                            <span class="count">0석</span>
+                            <span class="count">${scheduleDTO.hallDTO.seatSize}석</span>
                             <div class="sreader">종료시간 ${endTime}</div>
                             <span class="sreader mod"></span>
                         </a>
@@ -337,177 +340,35 @@ function getPromiseSeatCount(hcode) {
 }
 
 function schecodeSelect(DOM) {
+
     const parentList = DOM.parentNode.parentElement;
     const spanTitle = DOM.parentNode.parentNode.parentElement.previousElementSibling; // <span class="title"> ( 홀 정보 들어있는 곳 )
     schecode = parentList.getAttribute('schecode');
     hcode = parentList.getAttribute('hcode');
+    let schedule=parentList.getAttribute('schedule');
 
     document.querySelectorAll('#scheduleList li').forEach(infoList => infoList.classList.remove('selected'));
     parentList.classList.add('selected');
 
+    // step1 하단에 내용 전달하는 부분입니다.
     document.querySelector('.sendHallInfo').innerText = spanTitle.querySelector('.floor').innerText;
     document.querySelector('.movie_type > span').innerText = spanTitle.querySelector('.name').innerText;
     document.querySelector('.movie_rating > span').innerText = parentList.getAttribute('movieRating');
 
     document.querySelector('.sendDate').innerText = document.querySelector('.findSchedule.selected')
         .getAttribute('date') +' '+ DOM.firstElementChild.innerText;
+
+    // step2 상단 내용 찍어주는 부분입니다.
+    document.querySelector('.theater-info > .site').innerText=spanTitle.querySelector('.name').innerText
+    document.querySelector('.theater-info > .screen').innerText=spanTitle.querySelector('.floor').innerText;
+    document.querySelector('.theater-info > .seatNum> .totalNum').innerText=parentList.getAttribute('size');
+    document.querySelector('.playYMD-info > .date').innerText=schedule.substring(0,10);
+    document.querySelector('.playYMD-info > .time').innerText=schedule.substring(11,16)+" ~ "+parentList.getAttribute('endtime')
+
 }
 function addZero(number){
     return parseInt(number) < 10 ? "0" + number : number;
 }
-
-/*
-
-for (let i = 0; i <= theaterClick.length - 1; i++) {
-    theaterClick[i].addEventListener('click', function () {
-        // 새로운 상영관을 클릭할때마다 달력부분 전체 다시 dimmed 되돌리고, selected 해제
-        for (let a = 0; a <= checkdate.length - 1; a++) {
-            checkdate[a].classList.add('dimmed')
-            checkdate[a].classList.remove('selected')
-            $("#selDate").val("");
-        }
-        // 상영관 하단 검은 부분으로 전달하기
-        let theaterName = theaterSelect[i].innerText;
-        placeholder[2].style.display = 'none';
-        // 영화관 tcode전달해서 같이 href에 적용하기
-        sendTheaterName[0].setAttribute('href', '/theaters/' + tcodeArray[i]);
-        sendTheaterName[0].setAttribute('title', theaterName);
-        sendTheaterName[0].innerText = theaterName + "CGV >";
-        // tcode 저장
-        tcode = theaterClick[i].value;
-        for (let x = 0; x <= infoTheater.length - 1; x++) {
-            infoTheater[x].style.display = 'block';
-        }
-        for (let j = 0; j <= theaterClick.length - 1; j++) {
-            theaterClick[i].classList.add("selected");
-            theaterClick[j].classList.remove("selected");
-
-        }
-
-        // 극장 클릭시에 영화, 극장 선택시 해당하는 스케쥴이 있는지 찾아오기
-        fetch('/api/findSchedule', {
-            method: "POST",
-            headers: {
-                'Content-Type': 'application/json',
-            },
-            body: JSON.stringify({
-                mcode: mcode,
-                tcode: tcode
-            })
-        }).then(response => response.json())
-            .then(data => {
-                for (let i = 0; i <= data.length - 1; i++) {
-                    const schecodeArray = [];
-                    const scdateArray = [];
-                    scheduleList.innerHTML = "";
-                    sendHallInfo[0].innerHTML = "";
-                    schecodeArray[i] = data[i].schecode;
-                    // 2022-03-16 형태로 string으로 저장해줌
-                    scdateArray[i] = data[i].scdate.substring(0, 10);
-                    for (let j = 0; j <= newcheckdate.length - 1; j++) {
-                        // 데이터 날짜만큼 돌면서 달력과 같은 날짜가 존재할 경우 dimmed 제거
-                        if (scdateArray[i] == newcheckdate[j]) {
-                            checkdate[j].classList.remove('dimmed');
-                            checkdate[j].classList.add('findSchedule');
-                            // 스케쥴이 있는 경우 findSchedule 이라는 class를 추가하고 그 날짜를 클릭했을때 이벤트 추가
-                            let findSchedule = document.getElementsByClassName('findSchedule');
-                            for (let a = 0; a <= findSchedule.length - 1; a++) {
-                                findSchedule[a].addEventListener('click', function () {
-
-                                    // 가리고 있던 placeholder 제거
-                                    schedultGuideText.classList.add('hidden')
-                                    let scdate = findSchedule[a].getAttribute("date").split('(')[0];
-                                    // 날짜에 해당하는 스케쥴 정보만 받아올 것
-                                    if (scdate == scdateArray[i]) {
-                                        scheduleList.innerHTML += ` <div class="theater">
-                                        <span class="title">
-                                        <span class="name">${data[i].hallDTO.hname}</span>
-                                            <span class="floor">${data[i].hallDTO.hguan}관</span><span class="seatcount">(총 ${data[i].hallDTO.seatSize}석)</span></span>
-                                        <ul>
-                                            <li class="addSelected" value="${data[i].hallDTO.hguan}" onclick="screenTimeClickListener(${data[i].hallDTO.hcode})">
-                                            <a class="button">
-                                                <span class="time"><span>${data[i].scdate.substring(11, 16)}</span></span><span class="count">잔여좌석</span>
-                                                <div class="sreader">종료시간 19:56</div>
-                                                <span class="sreader mod"></span></a>
-                                            </li>
-                                         </ul>
-                                    </div>
-                                                `
-                                        // 상단에 스케쥴 선택시에 같이 정보 전달하기
-                                        let addSelected = document.getElementsByClassName('addSelected');
-                                        for (let i = 0; i <= addSelected.length - 1; i++) {
-                                            addSelected[i].addEventListener('click', function () {
-                                                addSelected[i].classList.add('selected')
-
-                                                sendHallInfo[0].innerHTML = `
-                                                    <input style="background-color: #1d1d1c; color:#cccccc; font-weight: bold" value="${data[i].hallDTO.hguan}관">
-                                                    `
-                                            })
-                                                // 상단에 스케쥴 선택시에 같이 정보 전달하기
-                                            let addSelected=document.getElementsByClassName('addSelected');
-                                            for(let i=0;i<=addSelected.length-1; i++){
-                                                addSelected[i].addEventListener('click',function(){
-                                                    addSelected[i].classList.add('selected')
-                                                    sendHallInfo[0].innerHTML= `
-                                                    <input style="background-color: #1d1d1c; color:#cccccc; font-weight: bold" value="${data[i].hallDTO.hguan}관">
-                                                    `
-                                                })
-                                            }
-
-                                            // step2 부분 유저가 선택한 hall정보로 변경하기
-                                            let userSelectInfo= document.getElementById('user-select-info');
-                                            userSelectInfo.innerHTML =
-                                                `
-                                                <p class="theater-info">
-                                                  <span class="site">${data[i].hallDTO.theater.tname}</span>
-                                                  <span class="screen">${data[i].hallDTO.hguan}관 ${data[i].hallDTO.location}</span>
-                                                  <span class="seatNum">남은좌석&nbsp;<b class="restNum">?</b>/<b class="totalNum">${data[i].hallDTO.seatSize}</b></span>
-                                                </p>
-                                                  <p class="playYMD-info"><b>${scdate}&nbsp;&nbsp;</b><b>${data[i].scdate.substring(11,16)} ~ ${data[i].enddate.substring(11,16)}</b></p>
-                                                                                
-                                                `
-
-                                        }
-
-                                    }
-                                })
-                            }
-
-                        }
-                    }
-                }
-            })
-    })
-}
-
-*/
-
-
-// // 날짜 클릭시 날짜 전달하기
-// let passday = document.getElementsByClassName("passday");
-// for (let i = 0; i <= passday.length - 1; i++) {
-//     passday[i].addEventListener('click', function () {
-//         for (let j = 0; j <= passday.length - 1; j++) {
-//             this.classList.add("selected");
-//             let clickDate = this.getAttribute("date");
-//             if (this.classList.contains('dimmed')) {
-//                 this.classList.remove("selected");
-//                 clickDate = "";
-//             }
-//             let sendDate = document.getElementsByClassName("sendDate")[0].innerHTML = `<input style="background-color: #1d1d1c; color:#cccccc; font-weight: bold" name="selDate" id="selDate" value="${clickDate}"></input>`;
-//             passday[j].classList.remove("selected");
-//             placeholder[2].style.display = 'none';
-//             for (let x = 0; x <= infoTheater.length - 1; x++) {
-//                 infoTheater[x].style.display = 'block';
-//             }
-//
-//         }
-//
-//     })
-// }
-
-// 상영 시간을 클릭했을때
-
 
 /*
     작성자 : 김영신
