@@ -94,7 +94,7 @@ public class UserScheduleService {
     private <T> T outOptional(Optional<T> optional){
         if(optional.isPresent()) return optional.get();
         else {
-            System.out.println("비어있는 데이터 참조입니다 userScheduleService :: 63");
+            System.out.println("비어있는 데이터 참조입니다 userScheduleService :: Optional");
             return null;
         }
     }

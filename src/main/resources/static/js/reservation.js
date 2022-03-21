@@ -437,8 +437,6 @@ for (let i = 0; i <= theaterClick.length - 1; i++) {
                                          </ul>
                                     </div>
                                                 `
-<<<<<<< HEAD
-
                                         // 상단에 스케쥴 선택시에 같이 정보 전달하기
                                         let addSelected = document.getElementsByClassName('addSelected');
                                         for (let i = 0; i <= addSelected.length - 1; i++) {
@@ -449,7 +447,6 @@ for (let i = 0; i <= theaterClick.length - 1; i++) {
                                                     <input style="background-color: #1d1d1c; color:#cccccc; font-weight: bold" value="${data[i].hallDTO.hguan}관">
                                                     `
                                             })
-=======
                                                 // 상단에 스케쥴 선택시에 같이 정보 전달하기
                                             let addSelected=document.getElementsByClassName('addSelected');
                                             for(let i=0;i<=addSelected.length-1; i++){
@@ -474,7 +471,6 @@ for (let i = 0; i <= theaterClick.length - 1; i++) {
                                                                                 
                                                 `
 
->>>>>>> b626a69cbc894c2347f562cd76321fb7f315b013
                                         }
 
                                     }
