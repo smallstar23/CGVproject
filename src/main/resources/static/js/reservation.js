@@ -590,10 +590,49 @@ $(".dateScroll").scroll(function () {
 // step2 인원 선택시 활성화 (어른)
 /* Step 2 에 쓰이는 JS */
 
-function adult_clickInit(){
-    const adult_click = document.getElementsByClassName('adult_click');
-    
+let peopleNum = 0;
+let adultNum = 0; let youthNum = 0;
+
+function adultCount(parentDOM){
+    adultNum = parentDOM.getAttribute('data-count');
+
+    peopleNum = adultNum + youthNum;
+    mouseBlockOrNone();
+    selectedInit(parentDOM);
+    sendPeopleNumInit();
 }
+function youthCount(parentDOM){
+    youthNum = parentDOM.getAttribute('data-count');
+
+    peopleNum = adultNum + youthNum;
+    mouseBlockOrNone();
+    selectedInit(parentDOM)
+    sendPeopleNumInit();
+}
+function sumCheck(){
+
+}
+
+function selectedInit(parentDOM){
+    for(let li of parentDOM.parentElement.children) li.classList.remove('selected');
+    parentDOM.classList.add('selected');
+}
+function mouseBlockOrNone(status){
+    const mouseBlock = document.querySelector('.mouse_block');
+    if(peopleNum == 0) mouseBlock.display = 'block';
+    else mouseBlock.display = 'none';
+}
+function sendPeopleNumInit(){
+    let adultNumText = `일반 ${adultNum}명`; let youthNumText = ` 청소년 ${youthNum}명`;
+
+    if(adultNum == 0) {adultNumText = ''; youthNumText.trim(); }
+    if(youthNum == 0) {youthNumText = '';}
+    document.querySelector('#ticket_tnb .number .data').innerText = (adultNumText + youthNumText).replace('명 ','명 , ');
+}
+
+
+/*
+
 for (let i = 0; i <= adult_click.length - 1; i++) {
     adult_click[i].addEventListener("click", function () {
         for (let j = 0; j <= adult_click.length - 1; j++) {
@@ -632,8 +671,8 @@ for (let i = 0; i <= youth_click.length - 1; i++) {
             }
         }
     })
-
 }
+*/
 
 
 //step 3 간편결제 -> 카카오페이 설정시 활성화

@@ -360,7 +360,7 @@
                     <!-- step2 -->
                     <div class="step step2" style="display: none;">
                         <!-- SEAT 섹션 -->
-                        <div class="section section-seat dimmed" id="dimmed">
+                        <div class="section section-seat dimmed">
                             <div class="col-head" id="skip_seat_list">
                                 <h3 class="sreader">
                                     인원 / 좌석
@@ -373,20 +373,6 @@
                                     <!-- NUMBEROFPEOPLE 섹션 -->
                                     <div class="section section-numberofpeople">
                                         <div class="col-body">
-
-                                            <!-- 인접좌석 -->
-                                            <!-- <div class="adjacent_seat_wrap">
-											<div class="adjacent_seat" id="adjacent_seat">
-												<span class="title">좌석 붙임 설정</span>
-												<div class="block_wrap">
-													<span class="seat_block block1"><label><input type="radio" name="adjacent_seat" onclick="ftSetAdjacentSeatSelector(1, this);" disabled><span class="box"></span><span class="sreader">1석 좌석붙임</span></label></span>
-													<span class="seat_block block2"><label><input type="radio" name="adjacent_seat" onclick="ftSetAdjacentSeatSelector(2, this);" disabled><span class="box"></span><span class="box"></span><span class="sreader">2석 좌석붙임</span></label></span>
-													<span class="seat_block block3"><label><input type="radio" name="adjacent_seat" onclick="ftSetAdjacentSeatSelector(3, this);" disabled><span class="box"></span><span class="box"></span><span class="box"></span><span class="sreader">3석 좌석붙임</span></label></span>
-													<span class="seat_block block4"><label><input type="radio" name="adjacent_seat" onclick="ftSetAdjacentSeatSelector(4, this);" disabled><span class="box"></span><span class="box"></span><span class="box"></span><span class="box"></span><span class="sreader">4석 좌석붙임</span></label></span>
-												</div>
-											</div>
-										</div> -->
-
                                             <div id="nopContainer" class="numberofpeople-select" style="min-width: 426px;">
                                                 <!-- 2021.05.25 - 좌석 거리두기 -->
                                                 <!-- 최대 선택 가능 인원 표기 -->
@@ -394,33 +380,29 @@
                                                 <div class="group adult" id="nop_group_adult" style="display: block;">
                                                     <span class="title">일반</span>
                                                     <ul>
-                                                        <li cldata-count="0" class="selected adult_click" type="adult">
-                                                            <a href="#"><span class="sreader mod">일반</span>0<span class="sreader">명</span></a>
-                                                        </li>
-                                                        <li data-count="1" type="adult" class="adult_click">
-                                                            <a href="#" onclick="count(1)"><span class="sreader mod">일반</span>1<span class="sreader">명</span></a>
-                                                        </li>
-                                                        <li data-count="2" type="adult" class="adult_click"><a href="#"><span class="sreader mod">일반</span>2<span class="sreader">명</span></a></li>
-                                                        <li data-count="3" type="adult" class="adult_click"><a href="#"><span class="sreader mod">일반</span>3<span class="sreader">명</span></a></li>
-                                                        <li data-count="4" type="adult" class="adult_click"><a href="#"><span class="sreader mod">일반</span>4<span class="sreader">명</span></a></li>
-                                                        <li data-count="5" type="adult" class="adult_click"><a href="#"><span class="sreader mod">일반</span>5<span class="sreader">명</span></a></li>
-                                                        <li data-count="6" type="adult" class="adult_click"><a href="#"><span class="sreader mod">일반</span>6<span class="sreader">명</span></a></li>
-                                                        <li data-count="7" type="adult" class="dimmed"><a href="#" ><span class="sreader mod">일반</span>7<span class="sreader">명</span></a></li>
-                                                        <li data-count="8" type="adult" class="dimmed"><a href="#" ><span class="sreader mod">일반</span>8<span class="sreader">명</span></a></li>
+                                                        <li data-count="0" type="adult" class="adult_click selected"><a href="#" onclick="adultCount(this.parentElement)"><span class="sreader mod">일반</span>0<span class="sreader">명</span></a></li>
+                                                        <li data-count="1" type="adult" class="adult_click"><a href="#" onclick="adultCount(this.parentElement)"><span class="sreader mod">일반</span>1<span class="sreader">명</span></a></li>
+                                                        <li data-count="2" type="adult" class="adult_click"><a href="#" onclick="adultCount(this.parentElement)"><span class="sreader mod">일반</span>2<span class="sreader">명</span></a></li>
+                                                        <li data-count="3" type="adult" class="adult_click"><a href="#" onclick="adultCount(this.parentElement)"><span class="sreader mod">일반</span>3<span class="sreader">명</span></a></li>
+                                                        <li data-count="4" type="adult" class="adult_click"><a href="#" onclick="adultCount(this.parentElement)"><span class="sreader mod">일반</span>4<span class="sreader">명</span></a></li>
+                                                        <li data-count="5" type="adult" class="adult_click"><a href="#" onclick="adultCount(this.parentElement)"><span class="sreader mod">일반</span>5<span class="sreader">명</span></a></li>
+                                                        <li data-count="6" type="adult" class="adult_click"><a href="#" onclick="adultCount(this.parentElement)"><span class="sreader mod">일반</span>6<span class="sreader">명</span></a></li>
+                                                        <li data-count="7" type="adult" class="adult_click"><a href="#" onclick="adultCount(this.parentElement)"><span class="sreader mod">일반</span>7<span class="sreader">명</span></a></li>
+                                                        <li data-count="8" type="adult" class="adult_click"><a href="#" onclick="adultCount(this.parentElement)"><span class="sreader mod">일반</span>8<span class="sreader">명</span></a></li>
                                                     </ul>
                                                 </div>
                                                 <div class="group youth" id="nop_group_youth" style="display: block;">
                                                     <span class="title">청소년</span>
                                                     <ul>
-                                                        <li data-count="0" class="youth_click selected" type="youth"><a href="#"><span class="sreader mod">청소년</span>0<span class="sreader">명</span></a></li>
-                                                        <li data-count="1" type="youth" class="youth_click"><a href="#"><span class="sreader mod">청소년</span>1<span class="sreader">명</span></a></li>
-                                                        <li data-count="2" type="youth" class="youth_click"><a href="#"><span class="sreader mod">청소년</span>2<span class="sreader">명</span></a></li>
-                                                        <li data-count="3" type="youth" class="youth_click"><a href="#"><span class="sreader mod">청소년</span>3<span class="sreader">명</span></a></li>
-                                                        <li data-count="4" type="youth" class="youth_click"><a href="#"><span class="sreader mod">청소년</span>4<span class="sreader">명</span></a></li>
-                                                        <li data-count="5" type="youth" class="youth_click"><a href="#"><span class="sreader mod">청소년</span>5<span class="sreader">명</span></a></li>
-                                                        <li data-count="6" type="youth" class="youth_click"><a href="#"><span class="sreader mod">청소년</span>6<span class="sreader">명</span></a></li>
-                                                        <li data-count="7" type="youth" class="dimmed"><a href="#" ><span class="sreader mod">청소년</span>7<span class="sreader">명</span></a></li>
-                                                        <li data-count="8" type="youth" class="dimmed"><a href="#" ><span class="sreader mod">청소년</span>8<span class="sreader">명</span></a></li>
+                                                        <li data-count="0" type="youth" class="youth_click selected"><a href="#" onclick="youthCount(this.parentElement)"><span class="sreader mod">청소년</span>0<span class="sreader">명</span></a></li>
+                                                        <li data-count="1" type="youth" class="youth_click"><a href="#" onclick="youthCount(this.parentElement)"><span class="sreader mod">청소년</span>1<span class="sreader">명</span></a></li>
+                                                        <li data-count="2" type="youth" class="youth_click"><a href="#" onclick="youthCount(this.parentElement)"><span class="sreader mod">청소년</span>2<span class="sreader">명</span></a></li>
+                                                        <li data-count="3" type="youth" class="youth_click"><a href="#" onclick="youthCount(this.parentElement)"><span class="sreader mod">청소년</span>3<span class="sreader">명</span></a></li>
+                                                        <li data-count="4" type="youth" class="youth_click"><a href="#" onclick="youthCount(this.parentElement)"><span class="sreader mod">청소년</span>4<span class="sreader">명</span></a></li>
+                                                        <li data-count="5" type="youth" class="youth_click"><a href="#" onclick="youthCount(this.parentElement)"><span class="sreader mod">청소년</span>5<span class="sreader">명</span></a></li>
+                                                        <li data-count="6" type="youth" class="youth_click"><a href="#" onclick="youthCount(this.parentElement)"><span class="sreader mod">청소년</span>6<span class="sreader">명</span></a></li>
+                                                        <li data-count="7" type="youth" class="youth_click"><a href="#" onclick="youthCount(this.parentElement)"><span class="sreader mod">청소년</span>7<span class="sreader">명</span></a></li>
+                                                        <li data-count="8" type="youth" class="youth_click"><a href="#" onclick="youthCount(this.parentElement)"><span class="sreader mod">청소년</span>8<span class="sreader">명</span></a></li>
                                                     </ul>
                                                 </div>
 
