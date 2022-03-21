@@ -160,7 +160,12 @@ function theaterInit() {
 
 function toFirstDateStatus() {
     const checkDate = document.querySelectorAll(".checkdate");
+    document.querySelectorAll('#scheduleList li').forEach(list => list.classList.remove('selected'));
+    document.querySelector('.movie_rating').firstElementChild.innerText = '';
+    document.querySelector('.movie_type').firstElementChild.innerText = '';
     document.getElementById('scheduleList').innerHTML = '';
+    document.querySelector('.sendDate').innerText = '';
+    document.querySelector('.sendHallInfo').innerText = '';
 
     checkDate.forEach(d => {
         d.classList.add('dimmed');
@@ -348,7 +353,6 @@ function schecodeSelect(DOM) {
     document.querySelector('.sendDate').innerText = document.querySelector('.findSchedule.selected')
         .getAttribute('date') +' '+ DOM.firstElementChild.innerText;
 }
-
 function addZero(number){
     return parseInt(number) < 10 ? "0" + number : number;
 }
