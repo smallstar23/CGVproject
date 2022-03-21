@@ -41,6 +41,7 @@ public class AdminScheduleController {
     // 스케쥴 추가
     @PostMapping("/manage_movieSchedule_create")
     public String schedule_create(@ModelAttribute ScheduleDTO scheduleDTO){
+        System.out.println(scheduleDTO);
         adminScheduleService.addSchedule(scheduleDTO);
         return "redirect:movie/schedule";
     }
@@ -63,9 +64,9 @@ public class AdminScheduleController {
 
     // 삭제
     @GetMapping("/manage_movieSchedule_delete/{schecode}")
-    public String schedule_delete(@PathVariable Long schecode){
+    public void schedule_delete(@PathVariable Long schecode){
         adminScheduleService.deleteSchedule(schecode);
-        return "redirect:/movie/schedule";
+//        return "/admin/schedule/manage_movieSchedule";
     }
 
 

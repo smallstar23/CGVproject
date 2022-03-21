@@ -443,7 +443,19 @@
 									-->
 
                                         <!--선택 정보로 변경-->
-                                        <div id="user-select-info"></div>
+                                        <div id="user-select-info">
+                                            <p class="theater-info">
+                                                <span class="site"></span>
+                                                <span class="screen"></span>
+                                                <span class="seatNum">남은좌석
+                                                    <b class="restNum">?</b>/
+                                                    <b class="totalNum"></b></span>
+                                            </p>
+                                            <p class="playYMD-info">
+                                                <b class="date"></b>
+                                                <b> &nbsp;</b>
+                                                <b class="time"></b></p>
+                                        </div>
 
                                     </div>
                                     <a class="change_time_btn" href="#" onmousedown="if(event.stopPropagation){event.stopPropagation();}return false;" onclick="ticketStep2TimeSelectPopupShow();return false;"><span>상영시간 변경하기</span></a>
