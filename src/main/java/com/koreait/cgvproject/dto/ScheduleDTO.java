@@ -1,9 +1,12 @@
 package com.koreait.cgvproject.dto;
 
+import com.koreait.cgvproject.repository.HallRepository;
+import com.koreait.cgvproject.repository.MovieRepository;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.format.annotation.DateTimeFormat;
 
 import java.time.LocalDateTime;

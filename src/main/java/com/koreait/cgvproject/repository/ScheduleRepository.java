@@ -14,7 +14,6 @@ import java.util.List;
 @Repository
 public interface ScheduleRepository extends CrudRepository<Schedule, Long> {
     List<Schedule> findAllByMovieAndHall(Movie movie, Hall hall);
-
+    List<Schedule> findAllByMovieOrderByScdate(Movie movie);
     List<Schedule> findAllByHallAndScdateBetween(Hall hall, LocalDateTime startdate, LocalDateTime enddate);
-
 }

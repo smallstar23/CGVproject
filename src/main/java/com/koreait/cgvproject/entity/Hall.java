@@ -2,6 +2,7 @@ package com.koreait.cgvproject.entity;
 
 import com.koreait.cgvproject.dto.HallDTO;
 import lombok.*;
+import org.hibernate.annotations.Formula;
 
 import javax.persistence.*;
 import java.util.List;
@@ -43,6 +44,7 @@ public class Hall{
     public HallDTO toDTO(){
         return HallDTO.builder()
                 .theater(theater.toDTO())
+                .tcode(theater.getTcode())
                 .hguan(hguan)
                 .seatSize(seatList.size())
                 .hcode(hcode).hname(hname).location(location)

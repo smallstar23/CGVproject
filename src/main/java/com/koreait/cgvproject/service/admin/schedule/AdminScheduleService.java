@@ -19,13 +19,8 @@ import java.util.Optional;
 @AllArgsConstructor
 public class AdminScheduleService {
 
-    @Autowired
     private ScheduleRepository scheduleRepository;
-
-    @Autowired
     private MovieRepository movieRepository;
-
-    @Autowired
     private HallRepository hallRepository;
 
     // 스케쥴 전체 리스트 찾기
@@ -74,7 +69,7 @@ public class AdminScheduleService {
     // 스케쥴 코드로 해당하는 스케쥴 찾기
     public ScheduleDTO findSchedule(Long schecode){
         Optional<Schedule> schedule=scheduleRepository.findById(schecode);
-        if(schedule!=null){
+        if(schedule.isPresent()){
             ScheduleDTO scheduleDTO=schedule.get().toDTO();
             Movie movie=movieRepository.findByMcode(scheduleDTO.getMcode());
             Hall hall=hallRepository.findByHcode(scheduleDTO.getHcode());
@@ -88,7 +83,6 @@ public class AdminScheduleService {
     // 삭제
     public void deleteSchedule(Long schecode){
         Optional<Schedule> schedule=scheduleRepository.findById(schecode);
-        System.out.println(schedule);
         schedule.ifPresent(schedule1 -> {
             scheduleRepository.delete(schedule1);
                     System.out.println("삭제되었습니다.");

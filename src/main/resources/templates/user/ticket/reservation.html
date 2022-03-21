@@ -18,7 +18,7 @@
 
 
     <meta id="ctl00_og_image" property="og:image" content="https://img.cgv.co.kr/WebApp/images/common/logo_new_kakao_prevw.png"></meta>
-    <link rel="alternate" href="http://m.cgv.co.kr" />
+
     <link rel="shortcut icon" href="https://img.cgv.co.kr/theater_img/favicon.ico" type="image/x-icon" />
     <title id="ctl00_headerTitle">영화 그 이상의 감동. CGV</title>
     <link rel="shortcut icon" type="image/x-icon" href="https://img.cgv.co.kr/R2014/images/favicon.ico" />
@@ -33,17 +33,13 @@
     <link rel="stylesheet" media="print" type="text/css" href="https://img.cgv.co.kr/R2014/css/print.css" />
     <link rel="stylesheet" type="text/css" href="https://img.cgv.co.kr/R2014/js/jquery.ui/smoothness/jquery-ui-1.10.4.custom.min.css" />
 
-    <script type="text/javascript" src="/common/js/extraTheaters.js"></script>
-    <script type="text/javascript" src="https://img.cgv.co.kr/R2014/js/app.config.js"></script>
     <script type="text/javascript" src="https://img.cgv.co.kr/R2014/js/jquery-1.10.2.min.js"></script>
     <script type="text/javascript" src="https://img.cgv.co.kr/R2014/js/jquery.plugin/jquery.tmpl.min.js"></script>
     <script type="text/javascript" src="https://img.cgv.co.kr/R2014/js/jquery.plugin/jquery.validate.js"></script>
     <script type="text/javascript" src="https://img.cgv.co.kr/R2014/js/jquery.plugin/jquery.paging.min.js"></script>
     <script type="text/javascript" src="https://img.cgv.co.kr/R2014/js/jquery.ui/jquery-ui-1.10.4.custom.min.js"></script>
     <script type="text/javascript" src="https://img.cgv.co.kr/R2014/js/jquery.utils.js"></script>
-    <script type="text/javascript" src="https://img.cgv.co.kr/R2014/js/app.utils.js"></script>
     <script type="text/javascript" src="https://img.cgv.co.kr/R2014/js/jquery.utils.pageing.js"></script>
-    <script type="text/javascript" src="https://img.cgv.co.kr/R2014/js/app.init.js"></script>
 
     <!--[if lte IE 9]><script type="text/javascript" src="https://img.cgv.co.kr/R2014/js/jquery.plugin/jquery.placeholder.js"></script><![endif]-->
     <script type="text/javascript" src="https://img.cgv.co.kr/R2014/js/jquery.plugin/jquery.dotdotdot.min.js"></script>
@@ -66,14 +62,14 @@
     <!-- 각페이지 Header Start-->
 
     <link rel="stylesheet" href="http://img.cgv.co.kr/CGV_RIA/Ticket/Common/css/2021/0803/FORM_TYPE/common.css" />
-    <link rel="stylesheet" href="http://img.cgv.co.kr/CGV_RIA/Ticket/Common/css/2021/0803/FORM_TYPE/reservation.css" />
+    <link rel="stylesheet" href="/css/reservation.css">
     <link rel="stylesheet" href="http://img.cgv.co.kr/CGV_RIA/Ticket/Common/css/2021/0803/FORM_TYPE/reservation_tnb.css" />
     <link rel="stylesheet" href="http://img.cgv.co.kr/CGV_RIA/Ticket/Common/css/2021/0803/FORM_TYPE/reservation_popup.css" />
     <link rel="stylesheet" href="http://img.cgv.co.kr/CGV_RIA/Ticket/Common/css/2021/0803/FORM_TYPE/reservation_step3.css" />
     <link rel="stylesheet" href="http://img.cgv.co.kr/CGV_RIA/Ticket/Common/css/2021/0803/FORM_TYPE/reservation_step3_special.css" />
     <link rel="stylesheet" href="http://img.cgv.co.kr/CGV_RIA/Ticket/Common/css/2021/0803/FORM_TYPE/reservation_step3_step1.css" />
     <link rel="stylesheet" href="http://img.cgv.co.kr/CGV_RIA/Ticket/Common/css/2021/0803/FORM_TYPE/reservation_step3_step2.css" />
-
+    <link rel="stylesheet" href="/css/user-seat.css">
 
     <!--/각페이지 Header End-->
 
@@ -144,23 +140,23 @@
                                         <a href="#" class="button menu2">아트하우스<span class="arrow"></span></a>
                                         <div class="tabmenu-selectbox MOVIECOLLAGE" style="display:none;">
                                             <ul>
-                                                <li><a href="#" onclick="return false;">전체</a></li>
-                                                <li><a href="#" onclick="return false;">최신작</a></li>
+                                                <li><a href="#" >전체</a></li>
+                                                <li><a href="#" >최신작</a></li>
                                             </ul>
                                         </div>
                                         <span class="side"></span>
-                                        <a href="#" onclick="return false;" class="button menu3">특별관<span class="arrow"></span></a>
+                                        <a href="#"  class="button menu3">특별관<span class="arrow"></span></a>
                                         <div class="tabmenu-selectbox SPECIALTHEATER" style="display:none;">
                                             <ul>
-                                                <li><a href="#" onclick="return false;">전체</a></li>
-                                                <li><a href="#" onclick="return false;">4DX</a></li>
-                                                <li><a href="#" onclick="return false;">IMAX</a></li>
-                                                <li><a href="#" onclick="return false;">STARIUM</a></li>
-                                                <li><a href="#" onclick="return false;">CINE DE CHEF</a></li>
-                                                <li><a href="#" onclick="return false;">GOLD CLASS</a></li>
-                                                <li><a href="#" onclick="return false;">Brand관</a></li>
-                                                <li><a href="#" onclick="return false;">Premium관</a></li>
-                                                <li><a href="#" onclick="return false;">CINE KIDS</a></li>
+                                                <li><a href="#" >전체</a></li>
+                                                <li><a href="#" >4DX</a></li>
+                                                <li><a href="#" >IMAX</a></li>
+                                                <li><a href="#" >STARIUM</a></li>
+                                                <li><a href="#" >CINE DE CHEF</a></li>
+                                                <li><a href="#" >GOLD CLASS</a></li>
+                                                <li><a href="#" >Brand관</a></li>
+                                                <li><a href="#" >Premium관</a></li>
+                                                <li><a href="#" >CINE KIDS</a></li>
                                             </ul>
                                         </div>
                                         <span class="side"></span>
@@ -194,8 +190,8 @@
                                            +  (movie.getMovieRating() =='15세 이상' ? 'rating-15': '')
                                            + (movie.getMovieRating() =='12세 이상' ? 'rating-12': '')
                                            + (movie.getMovieRating() =='청소년 관람불가' ? 'rating-19': '')
-                                            }" th:value="${movie.getMcode()}" data-index="0" movie_cd_group="20028797" movie_idx="85603" >
-                                                <a class="movieName" href="#nomove" onclick="return false;" th:attr="title=${movie.getTitleKo()}"><span class="icon">&nbsp;</span>
+                                            }" th:value="${movie.getMcode()}" th:mcode="${movie.getMcode()}" th:titleko="${movie.getTitleKo()}" th:poster="${movie.getPoster()}">
+                                                <a class="movieName" href="#nomove"  th:attr="title=${movie.getTitleKo()}"><span class="icon">&nbsp;</span>
                                                     <span class="text" th:text="${movie.getTitleKo()}"></span><span class="sreader"></span></a>
                                             </li>
                                             </th:block>
@@ -227,11 +223,11 @@
                                 <div class="theater-select" style="height: 429px;">
                                     <div class="tabmenu">
                                         <span class="side on"></span>
-                                        <a href="#" onclick="return false;" class="button menu1 selected">전체</a>
+                                        <a href="#"  class="button menu1 selected">전체</a>
                                         <span class="side on"></span>
-                                        <a href="#" onclick="return false;" class="button menu2">아트하우스</a>
+                                        <a href="#"  class="button menu2">아트하우스</a>
                                         <span class="side"></span>
-                                        <a href="#" onclick="return false;" class="button menu3">특별관</a>
+                                        <a href="#"  class="button menu3">특별관</a>
                                         <span class="side"></span>
                                     </div>
 
@@ -245,8 +241,8 @@
                                                         <span class="count"></span></a>
                                                     <div class="area_theater_list nano has-scrollbar">
                                                         <ul class="content scroll-y" tabindex="-1" style="right: -15px;">
-                                                            <li class="theaterClick" data-index="0" areaindex="0" th:value="${theaterlist[0].getTcode()}"  rating_cd="undefined" style="display: list-item;"><a href="#nomove" class="theaterSelect">강남<span class="sreader"></span></a></li>
-                                                            <li class="theaterClick" data-index="2" areaindex="0" th:value="${theaterlist[1].getTcode()}"  rating_cd="undefined" style="display: list-item;"><a href="#nomove" class="theaterSelect" title="강변역 테크노마트">강변<span class="sreader"></span></a></li>
+                                                            <li class="theaterClick" data-index="0" areaindex="0" tname='강남CGV' th:value="${theaterlist[0].getTcode()}"  rating_cd="undefined" style="display: list-item;"><a href="#nomove" class="theaterSelect">강남<span class="sreader"></span></a></li>
+                                                            <li class="theaterClick" data-index="2" areaindex="0" tname="강변CGV" th:value="${theaterlist[1].getTcode()}"  rating_cd="undefined" style="display: list-item;"><a href="#nomove" class="theaterSelect" title="강변역 테크노마트">강변<span class="sreader"></span></a></li>
                                                         </ul>
                                                         <div class="pane pane-y" style="display: block; opacity: 1; visibility: visible;"><div class="" style="height: 50px; top: 0px;"></div></div><div class="pane pane-x" style="display: none; opacity: 1; visibility: visible;"><div class="" style="width: 50px;"></div></div>
                                                     </div>
@@ -256,9 +252,9 @@
                                                     <a class="areaSelect"><span class="name">경기</span><span class="count"></span></a>
                                                     <div class="area_theater_list nano has-scrollbar">
                                                         <ul class="content scroll-y" tabindex="-1" style="right: -15px;">
-                                                            <li class="theaterClick" data-index="5" areaindex="1" th:value="${theaterlist[2].getTcode()}"  rating_cd="undefined" style="display: list-item;"><a href="#nomove" class="theaterSelect">경기광주<span class="sreader"></span></a></li>
-                                                            <li class="theaterClick" data-index="9" areaindex="1" th:value="${theaterlist[3].getTcode()}"  rating_cd="undefined" style="display: list-item;"><a href="#nomove" class="theaterSelect">동수원CGV<span class="sreader"></span></a></li>
-                                                            <li class="theaterClick" data-index="10" areaindex="1" th:value="${theaterlist[4].getTcode()}"  rating_cd="undefined" style="display: list-item;"><a href="#nomove" class="theaterSelect">용인CGV<span class="sreader"></span></a></li>
+                                                            <li class="theaterClick" data-index="5" areaindex="1" tname="경기광주CGV" th:value="${theaterlist[2].getTcode()}"  rating_cd="undefined" style="display: list-item;"><a href="#nomove" class="theaterSelect">경기광주<span class="sreader"></span></a></li>
+                                                            <li class="theaterClick" data-index="9" areaindex="1" tname="동수원CGV" th:value="${theaterlist[3].getTcode()}"  rating_cd="undefined" style="display: list-item;"><a href="#nomove" class="theaterSelect">동수원CGV<span class="sreader"></span></a></li>
+                                                            <li class="theaterClick" data-index="10" areaindex="1" tname="용인CGV" th:value="${theaterlist[4].getTcode()}"  rating_cd="undefined" style="display: list-item;"><a href="#nomove" class="theaterSelect">용인CGV<span class="sreader"></span></a></li>
 
                                                         </ul><div class="pane pane-y" style="display: none; opacity: 1; visibility: visible;"><div class="slider slider-y" style="height: 50px;"></div></div><div class="pane pane-x" style="display: none; opacity: 1; visibility: visible;"><div class="" style="width: 50px;"></div></div>
                                                     </div>
@@ -277,7 +273,7 @@
                         <div class="section section-date">
                             <div class="col-head" id="skip_date_list">
                                 <h3 class="sreader">날짜</h3>
-                                <a href="#" onclick="return false;" class="skip_to_something">날짜 건너뛰기</a>
+                                <a href="#"  class="skip_to_something">날짜 건너뛰기</a>
                             </div>
                             <div class="col-body" style="height: 560px;">
                                 <!-- 날짜선택 -->
@@ -323,21 +319,30 @@
 
                                     <!-- 하단 스케쥴 반복 구간-->
                                     <div id="scheduleList">
+<!--
 
-<!--                                    <div class="theater" screen_cd="014" movie_cd="20028955">-->
-<!--                                        <span class="title"><span class="name">SCREENX 2D</span>-->
-<!--                                            <span class="floor">4관[SCREENX] 8층</span><span class="seatcount">(총124석)</span></span>-->
-<!--                                        <ul>-->
-<!--                                            <li data-index="0" data-remain_seat="124" play_start_tm="1750" screen_cd="014" movie_cd="20028955" play_num="5">-->
-<!--                                            <a class="button" href="#" onclick="screenTimeClickListener(event);return false;">-->
-<!--                                                <span class="time"><span>17:50</span></span><span class="count">120석</span><div class="sreader">종료시간 19:56</div>-->
-<!--                                                <span class="sreader mod"></span></a>-->
-<!--                                            </li>-->
-<!--                                            <li data-index="1" data-remain_seat="124" play_start_tm="2015" screen_cd="014" movie_cd="20028955" play_num="6">-->
-<!--                                                <a class="button" href="#" onclick="screenTimeClickListener(event);return false;"><span class="time"><span>20:15</span></span>-->
-<!--                                                    <span class="count">107석</span><div class="sreader">종료시간 22:21</div><span class="sreader mod"></span></a></li>-->
-<!--                                        </ul>-->
-<!--                                    </div>-->
+                                    <div class="theater" screen_cd="014" movie_cd="20028955">
+                                        <span class="title">
+                                            <span class="name">SCREENX 2D</span>
+                                            <span class="floor">4관[SCREENX] 8층</span><span class="seatcount">(총124석)</span>
+                                        </span>
+                                        <ul>
+                                            <li data-index="0" data-remain_seat="124" play_start_tm="1750" screen_cd="014" movie_cd="20028955" play_num="5">
+                                                <a class="button" href="#" onclick="screenTimeClickListener(event);return false;">
+                                                    <span class="time">
+                                                        <span>17:50</span>
+                                                    </span>
+                                                    <span class="count">120석</span>
+                                                    <div class="sreader">종료시간 19:56</div>
+                                                    <span class="sreader mod"></span>
+                                                </a>
+                                            </li>
+                                            <li data-index="1" data-remain_seat="124" play_start_tm="2015" screen_cd="014" movie_cd="20028955" play_num="6">
+                                                <a class="button" href="#" onclick="screenTimeClickListener(event);return false;"><span class="time"><span>20:15</span></span>
+                                                    <span class="count">107석</span><div class="sreader">종료시간 22:21</div><span class="sreader mod"></span></a></li>
+                                        </ul>
+                                    </div>
+-->
 
                                     </div>
 
@@ -386,16 +391,6 @@
                                                 <!-- 2021.05.25 - 좌석 거리두기 -->
                                                 <!-- 최대 선택 가능 인원 표기 -->
                                                 <div id="maximum_people" style="padding-bottom: 5px; text-align: right; font-size: 11px !important; color: red;">* 최대 6명 선택 가능</div>
-                                                <div class="group millitary" id="nop_group_millitary" style="display: none;">
-                                                    <span class="title">군인</span>
-                                                    <ul>
-                                                        <li data-count="0" class="selected" type="millitary"><a href="#" onclick="return false;"><span class="sreader mod">군인</span>0<span class="sreader">명</span></a></li>
-                                                        <li data-count="1" type="millitary"><a href="#" onclick="return false;"><span class="sreader mod">군인</span>1<span class="sreader">명</span></a></li>
-                                                        <li data-count="2" type="millitary"><a href="#" onclick="return false;"><span class="sreader mod">군인</span>2<span class="sreader">명</span></a></li>
-                                                        <li data-count="3" type="millitary"><a href="#" onclick="return false;"><span class="sreader mod">군인</span>3<span class="sreader">명</span></a></li>
-                                                        <li data-count="4" type="millitary"><a href="#" onclick="return false;"><span class="sreader mod">군인</span>4<span class="sreader">명</span></a></li>
-                                                    </ul>
-                                                </div>
                                                 <div class="group adult" id="nop_group_adult" style="display: block;">
                                                     <span class="title">일반</span>
                                                     <ul>
@@ -410,8 +405,8 @@
                                                         <li data-count="4" type="adult" class="adult_click"><a href="#"><span class="sreader mod">일반</span>4<span class="sreader">명</span></a></li>
                                                         <li data-count="5" type="adult" class="adult_click"><a href="#"><span class="sreader mod">일반</span>5<span class="sreader">명</span></a></li>
                                                         <li data-count="6" type="adult" class="adult_click"><a href="#"><span class="sreader mod">일반</span>6<span class="sreader">명</span></a></li>
-                                                        <li data-count="7" type="adult" class="dimmed"><a href="#" onclick="return false;"><span class="sreader mod">일반</span>7<span class="sreader">명</span></a></li>
-                                                        <li data-count="8" type="adult" class="dimmed"><a href="#" onclick="return false;"><span class="sreader mod">일반</span>8<span class="sreader">명</span></a></li>
+                                                        <li data-count="7" type="adult" class="dimmed"><a href="#" ><span class="sreader mod">일반</span>7<span class="sreader">명</span></a></li>
+                                                        <li data-count="8" type="adult" class="dimmed"><a href="#" ><span class="sreader mod">일반</span>8<span class="sreader">명</span></a></li>
                                                     </ul>
                                                 </div>
                                                 <div class="group youth" id="nop_group_youth" style="display: block;">
@@ -424,39 +419,11 @@
                                                         <li data-count="4" type="youth" class="youth_click"><a href="#"><span class="sreader mod">청소년</span>4<span class="sreader">명</span></a></li>
                                                         <li data-count="5" type="youth" class="youth_click"><a href="#"><span class="sreader mod">청소년</span>5<span class="sreader">명</span></a></li>
                                                         <li data-count="6" type="youth" class="youth_click"><a href="#"><span class="sreader mod">청소년</span>6<span class="sreader">명</span></a></li>
-                                                        <li data-count="7" type="youth" class="dimmed"><a href="#" onclick="return false;"><span class="sreader mod">청소년</span>7<span class="sreader">명</span></a></li>
-                                                        <li data-count="8" type="youth" class="dimmed"><a href="#" onclick="return false;"><span class="sreader mod">청소년</span>8<span class="sreader">명</span></a></li>
+                                                        <li data-count="7" type="youth" class="dimmed"><a href="#" ><span class="sreader mod">청소년</span>7<span class="sreader">명</span></a></li>
+                                                        <li data-count="8" type="youth" class="dimmed"><a href="#" ><span class="sreader mod">청소년</span>8<span class="sreader">명</span></a></li>
                                                     </ul>
                                                 </div>
 
-                                                <div class="group senior" id="nop_group_senior" style="display: none">
-                                                    <span class="title">경로</span>
-                                                    <ul>
-                                                        <li data-count="0" class="selected" type="senior"><a href="#" onclick="return false;"><span class="sreader mod">경로</span>0<span class="sreader">명</span></a></li>
-                                                        <li data-count="1" type="senior" class=""><a href="#" onclick="return false;"><span class="sreader mod">경로</span>1<span class="sreader">명</span></a></li>
-                                                        <li data-count="2" type="senior" class=""><a href="#" onclick="return false;"><span class="sreader mod">경로</span>2<span class="sreader">명</span></a></li>
-                                                        <li data-count="3" type="senior" class=""><a href="#" onclick="return false;"><span class="sreader mod">경로</span>3<span class="sreader">명</span></a></li>
-                                                        <li data-count="4" type="senior" class=""><a href="#" onclick="return false;"><span class="sreader mod">경로</span>4<span class="sreader">명</span></a></li>
-                                                        <li data-count="5" type="senior" class=""><a href="#" onclick="return false;"><span class="sreader mod">경로</span>5<span class="sreader">명</span></a></li>
-                                                        <li data-count="6" type="senior" class=""><a href="#" onclick="return false;"><span class="sreader mod">경로</span>6<span class="sreader">명</span></a></li>
-                                                        <li data-count="7" type="senior" class="dimmed"><a href="#" onclick="return false;"><span class="sreader mod">경로</span>7<span class="sreader">명</span></a></li>
-                                                        <li data-count="8" type="senior" class="dimmed"><a href="#" onclick="return false;"><span class="sreader mod">경로</span>8<span class="sreader">명</span></a></li>
-                                                    </ul>
-                                                </div>
-                                                <div class="group special hide" id="nop_group_special" style="display: none;">
-                                                    <span class="title">우대</span>
-                                                    <ul>
-                                                        <li data-count="0" class="selected" type="special"><a href="#" onclick="return false;"><span class="sreader mod">우대</span>0<span class="sreader">명</span></a></li>
-                                                        <li data-count="1" type="special" class=""><a href="#" onclick="return false;"><span class="sreader mod">우대</span>1<span class="sreader">명</span></a></li>
-                                                        <li data-count="2" type="special" class=""><a href="#" onclick="return false;"><span class="sreader mod">우대</span>2<span class="sreader">명</span></a></li>
-                                                        <li data-count="3" type="special" class=""><a href="#" onclick="return false;"><span class="sreader mod">우대</span>3<span class="sreader">명</span></a></li>
-                                                        <li data-count="4" type="special" class=""><a href="#" onclick="return false;"><span class="sreader mod">우대</span>4<span class="sreader">명</span></a></li>
-                                                        <li data-count="5" type="special" class=""><a href="#" onclick="return false;"><span class="sreader mod">우대</span>5<span class="sreader">명</span></a></li>
-                                                        <li data-count="6" type="special" class=""><a href="#" onclick="return false;"><span class="sreader mod">우대</span>6<span class="sreader">명</span></a></li>
-                                                        <li data-count="7" type="special" class="dimmed"><a href="#" onclick="return false;"><span class="sreader mod">우대</span>7<span class="sreader">명</span></a></li>
-                                                        <li data-count="8" type="special" class="dimmed"><a href="#" onclick="return false;"><span class="sreader mod">우대</span>8<span class="sreader">명</span></a></li>
-                                                    </ul>
-                                                </div>
 
                                             </div>
                                         </div>
@@ -484,45 +451,11 @@
                                 <!-- THEATER -->
                                 <div class="theater_minimap">
                                     <div class="theater nano has-scrollbar" id="seat_minimap_nano">
-                                        <div class="content" tabindex="-1" style="right: -21px; bottom: -21px;">
+                                        <div class="content" tabindex="-1" style="right: -128px;bottom: 0px;">
                                             <div class="screen" title="SCREEN" style="width: 652px;"><span class="text"></span></div>
 
                                             <!-- seats start  좌석 구현 부분 시작 여기서 부터 입니다 -->
-
-                                            <div class="seats" id="seats_list" style="width: 240px; height: 192px;"><div>
-<!--                                                <div class="row" style="top:0px;">-->
-
-
-<!--                                                    <div class="label">A</div><a href="#" onclick="skipToNextRow(event);return false;" class="skip_row">A열 건너뛰기</a>-->
-<!--                                                    <div class="seat_group left"><div class="group"><div class="seat handicap" style="left:64px" data-left="64" data-left_zoom="96"><a href="#" "="" onclick="return false;"><span class="no">3</span><span class="sreader"> 장애인석 Light</span><span class="sreader mod"></span></a></div>-->
-<!--                                                        <div class="seat handicap" style="left:80px" data-left="80" data-left_zoom="120"><a href="#" "="" onclick="return false;"><span class="no">4</span><span class="sreader"> 장애인석 Light</span><span class="sreader mod"></span></a></div></div></div><div class="seat_group"><div class="group"><div class="seat rating_economy" style="left:128px" data-left="128" data-left_zoom="192"><a href="#" "="" onclick="return false;"><span class="no">7</span><span class="sreader"> Light</span><span class="sreader mod"></span></a></div><div class="seat rating_economy" style="left:144px" data-left="144" data-left_zoom="216"><a href="#" "="" onclick="return false;"><span class="no">8</span><span class="sreader"> Light</span><span class="sreader mod"></span></a></div><div class="seat rating_economy" style="left:160px" data-left="160" data-left_zoom="240"><a href="#" "="" onclick="return false;"><span class="no">9</span><span class="sreader"> Light</span><span class="sreader mod"></span></a></div><div class="seat rating_economy" style="left:176px" data-left="176" data-left_zoom="264"><a href="#" "="" onclick="return false;"><span class="no">10</span><span class="sreader"> Light</span><span class="sreader mod"></span></a></div><div class="seat rating_economy" style="left:192px" data-left="192" data-left_zoom="288"><a href="#" "="" onclick="return false;"><span class="no">11</span><span class="sreader"> Light</span><span class="sreader mod"></span></a></div><div class="seat rating_economy" style="left:208px" data-left="208" data-left_zoom="312"><a href="#" "="" onclick="return false;"><span class="no">12</span><span class="sreader"> Light</span><span class="sreader mod"></span></a></div><div class="seat rating_economy" style="left:224px" data-left="224" data-left_zoom="336"><a href="#" "="" onclick="return false;"><span class="no">13</span><span class="sreader"> Light</span><span class="sreader mod"></span></a></div></div></div></div><div class="row" style="top:16px;"><div class="label">B</div><a href="#" onclick="skipToNextRow(event);return false;" class="skip_row">B열 건너뛰기</a><div class="seat_group"><div class="group"><div class="seat rating_economy" style="left:64px" data-left="64" data-left_zoom="96"><a href="#" "="" onclick="return false;"><span class="no">3</span><span class="sreader"> Light</span><span class="sreader mod"></span></a></div><div class="seat rating_economy" style="left:80px" data-left="80" data-left_zoom="120"><a href="#" "="" onclick="return false;"><span class="no">4</span><span class="sreader"> Light</span><span class="sreader mod"></span></a></div><div class="seat rating_economy" style="left:96px" data-left="96" data-left_zoom="144"><a href="#" "="" onclick="return false;"><span class="no">5</span><span class="sreader"> Light</span><span class="sreader mod"></span></a></div></div><div class="group reserved"><div class="seat distanced reserved" style="left:112px" data-left="112" data-left_zoom="168"><a href="#" "="" onclick="return false;"><span class="no">6</span><span class="sreader"> 예매완료 Light</span><span class="sreader mod"> 선택불가</span></a></div></div><div class="group reserved"><div class="seat reserved" style="left:128px" data-left="128" data-left_zoom="192"><a href="#" "="" onclick="return false;"><span class="no">7</span><span class="sreader"> 예매완료 Light</span><span class="sreader mod"> 선택불가</span></a></div></div><div class="group reserved"><div class="seat distanced reserved" style="left:144px" data-left="144" data-left_zoom="216"><a href="#" "="" onclick="return false;"><span class="no">8</span><span class="sreader"> 예매완료 Light</span><span class="sreader mod"> 선택불가</span></a></div></div><div class="group"><div class="seat rating_economy" style="left:160px" data-left="160" data-left_zoom="240"><a href="#" "="" onclick="return false;"><span class="no">9</span><span class="sreader"> Light</span><span class="sreader mod"></span></a></div><div class="seat rating_economy" style="left:176px" data-left="176" data-left_zoom="264"><a href="#" "="" onclick="return false;"><span class="no">10</span><span class="sreader"> Light</span><span class="sreader mod"></span></a></div><div class="seat rating_economy" style="left:192px" data-left="192" data-left_zoom="288"><a href="#" "="" onclick="return false;"><span class="no">11</span><span class="sreader"> Light</span><span class="sreader mod"></span></a></div><div class="seat rating_economy" style="left:208px" data-left="208" data-left_zoom="312"><a href="#" "="" onclick="return false;"><span class="no">12</span><span class="sreader"> Light</span><span class="sreader mod"></span></a></div><div class="seat rating_economy" style="left:224px" data-left="224" data-left_zoom="336"><a href="#" "="" onclick="return false;"><span class="no">13</span><span class="sreader"> Light</span><span class="sreader mod"></span></a></div></div></div></div><div class="row" style="top:32px;"><div class="label">C</div><a href="#" onclick="skipToNextRow(event);return false;" class="skip_row">C열 건너뛰기</a><div class="seat_group"><div class="group"><div class="seat" style="left:64px" data-left="64" data-left_zoom="96"><a href="#" "="" onclick="return false;"><span class="no">3</span><span class="sreader"></span><span class="sreader mod"></span></a></div><div class="seat" style="left:80px" data-left="80" data-left_zoom="120"><a href="#" "="" onclick="return false;"><span class="no">4</span><span class="sreader"></span><span class="sreader mod"></span></a></div><div class="seat" style="left:96px" data-left="96" data-left_zoom="144"><a href="#" "="" onclick="return false;"><span class="no">5</span><span class="sreader"></span><span class="sreader mod"></span></a></div></div><div class="group reserved"><div class="seat distanced reserved" style="left:112px" data-left="112" data-left_zoom="168"><a href="#" "="" onclick="return false;"><span class="no">6</span><span class="sreader"> 예매완료</span><span class="sreader mod"> 선택불가</span></a></div></div><div class="group reserved"><div class="seat reserved" style="left:128px" data-left="128" data-left_zoom="192"><a href="#" "="" onclick="return false;"><span class="no">7</span><span class="sreader"> 예매완료</span><span class="sreader mod"> 선택불가</span></a></div></div><div class="group reserved"><div class="seat distanced reserved" style="left:144px" data-left="144" data-left_zoom="216"><a href="#" "="" onclick="return false;"><span class="no">8</span><span class="sreader"> 예매완료</span><span class="sreader mod"> 선택불가</span></a></div></div><div class="group"><div class="seat" style="left:160px" data-left="160" data-left_zoom="240"><a href="#" "="" onclick="return false;"><span class="no">9</span><span class="sreader"></span><span class="sreader mod"></span></a></div><div class="seat" style="left:176px" data-left="176" data-left_zoom="264"><a href="#" "="" onclick="return false;"><span class="no">10</span><span class="sreader"></span><span class="sreader mod"></span></a></div><div class="seat" style="left:192px" data-left="192" data-left_zoom="288"><a href="#" "="" onclick="return false;"><span class="no">11</span><span class="sreader"></span><span class="sreader mod"></span></a></div><div class="seat" style="left:208px" data-left="208" data-left_zoom="312"><a href="#" "="" onclick="return false;"><span class="no">12</span><span class="sreader"></span><span class="sreader mod"></span></a></div><div class="seat" style="left:224px" data-left="224" data-left_zoom="336"><a href="#" "="" onclick="return false;"><span class="no">13</span><span class="sreader"></span><span class="sreader mod"></span></a></div></div></div></div><div class="row" style="top:48px;"><div class="label">D</div><a href="#" onclick="skipToNextRow(event);return false;" class="skip_row">D열 건너뛰기</a><div class="seat_group"><div class="group reserved"><div class="seat reserved" style="left:64px" data-left="64" data-left_zoom="96"><a href="#" "="" onclick="return false;"><span class="no">3</span><span class="sreader"> 예매완료</span><span class="sreader mod"> 선택불가</span></a></div><div class="seat reserved" style="left:80px" data-left="80" data-left_zoom="120"><a href="#" "="" onclick="return false;"><span class="no">4</span><span class="sreader"> 예매완료</span><span class="sreader mod"> 선택불가</span></a></div></div><div class="group reserved"><div class="seat distanced reserved" style="left:96px" data-left="96" data-left_zoom="144"><a href="#" "="" onclick="return false;"><span class="no">5</span><span class="sreader"> 예매완료</span><span class="sreader mod"> 선택불가</span></a></div></div><div class="group reserved"><div class="seat reserved" style="left:112px" data-left="112" data-left_zoom="168"><a href="#" "="" onclick="return false;"><span class="no">6</span><span class="sreader"> 예매완료</span><span class="sreader mod"> 선택불가</span></a></div></div><div class="group reserved"><div class="seat distanced reserved" style="left:128px" data-left="128" data-left_zoom="192"><a href="#" "="" onclick="return false;"><span class="no">7</span><span class="sreader"> 예매완료</span><span class="sreader mod"> 선택불가</span></a></div></div><div class="group reserved"><div class="seat reserved" style="left:144px" data-left="144" data-left_zoom="216"><a href="#" "="" onclick="return false;"><span class="no">8</span><span class="sreader"> 예매완료</span><span class="sreader mod"> 선택불가</span></a></div></div><div class="group reserved"><div class="seat distanced reserved" style="left:160px" data-left="160" data-left_zoom="240"><a href="#" "="" onclick="return false;"><span class="no">9</span><span class="sreader"> 예매완료</span><span class="sreader mod"> 선택불가</span></a></div></div><div class="group reserved"><div class="seat reserved" style="left:176px" data-left="176" data-left_zoom="264"><a href="#" "="" onclick="return false;"><span class="no">10</span><span class="sreader"> 예매완료</span><span class="sreader mod"> 선택불가</span></a></div><div class="seat reserved" style="left:192px" data-left="192" data-left_zoom="288"><a href="#" "="" onclick="return false;"><span class="no">11</span><span class="sreader"> 예매완료</span><span class="sreader mod"> 선택불가</span></a></div></div><div class="group reserved"><div class="seat distanced reserved" style="left:208px" data-left="208" data-left_zoom="312"><a href="#" "="" onclick="return false;"><span class="no">12</span><span class="sreader"> 예매완료</span><span class="sreader mod"> 선택불가</span></a></div></div><div class="group"><div class="seat" style="left:224px" data-left="224" data-left_zoom="336"><a href="#" "="" onclick="return false;"><span class="no">13</span><span class="sreader"></span><span class="sreader mod"></span></a></div></div></div></div><div class="row" style="top:64px;"><div class="label">E</div><a href="#" onclick="skipToNextRow(event);return false;" class="skip_row">E열 건너뛰기</a><div class="seat_group"><div class="group reserved"><div class="seat distanced reserved" style="left:64px" data-left="64" data-left_zoom="96"><a href="#" "="" onclick="return false;"><span class="no">3</span><span class="sreader"> 예매완료</span><span class="sreader mod"> 선택불가</span></a></div></div><div class="group reserved"><div class="seat reserved" style="left:80px" data-left="80" data-left_zoom="120"><a href="#" "="" onclick="return false;"><span class="no">4</span><span class="sreader"> 예매완료</span><span class="sreader mod"> 선택불가</span></a></div></div><div class="group reserved"><div class="seat distanced reserved" style="left:96px" data-left="96" data-left_zoom="144"><a href="#" "="" onclick="return false;"><span class="no">5</span><span class="sreader"> 예매완료</span><span class="sreader mod"> 선택불가</span></a></div></div><div class="group reserved"><div class="seat reserved" style="left:112px" data-left="112" data-left_zoom="168"><a href="#" "="" onclick="return false;"><span class="no">6</span><span class="sreader"> 예매완료</span><span class="sreader mod"> 선택불가</span></a></div><div class="seat reserved" style="left:128px" data-left="128" data-left_zoom="192"><a href="#" "="" onclick="return false;"><span class="no">7</span><span class="sreader"> 예매완료</span><span class="sreader mod"> 선택불가</span></a></div></div><div class="group reserved"><div class="seat distanced reserved" style="left:144px" data-left="144" data-left_zoom="216"><a href="#" "="" onclick="return false;"><span class="no">8</span><span class="sreader"> 예매완료</span><span class="sreader mod"> 선택불가</span></a></div></div><div class="group reserved"><div class="seat reserved" style="left:160px" data-left="160" data-left_zoom="240"><a href="#" "="" onclick="return false;"><span class="no">9</span><span class="sreader"> 예매완료</span><span class="sreader mod"> 선택불가</span></a></div><div class="seat reserved" style="left:176px" data-left="176" data-left_zoom="264"><a href="#" "="" onclick="return false;"><span class="no">10</span><span class="sreader"> 예매완료</span><span class="sreader mod"> 선택불가</span></a></div></div><div class="group reserved"><div class="seat distanced reserved" style="left:192px" data-left="192" data-left_zoom="288"><a href="#" "="" onclick="return false;"><span class="no">11</span><span class="sreader"> 예매완료</span><span class="sreader mod"> 선택불가</span></a></div></div><div class="group reserved"><div class="seat reserved" style="left:208px" data-left="208" data-left_zoom="312"><a href="#" "="" onclick="return false;"><span class="no">12</span><span class="sreader"> 예매완료</span><span class="sreader mod"> 선택불가</span></a></div><div class="seat reserved" style="left:224px" data-left="224" data-left_zoom="336"><a href="#" "="" onclick="return false;"><span class="no">13</span><span class="sreader"> 예매완료</span><span class="sreader mod"> 선택불가</span></a></div></div></div></div><div class="row" style="top:80px;"><div class="label">F</div><a href="#" onclick="skipToNextRow(event);return false;" class="skip_row">F열 건너뛰기</a><div class="seat_group"><div class="group reserved"><div class="seat reserved" style="left:64px" data-left="64" data-left_zoom="96"><a href="#" "="" onclick="return false;"><span class="no">3</span><span class="sreader"> 예매완료</span><span class="sreader mod"> 선택불가</span></a></div><div class="seat reserved" style="left:80px" data-left="80" data-left_zoom="120"><a href="#" "="" onclick="return false;"><span class="no">4</span><span class="sreader"> 예매완료</span><span class="sreader mod"> 선택불가</span></a></div></div><div class="group reserved"><div class="seat distanced reserved" style="left:96px" data-left="96" data-left_zoom="144"><a href="#" "="" onclick="return false;"><span class="no">5</span><span class="sreader"> 예매완료</span><span class="sreader mod"> 선택불가</span></a></div></div><div class="group reserved"><div class="seat reserved" style="left:112px" data-left="112" data-left_zoom="168"><a href="#" "="" onclick="return false;"><span class="no">6</span><span class="sreader"> 예매완료</span><span class="sreader mod"> 선택불가</span></a></div></div><div class="group reserved"><div class="seat distanced reserved" style="left:128px" data-left="128" data-left_zoom="192"><a href="#" "="" onclick="return false;"><span class="no">7</span><span class="sreader"> 예매완료</span><span class="sreader mod"> 선택불가</span></a></div></div><div class="group reserved"><div class="seat reserved" style="left:144px" data-left="144" data-left_zoom="216"><a href="#" "="" onclick="return false;"><span class="no">8</span><span class="sreader"> 예매완료</span><span class="sreader mod"> 선택불가</span></a></div><div class="seat reserved" style="left:160px" data-left="160" data-left_zoom="240"><a href="#" "="" onclick="return false;"><span class="no">9</span><span class="sreader"> 예매완료</span><span class="sreader mod"> 선택불가</span></a></div></div><div class="group reserved"><div class="seat distanced reserved" style="left:176px" data-left="176" data-left_zoom="264"><a href="#" "="" onclick="return false;"><span class="no">10</span><span class="sreader"> 예매완료</span><span class="sreader mod"> 선택불가</span></a></div></div><div class="group reserved"><div class="seat reserved" style="left:192px" data-left="192" data-left_zoom="288"><a href="#" "="" onclick="return false;"><span class="no">11</span><span class="sreader"> 예매완료</span><span class="sreader mod"> 선택불가</span></a></div></div><div class="group reserved"><div class="seat distanced reserved" style="left:208px" data-left="208" data-left_zoom="312"><a href="#" "="" onclick="return false;"><span class="no">12</span><span class="sreader"> 예매완료</span><span class="sreader mod"> 선택불가</span></a></div></div><div class="group reserved"><div class="seat reserved" style="left:224px" data-left="224" data-left_zoom="336"><a href="#" "="" onclick="return false;"><span class="no">13</span><span class="sreader"> 예매완료</span><span class="sreader mod"> 선택불가</span></a></div></div></div></div><div class="row" style="top:96px;"><div class="label">G</div><a href="#" onclick="skipToNextRow(event);return false;" class="skip_row">G열 건너뛰기</a><div class="seat_group"><div class="group reserved"><div class="seat distanced reserved" style="left:64px" data-left="64" data-left_zoom="96"><a href="#" "="" onclick="return false;"><span class="no">3</span><span class="sreader"> 예매완료</span><span class="sreader mod"> 선택불가</span></a></div></div><div class="group reserved"><div class="seat reserved" style="left:80px" data-left="80" data-left_zoom="120"><a href="#" "="" onclick="return false;"><span class="no">4</span><span class="sreader"> 예매완료</span><span class="sreader mod"> 선택불가</span></a></div></div><div class="group reserved"><div class="seat distanced reserved" style="left:96px" data-left="96" data-left_zoom="144"><a href="#" "="" onclick="return false;"><span class="no">5</span><span class="sreader"> 예매완료</span><span class="sreader mod"> 선택불가</span></a></div></div><div class="group reserved"><div class="seat reserved" style="left:112px" data-left="112" data-left_zoom="168"><a href="#" "="" onclick="return false;"><span class="no">6</span><span class="sreader"> 예매완료</span><span class="sreader mod"> 선택불가</span></a></div></div><div class="group reserved"><div class="seat distanced reserved" style="left:128px" data-left="128" data-left_zoom="192"><a href="#" "="" onclick="return false;"><span class="no">7</span><span class="sreader"> 예매완료</span><span class="sreader mod"> 선택불가</span></a></div></div><div class="group reserved"><div class="seat reserved" style="left:144px" data-left="144" data-left_zoom="216"><a href="#" "="" onclick="return false;"><span class="no">8</span><span class="sreader"> 예매완료</span><span class="sreader mod"> 선택불가</span></a></div><div class="seat reserved" style="left:160px" data-left="160" data-left_zoom="240"><a href="#" "="" onclick="return false;"><span class="no">9</span><span class="sreader"> 예매완료</span><span class="sreader mod"> 선택불가</span></a></div></div><div class="group reserved"><div class="seat distanced reserved" style="left:176px" data-left="176" data-left_zoom="264"><a href="#" "="" onclick="return false;"><span class="no">10</span><span class="sreader"> 예매완료</span><span class="sreader mod"> 선택불가</span></a></div></div><div class="group reserved"><div class="seat reserved" style="left:192px" data-left="192" data-left_zoom="288"><a href="#" "="" onclick="return false;"><span class="no">11</span><span class="sreader"> 예매완료</span><span class="sreader mod"> 선택불가</span></a></div><div class="seat reserved" style="left:208px" data-left="208" data-left_zoom="312"><a href="#" "="" onclick="return false;"><span class="no">12</span><span class="sreader"> 예매완료</span><span class="sreader mod"> 선택불가</span></a></div></div><div class="group reserved"><div class="seat distanced reserved" style="left:224px" data-left="224" data-left_zoom="336"><a href="#" "="" onclick="return false;"><span class="no">13</span><span class="sreader"> 예매완료</span><span class="sreader mod"> 선택불가</span></a></div></div></div></div><div class="row" style="top:112px;"><div class="label">H</div><a href="#" onclick="skipToNextRow(event);return false;" class="skip_row">H열 건너뛰기</a><div class="seat_group"><div class="group reserved"><div class="seat reserved" style="left:64px" data-left="64" data-left_zoom="96"><a href="#" "="" onclick="return false;"><span class="no">3</span><span class="sreader"> 예매완료</span><span class="sreader mod"> 선택불가</span></a></div></div><div class="group reserved"><div class="seat distanced reserved" style="left:80px" data-left="80" data-left_zoom="120"><a href="#" "="" onclick="return false;"><span class="no">4</span><span class="sreader"> 예매완료</span><span class="sreader mod"> 선택불가</span></a></div></div><div class="group reserved"><div class="seat reserved" style="left:96px" data-left="96" data-left_zoom="144"><a href="#" "="" onclick="return false;"><span class="no">5</span><span class="sreader"> 예매완료</span><span class="sreader mod"> 선택불가</span></a></div><div class="seat reserved" style="left:112px" data-left="112" data-left_zoom="168"><a href="#" "="" onclick="return false;"><span class="no">6</span><span class="sreader"> 예매완료</span><span class="sreader mod"> 선택불가</span></a></div></div><div class="group reserved"><div class="seat distanced reserved" style="left:128px" data-left="128" data-left_zoom="192"><a href="#" "="" onclick="return false;"><span class="no">7</span><span class="sreader"> 예매완료</span><span class="sreader mod"> 선택불가</span></a></div></div><div class="group reserved"><div class="seat reserved" style="left:144px" data-left="144" data-left_zoom="216"><a href="#" "="" onclick="return false;"><span class="no">8</span><span class="sreader"> 예매완료</span><span class="sreader mod"> 선택불가</span></a></div></div><div class="group reserved"><div class="seat distanced reserved" style="left:160px" data-left="160" data-left_zoom="240"><a href="#" "="" onclick="return false;"><span class="no">9</span><span class="sreader"> 예매완료</span><span class="sreader mod"> 선택불가</span></a></div></div><div class="group reserved"><div class="seat reserved" style="left:176px" data-left="176" data-left_zoom="264"><a href="#" "="" onclick="return false;"><span class="no">10</span><span class="sreader"> 예매완료</span><span class="sreader mod"> 선택불가</span></a></div></div><div class="group reserved"><div class="seat distanced reserved" style="left:192px" data-left="192" data-left_zoom="288"><a href="#" "="" onclick="return false;"><span class="no">11</span><span class="sreader"> 예매완료</span><span class="sreader mod"> 선택불가</span></a></div><div class="seat distanced reserved" style="left:208px" data-left="208" data-left_zoom="312"><a href="#" "="" onclick="return false;"><span class="no">12</span><span class="sreader"> 예매완료</span><span class="sreader mod"> 선택불가</span></a></div></div><div class="group reserved"><div class="seat reserved" style="left:224px" data-left="224" data-left_zoom="336"><a href="#" "="" onclick="return false;"><span class="no">13</span><span class="sreader"> 예매완료</span><span class="sreader mod"> 선택불가</span></a></div></div></div></div><div class="row" style="top:128px;"><div class="label">I</div><a href="#" onclick="skipToNextRow(event);return false;" class="skip_row">I열 건너뛰기</a>-->
-
-
-<!--                                                <div class="seat_group">-->
-<!--                                                    <div class="group reserved"><div class="seat reserved" style="left:64px" data-left="64" data-left_zoom="96">-->
-<!--                                                        <a href="#" "="" onclick="return false;"><span class="no">3</span><span class="sreader"> 예매완료</span><span class="sreader mod"> 선택불가</span></a></div></div><div class="group reserved"><div class="seat distanced reserved" style="left:80px" data-left="80" data-left_zoom="120"><a href="#" "="" onclick="return false;"><span class="no">4</span><span class="sreader"> 예매완료</span><span class="sreader mod"> 선택불가</span></a></div></div><div class="group reserved"><div class="seat reserved" style="left:96px" data-left="96" data-left_zoom="144"><a href="#" "="" onclick="return false;"><span class="no">5</span><span class="sreader"> 예매완료</span><span class="sreader mod"> 선택불가</span></a></div></div><div class="group reserved"><div class="seat distanced reserved" style="left:112px" data-left="112" data-left_zoom="168"><a href="#" "="" onclick="return false;"><span class="no">6</span><span class="sreader"> 예매완료</span><span class="sreader mod"> 선택불가</span></a></div></div><div class="group reserved"><div class="seat reserved" style="left:128px" data-left="128" data-left_zoom="192"><a href="#" "="" onclick="return false;"><span class="no">7</span><span class="sreader"> 예매완료</span><span class="sreader mod"> 선택불가</span></a></div><div class="seat reserved" style="left:144px" data-left="144" data-left_zoom="216"><a href="#" "="" onclick="return false;"><span class="no">8</span><span class="sreader"> 예매완료</span><span class="sreader mod"> 선택불가</span></a></div><div class="seat reserved" style="left:160px" data-left="160" data-left_zoom="240"><a href="#" "="" onclick="return false;"><span class="no">9</span><span class="sreader"> 예매완료</span><span class="sreader mod"> 선택불가</span></a></div></div><div class="group reserved"><div class="seat distanced reserved" style="left:176px" data-left="176" data-left_zoom="264"><a href="#" "="" onclick="return false;"><span class="no">10</span><span class="sreader"> 예매완료</span><span class="sreader mod"> 선택불가</span></a></div></div><div class="group reserved"><div class="seat reserved" style="left:192px" data-left="192" data-left_zoom="288"><a href="#" "="" onclick="return false;"><span class="no">11</span><span class="sreader"> 예매완료</span><span class="sreader mod"> 선택불가</span></a></div></div><div class="group reserved"><div class="seat distanced reserved" style="left:208px" data-left="208" data-left_zoom="312"><a href="#" "="" onclick="return false;"><span class="no">12</span><span class="sreader"> 예매완료</span><span class="sreader mod"> 선택불가</span></a></div></div><div class="group reserved"><div class="seat reserved" style="left:224px" data-left="224" data-left_zoom="336"><a href="#" "="" onclick="return false;"><span class="no">13</span><span class="sreader"> 예매완료</span><span class="sreader mod"> 선택불가</span></a></div></div></div></div><div class="row" style="top:144px;"><div class="label">J</div><a href="#" onclick="skipToNextRow(event);return false;" class="skip_row">J열 건너뛰기</a>-->
-<!--                                                <div class="seat_group"><div class="group reserved"><div class="seat reserved" style="left:64px" data-left="64" data-left_zoom="96"><a href="#" "="" onclick="return false;"><span class="no">3</span><span class="sreader"> 예매완료</span><span class="sreader mod"> 선택불가</span></a></div><div class="seat reserved" style="left:80px" data-left="80" data-left_zoom="120"><a href="#" "="" onclick="return false;"><span class="no">4</span><span class="sreader"> 예매완료</span><span class="sreader mod"> 선택불가</span></a></div></div><div class="group reserved"><div class="seat distanced reserved" style="left:96px" data-left="96" data-left_zoom="144"><a href="#" "="" onclick="return false;"><span class="no">5</span><span class="sreader"> 예매완료</span><span class="sreader mod"> 선택불가</span></a></div></div><div class="group reserved"><div class="seat reserved" style="left:112px" data-left="112" data-left_zoom="168"><a href="#" "="" onclick="return false;"><span class="no">6</span><span class="sreader"> 예매완료</span><span class="sreader mod"> 선택불가</span></a></div></div><div class="group reserved"><div class="seat distanced reserved" style="left:128px" data-left="128" data-left_zoom="192"><a href="#" "="" onclick="return false;"><span class="no">7</span><span class="sreader"> 예매완료</span><span class="sreader mod"> 선택불가</span></a></div></div><div class="group reserved"><div class="seat reserved" style="left:144px" data-left="144" data-left_zoom="216"><a href="#" "="" onclick="return false;"><span class="no">8</span><span class="sreader"> 예매완료</span><span class="sreader mod"> 선택불가</span></a></div></div><div class="group reserved"><div class="seat distanced reserved" style="left:160px" data-left="160" data-left_zoom="240"><a href="#" "="" onclick="return false;"><span class="no">9</span><span class="sreader"> 예매완료</span><span class="sreader mod"> 선택불가</span></a></div></div><div class="group reserved"><div class="seat reserved" style="left:176px" data-left="176" data-left_zoom="264"><a href="#" "="" onclick="return false;"><span class="no">10</span><span class="sreader"> 예매완료</span><span class="sreader mod"> 선택불가</span></a></div></div><div class="group reserved"><div class="seat distanced reserved" style="left:192px" data-left="192" data-left_zoom="288"><a href="#" "="" onclick="return false;"><span class="no">11</span><span class="sreader"> 예매완료</span><span class="sreader mod"> 선택불가</span></a></div><div class="seat distanced reserved" style="left:208px" data-left="208" data-left_zoom="312"><a href="#" "="" onclick="return false;"><span class="no">12</span><span class="sreader"> 예매완료</span><span class="sreader mod"> 선택불가</span></a></div></div><div class="group reserved"><div class="seat reserved" style="left:224px" data-left="224" data-left_zoom="336"><a href="#" "="" onclick="return false;"><span class="no">13</span><span class="sreader"> 예매완료</span><span class="sreader mod"> 선택불가</span></a></div></div></div></div><div class="row" style="top:160px;"><div class="label">K</div><a href="#" onclick="skipToNextRow(event);return false;" class="skip_row">K열 건너뛰기</a>-->
-
-<!--                                                <div class="seat_group"><div class="group reserved">-->
-<!--                                                    <div class="seat reserved" style="left:64px" data-left="64" data-left_zoom="96">-->
-<!--                                                        <a href="#" "="" onclick="return false;"><span class="no">3</span>-->
-<!--                                                        <span class="sreader"> 예매완료 sweetbox</span><span class="sreader mod"> 선택불가</span></a></div><div class="seat reserved" style="left:80px" data-left="80" data-left_zoom="120"><a href="#" "="" onclick="return false;"><span class="no">4</span><span class="sreader"> 예매완료 sweetbox</span><span class="sreader mod"> 선택불가</span></a></div></div><div class="group reserved"><div class="seat distanced reserved" style="left:96px" data-left="96" data-left_zoom="144"><a href="#" "="" onclick="return false;"><span class="no">5</span><span class="sreader"> 예매완료 sweetbox</span><span class="sreader mod"> 선택불가</span></a></div><div class="seat distanced reserved" style="left:112px" data-left="112" data-left_zoom="168"><a href="#" "="" onclick="return false;"><span class="no">6</span><span class="sreader"> 예매완료 sweetbox</span><span class="sreader mod"> 선택불가</span></a></div></div><div class="group reserved"><div class="seat reserved" style="left:128px" data-left="128" data-left_zoom="192"><a href="#" "="" onclick="return false;"><span class="no">7</span><span class="sreader"> 예매완료 sweetbox</span><span class="sreader mod"> 선택불가</span></a></div><div class="seat reserved" style="left:144px" data-left="144" data-left_zoom="216"><a href="#" "="" onclick="return false;"><span class="no">8</span><span class="sreader"> 예매완료 sweetbox</span><span class="sreader mod"> 선택불가</span></a></div></div><div class="group reserved"><div class="seat distanced reserved" style="left:160px" data-left="160" data-left_zoom="240"><a href="#" "="" onclick="return false;"><span class="no">9</span><span class="sreader"> 예매완료 sweetbox</span><span class="sreader mod"> 선택불가</span></a></div><div class="seat distanced reserved" style="left:176px" data-left="176" data-left_zoom="264"><a href="#" "="" onclick="return false;"><span class="no">10</span><span class="sreader"> 예매완료 sweetbox</span><span class="sreader mod"> 선택불가</span></a></div></div><div class="group reserved"><div class="seat reserved" style="left:192px" data-left="192" data-left_zoom="288"><a href="#" "="" onclick="return false;"><span class="no">11</span><span class="sreader"> 예매완료 sweetbox</span><span class="sreader mod"> 선택불가</span></a></div><div class="seat reserved" style="left:208px" data-left="208" data-left_zoom="312"><a href="#" "="" onclick="return false;"><span class="no">12</span><span class="sreader"> 예매완료 sweetbox</span><span class="sreader mod"> 선택불가</span></a></div></div></div></div></div><div class="exit top" style="top: -30px; left: 30px;"></div></div>-->
-
-
-                                            </div>
-
-                                        <!-- seats end -->
-
-                                        <div class="pane pane-y" style="display: none; opacity: 1; visibility: visible;"><div class="slider slider-y" style="height: 50px;"></div></div><div class="pane pane-x" style="display: none; opacity: 1; visibility: visible;"><div class="slider slider-x" style="width: 50px;"></div></div></div>
-                                    <div class="minimap opened" id="minimap" style="display: none;">
-                                        <div class="mini_header" onclick="ftSeatMinimapToggle();event.preventDefault();">Minimap<span></span></div>
-                                        <div class="mini_container" style="width: 86px; height: 88px;">
-                                            <div class="mini_screen">SCREEN</div>
-                                            <div class="mini_seats"><div class="mini_seat handicap" style="left:12px;top:0px;"><span></span></div><div class="mini_seat handicap" style="left:16px;top:0px;"><span></span></div><div class="mini_seat" style="left:28px;top:0px;"><span></span></div><div class="mini_seat" style="left:32px;top:0px;"><span></span></div><div class="mini_seat" style="left:36px;top:0px;"><span></span></div><div class="mini_seat" style="left:40px;top:0px;"><span></span></div><div class="mini_seat" style="left:44px;top:0px;"><span></span></div><div class="mini_seat" style="left:48px;top:0px;"><span></span></div><div class="mini_seat" style="left:52px;top:0px;"><span></span></div><div class="mini_seat" style="left:12px;top:4px;"><span></span></div><div class="mini_seat" style="left:16px;top:4px;"><span></span></div><div class="mini_seat" style="left:20px;top:4px;"><span></span></div><div class="mini_seat reserved" style="left:24px;top:4px;"><span></span></div><div class="mini_seat reserved" style="left:28px;top:4px;"><span></span></div><div class="mini_seat reserved" style="left:32px;top:4px;"><span></span></div><div class="mini_seat" style="left:36px;top:4px;"><span></span></div><div class="mini_seat" style="left:40px;top:4px;"><span></span></div><div class="mini_seat" style="left:44px;top:4px;"><span></span></div><div class="mini_seat" style="left:48px;top:4px;"><span></span></div><div class="mini_seat" style="left:52px;top:4px;"><span></span></div><div class="mini_seat" style="left:12px;top:8px;"><span></span></div><div class="mini_seat" style="left:16px;top:8px;"><span></span></div><div class="mini_seat" style="left:20px;top:8px;"><span></span></div><div class="mini_seat reserved" style="left:24px;top:8px;"><span></span></div><div class="mini_seat reserved" style="left:28px;top:8px;"><span></span></div><div class="mini_seat reserved" style="left:32px;top:8px;"><span></span></div><div class="mini_seat" style="left:36px;top:8px;"><span></span></div><div class="mini_seat" style="left:40px;top:8px;"><span></span></div><div class="mini_seat" style="left:44px;top:8px;"><span></span></div><div class="mini_seat" style="left:48px;top:8px;"><span></span></div><div class="mini_seat" style="left:52px;top:8px;"><span></span></div><div class="mini_seat reserved" style="left:12px;top:12px;"><span></span></div><div class="mini_seat reserved" style="left:16px;top:12px;"><span></span></div><div class="mini_seat reserved" style="left:20px;top:12px;"><span></span></div><div class="mini_seat reserved" style="left:24px;top:12px;"><span></span></div><div class="mini_seat reserved" style="left:28px;top:12px;"><span></span></div><div class="mini_seat reserved" style="left:32px;top:12px;"><span></span></div><div class="mini_seat reserved" style="left:36px;top:12px;"><span></span></div><div class="mini_seat reserved" style="left:40px;top:12px;"><span></span></div><div class="mini_seat reserved" style="left:44px;top:12px;"><span></span></div><div class="mini_seat reserved" style="left:48px;top:12px;"><span></span></div><div class="mini_seat" style="left:52px;top:12px;"><span></span></div><div class="mini_seat reserved" style="left:12px;top:16px;"><span></span></div><div class="mini_seat reserved" style="left:16px;top:16px;"><span></span></div><div class="mini_seat reserved" style="left:20px;top:16px;"><span></span></div><div class="mini_seat reserved" style="left:24px;top:16px;"><span></span></div><div class="mini_seat reserved" style="left:28px;top:16px;"><span></span></div><div class="mini_seat reserved" style="left:32px;top:16px;"><span></span></div><div class="mini_seat reserved" style="left:36px;top:16px;"><span></span></div><div class="mini_seat reserved" style="left:40px;top:16px;"><span></span></div><div class="mini_seat reserved" style="left:44px;top:16px;"><span></span></div><div class="mini_seat reserved" style="left:48px;top:16px;"><span></span></div><div class="mini_seat reserved" style="left:52px;top:16px;"><span></span></div><div class="mini_seat reserved" style="left:12px;top:20px;"><span></span></div><div class="mini_seat reserved" style="left:16px;top:20px;"><span></span></div><div class="mini_seat reserved" style="left:20px;top:20px;"><span></span></div><div class="mini_seat reserved" style="left:24px;top:20px;"><span></span></div><div class="mini_seat reserved" style="left:28px;top:20px;"><span></span></div><div class="mini_seat reserved" style="left:32px;top:20px;"><span></span></div><div class="mini_seat reserved" style="left:36px;top:20px;"><span></span></div><div class="mini_seat reserved" style="left:40px;top:20px;"><span></span></div><div class="mini_seat reserved" style="left:44px;top:20px;"><span></span></div><div class="mini_seat reserved" style="left:48px;top:20px;"><span></span></div><div class="mini_seat reserved" style="left:52px;top:20px;"><span></span></div><div class="mini_seat reserved" style="left:12px;top:24px;"><span></span></div><div class="mini_seat reserved" style="left:16px;top:24px;"><span></span></div><div class="mini_seat reserved" style="left:20px;top:24px;"><span></span></div><div class="mini_seat reserved" style="left:24px;top:24px;"><span></span></div><div class="mini_seat reserved" style="left:28px;top:24px;"><span></span></div><div class="mini_seat reserved" style="left:32px;top:24px;"><span></span></div><div class="mini_seat reserved" style="left:36px;top:24px;"><span></span></div><div class="mini_seat reserved" style="left:40px;top:24px;"><span></span></div><div class="mini_seat reserved" style="left:44px;top:24px;"><span></span></div><div class="mini_seat reserved" style="left:48px;top:24px;"><span></span></div><div class="mini_seat reserved" style="left:52px;top:24px;"><span></span></div><div class="mini_seat reserved" style="left:12px;top:28px;"><span></span></div><div class="mini_seat reserved" style="left:16px;top:28px;"><span></span></div><div class="mini_seat reserved" style="left:20px;top:28px;"><span></span></div><div class="mini_seat reserved" style="left:24px;top:28px;"><span></span></div><div class="mini_seat reserved" style="left:28px;top:28px;"><span></span></div><div class="mini_seat reserved" style="left:32px;top:28px;"><span></span></div><div class="mini_seat reserved" style="left:36px;top:28px;"><span></span></div><div class="mini_seat reserved" style="left:40px;top:28px;"><span></span></div><div class="mini_seat reserved" style="left:44px;top:28px;"><span></span></div><div class="mini_seat reserved" style="left:48px;top:28px;"><span></span></div><div class="mini_seat reserved" style="left:52px;top:28px;"><span></span></div><div class="mini_seat sweet" style="left:0px;top:32px;"><span></span></div><div class="mini_seat sweet" style="left:4px;top:32px;"><span></span></div><div class="mini_seat reserved" style="left:12px;top:32px;"><span></span></div><div class="mini_seat reserved" style="left:16px;top:32px;"><span></span></div><div class="mini_seat reserved" style="left:20px;top:32px;"><span></span></div><div class="mini_seat reserved" style="left:24px;top:32px;"><span></span></div><div class="mini_seat reserved" style="left:28px;top:32px;"><span></span></div><div class="mini_seat reserved" style="left:32px;top:32px;"><span></span></div><div class="mini_seat reserved" style="left:36px;top:32px;"><span></span></div><div class="mini_seat reserved" style="left:40px;top:32px;"><span></span></div><div class="mini_seat reserved" style="left:44px;top:32px;"><span></span></div><div class="mini_seat reserved" style="left:48px;top:32px;"><span></span></div><div class="mini_seat reserved" style="left:52px;top:32px;"><span></span></div><div class="mini_seat sweet" style="left:0px;top:36px;"><span></span></div><div class="mini_seat sweet" style="left:4px;top:36px;"><span></span></div><div class="mini_seat reserved" style="left:12px;top:36px;"><span></span></div><div class="mini_seat reserved" style="left:16px;top:36px;"><span></span></div><div class="mini_seat reserved" style="left:20px;top:36px;"><span></span></div><div class="mini_seat reserved" style="left:24px;top:36px;"><span></span></div><div class="mini_seat reserved" style="left:28px;top:36px;"><span></span></div><div class="mini_seat reserved" style="left:32px;top:36px;"><span></span></div><div class="mini_seat reserved" style="left:36px;top:36px;"><span></span></div><div class="mini_seat reserved" style="left:40px;top:36px;"><span></span></div><div class="mini_seat reserved" style="left:44px;top:36px;"><span></span></div><div class="mini_seat reserved" style="left:48px;top:36px;"><span></span></div><div class="mini_seat reserved" style="left:52px;top:36px;"><span></span></div><div class="mini_seat sweet" style="left:0px;top:40px;"><span></span></div><div class="mini_seat sweet" style="left:4px;top:40px;"><span></span></div><div class="mini_seat reserved sweet" style="left:12px;top:40px;"><span></span></div><div class="mini_seat reserved sweet" style="left:16px;top:40px;"><span></span></div><div class="mini_seat reserved sweet" style="left:20px;top:40px;"><span></span></div><div class="mini_seat reserved sweet" style="left:24px;top:40px;"><span></span></div><div class="mini_seat reserved sweet" style="left:28px;top:40px;"><span></span></div><div class="mini_seat reserved sweet" style="left:32px;top:40px;"><span></span></div><div class="mini_seat reserved sweet" style="left:36px;top:40px;"><span></span></div><div class="mini_seat reserved sweet" style="left:40px;top:40px;"><span></span></div><div class="mini_seat reserved sweet" style="left:44px;top:40px;"><span></span></div><div class="mini_seat reserved sweet" style="left:48px;top:40px;"><span></span></div></div>
-                                            <div class="mini_exits"><div class="mini_exit tl"></div></div>
-                                        </div>
-                                        <div class="mini_region" style="height: 88px; width: 86px; top: 25px; left: 5px;"><span></span></div>
-                                    </div>
+                                            <div id="seats" style="margin-top: 50px;"></div>
                                     <div class="legend" style="width: 125px;">
                                         <div class="buttons">
                                             <a class="btn-zoom" id="seat_zoom_btn" href="#" onclick="ts2SeatZoomClickListener();return false;">크게보기</a>
@@ -530,22 +463,7 @@
                                         <div class="seat-icon-desc">
                                             <span class="icon selected"><span class="icon"></span>선택</span>
                                             <span class="icon reserved"><span class="icon"></span>예매완료</span>
-                                            <span class="icon notavail"><span class="icon"></span>선택불가</span>
-                                            <!-- 2021.05.25 - 좌석 거리두기 -->
-                                            <!-- 거리두기 좌석 범례 표기 -->
-                                            <span class="icon distanced" style="display: block;"><span class="icon"></span>거리두기 좌석</span>
                                         </div>
-                                        <div class="seat-type"><span class="radiobutton type-rating_economy" title="Light 석" style="display: block;">Light Zone<span class="icon"></span></span><span class="radiobutton type-rating_comfort" title="Standard 석" style="display: none;">Standard Zone<span class="icon"></span></span><span class="radiobutton type-rating_prime" title="Prime 석" style="display: none;">Prime Zone<span class="icon"></span></span>
-
-                                            <span class="radiobutton type-normal" style="display: block;"><span class="icon"></span>일반석</span>
-                                            <span class="radiobutton type-couple" title="연인, 가족, 친구를 위한 둘만의 좌석" style="display: none;"><span class="icon"></span>커플석</span>
-                                            <span class="radiobutton type-handicap" style="display: block;"><span class="icon"></span>장애인석</span>
-                                            <span class="radiobutton type-sweetbox" title="국내 최대 넓이의 프리미엄 커플좌석" style="display: block;"><span class="icon"></span>SWEETBOX</span>
-                                            <span class="radiobutton type-veatbox" title="음향 진동 시스템이 적용된 특별좌석" style="display: none;"><span class="icon"></span>VEATBOX</span>
-                                            <span class="radiobutton type-4d" title="바람, 진동 등 오감으로 영화 관람, 4DX" style="display: none;"><span class="icon"></span>4DX</span>
-                                            <span class="radiobutton type-widebox" title="일반석보다 더 넓고 편안한 좌석" style="display: none;"><span class="icon"></span>WIDEBOX</span>
-                                            <span class="radiobutton type-cinekids last" title="365일 어린이 전용 상영관" style="display: none;"><span class="icon"></span>CINEKIDS</span>
-                                            <span class="radiobutton type-eggbox" title="EGG BOX" style="display: none;">EGG BOX<span class="icon"></span></span><span class="radiobutton type-recliner" title="Recliner" style="display: none;">Recliner<span class="icon"></span></span><span class="radiobutton type-cabana" title="카바나 석" style="display: none;">카바나석<span class="icon"></span></span><span class="radiobutton type-beanbag" title="빈백 석" style="display: none;">빈백석<span class="icon"></span></span><span class="radiobutton type-mat" title="매트 석" style="display: none;">매트석<span class="icon"></span></span><span class="radiobutton type-premium" title="프리미엄 석" style="display: none;">프리미엄석<span class="icon"></span></span><span class="radiobutton type-relax" title="릴렉스 석" style="display: none;">릴렉스석<span class="icon"></span></span><span class="radiobutton type-comport" title="컴포트 석" style="display: none;">컴포트석<span class="icon"></span></span><span class="radiobutton type-mybox" title="My box 석" style="display: none;">MYBOX<span class="icon"></span></span><span class="radiobutton type-cdcSofa" title="쇼파 석" style="display: none;">소파<span class="icon"></span></span><span class="radiobutton type-cdcRecliner" title="리클라이너 석" style="display: none;">리클라이너<span class="icon"></span></span><span class="radiobutton type-coupleSofa" title="Couple 쇼파 석" style="display: none;">커플소파<span class="icon"></span></span><span class="radiobutton type-vibration" title="진동 석" style="display: none;">진동석<span class="icon"></span></span><span class="radiobutton type-suite_A" title="Suite A 석" style="display: none;">Suite A<span class="icon"></span></span><span class="radiobutton type-suite_B" title="Suite B 석" style="display: none;">Suite B<span class="icon"></span></span><span class="radiobutton type-familyRecliner" title="패밀리 리클라이너 석" style="display: none;">패밀리 리클라이너<span class="icon"></span></span></div>
                                     </div>
                                     <div class="mouse_block"></div>
                                 </div>
@@ -566,9 +484,9 @@
                                         <div class="pane pane-y" style="display: none; opacity: 1; visibility: visible;"><div class="slider slider-y" style="height: 50px;"></div></div><div class="pane pane-x" style="display: none; opacity: 1; visibility: visible;"><div class="slider slider-x" style="width: 50px;"></div></div></div>
                                 </div>
                                 <div class="buttons">
-                                    <a href="#" onclick="return false;" class="btn_ok"><span>확인</span></a>
-                                    <a href="#" onclick="return false;" class="btn_cancel"><span>취소</span></a>
-                                    <a href="#" onclick="return false;" class="sreader" onfocus="ticketStep2TimeSelectPopupHide();">시간표 변경 팝업 닫기</a>
+                                    <a href="#"  class="btn_ok"><span>확인</span></a>
+                                    <a href="#"  class="btn_cancel"><span>취소</span></a>
+                                    <a href="#"  class="sreader" onfocus="ticketStep2TimeSelectPopupHide();">시간표 변경 팝업 닫기</a>
                                 </div>
                             </div>
                             <div class="corner"></div>
@@ -590,7 +508,7 @@
                     <div class="step step3" style="display: none;">
 
                         <div class="ticket_payment_method">
-                            <a href="#" onclick="return false;" id="ticket_payment_top" class="sreader">결제시작</a>
+                            <a href="#"  id="ticket_payment_top" class="sreader">결제시작</a>
 
                             <!-- 온라인 큭별 요금제 -->
                             <div class="tpm_special" id="onlinePromotion" style="display: none;">
@@ -1060,7 +978,7 @@
                                     </div><!-- guide_wrap -->
                                     <div class="tpm_discount">
                                         <div class="background"></div>
-                                        <div class="discount_list"><ul><li id="cgvCoupon_li"><div class="dimmCon" style="display: none;">&nbsp;</div><a href="#" onclick="return false;">CGV 할인쿠폰</a></li><li id="vipCoupon_li" style="display: none;"><div class="dimmCon" style="display: none;">&nbsp;</div><a href="#" onclick="return false;">VIP 할인쿠폰</a></li><li id="cjOneCoupon_li"><div class="dimmCon" style="display: none;">&nbsp;</div><a href="#" onclick="return false;">CJ ONE 할인쿠폰</a></li><li id="creditCoupon_li"><div class="dimmCon" style="display: none;">&nbsp;</div><a href="#" onclick="return false;">신용카드 할인쿠폰</a></li><li id="smartPayCoupon_li"><div class="dimmCon" style="display: none;">&nbsp;</div><a href="#" onclick="return false;">최종결제 할인쿠폰</a></li></ul></div>
+                                        <div class="discount_list"><ul><li id="cgvCoupon_li"><div class="dimmCon" style="display: none;">&nbsp;</div><a href="#" >CGV 할인쿠폰</a></li><li id="vipCoupon_li" style="display: none;"><div class="dimmCon" style="display: none;">&nbsp;</div><a href="#" >VIP 할인쿠폰</a></li><li id="cjOneCoupon_li"><div class="dimmCon" style="display: none;">&nbsp;</div><a href="#" >CJ ONE 할인쿠폰</a></li><li id="creditCoupon_li"><div class="dimmCon" style="display: none;">&nbsp;</div><a href="#" >신용카드 할인쿠폰</a></li><li id="smartPayCoupon_li"><div class="dimmCon" style="display: none;">&nbsp;</div><a href="#" >최종결제 할인쿠폰</a></li></ul></div>
                                         <div class="discount_form"><div id="cgvCoupon" class="form">
                                             <h5>CGV 할인쿠폰</h5>
                                             <div class="form_button">
@@ -1196,7 +1114,7 @@
                                     </div><!-- guide_wrap -->
                                     <div class="tpm_discount">
                                         <div class="background"></div>
-                                        <div class="discount_list"><ul><li id="cgvMovieMoney_li"><div class="dimmCon" style="display: none;">&nbsp;</div><a href="#" onclick="return false;">CGV 영화관람권</a></li><li id="cgvGift2_li"><div class="dimmCon" style="display: none;">&nbsp;</div><a href="#" onclick="return false;">CGV 기프트콘</a></li><li id="cgvMoviePass_li"><div class="dimmCon" style="display: none;">&nbsp;</div><a href="#" onclick="return false;">무비패스카드</a></li><li id="iNumCon_li"><div class="dimmCon" style="display: none;">&nbsp;</div><a href="#" onclick="return false;">쿠프마케팅 아이넘버 예매권</a></li><li id="smileCon_li"><div class="dimmCon" style="display: none;">&nbsp;</div><a href="#" onclick="return false;">즐거운 스마일콘 예매권</a></li><li id="kakaoCon_li"><div class="dimmCon" style="display: none;">&nbsp;</div><a href="#" onclick="return false;">카카오선물하기 예매권</a></li><li id="coopCon_li"><div class="dimmCon" style="display: none;">&nbsp;</div><a href="#" onclick="return false;">옥션 예매권</a></li><li id="funCon_li"><div class="dimmCon" style="display: none;">&nbsp;</div><a href="#" onclick="return false;">FUN-CON</a></li><li id="winCube_li"><div class="dimmCon" style="display: none;">&nbsp;</div><a href="#" onclick="return false;">윈큐브마케팅 기프팅 예매권</a></li><li id="smartCon_li" style="display: none;"><div class="dimmCon" style="display: none;">&nbsp;</div><a href="#" onclick="return false;">옥션 예매권 (스마트콘)</a></li><li id="skGiftCon_li" style="display: none;"><div class="dimmCon" style="display: none;">&nbsp;</div><a href="#" onclick="return false;">SK기프티콘</a></li><li id="helloMobile_li" style="display: none;"><div class="dimmCon" style="display: none;">&nbsp;</div><a href="#" onclick="return false;">헬로 모바일 CGV 요금제</a></li></ul></div>
+                                        <div class="discount_list"><ul><li id="cgvMovieMoney_li"><div class="dimmCon" style="display: none;">&nbsp;</div><a href="#" >CGV 영화관람권</a></li><li id="cgvGift2_li"><div class="dimmCon" style="display: none;">&nbsp;</div><a href="#" >CGV 기프트콘</a></li><li id="cgvMoviePass_li"><div class="dimmCon" style="display: none;">&nbsp;</div><a href="#" >무비패스카드</a></li><li id="iNumCon_li"><div class="dimmCon" style="display: none;">&nbsp;</div><a href="#" >쿠프마케팅 아이넘버 예매권</a></li><li id="smileCon_li"><div class="dimmCon" style="display: none;">&nbsp;</div><a href="#" >즐거운 스마일콘 예매권</a></li><li id="kakaoCon_li"><div class="dimmCon" style="display: none;">&nbsp;</div><a href="#" >카카오선물하기 예매권</a></li><li id="coopCon_li"><div class="dimmCon" style="display: none;">&nbsp;</div><a href="#" >옥션 예매권</a></li><li id="funCon_li"><div class="dimmCon" style="display: none;">&nbsp;</div><a href="#" >FUN-CON</a></li><li id="winCube_li"><div class="dimmCon" style="display: none;">&nbsp;</div><a href="#" >윈큐브마케팅 기프팅 예매권</a></li><li id="smartCon_li" style="display: none;"><div class="dimmCon" style="display: none;">&nbsp;</div><a href="#" >옥션 예매권 (스마트콘)</a></li><li id="skGiftCon_li" style="display: none;"><div class="dimmCon" style="display: none;">&nbsp;</div><a href="#" >SK기프티콘</a></li><li id="helloMobile_li" style="display: none;"><div class="dimmCon" style="display: none;">&nbsp;</div><a href="#" >헬로 모바일 CGV 요금제</a></li></ul></div>
                                         <div class="discount_form"><div id="cgvMovieMoney" class="form">
                                             <h5>CGV 영화관람권</h5>
                                             <div class="form_button">
@@ -1262,7 +1180,7 @@
                                     </div><!-- guide_wrap -->
                                     <div class="tpm_discount">
                                         <div class="background"></div>
-                                        <div class="discount_list"><ul><li id="cjOnePoint_li"><div class="dimmCon" style="display: none;">&nbsp;</div><a href="#" onclick="return false;">CJ ONE 포인트</a></li><li id="cjGiftPrePay_li"><div class="dimmCon" style="display: none;">&nbsp;</div><a href="#" onclick="return false;">CJ 기프트카드</a></li><li id="cgvGiftPrePay_li"><div class="dimmCon" style="display: none;">&nbsp;</div><a href="#" onclick="return false;">CGV 기프트카드</a></li><li id="paysVouc_li"><div class="dimmCon" style="display: none;">&nbsp;</div><a href="#" onclick="return false;">모바일 페이즈상품권</a></li><li id="hdCardPoint_li"><div class="dimmCon" style="display: none;">&nbsp;</div><a href="#" onclick="return false;">현대카드 M포인트</a></li><li id="samsungUPoint_li"><div class="dimmCon" style="display: none;">&nbsp;</div><a href="#" onclick="return false;">삼성 U-Point</a></li><li id="wibeePoint_li"><div class="dimmCon" style="display: none;">&nbsp;</div><a href="#" onclick="return false;">우리WON꿀머니</a></li><li id="hanaMPoint_li"><div class="dimmCon" style="display: none;">&nbsp;</div><a href="#" onclick="return false;">하나머니</a></li><li id="asianaMile_li"><div class="dimmCon" style="display: none;">&nbsp;</div><a href="#" onclick="return false;">아시아나 마일리지</a></li><li id="okCashBagPoint_li"><div class="dimmCon" style="display: none;">&nbsp;</div><a href="#" onclick="return false;">OK캐쉬백</a></li><li id="hdBluePoint_li"><div class="dimmCon" style="display: none;">&nbsp;</div><a href="#" onclick="return false;">블루멤버스 포인트</a></li><li id="kiaRedMemPoint_li"><div class="dimmCon" style="display: none;">&nbsp;</div><a href="#" onclick="return false;">기아멤버스 포인트</a></li><li id="gsNpoint_li"><div class="dimmCon" style="display: none;">&nbsp;</div><a href="#" onclick="return false;">GS&amp;POINT</a></li><li id="sOilPoint_li"><div class="dimmCon" style="display: none;">&nbsp;</div><a href="#" onclick="return false;">S-OIL포인트</a></li><li id="hdOilBankPoint_li"><div class="dimmCon" style="display: none;">&nbsp;</div><a href="#" onclick="return false;">현대오일뱅크 보너스포인트</a></li><li id="eOnePoint_li"><div class="dimmCon" style="display: none;">&nbsp;</div><a href="#" onclick="return false;">E1 오렌지 멤버십 포인트</a></li><li id="ctCashPoint_li"><div class="dimmCon" style="display: none;">&nbsp;</div><a href="#" onclick="return false;">문화상품권 컬쳐캐쉬</a></li><li id="hpCashPoint_li"><div class="dimmCon" style="display: none;">&nbsp;</div><a href="#" onclick="return false;">해피머니상품권 해피캐시</a></li><li id="bnlCashPoint_li"><div class="dimmCon" style="display: none;">&nbsp;</div><a href="#" onclick="return false;">도서상품권 북앤라이프캐시</a></li><li id="culturePIN_li"><div class="dimmCon" style="display: none;">&nbsp;</div><a href="#" onclick="return false;">도서문화상품권</a></li><li id="cultureCon_li"><div class="dimmCon" style="display: none;">&nbsp;</div><a href="#" onclick="return false;">컬쳐모바일문화상품권</a></li><li id="cjProdCon_li"><div class="dimmCon" style="display: none;">&nbsp;</div><a href="#" onclick="return false;">CJ상품권</a></li><li id="cjCardResv_li"><div class="dimmCon" style="display: none;">&nbsp;</div><a href="#" onclick="return false;">CJ카드 적립금</a></li><li id="SKbenepia_li" style="display: none;"><div class="dimmCon" style="display: none;">&nbsp;</div><a href="#" onclick="return false;">SK 베네피아 포인트</a></li><li id="homePlusCoupon_li" style="display: none;"><div class="dimmCon" style="display: none;">&nbsp;</div><a href="#" onclick="return false;">홈플러스 디지털상품권</a></li></ul></div>
+                                        <div class="discount_list"><ul><li id="cjOnePoint_li"><div class="dimmCon" style="display: none;">&nbsp;</div><a href="#" >CJ ONE 포인트</a></li><li id="cjGiftPrePay_li"><div class="dimmCon" style="display: none;">&nbsp;</div><a href="#" >CJ 기프트카드</a></li><li id="cgvGiftPrePay_li"><div class="dimmCon" style="display: none;">&nbsp;</div><a href="#" >CGV 기프트카드</a></li><li id="paysVouc_li"><div class="dimmCon" style="display: none;">&nbsp;</div><a href="#" >모바일 페이즈상품권</a></li><li id="hdCardPoint_li"><div class="dimmCon" style="display: none;">&nbsp;</div><a href="#" >현대카드 M포인트</a></li><li id="samsungUPoint_li"><div class="dimmCon" style="display: none;">&nbsp;</div><a href="#" >삼성 U-Point</a></li><li id="wibeePoint_li"><div class="dimmCon" style="display: none;">&nbsp;</div><a href="#" >우리WON꿀머니</a></li><li id="hanaMPoint_li"><div class="dimmCon" style="display: none;">&nbsp;</div><a href="#" >하나머니</a></li><li id="asianaMile_li"><div class="dimmCon" style="display: none;">&nbsp;</div><a href="#" >아시아나 마일리지</a></li><li id="okCashBagPoint_li"><div class="dimmCon" style="display: none;">&nbsp;</div><a href="#" >OK캐쉬백</a></li><li id="hdBluePoint_li"><div class="dimmCon" style="display: none;">&nbsp;</div><a href="#" >블루멤버스 포인트</a></li><li id="kiaRedMemPoint_li"><div class="dimmCon" style="display: none;">&nbsp;</div><a href="#" >기아멤버스 포인트</a></li><li id="gsNpoint_li"><div class="dimmCon" style="display: none;">&nbsp;</div><a href="#" >GS&amp;POINT</a></li><li id="sOilPoint_li"><div class="dimmCon" style="display: none;">&nbsp;</div><a href="#" >S-OIL포인트</a></li><li id="hdOilBankPoint_li"><div class="dimmCon" style="display: none;">&nbsp;</div><a href="#" >현대오일뱅크 보너스포인트</a></li><li id="eOnePoint_li"><div class="dimmCon" style="display: none;">&nbsp;</div><a href="#" >E1 오렌지 멤버십 포인트</a></li><li id="ctCashPoint_li"><div class="dimmCon" style="display: none;">&nbsp;</div><a href="#" >문화상품권 컬쳐캐쉬</a></li><li id="hpCashPoint_li"><div class="dimmCon" style="display: none;">&nbsp;</div><a href="#" >해피머니상품권 해피캐시</a></li><li id="bnlCashPoint_li"><div class="dimmCon" style="display: none;">&nbsp;</div><a href="#" >도서상품권 북앤라이프캐시</a></li><li id="culturePIN_li"><div class="dimmCon" style="display: none;">&nbsp;</div><a href="#" >도서문화상품권</a></li><li id="cultureCon_li"><div class="dimmCon" style="display: none;">&nbsp;</div><a href="#" >컬쳐모바일문화상품권</a></li><li id="cjProdCon_li"><div class="dimmCon" style="display: none;">&nbsp;</div><a href="#" >CJ상품권</a></li><li id="cjCardResv_li"><div class="dimmCon" style="display: none;">&nbsp;</div><a href="#" >CJ카드 적립금</a></li><li id="SKbenepia_li" style="display: none;"><div class="dimmCon" style="display: none;">&nbsp;</div><a href="#" >SK 베네피아 포인트</a></li><li id="homePlusCoupon_li" style="display: none;"><div class="dimmCon" style="display: none;">&nbsp;</div><a href="#" >홈플러스 디지털상품권</a></li></ul></div>
 
                                         <!--포인트 활성화 부분-->
                                         <div class="discount_form">
@@ -1468,7 +1386,7 @@
 					카드번호와 유효기간을 입력하신 후 조회를 누르시면 할인 금액이 조회됩니다.
 				</span>
                                                                 <span class="right">
-					<a class="brown btn_verify btn_toggle" href="#" onclick="return false;">
+					<a class="brown btn_verify btn_toggle" href="#" >
 						<span class="default">
 							조회/적용
 						</span>
@@ -1563,7 +1481,7 @@
 			신용카드 결제 가능 최소 금액은 1,000원 이상입니다.</span>
                                                         <span>
 			<span class="desc">
-			<a href="#" onclick="return false;" class="btn_savePoint">삼성U포인트 적립</a>&nbsp;&nbsp;<a href="#" onclick="return false;" class="btn_savePoint">OK캐쉬백 적립</a>&nbsp;&nbsp;&nbsp;&nbsp;
+			<a href="#"  class="btn_savePoint">삼성U포인트 적립</a>&nbsp;&nbsp;<a href="#"  class="btn_savePoint">OK캐쉬백 적립</a>&nbsp;&nbsp;&nbsp;&nbsp;
 			</span><br>
 			<span class="option">
 			(삼성U포인트, OK캐쉬백 포인트는 포인트 중복 적립 불가)
@@ -1571,8 +1489,8 @@
 		</span>
                                                         <!--
                                                     <div class="buttons">
-                                                        <a class="btn_okcashbag" href="#" onclick="return false;"><span>OK캐쉬백 번호 입력</span></a>
-                                                        <a class="btn_samsung_upoint" href="#" onclick="return false;"><span>삼성 U포인트 번호 입력</span></a>
+                                                        <a class="btn_okcashbag" href="#" ><span>OK캐쉬백 번호 입력</span></a>
+                                                        <a class="btn_samsung_upoint" href="#" ><span>삼성 U포인트 번호 입력</span></a>
                                                     </div>
                                                     -->
                                                     </div>
@@ -1787,7 +1705,7 @@
                                         <em>CGV 청담씨네시티는 대중교통이용을 권장합니다.</em><br>
                                         <span class="desc">발레파킹을 이용하실 수 있으나, 가능 차량수가 한정적이며 주변 교통상황에 따라 지연될 수 있습니다.</span>
 
-                                        <!--<br/><a class="btn_traffic_info" href="#" onclick="return false;"><img src="http://img.cgv.co.kr/CGV_RIA/Ticket/image/reservation/step4/btn_traffic_info.png" alt="교통안내"/></a>-->
+                                        <!--<br/><a class="btn_traffic_info" href="#" ><img src="http://img.cgv.co.kr/CGV_RIA/Ticket/image/reservation/step4/btn_traffic_info.png" alt="교통안내"/></a>-->
                                     </div>
                                     <div class="ticket_button_group" style="display:none"><div>
                                         <a class="btn_step4 btn_red btn_ticket_print" href="#" style="margin: 0px 5px;"><span>예매정보 출력</span></a>
@@ -1879,7 +1797,7 @@
 
                     <span class="sreader">빠른예매는 레이어로 서비스 되기 때문에 가상커서를 해지(Ctrl+Shift+F12)한 후 사용합니다.</span>
                 </div>
-                <a href="#" onclick="return false;" class="layer_close">닫기</a>
+                <a href="#"  class="layer_close">닫기</a>
             </div>
             <div class="bd">
                 <div class="login_form">
@@ -1895,10 +1813,10 @@
                 </div>
                 <div class="linkbar">
 
-                    <a href="#" onclick="return false;" class="join_member">회원가입</a>
-                    <a href="#" onclick="return false;" class="join_guest">비회원 예매</a>
-                    <a href="#" onclick="return false;" class="id_find">아이디찾기</a>
-                    <a href="#" onclick="return false;" class="pw_find">비밀번호찾기</a>
+                    <a href="#"  class="join_member">회원가입</a>
+                    <a href="#"  class="join_guest">비회원 예매</a>
+                    <a href="#"  class="id_find">아이디찾기</a>
+                    <a href="#"  class="pw_find">비밀번호찾기</a>
 
                 </div>
             </div>-->
@@ -1912,14 +1830,14 @@
                         <h4 class="alert_title">얼럿타이틀</h4>
                         <span class="sreader">빠른예매는 레이어로 서비스 되기 때문에 가상커서를 해지(Ctrl+Shift+F12)한 후 사용합니다.</span>
                     </div>
-                    <a href="#" onclick="return false;" class="layer_close">닫기</a>
+                    <a href="#"  class="layer_close">닫기</a>
                 </div><!-- //hd -->
                 <div class="bd">
                     <p class="alert_msg" style="width: 475px;">얼럿메세지</p>
                 </div><!-- //bd -->
                 <div class="ft">
-                    <a title="확인" href="#" onclick="return false;" class="btn btn_ok"><span>확인</span></a>
-                    <a title="취소" href="#" onclick="return false;" class="btn btn_white btn_close"><span>취소</span></a>
+                    <a title="확인" href="#"  class="btn btn_ok"><span>확인</span></a>
+                    <a title="취소" href="#"  class="btn btn_white btn_close"><span>취소</span></a>
                 </div><!-- //ft -->
             </div>
             <!-- //Popup -->
@@ -1931,16 +1849,16 @@
                         <h4 class="alert_title">얼럿타이틀</h4>
                         <span class="sreader">빠른예매는 레이어로 서비스 되기 때문에 가상커서를 해지(Ctrl+Shift+F12)한 후 사용합니다.</span>
                     </div>
-                    <a href="#" onclick="return false;" class="layer_close">닫기</a>
+                    <a href="#"  class="layer_close">닫기</a>
                 </div>
                 <div class="bd">
                     <p class="alert_msg">얼럿메세지</p>
                 </div>
                 <div class="ft">
-                    <a title="확인" href="#" onclick="return false;" class="btn btn_ok">
+                    <a title="확인" href="#"  class="btn btn_ok">
                         <span>확인</span>
                     </a>
-                    <a title="취소" href="#" onclick="return false;" class="btn btn_white btn_close">
+                    <a title="취소" href="#"  class="btn btn_white btn_close">
                         <span>취소</span>
                     </a>
                 </div>
@@ -1955,7 +1873,7 @@
                         <h4 class="alert_title">관람안내</h4>
                         <span class="sreader">빠른예매는 레이어로 서비스 되기 때문에 가상커서를 해지(Ctrl+Shift+F12)한 후 사용합니다.</span>
                     </div>
-                    <a href="#" onclick="return false;" class="layer_close">닫기</a>
+                    <a href="#"  class="layer_close">닫기</a>
                 </div>
                 <div class="bd p0">
                     <p class="alert_msg"><p class="inner"><img src="http://img.cgv.co.kr/Support/Ticket/Notice/2022/16424675308230.png" width="440" height="238"><span class="bd_comment">- 일행간 좌석 띄어앉기<br>
@@ -1964,10 +1882,10 @@
 &nbsp;&nbsp;&nbsp;(관련 증명서 지참 시, 동거가족 인원 제한 없음)</span></p></p>
                 </div>
                 <div class="ft">
-                    <a title="확인" href="#" onclick="return false;" class="btn btn_ok">
+                    <a title="확인" href="#"  class="btn btn_ok">
                         <span>확인</span>
                     </a>
-                    <a title="취소" href="#" onclick="return false;" class="btn btn_white btn_close" style="display: none;">
+                    <a title="취소" href="#"  class="btn btn_white btn_close" style="display: none;">
                         <span>취소</span>
                     </a>
                 </div>
@@ -1979,14 +1897,14 @@
                         <h4 class="alert_title">관람등급 안내</h4>
                         <span class="sreader">빠른예매는 레이어로 서비스 되기 때문에 가상커서를 해지(Ctrl+Shift+F12)한 후 사용합니다.</span>
                     </div>
-                    <a href="#" onclick="return false;" class="layer_close">닫기</a>
+                    <a href="#"  class="layer_close">닫기</a>
                 </div><!-- //hd -->
                 <div class="bd">
                     <p class="alert_msg" style="width: 475px;"><em style="color:#CA4D10;">[15세 이상 관람가]</em><br>본 영화는 만 15세 이상 관람 가능한 영화입니다.<br>만 15세 미만 고객은 부모님 또는 만 19세 이상 보호자 동반 시 관람이 가능합니다.<br>연령 확인 불가 시 입장이 제한 될 수 있습니다.</p>
                 </div><!-- //bd -->
                 <div class="ft">
-                    <a title="확인" href="#" onclick="return false;" class="btn btn_ok"><span>확인</span></a>
-                    <a title="취소" href="#" onclick="return false;" class="btn btn_white btn_close" style="display: none;"><span>취소</span></a>
+                    <a title="확인" href="#"  class="btn btn_ok"><span>확인</span></a>
+                    <a title="취소" href="#"  class="btn btn_white btn_close" style="display: none;"><span>취소</span></a>
                 </div><!-- //ft -->
             </div>
 
@@ -1999,9 +1917,9 @@
                 <div class="guide_bd">
                     <div class="tab_menu clfix">
                         <ul>
-                            <li class="a first"><a href="#none" onclick="return false;" class="on" title="STEP 1 영화, 극장, 날짜, 시간 선택"><span><var><span class="blind_txt tab1">STEP 1 영화, 극장, 날짜, 시간 선택</span></var></span></a></li>
-                            <li class="b"><a href="#none" onclick="return false;" title="STEP 2 인원, 좌석선택"><span><var><span class="blind_txt tab2">STEP 2 인원, 좌석선택</span></var></span></a></li>
-                            <li class="c"><a href="#none" onclick="return false;" title="STEP 3 결제하기"><span><var><span class="blind_txt tab3">STEP 3 결제하기</span></var></span></a></li>
+                            <li class="a first"><a href="#none"  class="on" title="STEP 1 영화, 극장, 날짜, 시간 선택"><span><var><span class="blind_txt tab1">STEP 1 영화, 극장, 날짜, 시간 선택</span></var></span></a></li>
+                            <li class="b"><a href="#none"  title="STEP 2 인원, 좌석선택"><span><var><span class="blind_txt tab2">STEP 2 인원, 좌석선택</span></var></span></a></li>
+                            <li class="c"><a href="#none"  title="STEP 3 결제하기"><span><var><span class="blind_txt tab3">STEP 3 결제하기</span></var></span></a></li>
                         </ul>
                     </div>
                     <div class="content">
@@ -2011,7 +1929,7 @@
                                 <p><span class="question blind_txt">물음표</span><span class="info">를 오버시 해당 설명을 볼 수 있습니다.</span></p>
                                 <ul>
                                     <li class="btn01">
-                                        <a href="#" onclick="return false;" class="btnVisInfo blind_txt">물음표-새롭게 바뀐 CGV 예매서비스안내</a>
+                                        <a href="#"  class="btnVisInfo blind_txt">물음표-새롭게 바뀐 CGV 예매서비스안내</a>
                                         <p class="infoBx">
                                             <span class="top"></span>
                                             <span class="middle">전체 화면구성이 세로형으로 변경되어 더 빠르고 쉽게 정보 선택이 가능해졌어요!</span>
@@ -2019,7 +1937,7 @@
                                         </p>
                                     </li>
                                     <li class="btn02">
-                                        <a href="#" onclick="return false;" class="btnVisInfo blind_txt">물음표-영화분류안내</a>
+                                        <a href="#"  class="btnVisInfo blind_txt">물음표-영화분류안내</a>
                                         <p class="infoBx">
                                             <span class="top"></span>
                                             <span class="middle">무비꼴라쥬, 특별관 영화를 빠르고 편리하게 분류하여 확인할 수 있어요!</span>
@@ -2028,7 +1946,7 @@
                                     </li>
                                     <!--
                                 <li class="btn03">
-                                    <a href="#" onclick="return false;" class="btnVisInfo blind_txt">물음표-선택할 수 없는 영화안내</a>
+                                    <a href="#"  class="btnVisInfo blind_txt">물음표-선택할 수 없는 영화안내</a>
                                     <p class="infoBx">
                                     <span class="top"></span>
                                     <span class="middle">선택 불가능한 정보는 장애인 차별금지법에 따라 패턴 디자인을 적용하여 모든 사용자가 쉽게 구분할 수 있어요!</span>
@@ -2037,7 +1955,7 @@
                                 </li>
                                 -->
                                     <li class="btn04">
-                                        <a href="#" onclick="return false;" class="btnVisInfo blind_txt">물음표-자주가는 CGV안내</a>
+                                        <a href="#"  class="btnVisInfo blind_txt">물음표-자주가는 CGV안내</a>
                                         <p class="infoBx">
                                             <span class="top"></span>
                                             <span class="middle">자주 가는 극장 설정 기능을 통해 보다 빠른 극장 선택이 가능해졌어요!</span>
@@ -2045,7 +1963,7 @@
                                         </p>
                                     </li>
                                     <li class="btn05">
-                                        <a href="#" onclick="return false;" class="btnVisInfo blind_txt">물음표-영문 빠른예매</a>
+                                        <a href="#"  class="btnVisInfo blind_txt">물음표-영문 빠른예매</a>
                                         <p class="infoBx">
                                             <span class="top"></span>
                                             <span class="middle">영문 버전 빠른예매를 통해 다국적 사용자들도 쉽게 예매 서비스를 이용할 수 있어요!</span>
@@ -2053,7 +1971,7 @@
                                         </p>
                                     </li>
                                     <li class="btn06">
-                                        <a href="#" onclick="return false;" class="btnVisInfo blind_txt">물음표-조조/심야구분안내</a>
+                                        <a href="#"  class="btnVisInfo blind_txt">물음표-조조/심야구분안내</a>
                                         <p class="infoBx">
                                             <span class="top"></span>
                                             <span class="middle">조조/심야 영화 시간에 대해 쉽게 확인할 수 있어요!</span>
@@ -2061,7 +1979,7 @@
                                         </p>
                                     </li>
                                     <li class="btn07">
-                                        <a href="#" onclick="return false;" class="btnVisInfo blind_txt">물음표-새롭게 바뀐 CGV 예매서비스안내</a>
+                                        <a href="#"  class="btnVisInfo blind_txt">물음표-새롭게 바뀐 CGV 예매서비스안내</a>
                                         <p class="infoBx">
                                             <span class="top"></span>
                                             <span class="middle">선택한 예매 정보 및 나의 예매 진행 단계를 한 눈에 파악할 수 있어요!</span>
@@ -2077,7 +1995,7 @@
                                 <p><span class="question blind_txt">물음표</span><span class="info">를 오버시 해당 설명을 볼 수 있습니다.</span></p>
                                 <ul>
                                     <li class="btn01">
-                                        <a href="#" onclick="return false;" title="" class="btnVisInfo blind_txt">물음표-상영관/시간 확인 및 변경안내</a>
+                                        <a href="#"  title="" class="btnVisInfo blind_txt">물음표-상영관/시간 확인 및 변경안내</a>
                                         <p class="infoBx">
                                             <span class="top"></span>
                                             <span class="middle">선택한 상영관/시간 확인 및 변경 기능이 보다 쉽고 눈에 띄게 변경되었어요!</span>
@@ -2085,7 +2003,7 @@
                                         </p>
                                     </li>
                                     <li class="btn02">
-                                        <a href="#" onclick="return false;" title="" class="btnVisInfo blind_txt">물음표-다양한 좌석도 보기안내</a>
+                                        <a href="#"  title="" class="btnVisInfo blind_txt">물음표-다양한 좌석도 보기안내</a>
                                         <p class="infoBx">
                                             <span class="top"></span>
                                             <span class="middle">좌석도 크게 보기 기능으로 시력이 좋지 않으신 분들도 쉽게 예매가 가능해졌어요!</span>
@@ -2101,7 +2019,7 @@
                                 <p><span class="question blind_txt">물음표</span><span class="info">를 오버시 해당 설명을 볼 수 있습니다.</span></p>
                                 <ul>
                                     <li class="btn01">
-                                        <a href="#" onclick="return false;" title="" class="btnVisInfo blind_txt">물음표-할인 및 결제수단안내</a>
+                                        <a href="#"  title="" class="btnVisInfo blind_txt">물음표-할인 및 결제수단안내</a>
                                         <p class="infoBx">
                                             <span class="top"></span>
                                             <span class="middle">전체 화면구성이 할인수단과 결제수단 영역으로 나뉘어 한 눈에 보기 편리해졌어요!</span>
@@ -2109,7 +2027,7 @@
                                         </p>
                                     </li>
                                     <li class="btn02">
-                                        <a href="#" onclick="return false;" title="" class="btnVisInfo blind_txt">물음표-CGV영화관람권,할인쿠폰, CJ ONE포인트 안내</a>
+                                        <a href="#"  title="" class="btnVisInfo blind_txt">물음표-CGV영화관람권,할인쿠폰, CJ ONE포인트 안내</a>
                                         <p class="infoBx">
                                             <span class="top"></span>
                                             <span class="middle">주요 할인수단인 CGV영화관람권, CGV할인쿠폰, CJ ONE 포인트의 바로 조회 기능을 통해 보다 빠른 예매가 가능해졌어요!</span>
@@ -2117,7 +2035,7 @@
                                         </p>
                                     </li>
                                     <li class="btn03">
-                                        <a href="#" onclick="return false;" title="" class="btnVisInfo blind_txt">물음표-할인수단별 선택안내</a>
+                                        <a href="#"  title="" class="btnVisInfo blind_txt">물음표-할인수단별 선택안내</a>
                                         <p class="infoBx">
                                             <span class="top"></span>
                                             <span class="middle">다양한 CGV의 할인수단을 보기 쉽게 그룹화하여 원하는 할인수단만 선택해 이용하실 수 있어요!</span>
@@ -2125,7 +2043,7 @@
                                         </p>
                                     </li>
                                     <li class="btn04">
-                                        <a href="#" onclick="return false;" title="" class="btnVisInfo blind_txt">물음표-결제정보안내</a>
+                                        <a href="#"  title="" class="btnVisInfo blind_txt">물음표-결제정보안내</a>
                                         <p class="infoBx">
                                             <span class="top"></span>
                                             <span class="middle">내가 적용한 할인 및 결제수단 내역을 한 눈에 쉽게 확인 가능해요!</span>
@@ -2133,7 +2051,7 @@
                                         </p>
                                     </li>
                                     <li class="btn05">
-                                        <a href="#" onclick="return false;" title="" class="btnVisInfo blind_txt">물음표-최신할인정보안내</a>
+                                        <a href="#"  title="" class="btnVisInfo blind_txt">물음표-최신할인정보안내</a>
                                         <p class="infoBx">
                                             <span class="top"></span>
                                             <span class="middle">다양한 CGV결제수단의 최신 할인 정보를 쉽게 모아 볼 수 있어요!</span>
@@ -2146,8 +2064,8 @@
                     </div>
                 </div><!-- //bd -->
                 <div class="ft">
-                    <a title="닫기" href="#" onclick="return false;" class="btn btn_white guideClose"><span>닫기</span></a>
-                    <a title="닫기" href="#" onclick="return false;" class="layer_close guideClose">닫기</a>
+                    <a title="닫기" href="#"  class="btn btn_white guideClose"><span>닫기</span></a>
+                    <a title="닫기" href="#"  class="layer_close guideClose">닫기</a>
                 </div><!-- //ft -->
             </div>
             <!-- //Popup -->
@@ -2166,31 +2084,31 @@
                             <a id="movie_sel" href="#" target="_blank" onmousedown="javascript:logClick('SUMMARY/영화상세보기');">
                             </a></span>
                     </div>
-                    <div class="row movie_type" style="display: none;">
+                    <div class="row movie_type" style="display: block;">
                         <span class="data ellipsis-line1"></span>
                     </div>
-                    <div class="row movie_rating" style="display: none;">
+                    <div class="row movie_rating" style="display: block;">
                         <span class="data" title=""></span>
                     </div>
                     <div class="placeholder" title="영화선택"></div>
                 </div>
                 <div class="info theater">
                     <div class="row name infoTheater" style="display: none;">
-                        <span class="header">극장</span>
+                        <span class="header" style="width:24px;">극장</span>
                         <span class="data letter-spacing-min ellipsis-line1">
                             <a class="sendTheaterName" href="" target="_blank" onmousedown="javascript:logClick('SUMMARY/극장상세보기');">
                                 </a></span>
                     </div>
                     <div class="row date infoTheater" style="display: none;">
-                        <span class="header">일시</span>
+                        <span class="header" style="width:34px;">일시</span>
                         <span class="data sendDate"></span>
                     </div>
                     <div class="row screen infoTheater" style="display: none;">
-                        <span class="header">상영관</span>
+                        <span class="header" style="width:34px;">상영관</span>
                         <span class="data sendHallInfo"></span>
                     </div>
                     <div class="row number infoTheater" style="display: none;">
-                        <span class="header">인원</span>
+                        <span class="header" style="width:34px;">인원</span>
                         <span class="data"></span>
                     </div>
                     <div class="placeholder" title="극장선택"></div>
@@ -2206,36 +2124,6 @@
                     </div>
                     <div class="placeholder" title="좌석선택"></div>
                 </div>
-                <!-- <div class="info payment-ticket">
-				<div class="row payment-millitary">
-					<span class="header">군인</span>
-					<span class="data"><span class="price"></span>원 x <span class="quantity"></span></span>
-				</div>
-				<div class="row payment-adult">
-					<span class="header">일반</span>
-					<span class="data"><span class="price"></span>원 x <span class="quantity"></span></span>
-				</div>
-				<div class="row payment-youth">
-					<span class="header">청소년</span>
-					<span class="data"><span class="price"></span>원 x <span class="quantity"></span></span>
-				</div>
-				<div class="row payment-child">
-					<span class="header">어린이</span>
-					<span class="data"><span class="price"></span>원 x <span class="quantity"></span></span>
-				</div>
-				<div class="row payment-senior">
-					<span class="header">경로</span>
-					<span class="data"><span class="price"></span>원 x <span class="quantity"></span></span>
-				</div>
-				<div class="row payment-special">
-					<span class="header">우대</span>
-					<span class="data"><span class="price"></span>원 x <span class="quantity"></span></span>
-				</div>
-				<div class="row payment-final">
-					<span class="header">총금액</span>
-					<span class="data"><span class="price">0</span><span class="won">원</span></span>
-				</div>
-			</div> -->
                 <div class="info path">
                     <div class="row colspan4">
                         <span class="path-step2" title="좌석선택">&nbsp;</span>
@@ -2366,15 +2254,11 @@
 <!-- E Contaniner -->
 <div th:replace="user/fragment/footer:: footer-user"></div>
 
-
 </div>
-
-<script type="text/javascript" src="https://img.cgv.co.kr/R2014//js/system/crypto.js"></script>
 
 <script th:inline="javascript">
     /*<![CDATA[*/
     let movielist=[[${movielist}]]
-    console.log(movielist);
     // 영화 url 전달
     const url=new Array();
     for(let i=0; i<=movielist.length-1; i++){
@@ -2389,7 +2273,6 @@
 
     // 극장 리스트
     let theaterlist= [[${theaterlist}]]
-    console.log(theaterlist);
 
     // 극장 tcode 리스트
     const tcodeArray=new Array();
