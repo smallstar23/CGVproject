@@ -43,10 +43,12 @@ public class Schedule {
     public ScheduleDTO toDTO(){
         return ScheduleDTO.builder()
                 .schecode(schecode)
+                .movieDTO(movie.toDTO())
                 .mcode(movie.getMcode())
                 .hallDTO(hall.toDTO())
                 .hcode(hall.getHcode())
                 .scdate(scdate)
+                .enddate(scdate.plusMinutes(movie.getRuntime()))
                 .build();
     }
 

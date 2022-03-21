@@ -52,7 +52,6 @@ public class UserScheduleService {
         }
         return scheduleDTOList;
     }
-
     //mcode, tcode, scdate가 들어있음
     public List<ScheduleDTO> findAllOnlyMcode(Long mcode, Long tcode, String scdate){
 
@@ -99,4 +98,27 @@ public class UserScheduleService {
             return null;
         }
     }
+
+
+    // 날짜, 영화관 정보로 스케쥴 받아오기
+    public List<ScheduleDTO> findbyDate(Long tcode, LocalDateTime scdate){
+        LocalDateTime enddate=scdate.plusDays(1);
+        Theater theater=theaterRepository.findByTcode(tcode);
+        List<Schedule> scheduleList=new ArrayList<>();
+        List<ScheduleDTO> scheduleDTOList=new ArrayList<>();
+        if(theater!=null){
+            List<Hall> hallList=hallRepository.findAllByTheater(theater);
+            if(hallList!=null){
+                for(Hall hall: hallList) {
+                    scheduleList=scheduleRepository.findAllByHallAndScdateBetween(hall, scdate, enddate);
+                    for(Schedule schedule:scheduleList){
+                        scheduleDTOList.add(schedule.toDTO());
+                    }
+                }
+            }
+        }
+
+        return scheduleDTOList;
+    }
+
 }

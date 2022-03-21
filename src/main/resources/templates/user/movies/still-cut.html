@@ -141,21 +141,9 @@
                             <dd class="on">
 
 
-                                <a href="#">오가타 메구미</a>
-
-                                <a href="#">하나자와 카나</a>
-
-                                <a href="#">코마츠 미카코</a>
+                                <a href="#" th:utext="${actor.anameKo}"></a>
 
 
-                                <a href="#">우치야마 코우키</a>
-
-
-                                <a href="#">세키 토모카즈</a>
-
-                                <a href="#">나카무라 유이치</a>
-
-                                <a href="#">사쿠라이 타카히로</a>
 
                             </dd>
 
@@ -225,10 +213,10 @@
                 <div class="col-detail">
                     <!-- 메뉴가 선택되면 a 에 title="선택" 이라고 넣는다 -->
                     <ul class="tab-menu">
-                        <li class="on"><a title="현재 선택됨" href="#">주요정보 </a></li>
+                        <li><a th:href="@{'/movies/detail-view/'+${movie.mcode}}">주요정보 </a></li>
                         <li><a th:href="@{'/movies/detail-view/cast/'+${movie.mcode}}">감독/출연</a></li>
                         <li><a th:href="@{'/movies/detail-view/trailer/'+${movie.mcode}}">트레일러</a></li>
-                        <li><a th:href="@{'/movies/detail-view/still-cut/'+${movie.mcode}}">스틸컷</a></li>
+                        <li class="on"><a title="현재 선택됨" th:href="@{'/movies/detail-view/still-cut/'+${movie.mcode}}">스틸컷</a></li>
                         <li><a href="#">평점/리뷰</a></li> <!-- 이부분 아직 cgv에서도 구현 전인것같음. -->
                         <li class="last"><a th:href="@{'/movies/detail-view/detail-show-times/'+${movie.mcode}}">상영시간표</a></li>
                     </ul>

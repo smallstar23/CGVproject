@@ -204,12 +204,13 @@
                         <div class="btm_sup_list">
                             <ul class="line_sup_next">
                                 <li class="stit" >이전글</li>
-                                <li class="name"><a href="#" class="txt" th:text="${supportnews_prev.getTitle()}"></a></li>
+<!--                                <a th:href='@{/culture-event/popcorn-store/purchase-confirm(gcode=${giftDTO.gcode}, totalCount=${giftDTO.price})}'>구매하기</a>-->
+                                <li class="name"><a th:href="@{/support/news/support-news-detail-view/{id}(id = ${supportnews_prev.getIdx()})}" class="txt" th:text="${supportnews_prev.getTitle()}"></a></li>
                                 <li class="check_writ_area">등록일<span class="check_num"  th:text="${#temporals.format(supportnews_prev.getRegDate(), 'yyyy-MM-dd')}"></span></li>
                             </ul>
                             <ul class="line_sup_prev">
                                 <li class="stit">다음글</li>
-                                <li class="name"><a href="#" class="txt" th:text="${supportnews_next.getTitle()}"></a></li>
+                                <li class="name"><a th:href="@{/support/news/support-news-detail-view/{id}(id = ${supportnews_next.getIdx()})}" class="txt" th:text="${supportnews_next.getTitle()}"></a></li>
                                 <li class="check_writ_area">등록일<span class="check_num"  th:text="${#temporals.format(supportnews_next.getRegDate(), 'yyyy-MM-dd')}"></span></li>
                             </ul>
                         </div>

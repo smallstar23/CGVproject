@@ -146,6 +146,8 @@ public class UserMycgvController {
 
     @GetMapping("/user/mycgv/myinfo/mycgv-myinfo-leavecgv")
     public String mycgv_myinfo_leavecgv(Model model){
+        Member member =memberRepository.findByUserid((String)session.getAttribute("userid"));
+        memberService.deleteUser(member.getIdx());
         return "/user/mycgv/myinfo/mycgv-myinfo-leavecgv";
     }
 

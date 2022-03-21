@@ -150,13 +150,14 @@
                 </div>
                 <?xml version="1.0" encoding="utf-8"?>
                 <div class="paging">
-<!--                    <button class="btn-paging first" type="button" onclick="location='#'">처음</button>-->
-                    <button th:if="${pagePrev}" class="btn-paging prev" type="button" th:onclick="|location.href='@{|/support/support-news?page=${nowPage-1}|}'|">이전</button>
+                    <button class="btn-paging first" id='first' type="button" style="display: inline-block" th:onclick="|location.href='@{|/support/support-news?page=${0}|}'|">처음</button>
+                    <button id='prev' class="btn-paging prev" type="button" style="display: inline-block" onclick="goPrev()">이전</button>
                     <ul id="pageNumber">
 <!--                            자바스크립트로 li 넣기-->
                     </ul>
-                    <button th:if="${pageNext}" class="btn-paging next" type="button" th:onclick="|location.href='@{|/support/support-news?page=${nowPage+1}|}'|">다음</button>
-<!--                    <button class="btn-paging end" type="button" onclick="location='#'">끝</button>-->
+<!--                    <button th:if="${pageNext}" class="btn-paging next" type="button" th:onclick="|location.href='@{|/support/support-news?page=${nowPage+1}|}'|">다음</button>-->
+                    <button id="next" class="btn-paging next" type="button" onclick="goNext()">다음</button>
+                    <button id='last' class="btn-paging end" type="button" onclick="goLast()">끝</button>
                 </div>
             </div>
         </div>
@@ -168,24 +169,55 @@
         //<![CDATA[
         let totalPage = [[${totalPage}]]
         let nowPageindex = [[${nowPage}]];
+        let size = [[${size}]]
 
-        for(let i =1; i<=totalPage; i++){
+        let bottomsize = 10;
 
-            // 페이지 li 를 맞춰서 가져온 함수
-            $("#pageNumber").append(
-                ` <li class="addon">
+        let firstBottomNumber = nowPageindex - nowPageindex % bottomsize + 1;  //하단 최초 숫자
+        let lastBottomNumber = nowPageindex - nowPageindex % bottomsize + bottomsize;  //하단 마지막 숫자
+
+        if(lastBottomNumber > totalPage) lastBottomNumber = totalPage  //총 갯수보다 큰 경우 방지
+
+            for(let i =firstBottomNumber; i<=lastBottomNumber; i++){
+                // 페이지 li 를 맞춰서 가져온 함수
+                $("#pageNumber").append(
+                    ` <li class="addon">
                         <a href="/support/support-news?page=${i - 1}">${i}</a>
                   </li>
                 `)
-        }
+            }
 
         let addon = document.getElementsByClassName(`addon`);
 
         // 현재 페이지와 비교해서 동일한거면 class="on"을 넣을 것임
-        for(let i = 0; i< addon.length; i++){
-            if(nowPageindex == i){
+        for(let i = 0; i< totalPage; i++){
+
+            if((nowPageindex%bottomsize) == i){
+                console.log(i);
                addon[i].classList.add('on');
             }
+        }
+
+        if(firstBottomNumber == 1){
+            $("#first").css("display",'none');
+            $("#prev").css("display",'none');
+        }
+
+        if(totalPage == lastBottomNumber){
+            $("#next").css("display",'none');
+            $("#last").css("display",'none');
+        }
+
+        function goPrev(){
+            location.href = '/support/support-news?page=' + (firstBottomNumber - bottomsize + 8);
+        }
+
+        function goLast(){
+            location.href = '/support/support-news?page=' + (totalPage-1);
+        }
+
+        function goNext(){
+            location.href = '/support/support-news?page=' + (firstBottomNumber + bottomsize - 1);
         }
 
         //]]>

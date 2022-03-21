@@ -12,4 +12,5 @@ import java.util.List;
 public interface PointRepository extends JpaRepository<Point, Long> {
 
     List<Point> findAllByMemberAndTheater(Member member, Theater theater);
+    Point deletePointByMember(Member member);
 }
