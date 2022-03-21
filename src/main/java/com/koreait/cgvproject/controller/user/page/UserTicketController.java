@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import javax.servlet.http.HttpSession;
 import java.util.List;
 
 @Log
@@ -24,6 +25,7 @@ public class UserTicketController {
 
     private UserMovieService userMovieService;
     private AdminTheaterService adminTheaterService;
+    private HttpSession session;
 
     @GetMapping("ticket")
     public String reservation(Model model){
@@ -33,7 +35,6 @@ public class UserTicketController {
         model.addAttribute("theaterlist",theaterDTOList);
         return "user/ticket/reservation";
     }
-
 
 
     @GetMapping("/user/ticket/home_ticket")

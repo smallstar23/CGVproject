@@ -9,6 +9,7 @@ import com.koreait.cgvproject.repository.*;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 
+import javax.servlet.http.HttpSession;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
@@ -120,5 +121,4 @@ public class UserScheduleService {
 
         return scheduleDTOList;
     }
-
 }

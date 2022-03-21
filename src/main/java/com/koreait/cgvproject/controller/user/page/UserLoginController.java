@@ -22,7 +22,7 @@ public class UserLoginController {
     private final UserLoginService userLoginService;
 
     @Autowired
-    private HttpSession session;
+    public HttpSession session;
 
     @Autowired
     private MemberRepository memberRepository;
@@ -36,6 +36,7 @@ public class UserLoginController {
     public String postMain(@RequestParam String userid, @RequestParam String userpw){
         Member member = memberRepository.findByUserid(userid);
         if(userLoginService.login(userid,userpw)) {
+            session.setAttribute("idx", member.getIdx());
             session.setAttribute("userid", userid);
             session.setAttribute("username", member.getUsername()); // 주문자 정보 확인 위해서
             session.setAttribute("userhp",member.getHp()); // 주문자 정보 확인 위해서

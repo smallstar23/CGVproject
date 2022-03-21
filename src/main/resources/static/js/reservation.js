@@ -286,7 +286,6 @@ async function generateScheduleBoneHtml(scheduleDTOList) {
         /*
             <li>에 해당하는 내용이 들어감.
         */
-        console.log(scheduleDTOList)
         scheduleHtml += addDetailHtml(scheduleDTOList, scheduleDTO.hcode);
         scheduleHtml += `</ul>`
         scheduleHtml += `</div>`
@@ -356,9 +355,6 @@ function schecodeSelect(DOM) {
 function addZero(number){
     return parseInt(number) < 10 ? "0" + number : number;
 }
-
-
-
 
 /*
 
@@ -592,9 +588,12 @@ $(".dateScroll").scroll(function () {
 })
 
 // step2 인원 선택시 활성화 (어른)
-let adultNum = 0;
-let adult_click = document.getElementsByClassName("adult_click");
+/* Step 2 에 쓰이는 JS */
 
+function adult_clickInit(){
+    const adult_click = document.getElementsByClassName('adult_click');
+    
+}
 for (let i = 0; i <= adult_click.length - 1; i++) {
     adult_click[i].addEventListener("click", function () {
         for (let j = 0; j <= adult_click.length - 1; j++) {

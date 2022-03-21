@@ -2251,6 +2251,7 @@
 
     <!-- /Contents Area -->
 </div>
+<input type="hidden" id='member_idx' th:value="${session.idx}">
 <!-- E Contaniner -->
 <div th:replace="user/fragment/footer:: footer-user"></div>
 
@@ -2258,6 +2259,7 @@
 
 <script th:inline="javascript">
     /*<![CDATA[*/
+
     let movielist=[[${movielist}]]
     // 영화 url 전달
     const url=new Array();
