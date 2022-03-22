@@ -12,6 +12,6 @@ import java.util.Optional;
 public interface PriceRepository extends JpaRepository<Price, Long> {
     List<Price> findAllByTheaterOrderByWeekDescStartTimeAsc(Theater theater);
     Optional<Price> findFirstByTheater(Theater theater);
-
     void deleteAllByTheater(Theater theater);
+    Optional<Price> findByTheaterAndWeekAndStartTime(Theater theater, String week, String startTime);
 }
