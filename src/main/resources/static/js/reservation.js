@@ -173,7 +173,7 @@ function toFirstDateStatus() {
     qs('#scheduleList').innerHTML = '';
     qs('.sendDate').innerText = '';
     qs('.sendHallInfo').innerText = '';
-    qs('#tnb_step_btn_right').removeClass('on');
+    $('#tnb_step_btn_right').removeClass('on');
     hcode=null; schecode=null;
 
     checkDate.forEach(d => {
@@ -360,15 +360,11 @@ function schecodeSelect(DOM) {
     qsAll('#scheduleList li').forEach(infoList => infoList.classList.remove('selected'));
     parentList.classList.add('selected');
 
-    qs('.sendDate').setAttribute('end_Time', parentList.getAttribute('end_time'))
+    qs('.sendDate').setAttribute('end_time', parentList.getAttribute('endtime'))
 
     // step1 하단에 내용 전달하는 부분입니다.
-    qs('.sendHallInfo').innerText = spanTitle.querySelector('.floor').innerText;
-    qs('.movie_type > span').innerText = spanTitle.querySelector('.name').innerText;
-    qs('.movie_rating > span').innerText = parentList.getAttribute('movieRating');
-    qs('.sendDate').innerText = qs('.findSchedule.selected')
-        .getAttribute('date') + ' ' + DOM.firstElementChild.innerText;
-   //
+    ticket_tnbInit(spanTitle, parentList, DOM);
+
    //  // step2 상단 내용 찍어주는 부분입니다.
    //  document.querySelector('.theater-info > .site').innerText=spanTitle.querySelector('.name').innerText
    //  document.querySelector('.theater-info > .screen').innerText=spanTitle.querySelector('.floor').innerText;
@@ -390,11 +386,18 @@ function schecodeSelect(DOM) {
 
 
     // 마지막 단계인 스케줄 코드까지 선택이 됬으므로 좌석 init을 실행함 ( step 2 준비 )
-    seatHtmlReadAndCreate(hcode);
-    seatRead(hcode);
+    seatHtmlReadAndCreate().then(seatRead)
+
     infoInit() // 관, 홀정보, 시간 표시
 }
-
+// step1 하단에 내용 전달하는 부분입니다.
+function ticket_tnbInit(spanTitle, parentList, DOM){
+    qs('.sendHallInfo').innerText = spanTitle.querySelector('.floor').innerText;
+    qs('.movie_type > span').innerText = spanTitle.querySelector('.name').innerText;
+    qs('.movie_rating > span').innerText = parentList.getAttribute('movieRating');
+    qs('.sendDate').innerText = qs('.findSchedule.selected')
+            .getAttribute('date').replaceAll('-','.') + ' ' + DOM.firstElementChild.innerText;
+}
 function infoInit() {
     T_H_Init();
     playYMDInfoInit()
@@ -406,8 +409,8 @@ function T_H_Init() {
 }
 
 function playYMDInfoInit() {
-    const dateText = qs('.sendDate').innerText // 2022-03-23(수) 03:01
-    const date = dateText.match('\\d{4}-\\d{2}-\\d{2}')[0].replace('-', '.') // 2022-03-23 -> 2022.03.23
+    const dateText = qs('.sendDate').innerText // 2022.03.23(수) 03:01
+    const date = dateText.match('\\d{4}.\\d{2}.\\d{2}')[0] // 2022.03.23
     const day = dateText.match('\\([가-힣]{1}\\)')[0]; // (수)
     const startTime = dateText.match('\\d{2}:\\d{2}')[0];// 03:01
     const endTime = qs('.sendDate').getAttribute('end_time'); // 05:57
@@ -666,11 +669,11 @@ function seatInit() {
             }
 
             sendAllSelectedSeatData(allSeat);
-            getTheaterPrice(); // 작업중
+            // getTheaterPrice(); // 작업중
         }
     });
 }
-
+/*
 function getTheaterPrice(){ // 작업중
     const startAndEndTime = qsAll('.playYMD-info b:not(b:first-child)');
     // 23:21 ~ 01:32 -> '23:21'
@@ -695,7 +698,7 @@ function getTheaterPriceAjax(tcode, startTime, week){ // 작업중
             startTime : startTime
         })
     })
-}
+}*/
 
 function getSelectedSeatCount(){
     let count = 0;
@@ -704,6 +707,7 @@ function getSelectedSeatCount(){
     })
     return count;
 }
+
 function isOverSelected() {
     return getSelectedSeatCount() > Number(peopleNum);
 }
@@ -721,15 +725,15 @@ function sendAllSelectedSeatData(seatList){
 
 }
 
-function seatHtmlReadAndCreate(hcode) {
-    fetch('/api/seatHtml/read/' + hcode)
+function seatHtmlReadAndCreate() {
+    return fetch('/api/seatHtml/read/' + hcode)
         .then(response => response.json())
         .then(data => {
             createSeat(data.stRow, data.stCol, data.rowEmpty, data.colEmpty);
         })
 }
 
-function seatRead(hcode) {
+function seatRead() {
     const allSeat = qsAll('#seats .seat');
     fetch("/api/seat/read/" + hcode)
         .then(response => response.json())
