@@ -39,6 +39,16 @@ public class UserMovieService {
         return movieDTOList;
     }
 
+    public  List<MovieDTO> getMovieinfo(Long mcode){
+
+        List<MovieDTO> movieDTOList=new ArrayList<>();
+        Movie movieList=movieRepository.findByMcode(mcode);
+
+        movieDTOList.add(movieList.toDTO());
+        return movieDTOList;
+    }
+
+
 
     public List<MovieDTO> getnow(String now){
         List<MovieDTO> movieDTOList=new ArrayList<>();

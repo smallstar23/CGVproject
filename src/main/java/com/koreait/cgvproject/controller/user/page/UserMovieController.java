@@ -4,9 +4,13 @@ import com.koreait.cgvproject.dto.ActorDTO;
 import com.koreait.cgvproject.dto.DirectorDTO;
 import com.koreait.cgvproject.dto.MovieDTO;
 import com.koreait.cgvproject.dto.TrailerDTO;
+import com.koreait.cgvproject.entity.Actor;
 import com.koreait.cgvproject.entity.Movie;
+import com.koreait.cgvproject.repository.ActorRepository;
 import com.koreait.cgvproject.repository.MovieRepository;
 import com.koreait.cgvproject.service.user.moive.UserMovieService;
+import lombok.AllArgsConstructor;
+import lombok.NoArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -15,6 +19,8 @@ import org.springframework.web.bind.annotation.PathVariable;
 
 import java.util.List;
 
+@AllArgsConstructor
+@NoArgsConstructor
 @Controller
 public class UserMovieController {
 
@@ -22,6 +28,8 @@ public class UserMovieController {
     private UserMovieService userMovieService;
     @Autowired
     private MovieRepository movieRepository;
+    private ActorRepository actorRepository;
+
 
     @GetMapping("movies")
     public String movies(Model model){
@@ -33,14 +41,16 @@ public class UserMovieController {
 
     @GetMapping("/movies/detail-view/{mcode}")
     public String detailview(@PathVariable("mcode") Long mcode, Model model){
-        Movie movie=movieRepository.findByMcode(mcode);
+        Movie movie =movieRepository.findByMcode(mcode);
+        System.out.println(movie);
         model.addAttribute("movie",movie);
-        TrailerDTO trailerDTO=userMovieService.getTrailer(movie);
-        model.addAttribute("trailer",trailerDTO);
-        DirectorDTO directorDTO=userMovieService.getDirector(movie);
-        model.addAttribute("director",directorDTO);
-        ActorDTO actorDTO=userMovieService.getActor(movie);
-        model.addAttribute("actor",actorDTO);
+
+//        TrailerDTO trailerDTO=userMovieService.getTrailer(movie);
+//        model.addAttribute("trailer",trailerDTO);
+//        DirectorDTO directorDTO=userMovieService.getDirector(movie);
+//        model.addAttribute("director",directorDTO);
+//        ActorDTO actorDTO=userMovieService.getActor(movie);
+//        model.addAttribute("actor",actorDTO);
         return "user/movies/detail-view";
     }
 
@@ -48,12 +58,13 @@ public class UserMovieController {
     public String cast(@PathVariable("mcode")Long mcode, Model model){
         Movie movie=movieRepository.findByMcode(mcode);
         model.addAttribute("movie",movie);
-        TrailerDTO trailerDTO=userMovieService.getTrailer(movie);
-        model.addAttribute("trailer",trailerDTO);
-        DirectorDTO directorDTO=userMovieService.getDirector(movie);
-        model.addAttribute("director",directorDTO);
-        ActorDTO actorDTO=userMovieService.getActor(movie);
-        model.addAttribute("actor",actorDTO);
+
+//        TrailerDTO trailerDTO=userMovieService.getTrailer(movie);
+//        model.addAttribute("trailer",trailerDTO);
+//        DirectorDTO directorDTO=userMovieService.getDirector(movie);
+//        model.addAttribute("director",directorDTO);
+//        ActorDTO actorDTO=userMovieService.getActor(movie);
+//        model.addAttribute("actor",actorDTO);
         return "user/movies/cast";
     }
 
@@ -61,24 +72,24 @@ public class UserMovieController {
     public String trailer(@PathVariable("mcode")Long mcode, Model model){
         Movie movie=movieRepository.findByMcode(mcode);
         model.addAttribute("movie",movie);
-        TrailerDTO trailerDTO=userMovieService.getTrailer(movie);
-        model.addAttribute("trailer",trailerDTO);
-        DirectorDTO directorDTO=userMovieService.getDirector(movie);
-        model.addAttribute("director",directorDTO);
-        ActorDTO actorDTO=userMovieService.getActor(movie);
-        model.addAttribute("actor",actorDTO);
+//        TrailerDTO trailerDTO=userMovieService.getTrailer(movie);
+//        model.addAttribute("trailer",trailerDTO);
+//        DirectorDTO directorDTO=userMovieService.getDirector(movie);
+//        model.addAttribute("director",directorDTO);
+//        ActorDTO actorDTO=userMovieService.getActor(movie);
+//        model.addAttribute("actor",actorDTO);
         return "user/movies/trailer";
     }
     @GetMapping("movies/detail-view/still-cut/{mcode}")
     public String stillcut(@PathVariable("mcode")Long mcode, Model model){
         Movie movie=movieRepository.findByMcode(mcode);
         model.addAttribute("movie",movie);
-        TrailerDTO trailerDTO=userMovieService.getTrailer(movie);
-        model.addAttribute("trailer",trailerDTO);
-        DirectorDTO directorDTO=userMovieService.getDirector(movie);
-        model.addAttribute("director",directorDTO);
-        ActorDTO actorDTO=userMovieService.getActor(movie);
-        model.addAttribute("actor",actorDTO);
+//        TrailerDTO trailerDTO=userMovieService.getTrailer(movie);
+//        model.addAttribute("trailer",trailerDTO);
+//        DirectorDTO directorDTO=userMovieService.getDirector(movie);
+//        model.addAttribute("director",directorDTO);
+//        ActorDTO actorDTO=userMovieService.getActor(movie);
+//        model.addAttribute("actor",actorDTO);
         return "user/movies/still-cut";
     }
 
@@ -86,12 +97,12 @@ public class UserMovieController {
     public String detailshowtime(@PathVariable("mcode")Long mcode, Model model){
         Movie movie=movieRepository.findByMcode(mcode);
         model.addAttribute("movie",movie);
-        TrailerDTO trailerDTO=userMovieService.getTrailer(movie);
-        model.addAttribute("trailer",trailerDTO);
-        DirectorDTO directorDTO=userMovieService.getDirector(movie);
-        model.addAttribute("director",directorDTO);
-        ActorDTO actorDTO=userMovieService.getActor(movie);
-        model.addAttribute("actor",actorDTO);
+//        TrailerDTO trailerDTO=userMovieService.getTrailer(movie);
+//        model.addAttribute("trailer",trailerDTO);
+//        DirectorDTO directorDTO=userMovieService.getDirector(movie);
+//        model.addAttribute("director",directorDTO);
+//        ActorDTO actorDTO=userMovieService.getActor(movie);
+//        model.addAttribute("actor",actorDTO);
         return "user/movies/detail-show-times";
     }
 

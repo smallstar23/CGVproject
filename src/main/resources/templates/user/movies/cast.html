@@ -133,9 +133,10 @@
                         <dl>
                             <dt>감독 :&nbsp;</dt>
                             <dd>
+                                <span th:each="movie :${movie.getDirector()}">
 
-
-                                <a href="#" th:utext="${director.dnameKo}"></a>
+                                <a href="#" th:utext="${movie.dnameKo}"></a>
+                                    </span>
 
                             </dd>
 
@@ -145,10 +146,10 @@
 
                             <dt>&nbsp;/ 배우 :&nbsp;</dt>
                             <dd class="on">
+                                <span th:each="movie : ${movie.getActors()}">
+                                <a href="#" th:utext="${movie.anameKo}"></a>
 
-                                <a href="#" th:utext="${actor.anameKo}"></a>
-
-
+                                </span>
                             </dd>
 
                             <dt>장르 :&nbsp;</dt>
@@ -218,9 +219,9 @@
                         <li><a th:href="@{'/movies/detail-view/'+${movie.mcode}}">주요정보 </a></li>
                         <li class="on"><a title="현재 선택됨" th:href="@{'/movies/detail-view/cast/'+${movie.mcode}}">감독/출연</a></li>
                         <li><a th:href="@{'/movies/detail-view/trailer/'+${movie.mcode}}">트레일러</a></li>
-                        <li><a th:href="@{'/movies/detail-view/still-cut/'+${movie.mcode}}">스틸컷</a></li>
-                        <li><a href="#">평점/리뷰</a></li> <!-- 이부분 아직 cgv에서도 구현 전인것같음. -->
-                        <li class="last"><a th:href="@{'/movies/detail-view/detail-show-times/'+${movie.mcode}}">상영시간표</a></li>
+                        <li ><a th:href="@{'/movies/detail-view/still-cut/'+${movie.mcode}}">스틸컷</a></li>
+                        <li class="last"><a href="#">평점/리뷰</a></li> <!-- 이부분 아직 cgv에서도 구현 전인것같음. -->
+<!--                        <li class="last"><a th:href="@{'/movies/detail-view/detail-show-times/'+${movie.mcode}}">상영시간표</a></li>-->
                     </ul>
 
                     <!-- 감독정보 넣는곳 -->
@@ -230,7 +231,7 @@
                         </div>
                         <ul>
 
-                            <li class="clear">
+                            <li class="clear" th:each="director : ${movie.getDirector()}">
                                 <div class="box-image">
                                     <a href="#">
                                     <span class="thumb-image">
@@ -242,35 +243,35 @@
                                     <dl>
                                         <dd>
                                             <a href="#" >
-                                        <dd th:utext="${director.dnameKo}"></dd>
+                                            <dd th:utext="${director.dnameKo}"></dd>
                                                 <span th:utext="${director.dnameEn}"></span>
                                             </a>
                                         </dd>
                                     </dl>
                                 </div>
                                 <!-- 감독 출연 작품 -->
-                                <div class="movielist">
-                                    <p>연관작품</p>
-                                    <ul>
+<!--                                <div class="movielist">-->
+<!--                                    <p>연관작품</p>-->
+<!--                                    <ul>-->
 
-                                        <li>
-                                            <div class="box-image">
-                                                <a href="detail-view.jsp">
-                                                <span class="thumb-image">
-                                                    <img src="https://img.cgv.co.kr/Movie/Thumbnail/Poster/000079/79952/79952_73.jpg" alt="블레이드 러너 2049" onerror="errorImage(this)">
-                                                </span>
-                                                </a>
-                                            </div>
-                                            <div class="box-contents">
-                                                <a href="detail-view.jsp">
-                                                    <strong>블레이드 러너 2049<!--<span>(9999)</span>--></strong>
-                                                </a>
-                                            </div>
-                                        </li>
+<!--                                        <li>-->
+<!--                                            <div class="box-image">-->
+<!--                                                <a href="detail-view.jsp">-->
+<!--                                                <span class="thumb-image">-->
+<!--                                                    <img src="" alt="블레이드 러너 2049" onerror="errorImage(this)">-->
+<!--                                                </span>-->
+<!--                                                </a>-->
+<!--                                            </div>-->
+<!--                                            <div class="box-contents">-->
+<!--                                                <a href="detail-view.jsp">-->
+
+<!--                                                </a>-->
+<!--                                            </div>-->
+<!--                                        </li>-->
 
 
-                                    </ul>
-                                </div>
+<!--                                    </ul>-->
+<!--                                </div>-->
                             </li>
 
                         </ul>
@@ -283,11 +284,11 @@
                         </div>
                         <ul>
 
-                            <li>
+                            <li th:each="actor : ${movie.getActors()}">
                                 <div class="box-image">
                                     <a href="#">
                                     <span class="thumb-image">
-                                        <img src="http://image.cine21.com/resize/cine21/still/2018/1114/11_52_42__5beb8dfa348e4[X120,150].jpg" alt="톰 홀랜드" onerror="errorImage(this)" style="width:100px; height:136px;">
+                                        <img th:src="${actor.aphoto}" th:alt="${actor.anameKo}" onerror="errorImage(this)" style="width:100px; height:136px;">
                                     </span>
                                     </a>
                                 </div>
@@ -296,27 +297,27 @@
                                         <!-- 주연 dt 에 class="mainactor" 조연 class="subactor" 를 넣는다 -->
                                         <dt class="mainactor">주연</dt>
                                         <dd>
-                                            <a href="#">톰 홀랜드<span>Tom Holland</span></a>
+                                            <a href="#">
+                                                <dd th:utext="${actor.anameKo}"></dd>
+                                                <span th:utext="${actor.anameEn}"></span>
+                                            </a>
                                         </dd>
                                     </dl>
                                 </div>
                                 <!-- 배우별 출연 영화 정보넣는 곳 -->
-                                <div class="movielist">
-                                    <p class="txt-title">연관작품</p>
-                                    <ul>
+<!--                                <div class="movielist">-->
+<!--                                    <p class="txt-title">연관작품</p>-->
+<!--                                    <ul>-->
 
-                                        <li>
-                                            <div class="box-contents">
-                                                <a title="(스파이더맨: 홈커밍데이)" href="#">
-                                                    <strong>스파이더맨: 홈커밍데이<span>(2017)</span></strong>
-                                                </a>
-                                            </div>
-                                        </li>
-
-
-
-                                    </ul>
-                                </div>
+<!--                                        <li>-->
+<!--                                            <div class="box-contents">-->
+<!--                                                <a title="(스파이더맨: 홈커밍데이)" href="#">-->
+<!--                                                    <strong>스파이더맨: 홈커밍데이<span>(2017)</span></strong>-->
+<!--                                                </a>-->
+<!--                                            </div>-->
+<!--                                        </li>-->
+<!--                                    </ul>-->
+<!--                                </div>-->
                             </li>
 
 
