@@ -53,7 +53,17 @@ public class UserTicketController {
     }
 
     @PostMapping("/kakaoPay")
-    public String kakaoPay(@RequestParam String movieName) {
+    public String kakaoPay(@RequestParam String movieName,
+                           @RequestParam Long memIdx,
+                           @RequestParam String selSeat,
+                           @RequestParam Long schecode
+                           ) {
+        System.out.println(movieName);
+        System.out.println(memIdx);
+        System.out.println(selSeat);
+        System.out.println(schecode);
+        // 세션값 만들어서 여기서 세션으로 추가해도되는데 다른 방식으로 해도됨
+
         log.info("kakaoPay post............................................");
         return "redirect:" + kakaopay.kakaoPayReady(movieName);
 

@@ -1,8 +1,9 @@
 // 스케쥴 불러오기
 let mcode;
 let tcode;
-let schecode;
-let hcode;
+let schecode=null;
+let hcode=null;
+let memberIdx=document.getElementById('member_idx').value;
 
 // step 1. 예매가이드 팝업
 let guide = document.getElementsByClassName('button-guide');
@@ -49,7 +50,7 @@ for (let i = 0; i <= movie_click.length - 1; i++) {
         movieTitle[0].style.display = 'block';
         placeholder[1].style.display = 'none';
         let movieSel = document.getElementById("movie_sel");
-        movieSel.innerHTML = `<input style="background-color: #1d1d1c; color:#cccccc; font-weight: bold" name="movieName" id="movieName" value="${movieName}"></input>`;
+        movieSel.innerHTML = `<input style="background-color: #1d1d1c; color:#cccccc; font-weight: bold" name="movieName" id="movieName" value="${movieName}">`;
         movieSel.setAttribute("href", "/movies/detail-view/" + mcodeArray[i]);
 
         // 포스터 넣기
@@ -57,6 +58,13 @@ for (let i = 0; i <= movie_click.length - 1; i++) {
         let moviePoster = document.getElementById("movie_poster");
         moviePoster.style.display = 'block';
         moviePoster.src = url[i];
+
+        // step3 예매정보 전달하기(영화정보만)
+        document.querySelector('.movie_name > td' ).innerText=movieName;
+        document.querySelector('.poster > img').setAttribute("src",  url[i])
+
+
+
         toFirstDateStatus()
         dimmedOrNot()
     });
@@ -165,8 +173,9 @@ function toFirstDateStatus() {
     document.getElementById('scheduleList').innerHTML = '';
     document.querySelector('.sendDate').innerText = '';
     document.querySelector('.sendHallInfo').innerText = '';
-    hcode="";
-    schecode="";
+    hcode=null;
+    schecode=null;
+    $('#tnb_step_btn_right').removeClass('on');
 
 
     checkDate.forEach(d => {
@@ -176,7 +185,9 @@ function toFirstDateStatus() {
 }
 
 function transferTheaterName(theater) {
-    const theaterTransferred = document.getElementsByClassName('sendTheaterName')[0];
+    const theaterTransferred = document.getElementsByClassName('sendTheaterName')[0]
+    // 예매정보에 극장정보 넘기기
+    document.querySelector('.theater > td').innerText=theater.getAttribute('tname');
 
     theaterTransferred.setAttribute('href', '/theaters/' + theater.value);
     theaterTransferred.setAttribute('title', theater.getAttribute('tname'));
@@ -363,7 +374,20 @@ function schecodeSelect(DOM) {
     document.querySelector('.theater-info > .screen').innerText=spanTitle.querySelector('.floor').innerText;
     document.querySelector('.theater-info > .seatNum> .totalNum').innerText=parentList.getAttribute('size');
     document.querySelector('.playYMD-info > .date').innerText=schedule.substring(0,10);
-    document.querySelector('.playYMD-info > .time').innerText=schedule.substring(11,16)+" ~ "+parentList.getAttribute('endtime')
+    document.querySelector('.playYMD-info > .time').innerText=schedule.substring(11,16)+" ~ "+parentList.getAttribute('endtime');
+    $('#tnb_step_btn_right').addClass('on');
+
+    // step3 결제 직전 예매정보 확인하는 부분입니다.
+   document.querySelector('.screen > td').innerText=spanTitle.querySelector('.floor').innerText;
+   document.querySelector('.movie_date > td').innerText=schedule.substring(0,10) +"  "+schedule.substring(11,16)+" ~ "+parentList.getAttribute('endtime');
+
+
+   // step3 kakaopay 클릭시에 ticket table에 저장할 코드를 같이 보내줍니다.
+    document.querySelector('.reservation_info').innerHTML+=
+        `
+        <input type="hidden" name="selSeat" value="A1">
+        <input type="hidden" name="schecode" value="${schecode}">
+        `
 
 }
 function addZero(number){
@@ -391,28 +415,54 @@ let step = document.getElementsByClassName('step');
 let tnb = document.getElementById("tnb");
 let layerPopup = document.getElementsByClassName("ft_layer_popup");
 let btn_ok = document.getElementsByClassName("btn_ok");
+let payment = document.getElementsByClassName("popup_reservation_check");
 
-btnRight.addEventListener('click', function () {
+// function으로 재구현
+function fnright() {
+    if(pagenum==2){
+        // 결제창 띄우기
+        payment[0].style.display = "block";
+
+    }
+    if(pagenum==1){
+        console.log("btn right()");
+        step[pagenum].style.display = 'none';
+        step[pagenum+1].style.display = 'block';
+        tnb.className = 'tnb step' + (pagenum + 2);
+        pagenum++;
+    }
     console.log(pagenum);
-    if (pagenum == 2) {
-        tnb.style.display = 'none';
-    }
-    console.log("btn right()");
-    step[pagenum].style.display = 'none';
-    step[pagenum + 1].style.display = 'block';
-    tnb.className = 'tnb step' + (pagenum + 2);
-    pagenum++;
-    if (pagenum == 1) {
-        placeholder[3].style.display = 'none';
-        layerPopup[3].style.display = 'block';
-        layerPopup[4].style.display = 'block';
-        blackscreen[0].style.display = "block";
-    }
-    if (pagenum == 3) {
-        let payment = document.getElementsByClassName("popup_reservation_check")[0].style.display = "block";
+    if (pagenum == 0) {
+        // 영화, 스케쥴을 선택하기 전이라면
+        if (memberIdx == "") {
+            alert("로그인 후 이용하세요.")
+            location.href = '/user/login'
+        } else if (schecode == null && hcode == null) {
+            alert("영화와 스케쥴을 선택해주세요.");
+        } else {
+            console.log("btn right()");
+            step[pagenum].style.display = 'none';
+            step[pagenum + 1].style.display = 'block';
+            tnb.className = 'tnb step' + (pagenum + 2);
+            placeholder[3].style.display = 'none';
+            layerPopup[3].style.display = 'block';
+            layerPopup[4].style.display = 'block';
+            blackscreen[0].style.display = "block";
+            $('#tnb_step_btn_right').removeClass('on')
+            pagenum++;
+        }
     }
 
-});
+
+
+}
+
+// 결제창 function
+function fnclose(){
+    payment[0].style.display = "none";
+
+}
+
 
 // 레이어팝업 닫기
 btn_ok[3].addEventListener('click', function () {
@@ -450,51 +500,51 @@ $(".dateScroll").scroll(function () {
 
 // step2 인원 선택시 활성화 (어른)
 /* Step 2 에 쓰이는 JS */
-
-function adult_clickInit(){
-    const adult_click = document.getElementsByClassName('adult_click');
-    
-}
-for (let i = 0; i <= adult_click.length - 1; i++) {
-    adult_click[i].addEventListener("click", function () {
-        for (let j = 0; j <= adult_click.length - 1; j++) {
-            adult_click[j].className = "adult_click";
-            let dimmed = document.getElementById("dimmed");
-            dimmed.classList.remove("dimmed");
-            this.classList.add("selected");
-            if (i == 0) {
-                dimmed.classList.add("dimmed");
-                if (youthNum != 0) {
-                    dimmed.className = 'section section-seat';
-                }
-            }
-
-        }
-    })
-
-}
-
-// 청소년
-
-let youthNum = 0;
-let youth_click = document.getElementsByClassName("youth_click");
-for (let i = 0; i <= youth_click.length - 1; i++) {
-    youth_click[i].addEventListener("click", function () {
-        for (let j = 0; j <= youth_click.length - 1; j++) {
-            youth_click[j].className = "youth_click";
-            let dimmed = document.getElementById("dimmed");
-            dimmed.classList.remove("dimmed");
-            this.classList.add("selected");
-            if (i == 0) {
-                dimmed.classList.add("dimmed");
-                if (adultNum != 0) {
-                    dimmed.className = 'section section-seat';
-                }
-            }
-        }
-    })
-
-}
+//
+// function adult_clickInit(){
+//     const adult_click = document.getElementsByClassName('adult_click');
+//
+// }
+// for (let i = 0; i <= adult_click.length - 1; i++) {
+//     adult_click[i].addEventListener("click", function () {
+//         for (let j = 0; j <= adult_click.length - 1; j++) {
+//             adult_click[j].className = "adult_click";
+//             let dimmed = document.getElementById("dimmed");
+//             dimmed.classList.remove("dimmed");
+//             this.classList.add("selected");
+//             if (i == 0) {
+//                 dimmed.classList.add("dimmed");
+//                 if (youthNum != 0) {
+//                     dimmed.className = 'section section-seat';
+//                 }
+//             }
+//
+//         }
+//     })
+//
+// }
+//
+// // 청소년
+//
+// let youthNum = 0;
+// let youth_click = document.getElementsByClassName("youth_click");
+// for (let i = 0; i <= youth_click.length - 1; i++) {
+//     youth_click[i].addEventListener("click", function () {
+//         for (let j = 0; j <= youth_click.length - 1; j++) {
+//             youth_click[j].className = "youth_click";
+//             let dimmed = document.getElementById("dimmed");
+//             dimmed.classList.remove("dimmed");
+//             this.classList.add("selected");
+//             if (i == 0) {
+//                 dimmed.classList.add("dimmed");
+//                 if (adultNum != 0) {
+//                     dimmed.className = 'section section-seat';
+//                 }
+//             }
+//         }
+//     })
+//
+// }
 
 
 //step 3 간편결제 -> 카카오페이 설정시 활성화
