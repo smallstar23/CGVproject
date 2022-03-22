@@ -4,9 +4,11 @@ import com.koreait.cgvproject.dto.ScheduleDTO;
 import com.koreait.cgvproject.entity.Hall;
 import com.koreait.cgvproject.entity.Movie;
 import com.koreait.cgvproject.entity.Schedule;
+import com.koreait.cgvproject.entity.Ticket;
 import com.koreait.cgvproject.repository.HallRepository;
 import com.koreait.cgvproject.repository.MovieRepository;
 import com.koreait.cgvproject.repository.ScheduleRepository;
+import com.koreait.cgvproject.repository.TicketRepository;
 import lombok.AllArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -22,6 +24,7 @@ public class AdminScheduleService {
     private ScheduleRepository scheduleRepository;
     private MovieRepository movieRepository;
     private HallRepository hallRepository;
+    private TicketRepository ticketRepository;
 
     // 스케쥴 전체 리스트 찾기
     public List<ScheduleDTO> getScheduleList(){
@@ -83,7 +86,12 @@ public class AdminScheduleService {
     // 삭제
     public void deleteSchedule(Long schecode){
         Optional<Schedule> schedule=scheduleRepository.findById(schecode);
+        // 해당 스케쥴에 있는 모든 ticket정보를 먼저 삭제하고 스케쥴 삭제함
         schedule.ifPresent(schedule1 -> {
+            List<Ticket> ticketList =ticketRepository.findAllBySchedule(schedule1);
+                    for(Ticket ticket:ticketList){
+                        ticketRepository.deleteById(ticket.getTicode());
+                    }
             scheduleRepository.delete(schedule1);
                     System.out.println("삭제되었습니다.");
         }

@@ -2,6 +2,7 @@ package com.koreait.cgvproject.controller.admin.page;
 
 
 import com.koreait.cgvproject.dto.MemberDTO;
+import com.koreait.cgvproject.dto.TicketDTO;
 import com.koreait.cgvproject.entity.GiftPayment;
 import com.koreait.cgvproject.entity.Member;
 import com.koreait.cgvproject.repository.GiftPaymentRepository;
@@ -9,6 +10,7 @@ import com.koreait.cgvproject.repository.MemberRepository;
 
 import com.koreait.cgvproject.service.admin.member.MemberService;
 
+import com.koreait.cgvproject.service.admin.ticket.AdminTicketService;
 import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -32,6 +34,9 @@ public class AdminMemberController {
     private GiftPaymentRepository giftPaymentRepository;
 
     private MemberService memberService;
+
+    @Autowired
+    private AdminTicketService adminTicketService;
 
 
     @GetMapping("member-lookup")//member-lookup 페이지 회원정보 조회
@@ -60,13 +65,24 @@ public class AdminMemberController {
     }
 
     @GetMapping("member-ticket")//member-ticket 페이지 예매내역 조회
-    public String member_ticket(){
+    public String member_ticket(Model model){
+        List<TicketDTO> ticketDTOList=adminTicketService.getAllTickets();
+        model.addAttribute("ticketList",ticketDTOList);
         return "/admin/member/member-ticket";
     }
 
-    @GetMapping("member-ticketing-view")//member-ticket-view 페이지
-    public String member_ticket_view(){
+    @GetMapping("member-ticketing-view/{ticode}")//member-ticket-view 페이지
+    public String member_ticket_view(@PathVariable Long ticode, Model model){
+        TicketDTO ticketDTO=adminTicketService.getTicket(ticode);
+        model.addAttribute("ticket",ticketDTO);
         return "/admin/member/member_ticketing_view";
+    }
+
+    //티켓 예매 취소
+    @GetMapping("/api/ticketDelete/{ticode}")
+    public void member_ticket_delete(@PathVariable Long ticode){
+        adminTicketService.deleteTicket(ticode);
+
     }
 
 

@@ -23,7 +23,7 @@ public class AdminScheduleController {
     private UserMovieService userMovieService;
 
     //movie-schedule 페이지
-    @GetMapping("movie/schedule")
+    @GetMapping("movie-schedule")
     public String movie_schedule(Model model){
         List<ScheduleDTO> scheduleDTOlist=adminScheduleService.getScheduleList();
         model.addAttribute("scheduleList",scheduleDTOlist);
@@ -31,7 +31,7 @@ public class AdminScheduleController {
     }
 
     //movie-schedule 상세페이지
-    @GetMapping("movie/schedule/{schecode}")
+    @GetMapping("movie-schedule/{schecode}")
     public String movie_schedule_detail(@PathVariable("schecode") Long schecode, Model model){
         ScheduleDTO scheduleDTO=adminScheduleService.findSchedule(schecode);
         model.addAttribute("schedule",scheduleDTO);
@@ -66,7 +66,6 @@ public class AdminScheduleController {
     @GetMapping("/manage_movieSchedule_delete/{schecode}")
     public void schedule_delete(@PathVariable Long schecode){
         adminScheduleService.deleteSchedule(schecode);
-//        return "/admin/schedule/manage_movieSchedule";
     }
 
 
