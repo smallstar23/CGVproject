@@ -1,6 +1,7 @@
 package com.koreait.cgvproject.controller.user.rest;
 
 import com.koreait.cgvproject.dto.ScheduleDTO;
+import com.koreait.cgvproject.dto.TicketDTO;
 import com.koreait.cgvproject.service.user.schedule.UserScheduleService;
 import lombok.AllArgsConstructor;
 import org.apache.catalina.util.ToStringUtil;
@@ -34,4 +35,10 @@ public class UserTicketRestController {
         return userScheduleService.getSeatCount(hcode);
     }
 
+    @PostMapping("/api/receiveInfo")
+    public void receiveInfo(@RequestBody TicketDTO ticketDTO){
+        System.out.println(ticketDTO);
+
+
+    }
 }

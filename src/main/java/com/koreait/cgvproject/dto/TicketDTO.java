@@ -5,6 +5,8 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.time.LocalDateTime;
+
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
@@ -15,7 +17,14 @@ public class TicketDTO {
     private ScheduleDTO scheduleDTO;
     private Long schecode;
     private SeatDTO seatDTO;
+    private String movieName;
     private Long stcode;
     private MemberDTO memberDTO;
     private Long memIdx;
+    private String price;
+    private LocalDateTime paydate;
+    private LocalDateTime candate;
+    private String usepoint;
+    private String totprice;
+
 }

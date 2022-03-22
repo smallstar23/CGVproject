@@ -2144,7 +2144,7 @@
                 </div>
                 <!-- btn-right -->
                 <div class="tnb_step_btn_right_before" id="tnb_step_btn_right_before"></div>
-                <a class="btn-right" id="tnb_step_btn_right" href="#" title="좌석선택">다음단계로 이동 - 레이어로 서비스 되기 때문에 가상커서를 해지(Ctrl+Shift+F12)한 후 사용합니다.</a>
+                <a class="btn-right" id="tnb_step_btn_right" onclick="fnright()" href="#" title="좌석선택">다음단계로 이동 - 레이어로 서비스 되기 때문에 가상커서를 해지(Ctrl+Shift+F12)한 후 사용합니다.</a>
             </div>
         </div>
 
@@ -2176,38 +2176,40 @@
         </div><!-- //hd -->
         <div class="bd">
             <div class="article reservation_info">
-
+                <!--여기에 tickt table을 위한 정보를 같이 보내줍니다. -->
+                <input type="hidden" name='memIdx' id='member_idx' th:value="${session.idx}">
                 <h5>예매정보<span class="desc">결제하시기 전 예매내역을 다시 한번 확인해 주세요.</span></h5>
 
                 <div class="content">
-                    <div class="poster"><img src="http://img.cgv.co.kr/Movie/Thumbnail/Poster/000085/85632/85632_185.JPG" alt="" style="visibility: visible;"></div>
+                    <div class="poster">
+                        <img src="" alt="" style="visibility: visible;"></div>
                     <table>
                         <caption>예매정보</caption>
                         <thead></thead>
                         <tbody>
                         <tr class="movie_name">
                             <th scope="row">영화명</th>
-                            <td>더 배트맨(SCREENX 2D)</td>
+                            <td>?</td>
                         </tr>
                         <tr class="theater">
                             <th scope="row">극장</th>
-                            <td>CGV 강남</td>
+                            <td>?</td>
                         </tr>
                         <tr class="screen">
                             <th scope="row">상영관</th>
-                            <td>4관[SCREENX] 8층</td>
+                            <td>?</td>
                         </tr>
                         <tr class="movie_date">
                             <th scope="row">일시</th>
-                            <td>2022년 3월 6일(일) 10:00~13:06</td>
+                            <td>?</td>
                         </tr>
                         <tr class="people">
                             <th scope="row">인원</th>
-                            <td>일반 1명</td>
+                            <td>1</td>
                         </tr>
                         <tr class="seat">
                             <th scope="row">좌석</th>
-                            <td>D8</td>
+                            <td>A3</td>
                         </tr>
                         </tbody>
                     </table>
@@ -2252,7 +2254,7 @@
         <div class="ft">
 
                 <button><a class="reservation" style="margin-top: -40px"><span class="sreader">예매 결제하기</span></a></button>
-                <a title="예매 취소" href="#" class="cancel"><span class="sreader">예매 취소</span></a>
+                <a title="예매 취소" onclick="fnclose()" class="cancel"><span class="sreader">예매 취소</span></a>
             </form>
 
         </div><!-- //ft -->
@@ -2263,7 +2265,7 @@
 
     <!-- /Contents Area -->
 </div>
-<input type="hidden" id='member_idx' th:value="${session.idx}">
+
 <!-- E Contaniner -->
 <div th:replace="user/fragment/footer:: footer-user"></div>
 

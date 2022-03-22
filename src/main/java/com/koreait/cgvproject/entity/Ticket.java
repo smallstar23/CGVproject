@@ -6,6 +6,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
+import java.time.LocalDateTime;
 
 @Data
 @Entity
@@ -35,5 +36,15 @@ public class Ticket {
     @ManyToOne
     @JoinColumn(name="Member")
     private Member memIdx;
+
+    private String price;
+
+    private LocalDateTime paydate;
+
+    private LocalDateTime candate;
+
+    private String usepoint;
+
+    private String totprice;
 
 }
