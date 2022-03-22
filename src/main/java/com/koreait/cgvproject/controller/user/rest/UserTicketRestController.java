@@ -40,9 +40,10 @@ public class UserTicketRestController {
 
 
     @PostMapping("/api/ticket/getPrice")
-    public PriceDTO getPrice(@RequestParam Long tcode, @RequestParam String week, @RequestParam String startTime){
+    public PriceDTO getPrice(@RequestParam Long tcode, @RequestParam String week, @RequestParam String startTime) {
         System.out.println("포스트로 들어가니"); // 작업중
         return userTicketService.getPrice(tcode, week, startTime);
+    }
 
     @PostMapping("/api/receiveInfo")
     public void receiveInfo(@RequestBody TicketDTO ticketDTO){
