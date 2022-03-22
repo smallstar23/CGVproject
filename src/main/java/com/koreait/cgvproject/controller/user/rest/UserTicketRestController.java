@@ -2,6 +2,7 @@ package com.koreait.cgvproject.controller.user.rest;
 
 import com.koreait.cgvproject.dto.PriceDTO;
 import com.koreait.cgvproject.dto.ScheduleDTO;
+import com.koreait.cgvproject.dto.TicketDTO;
 import com.koreait.cgvproject.service.user.schedule.UserScheduleService;
 import com.koreait.cgvproject.service.user.ticket.UserTicketService;
 import lombok.AllArgsConstructor;
@@ -37,9 +38,14 @@ public class UserTicketRestController {
         return userScheduleService.getSeatCount(hcode);
     }
 
+
     @PostMapping("/api/ticket/getPrice")
     public PriceDTO getPrice(@RequestParam Long tcode, @RequestParam String week, @RequestParam String startTime){
         System.out.println("포스트로 들어가니"); // 작업중
         return userTicketService.getPrice(tcode, week, startTime);
+
+    @PostMapping("/api/receiveInfo")
+    public void receiveInfo(@RequestBody TicketDTO ticketDTO){
+        System.out.println(ticketDTO);
     }
 }

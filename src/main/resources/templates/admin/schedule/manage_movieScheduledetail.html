@@ -65,7 +65,7 @@
     <main>
         <div class="container-fluid px-4" style="margin:0 auto;">
             <h2 style="text-align:center;">영화 상영 스케줄</h2>
-            <form action="/manage_movieSchedule_create" method="post" style="width:40%; border:solid 2px red; border-radius:10px; padding:5%; margin:0 auto;">
+            <div style="width:40%; border:solid 2px red; border-radius:10px; padding:5%; margin:0 auto;">
                 <div id="select col">
                     <input th:value="${schedule.getSchecode()}" name="schecode" style="display:none">
                     <select class="form-control" id="area" disabled>
@@ -83,7 +83,6 @@
                         <option th:text="${schedule.getMovieDTO().getTitleKo()}" th:value="${schedule.getMovieDTO().getMcode()}" selected></option>
                     </select>
                     <hr/>
-                    <label>(날짜와 시간만 수정이 가능하며, 영화와 상영관을 바꾸려면 신규 등록해주세요. )</label>
                     <label for="exampleInputEmail1">상영일</label>
                     <div class="form-row">
                         <div class="col">
@@ -96,26 +95,23 @@
                         <!--                        <input type="time" class="form-control" placeholder="HH:mm">-->
                         <!--                    </div>-->
                     </div>
-                    <button type="reset" class="btn btn-primary" >리셋</button>
-                    <button type="submit" class="btn btn-primary" style="background-color: #F08080">수정</button>
-                    <button class="btn btn-primary" onclick="fndelete()" style="background-color: #F08080">삭제</button>
-            </form>
+            </div>
+            <button type="button" class="btn btn-primary" onclick="fndelete()" style="background-color: #F08080">삭제</button>
+
         </div>
     </main>
 </div>
 <script  th:inline="javascript">
     /*<![CDATA[*/
-    let schecode = "[[${schedule.getSchecode()}]]";
+    let schecode = [[${schedule.getSchecode()}]];
     console.log(schecode);
     /*]]>*/
 
-    function fndelete(){
-        if(confirm("선택한 스케쥴을 삭제하시겠습니까?")){
-            fetch('/manage_movieSchedule_delete/'+schecode)
-                .then(response => alert("삭제하였습니다."))
-
-        }else{
-            history.back();
+    function fndelete() {
+        if (confirm("선택한 스케쥴을 삭제하시겠습니까?")) {
+            fetch('/manage_movieSchedule_delete/'+schecode);
+            alert("삭제되었습니다.")
+            location.href='/movie-schedule'
         }
     }
 </script>

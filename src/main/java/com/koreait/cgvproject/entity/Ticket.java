@@ -1,11 +1,14 @@
 package com.koreait.cgvproject.entity;
 
+import com.koreait.cgvproject.dto.TicketDTO;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.springframework.data.annotation.CreatedDate;
 
 import javax.persistence.*;
+import java.time.LocalDateTime;
 
 @Data
 @Entity
@@ -26,14 +29,42 @@ public class Ticket {
 
     @ManyToOne
     @JoinColumn(name="schecode")
-    private Schedule schecode;
+    private Schedule schedule;
+
 
     @ManyToOne
-    @JoinColumn(name="stcode")
-    private Seat stcode;
+    @JoinColumn(name="memIdx")
+    private Member member;
 
-    @ManyToOne
-    @JoinColumn(name="Member")
-    private Member memIdx;
+    private String seat;
+
+    private String price;
+
+    private Long totperson;
+
+    @CreatedDate
+    private LocalDateTime paydate;
+
+    private LocalDateTime candate;
+
+    private String usepoint;
+
+    private String totprice;
+
+    public TicketDTO toDTO(){
+        return TicketDTO.builder()
+                .ticode(ticode)
+                .totperson(totperson)
+                .seat(seat)
+                .scheduleDTO(schedule.toDTO())
+                .memberDTO(member.toDTO())
+                .price(price)
+                .paydate(paydate)
+                .candate(candate)
+                .usepoint(usepoint)
+                .totprice(totprice)
+                .build();
+
+    }
 
 }

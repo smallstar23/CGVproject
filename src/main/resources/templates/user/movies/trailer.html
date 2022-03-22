@@ -132,8 +132,8 @@
                             <dt>감독 :&nbsp;</dt>
                             <dd>
 
-
-                                <a href="#" th:utext="${director.dnameKo}"></a>
+                                <span th:each="movie :${movie.getDirector()}">
+                                    <a href="#" th:utext="${movie.dnameKo}"></a></span>
 
                             </dd>
 
@@ -143,8 +143,8 @@
 
                             <dt>&nbsp;/ 배우 :&nbsp;</dt>
                             <dd class="on">
-
-                                <a href="#" th:utext="${actor.anameKo}"></a>
+                                <span th:each="movie : ${movie.getActors()}">
+                                    <a href="#" th:utext="${movie.anameKo}"></a></span>
 
 
                             </dd>
@@ -216,14 +216,14 @@
                         <li><a th:href="@{'/movies/detail-view/cast/'+${movie.mcode}}">감독/출연</a></li>
                         <li class="on"><a title="현재 선택됨"  th:href="@{'/movies/detail-view/trailer/'+${movie.mcode}}">트레일러</a></li>
                         <li><a th:href="@{'/movies/detail-view/still-cut/'+${movie.mcode}}">스틸컷</a></li>
-                        <li><a href="#">평점/리뷰</a></li> <!-- 이부분 아직 cgv에서도 구현 전인것같음. -->
-                        <li class="last"><a th:href="@{'/movies/detail-view/detail-show-times/'+${movie.mcode}}">상영시간표</a></li>
+                        <li class="last"><a href="#">평점/리뷰</a></li> <!-- 이부분 아직 cgv에서도 구현 전인것같음. -->
+<!--                        <li class="last"><a th:href="@{'/movies/detail-view/detail-show-times/'+${movie.mcode}}">상영시간표</a></li>-->
                     </ul>
                     <div class="sect-trailer">
                         <div class="heading">
                             <h4>트레일러</h4><span class="count">3건</span>
                         </div>
-                        <ul>
+                        <ul th:each="trailer :${movie.getTrailer()}">
 
                             <li>
                                 <div class="box-image">
@@ -308,7 +308,7 @@
 
 
             <!-- 영상 레이어 팝업 구현 부분입니다. -->
-            <div class="layerpopup" style="display: none;">
+            <div class="layerpopup" style="display: none;" th:each="trailer :${movie.getTrailer()}">
                 <div class="mask" style="position: fixed; left: 0px; top: 0px; width: 100%; height: 100%; z-index: 100; background-color: rgba(0, 0, 0, 0.8);"></div>
                 <div class="layer-wrap" style="margin-top: -355px; margin-left: -510px; position: fixed;" tabindex="0"><div class="popwrap">
                     <div class="sect-layerplayer">

@@ -128,8 +128,8 @@
                             <dt>감독 :&nbsp;</dt>
                             <dd>
 
-
-                                <a href="#" th:utext="${director.dnameKo}"></a>
+                                <span th:each="movie :${movie.getDirector()}">
+                                    <a href="#" th:utext="${movie.dnameKo}"></a></span>
 
                             </dd>
 
@@ -139,9 +139,9 @@
 
                             <dt>&nbsp;/ 배우 :&nbsp;</dt>
                             <dd class="on">
+                                <span th:each="movie : ${movie.getActors()}">
 
-
-                                <a href="#" th:utext="${actor.anameKo}"></a>
+                                    <a href="#" th:utext="${movie.anameKo}"></a></span>
 
 
 
@@ -216,14 +216,14 @@
                         <li><a th:href="@{'/movies/detail-view/'+${movie.mcode}}">주요정보 </a></li>
                         <li><a th:href="@{'/movies/detail-view/cast/'+${movie.mcode}}">감독/출연</a></li>
                         <li><a th:href="@{'/movies/detail-view/trailer/'+${movie.mcode}}">트레일러</a></li>
-                        <li class="on"><a title="현재 선택됨" th:href="@{'/movies/detail-view/still-cut/'+${movie.mcode}}">스틸컷</a></li>
-                        <li><a href="#">평점/리뷰</a></li> <!-- 이부분 아직 cgv에서도 구현 전인것같음. -->
-                        <li class="last"><a th:href="@{'/movies/detail-view/detail-show-times/'+${movie.mcode}}">상영시간표</a></li>
+                        <li class=" on"><a title="현재 선택됨" th:href="@{'/movies/detail-view/still-cut/'+${movie.mcode}}">스틸컷</a></li>
+                        <li class="last"><a href="#">평점/리뷰</a></li> <!-- 이부분 아직 cgv에서도 구현 전인것같음. -->
+<!--                        <li class="last"><a th:href="@{'/movies/detail-view/detail-show-times/'+${movie.mcode}}">상영시간표</a></li>-->
                     </ul>
                 </div>
 
                 <!--/ Contents End -->
-                <div class="sect-stillcut">
+                <div class="sect-stillcut" th:each="trailer: ${movie.getTrailer()}">
                     <div class="heading">
                         <h4>스틸컷</h4><span class="count"><span id="spanTotalCount" >12</span>건</span>
                     </div>
@@ -280,30 +280,30 @@
     <!-- 실컨텐츠 끝 -->
     <!-- 레이어 팝업 부분 -->
 
-    <div id="stillcutPhoto" style="display:none">
+    <div id="stillcutPhoto" style="display:none" th:each="trailer: ${movie.getTrailer()}">
         <div class="mask" style="position: fixed; left: 0px; top: 0px; width: 100%; height: 100%; z-index: 100; background-color: rgba(0, 0, 0, 0.8);"></div>
         <div class="layer-wrap stillcut-viewer" style="margin-top: -253px; margin-left: -490px; position: fixed;">
             <div class="layer-contents">
                 <div class="slider">
                     <div class="item-wrap">
                         <div class="item" style="width: 980px; height: 506px; display: none;">
-                            <img src="/img/1.jpg" alt="undefined"></div>
+                            <img th:src="${trailer.photo1}" alt="undefined"></div>
                     </div>
                     <div class="item-wrap">
                         <div class="item" style="width: 980px; height: 506px; display: none;">
-                            <img src="/img/2.jpg" alt="undefined"></div>
+                            <img th:src="${trailer.photo2}" alt="undefined"></div>
                     </div>
                     <div class="item-wrap">
                         <div class="item" style="width: 980px; height: 506px; display: none;">
-                            <img src="/img/3.jpg" alt="undefined"></div>
+                            <img th:src="${trailer.photo3}" alt="undefined"></div>
                     </div>
                     <div class="item-wrap">
                         <div class="item" style="width: 980px; height: 506px; display: none;">
-                            <img src="/img/4.jpg" alt="undefined"></div>
+                            <img th:src="${trailer.photo4}" alt="undefined"></div>
                     </div>
                     <div class="item-wrap">
                         <div class="item" style="width: 980px; height: 506px; display: none;">
-                            <img src="/img/5.jpg" alt="undefined"></div>
+                            <img th:src="${trailer.photo5}" alt="undefined"></div>
                     </div>
                     <button type="button" class="btn-prev" id="btn-prev">이전 페이지 이동</button>
                     <button type="button" class="btn-next" id="btn-next">다음 페이지 이동</button>

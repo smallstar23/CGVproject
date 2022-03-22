@@ -214,36 +214,42 @@ create sequence seq_notification
     increment by 1
     start with 1;
 
-
 CREATE TABLE Ticket (
-    ticode number(10)  primary key,
-    schecode number(10)   not null, -- 상영스케줄 코드
-    stcode number(10)   not null, -- 좌석 코드
-    mem_idx number(7)   not null,
-    constraint fk_Ticket_schecode foreign key(schecode) references Schedule (schecode),
-    constraint fk_Ticket_stcode foreign key(stcode) references Seat (stcode),
-    constraint fk_Ticket_mem_idx foreign key(mem_idx) references Member (idx)
+                        ticode number(10)  primary key,
+                        schecode number(10)   not null, -- 상영스케줄 코드
+                        totperson number(10) not null, -- 예매한 인원
+                        seat varchar2(20)   not null, -- 예매한 좌석 (A1,A2)
+                        mem_idx number(7)   not null,
+                        price varchar2(10)   not null, -- 가격
+                        payDate date not null, -- 결제일자
+                        canDate date, -- 결제 취소 일자
+                        usePoint varchar2(10)  DEFAULT 0 not null, -- 포인트사용
+                        totPrice varchar2(10)   not null, -- 총합 가격
+
+                        constraint fk_Ticket_schecode foreign key(schecode) references Schedule (schecode),
+                        constraint fk_Ticket_mem_idx foreign key(mem_idx) references Member (idx)
 );
+
+
 create sequence seq_ticket
     increment by 1
     start with 1;
 
-
-CREATE TABLE Ticket_payment (
-    tpcode number(10) primary key,
-    ticode number(10)   not null,
-    payType varchar2(10) not null, -- 카카오페이, 카드결제
-    price varchar2(10)   not null, -- 가격
-    payDate date not null, -- 결제일자
-    canDate date, -- 결제 취소 일자
-    usePoint varchar2(10)  DEFAULT 0 not null, -- 포인트사용
-    totPrice varchar2(10)   not null, -- 총합 가격
-    constraint fk_Ticket_payment_ticode foreign key(ticode) references Ticket (ticode)
-);
-create sequence seq_ticket_payment
-    increment by 1
-    start with 1;
-
+-- 위 ticket과 합침
+--CREATE TABLE Ticket_payment (
+--    tpcode number(10) primary key,
+--    ticode number(10)   not null,
+--    payType varchar2(10) not null, -- 카카오페이, 카드결제
+--    price varchar2(10)   not null, -- 가격
+--    payDate date not null, -- 결제일자
+--    canDate date, -- 결제 취소 일자
+--    usePoint varchar2(10)  DEFAULT 0 not null, -- 포인트사용
+--    totPrice varchar2(10)   not null, -- 총합 가격
+--    constraint fk_Ticket_payment_ticode foreign key(ticode) references Ticket (ticode)
+--);
+--create sequence seq_ticket_payment
+--    increment by 1
+--    start with 1;
 
 CREATE TABLE Gift (
     gcode number(10) primary key,

@@ -23,7 +23,7 @@ public class AdminScheduleController {
     private UserMovieService userMovieService;
 
     //movie-schedule 페이지
-    @GetMapping("movie/schedule")
+    @GetMapping("movie-schedule")
     public String movie_schedule(Model model){
         List<ScheduleDTO> scheduleDTOlist=adminScheduleService.getScheduleList();
         model.addAttribute("scheduleList",scheduleDTOlist);
@@ -31,7 +31,7 @@ public class AdminScheduleController {
     }
 
     //movie-schedule 상세페이지
-    @GetMapping("movie/schedule/{schecode}")
+    @GetMapping("movie-schedule/{schecode}")
     public String movie_schedule_detail(@PathVariable("schecode") Long schecode, Model model){
         ScheduleDTO scheduleDTO=adminScheduleService.findSchedule(schecode);
         model.addAttribute("schedule",scheduleDTO);
@@ -41,6 +41,7 @@ public class AdminScheduleController {
     // 스케쥴 추가
     @PostMapping("/manage_movieSchedule_create")
     public String schedule_create(@ModelAttribute ScheduleDTO scheduleDTO){
+        System.out.println(scheduleDTO);
         adminScheduleService.addSchedule(scheduleDTO);
         return "redirect:movie/schedule";
     }
@@ -63,9 +64,8 @@ public class AdminScheduleController {
 
     // 삭제
     @GetMapping("/manage_movieSchedule_delete/{schecode}")
-    public String schedule_delete(@PathVariable Long schecode){
+    public void schedule_delete(@PathVariable Long schecode){
         adminScheduleService.deleteSchedule(schecode);
-        return "redirect:/movie/schedule";
     }
 
 

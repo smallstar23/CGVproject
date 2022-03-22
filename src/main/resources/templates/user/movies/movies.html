@@ -140,8 +140,26 @@
                         무비차트 - 예매율순
                     </h4>
                     <ol id="changeView">
-
-
+                    </ol>
+                    <button class="btn-more-fontbold">더보기 <i class="link-more">더보기</i></button>
+                </div>
+                <div class="sect-movie-chart">
+                    <ol id="movie_more_container" style="display:none" class="list-more">
+                    <li>
+                        <div class="box-image">
+                            <a onclick=location.href='/movies/detail-view/'>
+                            <span class="thumb-image">
+                                <img src="${movieList[i].poster}" alt="${movieList[i].titleKo}+ 포스터">
+                                <span class="ico-grade
+                                     ${(movieList[i].movieRating =='전체 이용가' ? 'grade-all': '') +
+                                    (movieList[i].movieRating =='15세 이상' ? 'grade-15': '')+
+                                    (movieList[i].movieRating =='12세 이상' ? 'grade-12': '')+
+                                    (movieList[i].movieRating =='청소년 관람불가' ? 'grade-19': '')}
+                                      "></span>
+                            </span>
+                            </a>
+                        </div>
+                    </li>
                     </ol>
                 </div>
             </div>
@@ -186,7 +204,7 @@
                                 <div class="box-image">
                                 <a onclick=location.href='/movies/detail-view/'+${movieList[i].mcode}>
                             <span class="thumb-image">
-                                <img src="${movieList[i].poster}" alt="언차티드 포스터">
+                                <img src="${movieList[i].poster}" alt="${movieList[i].titleKo}+ 포스터">
                                 <span class="ico-grade
                                      ${(movieList[i].movieRating =='전체 이용가' ? 'grade-all': '') +
                                     (movieList[i].movieRating =='15세 이상' ? 'grade-15': '')+
@@ -211,7 +229,6 @@
                             <a class="link-reservation" href="#">예매</a>
                         </span>
                             </div>
-
                         </li>
 `}
     /*]]>*/

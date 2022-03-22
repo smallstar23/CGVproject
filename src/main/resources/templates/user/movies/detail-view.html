@@ -126,7 +126,8 @@
                         <dl>
                             <dt>감독 :&nbsp;</dt>
                             <dd>
-                                <a href="#" th:utext="${director.dnameKo}"></a>
+                                <span th:each="movie :${movie.getDirector()}">
+                                <a href="#" th:utext="${movie.dnameKo}"></a></span>
                             </dd>
 
                             <dd>
@@ -135,11 +136,12 @@
 
                             <dt>&nbsp;/ 배우 :&nbsp;</dt>
                             <dd class="on">
+                                <span th:each="movie : ${movie.getActors()}">
+
+                                <a href="#" th:text="${movie.anameKo}"></a>
 
 
-                                <a href="#" th:utext="${actor.anameKo}"></a>
-
-
+                                </span>
                             </dd>
                             <dt>장르 :&nbsp;</dt>
                             <dt th:utext="${movie.genre}"></dt>
@@ -204,18 +206,18 @@
 
 
 
-            <div class="cols-content" id="menu">
+            <div class="cols-content" id="menu" >
                 <div class="col-detail">
                     <!-- 메뉴가 선택되면 a 에 title="선택" 이라고 넣는다 -->
                     <ul class="tab-menu">
                         <li class="on"><a title="현재 선택됨"  th:href="@{'/movies/detail-view/'+${movie.mcode}}">주요정보 </a></li>
                         <li><a th:href="@{'/movies/detail-view/cast/'+${movie.mcode}}">감독/출연</a></li>
                         <li><a th:href="@{'/movies/detail-view/trailer/'+${movie.mcode}}">트레일러</a></li>
-                        <li><a th:href="@{'/movies/detail-view/still-cut/'+${movie.mcode}}">스틸컷</a></li>
-                        <li><a href="#">평점/리뷰</a></li> <!-- 이부분 아직 cgv에서도 구현 전인것같음. -->
-                        <li class="last"><a th:href="@{'/movies/detail-view/detail-show-times/'+${movie.mcode}}">상영시간표</a></li>
+                        <li ><a th:href="@{'/movies/detail-view/still-cut/'+${movie.mcode}}">스틸컷</a></li>
+                        <li class="last"><a href="#">평점/리뷰</a></li> <!-- 이부분 아직 cgv에서도 구현 전인것같음. -->
+<!--                        <li class="last"><a th:href="@{'/movies/detail-view/detail-show-times/'+${movie.mcode}}">상영시간표</a></li>-->
                     </ul>
-                    <div class="sect-story-movie" >
+                    <div class="sect-story-movie" th:each="trailer :${movie.getTrailer()}">
                         <br><br>
                         <strong th:utext="${trailer.getDescription1()}"></strong><br>
 
@@ -244,7 +246,7 @@
                      -->
                     <!-- .sect-graph -->
                     <!-- .sect-staff -->
-                    <div class="sect-trailer">
+                    <div class="sect-trailer" th:each="trailer: ${movie.getTrailer()}">
                         <div class="heading">
                             <h4 id="trailer">트레일러</h4><span class="count">3건</span><a class="link-more" th:href="@{trailer}">	더보기</a>
                         </div>
@@ -291,7 +293,7 @@
                                     <h1 class="title" id="movie_player_popup_title" th:utext="|${movie.titleKo}|"><span class="ico-trailer hd">HD</span>메인 예고편</h1>
                                     <div class="col-pop-player">
                                         <div class="warp-pop-player" style="position: relative;">
-                                             <video controls preload="true" style="width:800px;height:450px;">
+                                             <video controls preload="true" style="width:800px;height:450px;" th:each="trailer : ${movie.getTrailer()}">
                                                 <source th:src="${trailer.trailer1}" type="video/mp4">
                                             </video>
                                             <div class="sect-replay" style="display:none" id="pop_player_relation_wrap">
@@ -367,9 +369,9 @@
                             <h4>스틸컷</h4><span class="count"><strong id="stillcut_current">1</strong>/	25건</span><a class="link-more" th:href="@{still-cut}">더보기</a>
                         </div>
                         <div class="slider-wrap">
-                            <div class="slider" id="still_motion">
+                            <div class="slider" id="still_motion" th:each="trailer : ${movie.getTrailer()}">
                                 <div class="item-wrap">
-                                    <div class="item" style="width: 800px; height: 450px;">
+                                    <div class="item" style="width: 800px; height: 450px;" >
                                         <img th:src="${trailer.photo1}" alt="극장판 주술회전 0" style="height: 100%;">
                                     </div>
                                 </div>
