@@ -16,9 +16,9 @@ public class TicketDTO {
     private Long ticode;
     private ScheduleDTO scheduleDTO;
     private Long schecode;
-    private SeatDTO seatDTO;
+    private Long totperson;
+    private String seat;
     private String movieName;
-    private Long stcode;
     private MemberDTO memberDTO;
     private Long memIdx;
     private String price;

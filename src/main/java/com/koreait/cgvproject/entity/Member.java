@@ -49,6 +49,10 @@ public class Member {
     @OneToMany(fetch = FetchType.LAZY, mappedBy = "member")
     private List<Point> points;
 
+    @OneToMany(fetch=FetchType.LAZY, mappedBy = "member")
+    private List<Ticket> tickets;
+
+
     public Member(Long o, String userid, String username, String userpw, String s, String s1, String s2, LocalDateTime now, String nickname, int i) {
         this.idx = o;
         this.userid = userid;
