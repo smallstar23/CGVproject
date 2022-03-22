@@ -279,11 +279,10 @@ function seatRead(hcode){
         .then(response => response.json())
         .then(data => {
             data.forEach(seatDTO => {
-                for(let j = 0 ; j < allSeat.length; j++){
-                    if(seatDTO.stNum === allSeat[j].id){
-                        if(seatDTO.disabled) allSeat[j].classList.add('disabled');
+                for(let seat of allSeat){
+                    if(seatDTO.stNum === seat.id){
+                        if(seatDTO.disabled) seat.classList.add('disabled');
                         break;
-
                     }
                 }
             })

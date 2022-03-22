@@ -12,7 +12,7 @@
 div{
     box-sizing: border-box;
 }
-.seat {
+#seats .seat {
     width: 15px;
     height: 15px;
     background-color: #666;
@@ -22,9 +22,11 @@ div{
     cursor: pointer;
     margin: 0.6px;
 }
-.seat:hover{
-    background-color: white;
-    color: #e5e5df;
+#seats .seat:hover{
+    background-image:url(http://img.cgv.co.kr/CGV_RIA/Ticket/image/reservation/step2/seat_icons_20210617.png);
+    background-repeat:no-repeat;
+    background-color:#ad1712;
+    background-position:0px 0px;
 }
 
 .row_div {
