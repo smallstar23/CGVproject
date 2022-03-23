@@ -109,12 +109,12 @@ public class UserTicketController {
         ticket.setSchedule(schedule);
         ticket.setMember(member);
         ticket.setSeat(selSeat);
-        ticket.setPrice("10000원");
+        ticket.setPrice("10000");
         ticket.setTotperson(2L);
         ticket.setPaydate(LocalDateTime.now());
         ticket.setCandate(null);
         ticket.setUsepoint("0P");
-        ticket.setTotprice("10000원");
+        ticket.setTotprice("10000");
 
         Ticket ticket1=ticketRepository.save(ticket);
 
