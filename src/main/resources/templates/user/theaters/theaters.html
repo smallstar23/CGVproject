@@ -186,9 +186,9 @@
                             <h5>공지사항</h5>
                             <ul>
 
-                                <li><a href="#" target="_blank" title="새창 열림">22년 문화가 있는 날 가격 조정 안내</a></li>
+                                <li><a href="/support/support-news" target="_blank" title="새창 열림">22년 문화가 있는 날 가격 조정 안내</a></li>
 
-                                <li><a href="#" target="_blank" title="새창 열림">PAYCO 서비스 개선 작업에 따른 서비스 이용 일시중지 (12/8 04:00~04:30)</a></li>
+                                <li><a href="/support/support-news" target="_blank" title="새창 열림">PAYCO 서비스 개선 작업에 따른 서비스 이용 일시중지 (12/8 04:00~04:30)</a></li>
 
                             </ul>
                             <a class="link-more" href="#" target="_blank" title="새창 열림">공지사항 더보기</a>
@@ -355,8 +355,14 @@
 <script  th:inline="javascript">
     /*<![CDATA[*/
     let tcode = [[${theater.getTcode()}]]
+    let hallsArray=[[${halls}]]
     /*]]>*/
-
+    let totSeat=0;
+    hallsArray.forEach(hall=>{
+        totSeat+=hall.seatSize;
+    })
+    console.log(totSeat)
+    document.querySelector('.theater-info > .txt-info > span').innerText=totSeat+"석";
 </script>
 <script src="/js/theaters.js"></script>
 
