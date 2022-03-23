@@ -424,7 +424,7 @@ function playYMDInfoInit() {
     const timeInit = playYMD.children[2];
     dateInit.innerText = date;
     dayInit.innerText = day;
-    timeInit.innerText = `${startTime} ~ ${endTime}`;
+    timeInit.innerText = `${startTime} ~ ${endTime}`;r
 }
 
 function priceInit(){ // 작업중
