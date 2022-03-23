@@ -19,9 +19,8 @@ public class PointDTO {
     private MemberDTO memberDTO;
     private Long mem_idx;
     private String kind;
-    private TheaterDTO theaterDTO;
+    private TicketDTO theaterDTO;
     private Long tcode;
     private int valpoint;
-    private Long pointchange;
     private LocalDateTime regDate;
 }

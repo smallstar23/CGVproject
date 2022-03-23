@@ -41,7 +41,7 @@ public class Point {
 
     public PointDTO toDTO(){
         return PointDTO.builder()
-                .mem_idx(member.getIdx()).tcode(theater.getTcode()).kind(kind).pointchange(pointchange)
+                .mem_idx(member.getIdx()).tcode(theater.getTcode()).kind(kind)
                 .valpoint(valpoint).regDate(regDate).build();
     }
 }

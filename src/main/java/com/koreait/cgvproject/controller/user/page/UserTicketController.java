@@ -126,7 +126,6 @@ public class UserTicketController {
         ticket.setPaydate(LocalDateTime.now());
         ticket.setAdultnum(adultnum);
         ticket.setYouthnum(youthnum);
-
         ticketRepository.save(ticket);
 
         model.addAttribute("ticketInfo",ticket);
@@ -134,10 +133,6 @@ public class UserTicketController {
         return "user/ticket/kakaoPaySuccess";
 
     }
-
-
-
-//    private String totprice;
 
 
 }
