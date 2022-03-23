@@ -49,4 +49,9 @@ public class UserTicketRestController {
     public void receiveInfo(@RequestBody TicketDTO ticketDTO){
         System.out.println(ticketDTO);
     }
+
+    @PostMapping("/api/ticketInfo1")
+    public  void ticketInfo1(@RequestBody TicketDTO ticketDTO){
+        System.out.println(ticketDTO);
+    }
 }
