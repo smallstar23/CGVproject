@@ -16,11 +16,12 @@ public class TicketDTO {
     private Long ticode;
     private ScheduleDTO scheduleDTO;
     private Long schecode;
-    private Long totperson;
     private String seat;
     private String movieName;
     private MemberDTO memberDTO;
     private Long memIdx;
+    private Long adultnum;
+    private Long youthnum;
     private String price;
     private LocalDateTime paydate;
     private LocalDateTime candate;

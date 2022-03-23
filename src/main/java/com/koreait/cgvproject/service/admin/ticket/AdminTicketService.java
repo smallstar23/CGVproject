@@ -38,7 +38,6 @@ public class AdminTicketService {
         ticket.ifPresent(ticket1 -> {
             ticketDTO.setTicode(ticket1.getTicode());
             ticketDTO.setScheduleDTO(ticket1.getSchedule().toDTO());
-            ticketDTO.setTotperson(ticket1.getTotperson());
             ticketDTO.setSeat(ticket1.getSeat());
             ticketDTO.setMemberDTO(ticket1.getMember().toDTO());
             ticketDTO.setPrice(ticket1.getPrice());
