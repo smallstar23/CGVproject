@@ -57,4 +57,9 @@ public class UserTicketRestController {
     public void deleteSchedule(@PathVariable Long ticode){
         adminTicketService.deleteTicket(ticode);
     }
+
+    @PostMapping("/api/ticketInfo1")
+    public  void ticketInfo1(@RequestBody TicketDTO ticketDTO){
+        System.out.println(ticketDTO);
+    }
 }

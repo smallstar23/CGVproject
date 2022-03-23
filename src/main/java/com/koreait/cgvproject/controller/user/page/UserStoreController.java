@@ -94,7 +94,7 @@ public class UserStoreController {
 
     @GetMapping("/popcorn-store/payment-successcomplete")
     public String kakaoPaySuccess(@RequestParam("pg_token") String pg_token, Model model, HttpServletRequest request) throws Exception{
-        log.info("kakaoPaySuccess pg_token : " + pg_token);
+//        log.info("kakaoPaySuccess pg_token : " + pg_token);
 
         HttpSession session = request.getSession();
         String memberid = (String) session.getAttribute("userid");
@@ -115,37 +115,12 @@ public class UserStoreController {
 
         model.addAttribute("gpcode",giftpayment111);
         model.addAttribute("info", kakaopayGiftService.kakaoPayInfo(pg_token));
+        session.removeAttribute("price");
+        System.out.println(price);
 
         return "user/culture-event/popcorn-store/payment-successcomplete";
 
     }
-
-//    @GetMapping("/popcorn-store/payment-successcomplete/temp")
-//    public String success(Model model, HttpServletRequest request) throws Exception{
-//
-//        HttpSession session = request.getSession();
-//        String memberid = (String) session.getAttribute("userid");
-//        String price = (String) session.getAttribute("price");
-//        String title = (String) session.getAttribute("title");
-//        Long gcode = (Long) session.getAttribute("gcode");
-//
-//        Member member =memberRepository.findByUserid(memberid);
-//        Gift gift =giftRepository.findById(gcode).orElse(null);
-//
-//        GiftPayment giftpayment111 = new GiftPayment();
-//        giftpayment111.setGift(gift);
-//        giftpayment111.setMember(member);
-//        giftpayment111.setStatus("미사용");
-//        giftpayment111.setRegDate(LocalDateTime.now());
-//
-//        GiftPayment giftPayment = giftPaymentRepository.save(giftpayment111);
-//
-//        model.addAttribute("gpcode",giftpayment111);
-//
-//        return "user/culture-event/popcorn-store/payment-successcomplete";
-//
-//    }
-
 
     @GetMapping("/popcorn-store/user-cart")
     public String userCart(){
