@@ -90,7 +90,7 @@
               <td style="width: 10%;" th:text="${ticket.getScheduleDTO().getHallDTO().getTheater().getTname()}"></td>
               <td style="width: 15%;" th:text="${ticket.getScheduleDTO().getScdate()}"></td>
               <td style="width: 10%;" th:text="${ticket.getScheduleDTO().getHallDTO().getHguan()}"></td>
-              <td style="width: 10%;" th:text="${ticket.getTotperson()}" ></td>
+              <td style="width: 10%;" th:text="'성인 '+${ticket.getAdultnum()}+'명, 청소년 '+${ticket.getYouthnum()}" ></td>
               <td style="width: 10%;" th:text="${ticket.getSeat()}" ></td>
               <td style="width: 15%;" th:text="${ticket.getPaydate()}"></td>
               <td style="width: 15%;" th:text="${ticket.getCandate()}"></td>

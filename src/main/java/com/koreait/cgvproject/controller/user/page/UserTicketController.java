@@ -71,20 +71,29 @@ public class UserTicketController {
     @PostMapping("/kakaoPay")
     public String kakaoPay(@RequestParam String movieName,
                            @RequestParam Long memIdx,
-                           @RequestParam String selSeat,
-                           @RequestParam Long schecode
+                           @RequestParam String seat,
+                           @RequestParam Long schecode,
+                           @RequestParam Long adultNum,
+                           @RequestParam Long youthNum,
+                           @RequestParam String price,
+                           @RequestParam String totprice
                            ) {
         System.out.println(movieName);
         System.out.println(memIdx);
-        System.out.println(selSeat);
+        System.out.println(seat);
         System.out.println(schecode);
+        System.out.println(adultNum);
+        System.out.println(youthNum);
+        System.out.println(price);
+        System.out.println(totprice);
         session.setAttribute("movieName",movieName);
         session.setAttribute("memIdx",memIdx);
-        session.setAttribute("selSeat",selSeat);
+        session.setAttribute("selSeat",seat);
         session.setAttribute("schecode",schecode);
-
-
-        // 세션값 만들어서 여기서 세션으로 추가해도되는데 다른 방식으로 해도됨
+        session.setAttribute("adultnum",adultNum);
+        session.setAttribute("youthnum",youthNum);
+        session.setAttribute("price",price);
+        session.setAttribute("totprice",totprice);
 
         log.info("kakaoPay post............................................");
         return "redirect:" + kakaopay.kakaoPayReady(movieName);
@@ -97,10 +106,13 @@ public class UserTicketController {
         log.info("kakaoPaySuccess pg_token : " + pg_token);
 
         HttpSession session = request.getSession();
-        String movieName = (String) session.getAttribute("movieName");
         Long memIdx = (Long) session.getAttribute("memIdx");
         String selSeat = (String) session.getAttribute("selSeat");
         Long schecode = (Long) session.getAttribute("schecode");
+        Long adultnum = (Long) session.getAttribute("adultnum");
+        Long youthnum = (Long) session.getAttribute("youthnum");
+        String price = (String) session.getAttribute("price");
+        String totprice = (String) session.getAttribute("totprice");
 
         Schedule schedule =scheduleRepository.findById(schecode).orElse(null);
         Member member =memberRepository.findByIdx(memIdx);
@@ -109,24 +121,18 @@ public class UserTicketController {
         ticket.setSchedule(schedule);
         ticket.setMember(member);
         ticket.setSeat(selSeat);
-        ticket.setPrice("10000");
-        ticket.setTotperson(2L);
+        ticket.setPrice(price);
+        ticket.setTotprice(totprice);
         ticket.setPaydate(LocalDateTime.now());
-        ticket.setCandate(null);
-        ticket.setUsepoint("0P");
-        ticket.setTotprice("10000");
+        ticket.setAdultnum(adultnum);
+        ticket.setYouthnum(youthnum);
+        ticketRepository.save(ticket);
 
-        Ticket ticket1=ticketRepository.save(ticket);
-
-        model.addAttribute("tiketInfo",ticket);
+        model.addAttribute("ticketInfo",ticket);
         model.addAttribute("info", kakaopay.kakaoPayInfo(pg_token));
         return "user/ticket/kakaoPaySuccess";
 
     }
-
-
-
-//    private String totprice;
 
 
 }

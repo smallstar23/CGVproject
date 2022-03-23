@@ -38,7 +38,9 @@ public class Ticket {
 
     private String price;
 
-    private Long totperson;
+    private Long adultnum;
+
+    private Long youthnum;
 
     @CreatedDate
     private LocalDateTime paydate;
@@ -52,7 +54,8 @@ public class Ticket {
     public TicketDTO toDTO(){
         return TicketDTO.builder()
                 .ticode(ticode)
-                .totperson(totperson)
+                .adultnum(adultnum)
+                .youthnum(youthnum)
                 .seat(seat)
                 .scheduleDTO(schedule.toDTO())
                 .memberDTO(member.toDTO())
