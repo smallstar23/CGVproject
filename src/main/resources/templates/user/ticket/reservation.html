@@ -2154,6 +2154,8 @@
             <div class="article reservation_info">
                 <!--여기에 tickt table을 위한 정보를 같이 보내줍니다. -->
                 <input type="hidden" name='memIdx' id='member_idx' th:value="${session.idx}">
+                      <input type="hidden" name="selSeat" value="2">
+                      <input type="hidden" name="schecode" value=1>
                 <h5>예매정보<span class="desc">결제하시기 전 예매내역을 다시 한번 확인해 주세요.</span></h5>
 
                 <div class="content">
@@ -2229,7 +2231,7 @@
         </div><!-- //bd -->
         <div class="ft">
 
-                <button><a class="reservation" style="margin-top: -40px"><span class="sreader">예매 결제하기</span></a></button>
+                <button onclick="sendForm()"><a class="reservation" style="margin-top: -40px"><span class="sreader">예매 결제하기</span></a></button>
                 <a title="예매 취소" onclick="fnclose()" class="cancel"><span class="sreader">예매 취소</span></a>
             </form>
 

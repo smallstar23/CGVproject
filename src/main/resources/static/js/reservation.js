@@ -372,17 +372,17 @@ function schecodeSelect(DOM) {
    //  document.querySelector('.theater-info > .screen').innerText=spanTitle.querySelector('.floor').innerText;
    //  document.querySelector('.playYMD-info > .date').innerText=schedule.substring(0,10);
    //  document.querySelector('.playYMD-info > .time').innerText=schedule.substring(11,16)+" ~ "+parentList.getAttribute('endtime');
-   //  $('#tnb_step_btn_right').addClass('on');
-   //
-   //  // step3 결제 직전 예매정보 확인하는 부분입니다.
-   // document.querySelector('.screen > td').innerText=spanTitle.querySelector('.floor').innerText;
-   // document.querySelector('.movie_date > td').innerText=schedule.substring(0,10) +"  "+schedule.substring(11,16)+" ~ "+parentList.getAttribute('endtime');
+    $('#tnb_step_btn_right').addClass('on');
+
+    // step3 결제 직전 예매정보 확인하는 부분입니다.
+   document.querySelector('.screen > td').innerText=spanTitle.querySelector('.floor').innerText;
+   document.querySelector('.movie_date > td').innerText=schedule.substring(0,10) +"  "+schedule.substring(11,16)+" ~ "+parentList.getAttribute('endtime');
 
 
    // step3 kakaopay 클릭시에 ticket table에 저장할 코드를 같이 보내줍니다. // step 3 준비를 왜 step 1에서 하나요??  ( 김영신 )
    //  document.querySelector('.reservation_info').innerHTML+=
    //      `
-   //      <input type="hidden" name="selSeat" value="A1">
+   //       <input type="hidden" name="selSeat" value="${seat}">
    //      <input type="hidden" name="schecode" value="${schecode}">
    //      `
 
@@ -955,3 +955,25 @@ function qs(selector, doc = document) {
 function qsAll(selector, doc = document) {
     return doc.querySelectorAll(selector);
 }
+
+// function sendForm() {
+//     // let movieName = $("#movie_name");
+//     // let price = $("#price");
+//     // let memberIdx = document.getElementById("#member_idx");
+//     // console.log("11")
+//     // console.log(price)
+//
+//     console.log(memberIdx);
+//     let price = "10000원"
+//     let data = {ticode: 1, scheduleDTO: null, schecode: 1, seatDTO: null, movieName: 111,
+//         stcode: 1, memberDTO: null, memIdx: 111, price: 111, paydate: null, candate: null, usepoint: 1, price: price};
+//
+//     return fetch('/api/ticketInfo1', {
+//         method: 'POST',
+//         headers: {
+//             'Content-Type': 'application/json'
+//         },
+//         body: JSON.stringify(data)
+//     })
+// }
+
