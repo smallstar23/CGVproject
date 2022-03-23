@@ -367,13 +367,8 @@ function schecodeSelect(DOM) {
     // step1 하단에 내용 전달하는 부분입니다.
     ticket_tnbInit(spanTitle, parentList, DOM);
 
-   //  // step2 상단 내용 찍어주는 부분입니다.
-   //  document.querySelector('.theater-info > .site').innerText=spanTitle.querySelector('.name').innerText
-   //  document.querySelector('.theater-info > .screen').innerText=spanTitle.querySelector('.floor').innerText;
-   //  document.querySelector('.playYMD-info > .date').innerText=schedule.substring(0,10);
-   //  document.querySelector('.playYMD-info > .time').innerText=schedule.substring(11,16)+" ~ "+parentList.getAttribute('endtime');
-   //  $('#tnb_step_btn_right').addClass('on');
-   //
+    $('#tnb_step_btn_right').addClass('on');
+
    //  // step3 결제 직전 예매정보 확인하는 부분입니다.
    // document.querySelector('.screen > td').innerText=spanTitle.querySelector('.floor').innerText;
    // document.querySelector('.movie_date > td').innerText=schedule.substring(0,10) +"  "+schedule.substring(11,16)+" ~ "+parentList.getAttribute('endtime');
@@ -424,7 +419,7 @@ function playYMDInfoInit() {
     const timeInit = playYMD.children[2];
     dateInit.innerText = date;
     dayInit.innerText = day;
-    timeInit.innerText = `${startTime} ~ ${endTime}`;r
+    timeInit.innerText = `${startTime} ~ ${endTime}`;
 }
 
 function priceInit(){ // 작업중
@@ -491,6 +486,8 @@ function fnright() {
         step[pagenum+1].style.display = 'block';
         tnb.className = 'tnb step' + (pagenum + 2);
         pagenum++;
+        $('#tnb_step_btn_right').removeClass('on')
+
     }
     console.log(pagenum);
     if (pagenum == 0) {
@@ -694,7 +691,9 @@ function seatInit() {
                 alert('선택한 인원 수 보다 많이 좌석을 선택하실 수 없습니다.');
                 return false;
             }
-
+            if(peopleNum == getSelectedSeatCount() && peopleNum != 0){
+                $('#tnb_step_btn_right').addClass('on')
+            }
             sendAllSelectedSeatData(allSeat);
             infoPaymentTicketInit()
         }
