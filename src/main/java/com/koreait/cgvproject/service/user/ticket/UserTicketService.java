@@ -30,8 +30,6 @@ public class UserTicketService {
 
 
     public PriceDTO getPrice(Long tcode, String week, String startTime){
-        System.out.println("실행은 됨?");
-
         // 데이터베이스로 보낼 week로 가공
         final String[] HOLIDAYS = {"금","토","일"};
         final LocalTime morningTime = LocalTime.of(6,0,0); final LocalTime lunchTime = LocalTime.of(10,0,0); final LocalTime normalTime = LocalTime.of(13,0,0);

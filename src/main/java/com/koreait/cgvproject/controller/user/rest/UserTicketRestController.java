@@ -43,11 +43,9 @@ public class UserTicketRestController {
         return userScheduleService.getSeatCount(hcode);
     }
 
-
-    @PostMapping("/api/ticket/getPrice")
-    public PriceDTO getPrice(@RequestParam Long tcode, @RequestParam String week, @RequestParam String startTime) {
-        System.out.println("포스트로 들어가니"); // 작업중
-        return userTicketService.getPrice(tcode, week, startTime);
+    @GetMapping("/api/ticket/getPrice")
+    public PriceDTO getPrice(@RequestParam String tcode, @RequestParam String week, @RequestParam String startTime) {
+        return userTicketService.getPrice(Long.parseLong(tcode), week, startTime);
     }
 
     @PostMapping("/api/receiveInfo")
