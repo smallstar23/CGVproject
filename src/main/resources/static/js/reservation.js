@@ -480,6 +480,10 @@ function fnright() {
         step[pagenum+1].style.display = 'block';
         tnb.className = 'tnb step' + (pagenum + 2);
         pagenum++;
+        document.querySelector('#summary_total_amount').innerText=totprice;
+        document.querySelector('#summary_payment_total').innerText=totprice;
+        document.querySelector('dd > .num').innerText=totprice;
+
     }
     console.log(pagenum);
     if (pagenum == 0) {
