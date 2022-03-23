@@ -1,8 +1,8 @@
 // 스케쥴 불러오기
 let mcode;
 let tcode;
-let schecode=null;
-let hcode=null;
+let schecode;
+let hcode;
 let memberIdx=document.getElementById('member_idx').value;
 
 // step 1. 예매가이드 팝업
@@ -173,8 +173,8 @@ function toFirstDateStatus() {
     document.getElementById('scheduleList').innerHTML = '';
     document.querySelector('.sendDate').innerText = '';
     document.querySelector('.sendHallInfo').innerText = '';
-    hcode=null;
-    schecode=null;
+    hcode: ;
+    schecode: ;
     $('#tnb_step_btn_right').removeClass('on');
 
 
@@ -640,3 +640,39 @@ function convertAlpha(number) {
 function convertNumber(alph) {
     return Number(alpha.indexOf(alph));
 }
+
+function sendForm() {
+    // let movieName = $("#movie_name");
+    // let price = $("#price");
+    let memberIdx = document.getElementById("#member_idx");
+    console.log(memberIdx);
+    let price = "10000원"
+    // console.log("11")
+    // console.log(price)
+    let data = {ticode: 1, scheduleDTO: null, schecode: 1, seatDTO: null, movieName: 111,
+        stcode: 1, memberDTO: null, memIdx: memberIdx, price: 111, paydate: null, candate: null, usepoint: 1, totprice: price};
+
+    return fetch('/api/ticketInfo1', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(data)
+    })
+}
+
+    // ticode: , scheduleDTO: , schecode: , seatDTO: , movieName=${price},
+    // stcode: , memberDTO: , memIdx: , price=${movieName}, paydate: , candate: , usepoint: , totprice: )
+
+// function sendForm() {
+//     return fetch('/api/ticketInfo', {
+//         method: 'POST',
+//         headers: {
+//             'Content-Type': 'application/json'
+//         },
+//         body: JSON.stringify({
+//             mcode: 1,
+//             tcode: 1,
+//         })
+//     })
+// }

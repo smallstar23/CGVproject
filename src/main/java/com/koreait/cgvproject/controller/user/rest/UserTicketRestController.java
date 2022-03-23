@@ -1,6 +1,8 @@
 package com.koreait.cgvproject.controller.user.rest;
 
+import com.koreait.cgvproject.dto.MemberDTO;
 import com.koreait.cgvproject.dto.ScheduleDTO;
+import com.koreait.cgvproject.dto.SeatDTO;
 import com.koreait.cgvproject.dto.TicketDTO;
 import com.koreait.cgvproject.service.user.schedule.UserScheduleService;
 import lombok.AllArgsConstructor;
@@ -10,6 +12,7 @@ import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
+import java.time.LocalDateTime;
 import java.util.List;
 
 @RestController
@@ -39,6 +42,17 @@ public class UserTicketRestController {
     public void receiveInfo(@RequestBody TicketDTO ticketDTO){
         System.out.println(ticketDTO);
 
-
     }
+
+
+    @PostMapping("/api/ticketInfo1")
+    public void ticketInfo(@RequestBody TicketDTO ticketDTO){
+        System.out.println(ticketDTO);
+    }
+
+//    @PostMapping("/api/ticketInfo")
+//    public void ticketInfo(@RequestBody ScheduleDTO ticketDTO){
+//        System.out.println(ticketDTO);
+//    }
+
 }
