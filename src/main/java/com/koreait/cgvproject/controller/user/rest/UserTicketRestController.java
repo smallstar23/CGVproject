@@ -1,10 +1,11 @@
 package com.koreait.cgvproject.controller.user.rest;
 
-import com.koreait.cgvproject.dto.MemberDTO;
+import com.koreait.cgvproject.dto.PriceDTO;
 import com.koreait.cgvproject.dto.ScheduleDTO;
 import com.koreait.cgvproject.dto.SeatDTO;
 import com.koreait.cgvproject.dto.TicketDTO;
 import com.koreait.cgvproject.service.user.schedule.UserScheduleService;
+import com.koreait.cgvproject.service.user.ticket.UserTicketService;
 import lombok.AllArgsConstructor;
 import org.apache.catalina.util.ToStringUtil;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,6 +21,7 @@ import java.util.List;
 public class UserTicketRestController {
 
     private UserScheduleService userScheduleService;
+    private UserTicketService userTicketService;
 
     private HttpSession session;
 
@@ -36,6 +38,13 @@ public class UserTicketRestController {
     @GetMapping("/api/schedule/getSeatCount")
     public Long getSeatCount(@RequestParam Long hcode){
         return userScheduleService.getSeatCount(hcode);
+    }
+
+
+    @PostMapping("/api/ticket/getPrice")
+    public PriceDTO getPrice(@RequestParam Long tcode, @RequestParam String week, @RequestParam String startTime) {
+        System.out.println("포스트로 들어가니"); // 작업중
+        return userTicketService.getPrice(tcode, week, startTime);
     }
 
     @PostMapping("/api/receiveInfo")

@@ -1,8 +1,8 @@
 // 스케쥴 불러오기
 let mcode;
 let tcode;
-let schecode;
-let hcode;
+let schecode=null;
+let hcode=null;
 let memberIdx=document.getElementById('member_idx').value;
 
 // step 1. 예매가이드 팝업
@@ -173,8 +173,8 @@ function toFirstDateStatus() {
     document.getElementById('scheduleList').innerHTML = '';
     document.querySelector('.sendDate').innerText = '';
     document.querySelector('.sendHallInfo').innerText = '';
-    hcode: ;
-    schecode: ;
+    hcode=null;
+    schecode=null;
     $('#tnb_step_btn_right').removeClass('on');
 
 
@@ -246,7 +246,7 @@ function findScheduleAjax(mcode, tcode) {
 function ifFindScheduleAction(DOM) {
     if (!DOM.classList.contains('findSchedule')) return false;
 
-    const findSchedule = document.querySelectorAll('.findSchedule');
+    const findSchedule = qsAll('.findSchedule');
 
     // select 값 기입
     findSchedule.forEach(sc => sc.classList.remove('selected'));
@@ -256,7 +256,7 @@ function ifFindScheduleAction(DOM) {
     schedultGuideText.style.display = 'none';
 
     // 하단에 정보 전달 (초기화 필요)
-    document.querySelector('.sendDate').innerText = DOM.getAttribute('date');
+    qs('.sendDate').innerText = DOM.getAttribute('date');
 
     // AJAX시작
     const result = findScheduleFinalAjax(mcode, DOM.getAttribute('scdate'), tcode);
@@ -308,7 +308,7 @@ async function generateScheduleBoneHtml(scheduleDTOList) {
 }
 
 function addSeatCountHtml() {
-    const theaterList = document.querySelectorAll('#scheduleList > .theater');
+    const theaterList = qsAll('#scheduleList > .theater');
     theaterList.forEach(theater => {
         const hcode = theater.getAttribute('hcode');
         const spanSeatCount = theater.querySelectorAll('.seatcount')[0];
@@ -320,20 +320,20 @@ function addDetailHtml(scheduleDTOList, hcode) {
     let detailHtml = '';
     for (let scheduleDTO of scheduleDTOList) {
         if (hcode !== scheduleDTO.hcode) continue;
-        console.log(scheduleDTO)
+
         const startTime = scheduleDTO.scdate.split('T')[1].substring(0,5);
         //scdate = 2022-03-23T15:00:00  //split('T') = ['2022-03-23', '15:00:00'] // substring(0,5) = 15:00
         const endTemp = new Date(scheduleDTO.scdate.split('T')[0] + " " + scheduleDTO.scdate.split('T')[1]);
-        endTemp.setMinutes(endTemp.getMinutes()+scheduleDTO.movieDTO.runtime);
+        endTemp.setMinutes(endTemp.getMinutes() + scheduleDTO.movieDTO.runtime);
 
         const endTime = `${addZero(endTemp.getHours())}:${addZero(endTemp.getMinutes())}`
 
-        detailHtml += `<li size="${scheduleDTO.hallDTO.seatSize}" endtime="${endTime}"  schedule="${scheduleDTO.scdate}" schecode="${scheduleDTO.schecode}" start_tm="${startTime.replace(':', '')}" hcode="${hcode}" mcode="${scheduleDTO.mcode}" movieRating="${scheduleDTO.movieDTO.movieRating}">
+        detailHtml += `<li remain_seat="120"  schecode="${scheduleDTO.schecode}" schedule="${scheduleDTO.scdate}" start_tm="${startTime.replace(':', '')}" endtime="${endTime}" hcode="${hcode}" mcode="${scheduleDTO.mcode}" movieRating="${scheduleDTO.movieDTO.movieRating}">
                         <a class="button">
                             <span class="time" onclick="schecodeSelect(this)">
                                 <span>${startTime}</span>
                             </span>
-                            <span class="count">${scheduleDTO.hallDTO.seatSize}석</span>
+                            <span class="count">남은 좌석</span>
                             <div class="sreader">종료시간 ${endTime}</div>
                             <span class="sreader mod"></span>
                         </a>
@@ -356,43 +356,80 @@ function schecodeSelect(DOM) {
     const spanTitle = DOM.parentNode.parentNode.parentElement.previousElementSibling; // <span class="title"> ( 홀 정보 들어있는 곳 )
     schecode = parentList.getAttribute('schecode');
     hcode = parentList.getAttribute('hcode');
-    let schedule=parentList.getAttribute('schedule');
+    const schedule = parentList.getAttribute('schedule');
 
-    document.querySelectorAll('#scheduleList li').forEach(infoList => infoList.classList.remove('selected'));
+    qsAll('#scheduleList li').forEach(infoList => infoList.classList.remove('selected'));
     parentList.classList.add('selected');
 
+    qs('.sendDate').setAttribute('end_time', parentList.getAttribute('endtime'))
+
     // step1 하단에 내용 전달하는 부분입니다.
-    document.querySelector('.sendHallInfo').innerText = spanTitle.querySelector('.floor').innerText;
-    document.querySelector('.movie_type > span').innerText = spanTitle.querySelector('.name').innerText;
-    document.querySelector('.movie_rating > span').innerText = parentList.getAttribute('movieRating');
+    ticket_tnbInit(spanTitle, parentList, DOM);
 
-    document.querySelector('.sendDate').innerText = document.querySelector('.findSchedule.selected')
-        .getAttribute('date') +' '+ DOM.firstElementChild.innerText;
-
-    // step2 상단 내용 찍어주는 부분입니다.
-    document.querySelector('.theater-info > .site').innerText=spanTitle.querySelector('.name').innerText
-    document.querySelector('.theater-info > .screen').innerText=spanTitle.querySelector('.floor').innerText;
-    document.querySelector('.theater-info > .seatNum> .totalNum').innerText=parentList.getAttribute('size');
-    document.querySelector('.playYMD-info > .date').innerText=schedule.substring(0,10);
-    document.querySelector('.playYMD-info > .time').innerText=schedule.substring(11,16)+" ~ "+parentList.getAttribute('endtime');
-    $('#tnb_step_btn_right').addClass('on');
-
-    // step3 결제 직전 예매정보 확인하는 부분입니다.
-   document.querySelector('.screen > td').innerText=spanTitle.querySelector('.floor').innerText;
-   document.querySelector('.movie_date > td').innerText=schedule.substring(0,10) +"  "+schedule.substring(11,16)+" ~ "+parentList.getAttribute('endtime');
+   //  // step2 상단 내용 찍어주는 부분입니다.
+   //  document.querySelector('.theater-info > .site').innerText=spanTitle.querySelector('.name').innerText
+   //  document.querySelector('.theater-info > .screen').innerText=spanTitle.querySelector('.floor').innerText;
+   //  document.querySelector('.playYMD-info > .date').innerText=schedule.substring(0,10);
+   //  document.querySelector('.playYMD-info > .time').innerText=schedule.substring(11,16)+" ~ "+parentList.getAttribute('endtime');
+   //  $('#tnb_step_btn_right').addClass('on');
+   //
+   //  // step3 결제 직전 예매정보 확인하는 부분입니다.
+   // document.querySelector('.screen > td').innerText=spanTitle.querySelector('.floor').innerText;
+   // document.querySelector('.movie_date > td').innerText=schedule.substring(0,10) +"  "+schedule.substring(11,16)+" ~ "+parentList.getAttribute('endtime');
 
 
-   // step3 kakaopay 클릭시에 ticket table에 저장할 코드를 같이 보내줍니다.
-    document.querySelector('.reservation_info').innerHTML+=
-        `
-        <input type="hidden" name="selSeat" value="A1">
-        <input type="hidden" name="schecode" value="${schecode}">
-        `
+   // step3 kakaopay 클릭시에 ticket table에 저장할 코드를 같이 보내줍니다. // step 3 준비를 왜 step 1에서 하나요??  ( 김영신 )
+   //  document.querySelector('.reservation_info').innerHTML+=
+   //      `
+   //      <input type="hidden" name="selSeat" value="A1">
+   //      <input type="hidden" name="schecode" value="${schecode}">
+   //      `
 
+
+    // 마지막 단계인 스케줄 코드까지 선택이 됬으므로 좌석 init을 실행함 ( step 2 준비 )
+    seatHtmlReadAndCreate().then(seatRead)
+
+    infoInit() // 관, 홀정보, 시간 표시
 }
-function addZero(number){
+// step1 하단에 내용 전달하는 부분입니다.
+function ticket_tnbInit(spanTitle, parentList, DOM){
+    qs('.sendHallInfo').innerText = spanTitle.querySelector('.floor').innerText;
+    qs('.movie_type > span').innerText = spanTitle.querySelector('.name').innerText;
+    qs('.movie_rating > span').innerText = parentList.getAttribute('movieRating');
+    qs('.sendDate').innerText = qs('.findSchedule.selected')
+            .getAttribute('date').replaceAll('-','.') + ' ' + DOM.firstElementChild.innerText;
+}
+function infoInit() {
+    T_H_Init();
+    playYMDInfoInit()
+}
+
+function T_H_Init() {
+    qs('.site').innerText = qs('.sendTheaterName').innerText; // 강남 CGV 표기
+    qs('.site + span').innerText = qs('.sendHallInfo').innerText; // 관 표기
+}
+
+function playYMDInfoInit() {
+    const dateText = qs('.sendDate').innerText // 2022.03.23(수) 03:01
+    const date = dateText.match('\\d{4}.\\d{2}.\\d{2}')[0] // 2022.03.23
+    const day = dateText.match('\\([가-힣]{1}\\)')[0]; // (수)
+    const startTime = dateText.match('\\d{2}:\\d{2}')[0];// 03:01
+    const endTime = qs('.sendDate').getAttribute('end_time'); // 05:57
+
+    const playYMD = qs('.playYMD-info');
+    const dateInit = playYMD.children[0];
+    const dayInit = playYMD.children[1];
+    const timeInit = playYMD.children[2];
+    dateInit.innerText = date;
+    dayInit.innerText = day;
+    timeInit.innerText = `${startTime} ~ ${endTime}`;
+}
+
+function addZero(number) {
     return parseInt(number) < 10 ? "0" + number : number;
 }
+
+
 
 /*
     작성자 : 김영신
@@ -498,6 +535,275 @@ $(".dateScroll").scroll(function () {
 
 })
 
+
+/*
+*   step2 시작.
+*
+*
+*/
+
+let peopleNum = 0;
+let adultNum = 0;
+let youthNum = 0;
+
+function adultCount(parentDOM) { // CustomerType = 1
+    const tempNum = parentDOM.getAttribute('data-count');
+    if(!countChecking(tempNum, youthNum)) return
+    adultNum = Number(tempNum);
+    peopleNum = adultNum + youthNum;
+    mouseBlockOrNone();
+    selectedInit(parentDOM);
+    sendPeopleNumInit();
+    seatGuideInit();
+}
+
+function youthCount(parentDOM) { // CustomerType = 2
+    const tempNum = parentDOM.getAttribute('data-count');
+    if(!countChecking(tempNum, adultNum)) return
+    youthNum = Number(tempNum);
+    peopleNum = adultNum + youthNum;
+    mouseBlockOrNone();
+    selectedInit(parentDOM)
+    sendPeopleNumInit();
+    seatGuideInit();
+}
+
+function countChecking(tempNum, target){
+    if (Number(tempNum) + target > 6) {
+        alert('6명이 초과되었습니다.');
+        return false;
+    }else if(Number(tempNum) + target < getSelectedSeatCount()){
+        alert('현재 선택된 좌석보다 인원을 적게 설정할 수 없습니다.');
+        return false;
+    }
+    return true;
+}
+function selectedInit(parentDOM) {
+    for (let li of parentDOM.parentElement.children) li.classList.remove('selected');
+    parentDOM.classList.add('selected');
+}
+
+function mouseBlockOrNone() {
+    const mouseBlock = qs('.mouse_block');
+    if (peopleNum == 0) mouseBlock.style.display = 'block';
+    else mouseBlock.style.display = 'none';
+}
+
+function sendPeopleNumInit() {
+    let adultNumText = `일반 ${adultNum}명`;
+    let youthNumText = ` 청소년 ${youthNum}명`;
+
+    if (adultNum == 0) {
+        adultNumText = '';
+        youthNumText.trim();
+    }
+    if (youthNum == 0) {
+        youthNumText = '';
+    }
+    qs('#ticket_tnb .number .data').innerText = (adultNumText + youthNumText).replace('명 ', '명 , ');
+}
+
+function seatGuideInit() {
+    if (peopleNum == 0) qs('.info.seat').style.display = 'none';
+    else qs('.info.seat').style.display = 'block';
+}
+
+
+// seat 생성 부분 시작
+const alpha = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z'];
+
+
+function createSeat(rowVal, colVal, emptyRow, emptyCol) {
+    showSeat(rowVal, colVal, emptyRow, emptyCol);
+    seatInit();
+}
+
+function showSeat(rowVal, colVal, emptyRow, emptyCol) {
+    let sHtml = "";
+    let st_row = convertNumber(rowVal) + 1; //seatHTML L == 12
+    let st_col = colVal;    //seatHtml st_col 19
+
+    let st_row_empty = emptyRow.replaceAll(' ', '').toUpperCase().trim().split(','); //database G == 7
+    let cnt = 0;
+    st_row_empty.forEach(e_r => st_row_empty[cnt++] = String(convertNumber(e_r) + 1))
+
+    let st_col_empty = emptyCol.replaceAll(' ', '').trim().split(',');  //database
+
+    for (let row = 0; row < st_row; row++) {
+        // 가로 좌석 생성
+        sHtml += `<div id="${convertAlpha(row)}" class="row_div">`;
+        sHtml += `<div class="row-text">${convertAlpha(row)}</div>`;
+        for (let col = 0; col < st_col; col++) {
+            // 세로 좌석 생성
+            sHtml += `<div class="seat" id="${convertAlpha(row) + Number(col + 1)}">${col + 1}</div>`
+            // 세로 통로 생성 부분
+            st_col_empty.forEach(function (emptyCol) {
+                if (emptyCol == col + 1) {
+                    sHtml += `<div class="empty"></div>`;
+                }
+            })
+        }
+        sHtml += `</div>`;
+        // 가로 통로 생성 부분
+        st_row_empty.forEach(emptyRow => {
+            if (emptyRow == row + 1) {
+                sHtml += `<div class="empty"></div>`;
+            }
+        })
+    }
+    // 대상 id를 가지고 있는 컴포넌트
+    document.getElementById('seats').innerHTML = sHtml;
+}
+
+function seatInit() {
+    const allSeat = qsAll('#seats .seat');
+    allSeat.forEach(seat => {
+        seat.onclick = function () {
+            // selected 추가
+            if (seat.classList.contains('selected')) seat.classList.remove('selected');
+            else seat.classList.add('selected');
+
+            if(isOverSelected()) {
+                seat.classList.remove('selected');
+                alert('선택한 인원 수 보다 많이 좌석을 선택하실 수 없습니다.');
+                return false;
+            }
+
+            sendAllSelectedSeatData(allSeat);
+            // getTheaterPrice(); // 작업중
+        }
+    });
+}
+/*
+function getTheaterPrice(){ // 작업중
+    const startAndEndTime = qsAll('.playYMD-info b:not(b:first-child)');
+    // 23:21 ~ 01:32 -> '23:21'
+    const startTime = startAndEndTime[1].innerText.split(' ~ ')[0];
+    // (수) -> '수'
+    const week = startAndEndTime[0].innerText.match('[가-힣]')[0];
+    console.log(tcode, startTime, week);
+    getTheaterPriceAjax(Number(tcode), String(startTime), String(week)).then(re => re.json())
+        .then(data=> {
+            console.log(data)
+        });
+}
+function getTheaterPriceAjax(tcode, startTime, week){ // 작업중
+    return fetch('/api/ticket/getPrice', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({
+            tcode : tcode,
+            week : week,
+            startTime : startTime
+        })
+    })
+}*/
+
+function getSelectedSeatCount(){
+    let count = 0;
+    qsAll('#seats .seat').forEach(seat => {
+        if(seat.classList.contains('selected')) count ++;
+    })
+    return count;
+}
+
+function isOverSelected() {
+    return getSelectedSeatCount() > Number(peopleNum);
+}
+
+function sendAllSelectedSeatData(seatList){
+    const seatDataInit = qs('.seat_no .data');
+    const seat_data = [];
+    if(peopleNum === 0) seatDataInit.innerText = data;
+
+    seatList.forEach(seat => {
+        if(seat.classList.contains('selected')) seat_data.push(seat.id);
+    })
+    // 데이터를 오름차순 정렬후 사이 사이를 ,로 구분하여 보낸다
+    seatDataInit.innerText = seat_data.sort().join(',');
+
+}
+
+function seatHtmlReadAndCreate() {
+    return fetch('/api/seatHtml/read/' + hcode)
+        .then(response => response.json())
+        .then(data => {
+            createSeat(data.stRow, data.stCol, data.rowEmpty, data.colEmpty);
+        })
+}
+
+function seatRead() {
+    const allSeat = qsAll('#seats .seat');
+    fetch("/api/seat/read/" + hcode)
+        .then(response => response.json())
+        .then(data => {
+            data.forEach(seatDTO => {
+                for (let seat of allSeat) {
+                    if (seatDTO.stNum === seat.id) {
+                        if (seatDTO.disabled) seat.classList.add('disabled');
+                        break;
+                    }
+                }
+            })
+        });
+}
+
+function convertAlpha(number) {
+    return alpha[Number(number)];
+}
+
+function convertNumber(alph) {
+    return Number(alpha.indexOf(alph));
+}
+
+// seat 생성 부분 종료
+
+/*
+
+for (let i = 0; i <= adult_click.length - 1; i++) {
+    adult_click[i].addEventListener("click", function () {
+        for (let j = 0; j <= adult_click.length - 1; j++) {
+            adult_click[j].className = "adult_click";
+            let dimmed = document.getElementById("dimmed");
+            dimmed.classList.remove("dimmed");
+            this.classList.add("selected");
+            if (i == 0) {
+                dimmed.classList.add("dimmed");
+                if (youthNum != 0) {
+                    dimmed.className = 'section section-seat';
+                }
+            }
+
+        }
+    })
+
+}
+
+// 청소년
+
+let youthNum = 0;
+let youth_click = document.getElementsByClassName("youth_click");
+for (let i = 0; i <= youth_click.length - 1; i++) {
+    youth_click[i].addEventListener("click", function () {
+        for (let j = 0; j <= youth_click.length - 1; j++) {
+            youth_click[j].className = "youth_click";
+            let dimmed = document.getElementById("dimmed");
+            dimmed.classList.remove("dimmed");
+            this.classList.add("selected");
+            if (i == 0) {
+                dimmed.classList.add("dimmed");
+                if (adultNum != 0) {
+                    dimmed.className = 'section section-seat';
+                }
+            }
+        }
+    })
+}
+*/
+
+
 // step2 인원 선택시 활성화 (어른)
 /* Step 2 에 쓰이는 JS */
 //
@@ -547,6 +853,7 @@ $(".dateScroll").scroll(function () {
 // }
 
 
+
 //step 3 간편결제 -> 카카오페이 설정시 활성화
 
 $("#last_pay_radio3").on({
@@ -576,103 +883,10 @@ $(".clickPoint").on({
 })
 
 
-/*
-    EpsteinKim의 reservation_EpsteinKim.js
-*/
-
-const alpha = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z'];
-showSeat('H', '8', '0', '0');
-seatInit();
-
-function showSeat(rowVal, colVal, em_rowVal, em_colVal) {
-    let sHtml = "";
-    let st_row = convertNumber(rowVal) + 1; //seatHTML L == 12
-    let st_col = colVal;    //seatHtml st_col 19
-
-    let st_row_empty = em_rowVal.replaceAll(' ', '').toUpperCase().trim().split(','); //database G == 7
-    let cnt = 0;
-    st_row_empty.forEach(e_r => st_row_empty[cnt++] = String(convertNumber(e_r) + 1))
-
-    let st_col_empty = em_colVal.replaceAll(' ', '').trim().split(',');  //database
-
-    for (let row = 0; row < st_row; row++) {
-        // 가로 좌석 생성
-        sHtml += `<div id="${convertAlpha(row)}" class="row_div">`;
-        sHtml += `<div class="row-text">${convertAlpha(row)}</div>`;
-        for (let col = 0; col < st_col; col++) {
-            // 세로 좌석 생성
-            sHtml += `<div class="seat" id="${convertAlpha(row) + Number(col + 1)}">${col + 1}</div>`
-            // 세로 통로 생성 부분
-            st_col_empty.forEach(function (emptyCol) {
-                if (emptyCol == col + 1) {
-                    sHtml += `<div class="empty"></div>`;
-                }
-            })
-        }
-        sHtml += `</div>`;
-        // 가로 통로 생성 부분
-        st_row_empty.forEach(emptyRow => {
-            if (emptyRow == row + 1) {
-                sHtml += `<div class="empty"></div>`;
-            }
-        })
-    }
-    // 대상 id를 가지고 있는 컴포넌트
-    document.getElementById('seats').innerHTML = sHtml;
+function qs(selector, doc = document) {
+    return doc.querySelector(selector);
 }
 
-function seatInit() {
-    const allSeat = document.getElementsByClassName('seat');
-    for (let i = 0; i < allSeat.length; i++) {
-        let seat = allSeat[i];
-
-        seat.addEventListener('click', function () {
-            if (seat.classList.contains('selected')) seat.classList.remove('selected');
-            else seat.classList.add('selected');
-        })
-    }
+function qsAll(selector, doc = document) {
+    return doc.querySelectorAll(selector);
 }
-
-function convertAlpha(number) {
-    return alpha[Number(number)];
-}
-
-function convertNumber(alph) {
-    return Number(alpha.indexOf(alph));
-}
-
-function sendForm() {
-    // let movieName = $("#movie_name");
-    // let price = $("#price");
-    let memberIdx = document.getElementById("#member_idx");
-    console.log(memberIdx);
-    let price = "10000원"
-    // console.log("11")
-    // console.log(price)
-    let data = {ticode: 1, scheduleDTO: null, schecode: 1, seatDTO: null, movieName: 111,
-        stcode: 1, memberDTO: null, memIdx: memberIdx, price: 111, paydate: null, candate: null, usepoint: 1, totprice: price};
-
-    return fetch('/api/ticketInfo1', {
-        method: 'POST',
-        headers: {
-            'Content-Type': 'application/json'
-        },
-        body: JSON.stringify(data)
-    })
-}
-
-    // ticode: , scheduleDTO: , schecode: , seatDTO: , movieName=${price},
-    // stcode: , memberDTO: , memIdx: , price=${movieName}, paydate: , candate: , usepoint: , totprice: )
-
-// function sendForm() {
-//     return fetch('/api/ticketInfo', {
-//         method: 'POST',
-//         headers: {
-//             'Content-Type': 'application/json'
-//         },
-//         body: JSON.stringify({
-//             mcode: 1,
-//             tcode: 1,
-//         })
-//     })
-// }

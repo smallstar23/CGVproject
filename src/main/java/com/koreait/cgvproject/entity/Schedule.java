@@ -6,6 +6,7 @@ import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.persistence.*;
 import java.time.LocalDateTime;
+import java.util.List;
 
 @Entity
 @Data
@@ -39,6 +40,9 @@ public class Schedule {
     //private Long hcode;
     @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss")
     private LocalDateTime scdate;
+
+    @OneToMany(fetch = FetchType.LAZY, mappedBy = "schedule")
+    private List<Ticket> tickets;
 
     public ScheduleDTO toDTO(){
         return ScheduleDTO.builder()

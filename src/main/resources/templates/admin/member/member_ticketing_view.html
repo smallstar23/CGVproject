@@ -57,23 +57,23 @@
                 <div class="card-body" style="margin: 0 auto;">
                     <div style="border:1px solid #a52834; border-radius: 10px; width: 700px; height: auto; margin-top:10%; padding:20px"  >
 
-                        <h2 style="text-align: center">김사과 님</h2>
-                        <p style="text-align: center">appleid</p>
-                        <p style="text-align: center">010-0000-0000</p>
+                        <h2 style="text-align: center" th:text="${ticket.getMemberDTO().getUsername()}">김사과 님</h2>
+                        <p style="text-align: center" th:text="${ticket.getMemberDTO().getUserid()}">appleid</p>
+                        <p style="text-align: center" th:text="${ticket.getMemberDTO().getHp1()}">010-0000-0000</p>
                         <hr/>
 
                         <div style="width:50%;height:auto; text-align: center; margin:0 auto; ">
-                            <p>예매번호: <input class="form-control" value="0001-0218-1234-432" readonly></p>
-                            <p>관람극장: <input class="form-control" value="CGV 강변" readonly></p>
+                            <p>예매번호: <input class="form-control" th:value="${ticket.getTicode()}" readonly></p>
+                            <p>관람극장: <input class="form-control" th:value="${ticket.getScheduleDTO().getHallDTO().getTheater().getTname()}" readonly></p>
                         </div>
                         <div style="width:50%;height:auto; text-align: center; margin:0 auto; ">
-                            <p>관람일시: <input class="form-control" value="2022.02.22(화) 17:50" readonly></p>
-                            <p>상영관: <input class="form-control" value="8관" readonly></p>
-                            <p>관람인원: <input class="form-control" value="일반 1" readonly></p>
+                            <p>관람일시: <input class="form-control" th:value="${ticket.getScheduleDTO().getScdate()}" readonly></p>
+                            <p>상영관: <input class="form-control" th:value="${ticket.getScheduleDTO().getHallDTO().getHguan()}" readonly></p>
+                            <p>관람인원: <input class="form-control" th:value="${ticket.getTotperson()}" readonly></p>
                         </div>
                         <div style="width:50%;height:auto; text-align: center; margin:0 auto; ">
-                            <p>관람좌석: <input class="form-control" value="F08" readonly></p>
-                            <p>결제일: <input class="form-control" value="2022.02.18(화) 14:00" readonly></p>
+                            <p>관람좌석: <input class="form-control" th:value="${ticket.getSeat()}" readonly></p>
+                            <p>결제일: <input class="form-control" th:value="${ticket.getPaydate()}" readonly></p>
                             </p>
                         </div>
                         <div></div>
@@ -86,11 +86,9 @@
                 </div>
                 <div style="width:50%;height:auto; text-align: center; margin:0 auto; " >
                     <input onclick="location.href='./member-ticket'" class="btn btn-default" type="button" value="목록">
-                    <input class="btn btn-default" type="submit" value="예매취소">
+                    <input class="btn btn-default" onclick="fnDelete()" value="예매취소">
                 </div>
-                <div style="width:50%;height:auto; text-align: center; margin:0 auto; " >
-                    <input onclick="location.href='./member-paymentlist'" class="btn btn-default" type="submit" value="결제내역">
-                </div>
+
 
 
             </div>
@@ -98,6 +96,22 @@
     </main>
 
 </div>
+<script th:inline="javascript">
+    /*<![CDATA[*/
+    let ticode = [[${ticket.getTicode()}]];
+    console.log(ticode);
+    /*]]>*/
+
+
+    function fnDelete(){
+        if(confirm("해당 예매내역을 취소하시겠습니까?")){
+            fetch('/api/ticketDelete/'+ticode);
+            alert('삭제되었습니다.')
+            location.href='/member-ticket'
+        }
+
+    }
+</script>
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
 <script src="js/scripts.js"></script>
