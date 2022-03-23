@@ -119,13 +119,6 @@ public class MemberService {
             }
         }
 
-        if(giftPaymentRepository.existsGiftPaymentByMemberIdx(member.get().getIdx())){
-            List<GiftPayment> giftPayments = giftPaymentRepository.findByMemberIdx(member.get().getIdx());
-            for(int i=0; i<giftPayments.size(); i++){
-                giftPaymentRepository.deleteById(giftPayments.get(i).getGpcode());
-            }
-        }
-
 //        if(boardCommentRepository.existsByWriter(memberEntity.get())){
 //            List<BoardCommentEntity> boardCommentEntityList = boardCommentRepository.findByWriter(memberEntity.get());
 //            for(int i=0; i<boardCommentEntityList.size();i++){

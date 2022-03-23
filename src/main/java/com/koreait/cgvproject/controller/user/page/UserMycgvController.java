@@ -1,21 +1,20 @@
 package com.koreait.cgvproject.controller.user.page;
 
-import com.koreait.cgvproject.dto.MemberDTO;
-import com.koreait.cgvproject.dto.PointDTO;
+import com.koreait.cgvproject.dto.*;
+import com.koreait.cgvproject.entity.FavCGV;
 import com.koreait.cgvproject.entity.GiftPayment;
 import com.koreait.cgvproject.entity.Member;
 import com.koreait.cgvproject.entity.Point;
-import com.koreait.cgvproject.repository.GiftPaymentRepository;
-import com.koreait.cgvproject.repository.GiftRepository;
-import com.koreait.cgvproject.repository.MemberRepository;
-import com.koreait.cgvproject.repository.PointRepository;
+import com.koreait.cgvproject.repository.*;
 import com.koreait.cgvproject.service.admin.member.MemberService;
 import com.koreait.cgvproject.service.user.login.UserLoginService;
+import com.koreait.cgvproject.service.user.mycgv.UserFavCGVService;
 import com.koreait.cgvproject.service.user.mycgv.UserPointService;
 import com.koreait.cgvproject.service.user.store.UserStoreService;
 import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
+import com.koreait.cgvproject.service.admin.theater.AdminTheaterService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -42,6 +41,15 @@ public class UserMycgvController {
 
     @Autowired
     private UserPointService userPointService;
+
+    @Autowired
+    private UserFavCGVService userFavCGVService;
+
+    @Autowired
+    private FavCGVRepository favCGVRepository;
+
+    @Autowired
+    private AdminTheaterService adminTheaterService;
 
     // my-cgv메인
     @GetMapping("/user/mycgv")
@@ -87,9 +95,24 @@ public class UserMycgvController {
         return ROOT + "/event/mycgv-event-resultList";
     }
 
+    // 자주가는cgv 리스트
     @GetMapping("/user/popup/mycgv-favoriteTheaters")
     public String mycgv_favoriteTheaters(Model model){
+        Member member = memberRepository.findByUserid((String)session.getAttribute("userid"));
+        List<FavCGVDTO> favCGVDTOS=userFavCGVService.list(member);
+        model.addAttribute("favCGV", favCGVDTOS);
         return ROOT + "/popup/mycgv-favoriteTheaters";
+    }
+
+
+
+    // 자주가는cgv 추가
+    @PostMapping("/user/popup/mycgv-favoriteTheaters")
+    public String mycgv_favoriteTheater(@ModelAttribute FavCGVDTO favCGVDTO){
+        System.out.println(favCGVDTO);
+        Member member = memberRepository.findByUserid((String)session.getAttribute("userid"));
+        userFavCGVService.insert(favCGVDTO, member);
+        return "redirect:/user/popup/mycgv-favoriteTheaters";
     }
 
     @GetMapping("/user/mycgv/inquiry/mycgv-lost-list")
@@ -153,7 +176,7 @@ public class UserMycgvController {
 
     @GetMapping("/user/mycgv/mycgv-popcorn-store")
     public String mycgv_popcorn_store(Model model){
-        return ROOT + "/popcorn-store/mycgv-popcorn-store";
+        return ROOT + "/popcorn-store/mycgv-popcorn-store-paymentList";
     }
 
     // 결제내역
@@ -184,6 +207,8 @@ public class UserMycgvController {
 
     @GetMapping("/user/vip-lounge")
     public String vip_lounge(Model model){
+        Member member =memberRepository.findByUserid((String)session.getAttribute("userid"));
+        model.addAttribute("member", member);
         return ROOT + "/vip/vip-lounge";
     }
 

@@ -246,4 +246,19 @@
 <!-- E Contaniner -->
 <div th:replace="user/fragment/footer :: footer-user"></div>
 </body>
+<script>
+  function login() {
+    let useridVal=document.getElementById("userid").value;
+    let userpwVal=document.getElementById("userpw").value;
+    if (useridVal=="admin" && userpwVal=="1111") {
+      alert("환영합니다!");
+      // postToUrl("/admin/main/post", {'tcode' : tcode} ,"post");
+      location.href="/admin/main"
+    }
+    else {
+      alert("아이디 및 비밀번호를 확인해주세요")
+    }
+  }
+
+</script>
 </html>
