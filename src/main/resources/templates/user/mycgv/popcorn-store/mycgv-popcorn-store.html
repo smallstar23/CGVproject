@@ -440,43 +440,9 @@
                         };
                         //]]>
                     </script>
-                    <div class="tit-mycgv"><h3>내 기프트콘</h3></div>
-                    <div class="set-btn" style="height: 20px"><a href="giftcon-register.aspx" class="round inblack"><span>기프트콘 등록</span></a></div>
-                    <div class="tit-mycgv"><h4>CGV 기프트콘 내역</h4></div>
+                    <div class="tit-mycgv"><h3>내 결제내역</h3></div>
+                    <div class="tit-mycgv"><h4>CGV 결제내역</h4></div>
                     <form id="form">
-                        <!-- S 조회내용& 조회기간 -->
-                        <div class="sect-use-expense">
-                            <div class="box-polaroid box-polaroid_tps">
-                                <div class="box-inner tps-search-gray">
-                                    <strong class="period">유형</strong>
-                                    <span id="tps-search-status">
-						<button data-type="0" class="round gray"><span>전체</span></button>
-						<button data-type="2" class="round gray"><span>영화관람권</span></button>
-						<button data-type="1" class="round gray"><span>매점상품</span></button>
-					</span>
-                                </div>
-                                <div class="box-inner tps-period-gray">
-                                    <strong class="period">조회내용</strong>
-                                    <span id="tps-search-type">
-						<button data-type="0" class="round gray"><span>사용가능</span></button>
-						<button data-type="1" class="round gray"><span>사용완료</span></button>
-						<button data-type="2" class="round gray"><span>기간만료</span></button>
-						<button data-type="3" class="round gray"><span>취소/환불</span></button>
-					</span>
-                                </div>
-                                <div class="box-inner">
-                                    <strong class="period">조회기간</strong>
-                                    <span id="period_wrap"></span>
-                                    <p>
-                                        <label for="startdate">시작일 입력</label><input type="text" id="startdate" name="startdate" value="2022-01-13" datepicker="datepicker" /> ~
-                                        <label for="enddate">종료일 입력</label><input type="text" id="enddate" name="enddate" value="2022-02-13" datepicker="datepicker" />
-                                        <button type="button" id="btn_search" class="round inblack"><span>조회하기</span></button> <!-- type="submit" 확인요청 -->
-                                    </p>
-                                </div>
-                            </div>
-                        </div>
-                        <!-- E 조회내용& 조회기간 -->
-
                         <!-- S 기프트콘 목록 -->
                         <div class="tbl-data">
                             <strong class="tbl-data_total_tps">0</strong>
@@ -493,7 +459,7 @@
                                 </colgroup>
                                 <thead>
                                 <tr>
-                                    <th scope="col">기프트콘 NO.</th>
+                                    <th scope="col">결제 NO.</th>
                                     <th scope="col">상품명</th>
                                     <th scope="col">보내신분</th>
                                     <th scope="col">선물수신일</th>
