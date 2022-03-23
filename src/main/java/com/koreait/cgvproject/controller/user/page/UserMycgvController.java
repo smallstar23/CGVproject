@@ -1,5 +1,8 @@
 package com.koreait.cgvproject.controller.user.page;
 
+import com.koreait.cgvproject.dto.MemberDTO;
+import com.koreait.cgvproject.dto.PointDTO;
+import com.koreait.cgvproject.dto.TicketDTO;
 import com.koreait.cgvproject.dto.*;
 import com.koreait.cgvproject.entity.FavCGV;
 import com.koreait.cgvproject.entity.GiftPayment;
@@ -11,6 +14,7 @@ import com.koreait.cgvproject.service.user.login.UserLoginService;
 import com.koreait.cgvproject.service.user.mycgv.UserFavCGVService;
 import com.koreait.cgvproject.service.user.mycgv.UserPointService;
 import com.koreait.cgvproject.service.user.store.UserStoreService;
+import com.koreait.cgvproject.service.user.ticket.UserTicketService;
 import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -43,6 +47,10 @@ public class UserMycgvController {
     private UserPointService userPointService;
 
     @Autowired
+    private UserTicketService userTicketService;
+
+    // my-cgv메인(취소 날짜가 있는경우 제외하고 뿌려야함)
+    @Autowired
     private UserFavCGVService userFavCGVService;
 
     @Autowired
@@ -54,6 +62,9 @@ public class UserMycgvController {
     // my-cgv메인
     @GetMapping("/user/mycgv")
     public String mycgv(Model model){
+        Member member =memberRepository.findByUserid((String)session.getAttribute("userid"));
+        List<TicketDTO> ticketDTOList=userTicketService.mycgvTicket(member);
+        model.addAttribute("ticketList",ticketDTOList);
         return ROOT+"/mycgv";
     }
 
@@ -200,8 +211,18 @@ public class UserMycgvController {
         return ROOT + "/inquiry/mycgv-qna-list";
     }
 
+    // 예매내역, 예매 취소내역 각각 전달할 것
     @GetMapping("/user/mycgv/mycgv-reserve")
     public String mycgv_reserve(Model model){
+        Member member =memberRepository.findByUserid((String)session.getAttribute("userid"));
+        // 예매내역
+        List<TicketDTO> ticketDTOList=userTicketService.mycgvTicket(member);
+        model.addAttribute("ticketList",ticketDTOList);
+
+        // 예매취소내역
+        List<TicketDTO> ticketCancelDTOList=userTicketService.mycgvCancelTicket(member);
+        System.out.println(ticketCancelDTOList);
+        model.addAttribute("ticketCancel",ticketCancelDTOList);
         return ROOT + "/reserve/mycgv-reserve";
     }
 
