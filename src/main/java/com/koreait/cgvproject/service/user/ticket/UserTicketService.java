@@ -1,12 +1,17 @@
 package com.koreait.cgvproject.service.user.ticket;
 
 import com.koreait.cgvproject.dto.PriceDTO;
+import com.koreait.cgvproject.dto.TicketDTO;
+import com.koreait.cgvproject.entity.Member;
 import com.koreait.cgvproject.entity.Price;
 import com.koreait.cgvproject.entity.Theater;
+import com.koreait.cgvproject.entity.Ticket;
 import com.koreait.cgvproject.repository.MovieRepository;
 import com.koreait.cgvproject.repository.PriceRepository;
 import com.koreait.cgvproject.repository.TheaterRepository;
+import com.koreait.cgvproject.repository.TicketRepository;
 import lombok.AllArgsConstructor;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalTime;
@@ -20,10 +25,11 @@ public class UserTicketService {
     private PriceRepository priceRepository;
     private TheaterRepository theaterRepository;
 
+    @Autowired
+    private TicketRepository ticketRepository;
+
 
     public PriceDTO getPrice(Long tcode, String week, String startTime){
-        System.out.println("실행은 됨?");
-
         // 데이터베이스로 보낼 week로 가공
         final String[] HOLIDAYS = {"금","토","일"};
         final LocalTime morningTime = LocalTime.of(6,0,0); final LocalTime lunchTime = LocalTime.of(10,0,0); final LocalTime normalTime = LocalTime.of(13,0,0);
@@ -67,5 +73,30 @@ public class UserTicketService {
             e.printStackTrace();
         }
         return Integer.parseInt(subject);
+    }
+
+    // mycgv로 내보낼 ticketlist, 취소날짜가 있는경우 제외할 것
+    public List<TicketDTO> mycgvTicket(Member member){
+        List<TicketDTO> ticketDTOList=new ArrayList<>();
+        List<Ticket> ticketList=ticketRepository.findAllByMember(member);
+        for(Ticket ticket: ticketList){
+            if(ticket.getCandate()==null){
+                ticketDTOList.add(ticket.toDTO());
+            }
+        }
+        return ticketDTOList;
+    }
+
+    //mycgv로 내보낼 것, 취소내역 리스트만
+    public List<TicketDTO> mycgvCancelTicket(Member member){
+        List<TicketDTO> ticketDTOList=new ArrayList<>();
+        List<Ticket> ticketList=ticketRepository.findAllByMember(member);
+        for(Ticket ticket: ticketList){
+            if(ticket.getCandate()!=null){
+                ticketDTOList.add(ticket.toDTO());
+            }
+        }
+        System.out.println(ticketDTOList);
+        return ticketDTOList;
     }
 }

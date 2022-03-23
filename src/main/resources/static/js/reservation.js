@@ -3,6 +3,7 @@ let mcode;
 let tcode;
 let schecode=null;
 let hcode=null;
+let pcode; //price idx
 let memberIdx=document.getElementById('member_idx').value;
 
 // step 1. 예매가이드 팝업
@@ -349,6 +350,7 @@ function getPromiseSeatCount(hcode) {
     return fetch('/api/schedule/getSeatCount?hcode=' + hcode)
 }
 
+
 function schecodeSelect(DOM) {
 
     const parentList = DOM.parentNode.parentElement;
@@ -388,7 +390,7 @@ function schecodeSelect(DOM) {
     // 마지막 단계인 스케줄 코드까지 선택이 됬으므로 좌석 init을 실행함 ( step 2 준비 )
     seatHtmlReadAndCreate().then(seatRead)
 
-    infoInit() // 관, 홀정보, 시간 표시
+    infoInit() // 관, 홀정보, 시간 표시 , 극장별 금액 초기화
 }
 // step1 하단에 내용 전달하는 부분입니다.
 function ticket_tnbInit(spanTitle, parentList, DOM){
@@ -401,6 +403,7 @@ function ticket_tnbInit(spanTitle, parentList, DOM){
 function infoInit() {
     T_H_Init();
     playYMDInfoInit()
+    priceInit();
 }
 
 function T_H_Init() {
@@ -421,8 +424,30 @@ function playYMDInfoInit() {
     const timeInit = playYMD.children[2];
     dateInit.innerText = date;
     dayInit.innerText = day;
-    timeInit.innerText = `${startTime} ~ ${endTime}`;
+    timeInit.innerText = `${startTime} ~ ${endTime}`;r
 }
+
+function priceInit(){ // 작업중
+    const scdate = qs('.sendDate').innerText; // 2022.02.23(수) 03:01
+    const startTime = scdate.split(' ')[1] // 03:01
+    const week = scdate.match('[가-힣]')[0]; // (수) -> '수'
+
+    getTheaterPriceAjax(tcode, startTime, week).then(re => re.json())
+        .then(data=> theaterPriceInit(data));
+}
+
+function getTheaterPriceAjax(tcode, startTime, week){ // 작업중
+    return fetch(`/api/ticket/getPrice?tcode=${tcode}&startTime=${startTime}&week=${week}`)
+}
+
+function theaterPriceInit(priceDTO){
+    pcode = priceDTO.pcode;
+    const adultPrice = qs('.row.payment-adult .price');
+    const studentPrice = qs('.row.payment-youth .price');
+    adultPrice.innerText = priceDTO.adultPrice;
+    studentPrice.innerText = priceDTO.stuPrice;
+}
+
 
 function addZero(number) {
     return parseInt(number) < 10 ? "0" + number : number;
@@ -554,6 +579,7 @@ function adultCount(parentDOM) { // CustomerType = 1
     selectedInit(parentDOM);
     sendPeopleNumInit();
     seatGuideInit();
+    infoPaymentTicketInit();
 }
 
 function youthCount(parentDOM) { // CustomerType = 2
@@ -565,6 +591,7 @@ function youthCount(parentDOM) { // CustomerType = 2
     selectedInit(parentDOM)
     sendPeopleNumInit();
     seatGuideInit();
+    infoPaymentTicketInit();
 }
 
 function countChecking(tempNum, target){
@@ -669,38 +696,77 @@ function seatInit() {
             }
 
             sendAllSelectedSeatData(allSeat);
-            // getTheaterPrice(); // 작업중
+            infoPaymentTicketInit()
         }
     });
 }
-/*
-function getTheaterPrice(){ // 작업중
-    const startAndEndTime = qsAll('.playYMD-info b:not(b:first-child)');
-    // 23:21 ~ 01:32 -> '23:21'
-    const startTime = startAndEndTime[1].innerText.split(' ~ ')[0];
-    // (수) -> '수'
-    const week = startAndEndTime[0].innerText.match('[가-힣]')[0];
-    console.log(tcode, startTime, week);
-    getTheaterPriceAjax(Number(tcode), String(startTime), String(week)).then(re => re.json())
-        .then(data=> {
-            console.log(data)
-        });
-}
-function getTheaterPriceAjax(tcode, startTime, week){ // 작업중
-    return fetch('/api/ticket/getPrice', {
-        method: 'POST',
-        headers: {
-            'Content-Type': 'application/json'
-        },
-        body: JSON.stringify({
-            tcode : tcode,
-            week : week,
-            startTime : startTime
-        })
-    })
-}*/
 
-function getSelectedSeatCount(){
+function infoPaymentTicketInit(){ // 하단 가격 전달
+    const paymentDivList = qsAll('.payment-ticket > div');
+    const paymentDivListExceptAmount = qsAll('.payment-ticket > div:not(div:last-child)');
+    const adultPriceDiv = qs('.payment-adult');
+    const youthPriceDiv = qs('.payment-youth');
+    const amountPriceDiv = qs('.payment-final');
+    const amountPrice = qs('.payment-final .price');
+    const adultPriceQuantity = qs('.payment-adult .quantity');
+    const youthPriceQuantity = qs('.payment-youth .quantity');
+    const selectedSeatCount = getSelectedSeatCount();
+
+    // none, block 조건 주입 ( style 초기화 )
+    paymentDivList.forEach(div => div.style.display = 'none');
+    if(peopleNum == 0) return false; // 선택된 인원이 없으면 실행안함
+
+
+    // 인원별 가격 ( quantity 초기화 )
+    let adultQuantity = 0; let youthQuantity = 0;
+    for(let i = 1 ; i <= selectedSeatCount; i++){
+        if(i <= adultNum) adultQuantity++;
+        else if(i - adultNum <= youthNum) youthQuantity++;
+    }
+    adultPriceQuantity.innerText = adultQuantity;
+    youthPriceQuantity.innerText = youthQuantity;
+
+    if(adultQuantity !== 0) adultPriceDiv.style.display = 'block';
+    if(youthQuantity !== 0) youthPriceDiv.style.display = 'block';
+    if(adultQuantity !== 0 || youthQuantity !== 0) amountPriceDiv.style.display = 'block';
+
+    let amount = 0;
+    paymentDivListExceptAmount.forEach(div => {
+        amount += div.querySelector('.price').innerText.replaceAll(',','') * div.querySelector('.quantity').innerText;
+    })
+
+    amountPrice.innerText = wonByComma(amount);
+}
+
+
+function wonByComma(won){ // 정규식을 안쓰고 콤마 생성
+    let returnText = '';
+    const wonString = String(won);
+    let numComma = Math.floor(wonString.length / 3);
+    if(wonString.length % 3 === 0) numComma--;
+
+    if(numComma > 0) {
+        const tempLength = wonString.length + numComma
+        let count = wonString.length - 1; let repeat = 0;
+        const array = [];
+        for(let i = tempLength -1 ; i >= 0; i--){
+            if(repeat === 3){
+                array[i] = ',';
+                repeat = 0;
+                continue;
+            }
+            array[i] = wonString[count--];
+            repeat++;
+        }
+        array.forEach(char => returnText += char);
+        return returnText;
+    }else{
+        return won;
+    }
+}
+
+
+function getSelectedSeatCount(){ // 현재 선택된 좌석들의 갯수를 불러온다 ( 자주쓰임 )
     let count = 0;
     qsAll('#seats .seat').forEach(seat => {
         if(seat.classList.contains('selected')) count ++;
