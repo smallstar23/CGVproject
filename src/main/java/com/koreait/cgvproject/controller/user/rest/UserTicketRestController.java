@@ -3,6 +3,7 @@ package com.koreait.cgvproject.controller.user.rest;
 import com.koreait.cgvproject.dto.PriceDTO;
 import com.koreait.cgvproject.dto.ScheduleDTO;
 import com.koreait.cgvproject.dto.TicketDTO;
+import com.koreait.cgvproject.service.admin.ticket.AdminTicketService;
 import com.koreait.cgvproject.service.user.schedule.UserScheduleService;
 import com.koreait.cgvproject.service.user.ticket.UserTicketService;
 import lombok.AllArgsConstructor;
@@ -20,6 +21,10 @@ public class UserTicketRestController {
 
     private UserScheduleService userScheduleService;
     private UserTicketService userTicketService;
+
+    @Autowired
+    private AdminTicketService adminTicketService;
+
 
     private HttpSession session;
 
@@ -48,5 +53,10 @@ public class UserTicketRestController {
     @PostMapping("/api/receiveInfo")
     public void receiveInfo(@RequestBody TicketDTO ticketDTO){
         System.out.println(ticketDTO);
+    }
+
+    @GetMapping("/api/deleteSchedule/{ticode}")
+    public void deleteSchedule(@PathVariable Long ticode){
+        adminTicketService.deleteTicket(ticode);
     }
 }
