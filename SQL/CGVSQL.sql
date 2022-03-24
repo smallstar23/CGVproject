@@ -224,7 +224,7 @@ CREATE TABLE Ticket (
                         price varchar2(10)   not null, -- 가격
                         payDate date not null, -- 결제일자
                         canDate date, -- 결제 취소 일자
-                        usePoint varchar2(10)  DEFAULT 0 not null, -- 포인트사용
+                        usePoint varchar2(10)  DEFAULT 0 , -- 포인트사용
                         totPrice varchar2(10)   not null, -- 총합 가격
 
                         constraint fk_Ticket_schecode foreign key(schecode) references Schedule (schecode),
