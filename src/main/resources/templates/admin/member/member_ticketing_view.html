@@ -69,11 +69,12 @@
                         <div style="width:50%;height:auto; text-align: center; margin:0 auto; ">
                             <p>관람일시: <input class="form-control" th:value="${ticket.getScheduleDTO().getScdate()}" readonly></p>
                             <p>상영관: <input class="form-control" th:value="${ticket.getScheduleDTO().getHallDTO().getHguan()}" readonly></p>
-                            <p>관람인원: <input class="form-control" th:value="${ticket.getTotperson()}" readonly></p>
+                            <p>관람인원: <input class="form-control" th:value="'성인 '+${ticket.getAdultnum()}+'명, 청소년 '+${ticket.getYouthnum()}" readonly></p>
                         </div>
                         <div style="width:50%;height:auto; text-align: center; margin:0 auto; ">
                             <p>관람좌석: <input class="form-control" th:value="${ticket.getSeat()}" readonly></p>
                             <p>결제일: <input class="form-control" th:value="${ticket.getPaydate()}" readonly></p>
+                            <p>취소일: <input class="form-control" th:value="${ticket.getCandate()}" readonly></p>
                             </p>
                         </div>
                         <div></div>
@@ -106,7 +107,7 @@
     function fnDelete(){
         if(confirm("해당 예매내역을 취소하시겠습니까?")){
             fetch('/api/ticketDelete/'+ticode);
-            alert('삭제되었습니다.')
+            alert('취소되었습니다.')
             location.href='/member-ticket'
         }
 

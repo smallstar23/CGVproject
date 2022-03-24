@@ -1,10 +1,7 @@
 package com.koreait.cgvproject.entity;
 
 import com.koreait.cgvproject.dto.TicketDTO;
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 import org.springframework.data.annotation.CreatedDate;
 
 import javax.persistence.*;
@@ -21,6 +18,7 @@ import java.time.LocalDateTime;
         initialValue = 1,
         allocationSize = 1
 )
+@ToString(exclude = {"schedule","member"})
 public class Ticket {
 
     @Id
@@ -40,7 +38,9 @@ public class Ticket {
 
     private String price;
 
-    private Long totperson;
+    private Long adultnum;
+
+    private Long youthnum;
 
     @CreatedDate
     private LocalDateTime paydate;
@@ -54,7 +54,8 @@ public class Ticket {
     public TicketDTO toDTO(){
         return TicketDTO.builder()
                 .ticode(ticode)
-                .totperson(totperson)
+                .adultnum(adultnum)
+                .youthnum(youthnum)
                 .seat(seat)
                 .scheduleDTO(schedule.toDTO())
                 .memberDTO(member.toDTO())

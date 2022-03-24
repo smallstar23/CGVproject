@@ -295,11 +295,8 @@
                         </div>
 
 
-
                         <div class="lst-item">
-                            <div class="box-set-info nodata">
-                                고객님의 최근 예매내역이 존재하지 않습니다.
-                            </div>
+
                         </div>
 
                     </div>
@@ -788,7 +785,7 @@
                     <div class="sect-mycgv-cancle">
                         <div class="tit-mycgv">
                             <h4>MY 취소내역</h4>
-                            <p>상영일 기준 지난 100000000000일 동안의 취소내역입니다.</p>
+                            <p>상영일 기준 지난 14일 동안의 취소내역입니다.</p>
                         </div>
                         <div class="tbl-data">
                             <table summary="상영일 기준 지난 7일 동안의 취소내역">
@@ -803,21 +800,16 @@
                                 </tr>
                                 </thead>
                                 <tbody>
-
+                                <th:block th:each="cancel:${ticketCancel}">
                                 <tr>
-                                    <td>
-
-                                        db
-
-                                    </td>
-                                    <td>받아서</td>
-                                    <td>채워 넣어야</td>
-                                    <td>하는 부분</td>
-                                    <td><strong>
-                                        입니다
+                                    <td th:text="${cancel.getScheduleDTO().getMovieDTO().getTitleKo()}"></td>
+                                    <td th:text="${cancel.getScheduleDTO().getHallDTO().getTheater().getTname()}"></td>
+                                    <td th:text="${cancel.getScheduleDTO().getScdate()}"></td>
+                                    <td th:text="${cancel.getCandate()}">하는 부분</td>
+                                    <td><strong th:text="${cancel.getTotprice()}">
                                     </strong> 원 </td>
                                 </tr>
-
+                                </th:block>
 
                                 </tbody>
                             </table>
@@ -1540,6 +1532,47 @@
         </div>
 
 
+        <!--티켓 취소 완료시 띄워줄 부분입니다. -->
+        <div class="mask" style="position: fixed; left: 0px; top: 0px; width: 100%; height: 100%; z-index: 100; background-color: rgba(0, 0, 0, 0.8); display: none" ></div>
+        <div class="layer-wrap cancelPopup" style="margin-top: -382px; margin-left: -400px; position: fixed; display: none" tabindex="0"><div class="layer-contents" style="width:800px;height:765px;">
+            <div class="popwrap ">
+                <h4>예매 취소 완료</h4>
+                <div class="pop-contents">
+                    <div class="wrap-reservationcancel">
+                        <strong class="title">예매 취소가 완료되었습니다.</strong>
+                        <div>
+                            <strong>환불 안내</strong>
+                            <p>신용카드 : 결제 후 3일 이내 취소 시 승인 취소되며, 3일 이후 매입 취소시 영업일 기준 3~5일 소요됩니다.</p>
+                            <p>체크카드 : 결제 후 3일 이내 취소 시 당일 카드사에서 환불처리되며, 3일 이후 매입 취소 시 카드사에 따라 3~10일 소요됩니다.</p>
+                            <p>
+                                휴대폰 결제 : 결제 일자 기준 당월(1일~말일)취소만 가능하며, 익월 취소 관련 문의는 CGV고객센터(1544-1122)를 통해 확인 후&nbsp;&nbsp; 3~10일 이내 환불됩니다.<br>
+                                ※ 당일 취소가 원칙이나 현장(매표소)에서 취소할 경우 익일 환불처리 될 수 있습니다.
+                            </p>
+                            <p>카카오페이 : 카카오페이머니나 카카오포인트를 사용하신 경우 각각의 잔액으로 원복되며, 카드 결제를 하신 경우는 카드사 정책에 따라 승인취소가 진행되며 3일 이후 매입 취소시 영업일 기준 3~10일 소요됩니다.</p>
+                            <p>PAYCO : PAYCO 쿠폰/포인트를 사용하신 경우 각각의 쿠폰/포인트로 원복되며 쿠폰의 경우 조건에 따라 재사용이 불가 할 수 있습니다. 카드 결제금액은&nbsp;카드사 정책에 따라 승인취소가 진행되며&nbsp;3일 이후 매입 취소시 영업일 기준 3~10일 소요됩니다.</p>
+                            <p>스마일페이 : 스마일캐시를 사용하신 경우 스마일캐시로 원복되며, 카드 결제금액은 카드사 정책에 따라 승인취소가 진행되며 3일 이후 매입취소 시 영업일 기준 3~10일 소요됩니다.</p>
+                            <p>NAVER Pay : NAVER Pay 포인트를 사용하신 경우 NAVER Pay 포인트로 원복되며, 카드사 결제를 하신 경우는 카드사 정책에 따라 승인취소가 진행되며 3일 이후 매입 취소시 영업일 기준 3~10일 소요됩니다.</p>
+                            <p>카카오톡 선물하기 복합상품 : 카카오톡 선물하기 복합상품 (2인 PKG / 1인 PKG)은 매점쿠폰 사용 시, 예매 티켓 환불 불가. ※ 단, 매점 쿠폰 미 사용 시, 예매 티켓 환불 가능하며 재 예매 시, 새로운 매점 쿠폰 발급.</p>
+                            <p>
+                                계좌이체<br>
+                                결제일 기준 결제 당일~7일 이내 예매 취소 시 은행 별 기준은 아래와 같습니다.<br>
+                                ① 예매 취소 후 즉시 환급되는 은행<br>
+                                &nbsp;&nbsp;: 신한, 우체국, 전북, 경남, 광주, 대구, 새마을, 제주<br>
+                                ② 예매 취소 후 3~5일 이내 환급되는 은행<br>
+                                &nbsp;&nbsp;: 농협, 부산, SC제일은행, 우리은행, 그 外 기타 은행 (KEB하나은행/KB국민은행/씨티은행 등)<br>
+                                ③ 결제일 기준 7일 이후 예매 취소 시<br>
+                                &nbsp;&nbsp;: 계좌이체로 결제하신 경우 예매 취소일로부터 7일~10일 이내에 환급<br>
+                                ※ 환불에 대한 문의는 은행사에서 확인 가능
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <button type="button" class="btn-close" onclick="btnClose()"> 닫기</button>
+        </div>
+        </div>
+
+
         <!--/ Contents End -->
     </div>
     <!-- /Contents Area -->
@@ -1548,4 +1581,160 @@
 <div th:replace="user/fragment/footer :: footer-user"></div>
 </div>
 </body>
+<script th:inline="javascript">
+    /*<![CDATA[*/
+    let ticketCancel = [[${ticketCancel}]];
+    console.log(ticketCancel);
+    // 예매내역 반복, 데이터가 없으면 예매내역이 없음으로 띄워줌
+    let ticketList = [[${ticketList}]];
+    console.log(ticketList);
+    let lstitem=document.querySelector('.lst-item');
+    if(ticketList.length==0){
+        lstitem.innerHTML=
+            `
+            <div class="box-set-info nodata">고객님의 최근 예매내역이 존재하지 않습니다.</div>
+            `
+    }else{
+        ticketList.forEach(ticket =>{
+            console.log(ticket)
+            let src=ticket.scheduleDTO.movieDTO.poster;
+            lstitem.innerHTML+=
+                `
+                    <div class="lst-item">
+                                <div class="box-set-info">
+                                    <div class="box-number">
+                                        <em>예매번호</em>
+                                        <strong>${ticket.scheduleDTO.hallDTO.theater.tcode}-<i>${ticket.ticode}</i></strong>
+                                    </div>
+
+                                    <!--
+                                        Description js 20190904
+                                        PC홈페이지 추가
+                                        s:나의예매내역 출력 수정
+                                    -->
+                                    <div class="box-info">
+                                        <div class="box-image">
+                                            <a href="/movies/detail-view/${ticket.scheduleDTO.mcode}">
+                                <span class="thumb-image">
+                                    <img src="${src}" alt="포스터" onerror="errorImage(this)">
+
+                                </span>
+                                            </a>
+                                        </div>
+
+                                        <div class="detail-area">
+                                            <div class="reservation-info-wrap">
+                                                <h2 class="box-contents artHouse">
+                                                    <a href="/movies/detail-view/${ticket.scheduleDTO.mcode} class="res-title">${ticket.scheduleDTO.movieDTO.titleKo}</a>
+                                                    <span class="res-price"> ${ticket.totprice}원</span>
+                                                </h2>
+                                                <ul class="reservation-mv-info">
+                                                    <li>
+                                                        <dl>
+                                                            <dt>관람극장</dt>
+                                                            <dd>${ticket.scheduleDTO.hallDTO.theater.tname}
+                                                                <a href="/theaters/${ticket.scheduleDTO.hallDTO.theater.tcode}">[극장정보]</a>
+                                                            </dd>
+                                                        </dl>
+                                                    </li>
+                                                    <li>
+                                                        <dl>
+                                                            <dt>관람인원</dt>
+                                                            <dd>${ticket.totperson}</dd>
+                                                        </dl>
+                                                    </li>
+                                                    <li>
+                                                        <dl>
+                                                            <dt>관람일시</dt>
+                                                            <dd class="txt-red">${ticket.scheduleDTO.scdate}</dd>
+                                                        </dl>
+                                                    </li>
+                                                    <li>
+                                                        <dl>
+                                                            <dt>관람좌석</dt>
+                                                            <dd>${ticket.seat}</dd>
+                                                        </dl>
+                                                    </li>
+                                                    <li>
+                                                        <dl>
+                                                            <dt>상영관</dt>
+                                                            <dd>${ticket.scheduleDTO.hallDTO.hguan}관 ${ticket.scheduleDTO.hallDTO.location}</dd>
+                                                        </dl>
+                                                    </li>
+                                                    <li>
+                                                        <dl>
+                                                            <dt>매수</dt>
+                                                            <dd>성인 ${ticket.adultnum}명, 청소년 ${ticket.youthnum}명</dd>
+                                                        </dl>
+                                                    </li>
+                                                </ul>
+                                            </div>
+
+                                            <div class="reservation-info-wrap store-history" style="display: none;">
+                                                <h2>
+                                    <span class="res-title">
+
+
+                                        <button type="button" class="all-goods-btn" title="상품모두 열기/닫기" onclick="fn_SnackVisible(this, '0056202203236724600')">
+                                            <span>전체상품보기버튼</span>
+                                        </button>
+                                    </span>
+                                                    <span class="res-price">
+                                        원</span>
+                                                </h2>
+                                                <ul class="store-goods-list" id="divSnackList0056202203236724600">
+                                                </ul>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="resevation-payment-info">
+                                        <h2>결제내역</h2>
+                                        <div class="resevation-payment">
+                                            <p class="resevation-payment-total">
+                                                <span class="totel-title">총 결제금액</span>
+                                                <span class="res-price">
+                                   ${ticket.totprice}원</span>
+                                            </p>
+                                            <p class="resevation-payment-part"><span>카카오페이</span><span class="part-price">${ticket.totprice}원</span></p>
+                                        </div>
+                                    </div>
+                                    <div class="set-btn">
+                                        <input type="hidden" class="reserve-no" name="reserve-no" value="tSScaFmNYJ5n6i0uo2MB4vAjmsQoO78DkG05Ugq4jE4=">
+                                        <div class="col-edit"></div><div class="col-print">
+                                        <button type="button" onclick="fnTicketCancle(${ticket.ticode})" class="round black"><span>예매취소</span></button></div>
+                                    </div>
+                                    <!--
+                                        e:나의예매내역 출력 수정
+                                    -->
+                                </div>
+                            </div>
+                `
+        })
+    }
+    /*]]>*/
+
+
+    // 예매 취소 요청시 function
+    function fnTicketCancle(ticode){
+        console.log(ticode)
+        if(confirm("예매를 취소하시겠습니까?")){
+            fetch("/api/deleteSchedule/"+ticode);
+            document.querySelector('.mask').style.display="block";
+            document.querySelector('.cancelPopup').style.display="block";
+
+        }
+
+    }
+
+    // 취소 팝업 닫기 클릭시 닫기 function
+    function btnClose(){
+        document.querySelector('.mask').style.display="none";
+        document.querySelector('.cancelPopup').style.display="none";
+        location.href="/user/mycgv/mycgv-reserve"
+
+    }
+
+
+
+</script>
 </html>

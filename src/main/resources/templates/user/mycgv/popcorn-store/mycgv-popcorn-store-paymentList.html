@@ -147,32 +147,9 @@
                         //]]>
                     </script>
 
-                    <div class="tit-mycgv"><h3>내 기프트콘</h3></div>
+                    <div class="tit-mycgv"><h3>내 결제내역</h3></div>
                     <div class="tit-mycgv pT25"><h4>CGV 결제내역</h4></div>
                     <form id="form">
-                        <!-- S 조회내용& 조회기간 -->
-                        <div class="sect-use-expense">
-                            <div class="box-polaroid box-polaroid_tps">
-                                <div class="box-inner tps-search-gray">
-                                    <strong class="period">조회내용</strong>
-                                    <span id="tps-search-type">
-							<button data-type="0" class="round gray"><span>미사용</span></button>
-							<button data-type="1" class="round gray"><span>사용</span></button>
-						</span>
-                                </div>
-                                <div class="box-inner">
-                                    <strong class="period">조회기간</strong>
-                                    <span id="period_wrap"></span>
-                                    <p>
-                                        <label for="startdate">시작일 입력</label><input type="text" id="startdate" name="startdate" value="2022-01-13" datepicker="datepicker" /> ~
-                                        <label for="enddate">종료일 입력</label><input type="text" id="enddate" name="enddate" value="2022-02-13" datepicker="datepicker" />
-                                        <button type="button" id="btn_search" class="round inblack"><span>조회하기</span></button>
-                                    </p>
-                                </div>
-                            </div>
-                        </div>
-                        <!-- E 조회내용& 조회기간 -->
-
                         <!-- S 기프트콘 목록 -->
                         <div class="tbl-data">
                             <strong class="tbl-data_total_tps">0</strong>
@@ -205,7 +182,7 @@
                                 <th:block th:unless="${giftPayment==null}">
                                     <tr th:each="payments:${giftPayment}">
                                         <td class="tbl-data-font_type0" th:text="${#temporals.format(payments.regDate, 'yyyy-MM-dd')}"></td>
-                                        <td class="tbl-data-font_type1" th:text="|000-000-00${payments.gpcode}|"></td>
+                                        <td class="tbl-data-font_type1" th:text="${payments.gpcode}"></td>
                                         <td th:text="${payments.gift.getTitle()}"></td>
                                         <td class="tbl-data-font_type2" th:text="${payments.gift.getPrice()}"><span>원</span></td>
                                         <td class="tbl-data-font" th:text="${member.username}"><span>님</span></td>
@@ -218,6 +195,7 @@
                         <!-- Paging -->
                         <?xml version="1.0" encoding="utf-8"?>
                         <div class="paging">
+
                         </div>
                         <!-- Paging -->
                     </form>

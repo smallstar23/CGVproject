@@ -3,9 +3,11 @@ package com.koreait.cgvproject.service.admin.ticket;
 import com.koreait.cgvproject.dto.TicketDTO;
 import com.koreait.cgvproject.entity.Ticket;
 import com.koreait.cgvproject.repository.TicketRepository;
+import org.apache.tomcat.jni.Local;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
@@ -36,11 +38,11 @@ public class AdminTicketService {
         ticket.ifPresent(ticket1 -> {
             ticketDTO.setTicode(ticket1.getTicode());
             ticketDTO.setScheduleDTO(ticket1.getSchedule().toDTO());
-            ticketDTO.setTotperson(ticket1.getTotperson());
             ticketDTO.setSeat(ticket1.getSeat());
             ticketDTO.setMemberDTO(ticket1.getMember().toDTO());
             ticketDTO.setPrice(ticket1.getPrice());
             ticketDTO.setPaydate(ticket1.getPaydate());
+            ticketDTO.setCandate(ticket1.getCandate());
             ticketDTO.setTotprice(ticket1.getTotprice());
 
         });
@@ -48,10 +50,16 @@ public class AdminTicketService {
        return ticketDTO;
 
     }
-    
-    // 티켓 정보 삭제
+
+    // 티켓 정보 취소가 아니라 취소날짜 업데이트로 변경함
     public void deleteTicket(Long ticode){
-        ticketRepository.deleteById(ticode);
+        Optional<Ticket> ticket=ticketRepository.findById(ticode);
+        ticket.ifPresent(ticket1 -> {
+            LocalDateTime today=LocalDateTime.now();
+            ticket1.setCandate(today);
+            ticketRepository.save(ticket1);
+        });
+
     }
 
 

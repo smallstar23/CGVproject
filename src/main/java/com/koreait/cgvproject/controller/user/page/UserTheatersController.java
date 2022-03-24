@@ -22,6 +22,7 @@ public class UserTheatersController {
         List<HallDTO> lengthhalls=adminTheaterService.getHallList(theaterDTOList.get(0).getTcode());
         model.addAttribute("theater",theaterDTOList.get(0));
         model.addAttribute("lengthhalls", lengthhalls.size());
+        model.addAttribute("halls", lengthhalls);
         model.addAttribute("tcode",theaterDTOList.get(0).getTcode());
         return "user/theaters/theaters";
     }
@@ -32,6 +33,7 @@ public class UserTheatersController {
         List<HallDTO> lengthhalls=adminTheaterService.getHallList(tcode);
         model.addAttribute("theater", theaterDTO);
         model.addAttribute("lengthhalls", lengthhalls.size());
+        model.addAttribute("halls", lengthhalls);
         model.addAttribute("tcode", tcode);
         return "/user/theaters/theaters";
     }

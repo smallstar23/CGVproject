@@ -66,6 +66,7 @@
               <th>관람 인원</th>
               <th>관람 좌석</th>
               <th>결제 날짜</th>
+              <th>취소 날짜</th>
             </tr>
             </thead>
             <tfoot>
@@ -78,6 +79,7 @@
               <th>관람 인원</th>
               <th>관람 좌석</th>
               <th>결제 날짜</th>
+              <th>취소 날짜</th>
             </tr>
             </tfoot>
             <tbody>
@@ -88,9 +90,10 @@
               <td style="width: 10%;" th:text="${ticket.getScheduleDTO().getHallDTO().getTheater().getTname()}"></td>
               <td style="width: 15%;" th:text="${ticket.getScheduleDTO().getScdate()}"></td>
               <td style="width: 10%;" th:text="${ticket.getScheduleDTO().getHallDTO().getHguan()}"></td>
-              <td style="width: 10%;" th:text="${ticket.getTotperson()}" ></td>
+              <td style="width: 10%;" th:text="'성인 '+${ticket.getAdultnum()}+'명, 청소년 '+${ticket.getYouthnum()}" ></td>
               <td style="width: 10%;" th:text="${ticket.getSeat()}" ></td>
               <td style="width: 15%;" th:text="${ticket.getPaydate()}"></td>
+              <td style="width: 15%;" th:text="${ticket.getCandate()}"></td>
             </tr>
             </th:block>
 
