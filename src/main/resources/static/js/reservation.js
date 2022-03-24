@@ -151,7 +151,7 @@ let sendHallInfo = document.getElementsByClassName('sendHallInfo');
 theaterInit();
 
 function theaterInit() {
-    const theaterClick = document.querySelectorAll('.theaterClick');
+    const theaterClick = qsAll('.theaterClick');
 
     theaterClick.forEach(theater => {
         theater.onclick = function () {
@@ -166,17 +166,15 @@ function theaterInit() {
 }
 
 function toFirstDateStatus() {
-    const checkDate = document.querySelectorAll(".checkdate");
-    document.querySelectorAll('#scheduleList li').forEach(list => list.classList.remove('selected'));
-    document.querySelector('.movie_rating').firstElementChild.innerText = '';
-    document.querySelector('.movie_type').firstElementChild.innerText = '';
-    document.getElementById('scheduleList').innerHTML = '';
-    document.querySelector('.sendDate').innerText = '';
-    document.querySelector('.sendHallInfo').innerText = '';
-    hcode=null;
-    schecode=null;
+    const checkDate = qsAll(".checkdate");
+    qsAll('#scheduleList li').forEach(list => list.classList.remove('selected'));
+    qs('.movie_rating').firstElementChild.innerText = '';
+    qs('.movie_type').firstElementChild.innerText = '';
+    qs('#scheduleList').innerHTML = '';
+    qs('.sendDate').innerText = '';
+    qs('.sendHallInfo').innerText = '';
     $('#tnb_step_btn_right').removeClass('on');
-
+    hcode=null; schecode=null;
 
     checkDate.forEach(d => {
         d.classList.add('dimmed');
@@ -185,14 +183,15 @@ function toFirstDateStatus() {
 }
 
 function transferTheaterName(theater) {
-    const theaterTransferred = document.getElementsByClassName('sendTheaterName')[0]
-    // 예매정보에 극장정보 넘기기
-    document.querySelector('.theater > td').innerText=theater.getAttribute('tname');
 
+    const theaterTransferred = document.getElementsByClassName('sendTheaterName')[0]
     theaterTransferred.setAttribute('href', '/theaters/' + theater.value);
     theaterTransferred.setAttribute('title', theater.getAttribute('tname'));
     theaterTransferred.innerText = theater.getAttribute('tname');
     theaterGuideText.style.display = 'none';
+    // 예매정보에 극장정보 넘기기
+    qs('.theater > td').innerText = theater.getAttribute('tname');
+
 }
 
 function extraFunction(theaterList) {
@@ -205,10 +204,10 @@ function extraFunction(theaterList) {
 }
 
 function dimmedOrNot() {
-    if(tcode == null || mcode == null) return;
+    if (tcode == null || mcode == null) return;
 
     const regExp = '\\d{4}-\\d{2}-\\d{2}';
-    const dateList = document.querySelectorAll('.checkdate');
+    const dateList = qsAll('.checkdate');
     const result = findScheduleAjax(mcode, tcode);
 
     // 초기화
@@ -366,24 +365,24 @@ function schecodeSelect(DOM) {
     // step1 하단에 내용 전달하는 부분입니다.
     ticket_tnbInit(spanTitle, parentList, DOM);
 
-   //  // step2 상단 내용 찍어주는 부분입니다.
-   //  document.querySelector('.theater-info > .site').innerText=spanTitle.querySelector('.name').innerText
-   //  document.querySelector('.theater-info > .screen').innerText=spanTitle.querySelector('.floor').innerText;
-   //  document.querySelector('.playYMD-info > .date').innerText=schedule.substring(0,10);
-   //  document.querySelector('.playYMD-info > .time').innerText=schedule.substring(11,16)+" ~ "+parentList.getAttribute('endtime');
-   //  $('#tnb_step_btn_right').addClass('on');
-   //
-   //  // step3 결제 직전 예매정보 확인하는 부분입니다.
-   // document.querySelector('.screen > td').innerText=spanTitle.querySelector('.floor').innerText;
-   // document.querySelector('.movie_date > td').innerText=schedule.substring(0,10) +"  "+schedule.substring(11,16)+" ~ "+parentList.getAttribute('endtime');
+    //  // step2 상단 내용 찍어주는 부분입니다.
+    //  document.querySelector('.theater-info > .site').innerText=spanTitle.querySelector('.name').innerText
+    //  document.querySelector('.theater-info > .screen').innerText=spanTitle.querySelector('.floor').innerText;
+    //  document.querySelector('.playYMD-info > .date').innerText=schedule.substring(0,10);
+    //  document.querySelector('.playYMD-info > .time').innerText=schedule.substring(11,16)+" ~ "+parentList.getAttribute('endtime');
+    //  $('#tnb_step_btn_right').addClass('on');
+    //
+    //  // step3 결제 직전 예매정보 확인하는 부분입니다.
+    // document.querySelector('.screen > td').innerText=spanTitle.querySelector('.floor').innerText;
+    // document.querySelector('.movie_date > td').innerText=schedule.substring(0,10) +"  "+schedule.substring(11,16)+" ~ "+parentList.getAttribute('endtime');
 
 
-   // step3 kakaopay 클릭시에 ticket table에 저장할 코드를 같이 보내줍니다. // step 3 준비를 왜 step 1에서 하나요??  ( 김영신 )
-   //  document.querySelector('.reservation_info').innerHTML+=
-   //      `
-   //      <input type="hidden" name="selSeat" value="A1">
-   //      <input type="hidden" name="schecode" value="${schecode}">
-   //      `
+    // step3 kakaopay 클릭시에 ticket table에 저장할 코드를 같이 보내줍니다. // step 3 준비를 왜 step 1에서 하나요??  ( 김영신 )
+    //  document.querySelector('.reservation_info').innerHTML+=
+    //      `
+    //      <input type="hidden" name="selSeat" value="A1">
+    //      <input type="hidden" name="schecode" value="${schecode}">
+    //      `
 
 
     // 마지막 단계인 스케줄 코드까지 선택이 됬으므로 좌석 init을 실행함 ( step 2 준비 )
@@ -397,7 +396,7 @@ function ticket_tnbInit(spanTitle, parentList, DOM){
     qs('.movie_type > span').innerText = spanTitle.querySelector('.name').innerText;
     qs('.movie_rating > span').innerText = parentList.getAttribute('movieRating');
     qs('.sendDate').innerText = qs('.findSchedule.selected')
-            .getAttribute('date').replaceAll('-','.') + ' ' + DOM.firstElementChild.innerText;
+        .getAttribute('date').replaceAll('-','.') + ' ' + DOM.firstElementChild.innerText;
 }
 function infoInit() {
     T_H_Init();
@@ -890,3 +889,25 @@ function qs(selector, doc = document) {
 function qsAll(selector, doc = document) {
     return doc.querySelectorAll(selector);
 }
+
+function sendForm() {
+    // let movieName = $("#movie_name");
+    // let price = $("#price");
+    // let memberIdx = document.getElementById("#member_idx");
+    // console.log("11")
+    // console.log(price)
+
+    console.log(memberIdx);
+    let price = "10000원"
+    let data = {ticode: 1, scheduleDTO: null, schecode: 1, seatDTO: null, movieName: 111,
+        stcode: 1, memberDTO: null, memIdx: 111, price: 111, paydate: null, candate: null, usepoint: 1, price: price};
+
+    return fetch('/api/ticketInfo1', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(data)
+    })
+}
+
