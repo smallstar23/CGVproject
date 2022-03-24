@@ -7,6 +7,7 @@ import com.koreait.cgvproject.entity.*;
 import com.koreait.cgvproject.repository.FavCGVRepository;
 import com.koreait.cgvproject.repository.MemberRepository;
 import com.koreait.cgvproject.repository.TheaterRepository;
+import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -17,6 +18,7 @@ import java.util.List;
 
 @Slf4j
 @Service
+@AllArgsConstructor
 public class UserFavCGVService {
 
     HttpSession session;
@@ -40,11 +42,18 @@ public class UserFavCGVService {
 
     public List<FavCGVDTO> list(Member member){
         List<FavCGVDTO> favCGVDTOS =new ArrayList<>();
-        List<FavCGV> favCGVList = favCGVRepository.findByMemberIdx(member.getIdx());
+        List<FavCGV> favCGVList = favCGVRepository.findAllByMemIdx(member.getIdx());
         for(FavCGV favCGV : favCGVList){
             favCGVDTOS.add(favCGV.toDTO());
         }
         return favCGVDTOS;
+    }
+
+    public void delete(Long idx, String tname){
+        FavCGV favCGV = favCGVRepository.findByMemIdxAndTname(idx,tname);
+        Long cgvidx = favCGV.getIdx();
+        favCGVRepository.deleteByIdx(cgvidx);
+
     }
 
 }

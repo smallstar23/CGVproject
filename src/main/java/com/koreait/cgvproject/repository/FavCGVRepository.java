@@ -6,11 +6,17 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
 
+import javax.transaction.Transactional;
 import java.util.List;
 
 @Repository
+@Transactional
 public interface FavCGVRepository extends JpaRepository<FavCGV, Long> {
     // 특정 멤버아이디값의 모든 자주가는 CGV 조회
-    @Query(value = "SELECT * FROM favCGV where mem_idx = :memberIdx", nativeQuery = true)
-    List<FavCGV> findByMemberIdx(Long memberIdx);
+    List<FavCGV> findAllByMemIdx(Long memberIdx);
+
+    FavCGV findByMemIdxAndTname(Long memberIdx, String tname);
+    void deleteByIdx(Long idx);
+
+
 }

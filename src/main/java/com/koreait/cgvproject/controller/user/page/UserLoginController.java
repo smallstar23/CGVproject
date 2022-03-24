@@ -1,6 +1,9 @@
 package com.koreait.cgvproject.controller.user.page;
 
+import com.koreait.cgvproject.dto.FavCGVDTO;
+import com.koreait.cgvproject.entity.FavCGV;
 import com.koreait.cgvproject.entity.Member;
+import com.koreait.cgvproject.repository.FavCGVRepository;
 import com.koreait.cgvproject.repository.MemberRepository;
 import com.koreait.cgvproject.service.user.login.UserLoginService;
 import lombok.RequiredArgsConstructor;
@@ -12,6 +15,7 @@ import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpSession;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 @Controller
@@ -27,6 +31,9 @@ public class UserLoginController {
     @Autowired
     private MemberRepository memberRepository;
 
+    @Autowired
+    private FavCGVRepository favCGVRepository;
+
     @GetMapping("/user/login")
     public String login(){
         return "user/login/login";
@@ -38,6 +45,7 @@ public class UserLoginController {
         System.out.println(userid);
         System.out.println(userpw);
         Member member = memberRepository.findByUserid(userid);
+        List<FavCGV> favCGVList = favCGVRepository.findAllByMemIdx(member.getIdx());
         if(userLoginService.login(userid,userpw)) {
             session.setAttribute("idx", member.getIdx());
             session.setAttribute("userid", userid);
@@ -45,6 +53,7 @@ public class UserLoginController {
             session.setAttribute("userhp",member.getHp()); // 주문자 정보 확인 위해서
             session.setAttribute("nickname", member.getNickname());
             session.setAttribute("valpoint", member.getValpoint());
+            session.setAttribute("favCGV", favCGVList);
             return 1;
         }
         return 0;
