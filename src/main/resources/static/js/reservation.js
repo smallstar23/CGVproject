@@ -475,17 +475,20 @@ function fnright() {
         checkinfo();
     }
     if(pagenum==1){
-        console.log("btn right()");
-        step[pagenum].style.display = 'none';
-        step[pagenum+1].style.display = 'block';
-        tnb.className = 'tnb step' + (pagenum + 2);
-        pagenum++;
-        document.querySelector('#summary_total_amount').innerText=totprice;
-        document.querySelector('#summary_payment_total').innerText=totprice;
-        document.querySelector('dd > .num').innerText=totprice;
-
+        // 좌석 선택 전에 넘어가지 않는 스크립트 작성
+        if($("#tnb_step_btn_right").hasClass("on")){
+            console.log("btn right()");
+            step[pagenum].style.display = 'none';
+            step[pagenum+1].style.display = 'block';
+            tnb.className = 'tnb step' + (pagenum + 2);
+            pagenum++;
+            document.querySelector('#summary_total_amount').innerText=wonByComma(totprice);
+            document.querySelector('#summary_payment_total').innerText=wonByComma(totprice);
+            document.querySelector('dd > .num').innerText=wonByComma(totprice);
+        }else{
+            alert("좌석을 선택해주세요.")
+        }
     }
-    console.log(pagenum);
     if (pagenum == 0) {
         // 영화, 스케쥴을 선택하기 전이라면
         if (memberIdx == "") {
