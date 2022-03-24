@@ -217,7 +217,8 @@ create sequence seq_notification
 CREATE TABLE Ticket (
                         ticode number(10)  primary key,
                         schecode number(10)   not null, -- 상영스케줄 코드
-                        totperson number(10) not null, -- 예매한 인원
+                        adultNum number(2),  -- 성인인원
+                        youthNum number(2),  -- 청소년인원
                         seat varchar2(20)   not null, -- 예매한 좌석 (A1,A2)
                         mem_idx number(7)   not null,
                         price varchar2(10)   not null, -- 가격
