@@ -29,13 +29,13 @@ public class UserTheatersController {
     public String theaters(Model model){
         List<TheaterDTO> theaterDTOList=adminTheaterService.getCGV(1L);
         List<HallDTO> lengthhalls=adminTheaterService.getHallList(theaterDTOList.get(0).getTcode());
-        Member member = memberRepository.findByUserid((String)session.getAttribute("userid"));
-        List<FavCGVDTO> favCGVDTOS=userFavCGVService.list(member);
+//        Member member = memberRepository.findByUserid((String)session.getAttribute("userid"));
+//        List<FavCGVDTO> favCGVDTOS=userFavCGVService.list(member);
         model.addAttribute("theater",theaterDTOList.get(0));
         model.addAttribute("lengthhalls", lengthhalls.size());
         model.addAttribute("halls", lengthhalls);
         model.addAttribute("tcode",theaterDTOList.get(0).getTcode());
-        session.setAttribute("favCGV", favCGVDTOS);
+//        session.setAttribute("favCGV", favCGVDTOS);
         return "user/theaters/theaters";
     }
 
