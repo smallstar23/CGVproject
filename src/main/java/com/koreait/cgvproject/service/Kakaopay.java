@@ -27,7 +27,9 @@ public class Kakaopay {
     private KakaoPayApprovalVO kakaoPayApprovalVO;
 
     public String kakaoPayReady(
-            @RequestParam String movieName
+            @RequestParam String movieName,
+            @RequestParam String peopleNum,
+            @RequestParam String totPrice
             ) {
 
         RestTemplate restTemplate = new RestTemplate();
@@ -44,8 +46,8 @@ public class Kakaopay {
         params.add("partner_order_id", "00002");
         params.add("partner_user_id", "TestCGV");
         params.add("item_name", movieName);
-        params.add("quantity", "2");
-        params.add("total_amount", "13000");
+        params.add("quantity", peopleNum);
+        params.add("total_amount", totPrice);
         params.add("tax_free_amount", "1300");
         params.add("approval_url", "http://localhost:8080/ticket/kakaoPaySuccess");
         params.add("cancel_url", "http://localhost:8080/ticket");
@@ -72,7 +74,7 @@ public class Kakaopay {
 
     }
 
-    public KakaoPayApprovalVO kakaoPayInfo(String pg_token) {
+    public KakaoPayApprovalVO kakaoPayInfo(String pg_token, String totPrice) {
 
         log.info("KakaoPayInfoVO............................................");
         log.info("-----------------------------");
@@ -92,7 +94,7 @@ public class Kakaopay {
         params.add("partner_order_id", "00002");
         params.add("partner_user_id", "TestCGV");
         params.add("pg_token", pg_token);
-        params.add("total_amount", "13000");
+        params.add("total_amount", totPrice);
 
         HttpEntity<MultiValueMap<String, String>> body = new HttpEntity<MultiValueMap<String, String>>(params, headers);
 
