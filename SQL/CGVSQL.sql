@@ -281,7 +281,7 @@ create sequence seq_gift_payment
     start with 1;
 
 
-drop table gift_payment;  drop table gift; drop table ticket_payment; drop table ticket; drop table notification; drop table seathtml;
+drop table gift_payment;  drop table gift; drop table ticket; drop table notification; drop table seathtml;
 drop table seat; drop table schedule; drop table price; drop table reply; drop table director; drop table actor; drop table trailer;
 drop table favCGV; drop table hall; drop table movie; drop table point; drop table theater;  drop table member;
 
@@ -290,7 +290,7 @@ drop sequence seq_gift_payment; drop sequence seq_gift; drop sequence seq_actor;
 drop sequence seq_director; drop sequence seq_favCGV; drop sequence seq_hall;
 drop sequence seq_member; drop sequence seq_movie; drop sequence seq_notification;
 drop sequence seq_point; drop sequence seq_price; drop sequence seq_reply;
-drop sequence seq_schedule; drop sequence seq_trailer; drop sequence seq_ticket_payment;
+drop sequence seq_schedule; drop sequence seq_trailer;
 drop sequence seq_ticket; drop sequence seq_theater; drop sequence seq_seathtml;
 drop sequence seq_seat;
 
@@ -300,8 +300,9 @@ commit; -- 데이터를 잘 넣어놨는데도 안뜬다. 누르셈
 -- 있다 없어진 테이블 삭제 --
 drop table gift_Explain;
 drop table wishlist;
-
+drop table ticket_payment
 drop sequence seq_gift_explain;
+drop sequence seq_ticket_payment
 -- 있다 없어진 테이블 삭제 끝 --
 
 -- 멤버, 공지 시퀀스(태훈)

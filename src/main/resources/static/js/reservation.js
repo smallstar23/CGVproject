@@ -373,7 +373,7 @@ function schecodeSelect(DOM) {
     startToend=schedule.substring(0,10) +"  "+schedule.substring(11,16)+" ~ "+parentList.getAttribute('endtime');
 
     // 마지막 단계인 스케줄 코드까지 선택이 됬으므로 좌석 init을 실행함 ( step 2 준비 )
-    seatHtmlReadAndCreate().then(seatRead)
+    seatHtmlReadAndCreate().then(seatRead).then(getRerservedSeatInit);
 
     infoInit() // 관, 홀정보, 시간 표시 , 극장별 금액 초기화
 }
@@ -415,7 +415,7 @@ function playYMDInfoInit() {
     timeInit.innerText = `${startTime} ~ ${endTime}`;
 }
 
-function priceInit(){ // 작업중
+function priceInit(){
     const scdate = qs('.sendDate').innerText; // 2022.02.23(수) 03:01
     const startTime = scdate.split(' ')[1] // 03:01
     const week = scdate.match('[가-힣]')[0]; // (수) -> '수'
@@ -436,6 +436,19 @@ function theaterPriceInit(priceDTO){
     studentPrice.innerText = priceDTO.stuPrice;
 }
 
+function seatZoomClickListener(listener){
+    const allSeat = qsAll('#seats .seat');
+
+    if(listener.classList.contains('on')) {
+        listener.classList.remove('on');
+        allSeat.forEach(seat => seat.classList.remove('zoom'));
+    }
+    else {
+        listener.classList.add('on');
+        allSeat.forEach(seat => seat.classList.add('zoom'));
+    }
+
+}
 
 function addZero(number) {
     return parseInt(number) < 10 ? "0" + number : number;
@@ -633,8 +646,6 @@ function sendPeopleNumInit() {
 
     // 인원수 가져갑니당
     peopleDes=(adultNumText + youthNumText).replace('명 ', '명 , ');
-
-
 }
 
 function seatGuideInit() {
@@ -694,6 +705,7 @@ function seatInit() {
     allSeat.forEach(seat => {
         seat.onclick = function () {
             // selected 추가
+            if(seat.classList.contains('reserved')) return false;
             if (seat.classList.contains('selected')) seat.classList.remove('selected');
             else seat.classList.add('selected');
 
@@ -829,6 +841,18 @@ function seatRead() {
                 }
             })
         });
+}
+function getRerservedSeatInit() {
+    const allSeat = qsAll('#seats .seat');
+    fetch('/api/ticket/getReservedSeat?schecode=' + schecode)
+        .then(response => response.json())
+        .then(reservedSeatList =>{
+            for(let reservedSeat of reservedSeatList){
+                for(let seat of allSeat){
+                    if(seat.id == reservedSeat) seat.classList.add('reserved');
+                }
+            }
+        })
 }
 
 function convertAlpha(number) {

@@ -59,7 +59,11 @@ public class UserTicketRestController {
     }
 
     @PostMapping("/api/ticketInfo1")
-    public  void ticketInfo1(@RequestBody TicketDTO ticketDTO){
+    public void ticketInfo1(@RequestBody TicketDTO ticketDTO){
         System.out.println(ticketDTO);
+    }
+    @GetMapping("/api/ticket/getReservedSeat")
+    public List<String> getReservedSeat(@RequestParam Long schecode){
+        return userTicketService.getReservedSeat(schecode);
     }
 }

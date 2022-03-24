@@ -63,11 +63,6 @@ public class UserTicketController {
     private Kakaopay kakaopay;
 
 
-    @GetMapping("/kakaoPay")
-    public void kakaoPayGet() {
-
-    }
-
     @PostMapping("/kakaoPay")
     public String kakaoPay(@RequestParam String movieName,
                            @RequestParam Long memIdx,
@@ -95,8 +90,9 @@ public class UserTicketController {
         session.setAttribute("price",price);
         session.setAttribute("totprice",totprice);
 
+        String peopleNum = String.valueOf(adultNum + youthNum);
         log.info("kakaoPay post............................................");
-        return "redirect:" + kakaopay.kakaoPayReady(movieName);
+        return "redirect:" + kakaopay.kakaoPayReady(movieName, peopleNum, totprice);
 
     }
 
@@ -129,7 +125,7 @@ public class UserTicketController {
         ticketRepository.save(ticket);
 
         model.addAttribute("ticketInfo",ticket);
-        model.addAttribute("info", kakaopay.kakaoPayInfo(pg_token));
+        model.addAttribute("info", kakaopay.kakaoPayInfo(pg_token, totprice));
         return "user/ticket/kakaoPaySuccess";
 
     }
