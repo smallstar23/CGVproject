@@ -40,6 +40,8 @@ public class AdminTicketService {
             ticketDTO.setScheduleDTO(ticket1.getSchedule().toDTO());
             ticketDTO.setSeat(ticket1.getSeat());
             ticketDTO.setMemberDTO(ticket1.getMember().toDTO());
+            ticketDTO.setAdultnum(ticket1.getAdultnum());
+            ticketDTO.setYouthnum(ticket1.getYouthnum());
             ticketDTO.setPrice(ticket1.getPrice());
             ticketDTO.setPaydate(ticket1.getPaydate());
             ticketDTO.setCandate(ticket1.getCandate());
