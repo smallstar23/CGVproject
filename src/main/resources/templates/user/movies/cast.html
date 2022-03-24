@@ -147,7 +147,10 @@
                             <dt>&nbsp;/ 배우 :&nbsp;</dt>
                             <dd class="on">
                                 <span th:each="movie : ${movie.getActors()}">
-                                <a href="#" th:utext="${movie.anameKo}"></a>
+<!--                                <a href="#" th:utext="${movie.anameKo}"></a>-->
+                                <a>[(${movie.anameKo})]</a>
+<!--                                    ,-->
+<!--                                <a>[(${movie.anameKo})]</a>-->
 
                                 </span>
                             </dd>

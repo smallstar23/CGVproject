@@ -124,16 +124,7 @@
                     <h4><img src="https://img.cgv.co.kr/R2014/images/title/h4_favorite_cgv.png" alt="자주가는 CGV"></h4>
                     <ul id="favoriteTheaters">
                         <!-- 여기는 로그인시 본인이 등록한 자주가는 영화관을 a태그에 넣어줍니다. -->
-                        <li><a href="#" data-regioncode="" data-theatercode="" data-selecteddate="20220209"><span>1<em>순위</em></span></a></li>
-
-                        <li><a href="#" data-regioncode="" data-theatercode="" data-selecteddate="20220209"><span>2<em>순위</em></span></a></li>
-
-                        <li><a href="#" data-regioncode="" data-theatercode="" data-selecteddate="20220209"><span>3<em>순위</em></span></a></li>
-
-                        <li><a href="#" data-regioncode="" data-theatercode="" data-selecteddate="20220209"><span>4<em>순위</em></span></a></li>
-
-                        <li><a href="#" data-regioncode="" data-theatercode="" data-selecteddate="20220209"><span>5<em>순위</em></span></a></li>
-
+                        <li th:each="favCGV:${session.favCGV}"><a href="#" data-regioncode="" data-theatercode="" data-selecteddate="20220209" th:text="${favCGV.getTname()}"></a></li>
                     </ul>
                     <button id="btn_set_my_favorite" type="button" title="새창">자주가는 CGV 설정</button>
                 </div>

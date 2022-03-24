@@ -75,9 +75,8 @@ create sequence seq_hall
 CREATE TABLE favCGV (
     idx number(7) primary key,
     mem_idx number(7)   not null,
-    tcode number(7)   not null,
-    constraint fk_favCGV_mem_idx foreign key(mem_idx) references Member(idx),
-    constraint fk_favCGV_tcode foreign key(tcode) references Theater(tcode)
+    tname varchar2(20)   not null,
+    areacode number(2) not null
 );
 create sequence seq_favCGV
     increment by 1
