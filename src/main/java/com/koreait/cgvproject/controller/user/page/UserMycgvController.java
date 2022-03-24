@@ -31,6 +31,7 @@ import java.util.List;
 @Controller
 public class UserMycgvController {
 
+
     private final UserLoginService userLoginService;
     private final HttpSession session;
     private final String ROOT = "user/mycgv";
@@ -63,8 +64,8 @@ public class UserMycgvController {
     @GetMapping("/user/mycgv")
     public String mycgv(Model model){
         Member member =memberRepository.findByUserid((String)session.getAttribute("userid"));
-        List<TicketDTO> ticketDTOList=userTicketService.mycgvTicket(member);
-        model.addAttribute("ticketList",ticketDTOList);
+//        List<TicketDTO> ticketDTOList=userTicketService.mycgvTicket(member);
+//        model.addAttribute("ticketList",ticketDTOList);
         return ROOT+"/mycgv";
     }
 
@@ -95,12 +96,6 @@ public class UserMycgvController {
         return ROOT + "/point/mycgv-cgvPoint-pointList";
     }
 
-    // 이벤트
-    @GetMapping("/user/mycgv/event")
-    public String mycgv_event(Model model){
-        return ROOT + "/event/mycgv-event";
-    }
-
     @GetMapping("/user/mycgv/event/mycgv-event-resultList")
     public String mycgv_event_resultList(Model model){
         return ROOT + "/event/mycgv-event-resultList";
@@ -112,6 +107,7 @@ public class UserMycgvController {
         Member member = memberRepository.findByUserid((String)session.getAttribute("userid"));
         List<FavCGVDTO> favCGVDTOS=userFavCGVService.list(member);
         model.addAttribute("favCGV", favCGVDTOS);
+        session.setAttribute("favCGV", favCGVDTOS);
         return ROOT + "/popup/mycgv-favoriteTheaters";
     }
 
@@ -123,6 +119,7 @@ public class UserMycgvController {
         System.out.println(favCGVDTO);
         Member member = memberRepository.findByUserid((String)session.getAttribute("userid"));
         userFavCGVService.insert(favCGVDTO, member);
+        session.removeAttribute("favCGV");
         return "redirect:/user/popup/mycgv-favoriteTheaters";
     }
 

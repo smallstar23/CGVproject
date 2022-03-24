@@ -123,15 +123,7 @@
 
                     <ul id="favoriteTheaters">
 
-                        <li><a href="#" data-regioncode="" data-theatercode="" th:text="session.tname"><span>1<em>순위</em></span></a></li>
-
-                        <li><a href="#" data-regioncode="" data-theatercode=""><span>2<em>순위</em></span></a></li>
-
-                        <li><a href="#" data-regioncode="" data-theatercode=""><span>3<em>순위</em></span></a></li>
-
-                        <li><a href="#" data-regioncode="" data-theatercode=""><span>4<em>순위</em></span></a></li>
-
-                        <li><a href="#" data-regioncode="" data-theatercode=""><span>5<em>순위</em></span></a></li>
+                        <li th:each="favCGV:${session.favCGV}"><a href="#" data-regioncode="" data-theatercode="" th:text="${favCGV.tname}"><span>1<em>순위</em></span></a></li>
 
                     </ul>
                     <button id="btn_set_my_favorite" title="새창" type="button" class="setting">자주가는 CGV<br />설정하기</button>
@@ -145,6 +137,5 @@
         </div>
     </div>
 </div>
-
 <!-- 상단 common Erea 끝-->
 </html>
