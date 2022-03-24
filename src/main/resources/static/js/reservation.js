@@ -475,17 +475,20 @@ function fnright() {
         checkinfo();
     }
     if(pagenum==1){
-        console.log("btn right()");
-        step[pagenum].style.display = 'none';
-        step[pagenum+1].style.display = 'block';
-        tnb.className = 'tnb step' + (pagenum + 2);
-        pagenum++;
-        document.querySelector('#summary_total_amount').innerText=totprice;
-        document.querySelector('#summary_payment_total').innerText=totprice;
-        document.querySelector('dd > .num').innerText=totprice;
-
+        // 좌석 선택 전에 넘어가지 않는 스크립트 작성
+        if($("#tnb_step_btn_right").hasClass("on")){
+            console.log("btn right()");
+            step[pagenum].style.display = 'none';
+            step[pagenum+1].style.display = 'block';
+            tnb.className = 'tnb step' + (pagenum + 2);
+            pagenum++;
+            document.querySelector('#summary_total_amount').innerText=wonByComma(totprice);
+            document.querySelector('#summary_payment_total').innerText=wonByComma(totprice);
+            document.querySelector('dd > .num').innerText=wonByComma(totprice);
+        }else{
+            alert("좌석을 선택해주세요.")
+        }
     }
-    console.log(pagenum);
     if (pagenum == 0) {
         // 영화, 스케쥴을 선택하기 전이라면
         if (memberIdx == "") {
@@ -699,7 +702,8 @@ function seatInit() {
                 alert('선택한 인원 수 보다 많이 좌석을 선택하실 수 없습니다.');
                 return false;
             }
-
+            if(peopleNum == getSelectedSeatCount()) btnRight.classList.add('on');
+            else btnRight.classList.remove('on');
             sendAllSelectedSeatData(allSeat);
             infoPaymentTicketInit()
         }
@@ -853,15 +857,14 @@ function sendinfo(){
 
 // 마지막 예매정보 정보 전달
 function checkinfo(){
-    document.querySelector('.movie_name > td' ).innerText=movieName;
-    document.querySelector('.poster > img').setAttribute("src",  movieurl)
-    document.querySelector('.screen > td').innerText=locationFloor;
-    document.querySelector('.movie_date > td').innerText=startToend;
-    document.querySelector('.seat > td').innerText=peopleDes;
-    document.querySelector('.people > td').innerText=seat;
-    document.querySelector('.payment_price > td > .price').innerText=totprice;
-    document.querySelector('.content > .price ').innerText=totprice;
-
+    qs('.movie_name > td' ).innerText=movieName;
+    qs('.poster > img').setAttribute("src",  movieurl)
+    qs('.screen > td').innerText=locationFloor;
+    qs('.movie_date > td').innerText=startToend;
+    qs('.seat > td').innerText=peopleDes;
+    qs('.people > td').innerText=seat;
+    qs('.payment_price > td > .price').innerText=wonByComma(totprice);
+    qs('.content > .price ').innerText=wonByComma(totprice);
 }
 
 $("#last_pay_radio3").on({
