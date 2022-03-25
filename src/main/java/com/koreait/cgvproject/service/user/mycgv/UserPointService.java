@@ -43,8 +43,8 @@ public class UserPointService {
                     for(Point point:pointList){
                         PointDTO pointDTO = new PointDTO();
                         pointDTO.setValpoint(point.getValpoint());
-                        pointDTO.setPointchange(point.getPointchange());
-                        pointDTO.setTheaterDTO(point.getTheater().toDTO());
+//                        pointDTO.setPointchange(point.getPointchange());
+//                        pointDTO.setTheaterDTO(point.getTheater().toDTO());
                         pointDTO.setMemberDTO(point.getMember().toDTO());
                         pointDTO.setKind(point.getKind());
                         pointDTOList.add(pointDTO);
@@ -60,7 +60,7 @@ public class UserPointService {
         Member member = memberRepository.findByIdx(pointDTO.getMem_idx());
         Theater theater = theaterRepository.findByTcode(pointDTO.getTcode());
         if(member!=null || theater!=null){
-            point.setPointchange(pointDTO.getPointchange());
+//            point.setPointchange(pointDTO.getPointchange());
             point.setPcode(pointDTO.getPcode());
             point.setValpoint(member.getValpoint());
             point.setKind(pointDTO.getKind());

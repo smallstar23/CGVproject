@@ -190,20 +190,20 @@
         </ul>
         <div class="box-login">
           <h3 class="hidden">회원 로그인</h3>
-          <form id="form1" method="post" action="/main">
+<!--          <form id="form1">-->
             <fieldset>
               <legend>회원 로그인</legend>
               <p>아이디 비밀번호를 입력하신 후, 로그인 버튼을 클릭해 주세요.</p>
               <div class="login">
-                <input type="text" title="아이디" id="userid" name="userid" data-title="아이디를 " data-message="입력하세요." required="required" style="width: 264px" />
-                <input type="password" title="패스워드" id="userpw" name="userpw" data-title="패스워드를 " data-message="입력하세요." required="required" style="width: 264px"/>
+                <input type="text" onkeyup="fnGetId(this.value)" title="아이디" id="userid" name="userid" data-title="아이디를 " data-message="입력하세요." required="required" style="width: 214px" />
+                <input type="password" onkeyup="fnGetPw(this.value)" title="패스워드" id="userpw" name="userpw" data-title="패스워드를 " data-message="입력하세요." required="required"  style="width: 214px"/>
               </div>
               <div class="save-id"> <input type="checkbox" id="loginSet"  /><label>아이디 저장</label></div>
 
 
-              <button type="submit" id="submit" title="로그인"><span>로그인</span></button>
+              <button type="submit" id="submit" onclick="fnLogin()" title="로그인"><span>로그인</span></button>
             </fieldset>
-          </form>
+<!--          </form>-->
         </div>
       </div>
       <div class="sect-loginguide">
@@ -238,6 +238,43 @@
 
     <script type="text/javascript" src="https://img.cgv.co.kr/R2014//js/system/crypto.js"></script>
     <script type="text/javascript">
+      // 로그인 alert 주기 위해서 function으로 작성합니다.
+      let getuserid="";
+      let getuserpw="";
+      function fnGetId(userid){
+        getuserid=userid;
+      }
+      function fnGetPw(userpw){
+        getuserpw=userpw;
+      }
+
+      function fnLogin(){
+        if(getuserid=="" || getuserpw==""){
+          alert("아이디와 패스워드를 입력하세요.")
+        }else{
+          $.ajax({
+            url:'/main',
+            type:'post',
+            data:{
+              userid: getuserid,
+              userpw: getuserpw
+            },
+            success:function(data){
+              if(data==1){
+                alert("로그인을 환영합니다.")
+                location.href="/main"
+              }else(alert("아이디 혹은 비밀번호를 확인하세요."))
+
+            }, error:function(){
+              console.log("로그인 오류")
+            }
+          })
+        }
+
+
+      }
+
+
     </script>
     <!--/ Contents End -->
   </div>

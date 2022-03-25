@@ -75,9 +75,8 @@ create sequence seq_hall
 CREATE TABLE favCGV (
     idx number(7) primary key,
     mem_idx number(7)   not null,
-    tcode number(7)   not null,
-    constraint fk_favCGV_mem_idx foreign key(mem_idx) references Member(idx),
-    constraint fk_favCGV_tcode foreign key(tcode) references Theater(tcode)
+    tname varchar2(20)   not null,
+    areacode number(2) not null
 );
 create sequence seq_favCGV
     increment by 1
@@ -217,13 +216,14 @@ create sequence seq_notification
 CREATE TABLE Ticket (
                         ticode number(10)  primary key,
                         schecode number(10)   not null, -- 상영스케줄 코드
-                        totperson number(10) not null, -- 예매한 인원
+                        adultNum number(2),  -- 성인인원
+                        youthNum number(2),  -- 청소년인원
                         seat varchar2(20)   not null, -- 예매한 좌석 (A1,A2)
                         mem_idx number(7)   not null,
                         price varchar2(10)   not null, -- 가격
                         payDate date not null, -- 결제일자
                         canDate date, -- 결제 취소 일자
-                        usePoint varchar2(10)  DEFAULT 0 not null, -- 포인트사용
+                        usePoint varchar2(10)  DEFAULT 0, -- 포인트사용
                         totPrice varchar2(10)   not null, -- 총합 가격
 
                         constraint fk_Ticket_schecode foreign key(schecode) references Schedule (schecode),
@@ -281,7 +281,7 @@ create sequence seq_gift_payment
     start with 1;
 
 
-drop table gift_payment;  drop table gift; drop table ticket_payment; drop table ticket; drop table notification; drop table seathtml;
+drop table gift_payment;  drop table gift; drop table ticket; drop table notification; drop table seathtml;
 drop table seat; drop table schedule; drop table price; drop table reply; drop table director; drop table actor; drop table trailer;
 drop table favCGV; drop table hall; drop table movie; drop table point; drop table theater;  drop table member;
 
@@ -290,7 +290,7 @@ drop sequence seq_gift_payment; drop sequence seq_gift; drop sequence seq_actor;
 drop sequence seq_director; drop sequence seq_favCGV; drop sequence seq_hall;
 drop sequence seq_member; drop sequence seq_movie; drop sequence seq_notification;
 drop sequence seq_point; drop sequence seq_price; drop sequence seq_reply;
-drop sequence seq_schedule; drop sequence seq_trailer; drop sequence seq_ticket_payment;
+drop sequence seq_schedule; drop sequence seq_trailer;
 drop sequence seq_ticket; drop sequence seq_theater; drop sequence seq_seathtml;
 drop sequence seq_seat;
 
@@ -300,8 +300,9 @@ commit; -- 데이터를 잘 넣어놨는데도 안뜬다. 누르셈
 -- 있다 없어진 테이블 삭제 --
 drop table gift_Explain;
 drop table wishlist;
-
+drop table ticket_payment
 drop sequence seq_gift_explain;
+drop sequence seq_ticket_payment
 -- 있다 없어진 테이블 삭제 끝 --
 
 -- 멤버, 공지 시퀀스(태훈)

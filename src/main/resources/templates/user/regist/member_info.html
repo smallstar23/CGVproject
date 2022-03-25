@@ -96,8 +96,10 @@
         }
 
         function checkFormData() {
-            var form = document.member_info;
-            var isidcheck = document.getElementById("isidcheck");
+            let form = document.member_info;
+            let isidcheck = document.getElementById("isidcheck");
+            const pwpattern = /^(?=.*[A-Za-z])(?=.*\d)(?=.*[$@$!%*#?&])[A-Za-z\d$@$!%*#?&]{8,12}$/;
+
             const pattern = /\s/g;
             // const expEmailText1 = /^[A-Za-z0-9\-\.]+@[A-Za-z0-9\-\.]+\.[A-Za-z0-9]+$/;
 
@@ -129,6 +131,10 @@
                 return false;
             } else if(pattern.test(form.userpw.value) == true){
                 alert('비밀번호에 공백이 존재합니다');
+                form.userpw.focus();
+                return false;
+            } else if(pwpattern.test(form.userpw.value) == false){
+                alert('비밀번호 조건을 확인하세요.');
                 form.userpw.focus();
                 return false;
             } else if (form.userpw_check.value == "") {
@@ -297,7 +303,7 @@
                                                     <span class="pwd_lv" id="alert_pwd_strength"></span>
                                                     <p class="msg_info em hide" id="msg_pwd" >비밀번호는 영문자, 숫자, 특수문자 모두 최소 1가지 이상 조합한 8~12자리이어야 합니다.</p>
                                                 </div>
-                                                <p class="msg_desc">영문자, 숫자,특수문자 조합하여 8~12자리, 아이디와 4자리이상 동일,반복 문자숫자 불가<br>사용 가능 특수 문자 : !"#$%&amp;'()*+,-./:;&lt;=&gt;?@[]^_'{|}~</p>
+                                                <p class="msg_desc">영문자, 숫자,특수문자 조합하여 8~12자리 <br>사용 가능 특수 문자 : $@$!%*#?&</p>
                                             </td>
                                         </tr>
                                         <tr class="input">

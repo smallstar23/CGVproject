@@ -2,31 +2,27 @@ package com.koreait.cgvproject.service.user.ticket;
 
 import com.koreait.cgvproject.dto.PriceDTO;
 import com.koreait.cgvproject.dto.TicketDTO;
-import com.koreait.cgvproject.entity.Member;
-import com.koreait.cgvproject.entity.Price;
-import com.koreait.cgvproject.entity.Theater;
-import com.koreait.cgvproject.entity.Ticket;
-import com.koreait.cgvproject.repository.MovieRepository;
-import com.koreait.cgvproject.repository.PriceRepository;
-import com.koreait.cgvproject.repository.TheaterRepository;
-import com.koreait.cgvproject.repository.TicketRepository;
+import com.koreait.cgvproject.entity.*;
+import com.koreait.cgvproject.repository.*;
 import lombok.AllArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalTime;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 import java.util.Optional;
+import java.util.concurrent.ScheduledExecutorService;
 
 @Service
 @AllArgsConstructor
 public class UserTicketService {
+
     private PriceRepository priceRepository;
     private TheaterRepository theaterRepository;
-
-    @Autowired
     private TicketRepository ticketRepository;
+    private ScheduleRepository scheduleRepository;
 
 
     public PriceDTO getPrice(Long tcode, String week, String startTime){
@@ -57,24 +53,6 @@ public class UserTicketService {
     }
 
 
-    private <T> T outOptional(Optional<T> optional){
-        if(optional.isPresent())
-            return optional.get();
-        else{
-            System.out.println("데이터가 없음");
-            return null;
-        }
-    }
-
-    private Integer toInt(String subject){
-        try{
-            Integer.parseInt(subject);
-        }catch(NumberFormatException e){
-            e.printStackTrace();
-        }
-        return Integer.parseInt(subject);
-    }
-
     // mycgv로 내보낼 ticketlist, 취소날짜가 있는경우 제외할 것
     public List<TicketDTO> mycgvTicket(Member member){
         List<TicketDTO> ticketDTOList=new ArrayList<>();
@@ -98,5 +76,47 @@ public class UserTicketService {
         }
         System.out.println(ticketDTOList);
         return ticketDTOList;
+    }
+
+    public List<String> getReservedSeat(Long schecode){
+        List<String> reservedSeatList = new ArrayList<>();
+        Schedule schedule = outOptional(scheduleRepository.findById(schecode));
+        List<Ticket> ticketList = ticketRepository.findAllBySchedule(schedule);
+
+        if(ticketList.isEmpty()) {
+            System.out.println("현재 스케줄로 예약된 좌석이 없습니다 :: UserTicketService - getReservedSeat");
+            return null;
+        }
+
+        // 예약된 좌석번호 리스트 뽑아옴
+        for(Ticket ticket : ticketList){
+            String seatText = ticket.getSeat();
+            String[] seatTextSplit = seatText.split(",");
+            for(String seatNum : seatTextSplit){
+                reservedSeatList.add(seatNum);
+            }
+        }
+
+        Collections.sort(reservedSeatList);
+
+        return reservedSeatList;
+    }
+
+    private <T> T outOptional(Optional<T> optional){ // Optional 밖으로 빼내는 메서드
+        if(optional.isPresent())
+            return optional.get();
+        else{
+            System.out.println("데이터가 없음");
+            return null;
+        }
+    }
+
+    private Integer toInt(String subject){
+        try{
+            Integer.parseInt(subject);
+        }catch(NumberFormatException e){
+            e.printStackTrace();
+        }
+        return Integer.parseInt(subject);
     }
 }

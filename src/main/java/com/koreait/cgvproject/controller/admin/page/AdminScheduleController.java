@@ -43,7 +43,7 @@ public class AdminScheduleController {
     public String schedule_create(@ModelAttribute ScheduleDTO scheduleDTO){
         System.out.println(scheduleDTO);
         adminScheduleService.addSchedule(scheduleDTO);
-        return "redirect:movie/schedule";
+        return "redirect:movie-schedule";
     }
 
 //    // 스케쥴 수정

@@ -67,14 +67,15 @@
                             <p>관람극장: <input class="form-control" th:value="${ticket.getScheduleDTO().getHallDTO().getTheater().getTname()}" readonly></p>
                         </div>
                         <div style="width:50%;height:auto; text-align: center; margin:0 auto; ">
-                            <p>관람일시: <input class="form-control" th:value="${ticket.getScheduleDTO().getScdate()}" readonly></p>
-                            <p>상영관: <input class="form-control" th:value="${ticket.getScheduleDTO().getHallDTO().getHguan()}" readonly></p>
-                            <p>관람인원: <input class="form-control" th:value="${ticket.getTotperson()}" readonly></p>
+                            <p>관람일시: <input class="form-control schedate" readonly></p>
+                            <p>상영관: <input class="form-control" th:value="${ticket.getScheduleDTO().getHallDTO().getHguan()}+'관'" readonly></p>
+                            <p>관람인원: <input class="form-control personNum" readonly></p>
                         </div>
                         <div style="width:50%;height:auto; text-align: center; margin:0 auto; ">
                             <p>관람좌석: <input class="form-control" th:value="${ticket.getSeat()}" readonly></p>
-                            <p>결제일: <input class="form-control" th:value="${ticket.getPaydate()}" readonly></p>
-                            <p>취소일: <input class="form-control" th:value="${ticket.getCandate()}" readonly></p>
+                            <p>결제일: <input class="form-control paydate" readonly></p>
+                            <p>결제금액: <input class="form-control totprice" readonly></p>
+                            <p>취소일: <input class="form-control candate" readonly></p>
                             </p>
                         </div>
                         <div></div>
@@ -86,7 +87,7 @@
 
                 </div>
                 <div style="width:50%;height:auto; text-align: center; margin:0 auto; " >
-                    <input onclick="location.href='./member-ticket'" class="btn btn-default" type="button" value="목록">
+                    <input onclick="location.href='/member-ticket'" class="btn btn-default" type="button" value="목록">
                     <input class="btn btn-default" onclick="fnDelete()" value="예매취소">
                 </div>
 
@@ -101,8 +102,10 @@
     /*<![CDATA[*/
     let ticode = [[${ticket.getTicode()}]];
     console.log(ticode);
+    let ticketinfo= [[${ticket}]]
     /*]]>*/
 
+    sendinfo();
 
     function fnDelete(){
         if(confirm("해당 예매내역을 취소하시겠습니까?")){
@@ -110,6 +113,69 @@
             alert('취소되었습니다.')
             location.href='/member-ticket'
         }
+    }
+
+
+    function sendinfo(){
+        // 인원수 전달
+        let stringadult="";
+        let stringyouth="";
+        if(ticketinfo.adultnum!=0 && ticketinfo.youthnum!=0){
+            stringadult="성인 "+ticketinfo.adultnum + "명";
+            stringyouth="청소년 "+ticketinfo.youthnum + "명";
+            document.querySelector(".personNum").setAttribute("value", stringadult + ", "+ stringyouth);
+        }else if(ticketinfo.youthnum!=0) {
+            stringyouth ="청소년 "+ticketinfo.youthnum + "명";
+            document.querySelector(".personNum").setAttribute("value", stringyouth)
+        }else if(ticketinfo.adultnum!=0){
+            stringadult="성인 "+ticketinfo.adultnum + "명";
+            document.querySelector(".personNum").setAttribute("value", stringadult)
+        }
+
+        // date에 T제거
+        let schedate=ticketinfo.scheduleDTO.scdate.replace("T"," ");
+        let paydate=ticketinfo.paydate.replace("T"," ");
+        let candate=ticketinfo.candate;
+        if(candate!=null){
+            candate=candate.replace("T"," ");
+            document.querySelector(".candate").setAttribute("value", candate);
+        }
+        console.log(schedate, paydate);
+        document.querySelector(".schedate").setAttribute("value", schedate);
+        document.querySelector(".paydate").setAttribute("value", paydate);
+
+
+        function wonByComma(won){ // 정규식을 안쓰고 콤마 생성
+            let returnText = '';
+            const wonString = String(won);
+            let numComma = Math.floor(wonString.length / 3);
+            if(wonString.length % 3 === 0) numComma--;
+
+            if(numComma > 0) {
+                const tempLength = wonString.length + numComma
+                let count = wonString.length - 1; let repeat = 0;
+                const array = [];
+                for(let i = tempLength -1 ; i >= 0; i--){
+                    if(repeat === 3){
+                        array[i] = ',';
+                        repeat = 0;
+                        continue;
+                    }
+                    array[i] = wonString[count--];
+                    repeat++;
+                }
+                array.forEach(char => returnText += char);
+                return returnText;
+            }else{
+                return won;
+            }
+        }
+
+        // 금액 전달
+        let totprice=ticketinfo.totprice;
+        totprice=wonByComma(totprice);
+        document.querySelector('.totprice').setAttribute('value', totprice)
+
 
     }
 </script>

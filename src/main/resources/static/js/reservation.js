@@ -37,19 +37,24 @@ const seatGuideText = placeholder[3];
 
 let movie_click = document.getElementsByClassName('movieClick');
 let movieTitle = document.getElementsByClassName('movie_title');
+let movieName ="";
+let movieurl ="";
+let locationFloor="";
+let startToend="";
 
 for (let i = 0; i <= movie_click.length - 1; i++) {
     movie_click[i].addEventListener('click', function () {
         for (let k = 0; k < movie_click.length; k++) {
             movie_click[k].classList.remove("selected");
         }
+        movieName = document.getElementsByClassName('movieName')[i].getAttribute('title');
         movie_click[i].classList.add("selected");
         // mcode 저장
         mcode = movie_click[i].value;
         // 영화명 전달
-        let movieName = document.getElementsByClassName('movieName')[i].getAttribute('title');
         movieTitle[0].style.display = 'block';
         placeholder[1].style.display = 'none';
+        movieurl=document.getElementsByClassName('movieClick')[i].getAttribute('poster');
         let movieSel = document.getElementById("movie_sel");
         movieSel.innerHTML = `<input style="background-color: #1d1d1c; color:#cccccc; font-weight: bold" name="movieName" id="movieName" value="${movieName}">`;
         movieSel.setAttribute("href", "/movies/detail-view/" + mcodeArray[i]);
@@ -58,13 +63,7 @@ for (let i = 0; i <= movie_click.length - 1; i++) {
         // src 값을 찾아오기(타임리프로 받아서 array로 전달)
         let moviePoster = document.getElementById("movie_poster");
         moviePoster.style.display = 'block';
-        moviePoster.src = url[i];
-
-        // step3 예매정보 전달하기(영화정보만)
-        document.querySelector('.movie_name > td' ).innerText=movieName;
-        document.querySelector('.poster > img').setAttribute("src",  url[i])
-
-
+        moviePoster.src = movieurl;
 
         toFirstDateStatus()
         dimmedOrNot()
@@ -367,23 +366,14 @@ function schecodeSelect(DOM) {
     // step1 하단에 내용 전달하는 부분입니다.
     ticket_tnbInit(spanTitle, parentList, DOM);
 
+    // 스케쥴 클릭시 rignt 버튼 class on
     $('#tnb_step_btn_right').addClass('on');
 
-   //  // step3 결제 직전 예매정보 확인하는 부분입니다.
-   // document.querySelector('.screen > td').innerText=spanTitle.querySelector('.floor').innerText;
-   // document.querySelector('.movie_date > td').innerText=schedule.substring(0,10) +"  "+schedule.substring(11,16)+" ~ "+parentList.getAttribute('endtime');
-
-
-   // step3 kakaopay 클릭시에 ticket table에 저장할 코드를 같이 보내줍니다. // step 3 준비를 왜 step 1에서 하나요??  ( 김영신 )
-   //  document.querySelector('.reservation_info').innerHTML+=
-   //      `
-   //      <input type="hidden" name="selSeat" value="A1">
-   //      <input type="hidden" name="schecode" value="${schecode}">
-   //      `
-
+    locationFloor=spanTitle.querySelector('.floor').innerText;
+    startToend=schedule.substring(0,10) +"  "+schedule.substring(11,16)+" ~ "+parentList.getAttribute('endtime');
 
     // 마지막 단계인 스케줄 코드까지 선택이 됬으므로 좌석 init을 실행함 ( step 2 준비 )
-    seatHtmlReadAndCreate().then(seatRead)
+    seatHtmlReadAndCreate().then(seatRead).then(getRerservedSeatInit);
 
     infoInit() // 관, 홀정보, 시간 표시 , 극장별 금액 초기화
 }
@@ -394,6 +384,9 @@ function ticket_tnbInit(spanTitle, parentList, DOM){
     qs('.movie_rating > span').innerText = parentList.getAttribute('movieRating');
     qs('.sendDate').innerText = qs('.findSchedule.selected')
             .getAttribute('date').replaceAll('-','.') + ' ' + DOM.firstElementChild.innerText;
+
+
+
 }
 function infoInit() {
     T_H_Init();
@@ -422,7 +415,7 @@ function playYMDInfoInit() {
     timeInit.innerText = `${startTime} ~ ${endTime}`;
 }
 
-function priceInit(){ // 작업중
+function priceInit(){
     const scdate = qs('.sendDate').innerText; // 2022.02.23(수) 03:01
     const startTime = scdate.split(' ')[1] // 03:01
     const week = scdate.match('[가-힣]')[0]; // (수) -> '수'
@@ -443,6 +436,19 @@ function theaterPriceInit(priceDTO){
     studentPrice.innerText = priceDTO.stuPrice;
 }
 
+function seatZoomClickListener(listener){
+    const allSeat = qsAll('#seats .seat');
+
+    if(listener.classList.contains('on')) {
+        listener.classList.remove('on');
+        allSeat.forEach(seat => seat.classList.remove('zoom'));
+    }
+    else {
+        listener.classList.add('on');
+        allSeat.forEach(seat => seat.classList.add('zoom'));
+    }
+
+}
 
 function addZero(number) {
     return parseInt(number) < 10 ? "0" + number : number;
@@ -478,18 +484,24 @@ function fnright() {
     if(pagenum==2){
         // 결제창 띄우기
         payment[0].style.display = "block";
-
+        sendinfo();
+        checkinfo();
     }
     if(pagenum==1){
-        console.log("btn right()");
-        step[pagenum].style.display = 'none';
-        step[pagenum+1].style.display = 'block';
-        tnb.className = 'tnb step' + (pagenum + 2);
-        pagenum++;
-        $('#tnb_step_btn_right').removeClass('on')
-
+        // 좌석 선택 전에 넘어가지 않는 스크립트 작성
+        if($("#tnb_step_btn_right").hasClass("on")){
+            console.log("btn right()");
+            step[pagenum].style.display = 'none';
+            step[pagenum+1].style.display = 'block';
+            tnb.className = 'tnb step' + (pagenum + 2);
+            pagenum++;
+            document.querySelector('#summary_total_amount').innerText=wonByComma(totprice);
+            document.querySelector('#summary_payment_total').innerText=wonByComma(totprice);
+            document.querySelector('dd > .num').innerText=wonByComma(totprice);
+        }else{
+            alert("좌석을 선택해주세요.")
+        }
     }
-    console.log(pagenum);
     if (pagenum == 0) {
         // 영화, 스케쥴을 선택하기 전이라면
         if (memberIdx == "") {
@@ -566,12 +578,16 @@ $(".dateScroll").scroll(function () {
 let peopleNum = 0;
 let adultNum = 0;
 let youthNum = 0;
+let seat="";
+let totprice=0;
+let peopleDes="";
 
 function adultCount(parentDOM) { // CustomerType = 1
     const tempNum = parentDOM.getAttribute('data-count');
     if(!countChecking(tempNum, youthNum)) return
     adultNum = Number(tempNum);
     peopleNum = adultNum + youthNum;
+    console.log(adultNum)
     mouseBlockOrNone();
     selectedInit(parentDOM);
     sendPeopleNumInit();
@@ -584,12 +600,15 @@ function youthCount(parentDOM) { // CustomerType = 2
     if(!countChecking(tempNum, adultNum)) return
     youthNum = Number(tempNum);
     peopleNum = adultNum + youthNum;
+
+
     mouseBlockOrNone();
     selectedInit(parentDOM)
     sendPeopleNumInit();
     seatGuideInit();
     infoPaymentTicketInit();
 }
+
 
 function countChecking(tempNum, target){
     if (Number(tempNum) + target > 6) {
@@ -624,6 +643,9 @@ function sendPeopleNumInit() {
         youthNumText = '';
     }
     qs('#ticket_tnb .number .data').innerText = (adultNumText + youthNumText).replace('명 ', '명 , ');
+
+    // 인원수 가져갑니당
+    peopleDes=(adultNumText + youthNumText).replace('명 ', '명 , ');
 }
 
 function seatGuideInit() {
@@ -683,6 +705,7 @@ function seatInit() {
     allSeat.forEach(seat => {
         seat.onclick = function () {
             // selected 추가
+            if(seat.classList.contains('reserved')) return false;
             if (seat.classList.contains('selected')) seat.classList.remove('selected');
             else seat.classList.add('selected');
 
@@ -691,9 +714,8 @@ function seatInit() {
                 alert('선택한 인원 수 보다 많이 좌석을 선택하실 수 없습니다.');
                 return false;
             }
-            if(peopleNum == getSelectedSeatCount() && peopleNum != 0){
-                $('#tnb_step_btn_right').addClass('on')
-            }
+            if(peopleNum == getSelectedSeatCount()) btnRight.classList.add('on');
+            else btnRight.classList.remove('on');
             sendAllSelectedSeatData(allSeat);
             infoPaymentTicketInit()
         }
@@ -735,6 +757,9 @@ function infoPaymentTicketInit(){ // 하단 가격 전달
     })
 
     amountPrice.innerText = wonByComma(amount);
+
+    // 금액정보 가져갑니다.
+    totprice=amount;
 }
 
 
@@ -788,6 +813,10 @@ function sendAllSelectedSeatData(seatList){
     // 데이터를 오름차순 정렬후 사이 사이를 ,로 구분하여 보낸다
     seatDataInit.innerText = seat_data.sort().join(',');
 
+    //하단에 전달할 seat정보 전달
+   seat=seat_data.sort().join(',');
+
+
 }
 
 function seatHtmlReadAndCreate() {
@@ -813,6 +842,18 @@ function seatRead() {
             })
         });
 }
+function getRerservedSeatInit() {
+    const allSeat = qsAll('#seats .seat');
+    fetch('/api/ticket/getReservedSeat?schecode=' + schecode)
+        .then(response => response.json())
+        .then(reservedSeatList =>{
+            for(let reservedSeat of reservedSeatList){
+                for(let seat of allSeat){
+                    if(seat.id == reservedSeat) seat.classList.add('reserved');
+                }
+            }
+        })
+}
 
 function convertAlpha(number) {
     return alpha[Number(number)];
@@ -824,101 +865,31 @@ function convertNumber(alph) {
 
 // seat 생성 부분 종료
 
-/*
 
-for (let i = 0; i <= adult_click.length - 1; i++) {
-    adult_click[i].addEventListener("click", function () {
-        for (let j = 0; j <= adult_click.length - 1; j++) {
-            adult_click[j].className = "adult_click";
-            let dimmed = document.getElementById("dimmed");
-            dimmed.classList.remove("dimmed");
-            this.classList.add("selected");
-            if (i == 0) {
-                dimmed.classList.add("dimmed");
-                if (youthNum != 0) {
-                    dimmed.className = 'section section-seat';
-                }
-            }
+//step 3 결제 부분 시작
 
-        }
-    })
+// data 보낼 정보 fn
+function sendinfo(){
+    document.querySelector('#schecode').setAttribute("value",schecode);
+    document.querySelector('#adultNum').setAttribute("value",adultNum);
+    document.querySelector('#youthNum').setAttribute("value",youthNum);
+    document.querySelector('#seat').setAttribute("value", seat);
+    document.querySelector('#price').setAttribute("value", totprice)
+    document.querySelector('#totprice').setAttribute("value", totprice)
 
 }
 
-// 청소년
-
-let youthNum = 0;
-let youth_click = document.getElementsByClassName("youth_click");
-for (let i = 0; i <= youth_click.length - 1; i++) {
-    youth_click[i].addEventListener("click", function () {
-        for (let j = 0; j <= youth_click.length - 1; j++) {
-            youth_click[j].className = "youth_click";
-            let dimmed = document.getElementById("dimmed");
-            dimmed.classList.remove("dimmed");
-            this.classList.add("selected");
-            if (i == 0) {
-                dimmed.classList.add("dimmed");
-                if (adultNum != 0) {
-                    dimmed.className = 'section section-seat';
-                }
-            }
-        }
-    })
+// 마지막 예매정보 정보 전달
+function checkinfo(){
+    qs('.movie_name > td' ).innerText=movieName;
+    qs('.poster > img').setAttribute("src",  movieurl)
+    qs('.screen > td').innerText=locationFloor;
+    qs('.movie_date > td').innerText=startToend;
+    qs('.seat > td').innerText=peopleDes;
+    qs('.people > td').innerText=seat;
+    qs('.payment_price > td > .price').innerText=wonByComma(totprice);
+    qs('.content > .price ').innerText=wonByComma(totprice);
 }
-*/
-
-
-// step2 인원 선택시 활성화 (어른)
-/* Step 2 에 쓰이는 JS */
-//
-// function adult_clickInit(){
-//     const adult_click = document.getElementsByClassName('adult_click');
-//
-// }
-// for (let i = 0; i <= adult_click.length - 1; i++) {
-//     adult_click[i].addEventListener("click", function () {
-//         for (let j = 0; j <= adult_click.length - 1; j++) {
-//             adult_click[j].className = "adult_click";
-//             let dimmed = document.getElementById("dimmed");
-//             dimmed.classList.remove("dimmed");
-//             this.classList.add("selected");
-//             if (i == 0) {
-//                 dimmed.classList.add("dimmed");
-//                 if (youthNum != 0) {
-//                     dimmed.className = 'section section-seat';
-//                 }
-//             }
-//
-//         }
-//     })
-//
-// }
-//
-// // 청소년
-//
-// let youthNum = 0;
-// let youth_click = document.getElementsByClassName("youth_click");
-// for (let i = 0; i <= youth_click.length - 1; i++) {
-//     youth_click[i].addEventListener("click", function () {
-//         for (let j = 0; j <= youth_click.length - 1; j++) {
-//             youth_click[j].className = "youth_click";
-//             let dimmed = document.getElementById("dimmed");
-//             dimmed.classList.remove("dimmed");
-//             this.classList.add("selected");
-//             if (i == 0) {
-//                 dimmed.classList.add("dimmed");
-//                 if (adultNum != 0) {
-//                     dimmed.className = 'section section-seat';
-//                 }
-//             }
-//         }
-//     })
-//
-// }
-
-
-
-//step 3 간편결제 -> 카카오페이 설정시 활성화
 
 $("#last_pay_radio3").on({
     click: function () {
@@ -935,6 +906,9 @@ $("#last_pay_radio3").on({
 
     }
 })
+
+
+
 // 포인트 사용(닫기 아직안됨!!!)
 $(".clickPoint").on({
     click: function () {
@@ -954,3 +928,25 @@ function qs(selector, doc = document) {
 function qsAll(selector, doc = document) {
     return doc.querySelectorAll(selector);
 }
+
+// function sendForm() {
+//     // let movieName = $("#movie_name");
+//     // let price = $("#price");
+//     // let memberIdx = document.getElementById("#member_idx");
+//     // console.log("11")
+//     // console.log(price)
+//
+//     console.log(memberIdx);
+//     let price = "10000원"
+//     let data = {ticode: 1, scheduleDTO: null, schecode: 1, seatDTO: null, movieName: 111,
+//         stcode: 1, memberDTO: null, memIdx: 111, price: 111, paydate: null, candate: null, usepoint: 1, price: price};
+//
+//     return fetch('/api/ticketInfo1', {
+//         method: 'POST',
+//         headers: {
+//             'Content-Type': 'application/json'
+//         },
+//         body: JSON.stringify(data)
+//     })
+// }
+

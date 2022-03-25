@@ -82,20 +82,8 @@
               <th>취소 날짜</th>
             </tr>
             </tfoot>
-            <tbody>
-            <th:block th:each="ticket:${ticketList}">
-            <tr th:onclick="|location.href='@{|/member-ticketing-view/${ticket.getTicode()}|}'|">
-              <td style="width: 10%;" th:text="${ticket.getMemberDTO().getUsername()}"></td>
-              <td style="width: 10%;" th:text="${ticket.getTicode()}"></td>
-              <td style="width: 10%;" th:text="${ticket.getScheduleDTO().getHallDTO().getTheater().getTname()}"></td>
-              <td style="width: 15%;" th:text="${ticket.getScheduleDTO().getScdate()}"></td>
-              <td style="width: 10%;" th:text="${ticket.getScheduleDTO().getHallDTO().getHguan()}"></td>
-              <td style="width: 10%;" th:text="${ticket.getTotperson()}" ></td>
-              <td style="width: 10%;" th:text="${ticket.getSeat()}" ></td>
-              <td style="width: 15%;" th:text="${ticket.getPaydate()}"></td>
-              <td style="width: 15%;" th:text="${ticket.getCandate()}"></td>
-            </tr>
-            </th:block>
+            <tbody class="info">
+
 
             </tbody>
           </table>
@@ -106,7 +94,65 @@
     </div>
   </main>
 </div>
+<script th:inline="javascript">
+  /*<![CDATA[*/
+  let ticketinfoList= [[${ticketList}]]
+  console.log(ticketinfoList)
+  /*]]>*/
 
+  ticketinfoList.forEach(ticket =>{
+    let info=document.querySelector('.info');
+    let scdate=ticket.scheduleDTO.scdate.replace("T"," ");
+    let paydate=ticket.paydate.replace("T"," ");
+
+    // 인원수 전달
+    let stringadult="";
+    let stringyouth="";
+    let stringtot="";
+   if(ticket.adultnum!=0 && ticket.youthnum!=0){
+      stringadult="성인 "+ticket.adultnum + "명";
+      stringyouth="청소년 "+ticket.youthnum + "명";
+      stringtot=stringadult + ", "+ stringyouth
+    }else if(ticket.youthnum!=0) {
+      stringyouth ="청소년 "+ticket.youthnum + "명";
+      stringtot= stringyouth;
+    }else if(ticket.adultnum!=0){
+      stringadult="성인 "+ticket.adultnum + "명";
+     stringtot=stringadult;
+    }
+
+    // date에 T제거
+
+    let candate=ticket.candate;
+    if(candate!=null){
+      candate=candate.replace("T"," ")
+    }else{
+      candate="";
+    }
+
+    info.innerHTML+=
+            `
+              <tr onclick="location.href='/member-ticketing-view/${ticket.ticode}'">
+              <td style="width: 10%;">${ticket.memberDTO.userid}</td>
+              <td style="width: 5%;">${ticket.ticode}</td>
+              <td style="width: 10%;" >${ticket.scheduleDTO.hallDTO.theater.tname}</td>
+              <td style="width: 15%;" >${scdate}</td>
+              <td style="width: 5%;" >${ticket.scheduleDTO.hallDTO.hguan}관</td>
+              <td style="width: 15%;" >${stringtot}</td>
+              <td style="width: 10%;" >${ticket.seat}</td>
+              <td style="width: 15%;" >${paydate}</td>
+              <td style="width: 15%;" >${candate}</td>
+            </tr>
+
+            `
+
+
+
+
+  })
+
+
+</script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
 <script src="js/scripts.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.min.js" crossorigin="anonymous"></script>

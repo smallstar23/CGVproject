@@ -124,16 +124,7 @@
                     <h4><img src="https://img.cgv.co.kr/R2014/images/title/h4_favorite_cgv.png" alt="자주가는 CGV"></h4>
                     <ul id="favoriteTheaters">
                         <!-- 여기는 로그인시 본인이 등록한 자주가는 영화관을 a태그에 넣어줍니다. -->
-                        <li><a href="#" data-regioncode="" data-theatercode="" data-selecteddate="20220209"><span>1<em>순위</em></span></a></li>
-
-                        <li><a href="#" data-regioncode="" data-theatercode="" data-selecteddate="20220209"><span>2<em>순위</em></span></a></li>
-
-                        <li><a href="#" data-regioncode="" data-theatercode="" data-selecteddate="20220209"><span>3<em>순위</em></span></a></li>
-
-                        <li><a href="#" data-regioncode="" data-theatercode="" data-selecteddate="20220209"><span>4<em>순위</em></span></a></li>
-
-                        <li><a href="#" data-regioncode="" data-theatercode="" data-selecteddate="20220209"><span>5<em>순위</em></span></a></li>
-
+                        <li th:each="favCGV:${session.favCGV}"><a href="#" data-regioncode="" data-theatercode="" data-selecteddate="20220209" th:text="${favCGV.getTname()}"></a></li>
                     </ul>
                     <button id="btn_set_my_favorite" type="button" title="새창">자주가는 CGV 설정</button>
                 </div>
@@ -186,9 +177,9 @@
                             <h5>공지사항</h5>
                             <ul>
 
-                                <li><a href="#" target="_blank" title="새창 열림">22년 문화가 있는 날 가격 조정 안내</a></li>
+                                <li><a href="/support/support-news" target="_blank" title="새창 열림">22년 문화가 있는 날 가격 조정 안내</a></li>
 
-                                <li><a href="#" target="_blank" title="새창 열림">PAYCO 서비스 개선 작업에 따른 서비스 이용 일시중지 (12/8 04:00~04:30)</a></li>
+                                <li><a href="/support/support-news" target="_blank" title="새창 열림">PAYCO 서비스 개선 작업에 따른 서비스 이용 일시중지 (12/8 04:00~04:30)</a></li>
 
                             </ul>
                             <a class="link-more" href="#" target="_blank" title="새창 열림">공지사항 더보기</a>
@@ -355,8 +346,14 @@
 <script  th:inline="javascript">
     /*<![CDATA[*/
     let tcode = [[${theater.getTcode()}]]
+    let hallsArray=[[${halls}]]
     /*]]>*/
-
+    let totSeat=0;
+    hallsArray.forEach(hall=>{
+        totSeat+=hall.seatSize;
+    })
+    console.log(totSeat)
+    document.querySelector('.theater-info > .txt-info > span').innerText=totSeat+"석";
 </script>
 <script src="/js/theaters.js"></script>
 
