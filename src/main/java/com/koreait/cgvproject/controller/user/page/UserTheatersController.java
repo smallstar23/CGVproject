@@ -59,7 +59,6 @@ public class UserTheatersController {
 
     @GetMapping("/theaters/theaterPrice/{tcode}")
     public String thPrice(@PathVariable("tcode") Long tcode, Model model){
-        System.out.println(tcode);
         List<PriceDTO> priceDTO=adminPriceService.read(tcode);
         TheaterDTO theaterDTO=adminTheaterService.getTheater(tcode);
         model.addAttribute("theaterprice", priceDTO);
