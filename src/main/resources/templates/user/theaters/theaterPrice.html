@@ -168,7 +168,6 @@
     /*<![CDATA[*/
     let pricelistArray=new Array();
     pricelistArray= [[${theaterprice}]]
-    console.log(pricelistArray);
     let tname=[[${theater.getTname()}]]
     let receiveArea=[[${theater.getAreacode()}]]
     /*]]>*/
@@ -179,23 +178,22 @@
     readTbody(pricelistArray);
 
     function start(areacode){
-        console.log(areacode)
         for(let i=0; i<=selTH_Region.options.length-1; i++){
             if(areacode == selTH_Region.options[i].value){
                 selTH_Region.options[i].setAttribute('selected',true)
             }
             if(areacode == 1){
                 selTH_Theater.innerHTML=
-                    `<option value="강남CGV">CGV강남</option>
-                        <option value="강변CGV">CGV강변</option>
+                    `<option value="강남CGV">강남CGV</option>
+                        <option value="강변CGV">강변CGV</option>
 
                     `
             }else{
                 selTH_Theater.innerHTML=
                     `
-                        <option value="경기광주CGV">CGV경기광주</option>
-                        <option value="동수원CGV">CGV동수원</option>
-                        <option value="용인CGV">CGV용인</option>
+                        <option value="경기광주CGV">경기광주CGV</option>
+                        <option value="동수원CGV">동수원CGV</option>
+                        <option value="용인CGV">용인CGV</option>
                     `
             }
         }
@@ -212,7 +210,6 @@
     // 지역 선택시 영화관 리스트 변경
     function fnTheaterRegionSel(areacode) {
         selTH_Theater.innerHTML="";
-        console.log(areacode);
         $.ajax({
             url: "/theatersList",
             data: {areacode, areacode},
@@ -229,7 +226,6 @@
     }
 
     function fnTheaterSel(tname){
-        console.log(tname)
         $.ajax({
             url: "/TheaterName",
             data:{tname, tname},

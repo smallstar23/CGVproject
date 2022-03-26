@@ -102,7 +102,6 @@ function showSchedule(tcode, newschdate){
         const schedulelist= new Array();
 
         scheduleData.innerHTML="";
-        console.log(res)
         // movie 정보만 따로 배열에 저장함
         for (let i = 0; i <= res.length - 1; i++) {
             movieData[i] = res[i].movieDTO;
@@ -119,7 +118,6 @@ function showSchedule(tcode, newschdate){
                 newMovieData.push(movieData[i])
             }
         }
-        console.log(newMovieData)
         // 중복된 값을 제거한 무비 배열 만큼 반복함
         newMovieData.forEach(movie => {
             scheduleData.innerHTML +=
@@ -181,9 +179,7 @@ function showSchedule(tcode, newschdate){
 
                 schedulelist.forEach((timeList, index)=>{
                     if(timeList.mcode === movie.mcode && timeList.hcode === HallDTO.hcode){
-                        console.log(timeList, index)
                         let starttime=timeList.scdate.substring(11,16);
-
                         scheduleData.innerHTML+=
                             `
                                         <div class="info-timetable" style="width: fit-content; display: inline-flex">
