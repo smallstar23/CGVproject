@@ -72,12 +72,13 @@
             <div class="movie_price">
                 <div class="area_select">
                     <select id="selTH_Region" class="area_sel1" name="selTH_Region" title="지역선택" onchange="fnTheaterRegionSel(this.value);">
-                        <option value="01" selected="">서울</option>
+                        <option value="1">서울</option>
+                        <option value="2">경기</option>
                     </select>
 
                     <!-- 이부분에서 등록한 상영관을 반복문으로 띄워줍니다. -->
                     <select id="selTH_Theater" class="area_sel2" name="selTH_Theater" title="영화관선택" onchange="fnTheaterSel(this.value);">
-                        <option value="0056" selected="">CGV강남</option>
+
                     </select>
                 </div>
                 <div class="mp_content">
@@ -89,12 +90,33 @@
 
                         <div id="div_TheaterPrice_box">
                             <!-- 입력한 금액이 해당 상영관에 맞춰서 띄워지는 부분입니다. -->
-                            <div class="mp_tablebox" id="div_theatercode_0056"><div class="mp_table_item" style="padding:20px; margin: 0 auto; float: none; width:auto !important;">
-                                <div class="mp_tit cls_price_class">일반(2D)</div><div class="mp_table cls_price_class">
-                                <table summary="일반(2D) 관람가격 정보 입니다."><caption>일반(2D) 관람가격 정보</caption>
-                                    <colgroup><col style="width:15%"><col style="width:49%"><col style="width:18%"><col style="width:18%"></colgroup>
-                                    <thead><tr><th scope="row">요일</th><th scope="row">시간대</th><th scope="row">일반</th><th scope="row">청소년</th></tr></thead>
-                                    <tbody><tr class="fir"><td rowspan="3">월~목</td><td class="tal">모닝( 06:00~ )</td><td>9,000</td><td>7,000</td></tr><tr><td class="tal">브런치( 10:01~ )</td><td>12,000</td><td>9,000</td></tr><tr class="last"><td class="tal">일반( 13:01~ )</td><td>13,000</td><td>10,000</td></tr><tr class="fir"><td rowspan="3">금~일</td><td class="tal">모닝( 06:00~ )</td><td>10,000</td><td>7,000</td></tr><tr><td class="tal">브런치( 10:01~ )</td><td>14,000</td><td>11,000</td></tr><tr><td class="tal">일반( 13:01~ )</td><td>14,000</td><td>11,000</td></tr></tbody></table></div></div>
+                            <div class="mp_tablebox" id="div_theatercode_0056">
+                                <div class="mp_table_item" style="padding:20px; margin: 0 auto; float: none; width:auto !important;">
+                                <div class="mp_tit cls_price_class">일반(2D)</div>
+                                    <div class="mp_table cls_price_class">
+                                <table summary="일반(2D) 관람가격 정보 입니다.">
+                                    <caption>일반(2D) 관람가격 정보</caption>
+                                    <colgroup>
+                                        <col style="width:15%">
+                                        <col style="width:49%">
+                                        <col style="width:18%">
+                                        <col style="width:18%">
+                                    </colgroup>
+
+                                    <thead>
+                                    <tr>
+                                        <th scope="row">요일</th>
+                                        <th scope="row">시간대</th>
+                                        <th scope="row">일반</th>
+                                        <th scope="row">청소년</th>
+                                    </tr>
+                                    </thead>
+
+                                    <tbody>
+
+                                    </tbody>
+
+                                </table></div></div>
 
                             </div>
 
@@ -141,4 +163,127 @@
 
 
 </body>
+<script th:inline="javascript">
+
+    /*<![CDATA[*/
+    let pricelistArray=new Array();
+    pricelistArray= [[${theaterprice}]]
+    console.log(pricelistArray);
+    let tname=[[${theater.getTname()}]]
+    let receiveArea=[[${theater.getAreacode()}]]
+    /*]]>*/
+    let selTH_Region=document.getElementById('selTH_Region');
+    let selTH_Theater=document.getElementById('selTH_Theater');
+    let tbody=document.querySelector('tbody');
+    start(receiveArea);
+    readTbody(pricelistArray);
+
+    function start(areacode){
+        console.log(areacode)
+        for(let i=0; i<=selTH_Region.options.length-1; i++){
+            if(areacode == selTH_Region.options[i].value){
+                selTH_Region.options[i].setAttribute('selected',true)
+            }
+            if(areacode == 1){
+                selTH_Theater.innerHTML=
+                    `<option value="강남CGV">CGV강남</option>
+                        <option value="강변CGV">CGV강변</option>
+
+                    `
+            }else{
+                selTH_Theater.innerHTML=
+                    `
+                        <option value="경기광주CGV">CGV경기광주</option>
+                        <option value="동수원CGV">CGV동수원</option>
+                        <option value="용인CGV">CGV용인</option>
+                    `
+            }
+        }
+        for(let i=0; i<=selTH_Theater.options.length-1; i++){
+            if(tname == selTH_Theater.options[i].value){
+                selTH_Theater.options[i].setAttribute('selected',true)
+            }
+        }
+
+    }
+
+
+
+    // 지역 선택시 영화관 리스트 변경
+    function fnTheaterRegionSel(areacode) {
+        selTH_Theater.innerHTML="";
+        console.log(areacode);
+        $.ajax({
+            url: "/theatersList",
+            data: {areacode, areacode},
+            type: "post",
+            dataType: "json"
+        }).done(function (res) {
+            for (let i = 0; i <= res.length - 1; i++) {
+                selTH_Theater.innerHTML+=
+                    `
+                    <option value="${res[i].tname}">${res[i].tname}</option>
+                    `
+            }
+        })
+    }
+
+    function fnTheaterSel(tname){
+        console.log(tname)
+        $.ajax({
+            url: "/TheaterName",
+            data:{tname, tname},
+            type:'post',
+            dataType: "json"
+        }).done(function(res){
+            console.log(res)
+            location.href='/theaters/theaterPrice/'+res.tcode;
+        })
+
+    }
+
+
+    // tbody에 내용 입력하기
+    function readTbody(theater){
+        if(theater.length==0){
+            tbody.innerHTML=
+                `<tr class="fir">
+                                        <td colspan="4" rowspan="4">
+                                        극장에서 입력한 가격 정보가 없습니다.</td>
+                    </tr>`
+        }
+
+        tbody.innerHTML=
+            `
+                <tr class="fir">
+                                        <td rowspan="3">${theater[0].week}</td>
+                                        <td class="tal">${theater[0].slot}</td>
+                                        <td>${theater[0].adultPrice}</td>
+                                        <td>${theater[0].stuPrice}</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="tal">${theater[1].slot}</td>
+                                        <td>${theater[1].adultPrice}</td><td>${theater[1].stuPrice}</td>
+                                    </tr>
+                                    <tr class="last"><td class="tal">${theater[2].slot}</td>
+                                        <td>${theater[2].adultPrice}</td><td>${theater[2].stuPrice}</td>
+                                    </tr>
+
+                                    <tr class="fir">
+                                        <td rowspan="3">${theater[3].week}</td>
+                                        <td class="tal">${theater[3].slot}</td>
+                                        <td>${theater[3].adultPrice}</td><td>${theater[3].stuPrice}</td></tr>
+                                    <tr>
+                                        <td class="tal">${theater[4].slot}</td>
+                                        <td>${theater[4].adultPrice}</td><td>${theater[4].stuPrice}</td>
+                                        </tr>
+                                    <tr>
+                                        <td class="tal">${theater[5].slot}</td>
+                                        <td>${theater[5].adultPrice}</td><td>${theater[5].stuPrice}</td>
+                                    </tr>
+            `
+
+    }
+
+</script>
 </html>

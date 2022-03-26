@@ -53,5 +53,14 @@ public class AdminTheaterService {
         return hallDTOList;
     }
 
+    // 극장 tname으로 theater 반환하기
+    public TheaterDTO getTnameSendtheater(String tname){
+        TheaterDTO theaterDTO=new TheaterDTO();
+        Theater theater=theaterRepository.findByTname(tname);
+        if(theater != null){
+            theaterDTO=theater.toDTO();
+        }
+        return theaterDTO;
+    }
 
 }
