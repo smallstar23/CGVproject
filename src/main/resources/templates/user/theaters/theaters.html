@@ -195,7 +195,8 @@
                 <div class="col-detail">
                     <div class="descri-info theater" style="display: block; top: 0px">
                         <ul>
-                            <li><a id="li_view_price_btn" class="priceinfo" style="cursor:pointer;" th:href="@{theaters/theaterPrice}" title="새창">관람가격 안내</a></li>
+                            <li><a id="li_view_price_btn" class="priceinfo" style="cursor:pointer;"
+                                   th:href="@{|../theaters/theaterPrice/${theater.getTcode()}|}" title="새창">관람가격 안내</a></li>
                             <li><a href="#li_view_price_btn" class="viewgrade">관람등급 안내</a></li>
                         </ul>
                     </div>
@@ -354,6 +355,8 @@
     })
     console.log(totSeat)
     document.querySelector('.theater-info > .txt-info > span').innerText=totSeat+"석";
+
+
 </script>
 <script src="/js/theaters.js"></script>
 

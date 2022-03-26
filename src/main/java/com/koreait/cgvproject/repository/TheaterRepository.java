@@ -13,4 +13,5 @@ public interface TheaterRepository extends JpaRepository<Theater, Long> {
 
     Theater findByTcode(Long tcode);
 
+    Theater findByTname(String tname);
 }

@@ -38,6 +38,11 @@ public class UserTheaterRestController {
         LocalDateTime newschedate=LocalDateTime.parse(schedate+"T00:00:00", DateTimeFormatter.ISO_DATE_TIME);
         List<ScheduleDTO> scheduleDTOList=userScheduleService.findbyDate(tcode, newschedate);
         return scheduleDTOList;
+    }
 
+    @PostMapping("/TheaterName")
+    public TheaterDTO theaterDTO(@RequestParam("tname") String tname){
+        TheaterDTO theaterDTO=adminTheaterService.getTnameSendtheater(tname);
+        return theaterDTO;
     }
 }
