@@ -63,7 +63,6 @@ public class AdminMovieController {
     @GetMapping("/manage_ongoingmovies/create/{mcode}")
     public  String view_cre(@PathVariable("mcode") Long mcode, Model model){
         MovieDTO movie =movieRepository.findByMcode(mcode).toDTO();
-        System.out.println(movie);
         model.addAttribute("mcode",mcode);
         return  "admin/movie/manage_ongoingmovies_create_test";
     }

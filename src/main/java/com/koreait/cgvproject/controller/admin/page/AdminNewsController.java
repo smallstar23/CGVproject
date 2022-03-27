@@ -100,7 +100,6 @@ public class AdminNewsController {
         Notification notificationnull = notificationRepository.findById(id).orElse(null);
         notificationnull.setTitle("글이 존재하지 않습니다.");
         notificationnull.setRegDate(null);
-        log.info(notification.toString());
 //        if(notification != null){
 //            model.addAttribute("managenews", notification);
 //            if(notificationprev == null){
@@ -150,11 +149,8 @@ public class AdminNewsController {
     // 공지사항 수정 메소드
     @PostMapping("manage_news_edit/manage_news_update")
     public String update(NotificationDTO adminNewsDto){
-        log.info(adminNewsDto.toString());
-
         // 1: DTO를 Entity로 변환
         Notification notification = adminNewsDto.toEntity();
-        log.info(notification.toString());
         // 2: 엔티티를 DB로 저장한다.
         // 2-1: DB에서 기존 데이터를 가져올 것임
         Notification target = notificationRepository.findById(notification.getIdx()).orElse(null);
