@@ -147,7 +147,7 @@
                                 <dl class="marketing_data">
                                     <dt>CGV</dt>
                                     <dd>
-                                        <span th:text="일시 + ${#temporals.format(memberinfo.getRegDate(), 'yyyy-MM-dd')}"></span>
+                                        <span th:text="|가입일 : | + ${#temporals.format(memberinfo.getRegDate(), 'yyyy-MM-dd')}"></span>
 
 
                                         <span class="last">

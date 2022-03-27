@@ -41,23 +41,27 @@ public class UserLoginController {
 
     @PostMapping("/main")
     @ResponseBody
-    public int postMain(@RequestParam("userid") String userid, @RequestParam("userpw") String userpw){
-        System.out.println(userid);
-        System.out.println(userpw);
+    public int postMain(@RequestParam("userid") String userid, @RequestParam("userpw") String userpw) {
+//        System.out.println(userid);
+//        System.out.println(userpw);
         Member member = memberRepository.findByUserid(userid);
-        List<FavCGV> favCGVList = favCGVRepository.findAllByMemIdx(member.getIdx());
-        if(userLoginService.login(userid,userpw)) {
-            session.setAttribute("idx", member.getIdx());
-            session.setAttribute("userid", userid);
-            session.setAttribute("username", member.getUsername()); // 주문자 정보 확인 위해서
-            session.setAttribute("userhp",member.getHp()); // 주문자 정보 확인 위해서
-            session.setAttribute("nickname", member.getNickname());
-            session.setAttribute("valpoint", member.getValpoint());
-            session.setAttribute("favCGV", favCGVList);
-            return 1;
+        if (member == null) {
+            return 2;
+        } else if (member != null) {
+            List<FavCGV> favCGVList = favCGVRepository.findAllByMemIdx(member.getIdx());
+
+            if (userLoginService.login(userid, userpw)) {
+                session.setAttribute("idx", member.getIdx());
+                session.setAttribute("userid", userid);
+                session.setAttribute("username", member.getUsername()); // 주문자 정보 확인 위해서
+                session.setAttribute("userhp", member.getHp()); // 주문자 정보 확인 위해서
+                session.setAttribute("nickname", member.getNickname());
+                session.setAttribute("valpoint", member.getValpoint());
+                session.setAttribute("favCGV", favCGVList);
+                return 1;
+            }
         }
         return 0;
-
     }
 
     @GetMapping("/user/logout")
