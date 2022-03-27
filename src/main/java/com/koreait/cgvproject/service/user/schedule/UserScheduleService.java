@@ -1,10 +1,7 @@
 package com.koreait.cgvproject.service.user.schedule;
 
 import com.koreait.cgvproject.dto.ScheduleDTO;
-import com.koreait.cgvproject.entity.Hall;
-import com.koreait.cgvproject.entity.Movie;
-import com.koreait.cgvproject.entity.Schedule;
-import com.koreait.cgvproject.entity.Theater;
+import com.koreait.cgvproject.entity.*;
 import com.koreait.cgvproject.repository.*;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -26,6 +23,7 @@ public class UserScheduleService {
     private HallRepository hallRepository;
     private TheaterRepository theaterRepository;
     private SeatRepository seatRepository;
+    private TicketRepository ticketRepository;
 
 
     // 영화, 극장코드로 스케쥴 받아오기
@@ -89,6 +87,23 @@ public class UserScheduleService {
     public Long getSeatCount(Long hcode){
         Hall hall = outOptional(hallRepository.findById(hcode));
         return seatRepository.countAllByHallAndDisabledEquals(hall, 0);
+    }
+
+    public Long getRemainSeatNum(Long hcode, Long schecode){
+        Hall hall = outOptional(hallRepository.findById(hcode));
+        Long allSeatNum = seatRepository.countAllByHallAndDisabledEquals(hall, 0);
+
+        Schedule schedule = outOptional(scheduleRepository.findById(schecode));
+        assert schedule != null; // OutOptional 간의 티켓은 Null이 아니라고 가정
+
+        int reservedSeatNum = 0;
+        List<Ticket> ticketList = schedule.getTickets();
+        for(Ticket ticket : ticketList){
+            if(ticket.getCandate() != null) continue; // 결제 취소날짜가 있다면 결제가 취소된 내용
+            reservedSeatNum += ticket.getSeat().split(",").length;
+        }
+
+        return allSeatNum - reservedSeatNum;
     }
 
     //Optional 객체에서 알맹이만 빼내는 메서드
