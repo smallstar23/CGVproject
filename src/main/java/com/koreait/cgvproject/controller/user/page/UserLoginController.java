@@ -42,8 +42,6 @@ public class UserLoginController {
     @PostMapping("/main")
     @ResponseBody
     public int postMain(@RequestParam("userid") String userid, @RequestParam("userpw") String userpw){
-        System.out.println(userid);
-        System.out.println(userpw);
         Member member = memberRepository.findByUserid(userid);
         List<FavCGV> favCGVList = favCGVRepository.findAllByMemIdx(member.getIdx());
         if(userLoginService.login(userid,userpw)) {
