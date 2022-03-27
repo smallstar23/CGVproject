@@ -33,8 +33,7 @@ public class AdminTheaterRestController {
 
     @PostMapping("/api/tcode")
     @ResponseBody
-    public List<HallDTO> theaterHall(@RequestParam("tcode") Long tcode, Model model) {
-        System.out.println(tcode);
+    public List<HallDTO> theaterHall(@RequestParam("tcode") Long tcode) {
         List<HallDTO> hallDTOList=adminTheaterService.getHallList(tcode);
         return hallDTOList;
     }
