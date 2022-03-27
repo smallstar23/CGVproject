@@ -1,10 +1,11 @@
 // 스케쥴 불러오기
 let mcode;
 let tcode;
-let schecode=null;
-let hcode=null;
+let schecode = null;
+let hcode = null;
 let pcode; //price idx
-let memberIdx=document.getElementById('member_idx').value;
+let memberIdx = document.getElementById('member_idx').value;
+let tempSeat = 0
 
 // step 1. 예매가이드 팝업
 let guide = document.getElementsByClassName('button-guide');
@@ -37,10 +38,10 @@ const seatGuideText = placeholder[3];
 
 let movie_click = document.getElementsByClassName('movieClick');
 let movieTitle = document.getElementsByClassName('movie_title');
-let movieName ="";
-let movieurl ="";
-let locationFloor="";
-let startToend="";
+let movieName = "";
+let movieurl = "";
+let locationFloor = "";
+let startToend = "";
 
 for (let i = 0; i <= movie_click.length - 1; i++) {
     movie_click[i].addEventListener('click', function () {
@@ -54,7 +55,7 @@ for (let i = 0; i <= movie_click.length - 1; i++) {
         // 영화명 전달
         movieTitle[0].style.display = 'block';
         placeholder[1].style.display = 'none';
-        movieurl=document.getElementsByClassName('movieClick')[i].getAttribute('poster');
+        movieurl = document.getElementsByClassName('movieClick')[i].getAttribute('poster');
         let movieSel = document.getElementById("movie_sel");
         movieSel.innerHTML = `<input style="background-color: #1d1d1c; color:#cccccc; font-weight: bold" name="movieName" id="movieName" value="${movieName}">`;
         movieSel.setAttribute("href", "/movies/detail-view/" + mcodeArray[i]);
@@ -174,7 +175,8 @@ function toFirstDateStatus() {
     qs('.sendDate').innerText = '';
     qs('.sendHallInfo').innerText = '';
     $('#tnb_step_btn_right').removeClass('on');
-    hcode=null; schecode=null;
+    hcode = null;
+    schecode = null;
 
     checkDate.forEach(d => {
         d.classList.add('dimmed');
@@ -261,7 +263,7 @@ function ifFindScheduleAction(DOM) {
     const result = findScheduleFinalAjax(mcode, DOM.getAttribute('scdate'), tcode);
     result.then(response => response.json())
         .then(data => {
-            generateScheduleBoneHtml(data).then(addSeatCountHtml)
+            generateScheduleBoneHtml(data).then(addSeatCountHtml).then(addRemainSeatNumHtml)
         });
 }
 
@@ -311,34 +313,29 @@ function addSeatCountHtml() {
     theaterList.forEach(theater => {
         const hcode = theater.getAttribute('hcode');
         const spanSeatCount = theater.querySelectorAll('.seatcount')[0];
-        getPromiseSeatCount(hcode).then(response => response.json()).then(data => spanSeatCount.innerText = `(총 ${data}석)`);
+        getPromiseSeatCount(hcode).then(response => response.json()).then(data => {
+            spanSeatCount.innerText = `(총 ${data}석)`
+        })
     })
 }
 
-function addDetailHtml(scheduleDTOList, hcode) {
-    let detailHtml = '';
-    for (let scheduleDTO of scheduleDTOList) {
-        if (hcode !== scheduleDTO.hcode) continue;
+function addRemainSeatNumHtml() {
+    const theaterList = qsAll('#scheduleList > .theater');
+    theaterList.forEach(theater => {
+        const hcode = theater.getAttribute('hcode');
+        const scheduleList = theater.querySelectorAll('li');
+        remainSeatInit(scheduleList)
+    })
+}
 
-        const startTime = scheduleDTO.scdate.split('T')[1].substring(0,5);
-        //scdate = 2022-03-23T15:00:00  //split('T') = ['2022-03-23', '15:00:00'] // substring(0,5) = 15:00
-        const endTemp = new Date(scheduleDTO.scdate.split('T')[0] + " " + scheduleDTO.scdate.split('T')[1]);
-        endTemp.setMinutes(endTemp.getMinutes() + scheduleDTO.movieDTO.runtime);
-
-        const endTime = `${addZero(endTemp.getHours())}:${addZero(endTemp.getMinutes())}`
-
-        detailHtml += `<li remain_seat="120"  schecode="${scheduleDTO.schecode}" schedule="${scheduleDTO.scdate}" start_tm="${startTime.replace(':', '')}" endtime="${endTime}" hcode="${hcode}" mcode="${scheduleDTO.mcode}" movieRating="${scheduleDTO.movieDTO.movieRating}">
-                        <a class="button">
-                            <span class="time" onclick="schecodeSelect(this)">
-                                <span>${startTime}</span>
-                            </span>
-                            <span class="count">남은 좌석</span>
-                            <div class="sreader">종료시간 ${endTime}</div>
-                            <span class="sreader mod"></span>
-                        </a>
-                      </li>`
-    }
-    return detailHtml;
+function remainSeatInit(scheduleList) {
+    scheduleList.forEach(schedule => {
+        const hcode = schedule.getAttribute('hcode');
+        const schecode = schedule.getAttribute('schecode');
+        const remainSeat = schedule.querySelector('.count');
+        fetch(`/api/ticket/getRemainSeatNum?hcode=${hcode}&schecode=${schecode}`).then(result => result.json())
+            .then(data => remainSeat.innerText = `${data}석`);
+    })
 }
 
 function getPromiseSeatCount(hcode) {
@@ -349,6 +346,34 @@ function getPromiseSeatCount(hcode) {
     return fetch('/api/schedule/getSeatCount?hcode=' + hcode)
 }
 
+function addDetailHtml(scheduleDTOList, hcode) {
+    let detailHtml = '';
+    for (let scheduleDTO of scheduleDTOList) {
+        if (hcode !== scheduleDTO.hcode) continue;
+
+        const startTime = scheduleDTO.scdate.split('T')[1].substring(0, 5);
+        //scdate = 2022-03-23T15:00:00  //split('T') = ['2022-03-23', '15:00:00'] // substring(0,5) = 15:00
+        const endTemp = new Date(scheduleDTO.scdate.split('T')[0] + " " + scheduleDTO.scdate.split('T')[1]);
+        endTemp.setMinutes(endTemp.getMinutes() + scheduleDTO.movieDTO.runtime);
+
+        const endTime = `${addZero(endTemp.getHours())}:${addZero(endTemp.getMinutes())}`
+
+        detailHtml += `<li schecode="${scheduleDTO.schecode}" schedule="${scheduleDTO.scdate}" start_tm="${startTime.replace(':', '')}" endtime="${endTime}" hcode="${hcode}" mcode="${scheduleDTO.mcode}" movieRating="${scheduleDTO.movieDTO.movieRating}">
+                        <a class="button">
+                            <span class="time" onclick="schecodeSelect(this)">
+                                <span>${startTime}</span>
+                            </span>
+                            <span class="count">남은 좌석</span>
+                            
+                            <!-- 남은 좌석 function 만들어보자 -->
+                            
+                            <div class="sreader">종료시간 ${endTime}</div>
+                            <span class="sreader mod"></span>
+                        </a>
+                      </li>`
+    }
+    return detailHtml;
+}
 
 function schecodeSelect(DOM) {
 
@@ -369,31 +394,43 @@ function schecodeSelect(DOM) {
     // 스케쥴 클릭시 rignt 버튼 class on
     $('#tnb_step_btn_right').addClass('on');
 
-    locationFloor=spanTitle.querySelector('.floor').innerText;
-    startToend=schedule.substring(0,10) +"  "+schedule.substring(11,16)+" ~ "+parentList.getAttribute('endtime');
+    locationFloor = spanTitle.querySelector('.floor').innerText;
+    startToend = schedule.substring(0, 10) + "  " + schedule.substring(11, 16) + " ~ " + parentList.getAttribute('endtime');
 
     // 마지막 단계인 스케줄 코드까지 선택이 됬으므로 좌석 init을 실행함 ( step 2 준비 )
     seatHtmlReadAndCreate().then(seatRead).then(getRerservedSeatInit);
 
-    infoInit() // 관, 홀정보, 시간 표시 , 극장별 금액 초기화
+    infoInit(DOM) // 관, 홀정보, 시간 표시 , 극장별 금액 초기화
 }
+
 // step1 하단에 내용 전달하는 부분입니다.
-function ticket_tnbInit(spanTitle, parentList, DOM){
+function ticket_tnbInit(spanTitle, parentList, DOM) {
     qs('.sendHallInfo').innerText = spanTitle.querySelector('.floor').innerText;
     qs('.movie_type > span').innerText = spanTitle.querySelector('.name').innerText;
     qs('.movie_rating > span').innerText = parentList.getAttribute('movieRating');
     qs('.sendDate').innerText = qs('.findSchedule.selected')
-            .getAttribute('date').replaceAll('-','.') + ' ' + DOM.firstElementChild.innerText;
-
+        .getAttribute('date').replaceAll('-', '.') + ' ' + DOM.firstElementChild.innerText;
 
 
 }
-function infoInit() {
+
+function infoInit(DOM) {
     T_H_Init();
     playYMDInfoInit()
     priceInit();
+    seatInfoInit(DOM)
 }
-
+function seatInfoInit(DOM){
+    const restNum = qs('.restNum');
+    restNum.innerText = DOM.nextElementSibling.innerText.match('\\d+')[0]; // 125석 -> 125
+    const totalNum = qs('.totalNum');
+    totalNum.innerText =
+        DOM.parentNode
+            .parentNode
+            .parentElement
+            .previousElementSibling
+            .querySelector('.seatcount').innerText.match('\\d+')[0]; // (총 0석) -> 0
+}
 function T_H_Init() {
     qs('.site').innerText = qs('.sendTheaterName').innerText; // 강남 CGV 표기
     qs('.site + span').innerText = qs('.sendHallInfo').innerText; // 관 표기
@@ -415,20 +452,21 @@ function playYMDInfoInit() {
     timeInit.innerText = `${startTime} ~ ${endTime}`;
 }
 
-function priceInit(){
+
+function priceInit() {
     const scdate = qs('.sendDate').innerText; // 2022.02.23(수) 03:01
     const startTime = scdate.split(' ')[1] // 03:01
     const week = scdate.match('[가-힣]')[0]; // (수) -> '수'
 
     getTheaterPriceAjax(tcode, startTime, week).then(re => re.json())
-        .then(data=> theaterPriceInit(data));
+        .then(data => theaterPriceInit(data));
 }
 
-function getTheaterPriceAjax(tcode, startTime, week){ // 작업중
+function getTheaterPriceAjax(tcode, startTime, week) { // 작업중
     return fetch(`/api/ticket/getPrice?tcode=${tcode}&startTime=${startTime}&week=${week}`)
 }
 
-function theaterPriceInit(priceDTO){
+function theaterPriceInit(priceDTO) {
     pcode = priceDTO.pcode;
     const adultPrice = qs('.row.payment-adult .price');
     const studentPrice = qs('.row.payment-youth .price');
@@ -436,16 +474,18 @@ function theaterPriceInit(priceDTO){
     studentPrice.innerText = priceDTO.stuPrice;
 }
 
-function seatZoomClickListener(listener){
+function seatZoomClickListener(listener) {
     const allSeat = qsAll('#seats .seat');
+    const allRowText = qsAll('#seats .row-text');
 
-    if(listener.classList.contains('on')) {
+    if (listener.classList.contains('on')) {
         listener.classList.remove('on');
         allSeat.forEach(seat => seat.classList.remove('zoom'));
-    }
-    else {
+        allRowText.forEach(rowText => rowText.classList.remove('zoom'));
+    } else {
         listener.classList.add('on');
         allSeat.forEach(seat => seat.classList.add('zoom'));
+        allRowText.forEach(rowText => rowText.classList.add('zoom'));
     }
 
 }
@@ -453,7 +493,6 @@ function seatZoomClickListener(listener){
 function addZero(number) {
     return parseInt(number) < 10 ? "0" + number : number;
 }
-
 
 
 /*
@@ -481,24 +520,24 @@ let payment = document.getElementsByClassName("popup_reservation_check");
 
 // function으로 재구현
 function fnright() {
-    if(pagenum==2){
+    if (pagenum == 2) {
         // 결제창 띄우기
         payment[0].style.display = "block";
         sendinfo();
         checkinfo();
     }
-    if(pagenum==1){
+    if (pagenum == 1) {
         // 좌석 선택 전에 넘어가지 않는 스크립트 작성
-        if($("#tnb_step_btn_right").hasClass("on")){
+        if ($("#tnb_step_btn_right").hasClass("on")) {
             console.log("btn right()");
             step[pagenum].style.display = 'none';
-            step[pagenum+1].style.display = 'block';
+            step[pagenum + 1].style.display = 'block';
             tnb.className = 'tnb step' + (pagenum + 2);
             pagenum++;
-            document.querySelector('#summary_total_amount').innerText=wonByComma(totprice);
-            document.querySelector('#summary_payment_total').innerText=wonByComma(totprice);
-            document.querySelector('dd > .num').innerText=wonByComma(totprice);
-        }else{
+            document.querySelector('#summary_total_amount').innerText = wonByComma(totprice);
+            document.querySelector('#summary_payment_total').innerText = wonByComma(totprice);
+            document.querySelector('dd > .num').innerText = wonByComma(totprice);
+        } else {
             alert("좌석을 선택해주세요.")
         }
     }
@@ -524,11 +563,10 @@ function fnright() {
     }
 
 
-
 }
 
 // 결제창 function
-function fnclose(){
+function fnclose() {
     payment[0].style.display = "none";
 
 }
@@ -578,13 +616,13 @@ $(".dateScroll").scroll(function () {
 let peopleNum = 0;
 let adultNum = 0;
 let youthNum = 0;
-let seat="";
-let totprice=0;
-let peopleDes="";
+let seat = "";
+let totprice = 0;
+let peopleDes = "";
 
 function adultCount(parentDOM) { // CustomerType = 1
     const tempNum = parentDOM.getAttribute('data-count');
-    if(!countChecking(tempNum, youthNum)) return
+    if (!countChecking(tempNum, youthNum)) return
     adultNum = Number(tempNum);
     peopleNum = adultNum + youthNum;
     console.log(adultNum)
@@ -597,7 +635,7 @@ function adultCount(parentDOM) { // CustomerType = 1
 
 function youthCount(parentDOM) { // CustomerType = 2
     const tempNum = parentDOM.getAttribute('data-count');
-    if(!countChecking(tempNum, adultNum)) return
+    if (!countChecking(tempNum, adultNum)) return
     youthNum = Number(tempNum);
     peopleNum = adultNum + youthNum;
 
@@ -610,16 +648,17 @@ function youthCount(parentDOM) { // CustomerType = 2
 }
 
 
-function countChecking(tempNum, target){
+function countChecking(tempNum, target) {
     if (Number(tempNum) + target > 6) {
         alert('6명이 초과되었습니다.');
         return false;
-    }else if(Number(tempNum) + target < getSelectedSeatCount()){
+    } else if (Number(tempNum) + target < getSelectedSeatCount()) {
         alert('현재 선택된 좌석보다 인원을 적게 설정할 수 없습니다.');
         return false;
     }
     return true;
 }
+
 function selectedInit(parentDOM) {
     for (let li of parentDOM.parentElement.children) li.classList.remove('selected');
     parentDOM.classList.add('selected');
@@ -645,7 +684,7 @@ function sendPeopleNumInit() {
     qs('#ticket_tnb .number .data').innerText = (adultNumText + youthNumText).replace('명 ', '명 , ');
 
     // 인원수 가져갑니당
-    peopleDes=(adultNumText + youthNumText).replace('명 ', '명 , ');
+    peopleDes = (adultNumText + youthNumText).replace('명 ', '명 , ');
 }
 
 function seatGuideInit() {
@@ -705,16 +744,16 @@ function seatInit() {
     allSeat.forEach(seat => {
         seat.onclick = function () {
             // selected 추가
-            if(seat.classList.contains('reserved')) return false;
+            if (seat.classList.contains('reserved')) return false;
             if (seat.classList.contains('selected')) seat.classList.remove('selected');
             else seat.classList.add('selected');
 
-            if(isOverSelected()) {
+            if (isOverSelected()) {
                 seat.classList.remove('selected');
                 alert('선택한 인원 수 보다 많이 좌석을 선택하실 수 없습니다.');
                 return false;
             }
-            if(peopleNum == getSelectedSeatCount()) btnRight.classList.add('on');
+            if (peopleNum == getSelectedSeatCount()) btnRight.classList.add('on');
             else btnRight.classList.remove('on');
             sendAllSelectedSeatData(allSeat);
             infoPaymentTicketInit()
@@ -722,7 +761,7 @@ function seatInit() {
     });
 }
 
-function infoPaymentTicketInit(){ // 하단 가격 전달
+function infoPaymentTicketInit() { // 하단 가격 전달
     const paymentDivList = qsAll('.payment-ticket > div');
     const paymentDivListExceptAmount = qsAll('.payment-ticket > div:not(div:last-child)');
     const adultPriceDiv = qs('.payment-adult');
@@ -735,46 +774,48 @@ function infoPaymentTicketInit(){ // 하단 가격 전달
 
     // none, block 조건 주입 ( style 초기화 )
     paymentDivList.forEach(div => div.style.display = 'none');
-    if(peopleNum == 0) return false; // 선택된 인원이 없으면 실행안함
+    if (peopleNum == 0) return false; // 선택된 인원이 없으면 실행안함
 
 
     // 인원별 가격 ( quantity 초기화 )
-    let adultQuantity = 0; let youthQuantity = 0;
-    for(let i = 1 ; i <= selectedSeatCount; i++){
-        if(i <= adultNum) adultQuantity++;
-        else if(i - adultNum <= youthNum) youthQuantity++;
+    let adultQuantity = 0;
+    let youthQuantity = 0;
+    for (let i = 1; i <= selectedSeatCount; i++) {
+        if (i <= adultNum) adultQuantity++;
+        else if (i - adultNum <= youthNum) youthQuantity++;
     }
     adultPriceQuantity.innerText = adultQuantity;
     youthPriceQuantity.innerText = youthQuantity;
 
-    if(adultQuantity !== 0) adultPriceDiv.style.display = 'block';
-    if(youthQuantity !== 0) youthPriceDiv.style.display = 'block';
-    if(adultQuantity !== 0 || youthQuantity !== 0) amountPriceDiv.style.display = 'block';
+    if (adultQuantity !== 0) adultPriceDiv.style.display = 'block';
+    if (youthQuantity !== 0) youthPriceDiv.style.display = 'block';
+    if (adultQuantity !== 0 || youthQuantity !== 0) amountPriceDiv.style.display = 'block';
 
     let amount = 0;
     paymentDivListExceptAmount.forEach(div => {
-        amount += div.querySelector('.price').innerText.replaceAll(',','') * div.querySelector('.quantity').innerText;
+        amount += div.querySelector('.price').innerText.replaceAll(',', '') * div.querySelector('.quantity').innerText;
     })
 
     amountPrice.innerText = wonByComma(amount);
 
     // 금액정보 가져갑니다.
-    totprice=amount;
+    totprice = amount;
 }
 
 
-function wonByComma(won){ // 정규식을 안쓰고 콤마 생성
+function wonByComma(won) { // 정규식을 안쓰고 콤마 생성
     let returnText = '';
     const wonString = String(won);
     let numComma = Math.floor(wonString.length / 3);
-    if(wonString.length % 3 === 0) numComma--;
+    if (wonString.length % 3 === 0) numComma--;
 
-    if(numComma > 0) {
+    if (numComma > 0) {
         const tempLength = wonString.length + numComma
-        let count = wonString.length - 1; let repeat = 0;
+        let count = wonString.length - 1;
+        let repeat = 0;
         const array = [];
-        for(let i = tempLength -1 ; i >= 0; i--){
-            if(repeat === 3){
+        for (let i = tempLength - 1; i >= 0; i--) {
+            if (repeat === 3) {
                 array[i] = ',';
                 repeat = 0;
                 continue;
@@ -784,16 +825,16 @@ function wonByComma(won){ // 정규식을 안쓰고 콤마 생성
         }
         array.forEach(char => returnText += char);
         return returnText;
-    }else{
+    } else {
         return won;
     }
 }
 
 
-function getSelectedSeatCount(){ // 현재 선택된 좌석들의 갯수를 불러온다 ( 자주쓰임 )
+function getSelectedSeatCount() { // 현재 선택된 좌석들의 갯수를 불러온다 ( 자주쓰임 )
     let count = 0;
     qsAll('#seats .seat').forEach(seat => {
-        if(seat.classList.contains('selected')) count ++;
+        if (seat.classList.contains('selected')) count++;
     })
     return count;
 }
@@ -802,19 +843,19 @@ function isOverSelected() {
     return getSelectedSeatCount() > Number(peopleNum);
 }
 
-function sendAllSelectedSeatData(seatList){
+function sendAllSelectedSeatData(seatList) {
     const seatDataInit = qs('.seat_no .data');
     const seat_data = [];
-    if(peopleNum === 0) seatDataInit.innerText = data;
+    if (peopleNum === 0) seatDataInit.innerText = data;
 
     seatList.forEach(seat => {
-        if(seat.classList.contains('selected')) seat_data.push(seat.id);
+        if (seat.classList.contains('selected')) seat_data.push(seat.id);
     })
     // 데이터를 오름차순 정렬후 사이 사이를 ,로 구분하여 보낸다
     seatDataInit.innerText = seat_data.sort().join(',');
 
     //하단에 전달할 seat정보 전달
-   seat=seat_data.sort().join(',');
+    seat = seat_data.sort().join(',');
 
 
 }
@@ -842,14 +883,15 @@ function seatRead() {
             })
         });
 }
+
 function getRerservedSeatInit() {
     const allSeat = qsAll('#seats .seat');
     fetch('/api/ticket/getReservedSeat?schecode=' + schecode)
         .then(response => response.json())
-        .then(reservedSeatList =>{
-            for(let reservedSeat of reservedSeatList){
-                for(let seat of allSeat){
-                    if(seat.id == reservedSeat) seat.classList.add('reserved');
+        .then(reservedSeatList => {
+            for (let reservedSeat of reservedSeatList) {
+                for (let seat of allSeat) {
+                    if (seat.id == reservedSeat) seat.classList.add('reserved');
                 }
             }
         })
@@ -869,10 +911,10 @@ function convertNumber(alph) {
 //step 3 결제 부분 시작
 
 // data 보낼 정보 fn
-function sendinfo(){
-    document.querySelector('#schecode').setAttribute("value",schecode);
-    document.querySelector('#adultNum').setAttribute("value",adultNum);
-    document.querySelector('#youthNum').setAttribute("value",youthNum);
+function sendinfo() {
+    document.querySelector('#schecode').setAttribute("value", schecode);
+    document.querySelector('#adultNum').setAttribute("value", adultNum);
+    document.querySelector('#youthNum').setAttribute("value", youthNum);
     document.querySelector('#seat').setAttribute("value", seat);
     document.querySelector('#price').setAttribute("value", totprice)
     document.querySelector('#totprice').setAttribute("value", totprice)
@@ -880,15 +922,15 @@ function sendinfo(){
 }
 
 // 마지막 예매정보 정보 전달
-function checkinfo(){
-    qs('.movie_name > td' ).innerText=movieName;
-    qs('.poster > img').setAttribute("src",  movieurl)
-    qs('.screen > td').innerText=locationFloor;
-    qs('.movie_date > td').innerText=startToend;
-    qs('.seat > td').innerText=peopleDes;
-    qs('.people > td').innerText=seat;
-    qs('.payment_price > td > .price').innerText=wonByComma(totprice);
-    qs('.content > .price ').innerText=wonByComma(totprice);
+function checkinfo() {
+    qs('.movie_name > td').innerText = movieName;
+    qs('.poster > img').setAttribute("src", movieurl)
+    qs('.screen > td').innerText = locationFloor;
+    qs('.movie_date > td').innerText = startToend;
+    qs('.seat > td').innerText = peopleDes;
+    qs('.people > td').innerText = seat;
+    qs('.payment_price > td > .price').innerText = wonByComma(totprice);
+    qs('.content > .price ').innerText = wonByComma(totprice);
 }
 
 $("#last_pay_radio3").on({
@@ -906,7 +948,6 @@ $("#last_pay_radio3").on({
 
     }
 })
-
 
 
 // 포인트 사용(닫기 아직안됨!!!)

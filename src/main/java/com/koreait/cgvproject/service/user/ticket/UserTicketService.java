@@ -9,10 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalTime;
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.List;
-import java.util.Optional;
+import java.util.*;
 import java.util.concurrent.ScheduledExecutorService;
 
 @Service
@@ -90,11 +87,10 @@ public class UserTicketService {
 
         // 예약된 좌석번호 리스트 뽑아옴
         for(Ticket ticket : ticketList){
+            if(ticket.getCandate() != null) continue; // 취소날짜가 있다면 유효하지 않은 티켓
             String seatText = ticket.getSeat();
             String[] seatTextSplit = seatText.split(",");
-            for(String seatNum : seatTextSplit){
-                reservedSeatList.add(seatNum);
-            }
+            reservedSeatList.addAll(Arrays.asList(seatTextSplit));
         }
 
         Collections.sort(reservedSeatList);
