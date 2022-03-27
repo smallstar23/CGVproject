@@ -153,6 +153,7 @@
             });
         }
         //]]>
+
     </script>
 
 </head>
@@ -804,9 +805,9 @@
                                 <tr>
                                     <td th:text="${cancel.getScheduleDTO().getMovieDTO().getTitleKo()}"></td>
                                     <td th:text="${cancel.getScheduleDTO().getHallDTO().getTheater().getTname()}"></td>
-                                    <td th:text="${cancel.getScheduleDTO().getScdate()}"></td>
-                                    <td th:text="${cancel.getCandate()}">하는 부분</td>
-                                    <td><strong th:text="${cancel.getTotprice()}">
+                                    <td th:text="${#strings.replace(cancel.getScheduleDTO().getScdate(),'T',' ')}"></td>
+                                    <td th:text="${#strings.replace(cancel.getCandate(),'T',' ')}">하는 부분</td>
+                                    <td><strong th:text="${#strings.substring(cancel.getTotprice(),0,2)+','+#strings.substring(cancel.getTotprice(),2,5)}">
                                     </strong> 원 </td>
                                 </tr>
                                 </th:block>
@@ -1588,6 +1589,25 @@
     // 예매내역 반복, 데이터가 없으면 예매내역이 없음으로 띄워줌
     let ticketList = [[${ticketList}]];
     console.log(ticketList);
+    // function personnum(){
+    //     let stringadult="";
+    //     let stringyouth="";
+    //     if(ticket.adultnum !=0 && ticket.youthnum!=0 ){
+    //         stringadult="성인"+ ticket.adultnum+" 명";
+    //         stringyouth="청소년"+ticket.youthnum+" 명";
+    //         document.querySelector(".num").setAttribute("value",stringadult+","+stringyouth);
+    //     }else if(ticket.adultnum!=0){
+    //         stringadult="성인"+ticket.adultnum+" 명";
+    //         document.querySelector(".num").setAttribute("value",stringadult);
+    //     }else if(ticket.youthnum!=0){
+    //         stringyouth="청소년"+ticket.youthnum+" 명";
+    //         document.querySelector(".num").setAttribute("value",stringyouth);
+    //     }
+    //     console.log(stringyouth);
+    //     console.log(stringadult);
+    // }
+    // personnum();
+
     let lstitem=document.querySelector('.lst-item');
     if(ticketList.length==0){
         lstitem.innerHTML=
@@ -1598,9 +1618,14 @@
         ticketList.forEach(ticket =>{
             console.log(ticket)
             let src=ticket.scheduleDTO.movieDTO.poster;
+            let priceDate =ticket.scheduleDTO.scdate.replace("T"," ");
+            let totperson =ticket.adultnum+ticket.youthnum;
+            console.log(ticket.adultnum);
+            console.log(ticket.youthnum);
+            //인원수 전달
             lstitem.innerHTML+=
                 `
-                    <div class="lst-item">
+
                                 <div class="box-set-info">
                                     <div class="box-number">
                                         <em>예매번호</em>
@@ -1626,7 +1651,7 @@
                                             <div class="reservation-info-wrap">
                                                 <h2 class="box-contents artHouse">
                                                     <a href="/movies/detail-view/${ticket.scheduleDTO.mcode} class="res-title">${ticket.scheduleDTO.movieDTO.titleKo}</a>
-                                                    <span class="res-price"> ${ticket.totprice}원</span>
+                                                    <span class="res-price"> ${wonByComma(ticket.totprice)}원</span>
                                                 </h2>
                                                 <ul class="reservation-mv-info">
                                                     <li>
@@ -1640,13 +1665,13 @@
                                                     <li>
                                                         <dl>
                                                             <dt>관람인원</dt>
-                                                            <dd>${ticket.totperson}</dd>
+                                                            <dd>${totperson}명</dd>
                                                         </dl>
                                                     </li>
                                                     <li>
                                                         <dl>
                                                             <dt>관람일시</dt>
-                                                            <dd class="txt-red">${ticket.scheduleDTO.scdate}</dd>
+                                                            <dd class="txt-red">${priceDate}</dd>
                                                         </dl>
                                                     </li>
                                                     <li>
@@ -1664,7 +1689,7 @@
                                                     <li>
                                                         <dl>
                                                             <dt>매수</dt>
-                                                            <dd>성인 ${ticket.adultnum}명, 청소년 ${ticket.youthnum}명</dd>
+                                                            <dd class="num"></dd>
                                                         </dl>
                                                     </li>
                                                 </ul>
@@ -1693,9 +1718,9 @@
                                             <p class="resevation-payment-total">
                                                 <span class="totel-title">총 결제금액</span>
                                                 <span class="res-price">
-                                   ${ticket.totprice}원</span>
+                                   ${wonByComma(ticket.totprice)}원</span>
                                             </p>
-                                            <p class="resevation-payment-part"><span>카카오페이</span><span class="part-price">${ticket.totprice}원</span></p>
+                                            <p class="resevation-payment-part"><span>카카오페이</span><span class="part-price">${wonByComma(ticket.totprice)}원</span></p>
                                         </div>
                                     </div>
                                     <div class="set-btn">
@@ -1707,7 +1732,7 @@
                                         e:나의예매내역 출력 수정
                                     -->
                                 </div>
-                            </div>
+
                 `
         })
     }
@@ -1733,6 +1758,33 @@
         location.href="/user/mycgv/mycgv-reserve"
 
     }
+
+    function wonByComma(won){ // 정규식을 안쓰고 콤마 생성
+        let returnText = '';
+        const wonString = String(won);
+        let numComma = Math.floor(wonString.length / 3);
+        if(wonString.length % 3 === 0) numComma--;
+
+        if(numComma > 0) {
+            const tempLength = wonString.length + numComma
+            let count = wonString.length - 1; let repeat = 0;
+            const array = [];
+            for(let i = tempLength -1 ; i >= 0; i--){
+                if(repeat === 3){
+                    array[i] = ',';
+                    repeat = 0;
+                    continue;
+                }
+                array[i] = wonString[count--];
+                repeat++;
+            }
+            array.forEach(char => returnText += char);
+            return returnText;
+        }else{
+            return won;
+        }
+    }
+
 
 
 

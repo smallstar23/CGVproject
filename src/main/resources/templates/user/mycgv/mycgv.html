@@ -685,6 +685,7 @@
             console.log(ticket)
             document.querySelector('.tit-mycgv > p> em').innerText=ticketList.length+'건';
             let src=ticket.scheduleDTO.movieDTO.poster;
+            let priceDate =ticket.scheduleDTO.scdate.replace("T"," ");
             lstitem.innerHTML+=
                 `
 <div class="lst-item">
@@ -714,7 +715,7 @@
                     </dd>
                     <dd>
                         <em>관람일시</em>
-                        <strong>${ticket.scheduleDTO.scdate}</strong>
+                        <strong>${priceDate}</strong>
                     </dd>
                     <dd>
                         <em>관람좌석</em>
@@ -731,7 +732,7 @@
                         <dt>총 결제금액</dt>
                         <dd>
                             <strong class="txt-lightblue">
-                               ${ticket.totprice}원</strong>
+                               ${wonByComma(ticket.totprice)}원</strong>
                         </dd>
                     </dl>
                     <div class="set-btn">
@@ -749,8 +750,8 @@
     }
 
 
-// 예매 취소 요청시 function
-function fnTicketCancle(ticode){
+    // 예매 취소 요청시 function
+    function fnTicketCancle(ticode){
         console.log(ticode)
         if(confirm("예매를 취소하시겠습니까?")){
             fetch("/api/deleteSchedule/"+ticode);
@@ -761,7 +762,7 @@ function fnTicketCancle(ticode){
 
         }
 
-}
+    }
 
     // 취소 팝업 닫기 클릭시 닫기 function
     function btnClose(){
@@ -770,7 +771,31 @@ function fnTicketCancle(ticode){
         location.href="/user/mycgv"
     }
 
+    function wonByComma(won) { // 정규식을 안쓰고 콤마 생성
+        let returnText = '';
+        const wonString = String(won);
+        let numComma = Math.floor(wonString.length / 3);
+        if (wonString.length % 3 === 0) numComma--;
 
-
+        if (numComma > 0) {
+            const tempLength = wonString.length + numComma
+            let count = wonString.length - 1;
+            let repeat = 0;
+            const array = [];
+            for (let i = tempLength - 1; i >= 0; i--) {
+                if (repeat === 3) {
+                    array[i] = ',';
+                    repeat = 0;
+                    continue;
+                }
+                array[i] = wonString[count--];
+                repeat++;
+            }
+            array.forEach(char => returnText += char);
+            return returnText;
+        } else {
+            return won;
+        }
+    }
 </script>
 </html>
