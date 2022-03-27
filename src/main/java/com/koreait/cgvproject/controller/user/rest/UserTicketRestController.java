@@ -43,6 +43,11 @@ public class UserTicketRestController {
         return userScheduleService.getSeatCount(hcode);
     }
 
+    @GetMapping("/api/ticket/getRemainSeatNum")
+    public Long getRemainSeatNum(@RequestParam Long hcode, @RequestParam Long schecode){
+        return userScheduleService.getRemainSeatNum(hcode, schecode);
+    }
+
     @GetMapping("/api/ticket/getPrice")
     public PriceDTO getPrice(@RequestParam String tcode, @RequestParam String week, @RequestParam String startTime) {
         return userTicketService.getPrice(Long.parseLong(tcode), week, startTime);
