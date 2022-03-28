@@ -90,57 +90,30 @@ public class AdminNewsController {
         // 1. ID로 데이터를 가져옴!
         Notification notification = notificationRepository.findById(id).orElse(null);
 
-        log.info(notification.toString());
+        model.addAttribute("managenews",notification);
+
         // 1-2. 이전 글, 다음 글
 
         Notification notificationprev = notificationRepository.findById(id - 1L).orElse(null);
 
         Notification notificationnext = notificationRepository.findById(id + 1L).orElse(null);
 
-        Notification notificationnull = notificationRepository.findById(id).orElse(null);
-        notificationnull.setTitle("글이 존재하지 않습니다.");
-        notificationnull.setRegDate(null);
-//        if(notification != null){
-//            model.addAttribute("managenews", notification);
-//            if(notificationprev == null){
-//                notificationprev.setTitle("글이 존재하지 않습니다.");
-//                notificationprev.setRegDate(null);
-//                model.addAttribute("managenews_prev", notificationprev);
-//            } else if(notificationprev != null){
-//                model.addAttribute("managenews_prev", notificationprev);
-//            }
-//            if(notificationnext == null){
-//                notificationnext.setTitle("글이 존재하지 않습니다.");
-//                notificationnext.setRegDate(null);
-//                model.addAttribute("managenews_next", notificationnext);
-//            } else if(notificationnext != null){
-//                model.addAttribute("managenews_next",notificationnext);
-//            }
-//            Notification realnotification = notificationRepository.findById(id).orElse(null);
-//            log.info(realnotification.toString());
-//            log.info(notification.toString());
-//            model.addAttribute("managenews", realnotification);
-//        }
-////        notificationnull.setTitle("글이 존재하지 않습니다.");
-////        notificationnull.setRegDate(null);
+
+        Notification no_notification = new Notification();
+        no_notification.setRegDate(null);
+        no_notification.setTitle("글이 존재하지 않습니다.");
 
          // 2. 가져온 데이터를 모델에 등록
         if(notificationprev == null){
-            model.addAttribute("managenews_prev", notificationnull);
+            model.addAttribute("managenews_prev", no_notification);
         } else if(notificationprev != null){
             model.addAttribute("managenews_prev", notificationprev);
         }
         if(notificationnext == null){
-            model.addAttribute("managenews_next", notificationnull);
+            model.addAttribute("managenews_next", no_notification);
         } else if(notificationnext != null){
             model.addAttribute("managenews_next",notificationnext);
         }
-
-        model.addAttribute("managenews", notification);
-//        log.info(notificationnull.toString());
-//        log.info(notification.toString());
-
-
 
         // 3. 보여줄 페이지를 설정!
         return "/admin/news/manage_news_detail";

@@ -202,18 +202,20 @@
                         <div class="customer_btn"><button onclick="location.href='/support/support-news'" type="button" class="round inblack"><span>목록으로</span></button></div>
                         <!-- 이전글,다음글 (s) -->
                         <div class="btm_sup_list">
-                            <ul class="line_sup_next">
+                            <ul class="line_sup_next" >
                                 <li class="stit" >이전글</li>
-<!--                                <a th:href='@{/culture-event/popcorn-store/purchase-confirm(gcode=${giftDTO.gcode}, totalCount=${giftDTO.price})}'>구매하기</a>-->
-                                <li class="name"><a th:href="@{/support/news/support-news-detail-view/{id}(id = ${supportnews_prev.getIdx()})}" class="txt" th:text="${supportnews_prev.getTitle()}"></a></li>
+                                <!--                                <a th:href='@{/culture-event/popcorn-store/purchase-confirm(gcode=${giftDTO.gcode}, totalCount=${giftDTO.price})}'>구매하기</a>-->
+                                <li class="name"><a class="txt" th:text="${supportnews_prev.getTitle()}" onclick="goPrevPage()" ></a></li>
                                 <li class="check_writ_area">등록일<span class="check_num"  th:text="${#temporals.format(supportnews_prev.getRegDate(), 'yyyy-MM-dd')}"></span></li>
                             </ul>
                             <ul class="line_sup_prev">
                                 <li class="stit">다음글</li>
-                                <li class="name"><a th:href="@{/support/news/support-news-detail-view/{id}(id = ${supportnews_next.getIdx()})}" class="txt" th:text="${supportnews_next.getTitle()}"></a></li>
+                                <li class="name"><a class="txt" th:text="${supportnews_next.getTitle()}" onclick="goNextPage()" ></a></li>
                                 <li class="check_writ_area">등록일<span class="check_num"  th:text="${#temporals.format(supportnews_next.getRegDate(), 'yyyy-MM-dd')}"></span></li>
                             </ul>
                         </div>
+
+
                         <!-- 이전글,다음글 (e) -->
                     </div>
                 </div>
@@ -221,7 +223,7 @@
             <!-- //Contents End -->
         </div>
         <!-- //Contents Area -->
-        <script type="text/javascript">
+        <script th:inline="javascript">
             //<![CDATA[
             (function ($) {
                 $(function () {
@@ -235,6 +237,32 @@
                 });
             })(jQuery);
             //]]>
+
+            function goPrevPage() {
+                let isPrevPage = [[${supportnews_prev.regDate}]]
+                let nowpageIdx = [[${supportnews.idx}]]
+
+
+                if (isPrevPage != null) {
+                    location.href = "/support/news/support-news-detail-view/" + (nowpageIdx - 1)
+                } else if (isPrevPage == null) {
+                    location.href = "#"
+                }
+            }
+
+            function goNextPage() {
+                let isNextPage = [[${supportnews_next.regDate}]]
+                let nowpageIdx = [[${supportnews.idx}]]
+
+                if (isNextPage != null) {
+                    location.href = "/support/news/support-news-detail-view/" + (nowpageIdx + 1)
+                } else if (isNextPage == null) {
+                    location.href = "#"
+                }
+            }
+
+
+
         </script>
 
 
