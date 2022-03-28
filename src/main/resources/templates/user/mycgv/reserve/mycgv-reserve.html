@@ -1599,6 +1599,14 @@
         ticketList.forEach(ticket =>{
             console.log(ticket)
             let src=ticket.scheduleDTO.movieDTO.poster;
+
+            const youthnum = ticket.youthnum;
+            const adultnum = ticket.adultnum;
+            let peopleText = '';
+            if(adultnum == 0) peopleText = `청소년 ${ticket.youthnum}명`
+            else if(youthnum == 0) peopleText = `성인 ${ticket.adultnum}명`
+            else peopleText = `성인 ${ticket.adultnum}명, 청소년 ${ticket.youthnum}명`
+
             lstitem.innerHTML+=
                 `
                     <div class="lst-item">
@@ -1627,7 +1635,7 @@
                                             <div class="reservation-info-wrap">
                                                 <h2 class="box-contents artHouse">
                                                     <a href="/movies/detail-view/${ticket.scheduleDTO.mcode} class="res-title">${ticket.scheduleDTO.movieDTO.titleKo}</a>
-                                                    <span class="res-price"> ${ticket.totprice}원</span>
+                                                    <span class="res-price"> ${Number(ticket.totprice).toLocaleString('ko-KR')}원</span>
                                                 </h2>
                                                 <ul class="reservation-mv-info">
                                                     <li>
@@ -1641,13 +1649,13 @@
                                                     <li>
                                                         <dl>
                                                             <dt>관람인원</dt>
-                                                            <dd>${ticket.totperson}</dd>
+                                                            <dd>${ticket.seat.split(',').length}명</dd>
                                                         </dl>
                                                     </li>
                                                     <li>
                                                         <dl>
                                                             <dt>관람일시</dt>
-                                                            <dd class="txt-red">${ticket.scheduleDTO.scdate}</dd>
+                                                            <dd class="txt-red">${ticket.scheduleDTO.scdate.replace('T',' ').match('\\d+-\\d+-\\d+ \\d+:\\d+')[0]}</dd>
                                                         </dl>
                                                     </li>
                                                     <li>
@@ -1665,7 +1673,7 @@
                                                     <li>
                                                         <dl>
                                                             <dt>매수</dt>
-                                                            <dd>성인 ${ticket.adultnum}명, 청소년 ${ticket.youthnum}명</dd>
+                                                            <dd>${peopleText}</dd>
                                                         </dl>
                                                     </li>
                                                 </ul>
@@ -1694,9 +1702,9 @@
                                             <p class="resevation-payment-total">
                                                 <span class="totel-title">총 결제금액</span>
                                                 <span class="res-price">
-                                   ${ticket.totprice}원</span>
+                                   ${Number(ticket.totprice).toLocaleString('ko-KR')}원</span>
                                             </p>
-                                            <p class="resevation-payment-part"><span>카카오페이</span><span class="part-price">${ticket.totprice}원</span></p>
+                                            <p class="resevation-payment-part"><span>카카오페이</span><span class="part-price">${Number(ticket.totprice).toLocaleString('ko-KR')}원</span></p>
                                         </div>
                                     </div>
                                     <div class="set-btn">
