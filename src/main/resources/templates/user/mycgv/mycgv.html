@@ -368,185 +368,6 @@
                 </form>
 
                 <script type="text/javascript" src="https://img.cgv.co.kr/R2014//js/system/crypto.js"></script>
-                <script type="text/javascript">
-                    //<![CDATA[
-                    var nowDate = "20220211";
-                    var noshoMovie="";
-                    var movieViewDate="";
-                    var snackCancelDate="";
-                    var prdName="";
-                    var hotdeal="00";
-                    var moviescreenlavel="00";
-                    function noshowYN(N, D, H, L, T, C, P) {
-                        noshoMovie =N;
-                        movieViewDate=D;
-                        hotdeal = H;
-                        moviescreenlavel = L;
-                        movieplaytime  = T;
-                        snackCancelDate = C;    //매점취소일자 2019-12-10
-                        prdName = P;            //매점상품명   2019-12-10
-                    }
-                    (function ($) {
-                        $(function () {
-                            $('.sendsmspopup').on('click', function () {
-                                var reserveNo = $(this).parents('.set-btn').find('.reserve-no').val();
-                                var $targetFrm = $('#targetform');
-                                $targetFrm.find('#reverse_no').val(reserveNo);
-                                $targetFrm.attr('target', 'sendsms');
-                                $targetFrm.attr('action', '/user/popup/send-sms.aspx');
-                                var win = window.open('about:blank', "sendsms", "left=0,top=o,width=664,height=300,toolbar=no,scrollbars=no");
-                                if (win) {
-                                    $targetFrm.submit();
-                                    win.focus();
-                                } else {
-                                    alert('팝업이 허용되어 있지 않습니다.');
-                                }
-                                return false;
-                            });
-                            $('.cancel').on('click', function () {
-                                var photoTicketStatus = $(this).attr('data-status');
-                                var msg = '';
-                                var chk30 = false; // 30분 취소 불가
-                                var chk60 = false; // 60분 취소 불가
-                                var chk120 = false; // 120분 취소 불가
-                                if (moviescreenlavel == '32') chk60 = true;
-                                //자동차상영관 : 30 120분으로 변경 2020/08/30 - minmmm2
-                                if (moviescreenlavel == '30') chk120 = true; // 30 자동차극장
-                                //자동차상영관 : 30 추가 2020/02/25 - myilsan
-                                if (moviescreenlavel == '24' || moviescreenlavel == '26' ) chk30 = true; // 24 : 씨네포래, 26 : 씨네앤리빙룸
-                                if(chk30 && movieplaytime <= 30  ){
-                                    alert("영화상영 시간 기준 30분 전까지 온라인 예매 취소가 가능하며,\n\n 이후에는 현장에서 취소 하셔야 합니다. (영화 상영 후 취소 불가)");
-                                    return false;
-                                }
-                                if(chk60 && movieplaytime <= 60){
-                                    alert("영화상영 시간 기준 1시간 전까지 온라인 예매 취소가 가능하며,\n\n 이후에는 현장에서 취소 하셔야 합니다. (영화 상영 후 취소 불가)");
-                                    return false;
-                                }
-                                if(chk120 && movieplaytime <= 120){
-                                    alert("영화상영 시간 기준 2시간 전까지 온라인 예매 취소가 가능하며,\n\n 이후에는 현장에서 취소 하셔야 합니다. (영화 상영 후 취소 불가)");
-                                    return false;
-                                }
-                                if(hotdeal == 'A1' ){
-                                    alert("핫딜이 종료된 영화의 예매취소는 불가합니다.\n\n(핫딜 실패 영화는 1시간 내 자동 취소됩니다)");
-                                    return false;
-                                }
-                                if(hotdeal == '02'){
-                                    alert("핫딜에 성공하여 상영이 확정된 영화로 예매 취소가 불가합니다.");
-                                    return false;
-                                }
-                                else if(hotdeal== '01'){
-                                    if (!confirm('핫딜영화 예매를 취소하시겠습니까?\n\n ※ 핫딜영화 예매 취소는 핫딜 종료일까지 가능하며,\n\n핫딜 종료 후 영화 상영 확정 시 예매 취소가 불가합니다.')) {
-                                        return false;
-                                    }
-                                }
-                                if(noshoMovie =='Y'){
-                                    if(nowDate >= movieViewDate){
-                                        alert('※ 본 행사는 진행 당일 취소, 변경이 불가합니다.');
-                                        return false;
-                                    }else{
-                                        msg ="예매를 취소하시겠습니까?\n\n※ 본 행사는 진행 당일 취소, 변경이 불가합니다.";
-                                    }
-                                }else{
-                                    if (photoTicketStatus == '98' || photoTicketStatus == '96') {
-                                        if(chk30){
-                                            msg = '예매를 취소하시겠습니까?\n포토플레이를 만들었을 경우 함께 취소됩니다';
-                                        }else{
-                                            msg = '예매를 취소하시겠습니까?\n포토플레이를 만들었을 경우 함께 취소됩니다.\n\n※ 인터넷 예매 취소는 상영시간 20분 전까지 가능하며, \n예매 가능은 상영시간 30분 전까지 가능합니다.';
-                                        }
-                                    }else{
-                                        if(chk30){
-                                            msg = '예매를 취소하시겠습니까?\n\n※ 인터넷 예매 취소는 상영시간 30분 전까지 가능합니다.';
-                                        } else if (chk60) {
-                                            msg = '예매를 취소하시겠습니까?\n\n※ 인터넷 예매 취소는 상영시간 1시간 전까지 가능합니다.';
-                                        } else if (chk120) {
-                                            msg = '예매를 취소하시겠습니까?\n\n※ 인터넷 예매 취소는 상영시간 2시간 전까지 가능합니다.';
-                                        }else {
-                                            //2019.12.10 통합결제 매점상품 취소문구 추가
-                                            if(prdName == "" || snackCancelDate != "") {
-                                                //영화 상영시간 20분 이전 구매한 매점 상품이 없는 경우(또는 매점 상품 부분 취소된 경우)
-                                                msg = '예매를 취소하시겠습니까?\n\n※ 인터넷 예매 취소는 상영시간 20분 전까지 가능하며, \n예매 가능은 상영시간 30분 전까지 가능합니다.';
-                                            }
-                                            else if(prdName != "" && snackCancelDate == "") {
-                                                //영화 상영시간 20분 이전 구매한 매점 상품이 있는 경우
-                                                msg = '예매를 취소하시겠습니까?\n함께 구매하신 매점 상품도 취소됩니다.\n\n※ 인터넷 예매 취소는 상영시간 20분 전까지 가능하며, \n예매 가능은 상영시간 30분 전까지 가능합니다.';
-                                            }
-                                        }
-                                    }
-                                }
-                                if (!confirm(msg))
-                                    return false;
-                                CancelReserve($(this));
-                            });
-
-                            function CancelReserve(obj) {
-                                var reserveNo = obj.parents('.set-btn').find('.reserve-no').val();
-                                var url = '/common/ajax/user.aspx/CancelReserveByMember';
-                                var data = { 'reserveNo': reserveNo };
-                                var callback = function (result) {
-                                    obj.attr('disabled', false);
-                                    $('.loading').remove();
-                                    if (result == null || result["resultCode"] == null)
-                                        return;
-                                    var resultCode = result["resultCode"];
-                                    var resultMessage = result["resultData"];
-                                    switch (resultCode) {
-                                        case "-9":
-                                            alert('매점 상품을 수령하였으므로 예매 취소가 불가합니다.');
-                                            break;
-                                        case "-8":
-                                            alert('잘못된 경로로 접근하였습니다.\n확인 후 다시 진행해 주세요.');
-                                            break;
-                                        case "-1":
-                                            alert('이미 취소되었거나 존재하지 않는 예매번호입니다.\n확인 후 다시 진행해 주세요.');
-                                            break;
-                                        case "-2":
-                                            alert('예매취소 가능시간이 종료되었습니다.\n자세한 문의는 고객센터 1544-1122를 통하여 진행 가능합니다.');
-                                            break;
-                                        case "0":
-                                            alert('취소처리가 실패하였습니다.\n(' + resultMessage + ')');
-                                            break;
-                                        case "1":
-                                            if ($('.cols-mycgv-booking > .lst-item').length < 2) {
-                                                obj.parents('.lst-item').remove();
-                                                $('.cols-mycgv-booking .info-log').after('<div class="lst-item"><div class="box-set-info nodata">고객님의 최근 예매내역이 존재하지 않습니다.</div></div>');
-                                            }
-                                            else {
-                                                obj.parents('.lst-item').remove();
-                                            }
-                                            var options = { '$target': null, 'type': 'center', 'position': 'position', 'mask': true };
-                                            app.htmlLoad2(options, app.config('html').reservation_cancel);
-                                            break;
-                                    }
-                                };
-                                app.loading().show({ 'target': obj.parents('.lst-item'), 'circleType': 'large' });
-                                obj.attr('disabled', true);
-                                app.ajax().set({ dataType: 'json', url: url, data: JSON.stringify(data), contentType: "application/json; charset=utf-8", successHandler: callback });
-                            }
-                            function OpenPointHistoryPopup() {
-                                var cookie = getCookie("PointHistoryPop");
-                                if (cookie == 'done')
-                                    return;
-                                window.open('/user/popup/PointHistoryPop.aspx', 'PointHistoryPop', 'width=350,height=540,toolbar=no,scrollbars=no,status=0,top=0,left=0');
-                            }
-                            //OpenPointHistoryPopup();
-                            function getCookie(cName) {
-                                cName = cName + '=';
-                                var cookieData = document.cookie;
-                                var start = cookieData.indexOf(cName);
-                                var cValue = '';
-                                if (start != -1) {
-                                    start += cName.length;
-                                    var end = cookieData.indexOf(';', start);
-                                    if (end == -1) end = cookieData.length;
-                                    cValue = cookieData.substring(start, end);
-                                }
-                                return unescape(cValue);
-                            }
-                        });
-                    })(jQuery);
-                    //]]>
-                </script>
-
             </div>
         </div>
 
@@ -715,7 +536,7 @@
                     </dd>
                     <dd>
                         <em>관람일시</em>
-                        <strong>${ticket.scheduleDTO.scdate}</strong>
+                        <strong>${ticket.scheduleDTO.scdate.replace('T',' ').match('\\d+-\\d+-\\d+ \\d+:\\d+')[0]}</strong>
                     </dd>
                     <dd>
                         <em>관람좌석</em>
@@ -732,7 +553,7 @@
                         <dt>총 결제금액</dt>
                         <dd>
                             <strong class="txt-lightblue">
-                               ${ticket.totprice}원</strong>
+                               ${Number(ticket.totprice).toLocaleString('ko-KR')}원</strong>
                         </dd>
                     </dl>
                     <div class="set-btn">
