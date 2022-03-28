@@ -64,8 +64,8 @@ public class UserMycgvController {
     @GetMapping("/user/mycgv")
     public String mycgv(Model model){
         Member member =memberRepository.findByUserid((String)session.getAttribute("userid"));
-//        List<TicketDTO> ticketDTOList=userTicketService.mycgvTicket(member);
-//        model.addAttribute("ticketList",ticketDTOList);
+        List<TicketDTO> ticketDTOList=userTicketService.mycgvTicket(member);
+        model.addAttribute("ticketList",ticketDTOList);
         return ROOT+"/mycgv";
     }
 
