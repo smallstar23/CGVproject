@@ -153,7 +153,7 @@ public class UserMycgvController {
         model.addAttribute("member", member);
         memberService.update(member.getIdx(), memberDTO);
 
-        return ROOT + "/myinfo/mycgv-myinfo-edit-myinfo";
+        return   "redirect:/main";
     }
 
     @PostMapping("/user/mycgv/myinfo/mycgv-myinfo-edit-myinfo")
