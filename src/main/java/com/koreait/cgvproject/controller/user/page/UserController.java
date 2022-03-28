@@ -27,9 +27,7 @@ public class UserController {
     @GetMapping("/main")
     public String main(Model model){
         List<Movie> movieList=movieRepository.findAll();
-
         model.addAttribute("movieList",movieList);
-        System.out.println(movieList);
         return "/user/main";
     }
 }
