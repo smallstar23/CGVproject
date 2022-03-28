@@ -804,9 +804,9 @@
                                 <tr>
                                     <td th:text="${cancel.getScheduleDTO().getMovieDTO().getTitleKo()}"></td>
                                     <td th:text="${cancel.getScheduleDTO().getHallDTO().getTheater().getTname()}"></td>
-                                    <td th:text="${cancel.getScheduleDTO().getScdate()}"></td>
-                                    <td th:text="${cancel.getCandate()}">하는 부분</td>
-                                    <td><strong th:text="${cancel.getTotprice()}">
+                                    <td th:text="${#strings.replace(cancel.getScheduleDTO().getScdate(),'T',' ')}"></td>
+                                    <td th:text="${#strings.replace(cancel.getCandate(),'T',' ')}">하는 부분</td>
+                                    <td><strong th:text="${#strings.substring(cancel.getTotprice(),0,2)+','+#strings.substring(cancel.getTotprice(),2,5)}">
                                     </strong> 원 </td>
                                 </tr>
                                 </th:block>
