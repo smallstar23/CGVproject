@@ -116,7 +116,6 @@ public class UserMycgvController {
     // 자주가는cgv 추가
     @PostMapping("/user/popup/mycgv-favoriteTheaters")
     public String mycgv_favoriteTheater(@ModelAttribute FavCGVDTO favCGVDTO){
-        System.out.println(favCGVDTO);
         Member member = memberRepository.findByUserid((String)session.getAttribute("userid"));
         userFavCGVService.insert(favCGVDTO, member);
         session.removeAttribute("favCGV");
@@ -193,6 +192,7 @@ public class UserMycgvController {
         Member member =memberRepository.findByUserid((String)session.getAttribute("userid"));
         List<GiftPayment> giftPayment = giftPaymentRepository.findByMemberIdx(member.getIdx());
 
+        model.addAttribute("listcount", giftPayment.size());
         model.addAttribute("giftPayment",giftPayment);
         model.addAttribute("member",member);
         return ROOT + "/popcorn-store/mycgv-popcorn-store-paymentList";
@@ -218,7 +218,6 @@ public class UserMycgvController {
 
         // 예매취소내역
         List<TicketDTO> ticketCancelDTOList=userTicketService.mycgvCancelTicket(member);
-        System.out.println(ticketCancelDTOList);
         model.addAttribute("ticketCancel",ticketCancelDTOList);
         return ROOT + "/reserve/mycgv-reserve";
     }

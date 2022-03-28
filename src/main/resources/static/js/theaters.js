@@ -40,14 +40,14 @@ for (let i = 0; i < howmany; i++) {
 
 const item = document.getElementsByClassName("item");
 for (let i = 0; i < howmany; i++) {
+    // month+1 추가, 1일 되면 현재 월에 +1
+    if(dateArray[i]==1){
+        month=month+1;
+    }
     //03, 04.. 월 출력시 0 추가
     let printmonth ="0"+month;
     if(printmonth>10){
         printmonth=month;
-    }
-    // month+1 추가, 1일 되면 현재 월에 +1
-    if(dateArray[i]==1){
-        month=month+1;
     }
     let value="2022"+printmonth+dateArray[i];
     item[0].innerHTML += `<li class="addon" onclick="whatdate(this)" value="${value}">
@@ -267,4 +267,10 @@ function whatdate(date){
     //스케쥴 초기화
     scheduleData.innerHTML ="";
     showSchedule(tcode, newDate.substring(0,4)+"-"+newDate.substring(4,6)+"-"+newDate.substring(6,8))
+}
+
+// 로그인 쪽으로
+function logingogo(){
+    alert("로그인을 해주세요.")
+    location.href = "/user/login"
 }

@@ -115,8 +115,8 @@ public class UserStoreController {
 
         model.addAttribute("gpcode",giftpayment111);
         model.addAttribute("info", kakaopayGiftService.kakaoPayInfo(pg_token));
-        session.removeAttribute("price");
-        System.out.println(price);
+//        session.removeAttribute("price");
+//        System.out.println(price);
 
         return "user/culture-event/popcorn-store/payment-successcomplete";
 

@@ -75,12 +75,18 @@
 
         //결제내역
         function fn_PaymentDetail() {
-            location.href = "/user/mycgv/popcorn-store/payment-detail;
+            location.href = "/user/mycgv/popcorn-store/mycgv-popcorn-store-paymentList"
         }
     </script>
 
     <!--/각페이지 Header End-->
 
+<!--    <style>-->
+<!--        .payment_complete_contents_wrap dd:after {-->
+<!--            content: none;-->
+<!--            font-size: 17px;-->
+<!--        }-->
+<!--    </style>-->
 
 </head>
 <body class="">
@@ -161,11 +167,16 @@
         <div class="payment_complete_wrap">
             <div class="payment_complete_contents_wrap">
                 <p>
-                    <strong>상품 결제가 완료되었습니다.</strong>
+                    <strong style="margin-top: 34px">상품 결제가 완료되었습니다.</strong>
+                    <strong style="margin-top: 5px; padding-top: 30px; font-size: 18px; font-weight: 300" th:utext="|상품명 : | + ${session.title}"></strong>
                     <span th:utext="${gpcode.gpcode}"></span>
-                    <span th:utext="${session.title}">안녕</span>
                 </p>
+
                 <dl>
+<!--                    <dt>상품명</dt>-->
+<!--                    <dd>-->
+<!--                        <span th:utext="${session.title}"></span>-->
+<!--                    </dd>-->
                     <dt>총 상품금액</dt>
                     <dd>
                         <span th:utext="${session.price}"></span>
