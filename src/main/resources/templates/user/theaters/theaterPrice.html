@@ -184,13 +184,14 @@
             }
             if(areacode == 1){
                 selTH_Theater.innerHTML=
-                    `<option value="강남CGV">강남CGV</option>
+                        `<option value="">--영화관을 선택해주세요--</option>
+                        <option value="강남CGV">강남CGV</option>
                         <option value="강변CGV">강변CGV</option>
 
                     `
             }else{
                 selTH_Theater.innerHTML=
-                    `
+                    `    <option value="">--영화관을 선택해주세요--</option>
                         <option value="경기광주CGV">경기광주CGV</option>
                         <option value="동수원CGV">동수원CGV</option>
                         <option value="용인CGV">용인CGV</option>
@@ -216,6 +217,10 @@
             type: "post",
             dataType: "json"
         }).done(function (res) {
+            selTH_Theater.innerHTML+=
+                `
+                <option value="">--영화관을 선택해주세요--</option>
+                `
             for (let i = 0; i <= res.length - 1; i++) {
                 selTH_Theater.innerHTML+=
                     `
