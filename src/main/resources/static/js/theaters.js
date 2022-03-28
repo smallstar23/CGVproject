@@ -46,7 +46,7 @@ for (let i = 0; i < howmany; i++) {
         printmonth=month;
     }
     // month+1 추가, 1일 되면 현재 월에 +1
-    if(dateArray[i]==1){
+    if(dateArray[i]==0){
         month=month+1;
     }
     let value="2022"+printmonth+dateArray[i];
