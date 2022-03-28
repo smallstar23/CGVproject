@@ -165,7 +165,7 @@
                                                 </tr>
                                                 <tr class="movie_date">
                                                     <th scope="row">일시</th>
-                                                    <td><em th:text="${ticketInfo.getSchedule().getScdate()}"></em></td>
+                                                    <td><em th:text="${#strings.replace(ticketInfo.getSchedule().getScdate(),'T',' ')}"></em></td>
                                                 </tr>
                                                 <tr class="people">
                                                     <th scope="row">인원</th>
