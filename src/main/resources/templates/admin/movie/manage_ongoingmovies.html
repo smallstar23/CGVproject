@@ -15,7 +15,7 @@
 <body class="sb-nav-fixed" >
 <nav class="sb-topnav navbar navbar-expand navbar-dark bg-dark">
     <!-- Navbar Brand-->
-    <a class="navbar-brand ps-3" href="main.jsp">CGV Administrator</a>
+    <a class="navbar-brand ps-3" href="/admin/main">CGV Administrator</a>
     <!-- Sidebar Toggle-->
     <button class="btn btn-link btn-sm order-1 order-lg-0 me-4 me-lg-0" id="sidebarToggle" href="#!"><i class="fas fa-bars"></i></button>
     <!-- Navbar Search-->
@@ -67,7 +67,7 @@
                             <th>관람 등급</th>
                             <th>러닝 타임</th>
                             <th>개봉일</th>
-                            <th>regdate</th>
+                            <th>상영 등록 날짜</th>
                         </tr>
                         </thead>
                         <tfoot>
@@ -81,21 +81,21 @@
                             <th>관람 등급</th>
                             <th>러닝 타임</th>
                             <th>개봉일</th>
-                            <th>regdate</th>
+                            <th>상영 등록 날짜</th>
                         </tr>
                         </tfoot>
                         <tbody>
                         <tr th:each="movie : ${MovieList}" th:onclick="|location.href='@{|/manage_ongoingmovies/${movie.getMcode()}|}'|">
                             <td style="width: 5%;" th:text="${movie.mcode}"></td>
-                            <td style="width: 10%;" th:text="${movie.mscreen}"></td>
+                            <td style="width: 5%;" th:text="${movie.mscreen}"></td>
                             <td style="width: 15%;" th:text="${movie.titleKo}"></td>
                             <td style="width: 10%;" th:text="${movie.titleEn}"></td>
-                            <td style="width: 10%;" th:text="${movie.genre}"></td>
+                            <td style="width: 5%;" th:text="${movie.genre}"></td>
                             <td style="width: 5%;" th:text="${movie.country}"></td>
                             <td style="width: 5%;" th:text="${movie.movieRating}"></td>
                             <td style="width: 5%;" th:text="${movie.runtime}"></td>
-                            <td style="width: 5%;" th:text="${movie.launchDate}"></td>
-                            <td style="width: 5%;"  th:text="${#temporals.format(movie.regDate, 'yyyy-MM-dd')}"></td>
+                            <td style="width: 10%;" th:text="${movie.launchDate}"></td>
+                            <td style="width: 10%;"  th:text="${#temporals.format(movie.regDate, 'yyyy-MM-dd')}"></td>
 <!--                            th:text="${#temporals.format(.getRegdate(), 'yyyy-MM-dd')}"-->
                         </tr>
 
