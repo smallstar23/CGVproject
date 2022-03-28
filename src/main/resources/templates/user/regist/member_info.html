@@ -99,6 +99,15 @@
             let form = document.member_info;
             let isidcheck = document.getElementById("isidcheck");
             const pwpattern = /^(?=.*[A-Za-z])(?=.*\d)(?=.*[$@$!%*#?&])[A-Za-z\d$@$!%*#?&]{8,12}$/;
+            const emailpattern1 =  /^[A-Za-z0-9_\.\-]/;
+            const emailpattern2 =  /^[A-Za-z0-9\-]+\.[A-Za-z0-9\-]+/;
+            // const nickpattern =  /^[A-Za-z0-9\-]+\.[A-Za-z0-9\-]{4,12}$/;
+            // const checkNum = /[0-9]/;
+            // const checkEng = /[a-zA-Z]/;
+            // const checkSpc = /[~!@#$%^&*()_+|<>?:{}]/;
+            // const checkKor = /[ㄱ-ㅎ|ㅏ-ㅣ|가-힣]/;
+
+
 
             const pattern = /\s/g;
             // const expEmailText1 = /^[A-Za-z0-9\-\.]+@[A-Za-z0-9\-\.]+\.[A-Za-z0-9]+$/;
@@ -153,7 +162,15 @@
                 alert("휴대전화 마지막 4자리를 입력해주세요");
                 form.hp3.focus();
                 return false;
+            } else if (emailpattern1.test(form.email1.value) == false){
+                alert("E-mail 형식을 확인해주세요.")
+            } else if (emailpattern2.test(form.email1.value) == false){
+                alert("E-mail 형식을 확인해주세요.")
             }
+
+            // else if (nickpattern.test(form.nickname.value) == false){
+            //     alert("E-mail 형식을 확인해주세요.")
+            // }
 
             // } else if(!expEmailText.test(form.email1.value)){
             //     alert('이메일 형식을 확인하세요');
