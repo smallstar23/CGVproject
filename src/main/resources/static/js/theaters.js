@@ -268,3 +268,9 @@ function whatdate(date){
     scheduleData.innerHTML ="";
     showSchedule(tcode, newDate.substring(0,4)+"-"+newDate.substring(4,6)+"-"+newDate.substring(6,8))
 }
+
+// 로그인 쪽으로
+function logingogo(){
+    alert("로그인을 해주세요.")
+    location.href = "/user/login"
+}
