@@ -44,6 +44,9 @@ for (let i = 0; i < howmany; i++) {
     if(dateArray[i]==1){
         month=month+1;
     }
+    if(dateArray[i]<10){
+        dateArray[i]='0'+dateArray[i];
+    }
     //03, 04.. 월 출력시 0 추가
     let printmonth ="0"+month;
     if(printmonth>10){
