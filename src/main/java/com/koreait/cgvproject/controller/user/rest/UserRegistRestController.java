@@ -16,8 +16,6 @@ public class UserRegistRestController {
     @PostMapping("/idCheck")
     @ResponseBody
     public int idCheck(@RequestParam("userid") String userid){
-
-        System.out.println("전달받은 userid:"+userid);
         if(memberinfoService.idCheck(userid)==1){
             System.out.println("같은 아이디가 존재합니다.");
             return 1;

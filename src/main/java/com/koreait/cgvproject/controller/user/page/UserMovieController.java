@@ -33,16 +33,10 @@ public class UserMovieController {
     private UserMovieService userMovieService;
     @Autowired
     private MovieRepository movieRepository;
-    private ActorRepository actorRepository;
 
 
     @GetMapping("movies")
     public String movies(@PageableDefault(size = 10,sort = "mcode",direction = Sort.Direction.DESC) Pageable pageable, Model model){
-//        List<MovieDTO> movieDTOList=userMovieService.getList();
-//        Page<Movie> movieDTOList=movieRepository.findAll(pageable);
-//        System.out.println(movieDTOList);
-//        movieDTOList=
-
         List<MovieDTO> movieDTOList=userMovieService.getList();
         model.addAttribute("MovieList", movieDTOList);
         return "/user/movies/movies";
@@ -52,15 +46,7 @@ public class UserMovieController {
     @GetMapping("/movies/detail-view/{mcode}")
     public String detailview(@PathVariable("mcode") Long mcode, Model model){
         Movie movie =movieRepository.findByMcode(mcode);
-        System.out.println(movie);
         model.addAttribute("movie",movie);
-
-//        TrailerDTO trailerDTO=userMovieService.getTrailer(movie);
-//        model.addAttribute("trailer",trailerDTO);
-//        DirectorDTO directorDTO=userMovieService.getDirector(movie);
-//        model.addAttribute("director",directorDTO);
-//        ActorDTO actorDTO=userMovieService.getActor(movie);
-//        model.addAttribute("actor",actorDTO);
         return "user/movies/detail-view";
     }
 
@@ -68,13 +54,6 @@ public class UserMovieController {
     public String cast(@PathVariable("mcode")Long mcode, Model model){
         Movie movie=movieRepository.findByMcode(mcode);
         model.addAttribute("movie",movie);
-
-//        TrailerDTO trailerDTO=userMovieService.getTrailer(movie);
-//        model.addAttribute("trailer",trailerDTO);
-//        DirectorDTO directorDTO=userMovieService.getDirector(movie);
-//        model.addAttribute("director",directorDTO);
-//        ActorDTO actorDTO=userMovieService.getActor(movie);
-//        model.addAttribute("actor",actorDTO);
         return "user/movies/cast";
     }
 
@@ -82,24 +61,12 @@ public class UserMovieController {
     public String trailer(@PathVariable("mcode")Long mcode, Model model){
         Movie movie=movieRepository.findByMcode(mcode);
         model.addAttribute("movie",movie);
-//        TrailerDTO trailerDTO=userMovieService.getTrailer(movie);
-//        model.addAttribute("trailer",trailerDTO);
-//        DirectorDTO directorDTO=userMovieService.getDirector(movie);
-//        model.addAttribute("director",directorDTO);
-//        ActorDTO actorDTO=userMovieService.getActor(movie);
-//        model.addAttribute("actor",actorDTO);
         return "user/movies/trailer";
     }
     @GetMapping("movies/detail-view/still-cut/{mcode}")
     public String stillcut(@PathVariable("mcode")Long mcode, Model model){
         Movie movie=movieRepository.findByMcode(mcode);
         model.addAttribute("movie",movie);
-//        TrailerDTO trailerDTO=userMovieService.getTrailer(movie);
-//        model.addAttribute("trailer",trailerDTO);
-//        DirectorDTO directorDTO=userMovieService.getDirector(movie);
-//        model.addAttribute("director",directorDTO);
-//        ActorDTO actorDTO=userMovieService.getActor(movie);
-//        model.addAttribute("actor",actorDTO);
         return "user/movies/still-cut";
     }
 
@@ -107,12 +74,6 @@ public class UserMovieController {
     public String detailshowtime(@PathVariable("mcode")Long mcode, Model model){
         Movie movie=movieRepository.findByMcode(mcode);
         model.addAttribute("movie",movie);
-//        TrailerDTO trailerDTO=userMovieService.getTrailer(movie);
-//        model.addAttribute("trailer",trailerDTO);
-//        DirectorDTO directorDTO=userMovieService.getDirector(movie);
-//        model.addAttribute("director",directorDTO);
-//        ActorDTO actorDTO=userMovieService.getActor(movie);
-//        model.addAttribute("actor",actorDTO);
         return "user/movies/detail-show-times";
     }
 

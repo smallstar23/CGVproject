@@ -143,7 +143,7 @@
                                 ※ 상영관 A~B열은 -1천원 할인 적용됩니다. (단, 모닝 및 일부 특별관 제외)</p>
                         </ul>
                         <p class="desc_bil">
-                            ※관람 가격 및 시간대 운영은 극장마다 상이할 수 있으며, 상기 가격은 <em id="spn_desc_bil">CGV 강남</em>에 한해 적용됩니다.</p>
+                            ※관람 가격 및 시간대 운영은 극장마다 상이할 수 있으며, 상기 가격은 <em id="spn_desc_bil"></em>에 한해 적용됩니다.</p>
                     </div>
                     <!--// mp_content -->
                 </div>
@@ -174,6 +174,7 @@
     let selTH_Region=document.getElementById('selTH_Region');
     let selTH_Theater=document.getElementById('selTH_Theater');
     let tbody=document.querySelector('tbody');
+    let spnDescBil=document.getElementById('spn_desc_bil');
     start(receiveArea);
     readTbody(pricelistArray);
 
@@ -203,6 +204,8 @@
                 selTH_Theater.options[i].setAttribute('selected',true)
             }
         }
+
+        spnDescBil.innerText= tname;
 
     }
 
@@ -252,9 +255,11 @@
                                         <td colspan="4" rowspan="4">
                                         극장에서 입력한 가격 정보가 없습니다.</td>
                     </tr>`
+            spnDescBil.innerText= tname;
         }
 
         tbody.innerHTML=
+
             `
                 <tr class="fir">
                                         <td rowspan="3">${theater[0].week}</td>
@@ -283,6 +288,7 @@
                                         <td>${theater[5].adultPrice}</td><td>${theater[5].stuPrice}</td>
                                     </tr>
             `
+        spnDescBil.innerText= tname;
 
     }
 

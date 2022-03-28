@@ -81,7 +81,7 @@
                                  <td style="width:10%;" th:text="${hall.hguan}+관"></td>
                                 <td style="width: 10%;" th:text="${hall.hname}"></td>
                                 <td style="width: 10%;" th:text="${hall.location}"></td>
-                                <td style="width: 5%;" ></td>
+                                <td style="width: 5%;" th:text="${hall.getSeatSize()}"></td>
                             <td style="width: 5%;"><button class="btn" style="width:100px; border-radius: 10px; border:1px darkred solid" th:onclick="|location.href='@{|/manage/updatehall/${hall.hcode}|}'|">수정</button></td>
 
                         </tr>

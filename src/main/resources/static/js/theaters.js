@@ -44,6 +44,9 @@ for (let i = 0; i < howmany; i++) {
     if(dateArray[i]==1){
         month=month+1;
     }
+    if(dateArray[i]<10){
+        dateArray[i]='0'+dateArray[i];
+    }
     //03, 04.. 월 출력시 0 추가
     let printmonth ="0"+month;
     if(printmonth>10){
@@ -184,7 +187,7 @@ function showSchedule(tcode, newschdate){
                             `
                                         <div class="info-timetable" style="width: fit-content; display: inline-flex">
                                             <ul>
-                                                <li><em style="color:black">${starttime}</em><em>빈자리</em></li>
+                                                <li><em style="color:black">${starttime}</em><em>예매가능</em></li>
                                             </ul>
                                         </div>
                     `

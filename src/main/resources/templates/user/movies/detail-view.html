@@ -246,119 +246,165 @@
                      -->
                     <!-- .sect-graph -->
                     <!-- .sect-staff -->
-                    <div class="sect-trailer" th:each="trailer: ${movie.getTrailer()}">
+                    <div class="sect-trailer">
                         <div class="heading">
-                            <h4 id="trailer">트레일러</h4><span class="count">3건</span><a class="link-more" th:href="@{trailer}">	더보기</a>
+                            <h4>트레일러</h4><span class="count">3건</span>
                         </div>
-                        <ul>
-                            <!-- 사진 동영상 조회 -->
-
+                        <ul th:each="trailer :${movie.getTrailer()}">
 
                             <li>
                                 <div class="box-image">
                                     <!-- TODO : 동영상 팝업 창 작업 후 링크 걸어야 함 //-->
-                                    <a href="#trailer" title="새창" class="movie_player_popup" data-gallery-idx="200013">
-                                <span class="thumb-image">
-                                    <img th:src="${trailer.photo4}" alt="[극장판 주술회전 0]2차 예고편">
-                                    <span class="ico-play">영상보기</span>
-                                </span>
+                                    <a href="#" title="새창" class="movie_player_popup" data-gallery-idx="200114">
+                                    <span class="thumb-image">
+                                        <img th:src="${trailer.photo3}" alt="[언차티드]파이널 예고편" onerror="errorImage(this, {'type':'landscape'})">
+                                        <span class="ico-play">영상보기</span>
+                                    </span>
                                     </a>
                                 </div>
                                 <div class="box-contents">
-                                    <a href="#trailer" title="새창" class="movie_player_popup" data-gallery-idx="200013">
+                                    <a href="#" title="새창" class="movie_player_popup" data-gallery-idx="200114">
+                                        <strong class="title">
+
+                                            <span class="ico-trailer hd">HD</span>
+                                            파이널 예고편
+                                        </strong>
+                                    </a>
+                                    <span class="txt-info">2022.02.04</span>
+                                </div>
+                            </li>
+
+                            <li>
+                                <div class="box-image">
+                                    <!-- TODO : 동영상 팝업 창 작업 후 링크 걸어야 함 //-->
+                                    <a href="#" title="새창" class="movie_player_popup" data-gallery-idx="199951">
+                                    <span class="thumb-image">
+                                        <img th:src="${trailer.photo2}" alt="[언차티드]메인 예고편" onerror="errorImage(this, {'type':'landscape'})">
+                                        <span class="ico-play">영상보기</span>
+                                    </span>
+                                    </a>
+                                </div>
+                                <div class="box-contents">
+                                    <a href="#" title="새창" class="movie_player_popup" data-gallery-idx="199951">
                                         <strong class="title">
 
                                             <span class="ico-trailer hd">HD</span>
                                             메인 예고편
                                         </strong>
                                     </a>
-                                    <span class="txt-info">2022.02.03</span>
+                                    <span class="txt-info">2022.01.28</span>
                                 </div>
                             </li>
 
+                            <li>
+                                <div class="box-image">
+                                    <!-- TODO : 동영상 팝업 창 작업 후 링크 걸어야 함 //-->
+                                    <a href="#" title="새창" class="movie_player_popup" data-gallery-idx="199662">
+                                    <span class="thumb-image">
+                                        <img th:src="${trailer.photo1}" alt="[언차티드]1차 예고편" onerror="errorImage(this, {'type':'landscape'})">
+                                        <span class="ico-play">영상보기</span>
+                                    </span>
+                                    </a>
+                                </div>
+                                <div class="box-contents">
+                                    <a href="#" title="새창" class="movie_player_popup" data-gallery-idx="199662">
+                                        <strong class="title">
+
+                                            <span class="ico-trailer hd">HD</span>
+                                            1차 예고편
+                                        </strong>
+                                    </a>
+                                    <span class="txt-info">2022.01.19</span>
+                                </div>
+                            </li>
 
                         </ul>
+                    </div>
+                </div><!-- .col-detail -->
+
+                <div class="col-aside" style="padding-top:140px;">
+                    <div class="ad-partner01">
+                        <iframe src="http://ad.cgv.co.kr/NetInsight/html/CGV/CGV_201401/sub@M_Rectangle" width="160" height="300" title="영화광고-나이트메어앨리" frameborder="0" scrolling="no" marginwidth="0" marginheight="0" name="M_Rectangle" id="M_Rectangle"></iframe>
+                    </div>
+                    <div class="ad-external01">
+                        <iframe src="http://ad.cgv.co.kr/NetInsight/html/CGV/CGV_201401/sub@C_Rectangle" width="160" height="300" title="" frameborder="0" scrolling="no" marginwidth="0" marginheight="0" name="C_Rectangle" id="C_Rectangle"></iframe>
+                    </div>
+
+                </div>
+            </div>
 
 
-                    </div><!-- .sect-trailer -->
+            <!-- 영상 레이어 팝업 구현 부분입니다. -->
+            <div class="layerpopup" style="display: none;" th:each="trailer :${movie.getTrailer()}">
+                <div class="mask" style="position: fixed; left: 0px; top: 0px; width: 100%; height: 100%; z-index: 100; background-color: rgba(0, 0, 0, 0.8);"></div>
+                <div class="layer-wrap" style="margin-top: -355px; margin-left: -510px; position: fixed;" tabindex="0"><div class="popwrap">
+                    <div class="sect-layerplayer">
+                        <div class="cols-pop-player">
+                            <h1 class="title" id="movie_player_popup_title"><span class="ico-trailer hd">HD</span>[언차티드]파이널 예고편</h1>
+                            <div class="col-pop-player">
+                                <div class="warp-pop-player" style="position: relative;">
+                                    <iframe id="ifrm_movie_player_popup" name="ifrm_movie_player_popup" th:src="${trailer.trailer1}" style="width:800px;height:450px;" frameborder="0" marginheight="0" marginwidth="0" scrolling="no"></iframe>
 
-
-
-                    <!-- 영상 레이어 팝업 구현 부분입니다. -->
-                    <div class="layerpopup" style="display: none;">
-                        <div class="mask" style="position: fixed; left: 0px; top: 0px; width: 100%; height: 100%; z-index: 100; background-color: rgba(0, 0, 0, 0.8);"></div>
-                        <div class="layer-wrap" style="margin-top: -355px; margin-left: -510px; position: fixed;" tabindex="0"><div class="popwrap">
-                            <div class="sect-layerplayer">
-                                <div class="cols-pop-player">
-                                    <h1 class="title" id="movie_player_popup_title" th:utext="|${movie.titleKo}|"><span class="ico-trailer hd">HD</span>메인 예고편</h1>
-                                    <div class="col-pop-player">
-                                        <div class="warp-pop-player" style="position: relative;">
-                                             <video controls preload="true" style="width:800px;height:450px;" th:each="trailer : ${movie.getTrailer()}">
-                                                <source th:src="${trailer.trailer1}" type="video/mp4">
-                                            </video>
-                                            <div class="sect-replay" style="display:none" id="pop_player_relation_wrap">
-                                                <button class="btn-replay movie_player_inner_popup" type="button" data-gallery-idx="200114" id="btn_movie_replay">다시보기</button>
-                                                <!-- 없어지는 영역 -->
-                                                <div class="wrap-relationmovie" id="pop_player_relation_item_wrap">
-                                                    <strong class="title">관련영상</strong>
-                                                    <ul id="pop_player_relation_movie"><li>
-                                                        <div class="box-image">
-                                                            <a href="#" title="메인 예고편 영상보기" class="movie_player_inner_popup" data-gallery-idx="199951">
+                                    <div class="sect-replay" style="display:none" id="pop_player_relation_wrap">
+                                        <button class="btn-replay movie_player_inner_popup" type="button" data-gallery-idx="200114" id="btn_movie_replay">다시보기</button>
+                                        <!-- 없어지는 영역 -->
+                                        <div class="wrap-relationmovie" id="pop_player_relation_item_wrap">
+                                            <strong class="title">관련영상</strong>
+                                            <ul id="pop_player_relation_movie"><li>
+                                                <div class="box-image">
+                                                    <a href="#" title="메인 예고편 영상보기" class="movie_player_inner_popup" data-gallery-idx="199951">
 							<span class="thumb-image">
-							<img src="https://img.cgv.co.kr/Movie/Thumbnail/Trailer/85624/85624199951_1024.jpg" alt="메인 예고편_트레일러">
+							<img th:src="${movie.poster}" alt="메인 예고편_트레일러">
 							<span class="ico-play">영상보기</span>
 							</span>
-                                                            </a>
-                                                        </div>
-                                                    </li>
-                                                        <li>
-                                                            <div class="box-image">
-                                                                <a href="#" title="1차 예고편 영상보기" class="movie_player_inner_popup" data-gallery-idx="199662">
+                                                    </a>
+                                                </div>
+                                            </li>
+                                                <li>
+                                                    <div class="box-image">
+                                                        <a href="#" title="1차 예고편 영상보기" class="movie_player_inner_popup" data-gallery-idx="199662">
 							<span class="thumb-image">
 							<img th:src="${movie.poster}" alt="1차 예고편_트레일러">
 							<span class="ico-play">영상보기</span>
 							</span>
-                                                                </a>
-                                                            </div>
-                                                        </li
-                                                        ></ul>
-                                                </div><!-- .wrap-relationmovie -->
-                                            </div><!-- .sect-replay -->
+                                                        </a>
+                                                    </div>
+                                                </li
+                                                ></ul>
+                                        </div><!-- .wrap-relationmovie -->
+                                    </div><!-- .sect-replay -->
 
-                                        </div><!-- .warp-pop-player -->
-                                        <div class="descri-trailer">
-                                            <strong class="title">영상설명</strong>
-                                            <textarea readonly="readonly" id="movie_player_popup_caption"></textarea>
-                                        </div>
-                                    </div><!-- .col-player -->
-                                    <div class="col-pop-playerinfo">
-                                        <div id="movie_player_popup_movie_info">
-                                            <div class="box-image">
-                                                <a href="/movies/detail-view/?midx=85624" title="언차티드 상세보기 새창">         <span class="thumb-image">             <img th:src="${movie.poster}" alt="언차티드 포스터">
-                                                    <span class="ico-grade " th:classappend=
-                                                          "${(movie.movieRating =='전체 이용가' ? 'grade-all': '') +
+                                </div><!-- .warp-pop-player -->
+                                <div class="descri-trailer">
+                                    <strong class="title">영상설명</strong>
+                                    <textarea readonly="readonly" id="movie_player_popup_caption"></textarea>
+                                </div>
+                            </div><!-- .col-player -->
+                            <div class="col-pop-playerinfo">
+                                <div id="movie_player_popup_movie_info"><div class="box-image">     <a href="/movies/detail-view/?midx=85624" title="언차티드 상세보기 새창">         <span class="thumb-image">             <img th:src="${movie.poster}" alt="언차티드 포스터">
+                                    <span class="ico-grade " th:classappend=
+                                            "${(movie.movieRating =='전체 이용가' ? 'grade-all': '') +
                                                             (movie.movieRating =='15세 이상' ? 'grade-15': '')+
                                                             (movie.movieRating =='12세 이상' ? 'grade-12': '')+
-                                                            (movie.movieRating =='청소년 관람불가' ? 'grade-19': '')}" th:utext="${movie.movieRating}"></span>         </span>     </a>
-                                            </div>
-                                            <div class="box-contents">
-                                                <a href="/movies/detail-view/?midx=85624" title="언차티드 상세보기 새창">         <strong class="title" th:utext="${movie.titleKo}"></strong>     </a>     <span class="txt-info" style="margin-bottom:2px;">         <em class="genre" th:utext="${movie.genre}"></em>         <span>             <i th:utext="${movie.launchDate}"></i>             <strong>개봉</strong>                              <em class="dday">D-3</em>                      </span>     </span>      <a class="link-reservation" href="/ticket/?MOVIE_CD=20028855&amp;MOVIE_CD_GROUP=20028855">예매</a>
-                                            </div>
-                                        </div>
-                                        <div class="sect-trailer">
-                                            <strong class="title">신규영상</strong>
-                                            <ul>
+                                                            (movie.movieRating =='청소년 관람불가' ? 'grade-19': '')}" th:utext="${movie.movieRating}"></span>
+                                </span>     </a>    </div> <div class="box-contents">     <a href="/movies/detail-view/?midx=85624" title="언차티드 상세보기 새창">         <strong class="title" th:utext="${movie.titleKo}"></strong>      </a>     <span class="txt-info" style="margin-bottom:2px;">         <em class="genre" th:utext="${movie.genre}"></em>         <span>            <i th:utext="${movie.launchDate}"></i>             <strong>개봉</strong>                              <em class="dday">D-3</em>                      </span>     </span>      <a class="link-reservation" href="/ticket/?MOVIE_CD=20028855&amp;MOVIE_CD_GROUP=20028855">예매</a>   </div></div>
+                                <div class="sect-trailer">
+                                    <strong class="title">신규영상</strong>
+                                    <ul>
 
-                                            </ul>
-                                        </div>
-                                    </div><!-- .col-playerinfo -->
-                                </div><!-- .cols-player -->
-                                <button type="button" class="btn-close" id="movie-close">닫기</button>
-                            </div>
-                        </div>
-                        </div>
-
+                                    </ul>
+                                </div>
+                            </div><!-- .col-playerinfo -->
+                        </div><!-- .cols-player -->
+                        <button type="button" class="btn-close" id="movie-close">닫기</button>
                     </div>
+                </div>
+
+
+                </div>
+
+
+            </div>
 
 
 
