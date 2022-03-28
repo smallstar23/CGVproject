@@ -71,7 +71,6 @@ public class UserTicketService {
                 ticketDTOList.add(ticket.toDTO());
             }
         }
-        System.out.println(ticketDTOList);
         return ticketDTOList;
     }
 
