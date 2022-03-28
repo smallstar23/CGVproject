@@ -184,7 +184,7 @@ function showSchedule(tcode, newschdate){
                             `
                                         <div class="info-timetable" style="width: fit-content; display: inline-flex">
                                             <ul>
-                                                <li><em style="color:black">${starttime}</em><em>빈자리</em></li>
+                                                <li><em style="color:black">${starttime}</em><em>예매가능</em></li>
                                             </ul>
                                         </div>
                     `
