@@ -192,6 +192,7 @@ public class UserMycgvController {
         Member member =memberRepository.findByUserid((String)session.getAttribute("userid"));
         List<GiftPayment> giftPayment = giftPaymentRepository.findByMemberIdx(member.getIdx());
 
+        model.addAttribute("listcount", giftPayment.size());
         model.addAttribute("giftPayment",giftPayment);
         model.addAttribute("member",member);
         return ROOT + "/popcorn-store/mycgv-popcorn-store-paymentList";
