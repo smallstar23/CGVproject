@@ -158,6 +158,7 @@ public class UserMycgvController {
 
     @PostMapping("/user/mycgv/myinfo/mycgv-myinfo-edit-myinfo")
     public String postProfile(@RequestParam(required = false) String userid, @RequestParam(required = false) String userpw){
+
         if(userLoginService.login(userid,userpw)) {
             return "redirect:/user/mycgv/myinfo/mycgv-myinfo-edit-myinfo";
         }
@@ -166,6 +167,12 @@ public class UserMycgvController {
 
     @GetMapping("/user/mycgv/myinfo/mycgv-myinfo-edit-myinfo")
     public String mycgv_myinfo_edit_myinfo(Model model){
+        Member member = memberService.getMember((String)session.getAttribute("userid"));
+        String[] email = member.getEmail().split("@");
+//        System.out.println(member);
+        model.addAttribute("member", member);
+        model.addAttribute("email1",email[0]);
+        model.addAttribute("email2",email[1]);
         return ROOT + "/myinfo/mycgv-myinfo-edit-myinfo";
     }
 
