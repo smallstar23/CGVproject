@@ -96,7 +96,7 @@ public class MemberService {
             select.setUserpw(memberDTO.getUserpw());
             select.setEmail(memberDTO.getEmail1()+"@"+memberDTO.getEmail2());
             select.setHp(memberDTO.getHp1()+"-"+memberDTO.getHp2()+"-"+memberDTO.getHp3());
-            select.setSsn(memberDTO.getSsn1().substring(2)+memberDTO.getSsn2()+memberDTO.getSsn3());
+            select.setSsn(memberDTO.getSsn1()+memberDTO.getSsn2()+memberDTO.getSsn3());
             select.setNickname(memberDTO.getNickname());
         });
         memberRepository.save(member.get());
