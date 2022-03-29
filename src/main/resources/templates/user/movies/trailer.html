@@ -124,7 +124,7 @@
 
                     <!-- 영화 예매율 -->
                     <div class="score">
-                        <strong class="percent">예매율&nbsp;<span>24.2%</span></strong>
+<!--                        <strong class="percent">예매율&nbsp;<span>24.2%</span></strong>-->
                     </div>
                     <!-- 떨어지는 얘 이전 요소에 class=on을 넣는다 -->
                     <div class="spec">
@@ -250,7 +250,7 @@
                             <li>
                                 <div class="box-image">
                                     <!-- TODO : 동영상 팝업 창 작업 후 링크 걸어야 함 //-->
-                                    <a href="#" title="새창" class="movie_player_popup" data-gallery-idx="199951">
+                                    <a href="#" title="새창" class="movie_player_popup1" data-gallery-idx="199951">
                                     <span class="thumb-image">
                                         <img th:src="${trailer.photo2}" alt="[언차티드]메인 예고편" onerror="errorImage(this, {'type':'landscape'})">
                                         <span class="ico-play">영상보기</span>
@@ -272,7 +272,7 @@
                             <li>
                                 <div class="box-image">
                                     <!-- TODO : 동영상 팝업 창 작업 후 링크 걸어야 함 //-->
-                                    <a href="#" title="새창" class="movie_player_popup" data-gallery-idx="199662">
+                                    <a href="#" title="새창" class="movie_player_popup2" data-gallery-idx="199662">
                                     <span class="thumb-image">
                                         <img th:src="${trailer.photo1}" alt="[언차티드]1차 예고편" onerror="errorImage(this, {'type':'landscape'})">
                                         <span class="ico-play">영상보기</span>
@@ -313,10 +313,10 @@
                 <div class="layer-wrap" style="margin-top: -355px; margin-left: -510px; position: fixed;" tabindex="0"><div class="popwrap">
                     <div class="sect-layerplayer">
                         <div class="cols-pop-player">
-                            <h1 class="title" id="movie_player_popup_title"><span class="ico-trailer hd">HD</span>[언차티드]파이널 예고편</h1>
+                            <h1 class="title" id="movie_player_popup_title"><span class="ico-trailer hd">HD</span>[[${movie.titleKo}]]</h1>
                             <div class="col-pop-player">
                                 <div class="warp-pop-player" style="position: relative;">
-                                    <iframe id="ifrm_movie_player_popup" name="ifrm_movie_player_popup" th:src="${trailer.trailer1}" style="width:800px;height:450px;" frameborder="0" marginheight="0" marginwidth="0" scrolling="no"></iframe>
+                                    <iframe id="ifrm_movie_player_popup" name="ifrm_movie_player_popup"  th:src="${trailer.trailer1}" style="width:800px;height:450px;" frameborder="0" marginheight="0" marginwidth="0" scrolling="no"></iframe>
 
                                     <div class="sect-replay" style="display:none" id="pop_player_relation_wrap">
                                         <button class="btn-replay movie_player_inner_popup" type="button" data-gallery-idx="200114" id="btn_movie_replay">다시보기</button>
@@ -356,7 +356,7 @@
                             <div class="col-pop-playerinfo">
                                 <div id="movie_player_popup_movie_info"><div class="box-image">     <a href="/movies/detail-view/?midx=85624" title="언차티드 상세보기 새창">         <span class="thumb-image">             <img th:src="${movie.poster}" alt="언차티드 포스터">
                                     <span class="ico-grade " th:classappend=
-                                        "${(movie.movieRating =='전체 이용가' ? 'grade-all': '') +
+                                            "${(movie.movieRating =='전체 이용가' ? 'grade-all': '') +
                                                             (movie.movieRating =='15세 이상' ? 'grade-15': '')+
                                                             (movie.movieRating =='12세 이상' ? 'grade-12': '')+
                                                             (movie.movieRating =='청소년 관람불가' ? 'grade-19': '')}" th:utext="${movie.movieRating}"></span>
@@ -372,11 +372,141 @@
                         <button type="button" class="btn-close" id="movie-close">닫기</button>
                     </div>
                 </div>
-
-
                 </div>
+            </div>
 
+            <div class="layerpopup1" style="display: none;" th:each="trailer :${movie.getTrailer()}">
+                <div class="mask" style="position: fixed; left: 0px; top: 0px; width: 100%; height: 100%; z-index: 100; background-color: rgba(0, 0, 0, 0.8);"></div>
+                <div class="layer-wrap" style="margin-top: -355px; margin-left: -510px; position: fixed;" tabindex="0"><div class="popwrap">
+                    <div class="sect-layerplayer">
+                        <div class="cols-pop-player">
+                            <h1 class="title" id="movie_player_popup_title"><span class="ico-trailer hd">HD</span>[[${movie.titleKo}]]</h1>
+                            <div class="col-pop-player">
+                                <div class="warp-pop-player" style="position: relative;">
+                                    <iframe id="ifrm_movie_player_popup" name="ifrm_movie_player_popup1"  th:src="${trailer.trailer2}" style="width:800px;height:450px;" frameborder="0" marginheight="0" marginwidth="0" scrolling="no"></iframe>
 
+                                    <div class="sect-replay" style="display:none" id="pop_player_relation_wrap">
+                                        <button class="btn-replay movie_player_inner_popup" type="button" data-gallery-idx="200114" id="btn_movie_replay">다시보기</button>
+                                        <!-- 없어지는 영역 -->
+                                        <div class="wrap-relationmovie" id="pop_player_relation_item_wrap">
+                                            <strong class="title">관련영상</strong>
+                                            <ul id="pop_player_relation_movie"><li>
+                                                <div class="box-image">
+                                                    <a href="#" title="메인 예고편 영상보기" class="movie_player_inner_popup" data-gallery-idx="199951">
+							<span class="thumb-image">
+							<img th:src="${movie.poster}" alt="메인 예고편_트레일러">
+							<span class="ico-play">영상보기</span>
+							</span>
+                                                    </a>
+                                                </div>
+                                            </li>
+                                                <li>
+                                                    <div class="box-image">
+                                                        <a href="#" title="1차 예고편 영상보기" class="movie_player_inner_popup" data-gallery-idx="199662">
+							<span class="thumb-image">
+							<img th:src="${movie.poster}" alt="1차 예고편_트레일러">
+							<span class="ico-play">영상보기</span>
+							</span>
+                                                        </a>
+                                                    </div>
+                                                </li
+                                                ></ul>
+                                        </div><!-- .wrap-relationmovie -->
+                                    </div><!-- .sect-replay -->
+
+                                </div><!-- .warp-pop-player -->
+                                <div class="descri-trailer">
+                                    <strong class="title">영상설명</strong>
+                                    <textarea readonly="readonly" id="movie_player_popup_caption"></textarea>
+                                </div>
+                            </div><!-- .col-player -->
+                            <div class="col-pop-playerinfo">
+                                <div id="movie_player_popup_movie_info"><div class="box-image">     <a href="/movies/detail-view/?midx=85624" title="언차티드 상세보기 새창">         <span class="thumb-image">             <img th:src="${movie.poster}" alt="언차티드 포스터">
+                                    <span class="ico-grade " th:classappend=
+                                            "${(movie.movieRating =='전체 이용가' ? 'grade-all': '') +
+                                                            (movie.movieRating =='15세 이상' ? 'grade-15': '')+
+                                                            (movie.movieRating =='12세 이상' ? 'grade-12': '')+
+                                                            (movie.movieRating =='청소년 관람불가' ? 'grade-19': '')}" th:utext="${movie.movieRating}"></span>
+                                </span>     </a>    </div> <div class="box-contents">     <a href="/movies/detail-view/?midx=85624" title="언차티드 상세보기 새창">         <strong class="title" th:utext="${movie.titleKo}"></strong>      </a>     <span class="txt-info" style="margin-bottom:2px;">         <em class="genre" th:utext="${movie.genre}"></em>         <span>            <i th:utext="${movie.launchDate}"></i>             <strong>개봉</strong>                              <em class="dday">D-3</em>                      </span>     </span>      <a class="link-reservation" href="/ticket/?MOVIE_CD=20028855&amp;MOVIE_CD_GROUP=20028855">예매</a>   </div></div>
+                                <div class="sect-trailer">
+                                    <strong class="title">신규영상</strong>
+                                    <ul>
+
+                                    </ul>
+                                </div>
+                            </div><!-- .col-playerinfo -->
+                        </div><!-- .cols-player -->
+                        <button type="button" class="btn-close" id="movie-close1">닫기</button>
+                    </div>
+                </div>
+                </div>
+            </div>
+
+            <div class="layerpopup2" style="display: none;" th:each="trailer :${movie.getTrailer()}">
+                <div class="mask" style="position: fixed; left: 0px; top: 0px; width: 100%; height: 100%; z-index: 100; background-color: rgba(0, 0, 0, 0.8);"></div>
+                <div class="layer-wrap" style="margin-top: -355px; margin-left: -510px; position: fixed;" tabindex="0"><div class="popwrap">
+                    <div class="sect-layerplayer">
+                        <div class="cols-pop-player">
+                            <h1 class="title" id="movie_player_popup_title"><span class="ico-trailer hd">HD</span>[[${movie.titleKo}]]</h1>
+                            <div class="col-pop-player">
+                                <div class="warp-pop-player" style="position: relative;">
+                                    <iframe id="ifrm_movie_player_popup" name="ifrm_movie_player_popup2"  th:src="${trailer.trailer3}" style="width:800px;height:450px;" frameborder="0" marginheight="0" marginwidth="0" scrolling="no"></iframe>
+
+                                    <div class="sect-replay" style="display:none" id="pop_player_relation_wrap">
+                                        <button class="btn-replay movie_player_inner_popup" type="button" data-gallery-idx="200114" id="btn_movie_replay">다시보기</button>
+                                        <!-- 없어지는 영역 -->
+                                        <div class="wrap-relationmovie" id="pop_player_relation_item_wrap">
+                                            <strong class="title">관련영상</strong>
+                                            <ul id="pop_player_relation_movie"><li>
+                                                <div class="box-image">
+                                                    <a href="#" title="메인 예고편 영상보기" class="movie_player_inner_popup" data-gallery-idx="199951">
+							<span class="thumb-image">
+							<img th:src="${movie.poster}" alt="메인 예고편_트레일러">
+							<span class="ico-play">영상보기</span>
+							</span>
+                                                    </a>
+                                                </div>
+                                            </li>
+                                                <li>
+                                                    <div class="box-image">
+                                                        <a href="#" title="1차 예고편 영상보기" class="movie_player_inner_popup" data-gallery-idx="199662">
+							<span class="thumb-image">
+							<img th:src="${movie.poster}" alt="1차 예고편_트레일러">
+							<span class="ico-play">영상보기</span>
+							</span>
+                                                        </a>
+                                                    </div>
+                                                </li
+                                                ></ul>
+                                        </div><!-- .wrap-relationmovie -->
+                                    </div><!-- .sect-replay -->
+
+                                </div><!-- .warp-pop-player -->
+                                <div class="descri-trailer">
+                                    <strong class="title">영상설명</strong>
+                                    <textarea readonly="readonly" id="movie_player_popup_caption"></textarea>
+                                </div>
+                            </div><!-- .col-player -->
+                            <div class="col-pop-playerinfo">
+                                <div id="movie_player_popup_movie_info"><div class="box-image">     <a href="/movies/detail-view/?midx=85624" title="언차티드 상세보기 새창">         <span class="thumb-image">             <img th:src="${movie.poster}" alt="언차티드 포스터">
+                                    <span class="ico-grade " th:classappend=
+                                            "${(movie.movieRating =='전체 이용가' ? 'grade-all': '') +
+                                                            (movie.movieRating =='15세 이상' ? 'grade-15': '')+
+                                                            (movie.movieRating =='12세 이상' ? 'grade-12': '')+
+                                                            (movie.movieRating =='청소년 관람불가' ? 'grade-19': '')}" th:utext="${movie.movieRating}"></span>
+                                </span>     </a>    </div> <div class="box-contents">     <a href="/movies/detail-view/?midx=85624" title="언차티드 상세보기 새창">         <strong class="title" th:utext="${movie.titleKo}"></strong>      </a>     <span class="txt-info" style="margin-bottom:2px;">         <em class="genre" th:utext="${movie.genre}"></em>         <span>            <i th:utext="${movie.launchDate}"></i>             <strong>개봉</strong>                              <em class="dday">D-3</em>                      </span>     </span>      <a class="link-reservation" href="/ticket/?MOVIE_CD=20028855&amp;MOVIE_CD_GROUP=20028855">예매</a>   </div></div>
+                                <div class="sect-trailer">
+                                    <strong class="title">신규영상</strong>
+                                    <ul>
+
+                                    </ul>
+                                </div>
+                            </div><!-- .col-playerinfo -->
+                        </div><!-- .cols-player -->
+                        <button type="button" class="btn-close" id="movie-close2">닫기</button>
+                    </div>
+                </div>
+                </div>
             </div>
 
 

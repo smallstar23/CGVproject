@@ -4,9 +4,11 @@ import com.koreait.cgvproject.dto.MemberDTO;
 import com.koreait.cgvproject.entity.Gift;
 import com.koreait.cgvproject.entity.GiftPayment;
 import com.koreait.cgvproject.entity.Member;
+import com.koreait.cgvproject.entity.Ticket;
 import com.koreait.cgvproject.repository.GiftPaymentRepository;
 import com.koreait.cgvproject.repository.MemberRepository;
 import com.koreait.cgvproject.repository.PointRepository;
+import com.koreait.cgvproject.repository.TicketRepository;
 import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -33,6 +35,7 @@ public class MemberService {
 
     @Autowired
     private PointRepository pointRepository;
+    private TicketRepository ticketRepository;
 
     public List<MemberDTO> getMemberList(){
 
@@ -119,12 +122,12 @@ public class MemberService {
             }
         }
 
-//        if(boardCommentRepository.existsByWriter(memberEntity.get())){
-//            List<BoardCommentEntity> boardCommentEntityList = boardCommentRepository.findByWriter(memberEntity.get());
-//            for(int i=0; i<boardCommentEntityList.size();i++){
-//                boardCommentQueryRepository.deleteByCid(boardCommentEntityList.get(i).getId());
-//            }
-//        }
+        if(ticketRepository.existsTicketByMemberIdx(member.get().getIdx())){
+            List<Ticket> tickets = ticketRepository.findByMemberIdx(member.get().getIdx());
+            for(int i=0; i<tickets.size(); i++){
+                ticketRepository.deleteById(tickets.get(i).getTicode());
+            }
+        }
 
         memberRepository.deleteById(idx);
     }

@@ -13,6 +13,29 @@ console.log("open!")
         $(".layerpopup").css("display","none")
     })
 
+    console.log("open!")
+    // 영상 레이어 팝업
+    $(".movie_player_popup1").click(function(){
+        $(".layerpopup1").css("display","block")
+    })
+
+
+    $("#movie-close1").click(function(){
+        $(".layerpopup1").css("display","none")
+    })
+
+
+    console.log("open!")
+    // 영상 레이어 팝업
+    $(".movie_player_popup2").click(function(){
+        $(".layerpopup2").css("display","block")
+    })
+
+
+    $("#movie-close2").click(function(){
+        $(".layerpopup2").css("display","none")
+    })
+
 
     // 사진 슬라이드 기능
     let pagenum=0;
