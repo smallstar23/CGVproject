@@ -6,9 +6,7 @@ import java.net.URISyntaxException;
 
 import com.koreait.cgvproject.controller.admin.domain.KakaoPayApprovalVO;
 import com.koreait.cgvproject.controller.admin.domain.KakaoPayReadyVO;
-import com.koreait.cgvproject.entity.GiftPayment;
 import lombok.extern.java.Log;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.client.RestTemplate;
@@ -28,7 +26,7 @@ public class KakaopayGiftService {
     private KakaoPayReadyVO kakaoPayReadyVO;
     private KakaoPayApprovalVO kakaoPayApprovalVO;
 
-    public String kakaoPayReady(@RequestParam String giftName) {
+    public String kakaoPayReady(@RequestParam(value = "title") String giftName,@RequestParam String price) {
 
         RestTemplate restTemplate = new RestTemplate();
 
@@ -45,8 +43,8 @@ public class KakaopayGiftService {
         params.add("partner_user_id", "TestCGV");
         params.add("item_name", giftName);
         params.add("quantity", "1");
-        params.add("total_amount", "9000");
-        params.add("tax_free_amount", "1000");
+        params.add("total_amount", price.replace(",",""));
+        params.add("tax_free_amount", "0");
         params.add("approval_url", "http://localhost:8080/culture-event/popcorn-store/payment-successcomplete");
         params.add("cancel_url", "http://localhost:8080/culture-event/popcorn-store");
         params.add("fail_url", "http://localhost:8080/culture-event/popcorn-store");
@@ -73,7 +71,7 @@ public class KakaopayGiftService {
 
     }
 
-    public KakaoPayApprovalVO kakaoPayInfo(String pg_token) {
+    public KakaoPayApprovalVO kakaoPayInfo(String pg_token,String price) {
 
         log.info("KakaoPayInfoVO............................................");
         log.info("-----------------------------");
@@ -93,7 +91,7 @@ public class KakaopayGiftService {
         params.add("partner_order_id", "00002");
         params.add("partner_user_id", "TestCGV");
         params.add("pg_token", pg_token);
-        params.add("total_amount", "9000");
+        params.add("total_amount", price);
 
         HttpEntity<MultiValueMap<String, String>> body = new HttpEntity<MultiValueMap<String, String>>(params, headers);
 

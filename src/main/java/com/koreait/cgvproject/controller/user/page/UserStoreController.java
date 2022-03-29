@@ -88,8 +88,13 @@ public class UserStoreController {
     }
 
     @GetMapping("/kakaoPay/store")
-    public String kakaoPay(@RequestParam(value = "title") String title) {
-        return "redirect:" + kakaopayGiftService.kakaoPayReady(title);
+    public String kakaoPay(@RequestParam(value = "title") String title,
+                           @RequestParam String price) {
+//
+//        session.setAttribute("price", price);
+//        session.setAttribute("title", title);
+////        session.setAttribute("gcode", gcode);
+        return "redirect:" + kakaopayGiftService.kakaoPayReady(title, price);
     }
 
     @GetMapping("/popcorn-store/payment-successcomplete")
@@ -114,7 +119,7 @@ public class UserStoreController {
         GiftPayment giftPayment = giftPaymentRepository.save(giftpayment111);
 
         model.addAttribute("gpcode",giftpayment111);
-        model.addAttribute("info", kakaopayGiftService.kakaoPayInfo(pg_token));
+        model.addAttribute("info", kakaopayGiftService.kakaoPayInfo(pg_token,price));
 //        session.removeAttribute("price");
 //        System.out.println(price);
 

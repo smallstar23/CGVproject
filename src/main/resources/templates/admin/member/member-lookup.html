@@ -58,7 +58,6 @@
             <thead>
             <tr>
               <th>Id</th>
-              <th>Password</th>
               <th>휴대폰 번호</th>
               <th>생년월일</th>
               <th>E-mail</th>
@@ -69,7 +68,6 @@
             <tfoot>
             <tr>
               <th>Id</th>
-              <th>Password</th>
               <th>휴대폰 번호</th>
               <th>생년월일</th>
               <th>E-mail</th>
@@ -84,7 +82,6 @@
             <tr th:each="member : ${member2DTOList}" th:onclick="|location.href='@{|/post/${member.getIdx()}|}'|">
 
               <td style="width: 10%;" th:text="${member.userid}"></td>
-              <td style="width: 10%;" th:text="${member.userpw}"></td>
               <td style="width: 15%;" th:text="${member.hp1}"></td>
               <td style="width: 15%;" th:text="${member.ssn1}"></td>
               <td style="width: 10%;" th:text="${member.email1}"></td>
