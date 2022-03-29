@@ -255,6 +255,7 @@
                                 <p class="msg_desc">영문자, 숫자,특수문자 조합하여 8~12자리, 아이디와 4자리이상 동일,반복 문자숫자 불가<br>사용 가능 특수 문자 : !"#$%&amp;'()*+,-./:;&lt;=&gt;?@[]^_'{|}~</p>
                             </td>
                         </tr>
+
                         <tr class="input">
                             <th scope="row" class="mandatory">
                                 <label for="pwd_check"><span class="haze">"필수"</span> ✔ 비밀번호 확인</label>
@@ -266,39 +267,95 @@
                                 </div>
                             </td>
                         </tr>
+
+<!--                        <tr class="input">-->
+<!--                            <th scope="row" class="mandatory">-->
+<!--                                <label>-->
+<!--                                    <span class="haze">"필수"</span> ✔ 생년월일</label>-->
+<!--                            </th>-->
+<!--                            <td style="text-align:left">-->
+<!--                                <div class="input_group">-->
+<!--                                    <span class="select w120" data-skin="form"  name="ssn1" th:utext="${member.getSsn().substring(0,2)}"></span>-->
+<!--                                    <span class="symbol">년</span>-->
+<!--                                    <span class="select w70" data-skin="form" name="ssn2" th:utext="${member.getSsn().substring(2,4)}"></span>-->
+<!--                                    <span class="symbol">월</span>-->
+<!--                                    <span class="select w70" data-skin="form"  name="ssn3" th:utext="${member.getSsn().substring(4,6)}"></span>-->
+<!--                                    <span class="symbol">일</span>-->
+<!--                                </div>-->
+<!--                                <p class="msg_desc">설정하신 생일을 기준으로 <em>15일 전</em> 생일쿠폰이 발행됩니다.</p>-->
+<!--                            </td>-->
+<!--                        </tr>-->
+
                         <tr class="input">
                             <th scope="row" class="mandatory">
-                                <label for="birth_yy">
-                                    <span class="haze">"필수"</span> ✔ 생년월일</label>
+                                <label><span class="haze">"필수"</span> ✔ 생년월일</label>
                             </th>
                             <td style="text-align:left">
-                                <div class="birthday_select">
-                                    <span class="select w120" data-skin="form" th:utext="${member.getSsn().substring(0,2)}"></span>
+                                <div class="input_group">
+                                    <span class="input_txt">
+                                         <input type="text" style="width: 20px" class="text" name="ssn1" maxlength="4" th:value="${member.getSsn().substring(0,2)}" readonly>
+                                    </span>
                                     <span class="symbol">년</span>
-                                    <span class="select w70" data-skin="form" th:utext="${member.getSsn().substring(2,4)}"></span>
+                                    <span class="input_txt">
+                                          <input type="text" style="width: 20px" class="text" name="ssn2"  maxlength="4" th:value="${member.getSsn().substring(2,4)}" readonly>
+                                    </span>
                                     <span class="symbol">월</span>
-                                    <span class="select w70" data-skin="form" th:utext="${member.getSsn().substring(4,6)}"></span>
+                                    <span class="input_txt">
+                                           <input type="text" style="width: 20px" class="text" name="ssn3" maxlength="4" th:value="${member.getSsn().substring(4,6)}" readonly>
+                                    </span>
                                     <span class="symbol">일</span>
                                 </div>
                                 <p class="msg_desc">설정하신 생일을 기준으로 <em>15일 전</em> 생일쿠폰이 발행됩니다.</p>
                             </td>
                         </tr>
+
+
+
+                        <!--                        <tr class="input">-->
+<!--                            <th scope="row" class="mandatory">-->
+<!--                                <label for="mob_no_1"><span class="haze">"필수"</span> ✔ 휴대전화</label>-->
+<!--                            </th>-->
+<!--                            <td style="text-align:left">-->
+<!--                                <div class="input_group">-->
+<!--                                    <span class="input_txt w100" data-skin="form">-->
+<!--                                        <input type="text" class="text small" name="hp1"th:utext="${member.getHp().substring(0,3)}">-->
+<!--                                    </span>-->
+<!--                                    <span class="symbol">-</span>-->
+<!--                                    <span class="input_txt w100" data-skin="form">-->
+<!--                                        <input type="text" class="text small" name="hp2"th:utext="${member.getHp().substring(4,8)}">-->
+<!--                                    </span>-->
+<!--                                    <span class="symbol">-</span>-->
+<!--                                    <span class="input_txt w100" data-skin="form">-->
+<!--                                        <input type="text" class="text small" name="hp3" th:utext="${member.getHp().substring(9,13)}">-->
+<!--                                    </span>-->
+<!--                                    <p class="msg_info em hide" id="alert_mob_no"></p>-->
+<!--                                </div>-->
+<!--                                <p class="msg_desc">주문 및 배송, 쿠폰, 이벤트 정보 등을 제공 받으실 수 있습니다.</p>-->
+<!--                            </td>-->
+<!--                        </tr>-->
+
                         <tr class="input">
                             <th scope="row" class="mandatory">
-                                <label for="mob_no_1"><span class="haze">"필수"</span> ✔ 휴대전화</label>
+                                <label><span class="haze">"필수"</span> ✔ 휴대전화</label>
                             </th>
                             <td style="text-align:left">
-                                <div class="phon_write">
-                                    <span class="select w100" data-skin="form" th:utext="${member.getHp().substring(0,3)}"></span>
+                                <div class="input_group">
+                                    <span class="input_txt">
+                                         <input type="text" style="width: 30px" class="text" name="hp1" maxlength="4" th:value="${member.getHp().substring(0,3)}" readonly>
+                                    </span>
                                     <span class="symbol">-</span>
-                                    <span class="select w100" data-skin="form" th:utext="${member.getHp().substring(4,8)}"></span>
+                                    <span class="input_txt">
+                                          <input type="text" style="width: 30px" class="text" name="hp2"  maxlength="4" th:value="${member.getHp().substring(4,8)}" readonly>
+                                    </span>
                                     <span class="symbol">-</span>
-                                    <span class="select w100" data-skin="form" th:utext="${member.getHp().substring(9,13)}"></span>
-                                    <p class="msg_info em hide" id="alert_mob_no"></p>
+                                    <span class="input_txt">
+                                           <input type="text" style="width: 30px" class="text" name="hp3" maxlength="4" th:value="${member.getHp().substring(9,13)}" readonly>
+                                    </span>
+
                                 </div>
-                                <p class="msg_desc">주문 및 배송, 쿠폰, 이벤트 정보 등을 제공 받으실 수 있습니다.</p>
                             </td>
                         </tr>
+
                         <tr class="input">
                             <th scope="row" class="mandatory">
                                 <label for="email_addr1"><span class="haze">"필수"</span> ✔ 이메일</label>
