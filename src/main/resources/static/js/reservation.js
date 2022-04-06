@@ -75,7 +75,7 @@ for (let i = 0; i <= movie_click.length - 1; i++) {
 // 배열이나 객체같은 것들은 보통 const로 자료형을 잡아주는게 좋습니다.
 // 배열의 요소값들이 바뀌는 것이지 배열자체의 위치값이 바뀌는것이 아닙니다. (이유)
 // 그리고 howmany 만큼이 아니라 전에꺼였으면 howmany + 1 이었음 ㅡㅡ
-let howmany = 25;
+let howmany = 30;
 let today = new Date().getDate();
 let month = new Date().getMonth() + 1;
 const year = new Date().getFullYear();
@@ -83,6 +83,7 @@ const lastDate = new Date(year, month, 0).getDate(); // 해당월의 마지막�
 let day = new Date().getDay();
 const dayArray = ["일", "월", "화", "수", "목", "금", "토"];
 const dateArray = [];
+const fordate = document.getElementById("fordate");
 for (let i = 0; i < howmany; i++) {
     let initToday = today + i;
     // 배열에 넘겨주려는 값이 해당 월의 마지막일보다 클 경우
@@ -97,8 +98,15 @@ for (let i = 0; i < howmany; i++) {
     newday = newday % 7;
     newdayArray[i] = dayArray[newday];
 }
+fordate.innerHTML += `<li class="month dimmed">
+                                            <div>
+                                                <span class="year">2022</span>
+                                                <span class="month">${month}</span>
+                                                <div>
+                                                </div>
+                                            </div>
+                                            </li>`
 
-const fordate = document.getElementById("fordate");
 for (let i = 0; i < howmany; i++) {
     //2022.03.17(목)형식으로
     // month+1 추가, 1일 되면 현재 월에 +1
@@ -115,6 +123,7 @@ for (let i = 0; i < howmany; i++) {
 
     }
     // 1~9월일때는 0추가
+
     let newmonth;
     if (month < 10) {
         newmonth = "0" + month;
