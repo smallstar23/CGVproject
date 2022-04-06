@@ -70,7 +70,7 @@
                     </select>
                     <select class="form-control" name="tcode" id="theater" disabled onchange="setTcode(this.value)">
                     </select>
-                    <select class="form-control" name="hcode" id="hall" disabled>
+                    <select class="form-control" name="hcode" id="hall" disabled onchange="findSchedule(this.value)">
                     </select>
                 <hr/>
                 <label for="exampleInputEmail1">영화코드(현재 상영중인 영화만 선택 가능합니다.)</label>
@@ -83,7 +83,7 @@
                 <label for="exampleInputEmail1">상영일</label>
                 <div class="form-row">
                     <div class="col">
-                        <input type="datetime-local" class="form-control" name="scdate" >
+                        <input id="scheduleDate" type="datetime-local" class="form-control" name="scdate" onchange="checkDate(this.value)">
                     </div>
                 </div>
                 <hr/>
@@ -152,7 +152,7 @@
             // HTTP 요청이 성공하면 요청한 데이터가 done() 메소드로 전달됨.
             .done(function(res) {
                 for(let i=0;i<=res.length-1;i++){
-                    $("#hall").append(`<option value="${res[i].hcode}">${res[i].hguan}</option>`);
+                    $("#hall").append(`<option value="${res[i].hcode}">${res[i].hguan}관</option>`);
                 }
 
             })
@@ -168,6 +168,51 @@
     }
 
 
+    //선택한 홀과 시간에 스케쥴이 이미 있는지 없는지 체크하는 스크립트 추가
+    // 홀을 선택하면 홀에 대한 스케쥴을 가져옴
+    function findSchedule(hcode){
+        console.log(hcode)
+        $.ajax({
+            url: "/findSchedule",
+            data: { hcode: hcode },
+            type: "POST",
+            dataType: "json"
+        })
+            .done(function(res) {
+                scheduleList=res;
+
+            })
+            .fail(function(xhr, status, errorThrown) {
+                console.log(xhr)
+                console.log(status)
+            })
+    }
+
+    // 만약 과거날짜를 선택할 경우 선택 불가하게 만들기
+    // hall 정보 따라 가져온 스케쥴과 지금 선택한 날짜와 비교해서 이미 동시간에 스케쥴이 존재하는 경우 alert
+    let today=new Date()
+    let scheduleDate=document.querySelector('#scheduleDate')
+    let scheduleList=new Array();
+
+    function checkDate(selDate){
+        let changeDate=new Date(selDate)
+        console.log(changeDate)
+        console.log(scheduleList)
+        if(changeDate < today) {
+            alert("오늘 이전의 날짜는 선택할 수 없습니다.")
+            scheduleDate.value=""
+        }
+        scheduleList.forEach(schedule=>{
+            let scdate=new Date(schedule.scdate)
+            let enddate=new Date(schedule.enddate)
+            console.log(scdate)
+            console.log(enddate)
+            if(changeDate>=scdate && changeDate<=enddate){
+                alert(`이미 선택한 시간에 스케쥴이 존재합니다. \n 스케쥴 코드: ${schedule.schecode}\n 영화제목: ${schedule.movieDTO.titleKo}\n 시작시간: ${schedule.scdate} \n 종료시간: ${schedule.enddate} `)
+                scheduleDate.value=""
+            }
+        })
+    }
 
 </script>
 

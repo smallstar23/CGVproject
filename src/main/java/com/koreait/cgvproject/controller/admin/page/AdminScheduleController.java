@@ -38,13 +38,6 @@ public class AdminScheduleController {
         return "/admin/schedule/manage_movieScheduledetail";
     }
 
-    // 스케쥴 추가
-    @PostMapping("/manage_movieSchedule_create")
-    public String schedule_create(@ModelAttribute ScheduleDTO scheduleDTO){
-        System.out.println(scheduleDTO);
-        adminScheduleService.addSchedule(scheduleDTO);
-        return "redirect:movie-schedule";
-    }
 
 //    // 스케쥴 수정
 //    @PostMapping("/manage_movieSchedule_update")
@@ -67,6 +60,7 @@ public class AdminScheduleController {
     public void schedule_delete(@PathVariable Long schecode){
         adminScheduleService.deleteSchedule(schecode);
     }
+
 
 
 }
