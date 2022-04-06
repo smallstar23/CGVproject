@@ -99,4 +99,17 @@ public class AdminScheduleService {
 
     }
 
+    // api hall 정보로 schedule 찾기
+    public List<ScheduleDTO> hallSchedule(Long hcode){
+        Hall hall=hallRepository.findByHcode(hcode);
+        List<Schedule> scheduleList=scheduleRepository.findByHall(hall);
+        List<ScheduleDTO> scheduleDTOList=new ArrayList<>();
+        if(scheduleList!=null){
+            for(Schedule schedule: scheduleList){
+                scheduleDTOList.add(schedule.toDTO());
+            }
+        }
+        return scheduleDTOList;
+    }
+
 }
